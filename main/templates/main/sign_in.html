@@ -1,0 +1,70 @@
+{% extends 'layout/nav.html' %}
+{% load static %}
+
+{% block content %}
+
+<body class="bg-white font-family-karla h-screen">
+  <div>
+
+    <P class="text-center text-3xl font-extrabold bg-white text-gray-800 py-5 my-5">
+      Login
+    </P>
+
+    <div class="px-16 py-10 md:flex md:justify-center mt-16">
+          
+          <form method="POST" class="bg-white shadow-2xl rounded-lg px-8 pt-6 pb-8 mb-4">
+            {% csrf_token %}
+            <div class="text-m px-1 text-gray-700 text-left">
+              Please type your account number and enter your password.
+            </div>
+            <br>
+            <div class="mb-4">
+              
+              <input name="username"
+                class="shadow appearance-none border border-blue-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter Login ID">
+            </div>
+            <div class="mb-6">
+              
+              <input name="password"
+                class="shadow appearance-none border border-blue-800 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="myInput" type="password" placeholder="******************">
+
+                <input class="border border-blue-400 rounded" type="checkbox" onclick="myFunction()"> Show Password
+            </div>
+            
+            <div class="md:flex items-center justify-between">
+              <button type="submit" class="bg-blue-800 hover:bg-transparent hover:text-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                Sign In
+              </button>
+              <a href="/register" class="inline-block align-baseline font-bold text-sm text-blue-800 hover:bg-transparent" href="#">
+                New here? enroll
+              </a>
+            </div>
+            <a class="inline-block align-baseline pt-5 font-bold text-sm text-grey-800 hover:text-blue-900" href="mailto:yoladglobalservices@gmail.com">
+              Forgot Password? contact us
+          </a>
+          </form>
+
+          
+        </div>
+
+    </div>
+  </div>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
+
+
+</body>
+
+
+
+
+{% endblock %}
