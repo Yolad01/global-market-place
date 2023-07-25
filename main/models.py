@@ -121,3 +121,24 @@ class Material(models.Model):
 
 
 
+class Skill(models.Model):
+    class SkillLevel(models.TextChoices):
+        LEVEL_1 = "BEGINNER", "Beginner"
+        LEVEL_2= "INTERMEDIATE", "Intermediate"
+        LEVEL_3 = "EXPERT", "Expert"
+        
+        
+    class Rating(models.IntegerChoices):
+        STAR_1 = 1, "*"
+        STAR_2 = 2, "**"
+        STAR_3 = 3, "***"
+        STAR_4 = 4, "****"
+        STAR_5 = 5, "*****"
+        
+    
+    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
+    skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
+    rating = models.IntegerField(blank=True, null=True, choices=Rating.choices)
+    
+
+
