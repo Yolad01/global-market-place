@@ -140,5 +140,6 @@ class Skill(models.Model):
     skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
     rating = models.IntegerField(blank=True, null=True, choices=Rating.choices)
     
-
+    def __str__(self):
+        return self.skilla.username
 

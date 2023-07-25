@@ -64,6 +64,7 @@ def client(request):
     job_categories = JobCategory.objects.all()
     jobs = Job.objects.all()
     
+    
      
     return render(
             request=request, template_name="main/client_dashboard.html",
