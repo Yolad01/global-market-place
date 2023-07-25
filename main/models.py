@@ -127,19 +127,28 @@ class Skill(models.Model):
         LEVEL_2= "INTERMEDIATE", "Intermediate"
         LEVEL_3 = "EXPERT", "Expert"
         
-        
-    class Rating(models.IntegerChoices):
+    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
+    skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
+    base_price = models.IntegerField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.skilla.username
+
+
+
+
+class Rating(models.Model):
+    
+    class Rate(models.IntegerChoices):
         STAR_1 = 1, "*"
         STAR_2 = 2, "**"
         STAR_3 = 3, "***"
         STAR_4 = 4, "****"
         STAR_5 = 5, "*****"
         
-    
-    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
-    skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
-    rating = models.IntegerField(blank=True, null=True, choices=Rating.choices)
+    rating = models.IntegerField(blank=True, null=True, choices=Rate.choices)
+    ratee = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
+    rater = models.ForeignKey(Clients, on_delete=models.PROTECT, related_name="ratings_giver")
     
     def __str__(self):
-        return self.skilla.username
-
+        return f'{self.rater} rated {self.ratee}'
