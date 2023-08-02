@@ -4,8 +4,6 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.query import QuerySet
-from django.dispatch import receiver
-from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -122,11 +120,8 @@ class Material(models.Model):
 
 
 class Skill(models.Model):
-    class SkillLevel(models.TextChoices):
-        LEVEL_1 = "BEGINNER", "Beginner"
-        LEVEL_2= "INTERMEDIATE", "Intermediate"
-        LEVEL_3 = "EXPERT", "Expert"
-        
+    
+    SkillLevel = models.TextChoices("SkillLevel", "BEGINNER INTERMEDIATE EXPERT")
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
     skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
     base_price = models.IntegerField(blank=True, null=True)
@@ -152,3 +147,7 @@ class Rating(models.Model):
     
     def __str__(self):
         return f'{self.rater} rated {self.ratee}'
+    
+    
+    
+    
