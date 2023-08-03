@@ -30,7 +30,7 @@ class JobsAdmin(admin.ModelAdmin):
 
 
 class ProfileAdmin(admin.ModelAdmin):
-     list_display = ["user", "profile_id", "country", "city", "reason"]
+     list_display = ["user", "country", "state", "current_location", "reason"]
 
 
 
@@ -40,12 +40,12 @@ class MaterialAdmin(admin.ModelAdmin):
     
     
 class SkillAdmin(admin.ModelAdmin):
-     list_display = ["skilla", "skill_level", "base_price"]
+     list_display = ["skilla", "skill", "skill_level", "base_price"]
      
 
 
 class RatingAdmin(admin.ModelAdmin):
-     list_display = ["rater", "ratee", "rating"]
+     list_display = ["client", "skilla", "rating"]
 
 
 

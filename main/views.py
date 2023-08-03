@@ -80,9 +80,6 @@ def skilla(request):
     return render(request=request, template_name="main/skillas_dashboard.html")
 
 
-#### add @login_required decorator
-def facilitator(request):
-    return render(request=request, template_name="main/facilitator.html")
 
 
 def log_out(request):

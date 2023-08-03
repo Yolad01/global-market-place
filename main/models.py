@@ -4,8 +4,12 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.query import QuerySet
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
-# Create your models here.
+from .options import Country, Role, SkillLevel
+
+
 
 
 # def percentage_return(self, *args, **kwargs):
@@ -21,16 +25,13 @@ from django.db.models.query import QuerySet
 
 
 class User(AbstractUser):
-
-    class Role(models.TextChoices):
-        ADMIN = "ADMIN", "Admin"
-        CLIENT = "CLIENT", "Client"
-        SKILLAS = "SKILLAS", "Skillas"
-
-    # base_role = Role.ADMINa
+    
+    Role = Role
+    # base_role = Role.ADMIN
     role = models.CharField(max_length=50, choices=Role.choices)
     email = models.EmailField(unique=True)
     phone_no = models.CharField(verbose_name="Phone Number", unique=True, max_length=15)
+    
 
     REQUIRED_FIELDS = ["first_name", "last_name", "email", "phone_no"]
 
@@ -94,18 +95,38 @@ class Job(models.Model):
     def __str__(self):
         return self.title
     
+    
+
+class Skill(models.Model):      
+    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
+    skill = models.ForeignKey(Job, null=True, blank=True, on_delete=models.CASCADE)
+    skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
+    base_price = models.IntegerField(blank=True, null=True)
+    
+    def __str__(self):
+        return f'{self.skilla.username} ::: {self.skill.title}'
+    
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_id = models.IntegerField(null=True, blank=True)
-    country = models.CharField(null=True, blank=True, max_length=20)
-    city = models.CharField(null=True, blank=True, max_length=20)
-    reason = models.CharField(max_length=200, null=True, blank=True)
+    country = models.CharField(max_length=20, blank=True, null=True, choices=Country.choices)# change blank to false later
+    state = models.CharField(max_length=20, null=True, blank=True) # change blank to false 
+    current_location = models.CharField(max_length=20, null=True, blank=True) # may need to be chaged to false depending
+    reason = models.TextField(max_length=150, null=True, blank=True)
+    activated = models.BooleanField(default=False)
+    
+    def activate_user(self, *args, **kwargs):
+        if self.country is not None and self.state is not None and self.current_location is not None:
+            self.activated == True
+        
+        super(Profile, self).save(*args, **kwargs)
+        if self.activated == True:
+            return "Account has been activated"
+        return "User has not provided location details"
 
     def __str__(self):
         return self.user.username
-    
     
     
 
@@ -118,36 +139,28 @@ class Material(models.Model):
 
 
 
-
-class Skill(models.Model):
-    
-    SkillLevel = models.TextChoices("SkillLevel", "BEGINNER INTERMEDIATE EXPERT")
-    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
-    skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
-    base_price = models.IntegerField(blank=True, null=True)
-    
-    def __str__(self):
-        return self.skilla.username
-
-
-
-
 class Rating(models.Model):
     
     class Rate(models.IntegerChoices):
-        STAR_1 = 1, "*"
-        STAR_2 = 2, "**"
-        STAR_3 = 3, "***"
-        STAR_4 = 4, "****"
-        STAR_5 = 5, "*****"
+        STAR_1 = 1, "1"
+        STAR_2 = 2, "2"
+        STAR_3 = 3, "3"
+        STAR_4 = 4, "4"
+        STAR_5 = 5, "5"
         
     rating = models.IntegerField(blank=True, null=True, choices=Rate.choices)
-    ratee = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
-    rater = models.ForeignKey(Clients, on_delete=models.PROTECT, related_name="ratings_giver")
+    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
+    client = models.ForeignKey(Clients, on_delete=models.PROTECT, related_name="ratings_giver")
     
     def __str__(self):
         return f'{self.rater} rated {self.ratee}'
     
+    
+    
+class MatchSkillaToClient(models.Model):
+    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="jobber")
+    client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="payer")
+    notification  = models.CharField(max_length=256, null=True, blank=True)
     
     
     
