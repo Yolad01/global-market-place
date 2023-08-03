@@ -1,13 +1,12 @@
 from django.db import models
 
-# Create your models here.
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.query import QuerySet
-from django.dispatch import receiver
-from django.db.models.signals import post_save
 
-from .options import Country, Role, SkillLevel, Rate
+from .options import Country, Role, SkillLevel, Rate, OrderStatus
+import random
+
 
 
 
@@ -142,7 +141,7 @@ class Material(models.Model):
 class Rating(models.Model):
         
     Rate = Rate
-        
+    
     rating = models.IntegerField(blank=True, null=True, choices=Rate.choices)
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
     client = models.ForeignKey(Clients, on_delete=models.PROTECT, related_name="ratings_giver")
@@ -150,12 +149,26 @@ class Rating(models.Model):
     def __str__(self):
         return f'{self.rater} rated {self.ratee}'
     
-    
+
+
+def order_number() -> int:
+    num = random.randint(100000, 999999)
+    return num
+
     
 class Order(models.Model):
+    status = OrderStatus
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="jobber")
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="payer")
     notification  = models.CharField(max_length=256, null=True, blank=True)
+    paid = models.BooleanField(default=False)
+    order_no = models.IntegerField(default=order_number)
+    gig_desc = models.TextField(verbose_name="Gig description", max_length=200, null=True, blank=False)
     
-    
+    order_status = models.CharField(
+        max_length=15,
+        null=False,
+        choices=status.choices,
+        default=status.PENDING
+    )
     

@@ -30,3 +30,12 @@ class Rate(models.IntegerChoices):
 	STAR_3 = 3, "3"
 	STAR_4 = 4, "4"
 	STAR_5 = 5, "5"
+
+
+ 
+class OrderStatus(models.TextChoices):
+    PENDING = "PENDING", "Pending"
+    IN_PROGRESS = "IN_PROGRESS", "In progress"
+    COMPLETED = "COMPLETED", "Completed"
+    
+    
