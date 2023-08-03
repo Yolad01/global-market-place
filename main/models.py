@@ -7,7 +7,7 @@ from django.db.models.query import QuerySet
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-from .options import Country, Role, SkillLevel
+from .options import Country, Role, SkillLevel, Rate
 
 
 
@@ -140,13 +140,8 @@ class Material(models.Model):
 
 
 class Rating(models.Model):
-    
-    class Rate(models.IntegerChoices):
-        STAR_1 = 1, "1"
-        STAR_2 = 2, "2"
-        STAR_3 = 3, "3"
-        STAR_4 = 4, "4"
-        STAR_5 = 5, "5"
+        
+    Rate = Rate
         
     rating = models.IntegerField(blank=True, null=True, choices=Rate.choices)
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
@@ -157,7 +152,7 @@ class Rating(models.Model):
     
     
     
-class MatchSkillaToClient(models.Model):
+class Order(models.Model):
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="jobber")
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="payer")
     notification  = models.CharField(max_length=256, null=True, blank=True)

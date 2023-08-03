@@ -11,13 +11,22 @@ class Country(models.TextChoices):
     
     
 class Role(models.TextChoices):
-        ADMIN = "ADMIN", "Admin"
-        CLIENT = "CLIENT", "Client"
-        SKILLAS = "SKILLAS", "Skillas"
+	ADMIN = "ADMIN", "Admin"
+	CLIENT = "CLIENT", "Client"
+	SKILLAS = "SKILLAS", "Skillas"
         
         
         
 class SkillLevel(models.TextChoices):
-        LEVEL_1 = "BEGINNER", "Beginner"
-        LEVEL_2= "INTERMEDIATE", "Intermediate"
-        LEVEL_3 = "EXPERT", "Expert"
+	LEVEL_1 = "BEGINNER", "Beginner"
+	LEVEL_2= "INTERMEDIATE", "Intermediate"
+	LEVEL_3 = "EXPERT", "Expert"
+	
+        
+        
+class Rate(models.IntegerChoices):
+	STAR_1 = 1, "1"
+	STAR_2 = 2, "2"
+	STAR_3 = 3, "3"
+	STAR_4 = 4, "4"
+	STAR_5 = 5, "5"
