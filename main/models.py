@@ -90,11 +90,25 @@ class Job(models.Model):
     title = models.CharField(max_length=15, null=True, blank=True)
     price  = models.IntegerField()
     desc = models.TextField(null=True, blank=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
     
     
+    
+class ClientRequest(models.Model):
+    category = models.ForeignKey(JobCategory, on_delete=models.CASCADE)
+    title = models.CharField(max_length=15, null=True, blank=True)
+    price  = models.IntegerField()
+    desc = models.TextField(null=True, blank=True)
+    user = models.ForeignKey(Clients, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+    
+
+
 
 class Skill(models.Model):      
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
@@ -150,11 +164,9 @@ class Rating(models.Model):
         return f'{self.rater} rated {self.ratee}'
     
 
-
 def order_number() -> int:
     num = random.randint(100000, 999999)
     return num
-
     
 class Order(models.Model):
     status = OrderStatus
@@ -172,3 +184,4 @@ class Order(models.Model):
         default=status.PENDING
     )
     
+ 
