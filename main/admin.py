@@ -20,7 +20,7 @@ class UsersAdmin(admin.ModelAdmin):
 
 
 class JobsCategoryAdmin(admin.ModelAdmin):
-     list_display = ["creator", "title"]
+     list_display = ["creator", "title", "created"]
 
 
 
@@ -45,15 +45,15 @@ class SkillAdmin(admin.ModelAdmin):
 
 
 class RatingAdmin(admin.ModelAdmin):
-     list_display = ["skilla", "rating"]
+     list_display = ["skilla", "rating", "client"]
      
 
 class ClientRequestAdmin(admin.ModelAdmin):
-     list_display = ["title", "price", "desc" ]
+     list_display = ["title", "price", "desc", "created"]
 
 
 class OrderAdmin(admin.ModelAdmin):
-     list_display = ["skilla", "client", "paid", "order_no", "order_status"]
+     list_display = ["skilla", "client", "paid", "order_no", "order_status", "order_created"]
 
 
 

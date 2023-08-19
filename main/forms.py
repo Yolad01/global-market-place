@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from main.models import User
+from main.models import (JobCategory,)
 
 
 
@@ -14,3 +15,10 @@ class RegistrationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields["email"].required = True
         self.fields["phone_no"].required = True
+        
+        
+
+class JobCategoryForm(forms.ModelForm):
+    class Meta:
+        model = JobCategory
+        fields = ("title",)

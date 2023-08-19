@@ -1,11 +1,10 @@
 from django.db import models
-
-from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.query import QuerySet
 
 from .options import Country, Role, SkillLevel, Rate, OrderStatus
 import random
+from django.utils import timezone
 
 
 
@@ -57,7 +56,6 @@ class Skillas(User):
 
 
 
-
 class ClientManager(BaseUserManager):
     def get_queryset(self, *args, **kwargs) -> QuerySet:
         results =  super().get_queryset(*args, **kwargs)
@@ -77,9 +75,11 @@ class Clients(User):
 class JobCategory(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=20, blank=True, null=True)
+    created = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = "Job Categories"
+        
 
     def __str__(self):
         return self.title
@@ -90,7 +90,7 @@ class Job(models.Model):
     title = models.CharField(max_length=15, null=True, blank=True)
     price  = models.IntegerField()
     desc = models.TextField(null=True, blank=True)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -103,6 +103,7 @@ class ClientRequest(models.Model):
     price  = models.IntegerField()
     desc = models.TextField(null=True, blank=True)
     user = models.ForeignKey(Clients, on_delete=models.CASCADE)
+    created = models.DateTimeField(verbose_name="Request Created on", default=timezone.now)
 
     def __str__(self):
         return self.title
@@ -158,10 +159,10 @@ class Rating(models.Model):
     
     rating = models.IntegerField(blank=True, null=True, choices=Rate.choices)
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
-    client = models.ForeignKey(Clients, on_delete=models.PROTECT, related_name="ratings_giver")
+    client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="ratings_giver")
     
     def __str__(self):
-        return f'{self.rater} rated {self.ratee}'
+        return f'{self.client} rated {self.skilla}'
     
 
 def order_number() -> int:
@@ -170,18 +171,20 @@ def order_number() -> int:
     
 class Order(models.Model):
     status = OrderStatus
+    
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="jobber")
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="payer")
     notification  = models.CharField(max_length=256, null=True, blank=True)
     paid = models.BooleanField(default=False)
     order_no = models.IntegerField(default=order_number)
     gig_desc = models.TextField(verbose_name="Gig description", max_length=200, null=True, blank=False)
-    
     order_status = models.CharField(
         max_length=15,
         null=False,
         choices=status.choices,
         default=status.PENDING
     )
+    order_created = models.DateTimeField(default=timezone.now)
     
- 
+    def __str__(self) -> str:
+        return f"Order between {self.skilla} and {self.client}"
