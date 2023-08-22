@@ -71,7 +71,6 @@ class Clients(User):
 
 
 
-
 class JobCategory(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=20, blank=True, null=True)
@@ -90,7 +89,6 @@ class Job(models.Model):
     title = models.CharField(max_length=15, null=True, blank=True)
     price  = models.IntegerField()
     desc = models.TextField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

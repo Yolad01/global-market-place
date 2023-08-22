@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from main.models import User
-from main.models import (JobCategory,)
+from main.models import JobCategory, Job
 
 
 
@@ -21,4 +21,10 @@ class RegistrationForm(UserCreationForm):
 class JobCategoryForm(forms.ModelForm):
     class Meta:
         model = JobCategory
-        fields = ("title",)
+        fields = ["title", "creator"]
+        
+        
+class JobForm(forms.ModelForm):
+    class Meta:
+        model = Job
+        fields = ["category", "title", "price", "desc"]

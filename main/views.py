@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
-from main.forms import RegistrationForm
+from main.forms import RegistrationForm, JobForm
 from main.models import ( User, Skillas, Clients, JobCategory, Job, Material
 )
 from django.contrib.auth.forms import AuthenticationForm
@@ -13,7 +12,10 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request=request, template_name="main/home.html")
+    job_form = JobForm(request.POST)
+    return render(request=request, template_name="main/home.html",
+                  context={"form": job_form}
+                  )
 
 
 
@@ -32,7 +34,10 @@ def register(request):
                 return redirect("main:skillas")
     else:
         registration_form = RegistrationForm()
-    return render(request=request, template_name="main/register.html",context={"form": registration_form})
+    return render(request=request, template_name="main/register.html",
+                  context={
+                        "form": registration_form,
+                      })
 
 
 
