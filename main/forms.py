@@ -27,4 +27,4 @@ class JobCategoryForm(forms.ModelForm):
 class JobForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ["category", "title", "price", "desc"]
+        fields ="__all__"
