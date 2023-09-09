@@ -1,0 +1,63 @@
+{% extends 'layout/nav.html' %}
+{% load static %}
+
+{% block content %}
+    
+<body class="bg-white font-family-karla h-screen">
+    <div class="flex m-10 justify-center">
+
+        <div class="my-5 mx-5 p-5">
+            <img src="{% static '/img/Illustrations-04.png' %}" width="512" height="512">
+        </div>
+
+        <div class="mx-2 py-2 border-2">
+            
+            <div class="text-md font-semibold text-center">Let us know you</div>
+                <form method="POST" class="bg-white rounded-lg px-8 pt-6 pb-8 mb-4">
+                    {% csrf_token %}
+                
+                        <label class="block text-gray-700 text-sm">Username</label>
+                        <input name="username"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
+                    
+                
+                        <label class="block text-gray-700 text-sm">Last name</label>
+                        <input name="last_name"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1  leading-tight focus:outline-none focus:shadow-outline" id="last_name" type="text">
+                    
+                
+                        <label class="block text-gray-700 text-sm">Email</label>
+                        <input name="email"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1 px-3  leading-tight focus:outline-none focus:shadow-outline" id="email" type="text">
+                    
+                
+                        <label class="block text-gray-700 text-sm">Phone</label>
+                        <input name="phone"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1 px-3  leading-tight focus:outline-none focus:shadow-outline" id="phone" type="text">
+                    
+                
+                        <label class="block text-gray-700 text-sm"> Password</label>
+                        <input name="password1"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1 px-3  leading-tight focus:outline-none focus:shadow-outline" id="password1" type="text">
+                    
+                
+                        <label class="block text-gray-700 text-sm ">Retype password</label>
+                        <input name="password2"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1 px-3  leading-tight focus:outline-none focus:shadow-outline" id="password2" type="text">
+                    
+
+                    <div class="md:flex items-center justify-between mt-5">
+                        <button type="submit"
+                            class="bg-gray-800 w-full hover:bg-green-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            Register
+                        </button>                      
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>   
+
+    
+{% endblock %}
