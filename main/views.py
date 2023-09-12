@@ -46,6 +46,20 @@ def register_skilla(request):
                       })
     
     
+    
+def welcome_skillas(request):
+    return render(request=request, template_name="main/skilla/welcome_skillas.html")
+
+
+
+def skilla_qualification(request):
+    return render(request=request, template_name="main/skilla/skilla_qualification.html")
+
+
+def skill_rate(request):
+    return render(request=request, template_name="main/skilla/skill_rate.html")
+    
+    
 
 
 def sign_in(request):

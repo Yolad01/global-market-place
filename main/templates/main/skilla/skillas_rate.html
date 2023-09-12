@@ -1,0 +1,55 @@
+{% extends 'layout/nav.html' %}
+{% load static %}
+
+{% block content %}
+    
+<body class="bg-white font-family-karla h-screen">
+    <div class="flex m-10 justify-center">
+
+        <div class="my-5 mx-5 p-5">
+            <img src="{% static '/img/Illustrations-07.png' %}" width="600" height="600">
+            <div class="bg-gray-800 shadow-md rounded-sm hover:bg-green-500 text-white font-semibold text-center py-1">Previous</div>
+        </div>
+
+        <div class="mx-2 py-2 flex items-center">
+            <div>
+                <div class="text-md font-semibold text-center">Let us know you</div>
+                <form method="POST" rounded-lg px-8 pt-6 pb-8 mb-4">
+                    {% csrf_token %}
+                
+                    <div class="my-2">
+                        <label class="block text-gray-700 text-sm">Location(City/Country)</label>
+                        <input name="location"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline" id="location" type="text">
+                    </div>
+
+
+                    <div class="my-2">               
+                        <label class="block text-gray-700 text-sm">Skills/Expertise(e.g Web Development, Cleaning services)</label>
+                        <input name="skills"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1  leading-tight focus:outline-none focus:shadow-outline" id="last_name" type="text">
+                    </div>
+
+                    <div class="my-2">
+                        <label class="block text-gray-700 text-sm">Years of Experience in the field</label>
+                        <input name="experience"
+                        class="shadow appearance-none border border-gray-400 rounded w-full py-1 px-3  leading-tight focus:outline-none focus:shadow-outline" id="email" type="text">
+                    </div>
+
+                    <div class="md:flex items-center justify-between mt-5">
+                        <button type="submit"
+                            class="bg-gray-800 w-full hover:bg-green-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                            Get Started
+                        </button>                      
+                    </div>
+            </form>
+            </div>
+            
+        </div>
+        
+    </div>
+
+</body>   
+
+    
+{% endblock %}

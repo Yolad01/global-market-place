@@ -1,0 +1,24 @@
+{% extends 'layout/nav.html' %}
+{% load static %}
+
+{% block content %}
+    
+<body class="bg-white font-family-karla h-screen">
+    <div class="flex m-10 justify-center">
+
+        <div class="my-5 mx-5 p-5">
+            <img src="{% static '/img/Illustrations-10.png' %}" width="512" height="512">
+        </div>
+
+        <div class="mx-2 py-2 flex items-center">
+            <div>
+                <div class="text-xl m-10 text-center ">Welcome to the <span class="font-bold">skillas</span> <br>Platform</div>
+                <div class="bg-gray-900 rounded-sm mt-20 shadow-md hover:bg-green-500 text-white text-md font-semibold my-10 mx-10 py-3 px-5 text-center"><a href="/skilla_qualification">Click to continue your verification</a></div>
+            </div>
+        </div>
+    </div>
+
+</body>   
+
+    
+{% endblock %}
