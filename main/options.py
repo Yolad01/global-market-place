@@ -11,25 +11,26 @@ class Country(models.TextChoices):
     
     
 class Role(models.TextChoices):
-	ADMIN = "ADMIN", "Admin"
-	CLIENT = "CLIENT", "Client"
-	SKILLAS = "SKILLAS", "Skillas"
+    ADMIN = "ADMIN", "Admin"
+    CLIENT = "CLIENT", "Client"
+    SKILLAS = "SKILLAS", "Skillas"
+    COMPANY = "COMPANY", "Company"
         
         
         
 class SkillLevel(models.TextChoices):
-	LEVEL_1 = "BEGINNER", "Beginner"
-	LEVEL_2= "INTERMEDIATE", "Intermediate"
-	LEVEL_3 = "EXPERT", "Expert"
+    LEVEL_1 = "BEGINNER", "Beginner"
+    LEVEL_2= "INTERMEDIATE", "Intermediate"
+    LEVEL_3 = "EXPERT", "Expert"
 	
         
         
 class Rate(models.IntegerChoices):
-	STAR_1 = 1, "1"
-	STAR_2 = 2, "2"
-	STAR_3 = 3, "3"
-	STAR_4 = 4, "4"
-	STAR_5 = 5, "5"
+    STAR_1 = 1, "1"
+    STAR_2 = 2, "2"
+    STAR_3 = 3, "3"
+    STAR_4 = 4, "4"
+    STAR_5 = 5, "5"
 
 
  
@@ -162,6 +163,7 @@ class OrderStatus(models.TextChoices):
 #                         class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
 #                         type="button">
 #                         Sign Up
+
 #                       </button>
                 
 #                 </form> {% endcomment %}

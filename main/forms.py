@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from main.models import User
-from main.models import JobCategory, Job
-
+from main.models import (JobCategory, Job,
+                         SkillaProfile
+                         )
 
 
 class RegistrationForm(UserCreationForm):
@@ -28,3 +29,18 @@ class JobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields ="__all__"
+        
+        
+class SkillaProfileForm(forms.ModelForm):
+    model = SkillaProfile
+    fields = [
+          "user",
+          "country",
+          "state",
+          "current_location",
+          "experience",
+          "certifications",
+          "portfolio",
+          "professional_profiles_links",
+          "hourly_rate"
+     ]

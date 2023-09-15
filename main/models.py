@@ -53,6 +53,7 @@ class Skillas(User):
     class Meta:
         proxy = True # links to the original model table. this means that all the user types will be in the same table
     skillas = SkillasManager()
+    
 
 
 
@@ -68,6 +69,21 @@ class Clients(User):
     class Meta:
         proxy=True
     clients = ClientManager()
+    
+    
+    
+class CompanyManager(BaseUserManager):
+    def get_queryset(self, *args, **kwargs) -> QuerySet:
+        results =  super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Role.COMPANY)
+
+
+class Company(User):
+    base_role = User.Role.COMPANY
+
+    class Meta:
+        proxy = True # links to the original model table. this means that all the user types will be in the same table
+    company = CompanyManager()
 
 
 
@@ -120,19 +136,25 @@ class Skill(models.Model):
     
 
 
-class Profile(models.Model):
+class SkillaProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     country = models.CharField(max_length=20, blank=True, null=True, choices=Country.choices)# change blank to false later
     state = models.CharField(max_length=20, null=True, blank=True) # change blank to false 
-    current_location = models.CharField(max_length=20, null=True, blank=True) # may need to be chaged to false depending
-    reason = models.TextField(max_length=150, null=True, blank=True)
+    current_location = models.CharField(max_length=20, null=True, blank=True)
+    experience = models.IntegerField(verbose_name="Years of Experience", blank=True, null=True)
+    certifications = models.CharField(verbose_name="Education and Certification (Optional)", blank=True, null=True, max_length=256)# may need to be chaged to false depending
+    portfolio = models.URLField(verbose_name="Provide url/link or file upload", blank=True, null=True)
+    professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
+    hourly_rate = models.IntegerField(verbose_name="Hourly_rate aor salary")
+    # Add BVN column
+    
     activated = models.BooleanField(default=False)
     
     def activate_user(self, *args, **kwargs):
         if self.country is not None and self.state is not None and self.current_location is not None:
             self.activated == True
         
-        super(Profile, self).save(*args, **kwargs)
+        super(SkillaProfile, self).save(*args, **kwargs)
         if self.activated == True:
             return "Account has been activated"
         return "User has not provided location details"
@@ -140,6 +162,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
     
+    
+    
+######### Client profile goes here
+
+######### Company Profile Goes here
     
 
 class Material(models.Model):
