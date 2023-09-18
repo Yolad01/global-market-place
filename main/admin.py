@@ -3,7 +3,8 @@ from main.models import JobCategory, Job
 # from django.contrib.auth.admin import UserAdmin
 
 from .models import (
-    User, Clients, Skillas, SkillaProfile, Material, Skill, Rating, ClientRequest, Order
+    User, Clients, Skillas, SkillaProfile, Material, Skill, Rating, ClientRequest, Order,
+    ClientProfile
 )
 
 # Register your models here.
@@ -40,6 +41,19 @@ class SkillaProfileAdmin(admin.ModelAdmin):
           "portfolio",
           "professional_profiles_links",
           "hourly_rate"
+     ]
+     
+     
+class ClientProfileAdmin(admin.ModelAdmin):
+     list_display = [
+          "user",
+          "country",
+          "current_location",
+          "home_address",
+          "occupation",
+          "id_card",
+          "services_needed",
+          "terms_and_conditions"
      ]
 
 
@@ -78,6 +92,7 @@ admin.site.register(Job, JobsAdmin)
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(ClientRequest, ClientRequestAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(ClientProfile, ClientProfileAdmin)
 
 
 

@@ -19,13 +19,11 @@ def home(request):
 
 
 
+
+
+
+
 def register(request):
-    return render(request=request, template_name="main/register.html")
-                  
-
-
-
-def register_skilla(request):
     if request.method == "POST":
         registration_form = RegistrationForm(request.POST)
         if registration_form.is_valid():
@@ -40,24 +38,12 @@ def register_skilla(request):
                 return redirect("main:skillas")
     else:
         registration_form = RegistrationForm()
-    return render(request=request, template_name="main/register_skilla.html",
+    return render(request=request, template_name="main/register.html",
                   context={
-                        "form": registration_form,
+                        "reg_form": registration_form,
                       })
     
     
-    
-def welcome_skillas(request):
-    return render(request=request, template_name="main/skilla/welcome_skillas.html")
-
-
-
-def skilla_qualification(request):
-    return render(request=request, template_name="main/skilla/skilla_qualification.html")
-
-
-def skill_rate(request):
-    return render(request=request, template_name="main/skilla/skill_rate.html")
     
     
 

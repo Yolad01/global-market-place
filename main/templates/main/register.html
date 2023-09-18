@@ -5,22 +5,124 @@
     
 <body class="bg-white font-family-karla h-screen">
     <div class="flex m-10 justify-center">
-        <div class="border-gray-800 rounded-lg flex m-10 border-2">
-            <div class="m-10 p-10">
-                <img src="{% static '/img/Illustrations-04.png' %}" width="512" height="512">
-            </div>
 
-            <div class="m-10 p-10">
-                <div class="p-5">
-                    <div class="text-xl font-bold m-5 text-center">Sign Up As</div>
-                    <div class="bg-gray-800 rounded-md text-center text-md font-semibold  m-5 text-white pt-2 pb-2 pr-5 pl-5 hover:bg-green-500"><a href=/register_skilla>As a Skilla</a></div>
-                    <div class="bg-gray-800 rounded-md text-center text-md font-semibold  m-5 text-white pt-2 pb-2 pr-5 pl-5 hover:bg-green-500"><a href="/register_skilla">As an Individual</a></div>
-                    <div class="bg-gray-800 rounded-md text-center text-md font-semibold  m-5 text-white pt-2 pb-2 pr-5 pl-5 hover:bg-green-500"><a href="/register_skilla">As a Company</a></div>
+        <div class="my-5 mx-5 p-5">
+            <img src="{% static '/img/Illustrations-04.png' %}" width="612" height="612">
+        </div>
+
+        <div class="mx-2 py-2 border-2">
+            
+            <div class="text-md font-semibold text-center">Registration</div>
+            <form method="POST" class="bg-white rounded-lg px-8 pt-6 pb-8 mb-4">
+                {% csrf_token %}
+
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_username">Username</label>
+                    <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+ 
+                    
+                    
                 </div>
-            </div>
+                
+                  
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_first_name">First name</label>
+                    <input type="text" name="first_name" maxlength="150" id="id_first_name"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                    
+                </div>
+                
+                  
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_last_name">Last name</label>
+                    <input type="text" name="last_name" maxlength="150" id="id_last_name"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >              
+                    
+                </div>
+                
+                  
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_email">Email</label>
+                    <input type="email" name="email" maxlength="254" required id="id_email"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                    
+                </div>
+                
+                  
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_phone_no">Phone Number</label>
+                    <input type="text" name="phone_no" maxlength="15" required id="id_phone_no"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                    
+                </div>
+                
+                  
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_role">Role</label>
+                    <select name="role" required id="id_role"
+                    class="shadow appearance-none border bg-green-500 rounded py-1 px-2 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                  <option class="font-semibold" value="" selected>---------</option>
+                
+                  {% comment %} <option class="font-semibold" value="ADMIN">Admin</option> {% endcomment %}
+                
+                  <option class="font-semibold" value="CLIENT">Client</option>
+                
+                  <option class="font-semibold" value="SKILLAS">Skillas</option>
+                
+                  <option class="font-semibold" value="COMPANY">Company</option>
+                
+                </select>
+                    
+                    
+                </div>
+                
+                  
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_password1">Password</label>
+                    <input type="password" name="password1" autocomplete="new-password" required id="id_password1"
+                    class="shadow appearance-none border border-gray-400 rounded py-1 w-full leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                    
+                    <span class="helptext text-sm">
+                        <ul>
+                            <li>Your password can’t be too similar to your other personal information.</li>
+                            <li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li>
+                            <li>Your password can’t be entirely numeric.</li>
+                        </ul>
+                    </span>
+                    
+                    
+                </div>
+                
+                  
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_password2">Password confirmation</label>
+                    <input type="password" name="password2" autocomplete="new-password" required id="id_password2"
+                    class="shadow appearance-none border border-gray-400 rounded py-1 w-full leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                    
+                    <span class="helptext text-sm">Enter the same password as before, for verification.</span>
+                </div>
+
+                <div class="md:flex items-center justify-between mt-5">
+                    <button type="submit"
+                        class="bg-gray-800 w-full hover:bg-green-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        Register
+                    </button>                      
+                </div>
+
+            </form>
         </div>
     </div>
-</body>
+
+</body>   
 
     
 {% endblock %}

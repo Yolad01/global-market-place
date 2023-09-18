@@ -127,6 +127,7 @@ class ClientRequest(models.Model):
 
 class Skill(models.Model):      
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
+    # skill_category = models.ForeignKey(JobCategory, blank=True, null=False, on_delete=models.CASCADE)
     skill = models.ForeignKey(Job, null=True, blank=True, on_delete=models.CASCADE)
     skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
     base_price = models.IntegerField(blank=True, null=True)
@@ -146,6 +147,7 @@ class SkillaProfile(models.Model):
     portfolio = models.URLField(verbose_name="Provide url/link or file upload", blank=True, null=True)
     professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
     hourly_rate = models.IntegerField(verbose_name="Hourly_rate aor salary")
+    terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
     # Add BVN column
     
     activated = models.BooleanField(default=False)
@@ -164,7 +166,31 @@ class SkillaProfile(models.Model):
     
     
     
+    
 ######### Client profile goes here
+class ClientProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    country = models.CharField(max_length=20, blank=True, null=True, choices=Country.choices)
+    current_location = models.CharField(max_length=20, null=True, blank=True)
+    home_address = models.CharField(max_length=256, null=True, blank=True)
+    occupation = models.CharField(max_length=50, null=True, blank=True)
+    id_card = models.ImageField(upload_to="id_cards_for_kyc")
+    services_needed = models.CharField(max_length=256, null=True, blank=True)
+    terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
+    
+    activated = models.BooleanField(default=False)
+    
+    def activate_user(self, *args, **kwargs):
+        if self.country is not None and self.state is not None and self.current_location is not None:
+            self.activated == True
+        
+        super(ClientProfile, self).save(*args, **kwargs)
+        if self.activated == True:
+            return "Account has been activated"
+        return "User has not provided location details"
+    
+    def __str__(self):
+        return self.user.username
 
 ######### Company Profile Goes here
     
@@ -213,3 +239,5 @@ class Order(models.Model):
     
     def __str__(self) -> str:
         return f"Order between {self.skilla} and {self.client}"
+    
+    
