@@ -146,7 +146,7 @@ class SkillaProfile(models.Model):
     certifications = models.CharField(verbose_name="Education and Certification (Optional)", blank=True, null=True, max_length=256)# may need to be chaged to false depending
     portfolio = models.URLField(verbose_name="Provide url/link or file upload", blank=True, null=True)
     professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
-    hourly_rate = models.IntegerField(verbose_name="Hourly_rate aor salary")
+    hourly_rate = models.IntegerField(verbose_name="Hourly_rate or salary")
     terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
     # Add BVN column
     

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from main.forms import RegistrationForm, JobForm
+from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
+                        ClientProfileForm
+                        )
 from main.models import ( User, Skillas, Clients, JobCategory, Job, Material
 )
 from django.contrib.auth.forms import AuthenticationForm
@@ -18,11 +20,6 @@ def home(request):
                   )
 
 
-
-
-
-
-
 def register(request):
     if request.method == "POST":
         registration_form = RegistrationForm(request.POST)
@@ -34,8 +31,10 @@ def register(request):
             login(request, user)
             if user.role == "CLIENT":
                 return redirect("main:client")
-            elif user.role == "Skillas":
+            elif user.role == "SKILLAS":
                 return redirect("main:skillas")
+            # elif user.role == "COMPANY":
+            #     return redirect("main:company")
     else:
         registration_form = RegistrationForm()
     return render(request=request, template_name="main/register.html",
@@ -43,7 +42,32 @@ def register(request):
                         "reg_form": registration_form,
                       })
     
+
+
+def skilla_profile(request):
+    if request.method == "POST":
+        skilla_profile_form = SkillaProfileForm(request.POST, user=request.user)
+        if skilla_profile_form.is_valid():
+            skilla_profile_form.save()
+            return redirect("main:skillas")
+    else:
+        skilla_profile_form = SkillaProfileForm(user=request.user)
     
+    return render(
+        request=request,
+        template_name="main/skilla/skilla_profile.html",
+        context={
+            "form": skilla_profile_form
+        }
+    )
+    
+    
+def client_profile(request):
+    ...
+    
+    
+def company_profile(request):
+    ...
     
     
 
@@ -76,8 +100,6 @@ def client(request):
     job_categories = JobCategory.objects.all()
     jobs = Job.objects.all()
     
-    
-     
     return render(
             request=request, template_name="main/client_dashboard.html",
             context={

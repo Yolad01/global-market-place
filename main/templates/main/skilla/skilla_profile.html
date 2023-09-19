@@ -1,0 +1,71 @@
+{% extends 'layout/nav.html' %}
+{% load static %}
+
+{% block content %}
+    <form>
+        {% csrf_token %}
+        
+
+		
+
+        <p>
+            <label for="id_country">Country:</label>
+            <select name="country" id="id_country">
+            <option value="" selected>---------</option>
+        
+            <option value="NIGERIA">Nigeria</option>
+        
+            <option value="UK">United Kingdom</option>
+        
+            <option value="USA">United States of America</option>
+        
+            <option value="GHANA">Ghana</option>
+        
+            </select>
+        
+        </p>
+    
+        <p>
+            <label for="id_state">State:</label>
+            <input type="text" name="state" maxlength="20" id="id_state">
+        
+        </p>
+        
+        <p>
+            <label for="id_current_location">Current location:</label>
+            <input type="text" name="current_location" maxlength="20" id="id_current_location">
+        
+        </p>
+    
+        <p>
+            <label for="id_experience">Years of Experience:</label>
+            <input type="number" name="experience" id="id_experience">
+        
+        </p>
+    
+        <p>
+            <label for="id_certifications">Education and Certification (Optional):</label>
+            <input type="text" name="certifications" maxlength="256" id="id_certifications">
+        
+        </p>
+        
+        <p>
+            <label for="id_portfolio">Provide url/link or file upload:</label>
+            <input type="url" name="portfolio" maxlength="200" id="id_portfolio">
+        
+        </p>
+        
+        <p>
+            <label for="id_professional_profiles_links">Professional profiles links:</label>
+            <input type="text" name="professional_profiles_links" maxlength="256" id="id_professional_profiles_links">
+        
+        </p>
+        
+        <p>
+            <label for="id_hourly_rate">Hourly_rate aor salary:</label>
+            <input type="number" name="hourly_rate" required id="id_hourly_rate">
+        
+        </p>
+        
+    </form>
+{% endblock %}
