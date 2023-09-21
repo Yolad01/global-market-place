@@ -3,7 +3,8 @@ from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm
                         )
-from main.models import ( User, Skillas, Clients, JobCategory, Job, Material
+from main.models import ( User, Skillas, Clients, JobCategory, Job, Material, SkillaProfile,
+                         ClientProfile
 )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -30,9 +31,11 @@ def register(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             if user.role == "CLIENT":
+                ClientProfile.objects.create(user_id=request.user.id)
                 return redirect("main:client")
             elif user.role == "SKILLAS":
-                return redirect("main:skillas")
+                SkillaProfile.objects.create(user_id=request.user.id)
+                return redirect("main:skilla_profile")
             # elif user.role == "COMPANY":
             #     return redirect("main:company")
     else:
@@ -45,21 +48,24 @@ def register(request):
 
 
 def skilla_profile(request):
-    if request.method == "POST":
-        skilla_profile_form = SkillaProfileForm(request.POST, user=request.user)
-        if skilla_profile_form.is_valid():
-            skilla_profile_form.save()
-            return redirect("main:skillas")
-    else:
-        skilla_profile_form = SkillaProfileForm(user=request.user)
+    try:
+        skilla_profile = request.user.skillaprofile
+    except SkillaProfile.DoesNotExist:
+        skilla_profile = SkillaProfile(user=request.user)
+    form = SkillaProfileForm(request.POST, instance=skilla_profile)
+    if form.is_valid():
+        form.save()
+        messages.success(request, "profile updated successfully")
+    form = SkillaProfileForm()
     
     return render(
         request=request,
         template_name="main/skilla/skilla_profile.html",
-        context={
-            "form": skilla_profile_form
-        }
+        context={"form": form}
     )
+        
+        
+    
     
     
 def client_profile(request):

@@ -34,8 +34,7 @@ class JobForm(forms.ModelForm):
 class SkillaProfileForm(forms.ModelForm):
     class Meta:
         model = SkillaProfile
-        fields = [
-            "user",
+        fields = (
             "country",
             "state",
             "current_location",
@@ -43,35 +42,10 @@ class SkillaProfileForm(forms.ModelForm):
             "certifications",
             "portfolio",
             "professional_profiles_links",
-            "hourly_rate"
-        ]
+            "hourly_rate",
+        )
     
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
-        super(SkillaProfileForm, self).__init__(*args, **kwargs)
-        if user:
-            self.fields["user"].initial = user
-            self.fields["user"].widget = forms.HiddenInput()
 
-    def save(self, commit=True):
-        instance = super(SkillaProfileForm, self).save(commit=False)
-        if commit:
-            instance.save()
-        return instance
-    
-    ##### Validation checks
-    def clean_experience(self):
-        experience = self.cleaned_data.get("experience")
-        if experience < 0:
-            raise forms.ValidationError("Experience shall not be negative")
-        return experience
-        
-    def clean_current_location(self):
-        current_location = self.cleaned_data.get("current_location")
-        if current_location == "":
-            raise forms.ValidationError("Enter a location to continue")
-        return current_location
-        
     
     
     
@@ -111,3 +85,31 @@ class SkillForm(forms.ModelForm):
     ]
     
     
+
+
+    # def __init__(self, *args, **kwargs):
+    #     user = kwargs.pop('user', None)
+    #     super(SkillaProfileForm, self).__init__(*args, **kwargs)
+    #     if user:
+    #         self.fields["user"].initial = user
+    #         self.fields["user"].widget = forms.HiddenInput()
+
+    # def save(self, commit=True):
+    #     instance = super(SkillaProfileForm, self).save(commit=False)
+    #     if commit:
+    #         instance.save()
+    #     return instance
+    
+    # ##### Validation checks
+    # def clean_experience(self):
+    #     experience = self.cleaned_data.get("experience")
+    #     if experience < 0:
+    #         raise forms.ValidationError("Experience shall not be negative")
+    #     return experience
+        
+    # def clean_current_location(self):
+    #     current_location = self.cleaned_data.get("current_location")
+    #     if current_location == "":
+    #         raise forms.ValidationError("Enter a location to continue")
+    #     return current_location
+        
