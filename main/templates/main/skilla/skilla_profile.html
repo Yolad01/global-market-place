@@ -2,70 +2,108 @@
 {% load static %}
 
 {% block content %}
-    <form>
-        {% csrf_token %}
-        
+<body class="bg-white font-family-karla h-screen">
+    <div class="flex m-10 justify-center">
 
-		
+        <div class="my-5 mx-5 p-5">
+            <img src="{% static '/img/Illustrations-06.png' %}" width="612" height="612">
 
-        <p>
-            <label for="id_country">Country:</label>
-            <select name="country" id="id_country">
-            <option value="" selected>---------</option>
-        
-            <option value="NIGERIA">Nigeria</option>
-        
-            <option value="UK">United Kingdom</option>
-        
-            <option value="USA">United States of America</option>
-        
-            <option value="GHANA">Ghana</option>
-        
-            </select>
-        
-        </p>
+        </div>
+
+        <div class="mx-2 py-2 border-2">
+            
+            <div class="text-md font-semibold text-center">{{ user.username }} Profile Update</div>
+
+            <form method="POST" class="bg-white rounded-lg px-8 pt-6 pb-8 mb-4">
+                {% csrf_token %}
+
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_role" for="id_country">Country:</label>
+                    <select name="country" id="id_country"
+                    class="shadow appearance-none border bg-green-500 rounded py-1 px-2 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                    <option class="font-semibold" value="" selected>---------</option>
+                
+                    <option class="font-semibold" value="NIGERIA">Nigeria</option>
+                
+                    <option class="font-semibold" value="UK">United Kingdom</option>
+                
+                    <option class="font-semibold" value="USA">United States of America</option>
+                
+                    <option class="font-semibold" value="GHANA">Ghana</option>
+                
+                    </select>
+                
+                </div>
+            
+                <div class="m-2">
+                    <label for="id_state">State:</label>
+                    <input type="text" name="state" maxlength="20" id="id_state"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                
+                </div>
+                
+                <div class="m-2">
+                    <label for="id_current_location">Current location:</label>
+                    <input type="text" name="current_location" maxlength="20" id="id_current_location"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                
+                </div>
+            
+                <div class="m-2">
+                    <label for="id_experience">Years of Experience:</label>
+                    <input type="number" name="experience" id="id_experience"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                
+                </div>
+            
+                <div class="m-2">
+                    <label for="id_certifications">Education and Certification (Optional):</label>
+                    <input type="text" name="certifications" maxlength="256" id="id_certifications"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                
+                </div>
+                
+                <div class="m-2">
+                    <label for="id_portfolio">Provide url/link or file upload:</label>
+                    <input type="url" name="portfolio" maxlength="200" id="id_portfolio"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                
+                </div>
+                
+                <div class="m-2">
+                    <label for="id_professional_profiles_links">Professional profiles links:</label>
+                    <input type="text" name="professional_profiles_links" maxlength="256" id="id_professional_profiles_links"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                
+                </div>
+                
+                <div class="m-2">
+                    <label for="id_hourly_rate">Hourly_rate aor salary:</label>
+                    <input type="number" name="hourly_rate" required id="id_hourly_rate"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                
+                </div>
+
+
+                <div class="md:flex items-center justify-between mt-5">
+                    <button type="submit"
+                        class="bg-gray-800 w-full hover:bg-gray-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        Get Started
+                    </button>                      
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>  
     
-        <p>
-            <label for="id_state">State:</label>
-            <input type="text" name="state" maxlength="20" id="id_state">
-        
-        </p>
-        
-        <p>
-            <label for="id_current_location">Current location:</label>
-            <input type="text" name="current_location" maxlength="20" id="id_current_location">
-        
-        </p>
-    
-        <p>
-            <label for="id_experience">Years of Experience:</label>
-            <input type="number" name="experience" id="id_experience">
-        
-        </p>
-    
-        <p>
-            <label for="id_certifications">Education and Certification (Optional):</label>
-            <input type="text" name="certifications" maxlength="256" id="id_certifications">
-        
-        </p>
-        
-        <p>
-            <label for="id_portfolio">Provide url/link or file upload:</label>
-            <input type="url" name="portfolio" maxlength="200" id="id_portfolio">
-        
-        </p>
-        
-        <p>
-            <label for="id_professional_profiles_links">Professional profiles links:</label>
-            <input type="text" name="professional_profiles_links" maxlength="256" id="id_professional_profiles_links">
-        
-        </p>
-        
-        <p>
-            <label for="id_hourly_rate">Hourly_rate aor salary:</label>
-            <input type="number" name="hourly_rate" required id="id_hourly_rate">
-        
-        </p>
-        
-    </form>
 {% endblock %}

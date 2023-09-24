@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from main.models import User
 from main.models import (JobCategory, Job, Rating,
-                         SkillaProfile, Skill, ClientProfile
+                         SkillaProfile, Skill, ClientProfile,
+                         CompanyProfile
                          )
 
 
@@ -45,24 +46,43 @@ class SkillaProfileForm(forms.ModelForm):
             "hourly_rate",
         )
     
+      ##### Validation checks
+    def clean_experience(self):
+        experience = self.cleaned_data.get("experience")
+        if experience < 0:
+            raise forms.ValidationError("Experience shall not be negative")
+        return experience
 
     
     
     
 class ClientProfileForm(forms.ModelForm):
-    model = ClientProfile
-    fields = [
-          "user",
-          "country",
+    class Meta:
+        model = ClientProfile
+        fields = [
+            "country",
+            "current_location",
+            "home_address",
+            "occupation",
+            "id_card",
+            "services_needed",
+            "terms_and_conditions"
+        ]
+
+
+class CompanyProfileForm(forms.ModelForm):
+    class Meta:
+        model = CompanyProfile
+        fields = [
+          "company_name",
+          "location",
           "state",
-          "current_location",
-          "home_address",
-          "occupation",
-          "id_card",
-          "services_needed",
-          "terms_and_conditions"
-    ]
-    
+          "industry",
+          "company_size",
+          "services",
+          "work_history_with_freelancer",
+          "terms_and_conditions",
+     ]
     
     
 class RatingForm(forms.ModelForm):
@@ -87,29 +107,3 @@ class SkillForm(forms.ModelForm):
     
 
 
-    # def __init__(self, *args, **kwargs):
-    #     user = kwargs.pop('user', None)
-    #     super(SkillaProfileForm, self).__init__(*args, **kwargs)
-    #     if user:
-    #         self.fields["user"].initial = user
-    #         self.fields["user"].widget = forms.HiddenInput()
-
-    # def save(self, commit=True):
-    #     instance = super(SkillaProfileForm, self).save(commit=False)
-    #     if commit:
-    #         instance.save()
-    #     return instance
-    
-    # ##### Validation checks
-    # def clean_experience(self):
-    #     experience = self.cleaned_data.get("experience")
-    #     if experience < 0:
-    #         raise forms.ValidationError("Experience shall not be negative")
-    #     return experience
-        
-    # def clean_current_location(self):
-    #     current_location = self.cleaned_data.get("current_location")
-    #     if current_location == "":
-    #         raise forms.ValidationError("Enter a location to continue")
-    #     return current_location
-        

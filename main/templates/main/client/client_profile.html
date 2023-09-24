@@ -1,0 +1,38 @@
+{% extends 'layout/nav.html' %}
+{% load static %}
+
+{% block content %}
+
+<body class="bg-white font-family-karla h-screen">
+    <div class="flex m-10 justify-center">
+
+        <div class="my-5 mx-5 p-5 w-auto">
+            <img src="{% static '/img/Illustrations-11.png' %}" width="612" height="612">
+
+        </div>
+
+        <div class="mx-2 py-2 border-2 w-auto">
+            
+            <div class="text-lg pt-5 font-semibold text-center">{{ user.username }} Profile Update</div>
+
+            <form method="POST" class="bg-white rounded-lg px-8 pt-6 pb-8 mb-4">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <div class="md:flex items-center justify-between mt-5">
+                    <button type="submit"
+                        class="bg-gray-800 w-full hover:bg-gray-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        Get Started
+                    </button>                      
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>  
+    
+{% endblock %}
+
+

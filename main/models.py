@@ -154,12 +154,15 @@ class SkillaProfile(models.Model):
     
     def activate_user(self, *args, **kwargs):
         if self.country is not None and self.state is not None and self.current_location is not None:
-            self.activated == True
+            self.activated = True
         
         super(SkillaProfile, self).save(*args, **kwargs)
-        if self.activated == True:
-            return "Account has been activated"
-        return "User has not provided location details"
+        if self.activated:
+            return self.activated
+        else:
+            self.activated = False
+            return self.activated
+    
 
     def __str__(self):
         return self.user.username
@@ -185,26 +188,42 @@ class ClientProfile(models.Model):
     
     def activate_user(self, *args, **kwargs):
         if self.country is not None and self.state is not None and self.current_location is not None:
-            self.activated == True
+            self.activated = True
         
         super(ClientProfile, self).save(*args, **kwargs)
-        if self.activated == True:
-            return "Account has been activated"
-        return "User has not provided location details"
+        if self.activated:
+            return self.activated
     
     def __str__(self):
         return self.user.username
 
 ######### Company Profile Goes here
+
+class CompanyProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    company_name = models.CharField(max_length=200, blank=True, null=False)
+    location = models.CharField(verbose_name="Location (City/Country)", max_length=100, blank=True, null=False, choices=Country.choices)
+    state = models.CharField(max_length=50, blank=True, null=False)
+    industry = models.CharField(verbose_name="Industry or Business Type", max_length=100, blank=True, null=False)
+    company_size = models.IntegerField(verbose_name="company size (Number of Employees)", blank=True, null=True)
+    services = models.CharField(verbose_name="Describe the services or skills needed (Optional)", max_length=200, blank=True, null=True)
+    work_history_with_freelancer = models.BooleanField(verbose_name="Have you worked with a freelancer or skilled workers Before", null=True, blank=True)
+    terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
     
-
-class Material(models.Model):
-    name = models.CharField(max_length=20, null=True, blank=False)
-    desc = models.TextField(null=True, blank=True)
-
+    activated = models.BooleanField(default=False)
+    
+    def activate_user(self, *args, **kwargs):
+        if self.country is not None and self.state is not None and self.location is not None:
+            self.activated = True
+        
+        super(ClientProfile, self).save(*args, **kwargs)
+        if self.activated:
+            return self.activated
+    
     def __str__(self):
-        self.name
-
+        return self.company_name
+    
+    
 
 
 class Rating(models.Model):

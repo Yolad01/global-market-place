@@ -1,54 +1,60 @@
-{% extends 'layout/nav.html' %}
+{% comment %} {% extends 'layout/nav.html' %} {% endcomment %}
 {% load static %}
+
+    <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+    <script src="{% static '/js/init-alpine.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
 
 {% block content %}
 
 <body class="bg-white font-family-karla h-screen">
-  <div>
 
-    <P class="text-center text-3xl font-extrabold bg-white text-gray-800 py-5 my-5">
-      Login
-    </P>
+    <div class="flex m-20 items-center justify-center">
 
-    <div class="px-16 py-10 md:flex md:justify-center mt-16">
+        
+
+        <div class="mx-2 py-2 border-2">
+
+            <div class="flex items-center justify-between">
+
+                <div class="text-xl font-semibold px-5">Welcome back!</div>
+                <div class="text-xl font-bold px-10">Sign in</div>
+    
+            </div>
           
-          <form method="POST" class="bg-white shadow-2xl rounded-lg px-8 pt-6 pb-8 mb-4">
-            {% csrf_token %}
-            <div class="text-m px-1 text-gray-700 text-left">
-              Please type your account number and enter your password.
-            </div>
-            <br>
-            <div class="mb-4">
-              
-              <input name="username"
-                class="shadow appearance-none border border-blue-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter Login ID">
-            </div>
-            <div class="mb-6">
-              
-              <input name="password"
-                class="shadow appearance-none border border-blue-800 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="myInput" type="password" placeholder="******************">
+            <form method="POST" class="bg-white rounded-lg  px-8 pt-6 pb-8 mb-4">
+                {% csrf_token %}
 
-                <input class="border border-blue-400 rounded" type="checkbox" onclick="myFunction()"> Show Password
-            </div>
-            
-            <div class="md:flex items-center justify-between">
-              <button type="submit" class="bg-blue-800 hover:bg-transparent hover:text-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                Sign In
-              </button>
-              <a href="/register" class="inline-block align-baseline font-bold text-sm text-blue-800 hover:bg-transparent" href="#">
-                New here? enroll
-              </a>
-            </div>
-            <a class="inline-block align-baseline pt-5 font-bold text-sm text-grey-800 hover:text-blue-900" href="mailto:yoladglobalservices@gmail.com">
-              Forgot Password? contact us
-          </a>
-          </form>
 
-          
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_username">Work email or username:</label>
+                    <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                </div>
+
+                <div class="m-2">
+                    <label class="block text-gray-700 text-sm" for="id_password">Password:</label>
+                    <input type="password" name="password" autocomplete="current-password" required id="id_password"
+                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                </div>
+
+                <div class="md:flex items-center mt-5 px-5">
+                    <div class="text-sm">Forgot your password?</div>
+
+                    <button type="submit"
+                        class="bg-gray-800 w-full hover:bg-gray-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        Sign in
+                    </button>                      
+                </div>
+            </form>
+
         </div>
 
     </div>
-  </div>
 
   <script>
     function myFunction() {

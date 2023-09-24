@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
-                        ClientProfileForm
+                        ClientProfileForm, CompanyProfileForm
                         )
-from main.models import ( User, Skillas, Clients, JobCategory, Job, Material, SkillaProfile,
-                         ClientProfile
+from main.models import ( User, Skillas, Clients, JobCategory, Job, SkillaProfile,
+                         ClientProfile, CompanyProfile
 )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -32,12 +32,12 @@ def register(request):
             login(request, user)
             if user.role == "CLIENT":
                 ClientProfile.objects.create(user_id=request.user.id)
-                return redirect("main:client")
+                return redirect("main:client_profile")
             elif user.role == "SKILLAS":
                 SkillaProfile.objects.create(user_id=request.user.id)
                 return redirect("main:skilla_profile")
-            # elif user.role == "COMPANY":
-            #     return redirect("main:company")
+            elif user.role == "COMPANY":
+                return redirect("main:company_profile")
     else:
         registration_form = RegistrationForm()
     return render(request=request, template_name="main/register.html",
@@ -52,10 +52,16 @@ def skilla_profile(request):
         skilla_profile = request.user.skillaprofile
     except SkillaProfile.DoesNotExist:
         skilla_profile = SkillaProfile(user=request.user)
-    form = SkillaProfileForm(request.POST, instance=skilla_profile)
-    if form.is_valid():
-        form.save()
-        messages.success(request, "profile updated successfully")
+    if request.method == "POST":
+        form = SkillaProfileForm(request.POST, instance=skilla_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "profile updated successfully")
+            profile = SkillaProfile.objects.get(user=request.user)
+            profile.activate_user()
+            profile.save()
+            return redirect("main:skillas_dashboard")
+    
     form = SkillaProfileForm()
     
     return render(
@@ -66,17 +72,56 @@ def skilla_profile(request):
         
         
     
-    
-    
 def client_profile(request):
-    ...
+    try:
+        client_profile = request.user.clientprofile
+    except ClientProfile.DoesNotExist:
+        client_profile = ClientProfile(user=request.user)
+    if request.method == "POST":
+        form = ClientProfileForm(request.POST, instance=client_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Updated Successfully")
+            profile = SkillaProfile.objects.get(user=request.user)
+            profile.activate_user()
+            profile.save()
+            return redirect("main:profile_dashboard")
+        
+    form = ClientProfileForm()
+    
+    return render(
+        request=request,
+        template_name="main/client/client_profile.html",
+        context={"form": form}
+    )
     
     
 def company_profile(request):
-    ...
+    try:
+        company_profile = request.user.companyprofile
+    except CompanyProfile.DoesNotExist:
+        company_profile = CompanyProfile(user=request.user)
+    
+    if request.method == "POST":
+        form = CompanyProfileForm(request.POST, instance=company_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "profile saved successfully")
+            profile = CompanyProfile.objects.get(user=request.user)
+            profile.activate_user()
+            profile.save()
+            return redirect("main:company_dashboard")
+    form = CompanyProfileForm()
+    
+    return render(
+        request=request,
+        template_name="main/company/company_profile.html",
+        context={
+            "form": form
+        }
+    )
     
     
-
 
 def sign_in(request):
     user = request.user
@@ -91,9 +136,9 @@ def sign_in(request):
             if user != None:
                 login(request, user)
                 if user.role == "CLIENT":  
-                    return redirect("main:client")
+                    return redirect("main:client_dashboard")
                 elif user.role == "SKILLAS":
-                    return redirect("main:skillas")
+                    return redirect("main:skillas_dashboard")
             else:
                 messages.error(request, "Wrong login credentials. Please enter a correct credential to access your dashboard")
             
@@ -113,12 +158,20 @@ def client(request):
                 "jobs": jobs
             }
         )
-
+    
 
 #### add @login_required decorator
 def skilla(request):
-    return render(request=request, template_name="main/skillas_dashboard.html")
+    return render(request=request, template_name="main/skilla/skillas_dashboard.html")
 
+
+#### add @login_required decorator
+def company(request):
+    return render(
+        request=request,
+        template_name="main/company/company_dashboard.html"
+    )
+    
 
 
 
