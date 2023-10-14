@@ -26,6 +26,8 @@ urlpatterns = [
 
     path("skillas_dashboard/", views.skilla, name="skillas_dashboard"),
     path("s_profile/", views.s_profile, name="s_profile"),
-    
+    path("wallet/", views.wallet, name="wallet"),
+    path("fund_withdrawal/", views.fund_withdrawal, name="fund_withdrawal"),
+
     path("company_dashboard/", views.company, name="company_dashboard")
 ]

@@ -180,12 +180,29 @@ def log_out(request):
     return redirect("user:home")
 
 
+
+
 def s_profile(request):
     return render(
         request=request,
         template_name="main/skilla/s_profile.html",
         context={
-            "profile": SkillaProfile.objects.all().filter(user=user)
+            "profile": SkillaProfile.objects.all().filter(user=request.user)
         }
     )
 
+
+
+def wallet(request):
+    return render(
+        request=request,
+        template_name="main/skilla/wallet/wallet.html",
+    )
+
+
+
+def fund_withdrawal(request):
+    return render(
+        request=request,
+        template_name="main/skilla/wallet/fund_withdrawal.html"
+    )

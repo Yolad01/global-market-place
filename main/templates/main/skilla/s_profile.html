@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<body>
+
     <div class="relative flex ml-10 font-primary">
 
         <!-- Body -->
@@ -31,21 +31,27 @@
                              when an unknown printer took a
                         </p>
 
+                        
+                        {% for info in profile %}
+
                         <div class="ml-2 mt-2 mb-5 mr-24 rounded-sm border border-solid border-gray-800">
                             <div class="ml-5">
                                 <h6 class="font-medium text-sm mt-5">Expertise</h6>
-                                <h4>Cleaning Service</h4>
+                                <h4>{{info.certifications}}</h4>
 
                                 <h6 class="font-medium text-sm mt-5">Phone Number</h6>
-                                <h4>+234 7025 811 556</h4>
+                                <h4>{{user.phone_no}}</h4>
 
                                 <h6 class="font-medium text-sm mt-5">Email</h6>
                                 <h4>{{user.email}}</h4>
 
                                 <h6 class="font-medium text-sm mt-5">Location</h6>
-                                <h4>{{user.location}}</h4>
+                                <h4>{{info.current_location}}</h4>
                             </div>
                         </div>
+
+                        {% endfor %}
+
                     </div>
                 </div>
             </div> 
@@ -66,8 +72,16 @@
                         <h6 class="pl-20">Assessed</h6>
                     </div>
     
-                    <div class=" rounded border-dashed border-2 border-purple">
+                    <div class=" rounded border-solid border-2 border-gray-800">
                         <div class="flex ml-5 py-1">
+                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
+                            <h6 class="pl-20">Woodworks</h6>
+                            <h6 class="pl-12">4/5</h6>
+                            <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
+                        </div>
+                        <hr class="border-1">
+    
+                        {% comment %} <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>
                             <h6 class="pl-20">Woodworks</h6>
                             <h6 class="pl-12">4/5</h6>
@@ -89,15 +103,7 @@
                             <h6 class="pl-12">4/5</h6>
                             <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
                         </div>
-                        <hr class="border-1">
-    
-                        <div class="flex ml-5 py-1">
-                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
-                            <h6 class="pl-20">Woodworks</h6>
-                            <h6 class="pl-12">4/5</h6>
-                            <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
-                        </div>
-                        <hr class="border-1">
+                        <hr class="border-1"> {% endcomment %}
                     </div>
                     </div> 
 
@@ -120,6 +126,6 @@
     </div>
 
        
-</body>    
+
 {% endblock %}
     

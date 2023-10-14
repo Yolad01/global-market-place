@@ -1,0 +1,42 @@
+{% extends 'layout/dash_nav.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <div>
+        <div>
+            <div class="mt-5 ml-5">
+            <h3 class="font-primary font-normal text-2xl">Wallet</h3>
+        </div>
+
+
+        <div>
+            <div class="font-primary">
+                <h2 class=" font-extrabold text-veryDarkGreen text-4xl p-5">Payment</h2>
+            </div>
+
+            <div class="ml-5 bg-black rounded-lg mr-64">
+                <div class="flex">
+                    <h3 class="font-semibold text-white text-3xl mt-5 ml-3">Balance</h3>
+                    <img src="{% static '/img/Group 215.png' %}" alt="" width="" class="translate-x-80 w-24 h-7 mt-5 ml-24">
+                </div>
+
+                <div>
+                    <h2 class="font-extrabold text-4xl text-white mt-10 ml-3">#102,000</h2>
+                </div>
+
+                <div class="flex ml-3 mt-10 pb-10">
+                    <div class=" px-3 rounded-md bg-white text-veryDarkGreen font-semibold text-2xl">
+                        <a href="#">Add Cash</a>
+                    </div>
+                    <div class="px-3 ml-5 rounded-md bg-veryLightGreen text-veryDarkGreen font-semibold text-2xl">
+                        <a href="/fund_withdrawal">Withdraw</a>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+
+{% endblock %}
