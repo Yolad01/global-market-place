@@ -1,9 +1,72 @@
-{% extends 'layout/nav.html' %}
+{% extends 'layout/dash_nav.html' %}
 {% load static %}
 
 {% block content %}
-<html>
-<P><h2> This is the Skillas page and {{user.username}} is signed in</h2><p>
-</html>
+
+<div class="shadow">
+    <div>
+        <div class="p-10">
+        <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
+    </div>
+
+    <div class="mr-10 mb-20 ml-10">
+        <div class="grid grid-cols-4 gap-5">
+            <div class="flex border-0 shadow rounded-sm p-5">
+                <a href="#"><img src="{% static '/img/Group 306.png' %}" alt=""></a>
+                <h3 class="ml-5 text-veryDarkGreen text-sm font-bold font-secondary">Incoming <br> Transactions</h3>
+            </div>
+
+            <div class="flex border-0 shadow rounded-sm p-5">
+                <a href="#"><img src="{% static '/img/Group 307.png' %}" alt=""></a>
+                <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Messages</h3>
+            </div>
+
+            <div class="flex border-0 shadow rounded-sm p-5">
+                <a href="#"><img src="{% static '/img/Group 308.png' %}" alt=""></a>
+                <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Wallet</h3>
+            </div>
+
+            <div class="flex border-0 shadow rounded-sm p-5">
+                <a href="#"><img src="{% static '/img/Group 309.png' %}" alt=""></a>
+                <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Pending</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class=" mr-10 border-0 shadow-sm rounded-md font-primary">
+       <div class="shadow-sm ml-10">
+            <p class="font-medium text-sm text-veryLightBlack p-5">
+                What is Lorem Ipsum? <br>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
+                has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                took a galley of type and scrambled it to make a type specimen book. It has survived not 
+                only five centuries, but also the leap into electronic typesetting, remaining essentially
+                unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus 
+                PageMaker including versions of Lorem Ipsum.
+            </p> 
+
+            <p class="font-medium text-sm text-veryLightBlack p-5 mb-10">
+                What is Lorem Ipsum? <br>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
+                has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                took a galley of type and scrambled it to make a type specimen book. It has survived not 
+                only five centuries, but also the leap into electronic typesetting, remaining essentially
+                unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus 
+                PageMaker including versions of Lorem Ipsum.
+            </p> 
+       </div>
+
+       <div class="shadow-sm pb-10">
+            <div class="ml-10 mt-10 p-20 bg-veryDarkGreen">
+                <h2 class="font-primary font-medium text-white text-2xl  text-center">ADS</h2>
+            </div>
+       </div>
+    </div>
+    </div>
+    
+</div>
+
     
 {% endblock %}

@@ -180,4 +180,12 @@ def log_out(request):
     return redirect("user:home")
 
 
+def s_profile(request):
+    return render(
+        request=request,
+        template_name="main/skilla/s_profile.html",
+        context={
+            "profile": SkillaProfile.objects.all().filter(user=user)
+        }
+    )
 

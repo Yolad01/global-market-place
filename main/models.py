@@ -213,7 +213,7 @@ class CompanyProfile(models.Model):
     activated = models.BooleanField(default=False)
     
     def activate_user(self, *args, **kwargs):
-        if self.country is not None and self.state is not None and self.location is not None:
+        if self.company_name is not None and self.state is not None and self.location is not None:
             self.activated = True
         
         super(ClientProfile, self).save(*args, **kwargs)

@@ -6,36 +6,21 @@
     <head sticky top-0 z-50>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Yolad Global
-        </title>
+        <title>Skilla</title>
         <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
         <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
         <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
         <script src="{% static '/js/init-alpine.js' %}"></script>
         <script src="{% static '/js/main.js' %}"></script>
+        <script src="{% static '/js/wow.min.js' %}"></script>
+        <script>
+            new WOW().init();
+        </script>
+
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   
-        <style>
-           @media(max-width:1520px) {
-               .left-svg {
-                   display: none;
-               }
-           }
-   
-           /* small css for the mobile nav close */
-           #nav-mobile-btn.close span:first-child {
-               transform: rotate(45deg);
-               top: 4px;
-               position: relative;
-               background: #a0aec0;
-           }
-   
-           #nav-mobile-btn.close span:nth-child(2) {
-               transform: rotate(-45deg);
-               margin-top: 0px;
-               background: #a0aec0;
-           }
-       </style>
+        
   
      <script src="{% static '/js/wow.min.js' %}"></script>
      <script>
@@ -44,72 +29,30 @@
 		
     </head>
 
+    
+
 		<!-- Navbar goes here -->
-	<nav class="bg-white shadow-md sticky top-0 z-50">
-		<div class="max-w-full mx-auto px-16">
-			<div class="flex justify-between">
-				<div class="flex space-x-7">
-					<div>
-						<!-- Website Logo -->
-						<a href="/" class="flex items-center py-4 px-2">
-							<img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" class="h-10 w-40 mr-2">
-							{% comment %} <span class="font-bold text-gray-800 text-lg">Skillas</span> {% endcomment %}
-						</a>
-					</div>
-					<!-- Primary Navbar items -->
-					{% comment %} <div class="hidden md:flex items-center space-x-1">
-						<a href="" class="py-4 px-2 text-white font-semibold hover:text-blue-900 transition duration-300"><!--Contact--></a>
-					</div> {% endcomment %}
-				</div>
-				<!-- Secondary Navbar items -->
-				<div class="hidden md:flex items-center space-x-4 ">
-					<a href="#" class="py-2 px-2 font-bold text-gray-800 rounded hover:text-green-500 transition duration-300">About Us</a>
-					<a href="#" class="py-2 px-2 font-bold text-gray-800 rounded hover:text-green-500 transition duration-300">Services</a>
-					<a href="#" class="py-2 px-2 font-bold text-gray-800 rounded hover:text-green-500 transition duration-300">Contact</a>
-					<a href="#" class="py-2 px-2 font-bold text-gray-800 rounded hover:text-green-500 transition duration-300">Customer</a>
-					<a href="#" class="py-2 px-2 font-bold text-gray-800 rounded hover:text-green-500 transition duration-300">T&C</a>
-                    <a href="#" class="py-2 px-2 font-bold text-white bg-gray-800 rounded hover:bg-green-500 transition duration-300 wow fadeInUp" data-wow-delay=".3s">Use Web APP</a>
-                    {% comment %} <a href="/sign_up" class="py-2 px-2 font-medium text-white bg-blue-400 rounded hover:bg-blue-900 transition duration-300 wow fadeInRight" data-wow-delay=".5s">Open Account</a> {% endcomment %}
-				</div>
-				<!-- Mobile menu button -->
-				<div class="md:hidden flex items-center">
-					<button class="outline-none mobile-menu-button">
-					<svg class=" w-6 h-6 text-blue-50 hover:text-green-500"
-						x-show="!showMenu"
-						fill="none"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path d="M4 6h16M4 12h16M4 18h16"></path>
-					</svg>
-				</button>
-				</div>
-			</div>
-		</div>
-		<!-- mobile menu -->
-		<div class="hidden mobile-menu">
-			<ul class="">
-				<li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-blue-800 font-semibold">Home</a></li>
-                <li><a href="/login" class="block text-sm px-2 py-4 hover:bg-blue-800 hover:text-blue-50 transition duration-300">Log in</a></li>
-                <li><a href="/sign_up" class="block text-sm px-2 py-4 hover:bg-blue-800 hover:text-blue-50 transition duration-300">Sign up</a></li>
-			</ul>
-		</div>
-		<script>
-			const btn = document.querySelector("button.mobile-menu-button");
-			const menu = document.querySelector(".mobile-menu");
-
-			btn.addEventListener("click", () => {
-				menu.classList.toggle("hidden");
-			});
-		</script>
-	</nav>
-
-
-
-
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="container flex items-center justify-between max-w-full font-primary text-sm">
+            <!-- Logo -->
+            <div class="pl-28 py-5">
+                <img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" width="150" height="150">
+            </div>
+            <!-- Menu Items -->
+            <div class="pr-28">
+                <div class="flex items-center space-x-10 pr-10 font-primary font-bold">
+                    <a href="#">About Us</a>
+                    <a href="#">Service</a>
+                    <a href="#">Contact</a>
+                    <a href="/sign_in">Customer</a>
+                    <a href="#">T&C</a>
+                    <a href="/register" class="rounded bg-veryDarkGreen text-white px-3 py-2">Use Web App</a>
+                </div>
+            </div>
+        </nav>
+    </header>  
 
 
 	<div>
@@ -122,60 +65,30 @@
 
 
 
-	<footer class="px-4 pt-12 pb-8 text-white bg-gray-50 border-t border-gray-200 wow fadeInUp">
-        <div class="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
-            <div class="w-full pl-12 mr-4 text-left lg:w-1/4 sm:text-center sm:pl-0 lg:text-left">
-                <a href="/"
-                    class="justify-start block text-left sm:text-center lg:text-left sm:justify-center lg:justify-start">
-                    <span class="flex items-start sm:items-center font-extrabold text-gray-800">
-                        Yolad Global
-                    </span>
-                </a>
-                <p class="mt-6 mr-4 text-base text-gray-800">Your home for professional Services delivery.
-                </p>
+	<footer>
+        <div class="bg-veryDarkGreen p-10">
+            <div class="flex items-center justify-center">
+                <img src="{% static '/img/white-03.svg' %}" alt="skillas-white-logo " width="25%">
             </div>
-            <div class="block w-full pl-10 mt-6 text-sm lg:w-3/4 sm:flex lg:mt-0">
-                <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
-                    <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-900 hover:text-gray-400 uppercase md:mt-0">
-                        Company</li>
-                    <li><a href="/terms_and_conditions"
-                            class="inline-block px-3 py-2 text-gray-800 no-underline hover:text-gray-400">Privacy Policy</a>
-                    </li>
-                    <li><a href="/terms_and_services"
-                        class="inline-block px-3 py-2 text-gray-800 no-underline hover:text-gray-700">Terms and Conditions</a>
-                    </li>
-                    <li>
-                        <a href="tel:+0015166690686" class="inline-block px-3 py-2 text-gray-800 no-underline hover:text-gray-600">
-                        Phone: 001-516-669-0686
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:yoladglobalservices@gmail.com" class="inline-block px-3 py-2 text-gray-800 no-underline hover:text-gray-600">
-                        Email: yoladglobalservices@gmail.com
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/about" class="inline-block px-3 py-2 text-gray-800 no-underline hover:text-gray-600">
-                        About us
-                        </a>
-                    </li>
-                </ul>
-                <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
-                    <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-900 hover:text-gray-400 uppercase md:mt-0">
-                    Yolad Global Services
-                    </li>
-                    <li><a href="/register"
-                            class="inline-block px-3 py-2 no-underline hover:text-gray-800 text-gray-800">Sign up</a></li>
-                    <li><a href="/login"
-                            class="inline-block px-3 py-2 text-gray-800 no-underline hover:text-gray-400">Login</a></li>
-                </ul>
+    
+            <div class="p-10">
+                <p class="text-white font-normal text-sm text-center mb-5">The easiest way to hire/sell is instantly at zero risk</p>
+                <p class="text-white font-normal text-sm text-center">Terms & Condition <span class="ml-5">Privacy Policy</span></p>
+                <div class="flex items-center justify-center pt-5 space-x-4">
+                <img src="{% static '/img/Group 289.png' %}" alt="">
+                <img src="{% static '/img/Vector (1).png' %}" alt="">
+                <img src="{% static '/img/Vector (2).png' %}" alt="">
+                </div>
             </div>
         </div>
-        
-        <div class="pt-6 mt-10 text-center text-gray-500 border-t border-gray-100">© 2023 Yolad Global . All rights
-            reserved.
+
+        <div class="bg-white">
+            <p class="text-veryDarkGreen p-5 font-medium text-sm text-center">
+                &copy;2023 Yolad Global Service Limited All rights reserved.
+            </p>
         </div>
-</footer>
+     </footer>
+</body>
 
 <script>
     const btn = document.querySelector("button.mobile-menu-button");

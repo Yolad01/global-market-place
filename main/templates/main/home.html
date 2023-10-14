@@ -2,8 +2,260 @@
 {% load static %}
 
 {% block content %}
-<html>
-    <P><h2> This is the home page and {{user.username}} is signed in</h2><p>
-</html>
+    <main class="container mx-auto font-primary">
+        <section class="">
+            <!-- Banner at Hero Section -->
+            {% comment %} "{% static '/img/skillas_design-03.png' %}" {% endcomment %}
+            <div>
+                <img src="{% static '/img/Skillas Design-01.jpg' %}" alt="banner">
+            </div>
+            <!-- First section -->
+            <div class="flex m-24 pl-16">
+                <div class="pl-5">
+                    <h2 class="font-bold text-xl mb-5 text-veryDarkGreen">About Us</h2>
+                    <p class="font-normal text-base pr-12 mr-12 leading-5">
+                        YOLAD GLOBAL SERVICES LIMITED positions itself as a Need-Market Platform
+                        that offers skilled Workers, Personnels, Businesses and individual Clients
+                        a uniform and trouble-free way to connect in order to seamlessly exchange Values. <br>
+                        <br>The company offers a business-to-business solution to the enormous request for
+                        Services as demanding as Housekeeping, Technical, Artistic and Support Work... <br>
+                        With our hands-on response to demands, we ensure an enabling Environment that
+                        dignifies Effort and Efficiency.
+                    </p>
+                </div>
+                
+                <div class="pr-5 -mt-20 -ml-24 mr-5">
+                    <img src="{% static 'img/Illustrations-02.svg' %}" alt="Assurance" width="2500" height="2500">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex m-24 pl-10">
+                <div class="pl-5 mt-10">
+                    <img src="{% static 'img/Illustrations_Mesa de trabajo 1.svg' %}" alt="" width="4200" height="4200">
+                </div>
+    
+                <div class="pr-20 pl-20 ml-20 mr-24 -mt-2">
+                    <h2 class="font-bold text-xl mb-5 mt-10 text-veryDarkGreen">About The Platform</h2>
+                    <p>
+                       The ultimate purpose of this platform is to enhance ease of access, seamless
+                       connections and relationships that work between skilled workers and service users,
+                       with well tailored transactions medium and a second-to-non-trusted reliable and deliverable
+                       system of service. 
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex m-16 pl-12 leading-5 text-center">
+                <div class="pl-28 ml-20 mt-10  rounded-full">
+                    <h2 class="font-bold text-sm text-center mb-3 text-veryDarkGreen">Vision <br>Statement</h2>
+                    <p>
+                        positioned to establish itself as the leader in this newly created service category. 
+                        yoladglobal.com therefore has an enormous upside potential and is poised for rapid growth.
+                    </p>
+                </div>
+    
+                <div class="pl-28 mt-10 ml-16 pr-48 mr-32  rounded-full">
+                    <h2 class="font-bold text-sm text-center mb-3 text-veryDarkGreen">Mission <br>Statement</h2>
+                    <p class="">
+                        positioned to establish itself as the leader in this newly created service category. 
+                        yoladglobal.com therefore has an enormous upside potential and is poised for rapid growth.
+                    </p>
+                </div>  
+            </div>
+        </section>
+
+        <section class="mb-44">
+            <div class="m-24 pl-16 pr-24">
+                <h2 class="font-bold text-sm text-center mb-12 text-veryDarkGreen">VALUES THAT GUIDE US</h2>
+
+                <div class=" grid grid-cols-7">
+                    <div class=" flex flex-col justify-center items-center">
+                        <div class="rounded-none bg-veryDarkGreen p-5 w-5 mb-3"></div>
+                        <h3 class="font-semibold text-xs mb-3">DIGNITY</h3>
+                    </div>
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="rounded-none bg-veryDarkGreen p-5 w-5 mb-3"></div>
+                        <h3 class="font-semibold text-xs mb-3">ACCOUNTABILITY</h3>
+                    </div>
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="rounded-none bg-veryDarkGreen p-5 w-5 mb-3"></div>
+                        <h3 class="font-semibold text-xs mb-3">TRANSPARENCY</h3>
+                    </div>
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="rounded-none bg-veryDarkGreen p-5 w-5 mb-3"></div>
+                        <h3 class="font-semibold text-xs mb-3">CONFIDENTIALITY</h3>
+                    </div>
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="rounded-none bg-veryDarkGreen p-5 w-5 mb-3"></div>
+                        <h3 class="font-semibold text-xs mb-3">DEDICATION</h3>
+                    </div>
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="rounded-none bg-veryDarkGreen p-5 w-5 mb-3"></div>
+                        <h3 class="font-semibold text-xs mb-3">TIMELINESS</h3>
+                    </div>
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="rounded-none bg-veryDarkGreen p-5 w-5 mb-3"></div>
+                        <h3 class="font-semibold text-xs mb-3">PROFESSIONALISM</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="m-24 pl-16 pr-16 mb-44">
+                <h2 class="font-extrabold text-lg text-lightBlack text-center mt-44 mb-10">TEAM MEMBERS</h2>
+
+                <div class="grid grid-cols-4 gap-10">
+                    <div>
+                        <img src="{% static 'img/Rectangle 6.png' %}" alt="Photo of team members">
+                    </div>
+
+                    <div>
+                        <img src="{% static 'img/Rectangle 6.png' %}" alt="Photo of team members">
+                    </div>
+
+                    <div>
+                        <img src="{% static 'img/Rectangle 6.png' %}" alt="Photo of team members">
+                    </div>
+
+                    <div>
+                        <img src="{% static 'img/Rectangle 6.png' %}" alt="Photo of team members">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="m-24 pl-16 pr-16">
+                <h2 class="font-extrabold text-veryDarkGreen text-center text-xl mt-44 mb-10">Services</h2>
+                <div class="grid grid-cols-4 gap-6">
+                    <div>
+                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <h2 class="font-semibold p-2">Cleaning Service</h2> <hr class="border-1 border-black w-1/2">
+                        <p class="font-medium text-xs pt-2">newly created service category. yoladglobal.com therefore has an enormous
+                            upside potential and is poised for rapid growth.
+                        </p>
+                    </div>
+
+                    <div>
+                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <h2 class="font-semibold p-2">Service Title</h2> <hr class="border-1 border-black w-1/2">
+                        <p class="font-medium text-xs pt-2">newly created service category. yoladglobal.com therefore has an enormous
+                            upside potential and is poised for rapid growth.
+                        </p>
+                    </div>
+
+                    <div>
+                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <h2 class="font-semibold p-2">Service Title</h2> <hr class="border-1 border-black w-1/2">
+                        <p class="font-medium text-xs pt-2">newly created service category. yoladglobal.com therefore has an enormous
+                            upside potential and is poised for rapid growth.
+                        </p>
+                    </div>
+
+                    <div>
+                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <h2 class="font-semibold p-2">Service Title</h2> <hr class="border-1 border-black w-1/2">
+                        <p class="font-medium text-xs pt-2">newly created service category. yoladglobal.com therefore has an enormous
+                            upside potential and is poised for rapid growth.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="flex flex-col justify-center items-center mt-10 mb-20">
+                    <a href="#" class="rounded bg-veryDarkGreen text-white text-sm font-extrabold px-5 py-2">SIGN UP TO SEE MORE</a>
+                </div>
+                
+            </div>
+
+            <div class="m-24 pl-16 pr-16 mb-20">
+                <h2 class="font-extrabold text-veryDarkGreen text-center text-sm mb-10">CUSTOMERS REVIEW</h2>
+                <img src="{% static 'img/Group 256.png' %}" alt="photos of review">
+            </div>
+
+            <div class="m-24 pl-16 pr-16">
+                <h2 class="font-semibold text-veryDarkGreen text-center text-xl mb-10">Frequently Asked Questions</h2>
+
+                <div class="">
+                    <div class=" rounded-none grid grid-rows-6 gap-y-4 cursor-pointer">
+                        <div class="accordion-header shadow-md flex justify-between">
+                            <span class="font-normal text-sm">What Is The Refund Policy?</span>
+                            <i class="bx bx-chevron-right text-3xl"></i>
+                        </div>
+
+                        <div class="accordion-header shadow-md flex justify-between">
+                            <span class="font-normal text-sm">What Is The Refund Policy?</span>
+                            <i class="bx bx-chevron-right text-3xl"></i>
+                        </div>
+
+                        <div class="accordion-header shadow-md flex justify-between">
+                            <span class="font-normal text-sm">What Is The Refund Policy?</span>
+                            <i class="bx bx-chevron-right text-3xl"></i>
+                        </div>
+
+                        <div class="accordion-header shadow-md flex justify-between">
+                            <span class="font-normal text-sm">What Is The Refund Policy?</span>
+                            <i class="bx bx-chevron-right text-3xl"></i>
+                        </div>
+
+                        <div class="accordion-header shadow-md flex justify-between">
+                            <span class="font-normal text-sm">What Is The Refund Policy?</span>
+                            <i class="bx bx-chevron-right text-3xl"></i>
+                        </div>
+
+                        <div class="accordion-header shadow-md flex justify-between">
+                            <span class="font-normal text-sm">What Is The Refund Policy?</span>
+                            <i class="bx bx-chevron-right text-3xl"></i>
+                        </div>
+
+                        <!-- <div class="accodion-body">
+                            <div class="p-4 border-t">
+                                <p>A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.
+                                </p>
+                            </div> -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="m-24 pl-16 pr-16 mb-10 flex items-center justify-center gap-20">
+                <div>
+                    <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care rep">
+                </div>
+                <div>
+                    <h2 class="font-extrabold text-veryDarkGreen mx-36 px-2 text-2xl mb-5">Contact Our 24/7 <br>
+                        Customer Service
+                         
+                    </h2>
+
+                    <p class="mx-28 px-10">
+                        YOLAD GLOBAL SERVICES LIMITED positions itself as a Need-Market Platform that offers skilled
+                        Workers, Personnels, Businesses and 
+                    </p>
+
+                    <h2 class="font-extrabold text-veryDarkGreen text-left text-2xl mt-5 mx-28 px-10 mb-5">
+                        +234 803 674 8872
+                    </h2>
+                    
+                    <a href="#" class="rounded bg-veryDarkGreen text-white text-lg font-medium px-5 py-2 mx-36">
+                        Sign up here
+                    </a>
+                </div>
+            </div>
+        </section>
+     </main>
+
     
 {% endblock %}

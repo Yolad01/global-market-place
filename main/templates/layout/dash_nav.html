@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+    <head sticky top-0 z-50>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Skillas-dashboard</title>
+        <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+        <script src="{% static '/js/init-alpine.js' %}"></script>
+        <script src="{% static '/js/main.js' %}"></script>
+        <script src="{% static '/js/wow.min.js' %}"></script>
+        <script>
+            new WOW().init();
+        </script>
+
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  
+        
+  
+     <script src="{% static '/js/wow.min.js' %}"></script>
+     <script>
+        new WOW().init();
+     </script>
+		
+    </head>
+
+    <body>
+        <div class="relative min-h-screen flex ml-10 font-primary">
+    
+            <!-- Side bar -->
+    
+            <div class="w-72">
+                <div class=" w-64 mt-20 border border-gray-900 rounded-md">
+                    <div class="flex p-2 mt-4">
+                        <a href="/skillas_dashboard"><img src="{% static '/img/Dash-Vector.png' %}" alt=""></a>
+                        <h3 class="text-veryLightBlack font-extrabold text-2xl ml-5">Dashboard</h3>
+                    </div>
+    
+                    <div class="flex p-2">
+                        <a href="/s_profile"><img src="{% static '/img/Dash-Vector-1.png' %}" alt=""></a>
+                        <a> <h3 class="text-veryLightBlack font-extrabold text-2xl ml-5">Profile</h3></a>
+                    </div>
+    
+                    <div class="flex p-2">
+                        <a href="#"><img src="{% static '/img/Dash-Vector-2.png' %}" alt=""></a>
+                        <h3 class="text-veryLightBlack font-extrabold text-2xl ml-5">Wallet</h3>
+                    </div>
+    
+                    <div class="flex p-2">
+                        <a href="#"><img src="{% static '/img/Group 22.png' %}" alt=""></a>
+                        <h3 class="text-veryLightBlack font-extrabold text-2xl ml-5">Messages</h3>
+                    </div>
+    
+                    <div class="flex p-2">
+                        <a href="#"><img src="{% static '/img/Dash-Vector-3.png' %}" alt=""></a>
+                        <h3 class="text-veryLightBlack font-extrabold text-2xl ml-5">History</h3>
+                    </div>
+    
+                    <div class="flex p-2">
+                        <a href="#"><img src="{% static '/img/Dash-Vector-4.png' %}" alt=""></a>
+                        <a href="#" class="text-veryLightBlack font-extrabold text-2xl ml-5">Portfolio</a>
+                    </div>
+    
+                    <div class="flex p-2">
+                        <a href="#"><img src="{% static '/img/Dash-Vector-5.png' %}" alt=""></a>
+                        <a href="#" class="text-veryLightBlack font-extrabold text-2xl ml-5">Support</a>
+                    </div>
+    
+                    <div class="mb-4">
+                        <a href="#" class="text-veryLightBlack font-extrabold text-xl ml-4 mr-4">Terms & Condition</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--Over head nav goes here-->
+            <div class="w-full ml-10 shadow">
+                <div class="flex-1 font-primary">
+                     <div class="shadow-lg pb-5">
+                         <div class=" flex mt-5">
+                             <div class="flex">
+                                 <input type="search" name="search" id="search" class="rounded shadow px-80 border-0 text-xs  ml-10 pl-10 py-2  " placeholder="Search here">
+                                 <a href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></a>
+                             </div>
+     
+                             <div class=" ml-20">
+                                 <a href="#"><img src="{% static '/img/Rectangle 409.png' %}" alt="skillas-profile"></a>
+                             </div>
+                     
+                             <div class="ml-10 mt-2 pr-32">
+                                 <a href="#"><img src="{% static '/img/Vector 3.png' %}" alt=""></a>
+                             </div>
+                         </div>
+                     </div> 
+                </div>
+
+                {% block content %}
+                    
+                {% endblock %}
+
+                    
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
