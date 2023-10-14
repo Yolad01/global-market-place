@@ -206,3 +206,18 @@ def fund_withdrawal(request):
         request=request,
         template_name="main/skilla/wallet/fund_withdrawal.html"
     )
+
+
+
+def continue_to_withdrawal(request):
+    return render(
+        request=request,
+        template_name="main/skilla/wallet/continue_to_withdrawal.html"
+    )
+
+
+def withdraw_success(request):
+    return render(
+        request=request,
+        template_name="main/skilla/wallet/success_page.html"
+    )

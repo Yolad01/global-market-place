@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head sticky top-0 z-50>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
+    <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+    <script src="{% static '/js/init-alpine.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    
+
+ <script src="{% static '/js/wow.min.js' %}"></script>
+ <script>
+    new WOW().init();
+ </script>
+    
+</head>
+
+<body>
+    
+    <div class="flex items-center justify-center mt-28">
+        <img src="{% static '/img/image 32.png' %}" alt="">
+    </div>
+
+    <div class="flex items-center justify-center mt-12">
+        <h2 class="font-primary text-shadeGreen font-bold text-6xl">Successful</h2>
+    </div>
+
+    <div class="flex items-center justify-center mt-20">
+        <a href="/wallet" class="py-2 px-20 rounded-sm bg-veryDarkGreen font-primary font-extrabold text-5xl text-white">Exit</a>
+    </div>
+</body>
+</html>
