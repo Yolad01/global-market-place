@@ -177,8 +177,7 @@ def company(request):
 
 def log_out(request):
     logout(request)
-    return redirect("user:home")
-
+    return redirect("main:home")
 
 
 

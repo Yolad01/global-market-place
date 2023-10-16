@@ -1,10 +1,9 @@
 from django.contrib import admin
-from main.models import JobCategory, Job
 # from django.contrib.auth.admin import UserAdmin
 
 from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
-    ClientProfile, CompanyProfile
+    ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification
 )
 
 # Register your models here.
@@ -95,6 +94,18 @@ class OrderAdmin(admin.ModelAdmin):
      list_display = ["skilla", "client", "paid", "order_no", "order_status", "order_created"]
 
 
+class AboutSkillaAdmin(admin.ModelAdmin):
+     list_display = [
+          "user", "about", "work_experience"
+     ]
+
+
+class TrainingAndCertificationForm(admin.ModelAdmin):
+     list_display = [
+          "user", "skill_learned", "grade", "assessed"
+     ]
+
+
 
 admin.site.register(Rating, RatingAdmin)
 admin.site.register(SkillaProfile, SkillaProfileAdmin)
@@ -108,6 +119,8 @@ admin.site.register(ClientRequest, ClientRequestAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(ClientProfile, ClientProfileAdmin)
 admin.site.register(CompanyProfile, CompanyProfileAdmin)
+admin.site.register(AboutSkilla, AboutSkillaAdmin)
+admin.site.register(TrainingAndCertification, TrainingAndCertificationForm)
 
 
 

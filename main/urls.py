@@ -31,5 +31,10 @@ urlpatterns = [
     path("continue_to_withdrawal/", views.continue_to_withdrawal, name="continue_to_withdrawal"),
     path("success_page/", views.withdraw_success, name="withdraw_success"),
 
-    path("company_dashboard/", views.company, name="company_dashboard")
+    path("company_dashboard/", views.company, name="company_dashboard"),
+
+    path("logout/", views.log_out, name="logout")
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

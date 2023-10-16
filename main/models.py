@@ -127,7 +127,7 @@ class ClientRequest(models.Model):
 
 class Skill(models.Model):      
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
-    # skill_category = models.ForeignKey(JobCategory, blank=True, null=False, on_delete=models.CASCADE)
+    skill_category = models.ForeignKey(JobCategory, blank=True, null=True, on_delete=models.CASCADE)
     skill = models.ForeignKey(Job, null=True, blank=True, on_delete=models.CASCADE)
     skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
     base_price = models.IntegerField(blank=True, null=True)
@@ -168,10 +168,6 @@ class SkillaProfile(models.Model):
         return self.user.username
     
 
-    
-
-    
-    
     
 ######### Client profile goes here
 class ClientProfile(models.Model):
@@ -225,7 +221,6 @@ class CompanyProfile(models.Model):
     
     
 
-
 class Rating(models.Model):
         
     Rate = Rate
@@ -263,3 +258,19 @@ class Order(models.Model):
         return f"Order between {self.skilla} and {self.client}"
     
     
+class AboutSkilla(models.Model):
+    user = models.OneToOneField(Skillas, on_delete=models.CASCADE)
+    about = models.TextField(max_length=150)
+    work_experience = models.CharField(max_length=128, null=True, blank=True)
+
+    def __str__(self):
+        return self.user
+
+class TrainingAndCertification(models.Model):
+    user = models.ForeignKey(Skillas, on_delete=models.CASCADE)
+    skill_learned = models.CharField(max_length=256, null=True, blank=True)
+    grade = models.CharField(max_length=128, null=True, blank=True)
+    assessed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user

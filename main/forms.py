@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from main.models import User
 from main.models import (JobCategory, Job, Rating,
                          SkillaProfile, Skill, ClientProfile,
-                         CompanyProfile
+                         CompanyProfile, AboutSkilla, TrainingAndCertification
                          )
 
 
@@ -106,4 +106,17 @@ class SkillForm(forms.ModelForm):
     
     
 
+class AboutSkillaForm(forms.ModelForm):
+    model = AboutSkilla
+    fields = ["about", "work_experience"]
+
+
+
+class TrainingAndCertificationForm(forms.ModelForm):
+    model = TrainingAndCertification
+    field = [
+        "skill_learned",
+        "grade",
+        "assessed"
+    ]
 
