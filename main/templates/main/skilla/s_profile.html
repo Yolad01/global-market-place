@@ -27,8 +27,12 @@
                         <h2 class="font-extrabold text-veryDarkGreen text-3xl p-5 -mt-12">{{user.first_name}} {{user.last_name}}</h2>
 
                         <h6 class="font-extrabold text-sm text-veryDarkGreen ml-6">About {{user.username}}</h6>
-                        <p class="ml-6 mt-2 text-sm pr-12">Lorem Ipsum has been the industry's standard dummy text <br> ever since the 1500s,
-                             when an unknown printer took a
+                        <p class="ml-6 mt-2 text-sm pr-12">
+                            
+                            {% for x in about_skilla %}
+                                {{ x.about }}
+                            {% endfor %}
+                                
                         </p>
 
                         
@@ -115,9 +119,10 @@
                             <a href="#"><img src="{% static '/img/Group 68.png' %}" alt="" class="translate-x-96 ml-80 pl-5"></a>
                         </div>
                             
-                        <p class="ml-10 font-primary font-normal text-sm pb-16">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                            Ipsum has <br> been the industry's standard dummy text ever since the 1500s, when an 
-                            unknown printer took a <br> galley, standard
+                        <p class="ml-10 font-primary font-normal text-sm pb-16">
+                            {% for x in about_skilla %}
+                                {{ x.work_experience }}
+                            {% endfor %}
                         </p>
                     </div>
 
