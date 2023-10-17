@@ -263,6 +263,9 @@ class AboutSkilla(models.Model):
     about = models.TextField(max_length=150)
     work_experience = models.CharField(max_length=128, null=True, blank=True)
 
+    def snip(self):
+        return self.about[:20] + "..."  
+
     def __str__(self):
         return self.user.username
 
