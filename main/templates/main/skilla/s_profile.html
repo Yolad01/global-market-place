@@ -73,13 +73,15 @@
                     </div>
     
                     <div class=" rounded border-solid border-2 border-gray-800">
+                        {% for x in train_and_cert %}
                         <div class="flex ml-5 py-1">
-                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
-                            <h6 class="pl-20">Woodworks</h6>
-                            <h6 class="pl-12">4/5</h6>
+                            <h6>{{ x.cert_earned }}</h6>
+                            <h6 class="pl-20">{{ x.cert_earned }}</h6>
+                            <h6 class="pl-12">{{ x.cert_earned }}</h6>
                             <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
                         </div>
                         <hr class="border-1">
+                        {% endfor %}
     
                         {% comment %} <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>
@@ -87,17 +89,17 @@
                             <h6 class="pl-12">4/5</h6>
                             <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
                         </div>
-                        <hr class="border-1">
+                        <hr class="border-1"> {% endcomment %}
     
-                        <div class="flex ml-5 py-1">
+                        {% comment %} <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>
                             <h6 class="pl-20">Woodworks</h6>
                             <h6 class="pl-12">4/5</h6>
                             <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
                         </div>
-                        <hr class="border-1">
+                        <hr class="border-1"> {% endcomment %}
     
-                        <div class="flex ml-5 py-1">
+                        {% comment %} <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>
                             <h6 class="pl-20">Woodworks</h6>
                             <h6 class="pl-12">4/5</h6>

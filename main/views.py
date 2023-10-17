@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
-                        ClientProfileForm, CompanyProfileForm
+                        ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
+                        TrainingAndCertificationForm
                         )
-from main.models import ( User, Skillas, Clients, JobCategory, Job, SkillaProfile,
+from main.models import ( AboutSkilla, TrainingAndCertification, User, Skillas, Clients, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile
 )
 from django.contrib.auth.forms import AuthenticationForm
@@ -182,11 +183,38 @@ def log_out(request):
 
 
 def s_profile(request):
+    try:
+        about_skilla = request.user.aboutskilla
+        train_and_cert = request.user.trainingandcertification_set
+    except (AboutSkilla.DoesNotExist, TrainingAndCertification.DoesNotExist):
+        about_skilla = AboutSkilla(user=request.user)
+        train_and_cert = TrainingAndCertification(user=request.user)
+
+        about_form = AboutSkillaForm(request.POST, instance=about_skilla)
+        cert_form =TrainingAndCertificationForm(request.POST, instance=train_and_cert)
+
+    if request.method == "POST":
+        
+        if about_form.is_valid():
+            about_form.save()
+        
+        if cert_form.is_valid():
+            cert_form.save()
+        
+    
+    about_form = AboutSkillaForm()
+    cert_form = TrainingAndCertificationForm()
+            
     return render(
         request=request,
         template_name="main/skilla/s_profile.html",
         context={
-            "profile": SkillaProfile.objects.all().filter(user=request.user)
+            "profile": SkillaProfile.objects.all().filter(user=request.user),
+            "about_skilla": AboutSkilla.objects.all().filter(user=request.user),
+            "train_and_cert": TrainingAndCertification.objects.all().filter(user=request.user),
+            "about_form": about_form,
+            "cert_form": cert_form
+
         }
     )
 

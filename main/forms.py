@@ -86,37 +86,41 @@ class CompanyProfileForm(forms.ModelForm):
     
     
 class RatingForm(forms.ModelForm):
-    model = Rating
-    fields = [
-        "rating",
-        "skilla",
-        "client"
-    ]
+    class Meta:
+        model = Rating
+        fields = [
+            "rating",
+            "skilla",
+            "client"
+        ]
     
     
 class SkillForm(forms.ModelForm):
-    model = Skill
-    fields = [
-        "skilla",
-        "skill_category",
-        "skill",
-        "skill_level",
-        "base_price"
-    ]
+    class Meta:
+        model = Skill
+        fields = [
+            "skilla",
+            "skill_category",
+            "skill",
+            "skill_level",
+            "base_price"
+        ]
     
     
 
 class AboutSkillaForm(forms.ModelForm):
-    model = AboutSkilla
-    fields = ["about", "work_experience"]
+    class Meta:
+        model = AboutSkilla
+        fields = ["about", "work_experience"]
 
 
 
 class TrainingAndCertificationForm(forms.ModelForm):
-    model = TrainingAndCertification
-    field = [
-        "skill_learned",
-        "grade",
-        "assessed"
-    ]
+    class Meta:
+        model = TrainingAndCertification
+        fields = [
+            "skill_learned",
+            "grade",
+            "assessed"
+        ]
 
