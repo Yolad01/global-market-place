@@ -17,11 +17,12 @@
 
             <div class="flex">
                 <div class="ml-10">
+                    {% comment %} A modal will be put on this div {% endcomment %}
                     <img src="{% static '/img/Rectangle 380.png' %}" alt="">
                     <a href="#"><img src="{% static '/img/camera.png' %}" alt="" class="translate-x-60 -translate-y-10 -mt-1"></a>
                 </div>
 
-                <div class="shadow-lg border ml-12 mb-10 pr-16">
+                <div class="shadow-sm border ml-12 mb-10 pr-16">
                     <div class="font-primary">
                         <a href="#"><img src="{% static '/img/Group 68.png' %}" alt="" class="mt-5 translate-x-96 ml-24"></a>
                         <h2 class="font-extrabold text-veryDarkGreen text-3xl p-5 -mt-12">{{user.first_name}} {{user.last_name}}</h2>
@@ -38,7 +39,7 @@
                         
                         {% for info in profile %}
 
-                        <div class="ml-2 mt-2 mb-5 mr-24 rounded-sm border border-solid border-gray-800">
+                        <div class="ml-2 mt-2 mb-5 mr-24 rounded-sm">
                             <div class="ml-5">
                                 <h6 class="font-medium text-sm mt-5">Expertise</h6>
                                 <h4>{{info.certifications}}</h4>
@@ -84,8 +85,8 @@
                             <h6 class="pl-12">{{ x.cert_earned }}</h6>
                             <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
                         </div>
-                        <hr class="border-1">
                         {% endfor %}
+                        <hr class="border-1">
     
                         {% comment %} <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>

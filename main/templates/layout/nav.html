@@ -48,7 +48,16 @@
                     <a href="#">Contact</a>
                     <a href="/sign_in">Customer</a>
                     <a href="#">T&C</a>
+                    
+                    {% if not user.is_authenticated %}
                     <a href="/register" class="rounded bg-veryDarkGreen text-white px-3 py-2">Use Web App</a>
+                    
+                    {% elif user.role == "SKILLAS" %}
+                    <a href="/skillas_dashboard" class="rounded bg-veryDarkGreen text-white px-3 py-2">Dashboard</a>
+                    
+                    {% elif user.role == "CLIENT" %}
+                    <a href="/client_dashboard" class="rounded bg-veryDarkGreen text-white px-3 py-2">Dashboard</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
