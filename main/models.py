@@ -278,3 +278,14 @@ class TrainingAndCertification(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+class ProfilePicture(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(
+        verbose_name="Profile Picture",
+        upload_to="profile_pictures",
+    )
+
+    def __str__(self):
+        return self.user.username

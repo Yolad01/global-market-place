@@ -5,7 +5,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, User, Skillas, Clients, JobCategory, Job, SkillaProfile,
-                         ClientProfile, CompanyProfile
+                         ClientProfile, CompanyProfile, ProfilePicture
 )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -215,8 +215,8 @@ def s_profile(request):
             "about_skilla": AboutSkilla.objects.all().filter(user=request.user),
             "train_and_cert": TrainingAndCertification.objects.all().filter(user=request.user),
             "about_form": about_form,
-            "cert_form": cert_form
-
+            "cert_form": cert_form,
+            "profile_pic": ProfilePicture.objects.filter(user=request.user)
         }
     )
 
