@@ -102,7 +102,7 @@ class AboutSkillaAdmin(admin.ModelAdmin):
 
 class TrainingAndCertificationForm(admin.ModelAdmin):
      list_display = [
-          "user", "skill_learned", "grade", "assessed"
+          "user", "cert_earned", "skill_learned", "grade", "assessed"
      ]
 
 

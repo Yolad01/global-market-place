@@ -122,20 +122,18 @@
                             {% csrf_token %}
                             <h2 class="text-lg font-semibold mb-4">Add Training & Certification</h2>
 
-                                {% comment %} {{ cert_form.as_p }} {% endcomment %}
-
                             <div class="mb-4">
-                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_cert_earned">Cert earned:</label>
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_cert_earned">Cert earned</label>
                                 <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="cert_earned" maxlength="100" id="id_cert_earned">
                             </div>
 
                             <div class="mb-4">
-                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_skill_learned">Skill learned:</label>
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_skill_learned">Skill learned</label>
                                 <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="skill_learned" maxlength="100" id="id_skill_learned">
                             </div>
 
                             <div class="mb-4">
-                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_grade">Grade:</label>
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_grade">Grade</label>
                                 <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="grade" maxlength="128" id="id_grade">
                             </div>
                           
@@ -174,37 +172,13 @@
                             <img src="../img/Vector (14).png" alt="" class="pl-28">
                         </div>
                         <hr class="border-1">
-    
-                        <div class="flex ml-5 py-1">
-                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
-                            <h6 class="pl-20">Woodworks</h6>
-                            <h6 class="pl-12">4/5</h6>
-                            <img src="../img/Vector (14).png" alt="" class="pl-28">
-                        </div>
-                        <hr class="border-1">
-    
-                        <div class="flex ml-5 py-1">
-                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
-                            <h6 class="pl-20">Woodworks</h6>
-                            <h6 class="pl-12">4/5</h6>
-                            <img src="../img/Vector (14).png" alt="" class="pl-28">
-                        </div>
-                        <hr class="border-1">
-    
-                        <div class="flex ml-5 py-1">
-                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
-                            <h6 class="pl-20">Woodworks</h6>
-                            <h6 class="pl-12">4/5</h6>
-                            <img src="../img/Vector (14).png" alt="" class="pl-28">
-                        </div>
-                        <hr class="border-1">
+
                     </div>
                     </div> 
 
                     <div class="mt-10 ml-5">
                         <div class="ml-10 flex">
                             <h6 class="font-bold text-xs">Work Experience</h6>
-                            <a href="#"><img src="{% static '/img/Group 68.png' %}" alt="" class="translate-x-96 ml-80 pl-5"></a>
                         </div>
                             
                         <p class="ml-10 font-primary font-normal text-sm pb-16">
