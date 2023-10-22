@@ -156,25 +156,27 @@
                     <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openTrainingModal" alt="" class="translate-x-96 ml-80"></a>
                 </div>
     
-                <div class="ml-10 mr-40 font-primary font-normal text-sm">
-                    <div class="flex ml-5">
-                        <h6>Courses</h6>
-                        <h6 class="ml-32 pl-40">Skills</h6>
-                        <h6 class="pl-20">Grade</h6>
-                        <h6 class="pl-20">Assessed</h6>
-                    </div>
-    
-                    <div class=" rounded border-solid border-2 border-gray-900">
-                        <div class="flex ml-5 py-1">
-                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
-                            <h6 class="pl-20">Woodworks</h6>
-                            <h6 class="pl-12">4/5</h6>
-                            <img src="../img/Vector (14).png" alt="" class="pl-28">
-                        </div>
-                        <hr class="border-1">
-
-                    </div>
-                    </div> 
+                    <table class="ml-10 mr-40 font-primary font-normal text-sm">
+                        <thead class="flex ml-5">
+                            <tr>
+                            <th>Courses</th>
+                            <th class="ml-32 pl-40">Skills</th>
+                            <th class="pl-20">Grade</th>
+                            <th class="pl-20">Assessed</th>
+                            </tr>
+                        </thead>
+        
+                        {% for x in train_and_cert %}
+                        <tbody class=" rounded border-solid border-2 border-gray-900">
+                            <tr class="flex ml-5 py-1">
+                                <td>{{ x.cert_earned }}</td>
+                                <td class="pl-20">{{ x.skill_learned }}</td>
+                                <td class="pl-12">{{ x.grade }}</td>
+                                <td><img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28"></td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table> 
 
                     <div class="mt-10 ml-5">
                         <div class="ml-10 flex">
