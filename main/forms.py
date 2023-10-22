@@ -119,8 +119,8 @@ class TrainingAndCertificationForm(forms.ModelForm):
     class Meta:
         model = TrainingAndCertification
         fields = [
+            "cert_earned",
             "skill_learned",
             "grade",
-            "assessed"
         ]
 

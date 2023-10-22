@@ -183,28 +183,30 @@ def log_out(request):
 
 
 def s_profile(request):
-    try:
-        about_skilla = request.user.aboutskilla
-        train_and_cert = request.user.trainingandcertification_set
-    except (AboutSkilla.DoesNotExist, TrainingAndCertification.DoesNotExist):
-        about_skilla = AboutSkilla(user=request.user)
-        train_and_cert = TrainingAndCertification(user=request.user)
 
-        about_form = AboutSkillaForm(request.POST, instance=about_skilla)
-        cert_form =TrainingAndCertificationForm(request.POST, instance=train_and_cert)
+    cert_form = TrainingAndCertificationForm()
+    try:
+        about_skilla = AboutSkilla.objects.get(user=request.user)
+    except (AboutSkilla.DoesNotExist):
+        about_skilla = AboutSkilla(user=request.user)
+    train_and_cert = TrainingAndCertification(user=request.user)
 
     if request.method == "POST":
+        about_form = AboutSkillaForm(request.POST, instance=about_skilla)
+        cert_form =TrainingAndCertificationForm(request.POST, instance=train_and_cert)
         
         if about_form.is_valid():
             about_form.save()
+
         
         if cert_form.is_valid():
-            cert_form.save()
+            cert_instance = cert_form.save(commit=False)
+            cert_instance.user = request.user
+            cert_instance.save()
         
-    
     about_form = AboutSkillaForm()
     cert_form = TrainingAndCertificationForm()
-            
+
     return render(
         request=request,
         template_name="main/skilla/s_profile.html",

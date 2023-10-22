@@ -24,7 +24,50 @@
 
                 <div class="shadow-sm border ml-12 mb-10 pr-16">
                     <div class="font-primary">
-                        <a href="#"><img src="{% static '/img/Group 68.png' %}" alt="" class="mt-5 translate-x-96 ml-24"></a>
+
+                        <!-- about Modal  -->
+                        <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="editModal">
+                            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                              <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                              </div>
+                              <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                <!-- Modal content goes here -->
+
+                                <form method="POST" class="p-6">
+                                    {% csrf_token %}
+                                    <h2 class="text-lg font-semibold mb-4">Edit Fields</h2>
+
+                                    <div class="mb-4">
+                                        <label class="block text-gray-600 text-sm font-bold mb-2" for="id_about">About:</label>
+                                        <textarea class="border border-gray-300 rounded w-full py-2 px-3" name="about" cols="40" rows="10" maxlength="150" required id="id_about">
+                                        </textarea>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label class="block text-gray-600 text-sm font-bold mb-2" for="id_work_experience">Work experience:</label>
+                                        <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="work_experience" maxlength="128" id="id_work_experience">
+                                    
+                                    </div>
+
+                                  
+                                    <div class="text-right">
+                                        <button type="submit"
+                                            class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline" type="button">
+                                            update
+                                        </button>
+                                        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" id="cancel">Cancel</button>
+                                    </div>
+                                </form>
+                                  
+                              </div>
+                            </div>
+                          </div>
+                          <!-- about Modal  -->
+                        
+
+                        <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openModal" alt="" class="mt-5 translate-x-96 ml-24"></a>
                         <h2 class="font-extrabold text-veryDarkGreen text-3xl p-5 -mt-12">{{user.first_name}} {{user.last_name}}</h2>
 
                         <h6 class="font-extrabold text-sm text-veryDarkGreen ml-6">About {{user.username}}</h6>
@@ -64,9 +107,55 @@
             <hr class=" ml-10 border border-veryLightAsh">  
 
             <div class="shadow font-primary mt-12">
+
+                <!-- Training Modal  -->
+                <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="editTrainingModal">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                      </div>
+                      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <!-- Modal content goes here -->
+
+                        <form method="POST" class="p-6">
+                            {% csrf_token %}
+                            <h2 class="text-lg font-semibold mb-4">Add Training & Certification</h2>
+
+                                {% comment %} {{ cert_form.as_p }} {% endcomment %}
+
+                            <div class="mb-4">
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_cert_earned">Cert earned:</label>
+                                <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="cert_earned" maxlength="100" id="id_cert_earned">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_skill_learned">Skill learned:</label>
+                                <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="skill_learned" maxlength="100" id="id_skill_learned">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_grade">Grade:</label>
+                                <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="grade" maxlength="128" id="id_grade">
+                            </div>
+                          
+                            <div class="text-right">
+                                <button type="submit"
+                                    class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline" type="button">
+                                    update
+                                </button>
+                                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" id="cancel">Cancel</button>
+                            </div>
+                        </form>
+                          
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Training Modal  -->
+
                 <div class="ml-10 mb-5 flex">
                     <h6 class="font-bold text-xs">Training & Certification</h6>
-                    <a href="#"><img src="{% static '/img/Group 68.png' %}" alt="" class="translate-x-96 ml-80"></a>
+                    <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openTrainingModal" alt="" class="translate-x-96 ml-80"></a>
                 </div>
     
                 <div class="ml-10 mr-40 font-primary font-normal text-sm">
@@ -77,40 +166,38 @@
                         <h6 class="pl-20">Assessed</h6>
                     </div>
     
-                    <div class=" rounded border-solid border-2 border-gray-800">
-                        {% for x in train_and_cert %}
+                    <div class=" rounded border-solid border-2 border-gray-900">
                         <div class="flex ml-5 py-1">
-                            <h6>{{ x.cert_earned }}</h6>
-                            <h6 class="pl-20">{{ x.cert_earned }}</h6>
-                            <h6 class="pl-12">{{ x.cert_earned }}</h6>
-                            <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
+                            <h6>Bachelor Degree (Fine and Applied Art)</h6>
+                            <h6 class="pl-20">Woodworks</h6>
+                            <h6 class="pl-12">4/5</h6>
+                            <img src="../img/Vector (14).png" alt="" class="pl-28">
                         </div>
-                        {% endfor %}
                         <hr class="border-1">
     
-                        {% comment %} <div class="flex ml-5 py-1">
+                        <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>
                             <h6 class="pl-20">Woodworks</h6>
                             <h6 class="pl-12">4/5</h6>
-                            <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
+                            <img src="../img/Vector (14).png" alt="" class="pl-28">
                         </div>
-                        <hr class="border-1"> {% endcomment %}
+                        <hr class="border-1">
     
-                        {% comment %} <div class="flex ml-5 py-1">
+                        <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>
                             <h6 class="pl-20">Woodworks</h6>
                             <h6 class="pl-12">4/5</h6>
-                            <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
+                            <img src="../img/Vector (14).png" alt="" class="pl-28">
                         </div>
-                        <hr class="border-1"> {% endcomment %}
+                        <hr class="border-1">
     
-                        {% comment %} <div class="flex ml-5 py-1">
+                        <div class="flex ml-5 py-1">
                             <h6>Bachelor Degree (Fine and Applied Art)</h6>
                             <h6 class="pl-20">Woodworks</h6>
                             <h6 class="pl-12">4/5</h6>
-                            <img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28">
+                            <img src="../img/Vector (14).png" alt="" class="pl-28">
                         </div>
-                        <hr class="border-1"> {% endcomment %}
+                        <hr class="border-1">
                     </div>
                     </div> 
 
@@ -132,6 +219,36 @@
                 
         </div>
     </div>
+
+    <script>
+        const editModal = document.getElementById('editModal');
+        const openModalButton = document.getElementById('openModal');
+        const closeModalButton = document.getElementById('closeModal');
+      
+        openModalButton.addEventListener('click', () => {
+          editModal.classList.remove('hidden');
+        });
+      
+        closeModalButton.addEventListener('click', () => {
+          editModal.classList.add('hidden');
+        });
+
+
+    </script>
+
+    <script>
+        const editTrainingModal = document.getElementById('editTrainingModal');
+        const openTrainingModalButton = document.getElementById('openTrainingModal');
+        const closeTrainingModalButton = document.getElementById('closeTrainingModal');
+    
+        openTrainingModalButton.addEventListener('click', () => {
+        editTrainingModal.classList.remove('hidden');
+        });
+    
+        closeTrainingModalButton.addEventListener('click', () => {
+        editTrainingModal.classList.add('hidden');
+        });
+    </script>
 
        
 
