@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
-                        TrainingAndCertificationForm
+                        TrainingAndCertificationForm, ProfilePictureForm
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, User, Skillas, Clients, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture
@@ -185,15 +185,21 @@ def log_out(request):
 def s_profile(request):
     try:
         about_skilla = AboutSkilla.objects.get(user=request.user)
-    except AboutSkilla.DoesNotExist:
+        skilla_pp = ProfilePicture.objects.get(user=request.user)
+    except (AboutSkilla.DoesNotExist, ProfilePicture.DoesNotExist):
         about_skilla = AboutSkilla(user=request.user)
+        skilla_pp = ProfilePicture(user=request.user)
 
     if request.method == "POST":
         about_form = AboutSkillaForm(request.POST, instance=about_skilla)
         cert_form =TrainingAndCertificationForm(request.POST)
+        skilla_pp_form = ProfilePictureForm(request.POST, request.FILES,  instance=skilla_pp)
         
         if about_form.is_valid():
             about_form.save()
+
+        if skilla_pp_form.is_valid():
+            skilla_pp_form.save()
 
         
         if cert_form.is_valid():
@@ -206,6 +212,7 @@ def s_profile(request):
 
     about_form = AboutSkillaForm()
     cert_form = TrainingAndCertificationForm()
+    skilla_pp = ProfilePictureForm()
 
     return render(
         request=request,
@@ -216,7 +223,8 @@ def s_profile(request):
             "train_and_cert": TrainingAndCertification.objects.all().filter(user=request.user),
             "about_form": about_form,
             "cert_form": cert_form,
-            "profile_pic": ProfilePicture.objects.filter(user=request.user)
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "profile_pic_form": skilla_pp
         }
     )
 

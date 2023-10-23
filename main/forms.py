@@ -3,7 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from main.models import User
 from main.models import (JobCategory, Job, Rating,
                          SkillaProfile, Skill, ClientProfile,
-                         CompanyProfile, AboutSkilla, TrainingAndCertification
+                         CompanyProfile, AboutSkilla, TrainingAndCertification,
+                         ProfilePicture
                          )
 
 
@@ -124,3 +125,21 @@ class TrainingAndCertificationForm(forms.ModelForm):
             "grade",
         ]
 
+    def clean(self):
+        super(TrainingAndCertificationForm, self).clean()
+
+        cert_earned = self.cleaned_data.get("cert_earned")
+        skill_learned = self.cleaned_data.get("skill_learned")
+        grade = self.cleaned_data.get("grade")
+
+        if cert_earned == None:
+            self._errors["cert_earned"] = self.error_class(["key in your certification"])
+
+        return self.changed_data
+
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = ProfilePicture
+        fields = [
+            "image"
+        ]
