@@ -201,7 +201,6 @@ def s_profile(request):
         if skilla_pp_form.is_valid():
             skilla_pp_form.save()
 
-        
         if cert_form.is_valid():
             cert_instance = cert_form.save(commit=False)
             cert_instance.user = request.user

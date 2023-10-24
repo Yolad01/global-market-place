@@ -124,18 +124,14 @@ class TrainingAndCertificationForm(forms.ModelForm):
             "skill_learned",
             "grade",
         ]
-
-    def clean(self):
-        super(TrainingAndCertificationForm, self).clean()
-
-        cert_earned = self.cleaned_data.get("cert_earned")
-        skill_learned = self.cleaned_data.get("skill_learned")
-        grade = self.cleaned_data.get("grade")
-
-        if cert_earned == None:
-            self._errors["cert_earned"] = self.error_class(["key in your certification"])
-
-        return self.changed_data
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['cert_earned'].required = True
+        self.fields['skill_learned'].required = True
+        self.fields['grade'].required = True
+        
+        
 
 class ProfilePictureForm(forms.ModelForm):
     class Meta:
@@ -143,3 +139,11 @@ class ProfilePictureForm(forms.ModelForm):
         fields = [
             "image"
         ]
+        
+        
+# \def clean_quantity(self):
+#         quantity = self.cleaned_data['quantity']
+#         if quantity > 100:
+#             msg = 'Quantity should be less than 100'
+#             raise forms.ValidationError(msg)
+#         return quantity
