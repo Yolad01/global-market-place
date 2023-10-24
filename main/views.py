@@ -153,7 +153,7 @@ def client(request):
     jobs = Job.objects.all()
     
     return render(
-            request=request, template_name="main/client_dashboard.html",
+            request=request, template_name="main/client/client_dashboard.html",
             context={
                 "job_categories": job_categories,
                 "jobs": jobs
@@ -193,7 +193,7 @@ def s_profile(request):
     if request.method == "POST":
         about_form = AboutSkillaForm(request.POST, instance=about_skilla)
         cert_form =TrainingAndCertificationForm(request.POST)
-        skilla_pp_form = ProfilePictureForm(request.POST, request.FILES,  instance=skilla_pp)
+        skilla_pp_form = ProfilePictureForm(request.POST, request.FILES, instance=skilla_pp)
         
         if about_form.is_valid():
             about_form.save()
