@@ -3,7 +3,7 @@
 
 <html class="scroll-smooth" lang="en">
 
-    <head sticky top-0 z-50>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Skilla</title>
@@ -35,7 +35,7 @@
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="container flex items-center justify-between max-w-full font-primary text-sm">
+        <nav class="container flex items-center justify-between max-w-full font-primary text-sm fixed bg-white">
             <!-- Logo -->
             <div class="pl-28 py-5">
                 <img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" width="150" height="150">
@@ -64,7 +64,7 @@
     </header>  
 
 
-	<div>
+	<div class="pt-10">
 		{% block content %}
 		{% endblock %}
 	</div>

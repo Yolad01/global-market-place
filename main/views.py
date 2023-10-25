@@ -4,11 +4,12 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm
                         )
-from main.models import ( AboutSkilla, TrainingAndCertification, User, Skillas, Clients, JobCategory, Job, SkillaProfile,
+from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture
 )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -68,7 +69,10 @@ def skilla_profile(request):
     return render(
         request=request,
         template_name="main/skilla/skilla_profile.html",
-        context={"form": form}
+        context={
+            "form": form,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+        }
     )
         
         
@@ -93,7 +97,7 @@ def client_profile(request):
     return render(
         request=request,
         template_name="main/client/client_profile.html",
-        context={"form": form}
+        context={"form": form, "profile_pic": ProfilePicture.objects.all().filter(user=request.user)}
     )
     
     
@@ -118,7 +122,8 @@ def company_profile(request):
         request=request,
         template_name="main/company/company_profile.html",
         context={
-            "form": form
+            "form": form,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
     
@@ -147,7 +152,7 @@ def sign_in(request):
                     context={"form": form})
 
 
-#### add @login_required decorator
+@login_required
 def client(request):
     job_categories = JobCategory.objects.all()
     jobs = Job.objects.all()
@@ -156,14 +161,20 @@ def client(request):
             request=request, template_name="main/client/client_dashboard.html",
             context={
                 "job_categories": job_categories,
-                "jobs": jobs
+                "jobs": jobs,
+                "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
             }
         )
     
 
 #### add @login_required decorator
 def skilla(request):
-    return render(request=request, template_name="main/skilla/skillas_dashboard.html")
+    return render(
+        request=request, template_name="main/skilla/skillas_dashboard.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+        }
+    )
 
 
 #### add @login_required decorator
@@ -199,7 +210,7 @@ def s_profile(request):
             about_form.save()
 
         if skilla_pp_form.is_valid():
-            skilla_pp_form.save()
+            skilla_pp_form.save() ## skilla__pp == skilla profile picture
 
         if cert_form.is_valid():
             cert_instance = cert_form.save(commit=False)
@@ -233,6 +244,9 @@ def wallet(request):
     return render(
         request=request,
         template_name="main/skilla/wallet/wallet.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+        }
     )
 
 
@@ -240,7 +254,10 @@ def wallet(request):
 def fund_withdrawal(request):
     return render(
         request=request,
-        template_name="main/skilla/wallet/fund_withdrawal.html"
+        template_name="main/skilla/wallet/fund_withdrawal.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+        }
     )
 
 
@@ -248,12 +265,18 @@ def fund_withdrawal(request):
 def continue_to_withdrawal(request):
     return render(
         request=request,
-        template_name="main/skilla/wallet/continue_to_withdrawal.html"
+        template_name="main/skilla/wallet/continue_to_withdrawal.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+        }
     )
 
 
 def withdraw_success(request):
     return render(
         request=request,
-        template_name="main/skilla/wallet/success_page.html"
+        template_name="main/skilla/wallet/success_page.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+        }
     )

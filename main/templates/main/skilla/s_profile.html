@@ -9,7 +9,7 @@
     <div class="relative flex ml-10 font-primary">
 
         <!-- Body -->
-        <div class="shadow">
+        <div class="">
             <div>
                 <div class="p-10">
                 <h3 class="font-primary font-normal text-2xl">Profile</h3>
@@ -17,17 +17,15 @@
 
             <div class="flex">
 
-                {% for x in profile_pic %}
                 <div class="ml-10">
-                    {% comment %} A modal will be put on this div {% endcomment %}
                     <!-- picture Modal  -->
                 <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="editPictureModal">
                     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                       <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                       </div>
-                      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"></span>
+                      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-sm transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                         <!-- Modal content goes here -->
 
                         <form method="POST" enctype="multipart/form-data" class="p-6">
@@ -42,7 +40,7 @@
                                     class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline">
                                     update
                                 </button>
-                                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closePictureModal">Cancel</button>
+                                <button class="bg-gray-300 border-2 border-gray-700 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closePictureModal">Cancel</button>
                             </div>
                         </form>
                           
@@ -50,12 +48,13 @@
                     </div>
                   </div>
                   <!-- Picture Modal  -->
+                  {% for x in profile_pic %}
                     <img src="{{ x.image.url }}" class="h-50 w-96" alt="">
-                    <a href="#"><img src="{% static '/img/camera.png' %}" alt="" id="openPictureModal" class="translate-x-60 -translate-y-10 -mt-1"></a>
+                    {% endfor %}
+                    <a href="#"><img src="{% static '/img/camera.png' %}" alt="" id="openPictureModal" class="translate-x-72 translate-y-5 -mt-1"></a>
                 </div>
-                {% endfor %}
 
-                <div class="shadow-sm border ml-12 mb-10 pr-16">
+                <div class="border ml-12 mb-10 pr-16">
                     <div class="font-primary">
 
                         <!-- about Modal  -->
@@ -70,7 +69,7 @@
 
                                 <form method="POST" class="p-6">
                                     {% csrf_token %}
-                                    <h2 class="text-lg font-semibold mb-4">Edit Fields</h2>
+                                    <h2 class="text-lg font-semibold mb-4">little </h2>
 
                                     <div class="mb-4">
                                         <label class="block text-gray-600 text-sm font-bold mb-2" for="id_about">About:</label>
@@ -90,27 +89,26 @@
                                             class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline" type="button">
                                             update
                                         </button>
-                                        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closeModal">Cancel</button>
+                                        <button class="bg-gray-300 border-2 border-gray-700 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closeModal">Cancel</button>
                                     </div>
                                 </form>
                                   
                               </div>
                             </div>
-                          </div>
+                        </div>
                           <!-- about Modal  -->
                         
-
-                        <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openModal" alt="" class="mt-5 translate-x-96 ml-24"></a>
-                        <h2 class="font-extrabold text-veryDarkGreen text-3xl p-5 -mt-12">{{user.first_name}} {{user.last_name}}</h2>
+                        <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openModal" alt="" class="mt-5 translate-x-96 ml-6"></a>
+                        <div class="font-extrabold text-veryDarkGreen text-3xl p-5 -mt-12">{{user.first_name}} {{user.last_name}}</div>
 
                         <h6 class="font-extrabold text-sm text-veryDarkGreen ml-6">About {{user.username}}</h6>
-                        <p class="ml-6 mt-2 text-sm pr-12">
+                        <div class="ml-6 mt-2 text-sm pr-12">
                             
                             {% for x in about_skilla %}
                                 {{ x.about }}
                             {% endfor %}
                                 
-                        </p>
+                        </div>
 
                         
                         {% for info in profile %}
@@ -175,7 +173,7 @@
                                     class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline">
                                     update
                                 </button>
-                                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closeTrainingModal">Cancel</button>
+                                <button class="bg-gray-300 border-2 border-gray-700 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closeTrainingModal">Cancel</button>
                             </div>
                         </form>
                           
@@ -188,40 +186,48 @@
                     <h6 class="font-bold text-xs">Training & Certification</h6>
                     <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openTrainingModal" alt="" class="translate-x-96 ml-80"></a>
                 </div>
-    
-                    <table class="m-5 font-primary font-normal text-sm">
-                        <thead class="flex ml-5">
-                            <tr>
-                            <th class="pl-5">Courses</th>
-                            <th class="pl-5">Skills</th>
-                            <th class="pl-5">Grade</th>
-                            <th class="pl-5">Assessed</th>
-                            </tr>
-                        </thead>
-        
-                        {% for x in train_and_cert %}
-                        <tbody class=" rounded border-solid border-2 border-gray-900">
-                            <tr class="flex ml-5 py-1">
-                                <td class="pl-20">{{ x.cert_earned }}</td>
-                                <td class="pl-20">{{ x.skill_learned }}</td>
-                                <td class="pl-20">{{ x.grade }}</td>
-                                <td class="pl-20"><img src="{% static '/img/Vector (14).png' %}" alt="" class="pl-28"></td>
-                            </tr>
-                        </tbody>
-                        {% endfor %}
-                    </table> 
+                
+                <table class="w-full text-left ml-10">
 
-                    <div class="mt-10 ml-5">
-                        <div class="ml-10 flex">
-                            <h6 class="font-bold text-xs">Work Experience</h6>
-                        </div>
-                            
-                        <p class="ml-10 font-primary font-normal text-sm pb-16">
-                            {% for x in about_skilla %}
-                                {{ x.work_experience }}
-                            {% endfor %}
-                        </p>
+                    <tr>
+      
+                      <th class="py-2">Courses</th>
+      
+                      <th class="py-2">skills</th>
+      
+                      <th class="py-2">Grade</th>
+      
+                      <th class="py-2">Assessed</th>
+      
+                    </tr>
+      
+       
+                    {% for x in train_and_cert %}
+                    <tr class="border-2 pr-10">
+      
+                      <td>{{ x.cert_earned }}</td>
+      
+                      <td>{{ x.skill_learned }}</td>
+      
+                      <td>{{ x.grade }}</td>
+                      <td class="mr-5"><img src="{% static '/img/Vector (14).png' %}"></td>
+      
+                    </tr>
+                    {% endfor %}
+      
+                </table>
+
+                <div class="mt-10">
+                    <div class="ml-10 flex">
+                        <h6 class="font-bold text-sm">Work Experience</h6>
                     </div>
+                        
+                    <div class="ml-10 font-primary font-normal text-sm pb-16">
+                        {% for x in about_skilla %}
+                            {{ x.work_experience }}
+                        {% endfor %}
+                    </div>
+                </div>
 
                 </div>
             </div>
