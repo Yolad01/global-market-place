@@ -1,10 +1,59 @@
-{% extends 'layout/dash_nav.html' %}
+{% extends 'layout/client_nav.html' %}
 {% load static %}
 
 {% block content %}
 
 
-    
+<main>
+    <div class="ml-36 mr-36">
+        <div>
+            <div class="mt-5 flex">
+                <input type="text" name="" id="" placeholder="What skill/service are looking for?" class="w-1/2 font-normal text-base border border-black py-2 px-5">
+                <a href="#"><img src="{% static '/img/Vector-search.png' %}" alt="" class="-translate-x-8 translate-y-3"></a>
+                <button class="text-veryDarkGreen bg-veryLightGreen text-base font-bold py-2 px-8 rounded-md ml-40">Create a brief</button>
+                <a href="#"><img src="{% static '/img/Vector-message.png' %}" alt="" class="ml-10 mt-3"></a>
+            </div>
+
+            <div class="mt-16 flex">
+                <div>
+                    <img src="{% static '/img/Client-Photo.png' %}" alt="">
+                    <a href="#"><img src="{% static '/img/camera.png' %}" alt="" class="translate-x-56 -translate-y-12"></a>
+                </div>
+
+                <div class="ml-10">
+                    <div class="flex">
+                        <h1 class="font-extrabold text-5xl">{{ user.first_name }} {{ user.last_name }}</h1>
+                        <a href="#"><img src="{% static '/img/Group 68.png' %}" alt="" class="translate-x-72 translate-y-10"></a>
+                    </div>
+
+                    <div class="mt-2 p-4 border rounded-md border-dashed border-purple">
+                        <h6 class="font-medium text-base">+234 894 7844 8977</h6>
+                        <h6 class="mt-5 font-medium text-base">yemirichards@yoladgloba.com</h6>
+                        <h6 class="mt-5 font-medium text-base">Yolad Global Service Limted</h6>
+                        <h6 class="mt-5 font-medium text-base">No. 184 Ikorodu Road, Lagos State</h6>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rounded-md border-2 border-lightAsh py-5">
+                <div class="flex">
+                    <div class="ml-20">
+                        <p class="font-bold text-xl text-someKindBlack">Get proposals from the most relevant sellers</p>
+                        <p class="font-normal text-base mt-2">Simply create a project brief and let us do the searching for you.</p>
+                    </div>
+
+                    <div>
+                        <button class="text-veryDarkGreen bg-veryLightGreen text-base font-bold py-2 px-8 rounded-md ml-60 mt-3">Create a brief</button>
+                    </div>
+                </div>   
+            </div>
+
+            <div class="mt-10 bg-veryDarkGreen p-5 mb-20">
+                <p class="font-medium text-8xl text-white text-center py-5">Advert</p>
+            </div>
+        </div>
+    </div>
+</main>
 
     
 {% endblock %}

@@ -43,9 +43,10 @@
                 <div class="pr-28">
                     <div class="flex items-center space-x-10 pr-10 font-primary font-bold">
                         <a href="#">Payment</a>
-                        <a href="#">Service</a>
+                        <a href="#">Promotions</a>
                         <a href="#">Transaction History</a>
-                        <a href="#">Customer</a>
+                        <a href="#">Support</a>
+                        <a href="#">T&C</a>
                         <div class="flex">
                             <a href="#">Help</a>
                             <a href="#"><img src="{% static '/img/Vector (6).png' %}" alt="" class="ml-3 mt-1"></a>
@@ -56,8 +57,15 @@
                 </div>
             </nav>
         </header>
+
+            
+        {% block content %}
+        {% endblock  %}
+                
+
+
+
+
+
     </body>
-
-
-
 </html>
