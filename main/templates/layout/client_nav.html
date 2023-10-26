@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Skilla</title>
+        <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+        <script src="{% static '/js/init-alpine.js' %}"></script>
+        <script src="{% static '/js/main.js' %}"></script>
+        <script src="{% static '/js/wow.min.js' %}"></script>
+        <script>
+            new WOW().init();
+        </script>
+
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  
+        
+  
+     <script src="{% static '/js/wow.min.js' %}"></script>
+     <script>
+        new WOW().init();
+     </script>
+		
+    </head>
+
+
+    <body>
+    
+        <header>
+            <!-- Navbar -->
+            <nav class="container flex items-center justify-between max-w-full font-primary text-sm shadow-md">
+                <!-- Logo -->
+                <div class="pl-28 py-5">
+                    <img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" width="150" height="150">
+                </div>
+                <!-- Menu Items -->
+                <div class="pr-28">
+                    <div class="flex items-center space-x-10 pr-10 font-primary font-bold">
+                        <a href="#">Payment</a>
+                        <a href="#">Service</a>
+                        <a href="#">Transaction History</a>
+                        <a href="#">Customer</a>
+                        <div class="flex">
+                            <a href="#">Help</a>
+                            <a href="#"><img src="{% static '/img/Vector (6).png' %}" alt="" class="ml-3 mt-1"></a>
+                        </div>
+                        <button class="rounded bg-veryDarkGreen text-white font-semibold px-3 py-2">Skillas Blog</button>
+                        <a href="#"><img src="{% static '/img/Ellipse 12.png' %}" alt="client-Photo"></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </body>
+
+
+
+</html>
