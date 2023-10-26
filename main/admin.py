@@ -53,7 +53,6 @@ class ClientProfileAdmin(admin.ModelAdmin):
           "home_address",
           "occupation",
           "id_card",
-          "services_needed",
           "terms_and_conditions",
           "activated"
      ]

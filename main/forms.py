@@ -66,9 +66,12 @@ class ClientProfileForm(forms.ModelForm):
             "home_address",
             "occupation",
             "id_card",
-            "services_needed",
             "terms_and_conditions"
         ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['terms_and_conditions'].required = True
 
 
 class CompanyProfileForm(forms.ModelForm):

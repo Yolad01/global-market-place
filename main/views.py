@@ -153,16 +153,18 @@ def sign_in(request):
 
 
 @login_required
-def client(request):
+def client_dashboard(request):
     job_categories = JobCategory.objects.all()
     jobs = Job.objects.all()
+    profile = ClientProfile.objects.all().filter(user=request.user)
     
     return render(
             request=request, template_name="main/client/client_dashboard.html",
             context={
                 "job_categories": job_categories,
                 "jobs": jobs,
-                "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+                "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+                "profile": profile
             }
         )
     

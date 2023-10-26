@@ -15,9 +15,40 @@
             </div>
 
             <div class="mt-16 flex">
+                <!-- picture Modal  -->
+                <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="editPictureModal">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                      </div>
+                      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"></span>
+                      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-sm transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <!-- Modal content goes here -->
+
+                        <form method="POST" enctype="multipart/form-data" class="p-6">
+                            {% csrf_token %}
+                            <h2 class="text-lg font-semibold mb-4">Change Picture</h2>
+
+                            {{ profile_pic_form.as_p }}
+
+                          
+                            <div class="text-right">
+                                <button type="submit"
+                                    class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline">
+                                    update
+                                </button>
+                                <button class="bg-gray-300 border-2 border-gray-700 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closePictureModal">Cancel</button>
+                            </div>
+                        </form>
+                          
+                      </div>
+                    </div>
+                  </div>
+                <!-- Picture Modal  -->
+
                 <div>
-                    <img src="{% static '/img/Client-Photo.png' %}" alt="">
-                    <a href="#"><img src="{% static '/img/camera.png' %}" alt="" class="translate-x-56 -translate-y-12"></a>
+                    <img src="{% if profile_pic %}{{ x.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}">
+                    <a href="#"><img src="{% static '/img/camera.png' %}" alt="" id="openPictureModal" class="translate-x-60 translate-y-0 -mt-1"></a>
                 </div>
 
                 <div class="ml-10">
@@ -26,7 +57,7 @@
                         <a href="#"><img src="{% static '/img/Group 68.png' %}" alt="" class="translate-x-72 translate-y-10"></a>
                     </div>
 
-                    <div class="mt-2 p-4 border rounded-md border-dashed border-purple">
+                    <div class="mt-2 p-4 border rounded-md border-solid border-lightAsh">
                         <h6 class="font-medium text-base">+234 894 7844 8977</h6>
                         <h6 class="mt-5 font-medium text-base">yemirichards@yoladgloba.com</h6>
                         <h6 class="mt-5 font-medium text-base">Yolad Global Service Limted</h6>
@@ -55,5 +86,19 @@
     </div>
 </main>
 
+<script>
+    const editPictureModal = document.getElementById('editPictureModal');
+    const openPictureModalButton = document.getElementById('openPictureModal');
+    const closePictureModalButton = document.getElementById('closePictureModal');
+
+    openPictureModalButton.addEventListener('click', () => {
+    editPictureModal.classList.remove('hidden');
+    });
+
+    closePictureModalButton.addEventListener('click', (event) => {
+        event.preventDefault()
+    editPictureModal.classList.add('hidden');
+    });
+</script>
     
 {% endblock %}

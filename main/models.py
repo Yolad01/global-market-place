@@ -177,7 +177,6 @@ class ClientProfile(models.Model):
     home_address = models.CharField(max_length=256, null=True, blank=True)
     occupation = models.CharField(max_length=50, null=True, blank=True)
     id_card = models.ImageField(upload_to="id_cards_for_kyc")
-    services_needed = models.CharField(max_length=256, null=True, blank=True)
     terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
     
     activated = models.BooleanField(default=False)
