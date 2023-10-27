@@ -179,7 +179,8 @@ def client_dashboard(request):
                 "jobs": jobs,
                 "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
                 "profile": profile,
-                "profile_pic_form": client_pp_form
+                "profile_pic_form": client_pp_form,
+                "client_profile_info": ClientProfile.objects.all().filter(user=request.user)
             }
         )
     

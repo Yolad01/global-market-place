@@ -59,10 +59,13 @@
                     </div>
 
                     <div class="mt-2 p-4 border rounded-md border-solid border-lightAsh">
-                        <h6 class="font-medium text-base">+234 894 7844 8977</h6>
-                        <h6 class="mt-5 font-medium text-base">yemirichards@yoladgloba.com</h6>
+                        <h6 class="font-medium text-base">{{ user.phone_no }}</h6>
+                        <h6 class="mt-5 font-medium text-base">{{ user.email }}</h6>
                         <h6 class="mt-5 font-medium text-base">Yolad Global Service Limted</h6>
-                        <h6 class="mt-5 font-medium text-base">No. 184 Ikorodu Road, Lagos State</h6>
+                        
+                        {% for info in client_profile_info %}
+                        <h6 class="mt-5 font-medium text-base">{{ info.home_address }}</h6>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
