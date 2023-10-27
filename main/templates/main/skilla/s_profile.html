@@ -16,6 +16,7 @@
             </div>
 
             <div class="flex">
+
                 <div class="ml-10">
                     <!-- picture Modal  -->
                 <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="editPictureModal">
@@ -47,10 +48,10 @@
                     </div>
                   </div>
                   <!-- Picture Modal  -->
-                  {% for x in profile_pic %}
-                    <img src="{% if profile_pic %}{{ x.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}" class="h-50 w-96" alt="">
+                  
+                    <img src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}" class="h-50 w-96" alt="">
                     {% comment %} <img src="{{ x.image.url }}" class="h-50 w-96" alt=""> {% endcomment %}
-                    {% endfor %}
+                    
                     <a href="#"><img src="{% static '/img/camera.png' %}" alt="" id="openPictureModal" class="translate-x-72 translate-y-5 -mt-1"></a>
                 </div>
 
