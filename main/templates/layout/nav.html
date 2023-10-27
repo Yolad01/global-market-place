@@ -2,125 +2,140 @@
 <!DOCTYPE html>
 
 <html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skilla</title>
+    <link href="{% static '/css/style.min.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/main.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+    <script src="{% static '/js/init-alpine.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+      new WOW().init();
+    </script>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skilla</title>
-        <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
-        <script src="{% static '/js/init-alpine.js' %}"></script>
-        <script src="{% static '/js/main.js' %}"></script>
-        <script src="{% static '/js/wow.min.js' %}"></script>
-        <script>
-            new WOW().init();
-        </script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
-        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  
-        
-  
-     <script src="{% static '/js/wow.min.js' %}"></script>
-     <script>
-        new WOW().init();
-     </script>
-		
-    </head>
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
 
-    
-
-		<!-- Navbar goes here -->
-<body>
+  <!-- Navbar goes here -->
+  <body>
     <header>
-        <!-- Navbar -->
-        <nav class="container flex items-center justify-between max-w-full font-primary text-sm fixed bg-white">
-            <!-- Logo -->
-            <div class="pl-28 py-5">
-                <img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" width="150" height="150">
-            </div>
-            <!-- Menu Items -->
-            <div class="pr-28">
-                <div class="flex items-center space-x-10 pr-10 font-primary font-bold">
-                    <a href="#">About Us</a>
-                    <a href="#">Service</a>
-                    <a href="#">Contact</a>
-                    <a href="/sign_in">Customer</a>
-                    <a href="#">T&C</a>
-                    
-                    {% if not user.is_authenticated %}
-                    <a href="/register" class="rounded bg-veryDarkGreen text-white px-3 py-2">Use Web App</a>
-                    
-                    {% elif user.role == "SKILLAS" %}
-                    <a href="/skillas_dashboard" class="rounded bg-veryDarkGreen text-white px-3 py-2">Dashboard</a>
-                    
-                    {% elif user.role == "CLIENT" %}
-                    <a href="/client_dashboard" class="rounded bg-veryDarkGreen text-white px-3 py-2">Dashboard</a>
-                    {% endif %}
-                </div>
-            </div>
-        </nav>
-    </header>  
+      <!-- Navbar -->
+      <nav
+        class="container py-5 shadow-lg flex items-center justify-between max-w-full font-primary fixed"
+      >
+        <!-- Logo -->
+        <div class="pl-36">
+          <img
+            src="{% static '/img/skillas_design-03.png' %}"
+            alt="Logo"
+            class="w-1/3"
+          />
+        </div>
+        <!-- Menu Items -->
+        <div class="mt-5 pr-36 items-center justify-center w-full">
+          <div class="flex gap-10 font-primary font-bold text-2xl">
+            <a href="#" class="-ml-20">About Us</a>
+            <a href="#">Service</a>
+            <a href="#">Contact</a>
+            <a href="/sign_in">Customer</a>
+            <a href="#">T&C</a>
 
+            {% if not user.is_authenticated %}
+            <a
+              href="/register"
+              class="rounded bg-veryDarkGreen text-white p-4 -mt-3"
+              >Use Web App</a
+            >
 
-	<div class="pt-10">
-		{% block content %}
-		{% endblock %}
-	</div>
+            {% elif user.role == "SKILLAS" %}
+            <a
+              href="/skillas_dashboard"
+              class="rounded bg-veryDarkGreen text-white px-3 py-2"
+              >Dashboard</a
+            >
 
+            {% elif user.role == "CLIENT" %}
+            <a
+              href="/client_dashboard"
+              class="rounded bg-veryDarkGreen text-white px-3 py-2"
+              >Dashboard</a
+            >
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </header>
 
+    <div class="pt-10">{% block content %} {% endblock %}</div>
 
-
-
-
-	<footer>
-        <div class="bg-veryDarkGreen p-10">
-            <div class="flex items-center justify-center">
-                <img src="{% static '/img/white-03.svg' %}" alt="skillas-white-logo " width="25%">
-            </div>
-    
-            <div class="p-10">
-                <p class="text-white font-normal text-sm text-center mb-5">The easiest way to hire/sell is instantly at zero risk</p>
-                <p class="text-white font-normal text-sm text-center">Terms & Condition <span class="ml-5">Privacy Policy</span></p>
-                <div class="flex items-center justify-center pt-5 space-x-4">
-                <img src="{% static '/img/Group 289.png' %}" alt="">
-                <img src="{% static '/img/Vector (1).png' %}" alt="">
-                <img src="{% static '/img/Vector (2).png' %}" alt="">
-                </div>
-            </div>
+    <footer>
+      <div class="bg-veryDarkGreen p-10">
+        <div class="flex items-center justify-center">
+          <img
+            src="{% static '/img/white-03.svg' %}"
+            alt="skillas-white-logo "
+            class="w-1/2"
+          />
         </div>
 
-        <div class="bg-white">
-            <p class="text-veryDarkGreen p-5 font-medium text-sm text-center">
-                &copy;2023 Yolad Global Service Limited All rights reserved.
-            </p>
+        <div class="p-10">
+          <p class="text-white font-medium text-xl text-center mb-12">
+            The easiest way to hire/sell is instantly at zero risk
+          </p>
+          <p class="text-white font-medium text-xl text-center mb-12">
+            Terms & Condition <span class="ml-5">Privacy Policy</span>
+          </p>
+          <div class="flex items-center justify-center pt-5 space-x-4">
+            <img src="{% static '/img/Group 289.png' %}" alt="" />
+            <img src="{% static '/img/Vector (1).png' %}" alt="" />
+            <img src="{% static '/img/Vector (2).png' %}" alt="" />
+          </div>
         </div>
-     </footer>
-</body>
+      </div>
 
-<script>
+      <div class="p-5">
+        <p class="text-veryDarkGreen p-5 font-medium text-3xl text-center">
+          &copy;2023 Yolad Global Service Limited All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+
+  <script>
     const btn = document.querySelector("button.mobile-menu-button");
     const menu = document.querySelector(".mobile-menu");
 
     btn.addEventListener("click", () => {
-       menu.classList.toggle("hidden");
+      menu.classList.toggle("hidden");
     });
- </script>
+  </script>
 
-     <!-- a little JS for the mobile nav button -->
- <script>
-    if (document.getElementById('nav-mobile-btn')) {
-          document.getElementById('nav-mobile-btn').addEventListener('click', function () {
-             if (this.classList.contains('close')) {
-                document.getElementById('nav').classList.add('hidden');
-                this.classList.remove('close');
-             } else {
-                document.getElementById('nav').classList.remove('hidden');
-                this.classList.add('close');
-             }
-          });
+  <!-- a little JS for the mobile nav button -->
+  <script>
+    if (document.getElementById("nav-mobile-btn")) {
+      document
+        .getElementById("nav-mobile-btn")
+        .addEventListener("click", function () {
+          if (this.classList.contains("close")) {
+            document.getElementById("nav").classList.add("hidden");
+            this.classList.remove("close");
+          } else {
+            document.getElementById("nav").classList.remove("hidden");
+            this.classList.add("close");
+          }
+        });
     }
- </script>
-
+  </script>
 </html>
