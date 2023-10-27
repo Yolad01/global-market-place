@@ -1,0 +1,86 @@
+{% extends 'layout/brief_nav.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<main>
+    <div class="pl-40 flex">
+      <div class="mt-16">
+        <h2 class="font-primary font-semibold text-5xl">
+          Let the matching <br />
+          begin...
+        </h2>
+
+        <p class="font-normal text-lg mt-12 mb-10">
+          Fill us in on the big picture let us <br />know what you want.
+        </p>
+
+        <img src="../img/group_357.png" alt="illustration" class="mb-40" />
+      </div>
+
+      <div class="ml-16">
+        <div class="flex">
+          <h6
+            class="mt-10 font-primary font-extrabold text-xl text-shadeAsh_9"
+          >
+            I’m looking to spend..
+          </h6>
+          <a
+            href="#"
+            class="text-base font-normal font-primary translate-x-56 ml-20 mt-4"
+            >Exit</a
+          >
+        </div>
+        <div>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Up to"
+            class="border-2 placeholder-shadeAsh_10 mt-5 pr-32 px-2"
+          />
+
+          <div class="flex">
+            <p class="font-normal text-[13px] text-lightBlack mt-2">
+              Average range for this service is $100 to $750
+            </p>
+            <img src="../img/circle.png" alt="question mark" class="ml-2" />
+          </div>
+
+          <div class="flex mt-5">
+            <input type="checkbox" name="" id="" />
+            <label for="" class="text-[13px] font-normal text-veryLightBlack"
+              >My budget is flexible</label
+            >
+          </div>
+
+          <div>
+            <h6
+              class="font-primary font-bold text-xl text-veryLightBlack mt-10"
+            >
+              Let’s talk timing
+            </h6>
+            <input
+              type="date"
+              name=""
+              id=""
+              placeholder="Ideal delivery date"
+              class="border-2 w-full mt-2 placeholder-shadeAsh_10"
+            />
+          </div>
+
+          <div class="mt-20 mb-20 translate-x-72 ml-20">
+            <button
+              class="text-base font-primary font-bold text-white bg-veryDarkGreen rounded-md px-5 py-2"
+            >
+              Review your brief
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+{% endblock %}

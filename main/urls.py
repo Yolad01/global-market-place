@@ -23,6 +23,8 @@ urlpatterns = [
     path("company_profile/", views.company_profile, name="company_profile"),
     
     path("client_dashboard/", views.client_dashboard, name="client_dashboard"),
+    path("client_brief/", views.client_brief, name="client_brief"),
+    path("client_brief_cont/", views.client_brief_cont, name="client_brief_cont"),
 
     path("skillas_dashboard/", views.skilla, name="skillas_dashboard"),
     

@@ -298,3 +298,17 @@ def withdraw_success(request):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
+    
+    
+def client_brief(request):
+    return render(
+        request=request,
+        template_name="main/client/brief/create_brief.html"
+    )
+    
+    
+def client_brief_cont(request):
+    return render(
+        request=request,
+        template_name="main/client/brief/create_brief_cont.html"
+    )
