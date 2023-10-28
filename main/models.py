@@ -288,3 +288,27 @@ class ProfilePicture(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+
+class Brief(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=20)
+    description = models.TextField()
+    attach_files = models.FileField(
+        upload_to="project_description_files",
+        blank=True,
+        null=True
+    )
+    categories = models.ForeignKey(
+        JobCategory,
+        models.CASCADE
+    )
+    budget = models.IntegerField(
+        blank=True,
+        null=False
+    )
+    budget_flexible =  models.BooleanField(
+        default=False
+    )
+    date = models.DateTimeField()

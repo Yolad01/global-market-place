@@ -306,9 +306,3 @@ def client_brief(request):
         template_name="main/client/brief/create_brief.html"
     )
     
-    
-def client_brief_cont(request):
-    return render(
-        request=request,
-        template_name="main/client/brief/create_brief_cont.html"
-    )

@@ -142,11 +142,3 @@ class ProfilePictureForm(forms.ModelForm):
         fields = [
             "image"
         ]
-        
-        
-# \def clean_quantity(self):
-#         quantity = self.cleaned_data['quantity']
-#         if quantity > 100:
-#             msg = 'Quantity should be less than 100'
-#             raise forms.ValidationError(msg)
-#         return quantity

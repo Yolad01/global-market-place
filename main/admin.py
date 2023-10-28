@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
-    ProfilePicture
+    ProfilePicture, Brief
 )
 
 # Register your models here.
@@ -106,6 +106,11 @@ class TrainingAndCertificationForm(admin.ModelAdmin):
      ]
 
 
+class BriefForm(admin.ModelAdmin):
+     list_display = [
+          "user", "title", "description", "attach_files", "categories", "budget", "budget_flexible", "date"
+     ]
+
 
 
 admin.site.register(Rating, RatingAdmin)
@@ -123,6 +128,7 @@ admin.site.register(CompanyProfile, CompanyProfileAdmin)
 admin.site.register(AboutSkilla, AboutSkillaAdmin)
 admin.site.register(TrainingAndCertification, TrainingAndCertificationForm)
 admin.site.register(ProfilePicture)
+admin.site.register(Brief, BriefForm)
 
 
 
