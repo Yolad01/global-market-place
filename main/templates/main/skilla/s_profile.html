@@ -54,8 +54,195 @@
                       Cancel
                     </button>
                   </div>
+<<<<<<< HEAD
                 </form>
               </div>
+=======
+                  <!-- Picture Modal  -->
+                  
+                    <img src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}" class="h-50 w-96" alt="">
+                    {% comment %} <img src="{{ x.image.url }}" class="h-50 w-96" alt=""> {% endcomment %}
+                    
+                    <a href="#"><img src="{% static '/img/camera.png' %}" alt="" id="openPictureModal" class="translate-x-72 translate-y-5 -mt-1"></a>
+                </div>
+
+                <div class="border ml-12 mb-10 pr-16">
+                    <div class="font-primary">
+
+                        <!-- about Modal  -->
+                        <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="editModal">
+                            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                              <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                              </div>
+                              <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                              <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                                <!-- Modal content goes here -->
+
+                                <form method="POST" class="p-6">
+                                    {% csrf_token %}
+                                    <h2 class="text-lg font-semibold mb-4">little </h2>
+
+                                    <div class="mb-4">
+                                        <label class="block text-gray-600 text-sm font-bold mb-2" for="id_about">About:</label>
+                                        <textarea class="border border-gray-300 rounded w-full py-2 px-3" name="about" cols="40" rows="10" maxlength="150" required id="id_about">
+                                        </textarea>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label class="block text-gray-600 text-sm font-bold mb-2" for="id_work_experience">Work experience:</label>
+                                        <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="work_experience" maxlength="128" id="id_work_experience">
+                                    
+                                    </div>
+
+                                  
+                                    <div class="text-right">
+                                        <button type="submit"
+                                            class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline" type="button">
+                                            update
+                                        </button>
+                                        <button class="bg-gray-300 border-2 border-gray-700 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closeModal">Cancel</button>
+                                    </div>
+                                </form>
+                                  
+                              </div>
+                            </div>
+                        </div>
+                          <!-- about Modal  -->
+                        
+                        <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openModal" alt="" class="mt-5 translate-x-96 ml-6"></a>
+                        <div class="font-extrabold text-veryDarkGreen text-3xl p-5 -mt-12">{{user.first_name}} {{user.last_name}}</div>
+
+                        <h6 class="font-extrabold text-sm text-veryDarkGreen ml-6">About {{user.username}}</h6>
+                        <div class="ml-6 mt-2 text-sm pr-12">
+                            
+                            {% for x in about_skilla %}
+                                {{ x.about }}
+                            {% endfor %}
+                                
+                        </div>
+
+                        
+                        {% for info in profile %}
+
+                        <div class="ml-2 mt-2 mb-5 mr-24 rounded-sm">
+                            <div class="ml-5">
+                                <h6 class="font-medium text-sm mt-5">Expertise</h6>
+                                <h4>{{info.certifications}}</h4>
+
+                                <h6 class="font-medium text-sm mt-5">Phone Number</h6>
+                                <h4>{{user.phone_no}}</h4>
+
+                                <h6 class="font-medium text-sm mt-5">Email</h6>
+                                <h4>{{user.email}}</h4>
+
+                                <h6 class="font-medium text-sm mt-5">Location</h6>
+                                <h4>{{info.current_location}}</h4>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div> 
+            
+            <hr class=" ml-10 border border-veryLightAsh">  
+
+            <div class="shadow font-primary mt-12">
+
+                <!-- Training Modal  -->
+                <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="editTrainingModal">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                      </div>
+                      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <!-- Modal content goes here -->
+
+                        <form method="POST" class="p-6">
+                            {% csrf_token %}
+                            <h2 class="text-lg font-semibold mb-4">Add Training & Certification</h2>
+
+                            <div class="mb-4">
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_cert_earned">Cert earned</label>
+                                <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="cert_earned" maxlength="100" id="id_cert_earned">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_skill_learned">Skill learned</label>
+                                <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="skill_learned" maxlength="100" id="id_skill_learned">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block text-gray-600 text-sm font-bold mb-2" for="id_grade">Grade</label>
+                                <input class="border border-gray-300 rounded w-full py-2 px-3" type="text" name="grade" maxlength="128" id="id_grade">
+                            </div>
+                          
+                            <div class="text-right">
+                                <button type="submit"
+                                    class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline">
+                                    update
+                                </button>
+                                <button class="bg-gray-300 border-2 border-gray-700 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" type="button" id="closeTrainingModal">Cancel</button>
+                            </div>
+                        </form>
+                          
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Training Modal  -->
+
+                <div class="ml-10 mb-5 flex">
+                    <h6 class="font-bold text-xs">Training & Certification</h6>
+                    <a href="#"><img src="{% static '/img/Group 68.png' %}" id="openTrainingModal" alt="" class="translate-x-96 ml-80"></a>
+                </div>
+                
+                <table class="w-full text-left ml-10">
+
+                    <tr>
+      
+                      <th class="py-2">Courses</th>
+      
+                      <th class="py-2">skills</th>
+      
+                      <th class="py-2">Grade</th>
+      
+                      <th class="py-2">Assessed</th>
+      
+                    </tr>
+      
+       
+                    {% for x in train_and_cert %}
+                    <tr class="border-2 pr-10">
+      
+                      <td>{{ x.cert_earned }}</td>
+      
+                      <td>{{ x.skill_learned }}</td>
+      
+                      <td>{{ x.grade }}</td>
+                      <td class="mr-5"><img src="{% static '/img/Vector (14).png' %}"></td>
+      
+                    </tr>
+                    {% endfor %}
+      
+                </table>
+
+                <div class="mt-10">
+                    <div class="ml-10 flex">
+                        <h6 class="font-bold text-sm">Work Experience</h6>
+                    </div>
+                        
+                    <div class="ml-10 font-primary font-normal text-sm pb-16">
+                        {% for x in about_skilla %}
+                            {{ x.work_experience }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                </div>
+>>>>>>> 73003cf904b02225afca9b061946f4bb74c53001
             </div>
           </div>
           <!-- Picture Modal  -->

@@ -46,13 +46,16 @@
                         <a href="#">Promotions</a>
                         <a href="#">Transaction History</a>
                         <a href="#">Support</a>
-                        <a href="#">T&C</a>
+                        <a href="/logout">T&C</a>
                         <div class="flex">
                             <a href="#">Help</a>
                             <a href="#"><img src="{% static '/img/Vector (6).png' %}" alt="" class="ml-3 mt-1"></a>
                         </div>
                         <button class="rounded bg-veryDarkGreen text-white font-semibold px-3 py-2">Skillas Blog</button>
-                        <a href="#"><img src="{% static '/img/Ellipse 12.png' %}" alt="client-Photo"></a>
+                        {% comment %} <a href="#"><img src="{% static '/img/Ellipse 12.png' %}" alt="client-Photo"></a> {% endcomment %}
+                        {% for x in profile_pic %}
+                        <a href="#"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
+                        {% endfor %}
                     </div>
                 </div>
             </nav>

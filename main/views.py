@@ -157,6 +157,20 @@ def client_dashboard(request):
     job_categories = JobCategory.objects.all()
     jobs = Job.objects.all()
     profile = ClientProfile.objects.all().filter(user=request.user)
+
+    try:
+        client_pp = ProfilePicture.objects.get(user=request.user)
+    except ProfilePicture.DoesNotExist:
+        client_pp = ProfilePicture(user=request.user)
+
+    if request.method == "POST":
+        client_pp_form = ProfilePictureForm(request.POST, request.FILES, instance=client_pp)
+
+        if client_pp_form.is_valid():
+            client_pp_form.save()
+            return redirect("main:client_dashboard")
+        
+    client_pp_form = ProfilePictureForm()
     
     return render(
             request=request, template_name="main/client/client_dashboard.html",
@@ -164,7 +178,9 @@ def client_dashboard(request):
                 "job_categories": job_categories,
                 "jobs": jobs,
                 "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-                "profile": profile
+                "profile": profile,
+                "profile_pic_form": client_pp_form,
+                "client_profile_info": ClientProfile.objects.all().filter(user=request.user)
             }
         )
     
@@ -224,7 +240,7 @@ def s_profile(request):
 
     about_form = AboutSkillaForm()
     cert_form = TrainingAndCertificationForm()
-    skilla_pp = ProfilePictureForm()
+    skilla_pp_form = ProfilePictureForm()
 
     return render(
         request=request,
@@ -236,7 +252,7 @@ def s_profile(request):
             "about_form": about_form,
             "cert_form": cert_form,
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "profile_pic_form": skilla_pp
+            "profile_pic_form": skilla_pp_form
         }
     )
 
