@@ -12,8 +12,8 @@
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./skillas-pages/**/*.{html,js}', './skillas-dashboard/**/*.{html,js}', 
-            './client-pages/**/*.{html,js}',],
+  content: ['./skillas-pages/**/*.{html,js}', './skillas-dashboard/**/*.{html,js}',
+    './client-pages/**/*.{html,js}',],
   theme: {
     extend: {
       fontFamily: {
@@ -33,8 +33,10 @@ module.exports = {
         aKindOfBlack: '#494949',
         midBlack: '#656565',
         anotherBlack: '#252525',
+        hr_black: '#22205F',
         purple: '#9747FF',
         ash: '#F3F2F7',
+        white_ash: '#F7F7F7',
         lightAsh: '#D9D9D9',
         extremelyLightAsh: '#818181',
         veryLightAsh: '#B3B3B3',

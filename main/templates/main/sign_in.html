@@ -1,60 +1,87 @@
-{% comment %} {% extends 'layout/nav.html' %} {% endcomment %}
+{% extends 'layout/nav.html' %} 
 {% load static %}
 
-    <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
-    <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
-    <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
-    <script src="{% static '/js/init-alpine.js' %}"></script>
-    <script src="{% static '/js/main.js' %}"></script>
+<link href="{% static '/css/style.min.css' %}" rel="stylesheet" />
+<link href="{% static '/css/style.css' %}" rel="stylesheet" />
+<link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+<script src="{% static '/js/init-alpine.js' %}"></script>
+<script src="{% static '/js/main.js' %}"></script>
 
 {% block content %}
+<body>
+<div class="font-primary container mx-auto mb-20">
+  <div class="mt-40 ml-72 mr-72 ">
+    <div class="border-2 items-center justify-center">
+      <div class="flex mt-20">
+        <div class="text-2xl font-semibold ml-60">Welcome back!</div>
+        <div class="text-2xl font-bold text-veryDarkGreen px-20">Sign in</div>
+      </div>
 
-<body class="bg-white font-family-karla h-screen">
+      <form method="POST">
+        {% csrf_token %}
 
-    <div class="flex m-20 items-center justify-center">
-
-        
-
-        <div class="mx-2 py-2 border-2">
-
-            <div class="flex items-center justify-between">
-
-                <div class="text-xl font-semibold px-5">Welcome back!</div>
-                <div class="text-xl font-bold px-10">Sign in</div>
-    
-            </div>
-          
-            <form method="POST" class="bg-white rounded-lg  px-8 pt-6 pb-8 mb-4">
-                {% csrf_token %}
-
-
-                <div class="m-2">
-                    <label class="block text-gray-700 text-sm" for="id_username">Work email or username:</label>
-                    <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username"
-                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
-                    >
-                </div>
-
-                <div class="m-2">
-                    <label class="block text-gray-700 text-sm" for="id_password">Password:</label>
-                    <input type="password" name="password" autocomplete="current-password" required id="id_password"
-                    class="shadow appearance-none border border-gray-400 rounded w-full py-1 leading-tight focus:outline-none focus:shadow-outline"
-                    >
-                </div>
-
-                <div class="md:flex items-center mt-5 px-5">
-                    <div class="text-sm">Forgot your password?</div>
-
-                    <button type="submit"
-                        class="bg-gray-800 w-full hover:bg-gray-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Sign in
-                    </button>                      
-                </div>
-            </form>
-
+        <div class="mt-20 ml-60">
+          <label
+            class="block text-veryDarkGreen text-base font-normal"
+            for="id_username"
+            >Work email or username:</label
+          >
+          <input
+            type="text"
+            name="username"
+            autofocus
+            autocapitalize="none"
+            autocomplete="username"
+            maxlength="150"
+            required
+            id="id_username"
+            class="mt-5 border border-gray-400 rounded py-3 pr-64 focus:outline-none focus:shadow-outline"
+          />
         </div>
 
+        <div class="ml-60 mt-10">
+          <label class="block text-veryDarkGreen text-base" for="id_password"
+            >Password:</label
+          >
+          <input
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            required
+            id="id_password"
+            class="mt-5 border border-gray-400 rounded py-3 pr-64 focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        <div class="flex mt-10 ml-60 mb-10">
+          <div class="text-base text-veryDarkGreen">Forgot your password?</div>
+
+          <button
+            type="submit"
+            class="bg-veryDarkGreen hover:bg-gray-500 text-white font-normal py-1 ml-48 px-5 rounded-md focus:outline-none focus:shadow-outline"
+            type="button"
+          >
+            Sign in
+          </button>
+        </div>
+      </form>
+
+      <div class="mb-10 ml-60 mr-64">
+        <hr class="border border-black mr-5" />
+
+        <div class="flex mt-10">
+          <img src="{% static '/img/google_icon.svg' %}" alt="Google icon" />
+
+          <button
+            class="bg-veryDarkGreen text-white font-extrabold text-base py-3 px-28 ml-9 rounded-md focus:outline-none focus:shadow-outline"
+            type="button"
+          >
+            Continue with Gmail
+        </div>
+      </div>
+
     </div>
+  </div>
 
   <script>
     function myFunction() {
@@ -65,12 +92,7 @@
         x.type = "password";
       }
     }
-    </script>
-
-
+  </script>
 </body>
-
-
-
 
 {% endblock %}
