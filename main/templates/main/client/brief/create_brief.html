@@ -18,7 +18,7 @@
         <img src="{% static '/img/group_357.png' %}" alt="illustration" class="mb-40" />
       </div>
       
-      {% comment %} <form method="POST">
+      <form method="POST">
         {% csrf_token %}
 
         {{ form.as_p }}
@@ -39,10 +39,10 @@
             />
           </a>
         </div>
-      </form> {% endcomment %}
+      </form>
 
 
-      <div class="ml-16">
+      {% comment %} <div class="ml-16">
         <div class="mt-10">
           <div class="flex">
             <h6 class="font-primary font-bold text-xl text-lightBlack">
@@ -184,15 +184,16 @@
                   placeholder="Ideal delivery date"
                   class="border-2 w-full mt-2 placeholder-shadeAsh_10 mb-5"
                 />
-              </div>
-
-              <div class="m-5 translate-x-72">
+                <div class="m-5 translate-x-72">
                 <button
                   class="text-base font-primary font-bold text-white bg-veryDarkGreen rounded-md px-5 py-2"
                 >
                   Review
                 </button>
               </div>
+              </div> {% endcomment %}
+
+              
 
           </div>
         </div>

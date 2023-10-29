@@ -305,7 +305,12 @@ def client_brief(request):
     if request.method =="POST":
         form = BriefForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            brief_form = form.save(commit=False)
+            brief_form.user = request.user
+            brief_form.save()
+            ##### messages
+            return redirect()
+            
     form = BriefForm()
     return render(
         request=request,
