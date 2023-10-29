@@ -4,7 +4,7 @@ from main.models import User
 from main.models import (JobCategory, Job, Rating,
                          SkillaProfile, Skill, ClientProfile,
                          CompanyProfile, AboutSkilla, TrainingAndCertification,
-                         ProfilePicture
+                         ProfilePicture, Brief
                          )
 
 
@@ -24,7 +24,7 @@ class RegistrationForm(UserCreationForm):
 class JobCategoryForm(forms.ModelForm):
     class Meta:
         model = JobCategory
-        fields = ["title", "creator"]
+        fields = ["title"]
         
         
 class JobForm(forms.ModelForm):
@@ -141,4 +141,19 @@ class ProfilePictureForm(forms.ModelForm):
         model = ProfilePicture
         fields = [
             "image"
+        ]
+
+
+
+class BriefForm(forms.ModelForm):
+    class Meta:
+        model = Brief
+        fields = [
+            "title",
+            "description",
+            "attach_files",
+            "categories",
+            "budget",
+            "budget_flexible",
+            "date"
         ]

@@ -21,7 +21,7 @@ class UsersAdmin(admin.ModelAdmin):
 
 
 class JobsCategoryAdmin(admin.ModelAdmin):
-     list_display = ["creator", "title", "created"]
+     list_display = ["title"]
 
 
 
@@ -106,7 +106,7 @@ class TrainingAndCertificationForm(admin.ModelAdmin):
      ]
 
 
-class BriefForm(admin.ModelAdmin):
+class BriefAdmin(admin.ModelAdmin):
      list_display = [
           "user", "title", "description", "attach_files", "categories", "budget", "budget_flexible", "date"
      ]
@@ -128,7 +128,7 @@ admin.site.register(CompanyProfile, CompanyProfileAdmin)
 admin.site.register(AboutSkilla, AboutSkillaAdmin)
 admin.site.register(TrainingAndCertification, TrainingAndCertificationForm)
 admin.site.register(ProfilePicture)
-admin.site.register(Brief, BriefForm)
+admin.site.register(Brief, BriefAdmin)
 
 
 

@@ -5,6 +5,7 @@ from django.db.models.query import QuerySet
 from .options import Country, Role, SkillLevel, Rate, OrderStatus
 import random
 from django.utils import timezone
+from datetime import datetime
 
 
 
@@ -88,9 +89,7 @@ class Company(User):
 
 
 class JobCategory(models.Model):
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=20, blank=True, null=True)
-    created = models.DateTimeField(default=timezone.now)
+    title = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Job Categories"
@@ -292,7 +291,11 @@ class ProfilePicture(models.Model):
 
 
 class Brief(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        Clients,
+        on_delete=models.CASCADE,
+        related_name="client"
+    )
     title = models.CharField(max_length=20)
     description = models.TextField()
     attach_files = models.FileField(
@@ -311,4 +314,14 @@ class Brief(models.Model):
     budget_flexible =  models.BooleanField(
         default=False
     )
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=datetime.now)
+    skilla = models.ForeignKey(
+        Skillas,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name="skilla"
+    )
+
+    def __str__(self):
+        return self.user.username

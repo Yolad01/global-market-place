@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
-                        TrainingAndCertificationForm, ProfilePictureForm
+                        TrainingAndCertificationForm, ProfilePictureForm, BriefForm
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture
@@ -301,8 +301,16 @@ def withdraw_success(request):
     
     
 def client_brief(request):
+    if request.method =="POST":
+        form = BriefForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    form = BriefForm()
     return render(
         request=request,
-        template_name="main/client/brief/create_brief.html"
+        template_name="main/client/brief/create_brief.html",
+        context={
+            "form": form
+        }
     )
     
