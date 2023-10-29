@@ -229,6 +229,7 @@ def s_profile(request):
 
         if skilla_pp_form.is_valid():
             skilla_pp_form.save() ## skilla__pp == skilla profile picture
+            return redirect("main:s_profile")
 
         if cert_form.is_valid():
             cert_instance = cert_form.save(commit=False)
