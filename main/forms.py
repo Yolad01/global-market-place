@@ -157,3 +157,12 @@ class BriefForm(forms.ModelForm):
             "budget_flexible",
             "date"
         ]
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md'}),
+            "description": forms.Textarea(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "attach_files": forms.ClearableFileInput(attrs={'class': 'text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md'}),
+            "categories": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "budget": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "budget_flexible": forms.CheckboxInput(attrs={'class': 'border border-gray-700 mr-2 rounded-md'}),
+            "date": forms.DateTimeInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'})
+        }

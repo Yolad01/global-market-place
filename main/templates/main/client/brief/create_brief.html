@@ -17,27 +17,97 @@
 
         <img src="{% static '/img/group_357.png' %}" alt="illustration" class="mb-40" />
       </div>
-      
-      <form method="POST">
+
+      <!-- create_brief.html -->
+      <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        <div class="mb-4 mt-7 ml-16">
+          <div class="flex">
+            <h6 class="font-primary font-bold text-xl text-lightBlack">
+              Give your project brief a title
+            </h6>
+            <a
+              href="/client_dashboard"
+              class="text-base font-semibold font-primary translate-x-72 ml-20 -mt-7"
+              >Exit</a
+            >
+          </div>
+          <p
+              class="font-primary font-normal text-base text-lightBlack mt-2"
+            >
+              Keep it short and simple, this will help us match you to the
+              right category.
+          </p>
 
-        {{ form.as_p }}
+            {{ form.title }}
+        </div>
 
-        <div class="mt-5 mb-10 ml-12">
-          <button
-            type="submit"
-            class="bg-veryDarkGreen text-white text-center font-bold text-2xl py-3 px-24 rounded focus:outline-none focus:shadow-outline"
-            type="button"
+        <div class="mb-4 ml-16">
+          <h6
+                class="font-primary font-bold text-xl text-lightBlack mt-14"
+              >
+                What are you looking to get done ?
+          </h6>
+
+          <p
+            class="font-primary font-normal text-base text-lightBlack mt-3"
           >
-            Create account
+            This will help get your brief to the right talent, Specifics
+            help here
+          </p>
+            {{ form.description }}
+        </div>
+        <div class="mb-4 ml-16 ">
+            {{ form.attach_files }}
+        </div>
+        <div class="mb-4 ml-16">
+          <div class="mt-10">
+            <h6
+              class="font-primary font-bold text-base text-veryLightBlack"
+            >
+              What category best fits your project?
+            </h6>
+          </div>
+            {{ form.categories }}
+        </div>
+        <div class="mb-4 ml-16">
+          <div class="flex">
+            <h6
+              class="mt-10 font-primary font-extrabold text-xl text-shadeAsh_9"
+            >
+              I’m looking to spend..
+            </h6>
+          </div>
+            {{ form.budget }}
+            <div class="flex">
+              <p class="font-normal text-[13px] text-lightBlack mt-2">
+                Average range for this service is $100 to $750
+              </p>
+              <img src="{% static '/img/circle.png' %}" alt="question mark" class="ml-2" />
+            </div>
+        </div>
+        <div class="mb-4 ml-16">
+            {{ form.budget_flexible }}
+            <label for="" class="text-[13px] font-normal text-veryLightBlack">
+              My budget is flexible
+            </label>
+        </div>
+        <div class="mb-4 ml-16">
+          <h6
+            class="font-primary font-bold text-xl text-veryLightBlack mt-5 mb-5"
+          >
+            Let’s talk timing
+          </h6>
+            {{ form.date }}
+        </div>
+
+        <div class="m-5 translate-x-72 ml-16">
+          <button
+            class="text-base font-primary font-bold text-white bg-veryDarkGreen rounded-md px-5 py-2"
+            type="submit"
+          >
+          review your brief
           </button>
-          <a
-            ><img
-              src="{% static '/img/right_arrow.svg' %}"
-              alt="Right arrow icon"
-              class="ml-64 -mt-10 pl-12"
-            />
-          </a>
         </div>
       </form>
 

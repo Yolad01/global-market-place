@@ -296,7 +296,7 @@ class Brief(models.Model):
         on_delete=models.CASCADE,
         related_name="client"
     )
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=100)
     description = models.TextField()
     attach_files = models.FileField(
         upload_to="project_description_files",

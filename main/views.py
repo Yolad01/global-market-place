@@ -5,7 +5,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
-                         ClientProfile, CompanyProfile, ProfilePicture
+                         ClientProfile, CompanyProfile, ProfilePicture, Brief
 )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -97,7 +97,10 @@ def client_profile(request):
     return render(
         request=request,
         template_name="main/client/client_profile.html",
-        context={"form": form, "profile_pic": ProfilePicture.objects.all().filter(user=request.user)}
+        context={
+            "form": form,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+        }
     )
     
     
@@ -187,10 +190,12 @@ def client_dashboard(request):
 
 #### add @login_required decorator
 def skilla(request):
+    brief = Brief.objects.all()
     return render(
         request=request, template_name="main/skilla/skillas_dashboard.html",
         context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "brief": brief
         }
     )
 
@@ -309,7 +314,7 @@ def client_brief(request):
             brief_form.user = request.user
             brief_form.save()
             ##### messages
-            return redirect()
+            return redirect("main:client_dashboard")
             
     form = BriefForm()
     return render(
@@ -317,6 +322,7 @@ def client_brief(request):
         template_name="main/client/brief/create_brief.html",
         context={
             "form": form
+            
         }
     )
     
