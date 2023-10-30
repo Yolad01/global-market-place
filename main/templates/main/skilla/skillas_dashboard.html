@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="shadow">
+<div class="bg-gray-50">
     <div>
         <div class="p-10">
         <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
@@ -11,7 +11,7 @@
 
     <div class="mr-10 mb-20 ml-10">
         <div class="grid grid-cols-4 gap-5">
-            <div class="flex border-0 shadow rounded-sm p-5">
+            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
                 <a href="#"><img src="{% static '/img/Group 306.png' %}" alt=""></a>
                 <div>
                     <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Incoming Transactions</h3>
@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="flex border-0 shadow rounded-sm p-5">
+            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
                 <a href="#"><img src="{% static '/img/Group 307.png' %}" alt=""></a>
                 <div>
                     <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Messages</h3>
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="flex border-0 shadow rounded-sm p-5">
+            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
                 <a href="#"><img src="{% static '/img/Group 308.png' %}" alt=""></a>
                 <div>
                     <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Wallet</h3>
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="flex border-0 shadow rounded-sm p-5">
+            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
                 <a href="#"><img src="{% static '/img/Group 309.png' %}" alt=""></a>
                 <div>
                     <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Pending</h3>
@@ -45,14 +45,43 @@
         </div>
     </div>
 
-    <div class=" mr-10 border-0 shadow-sm rounded-md font-primary">
-       <div class="shadow-sm ml-10">
+    
+    <div class=" mr-10 border-0 shadow-sm rounded-md font-primary p-1">
         {% for x in brief %}
+       <div class="shadow m-10 border bg-white">
             <div class="font-medium text-sm text-veryLightBlack p-5">
-                {{ x.title }}
+                <div class="font-semibold">
+                    {{ x.user.username }}
+                </div>
+                <div>
+                    completion date: {{ x.date }}
+                </div>
+                <div class="text-xl">
+                    {{ x.title }}
+                </div>
+                <div class="bg-gray-50 p-2 m-2 space-y-4">
+                    <div>
+                    {{ x.description }}
+                    </div>
+                    <div>
+                        {{ x.categories }}
+                    </div>
+                    <div>
+                       Budget: ₦{{ x.budget }}
+                    </div>
+                    
+                    {% if x.budget_flexible == True %}
+                    <div class="text-xs">
+                        negotiable
+                     </div>
+                    {% endif %}
+                        
+                    
+                    
+                </div>
             </div>
-        {% endfor %}
        </div>
+       {% endfor %}
 
        <div class="shadow-sm pb-10">
             <div class="ml-10 mt-10 p-20 bg-veryDarkGreen">

@@ -190,7 +190,7 @@ def client_dashboard(request):
 
 #### add @login_required decorator
 def skilla(request):
-    brief = Brief.objects.all()
+    brief = Brief.objects.all().order_by("-title")
     return render(
         request=request, template_name="main/skilla/skillas_dashboard.html",
         context={
