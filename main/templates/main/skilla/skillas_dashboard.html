@@ -48,7 +48,7 @@
     
     <div class=" mr-10 border-0 shadow-sm rounded-md font-primary p-1">
         {% for x in brief %}
-       <div class="shadow m-10 border bg-white">
+       <div class="shadow mx-10 my-2 border bg-white w-3/4 item-center">
             <div class="font-medium text-sm text-veryLightBlack p-5">
                 <div class="font-semibold">
                     {{ x.user.username }}
@@ -59,7 +59,7 @@
                 <div class="text-xl">
                     {{ x.title }}
                 </div>
-                <div class="bg-gray-50 p-2 m-2 space-y-4">
+                <div class="bg-gray-50 p-2 mx-2 mt-2 mb-5 space-y-4">
                     <div>
                     {{ x.description }}
                     </div>
@@ -75,11 +75,12 @@
                         negotiable
                      </div>
                     {% endif %}
-                        
-                    
-                    
                 </div>
+                <a href="#" class="bg-veryDarkGreen shadow font-semibold text-gray-100 border px-5 py-2 mx-5 my-5 rounded-md">
+                    Contact client
+                </a>
             </div>
+            
        </div>
        {% endfor %}
 
