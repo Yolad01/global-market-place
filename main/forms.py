@@ -164,5 +164,13 @@ class BriefForm(forms.ModelForm):
             "categories": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
             "budget": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
             "budget_flexible": forms.CheckboxInput(attrs={'class': 'border border-gray-700 mr-2 rounded-md'}),
-            "date": forms.DateTimeInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'})
+            "date": forms.SelectDateWidget(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'})
         }
+
+
+class BriefApplicationForm(forms.Form):
+    title = forms.CharField(max_length=100)
+    description = forms.Textarea()
+    categories = forms.CharField(max_length=100)
+    budget = forms.NumberInput()
+    budget_flexible = forms.CheckboxInput()
