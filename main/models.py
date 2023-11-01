@@ -325,3 +325,32 @@ class Brief(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+
+class SkillaReachoutToClient(models.Model):
+    user = models.ForeignKey(
+        Clients,
+        on_delete=models.CASCADE,
+        related_name="client_skilla_reachout_to_client"
+    )
+    skilla = models.ForeignKey(
+        Skillas,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name="skilla_skilla_reachout_to_client"
+    )
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    categories = models.ForeignKey(
+        JobCategory,
+        models.CASCADE
+    )
+    budget = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return f'{self.user.username} and {self.skilla.username}'

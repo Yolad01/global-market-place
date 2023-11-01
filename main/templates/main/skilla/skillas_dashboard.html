@@ -54,19 +54,16 @@
             <p>
                 <label for="id_title">Title:</label>
                 <input type="text" name="title" maxlength="100" required="" id="id_title" value="{{ x.title }}">
-                
             </p>
 
             <p>
                 <label for="id_description">Description:</label>
-                <textarea name="description" cols="20" rows="4" required="" id="id_description" value="{{ x.description }}"></textarea>
-                
+                <textarea name="description" cols="20" rows="4" required="" id="id_description">{{ x.description }}</textarea>
             </p>
 
             <p>
                 <label for="id_categories">Categories:</label>
                 <input type="text" name="categories" maxlength="100" required="" id="id_categories" value="{{ x.categories }}">
-                
             </p>
 
             <p>
@@ -82,55 +79,12 @@
             </p>
 
             <button type="submit" class="bg-veryDarkGreen shadow font-semibold text-gray-100 border px-5 py-2 mx-5 my- rounded-md"
-                    name="btn_pressed" value=""
+                    name="btn_pressed"
                 >
                     Contact client
                 </button>
         </form>
         {% endfor %}
-
-        {% comment %} {% for x in brief %}
-        <form method="POST" class="shadow mx-10 my-2 border bg-white w-3/4 item-center">
-            {% csrf_token %}
-            <div class="font-medium text-sm text-veryLightBlack p-5">
-                <div class="font-semibold">
-                    {{ x.user.username }}
-                </div>
-                <div>
-                    completion date: {{ x.date }}
-                </div>
-                <div class="text-xl">
-                    {{ x.title }}
-                </div>
-                <div class="bg-gray-50 p-2 mx-2 mt-2 mb-5 space-y-4">
-                    <div>
-                    {{ x.description }}
-                    </div>
-                    <div>
-                        {{ x.categories }}
-                    </div>
-                    <div>
-                    Budget: ₦{{ x.budget }}
-                    </div>
-                    
-                    {% if x.budget_flexible == True %}
-                    <div class="text-xs">
-                        negotiable
-                    </div>
-                    {% endif %}
-                    <div class="font-semibold">
-                        {{ user.username }}
-                    </div>
-                </div>
-                <button type="submit" class="bg-veryDarkGreen shadow font-semibold text-gray-100 border px-5 py-2 mx-5 my- rounded-md"
-                    name="btn_pressed" value="{{ user.username }}"
-                >
-                    Contact client
-                </button>
-            </div>
-                
-        </form>
-       {% endfor %} {% endcomment %}
 
        <div class="shadow-sm pb-10">
             <div class="ml-10 mt-10 p-20 bg-veryDarkGreen">

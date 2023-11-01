@@ -6,8 +6,9 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         BriefAppForm
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
-                         ClientProfile, CompanyProfile, ProfilePicture, Brief
-)
+                         ClientProfile, CompanyProfile, ProfilePicture, Brief,
+                         SkillaReachoutToClient
+                        )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -192,6 +193,7 @@ def client_dashboard(request):
 #### add @login_required decorator
 def skilla(request):
     brief = Brief.objects.all().order_by("-title")
+    reachout = SkillaReachoutToClient.objects.all()
     if request.method == "POST":
         form = BriefAppForm(request.POST)
         if form.is_valid():
@@ -201,7 +203,8 @@ def skilla(request):
             budget = form.cleaned_data["budget"]
             skilla = form.cleaned_data["skilla"]
 
-            print(description)
+    for r in reachout:
+        print(r.name)
 
     form = BriefAppForm()
     return render(
