@@ -168,9 +168,9 @@ class BriefForm(forms.ModelForm):
         }
 
 
-class BriefApplicationForm(forms.Form):
+class BriefAppForm(forms.Form):
     title = forms.CharField(max_length=100)
-    description = forms.Textarea()
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20}))
     categories = forms.CharField(max_length=100)
-    budget = forms.NumberInput()
-    budget_flexible = forms.CheckboxInput()
+    budget = forms.IntegerField()
+    skilla = forms.CharField(max_length=100)

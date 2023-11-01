@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
-                        TrainingAndCertificationForm, ProfilePictureForm, BriefForm
+                        TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
+                        BriefAppForm
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief
@@ -191,11 +192,24 @@ def client_dashboard(request):
 #### add @login_required decorator
 def skilla(request):
     brief = Brief.objects.all().order_by("-title")
+    if request.method == "POST":
+        form = BriefAppForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            description = form.cleaned_data["description"]
+            categories = form.cleaned_data["categories"]
+            budget = form.cleaned_data["budget"]
+            skilla = form.cleaned_data["skilla"]
+
+            print(description)
+
+    form = BriefAppForm()
     return render(
         request=request, template_name="main/skilla/skillas_dashboard.html",
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "brief": brief
+            "brief": brief,
+            "form": form
         }
     )
 
