@@ -330,12 +330,12 @@ class Brief(models.Model):
 
 class SkillaReachoutToClient(models.Model):
     user = models.ForeignKey(
-        Clients,
+        Skillas,
         on_delete=models.CASCADE,
         related_name="client_skilla_reachout_to_client"
     )
-    skilla = models.ForeignKey(
-        Skillas,
+    client = models.ForeignKey(
+        Clients,
         on_delete=models.CASCADE,
         blank=True,
         null=True,
@@ -353,4 +353,4 @@ class SkillaReachoutToClient(models.Model):
     )
 
     def __str__(self):
-        return f'{self.user.username} and {self.skilla.username}'
+        return f'{self.user.username} and {self.client}'

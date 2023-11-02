@@ -115,7 +115,7 @@ class BriefAdmin(admin.ModelAdmin):
 class SkillaReachoutToClientAdmin(admin.ModelAdmin):
      list_display = [
            "user",
-           "skilla",
+           "client",
            "title",
            "description",
            "categories",

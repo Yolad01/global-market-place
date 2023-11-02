@@ -5,9 +5,9 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         BriefAppForm
                         )
-from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
+from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient
+                         SkillaReachoutToClient, Clients
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -193,18 +193,32 @@ def client_dashboard(request):
 #### add @login_required decorator
 def skilla(request):
     brief = Brief.objects.all().order_by("-title")
-    reachout = SkillaReachoutToClient.objects.all()
     if request.method == "POST":
         form = BriefAppForm(request.POST)
         if form.is_valid():
+            client = form.cleaned_data["client"]
             title = form.cleaned_data["title"]
             description = form.cleaned_data["description"]
             categories = form.cleaned_data["categories"]
             budget = form.cleaned_data["budget"]
-            skilla = form.cleaned_data["skilla"]
+            client = form.cleaned_data["client"]
 
-    for r in reachout:
-        print(r.name)
+            get_categories = JobCategory.objects.get(title=categories)
+            get_client = Clients.objects.get(username=client)
+
+            print(client)
+
+            user = request.user
+
+            reachout = SkillaReachoutToClient(
+                user=user,
+                title=title,
+                description=description,
+                categories=get_categories,
+                budget=budget,
+                client=get_client
+            )
+            reachout.save()
 
     form = BriefAppForm()
     return render(
