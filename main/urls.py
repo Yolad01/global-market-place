@@ -24,6 +24,7 @@ urlpatterns = [
     
     path("client_dashboard/", views.client_dashboard, name="client_dashboard"),
     path("client_brief/", views.client_brief, name="client_brief"),
+    path("applications/", views.applications, name="applications"),
 
     path("skillas_dashboard/", views.skilla, name="skillas_dashboard"),
     

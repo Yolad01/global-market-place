@@ -188,6 +188,14 @@ def client_dashboard(request):
                 "client_profile_info": ClientProfile.objects.all().filter(user=request.user)
             }
         )
+
+
+
+def applications(request):
+    return render(
+        request=request,
+        template_name="main/client/application.html"
+    )
     
 
 #### add @login_required decorator
