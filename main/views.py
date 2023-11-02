@@ -219,6 +219,7 @@ def skilla(request):
                 client=get_client
             )
             reachout.save()
+        return redirect("main:skillas_dashboard")
 
     form = BriefAppForm()
     return render(
