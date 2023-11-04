@@ -53,7 +53,7 @@
             {% csrf_token %}
             <p>
                 <label for="id_client">Client:</label>
-                <input type="text" name="client" maxlength="100" required="" id="id_client" value="{{ x.user.username }}">
+                <input type="text" name="client" maxlength="100" required="" id="id_client" value="{{ x.user.username }}" readonly>
             </p>
 
             <p>
@@ -76,12 +76,6 @@
                 <input type="number" name="budget" required="" id="id_budget" value="{{ x.budget }}">
                 
             </p>
-
-            {% comment %} <p>
-                <label for="id_skilla">Skilla:</label>
-                <input type="text" name="skilla" maxlength="100" required="" id="id_skilla" value="{{ user.username }}">
-                
-            </p> {% endcomment %}
 
             <button type="submit" class="bg-veryDarkGreen shadow font-semibold text-gray-100 border px-5 py-2 mx-5 my- rounded-md"
                     name="btn_pressed"
