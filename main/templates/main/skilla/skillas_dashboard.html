@@ -53,7 +53,7 @@
             {% csrf_token %}
             <p>
                 <label for="id_client">Client:</label>
-                <input type="text" name="client" maxlength="100" required="" id="id_client" value="{{ x.user.username }}" readonly>
+                <input type="text" name="client" maxlength="100" required="" id="id_client" value="{{ x.user.username }}">
             </p>
 
             <p>
