@@ -60,7 +60,7 @@
       >
         {% csrf_token %}
         <div class="flex mx-5 items-center">
-          <p class="text-green-500">
+          <p class="text-green-700">
             <input
               type="text"
               name="client"
@@ -94,7 +94,7 @@
                 rows="4"
                 required=""
                 id="id_description"
-                class="pt-2 mt-2 mx-5 px-5 resize-none font-medium text-sm border-0 bg-lightAsh rounded-lg outline-none"
+                class="pt-2 mt-2 mx-5 px-5 resize-none text-gray-700 font-medium text-sm border-0 bg-lightAsh rounded-lg outline-none"
                 readonly
               >{{ x.description }}
               </textarea
@@ -103,7 +103,7 @@
           </div>
         </div>
 
-        <div class="flex justify-center">
+        <div class="flex pl-28">
           <p>
             <input
               type="text"
@@ -112,7 +112,7 @@
               required=""
               id="id_categories"
               value="{{ x.categories }}"
-              class="text-gray-100 ml-5 mt-5 font-medium border-0 outline-none bg-green-600 px-5 rounded-lg justify-center"
+              class="text-gray-100 ml-5 mt-5 font-medium border-0 outline-none bg-green-400 px-5 rounded-md justify-center"
               readonly
             />
           </p>
@@ -124,8 +124,7 @@
               required=""
               id="id_budget"
               value="{{ x.budget }}"
-              class="text-gray-100 ml-5 mt-5 font-medium border-0 outline-none bg-green-600 px-5 rounded-lg"
-              readonly"
+              class="text-gray-100 ml-5 mt-5 font-medium border-0 outline-none bg-green-400 px-5 rounded-md"
               readonly
             />
           </p>
@@ -137,7 +136,7 @@
             class="bg-veryDarkGreen shadow font-normal text-white border px-5 py-2 rounded-md"
             name="btn_pressed"
           >
-            Contact client
+            Request
           </button>
         </div>
       </form>
