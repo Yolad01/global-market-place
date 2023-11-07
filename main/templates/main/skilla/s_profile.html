@@ -3,6 +3,13 @@
 <div class="relative flex ml-10 font-primary">
   <!-- Body -->
   <div class="">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="bg-green-700 text-white py-10">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
     <div>
       <div class="p-10">
         <h3 class="font-primary font-normal text-2xl">Profile</h3>
