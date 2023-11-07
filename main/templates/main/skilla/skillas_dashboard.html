@@ -1,12 +1,9 @@
-{% extends 'layout/dash_nav.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
 <div class="bg-gray-50">
-    <div>
-        <div class="p-10">
-        <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
+  <div>
+    <div class="p-10">
+      <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
     </div>
 
     {% if messages %}
@@ -18,90 +15,138 @@
     {% endif %}
 
     <div class="mr-10 mb-20 ml-10">
-        <div class="grid grid-cols-4 gap-5">
-            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
-                <a href="#"><img src="{% static '/img/Group 306.png' %}" alt=""></a>
-                <div>
-                    <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Incoming Transactions</h3>
-                    <h3 class="ml-5 text-veryDarkGreen text-lg font-bold ">50</h3>
-                </div>
-            </div>
-
-            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
-                <a href="#"><img src="{% static '/img/Group 307.png' %}" alt=""></a>
-                <div>
-                    <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Messages</h3>
-                    <h3 class="ml-5 text-veryDarkGreen text-lg font-bold ">12</h3>
-                </div>
-            </div>
-
-            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
-                <a href="#"><img src="{% static '/img/Group 308.png' %}" alt=""></a>
-                <div>
-                    <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Wallet</h3>
-                    <h3 class="ml-5 text-veryDarkGreen text-lg font-bold ">#300,000</h3>
-                </div>
-            </div>
-
-            <div class="flex border-0 shadow rounded-sm p-5 bg-white">
-                <a href="#"><img src="{% static '/img/Group 309.png' %}" alt=""></a>
-                <div>
-                    <h3 class="ml-5 text-veryDarkGreen text-sm font-bold ">Pending</h3>
-                    <h3 class="ml-5 text-veryDarkGreen text-lg font-bold ">5</h3>
-                </div>
-            </div>
+      <div class="grid grid-cols-4 gap-10">
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white">
+          <a href="#"><img src="{% static '/img/Group 306.png' %}" alt="" /></a>
+          <div>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">
+              Incoming Transactions
+            </h3>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">50</h3>
+          </div>
         </div>
+
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white">
+          <a href="#"><img src="{% static '/img/Group 307.png' %}" alt="" /></a>
+          <div>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">Messages</h3>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">12</h3>
+          </div>
+        </div>
+
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white">
+          <a href="#"><img src="{% static '/img/Group 308.png' %}" alt="" /></a>
+          <div>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">Wallet</h3>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">#300,000</h3>
+          </div>
+        </div>
+
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white mr-10">
+          <a href="#"><img src="{% static '/img/Group 309.png' %}" alt="" /></a>
+          <div>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">Pending</h3>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">5</h3>
+          </div>
+        </div>
+      </div>
     </div>
 
-    
-    <div class=" mr-10 border-0 shadow-sm rounded-md font-primary p-1">
+    <div class="mr-10 border-0 shadow-sm rounded-md font-primary p-1">
+      {% for x in brief %}
+      <form
+        method="POST"
+        class="shadow px-10 py-5 mx-auto my-5 border bg-white w-3/4 item-center rounded-2xl font-primary"
+      >
+        {% csrf_token %}
+        <div class="flex ml-20 mt-10">
+          <p>
+            <input
+              type="text"
+              name="client"
+              maxlength="100"
+              required=""
+              id="id_client"
+              value="{{ x.user.username }}"
+              class="text-base font-bold border-0 outline-none"
+              readonly
+            />
+          </p>
 
-        {% for x in brief %}
-        <form method="POST" class="shadow px-10 py-5 mx-10 my-5 border bg-white w-3/4 item-center rounded-2xl">
-            {% csrf_token %}
-            <p>
-                <label for="id_client">Client:</label>
-                <input type="text" name="client" maxlength="100" required="" id="id_client" value="{{ x.user.username }}">
-            </p>
+          <p>
+            <input
+              type="text"
+              name="title"
+              maxlength="100"
+              required=""
+              id="id_title"
+              value="{{ x.title }}"
+              class="-ml-40 text-base font-bold border-0 outline-none"
+              readonly
+            />
+          </p>
+        </div>
 
-            <p>
-                <label for="id_title">Title:</label>
-                <input type="text" name="title" maxlength="100" required="" id="id_title" value="{{ x.title }}">
-            </p>
+        <p>
+          <textarea
+            name="description"
+            cols="20"
+            rows="4"
+            required=""
+            id="id_description"
+            class="text-base pt-5 mt-5 ml-20 pr-96 resize-none bg-lightAsh font-medium border-0 rounded-lg outline-none"
+            readonly
+          >
+      {{ x.description }}</textarea
+          >
+        </p>
 
-            <p>
-                <label for="id_description">Description:</label>
-                <textarea name="description" cols="20" rows="4" required="" id="id_description">{{ x.description }}</textarea>
-            </p>
+        <p>
+          <input
+            type="text"
+            name="categories"
+            maxlength="100"
+            required=""
+            id="id_categories"
+            value="{{ x.categories }}"
+            class="text-base ml-20 mt-5 font-medium border-0 outline-none"
+            readonly
+          />
+        </p>
 
-            <p>
-                <label for="id_categories">Categories:</label>
-                <input type="text" name="categories" maxlength="100" required="" id="id_categories" value="{{ x.categories }}">
-            </p>
+        <p>
+          <input
+            type="number"
+            name="budget"
+            required=""
+            id="id_budget"
+            value="{{ x.budget }}"
+            class="text-base ml-20 mt-5 font-medium border-0 outline-none"
+            readonly
+          />
+        </p>
 
-            <p>
-                <label for="id_budget">Budget:</label>
-                <input type="number" name="budget" required="" id="id_budget" value="{{ x.budget }}">
-                
-            </p>
+        <div class="float-right -mt-44">
+          <button
+            type="submit"
+            class="bg-veryDarkGreen shadow font-semibold text-white border px-5 py-2 mx-5 rounded-md"
+            name="btn_pressed"
+          >
+            Contact client
+          </button>
+        </div>
+      </form>
+      {% endfor %}
 
-            <button type="submit" class="bg-veryDarkGreen shadow font-semibold text-gray-100 border px-5 py-2 mx-5 my- rounded-md"
-                    name="btn_pressed"
-                >
-                    Contact client
-                </button>
-        </form>
-        {% endfor %}
-
-       <div class="shadow-sm pb-10">
-            <div class="ml-10 mt-10 p-20 bg-veryDarkGreen">
-                <h2 class="font-primary font-medium text-white text-2xl  text-center">ADS</h2>
-            </div>
-       </div>
+      <div class="shadow-sm pb-10 mx-auto w-3/4">
+        <div class="mt-20 p-20 bg-veryDarkGreen rounded-2xl">
+          <h2 class="font-primary font-medium text-white text-2xl text-center">
+            ADS
+          </h2>
+        </div>
+      </div>
     </div>
-    </div>
-    
+  </div>
 </div>
 
-    
 {% endblock %}

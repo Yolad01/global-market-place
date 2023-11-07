@@ -30,54 +30,54 @@
     </head>
 
     <body>
-        <div class="relative min-h-screen flex ml-10 font-primary">
+        <div class="relative min-h-screen flex ml-16 font-primary">
     
             <!-- Side bar -->
     
             <div class="w-72">
-                <div class=" w-64 mt-20 border border-gray-900 rounded-md">
+                <div class="w-64 mt-44 rounded-md">
                     <div class="flex p-2 mt-4">
                         <a href="/skillas_dashboard"><img class="h-8 w-8" src="{% static '/img/Dash-Vector.png' %}" alt=""></a>
-                        <a href="/skillas_dashboard" class="text-veryLightBlack font-extrabold text-xl ml-5">Dashboard</a>
+                        <a href="/skillas_dashboard" class="text-veryLightBlack font-extrabold text-4xl ml-5">Dashboard</a>
                     </div>
     
-                    <div class="flex p-2">
+                    <div class="flex p-2 mt-5">
                         <a href="/s_profile"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-1.png' %}" alt=""></a>
-                        <a href="/s_profile" class="text-veryLightBlack font-extrabold text-xl ml-5">Profile</a>
+                        <a href="/s_profile" class="text-veryLightBlack font-extrabold text-4xl ml-5">Profile</a>
                     </div>
     
-                    <div class="flex p-2">
+                    <div class="flex p-2 mt-5">
                         <a href="\wallet"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-2.png' %}" alt=""></a>
-                        <a href="\wallet" class="text-veryLightBlack font-extrabold text-xl ml-5">Wallet</a>
+                        <a href="\wallet" class="text-veryLightBlack font-extrabold text-4xl ml-5">Wallet</a>
                     </div>
     
-                    <div class="flex p-2">
+                    <div class="flex p-2 mt-5">
                         <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 22.png' %}" alt=""></a>
-                        <a href="#" class="text-veryLightBlack font-extrabold text-xl ml-5">Messages</a>
+                        <a href="#" class="text-veryLightBlack font-extrabold text-4xl ml-5">Messages</a>
                     </div>
     
-                    <div class="flex p-2">
+                    <div class="flex p-2 mt-5">
                         <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-3.png' %}" alt=""></a>
-                        <a href="#" class="text-veryLightBlack font-extrabold text-xl ml-5">History</a>
+                        <a href="#" class="text-veryLightBlack font-extrabold text-4xl ml-5">History</a>
                     </div>
     
-                    <div class="flex p-2">
+                    <div class="flex p-2 mt-5">
                         <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-4.png' %}" alt=""></a>
-                        <a href="#" class="text-veryLightBlack font-extrabold text-xl ml-5">Portfolio</a>
+                        <a href="#" class="text-veryLightBlack font-extrabold text-4xl ml-5">Portfolio</a>
                     </div>
     
-                    <div class="flex p-2">
+                    <div class="flex p-2 mt-5">
                         <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-5.png' %}" alt=""></a>
-                        <a href="#" class="text-veryLightBlack font-extrabold text-xl ml-5">Support</a>
+                        <a href="#" class="text-veryLightBlack font-extrabold text-4xl ml-5">Support</a>
                     </div>
     
                     {% comment %} <div class="mb-4">
                         <a href="#" class="text-veryLightBlack font-extrabold text-xl ml-4 mr-4">Terms & Condition</a>
                     </div> {% endcomment %}
 
-                    <div class="mb-4 flex p-2">
+                    <div class="mb-4 flex p-2 mt-5">
                         <a href="/logout"><img class="h-8 w-8" src="{% static '/img/icons8-logout-50.png' %}" alt=""></a>
-                        <a href="/logout" class="text-veryLightBlack font-extrabold text-xl ml-4 mr-4">Logout</a>
+                        <a href="/logout" class="text-veryLightBlack font-extrabold text-4xl ml-4 mr-4">Logout</a>
                     </div>
                 </div>
             </div>
@@ -85,16 +85,16 @@
 
 
             <!--Over head nav goes here-->
-            <div class="w-full ml-10 shadow-sm">
+            <div class="w-full ml-20 border-2">
                 <div class="flex-1 font-primary">
-                     <div class="shadow-sm pb-5">
-                        <div class=" flex mt-5 justify-between">
+                     <div class="border-b-4 pb-5 py-5">
+                        <div class="flex mt-5 justify-between">
                             <div class="flex">
-                                <input type="search" name="search" id="search" class="rounded shadow px-80 border-0 text-xs  ml-10 pl-10 py-2 " placeholder="Search here">
+                                <input type="search" name="search" id="search" class="rounded border-2 px-80 text-base  ml-10 pl-10 py-2 " placeholder="Search here">
                                 <a href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></a>
                             </div>
     
-                            <div class=" ml-20 flex items-center">
+                            <div class="mr-28 flex items-center">
                                 {% for x in profile_pic %}
                                 <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
                                 {% endfor %}

@@ -50,7 +50,7 @@
             maxlength="150"
             required
             id="id_username"
-            class="mt-5 border border-gray-400 rounded py-3 pr-64 focus:outline-none focus:shadow-outline"
+            class="mt-5 border border-gray-400 rounded py-3 pr-56 focus:outline-none focus:shadow-outline"
           />
         </div>
 
@@ -58,14 +58,22 @@
           <label class="block text-veryDarkGreen text-base" for="id_password"
             >Password:</label
           >
-          <input
+          <div class="flex"> 
+            <input
             type="password"
             name="password"
             autocomplete="current-password"
             required
             id="id_password"
-            class="mt-5 border border-gray-400 rounded py-3 pr-64 focus:outline-none focus:shadow-outline"
+            class="mt-5 border border-gray-400 rounded py-3 pr-56 focus:outline-none focus:shadow-outline"
           />
+
+          <img
+            src="{% static '/img/password_eye.svg' %}"
+            alt="reveal password"
+            class="-ml-12 mt-5"
+          />
+          </div>
         </div>
 
         <div class="flex mt-10 ml-60 mb-10">
@@ -73,7 +81,7 @@
 
           <button
             type="submit"
-            class="bg-veryDarkGreen hover:bg-gray-500 text-white font-normal py-1 ml-48 px-5 rounded-md focus:outline-none focus:shadow-outline"
+            class="bg-veryDarkGreen hover:bg-gray-500 text-white font-normal py-1 ml-44 px-5 rounded-md focus:outline-none focus:shadow-outline"
             type="button"
           >
             Sign in
