@@ -10,8 +10,8 @@ from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCat
                          SkillaReachoutToClient, Clients
                         )
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 # Create your views here.
@@ -36,12 +36,19 @@ def register(request):
             login(request, user)
             if user.role == "CLIENT":
                 ClientProfile.objects.create(user_id=request.user.id)
+                messages.success(request, f"Logged in as {username}")
                 return redirect("main:client_profile")
             elif user.role == "SKILLAS":
                 SkillaProfile.objects.create(user_id=request.user.id)
+                messages.success(request, f"Logged in as {username}")
                 return redirect("main:skilla_profile")
             elif user.role == "COMPANY":
+                messages.success(request, f"Logged in as {username}")
                 return redirect("main:company_profile")
+        else:
+            messages.error(request, "Passwords isn't complex enough.")
+            return redirect("main:register")
+            
     else:
         registration_form = RegistrationForm()
     return render(request=request, template_name="main/register.html",
@@ -146,12 +153,16 @@ def sign_in(request):
             user = authenticate(username=username, password=password)
             if user != None:
                 login(request, user)
-                if user.role == "CLIENT":  
+                if user.role == "CLIENT": 
+                    messages.success(request, f"Logged in as {username}") 
                     return redirect("main:client_dashboard")
                 elif user.role == "SKILLAS":
+                    messages.success(request, f"Logged in as {username}")
                     return redirect("main:skillas_dashboard")
-            else:
-                messages.error(request, "Wrong login credentials. Please enter a correct credential to access your dashboard")
+        else:
+            messages.error(request, "Wrong login credentials. Please enter a correct credential to access your dashboard")
+            return redirect("main:sign_in")
+
             
     return render(request=request, template_name="main/sign_in.html",
                     context={"form": form})
@@ -271,16 +282,19 @@ def s_profile(request):
         
         if about_form.is_valid():
             about_form.save()
+            messages.success(request, "Updated successfully")
+            return redirect("main:s_profile")
 
         if skilla_pp_form.is_valid():
             skilla_pp_form.save() ## skilla__pp == skilla profile picture
+            messages.success(request, "Profile Picture updated successfully")
             return redirect("main:s_profile")
 
         if cert_form.is_valid():
             cert_instance = cert_form.save(commit=False)
             cert_instance.user = request.user
             cert_instance.save()
-
+            messages.success(request, "Info saved successfully")
             return redirect("main:s_profile")
     
 

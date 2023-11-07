@@ -1,6 +1,7 @@
 {% extends 'layout/nav.html' %} 
 {% load static %}
 
+
 <link href="{% static '/css/style.min.css' %}" rel="stylesheet" />
 <link href="{% static '/css/style.css' %}" rel="stylesheet" />
 <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
@@ -9,13 +10,27 @@
 
 {% block content %}
 <body>
+
 <div class="font-primary container mx-auto mb-20">
   <div class="mt-40 ml-72 mr-72 ">
     <div class="border-2 items-center justify-center">
+
       <div class="flex mt-20">
         <div class="text-2xl font-semibold ml-60">Welcome back!</div>
         <div class="text-2xl font-bold text-veryDarkGreen px-20">Sign in</div>
       </div>
+
+      <!--Toast messages-->
+      {% if messages %}
+      {% for message in messages %}
+        <div class="max-w-xs bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
+          <div class="flex p-4">
+            {{ message }}
+          </div>
+        </div>
+      {% endfor %}
+      {% endif %}
+      <!--end Toast messages-->
 
       <form method="POST">
         {% csrf_token %}
@@ -66,6 +81,8 @@
         </div>
       </form>
 
+      
+
       <div class="mb-10 ml-60 mr-64">
         <hr class="border border-black mr-5" />
 
@@ -82,6 +99,7 @@
 
     </div>
   </div>
+</div>
 
   <script>
     function myFunction() {

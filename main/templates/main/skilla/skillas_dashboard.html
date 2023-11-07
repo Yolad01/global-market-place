@@ -9,6 +9,14 @@
         <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
     </div>
 
+    {% if messages %}
+      {% for message in messages %}
+        <div class="bg-red text-white py-10">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="mr-10 mb-20 ml-10">
         <div class="grid grid-cols-4 gap-5">
             <div class="flex border-0 shadow rounded-sm p-5 bg-white">
