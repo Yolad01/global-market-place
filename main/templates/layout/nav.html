@@ -44,18 +44,18 @@
           />
         </div>
         <!-- Menu Items -->
-        <div class="mt-5 pr-36 items-center justify-center w-full">
-          <div class="flex gap-10 font-primary font-bold text-sm">
+        <div class="mt-5 pr-36 items-center justify-center w-full font-primary">
+          <div class="flex gap-16 font-bold text-base">
             <a href="#" class="-ml-20">About Us</a>
             <a href="#">Service</a>
             <a href="#">Contact</a>
-            <a href="/sign_in">Customer</a>
+            <a href="/sign_in">Sign in</a>
             <a href="#">T&C</a>
 
             {% if not user.is_authenticated %}
             <a
               href="/register"
-              class="rounded bg-veryDarkGreen text-white p-4 -mt-3"
+              class="rounded bg-veryDarkGreen text-white p-4 px-10 -mt-3"
               >Use Web App</a
             >
 
@@ -84,9 +84,8 @@
       <div class="bg-veryDarkGreen p-10">
         <div class="flex items-center justify-center">
           <img
-            src="{% static '/img/white-03.svg' %}"
+            src="{% static '/img/Group 213.svg' %}"
             alt="skillas-white-logo "
-            class="w-1/2"
           />
         </div>
 

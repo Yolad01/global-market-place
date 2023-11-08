@@ -2,46 +2,55 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{ user.username }} brief</title>
-        <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
-            <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
-            <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
-            <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
-            <script src="{% static '/js/init-alpine.js' %}"></script>
-            <script src="{% static '/js/main.js' %}"></script>
-            <script src="{% static '/js/wow.min.js' %}"></script>
-            <script>
-                new WOW().init();
-            </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ user.username }} brief</title>
+    <link href="{% static '/css/style.min.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/main.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+    <script src="{% static '/js/init-alpine.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+      new WOW().init();
+    </script>
 
-            <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    
-            
-    
-        <script src="{% static '/js/wow.min.js' %}"></script>
-        <script>
-            new WOW().init();
-        </script>
-    </head>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
 
   <body>
     <header>
-      <nav class="w-full">
-        <div class="flex p-5 shadow-md border items-center justify-center">
+      <nav class="w-full p-10 shadow-md border items-center justify-center">
+        <div class="translate-x-80 ml-56">
           <div class="flex">
-            <img src="{% static '/img/group_340.png' %}" alt="icon for page 1" />
+            <img
+              src="{% static '/img/group_340.png' %}"
+              alt="icon for page 1"
+            />
             <h6
-              class="text-shadeAsh_9 font-primary font-extrabold text-base ml-2 mt-1"
+              class="text-shade_black font-primary font-extrabold text-base ml-2 mt-1"
             >
               Share brief description
             </h6>
           </div>
 
+          {% comment %}
           <div class="flex ml-3">
-            <img src="{% static '/img/right_arrow.png' %}" alt="right arrow" class="" />
+            <img
+              src="{% static '/img/right_arrow.png' %}"
+              alt="right arrow"
+              class=""
+            />
             <img
               src="{% static '/img/group_80.png' %}"
               alt="shadow icon for page 2"
@@ -53,13 +62,11 @@
               Add timeline and budget
             </h6>
           </div>
+          {% endcomment %}
         </div>
       </nav>
     </header>
 
-    
-    {% block content %}
-    {% endblock %}
-    
+    {% block content %} {% endblock %}
   </body>
 </html>
