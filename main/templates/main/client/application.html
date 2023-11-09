@@ -1,6 +1,60 @@
 {% extends 'layout/client_nav.html' %}
 {% load static %}
 
+
+
 {% block content %}
 
+    <div class="flex justify-center">
+        <div class="justify-between m-10">
+            <div>
+                Message
+            </div>
+            <div>
+                Skillas
+            </div>
+        </div>
+        
+        <div class="bg-gray-100 m-10 p-2 rounded-md shadow">
+
+            {% for x in skilla_client %}
+            <div class="flex bg-white m-5 p-2 rounded-lg shadow justify-between">
+
+                <div class="p-2 border-green-700 border-2 rounded-full">
+                    <img src="{% static '/img/hand-shake.png' %}" width="100" height="100">
+                </div>
+
+                <div class="px-4 py-2 my-2 mx-2">
+                    <div class="text-green-700 font-semibold">
+                        {{ x.title }}
+                    </div>
+
+                    <div>
+                        <span class="text-green-700 font-bold">{{ x.user }}</span> is requesting for the job
+                    </div>
+
+                    <div class="font-semibold">
+                        Category: {{ x.categories }}
+                    </div>
+
+                    <div class="font-semibold">
+                        NGN <span class="text-green-700">{{ x.budget }}</span>
+                    </div>
+                </div>
+
+                <div class="border-2 border-green-700 rounded-lg">
+                    <p class="bg-green-700 text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2">
+                        send message
+                    </p>
+                    <a href="#" class="text-green-700 my-2 p-2 text-sm ml-4 font-semibold">
+                        View profile
+                    </a>
+                </div>
+                    
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+  
 {% endblock %}

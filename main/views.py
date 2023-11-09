@@ -203,9 +203,13 @@ def client_dashboard(request):
 
 
 def applications(request):
+    skilla_client = SkillaReachoutToClient.objects.all().filter(client=request.user)
     return render(
         request=request,
-        template_name="main/client/application.html"
+        template_name="main/client/application.html",
+        context={
+            "skilla_client": skilla_client
+        }
     )
     
 
