@@ -5,17 +5,20 @@
 
 {% block content %}
 
-    <div class="flex justify-center">
-        <div class="justify-between m-10">
-            <div>
+    <div class="flex justify-center bg-gray-50">
+        <div class="m-10 bg-white text-green-700 font-semibold p-20 border border-green-700 shadow-lg">
+            <ul class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md">
                 Message
-            </div>
-            <div>
+            </ul>
+            <ul class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md">
                 Skillas
-            </div>
+            </ul>
+            <ul class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md">
+                Payments
+            </ul>
         </div>
         
-        <div class="bg-gray-100 m-10 p-2 rounded-md shadow">
+        <div class="bg-gray-50 m-10 p-2 rounded-md shadow">
 
             {% for x in skilla_client %}
             <div class="flex bg-white m-5 p-2 rounded-lg shadow justify-between">
