@@ -26,6 +26,8 @@ urlpatterns = [
     path("client_brief/", views.client_brief, name="client_brief"),
     path("applications/", views.applications, name="applications"),
 
+    path("view_skilla_profile/<str:user>/", views.profile_view, name="profile_view"),
+
     path("skillas_dashboard/", views.skilla, name="skillas_dashboard"),
     
     path("s_profile/", views.s_profile, name="s_profile"),

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
@@ -199,18 +199,6 @@ def client_dashboard(request):
                 "client_profile_info": ClientProfile.objects.all().filter(user=request.user)
             }
         )
-
-
-
-def applications(request):
-    skilla_client = SkillaReachoutToClient.objects.all().filter(client=request.user)
-    return render(
-        request=request,
-        template_name="main/client/application.html",
-        context={
-            "skilla_client": skilla_client
-        }
-    )
     
 
 #### add @login_required decorator
@@ -384,3 +372,36 @@ def client_brief(request):
         }
     )
     
+    
+    
+
+def applications(request):
+    skilla_client = SkillaReachoutToClient.objects.all().filter(client=request.user)
+    
+    return render(
+        request=request,
+        template_name="main/client/application.html",
+        context={
+            "skilla_client": skilla_client
+        }
+    )
+
+
+
+def profile_view(request, user):
+    view_profile = SkillaProfile.objects.filter(
+        user__username=user
+        ).first()
+    view_profile_picture = ProfilePicture.objects.filter(user__username=user).first()
+    # view_profile = get_object_or_404(SkillaProfile, id=user_id)
+    print(view_profile)
+    print(view_profile_picture.image)
+    
+    return render(
+        request=request,
+        template_name="main/client/view_skilla_profile.html",
+        context={
+            "view_profile": view_profile,
+            "view_profile_picture": view_profile_picture
+        }
+    )
