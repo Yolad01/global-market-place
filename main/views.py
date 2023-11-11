@@ -84,7 +84,6 @@ def skilla_profile(request):
         }
     )
         
-        
     
 def client_profile(request):
     try:
@@ -388,20 +387,24 @@ def applications(request):
 
 
 
-def profile_view(request, user):
-    view_profile = SkillaProfile.objects.filter(
+def profile_view(request, user): #Use the id for the querries or make the username foreig nkey or unique
+    view_profile = SkillaProfile.objects.get(
         user__username=user
-        ).first()
-    view_profile_picture = ProfilePicture.objects.filter(user__username=user).first()
+        )
+    view_profile_picture = ProfilePicture.objects.get(user__username=user)
+    view_about_skilla = AboutSkilla.objects.get(user__username=user)
+    view_T_and_cert = TrainingAndCertification.objects.filter(user__username=user)
     # view_profile = get_object_or_404(SkillaProfile, id=user_id)
-    print(view_profile)
-    print(view_profile_picture.image)
+    # print(view_profile)
+    # print(view_profile_picture.image)
     
     return render(
         request=request,
         template_name="main/client/view_skilla_profile.html",
         context={
             "view_profile": view_profile,
-            "view_profile_picture": view_profile_picture
+            "view_profile_picture": view_profile_picture,
+            "view_about_skilla": view_about_skilla,
+            "view_T_and_cert": view_T_and_cert
         }
     )

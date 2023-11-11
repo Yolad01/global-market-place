@@ -1,4 +1,8 @@
-{% extends 'layout/client_nav.html' %} {% load static %} {% block content %}
+{% extends 'layout/client_nav.html' %}
+
+{% load static %}
+
+{% block content %}
 
 <main>
   <div class="ml-48 mr-44">
@@ -9,7 +13,8 @@
           name=""
           id=""
           placeholder="What skill/service are looking for?"
-          class="w-1/2 font-normal text-base border border-black py-2 px-5"
+          class="w-1/2 font-normal text-base border border-black py-2 px-5 wow fadeInLeft"
+          data-wow-duration="2s"
         />
         <a href="#"
           ><img
@@ -19,14 +24,14 @@
         /></a>
         <a
           href="/client_brief"
-          class="text-veryDarkGreen bg-veryLightGreen text-base font-bold py-3 px-8 rounded-md ml-40"
+          class="text-veryDarkGreen bg-veryLightGreen text-base font-bold py-3 px-8 rounded-md ml-40 animate-pulse"
           >Create a brief</a
         >
         <a href="#"
           ><img
             src="{% static '/img/Vector-message.png' %}"
             alt=""
-            class="ml-10 mt-3"
+            class="ml-10 mt-3 animate-bounce"
         /></a>
 
         <a href="#"

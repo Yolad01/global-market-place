@@ -7,9 +7,107 @@
 
 
 
-    {{ view_profile.certifications }}
+    {% comment %} {{ view_profile.certifications }} {% endcomment %}
 
-    <img src="{{ view_profile_picture.image.url }}">
+    <div class="relative flex mx-80 font-primary justify-center">
+        <!-- Body -->
+        <div class="">
+          <div>
+            <div class="p-10">
+              <h3 class="font-primary font-normal text-2xl">{{ view_profile }}'s Profile</h3>
+            </div>
+      
+            <div class="flex">
+                <div class="m-5 ">
+                    <img
+                    src="{{ view_profile_picture.image.url }}"
+                    class="h-50 w-96"
+                    alt=""
+                    />
+                </div>
+      
+                <div class="border m-5 mb-10 rounded-md justify-between shadow-md bg-white">
+                    <div class="font-primary">
+
+                        <div
+                            class="font-extrabold text-veryDarkGreen text-3xl p-5 m-5"
+                        >
+                            {{view_profile.user.first_name}} {{view_profile.user.last_name}}
+                        </div>
+            
+                        <h6 class="font-extrabold text-sm text-veryDarkGreen ml-12">
+                            About {{view_profile}}
+                        </h6>
+                        <div class="ml-12 mt-2 text-sm pr-12">
+                                {{ view_about_skilla.about }}
+                        </div>
+            
+                        <div class="ml-2 mt-2 mb-5 mr-24 rounded-sm">
+                            <div class="ml-10">
+                            <h6 class="font-medium text-sm mt-5">Expertise</h6>
+                            <h4>{{view_profile.certifications}}</h4>
+            
+                            <h6 class="font-medium text-sm mt-5">Phone Number</h6>
+                            <h4>{{view_profile.phone_no}}</h4>
+            
+                            <h6 class="font-medium text-sm mt-5">Email</h6>
+                            <h4>{{view_profile.email}}</h4>
+            
+                            <h6 class="font-medium text-sm mt-5">Location</h6>
+                            <h4>{{view_profile.current_location}}</h4>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+      
+                <hr class="ml-10 border border-veryLightAsh mt-2"/>
+
+                <div class="border my-4 py-4 shadow-md bg-white">
+                    <table class="w-2/3 mt-5 text-left ml-32 py-5">
+
+                        <h6 class="font-bold text-green-700 mt-5 ml-32">Training & Certification</h6>
+
+                        <tr>
+                            <th class="py-2">Courses</th>
+                
+                            <th class="py-2">skills</th>
+                
+                            <th class="py-2">Grade</th>
+                
+                            <th class="py-2">Assessed</th>
+                        </tr>
+            
+                        {% for x in view_T_and_cert %}
+                        <tr class="border-2 pr-5">
+                            <td>{{ x.cert_earned }}</td>
+                
+                            <td>{{ x.skill_learned }}</td>
+                
+                            <td>{{ x.grade }}</td>
+                            <td class="mr-5">
+                                <img src="{% static '/img/Vector (14).png' %}"/>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                    <div class="mt-5 ml-32">
+                        <div class="flex">
+                        <h6 class="font-extrabold text-base">Work Experience</h6>
+                        </div>
+            
+                        <div class="font-primary font-normal text-sm pb-16">
+                            {{ view_about_skilla.work_experience }}
+                        </div>
+                    </div>
+                </div>
+      
+                
+            </div>
+          </div>
+        </div>
+      </div>
 
     
 
