@@ -5,10 +5,6 @@
 
 {% block content %}
 
-
-
-    {% comment %} {{ view_profile.certifications }} {% endcomment %}
-
     <div class="relative flex mx-80 font-primary justify-center">
         <!-- Body -->
         <div class="">
@@ -17,16 +13,28 @@
               <h3 class="font-primary font-normal text-2xl">{{ view_profile }}'s Profile</h3>
             </div>
       
-            <div class="flex">
-                <div class="m-5 ">
-                    <img
-                    src="{{ view_profile_picture.image.url }}"
-                    class="h-50 w-96"
-                    alt=""
-                    />
+            <div class="flex px-20">
+                <div class="m-5 justify-center">
+                    <div class="my-5">
+                        <img
+                        src="{{ view_profile_picture.image.url }}"
+                        class="h-52 w-52 rounded-full"
+                        alt=""
+                        />
+                    </div>
+
+                    <div class="my-4 wow fadeInLeft">
+                        <a href="#" class="justify-center border-2 mx-5 my-2 px-10 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">Contact me</a>
+                    </div>
+                    <div class="my-4">
+                        <a href="#" class="justify-center border-2 mx-5 my-2 px-10 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">Custom quote</a>
+                    </div>
+                    <div class="my-4 wow fadeInRight">
+                        <a href="#" class="justify-center border-2 mx-5 my-2 px-10 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">View gigs</a>
+                    </div>
                 </div>
       
-                <div class="border m-5 mb-10 rounded-md justify-between shadow-md bg-white">
+                <div class="border m-5 mb-10 rounded-md justify-between bg-white wow fadeInRight">
                     <div class="font-primary">
 
                         <div
@@ -58,13 +66,13 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
             </div>
       
                 <hr class="ml-10 border border-veryLightAsh mt-2"/>
 
-                <div class="border my-4 py-4 shadow-md bg-white">
-                    <table class="w-2/3 mt-5 text-left ml-32 py-5">
+                <div class="border my-4 py-4 bg-white wow fadeInUp">
+                    <table class="w-2/3 mt-5 text-left ml-20 mr-20 py-5">
 
                         <h6 class="font-bold text-green-700 mt-5 ml-32">Training & Certification</h6>
 
@@ -92,7 +100,7 @@
                         {% endfor %}
                     </table>
 
-                    <div class="mt-5 ml-32">
+                    <div class="mt-5 ml-20">
                         <div class="flex">
                         <h6 class="font-extrabold text-base">Work Experience</h6>
                         </div>
