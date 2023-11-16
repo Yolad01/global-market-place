@@ -408,3 +408,17 @@ def profile_view(request, user): #Use the id for the querries or make the userna
             "view_T_and_cert": view_T_and_cert
         }
     )
+
+
+def messaging(request):
+    ...
+
+
+def chat(request, chat_skilla):
+    return render(
+        request,
+        template_name="main/messaging/chat.html",
+        context={
+            "chat_skilla": chat_skilla
+        }
+    )

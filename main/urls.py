@@ -38,6 +38,9 @@ urlpatterns = [
 
     path("company_dashboard/", views.company, name="company_dashboard"),
 
+    path("messaging", views.messaging, name="messaging"),
+    path("<str:chat_skilla>", views.chat, name="chat"),
+
     path("logout/", views.log_out, name="logout")
 ]
 
