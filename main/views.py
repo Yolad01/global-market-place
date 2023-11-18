@@ -3,11 +3,11 @@ from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
-                        BriefAppForm
+                        BriefAppForm, ChatMessageForm
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients
+                         SkillaReachoutToClient, Clients, Contact, ChatMessage
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -387,7 +387,7 @@ def applications(request):
 
 
 
-def profile_view(request, user): #Use the id for the querries or make the username foreig nkey or unique
+def profile_view(request, user): #Use the id for the querries or make the username foreignkey or unique
     view_profile = SkillaProfile.objects.get(
         user__username=user
         )
@@ -410,11 +410,15 @@ def profile_view(request, user): #Use the id for the querries or make the userna
     )
 
 
-def chat(request, chat_skilla):
+def chat(request, pk):
+    contact = Contact.objects.get(user__id=pk)
+    form = ChatMessageForm(request.POST)
+
     return render(
         request,
         template_name="main/messaging/chat.html",
         context={
-            "chat_skilla": chat_skilla
+            "form": form,
+            "contact":contact
         }
     )

@@ -4,7 +4,7 @@ from main.models import User
 from main.models import (JobCategory, Job, Rating,
                          SkillaProfile, Skill, ClientProfile,
                          CompanyProfile, AboutSkilla, TrainingAndCertification,
-                         ProfilePicture, Brief
+                         ProfilePicture, Brief, ChatMessage
                          )
 
 
@@ -175,3 +175,12 @@ class BriefAppForm(forms.Form):
     categories = forms.CharField(max_length=100)
     budget = forms.IntegerField()
     # skilla = forms.CharField(max_length=100)
+
+
+class ChatMessageForm(forms.ModelForm):
+    
+    class Meta:
+        model = ChatMessage
+        fields = [
+            "msg_body"
+        ]

@@ -357,3 +357,27 @@ class SkillaReachoutToClient(models.Model):
 
 
 
+class Contact(models.Model):
+    name = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name.username
+    
+
+
+class ChatMessage(models.Model):
+    msg_body = models.TextField()
+    sender = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="sender"
+    )
+    receiver = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="receiver"
+    )
+    seen = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.msg_body
