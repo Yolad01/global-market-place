@@ -411,14 +411,15 @@ def profile_view(request, user): #Use the id for the querries or make the userna
 
 
 def chat(request, pk):
-    contact = Contact.objects.get(user__id=pk)
+    user = request.user.id
+    receive = SkillaProfile.objects.get(user=pk)
     form = ChatMessageForm(request.POST)
 
     return render(
-        request,
+        request=request,
         template_name="main/messaging/chat.html",
         context={
             "form": form,
-            "contact":contact
+            "contact": receive
         }
     )
