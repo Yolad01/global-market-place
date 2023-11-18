@@ -137,4 +137,4 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = "main.User"
 
-ASGI_APPLICATION = "main.asgi.application"
+# ASGI_APPLICATION = "main.asgi.application"

@@ -410,10 +410,6 @@ def profile_view(request, user): #Use the id for the querries or make the userna
     )
 
 
-def messaging(request):
-    ...
-
-
 def chat(request, chat_skilla):
     return render(
         request,
