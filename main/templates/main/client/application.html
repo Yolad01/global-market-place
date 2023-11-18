@@ -1,57 +1,61 @@
-{% extends 'layout/client_nav.html' %}
-{% load static %}
+{% extends 'layout/client_nav.html' %} {% load static %} {% block content %}
 
+<div class="flex justify-center bg-gray-50">
+  <div
+    class="m-10 bg-white text-green-700 font-semibold p-20 border border-green-700 shadow-lg wow fadeInDown"
+  >
+    <ul
+      class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700"
+    >
+      <a href="#"> Message </a>
+    </ul>
 
+    <ul
+      class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700"
+    >
+      <a href="#"> Skillas </a>
+    </ul>
 
-{% block content %}
+    <ul
+      class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700"
+    >
+      <a href="/client_brief"> Create brief </a>
+    </ul>
 
-    <div class="flex justify-center bg-gray-50">
-        <div class="m-10 bg-white text-green-700 font-semibold p-20 border border-green-700 shadow-lg wow fadeInDown">
+    <ul
+      class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700 wow fadeInLeft"
+    >
+      <a href="#"> Payments </a>
+    </ul>
+  </div>
 
-            <ul class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700">
-                <a href="#"> Message </a>
-            </ul>
+  <div class="bg-gray-50 m-10 p-2 rounded-md">
+    {% for x in skilla_client %}
+    <div
+      class="flex bg-white m-5 p-2 rounded-lg shadow justify-between wow fadeInUp"
+    >
+      <div class="p-2 border-green-700 border rounded-full">
+        <img
+          src="{% static '/img/hand-shake.png' %}"
+          width="100"
+          height="100"
+        />
+      </div>
 
-            <ul class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700">
-                <a href="#"> Skillas </a>
-            </ul>
+      <div class="px-4 py-2 my-2 mx-2">
+        <div class="text-green-700 font-semibold">{{ x.title }}</div>
 
-            <ul class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700">
-                <a href="/client_brief"> Create brief </a>
-            </ul>
-
-            <ul class="border border-green-700 px-10 py-2 text-center my-5 shadow-md rounded-md hover:text-white hover:font-bold hover:bg-green-700 wow fadeInLeft">
-                <a href="#"> Payments </a>
-            </ul>
-
+        <div>
+          <span class="text-green-700 font-bold">{{ x.user }}</span> is
+          requesting for the job
         </div>
-        
-        <div class="bg-gray-50 m-10 p-2 rounded-md">
 
-            {% for x in skilla_client %}
-            <div class="flex bg-white m-5 p-2 rounded-lg shadow justify-between wow fadeInUp">
+        <div class="font-semibold">{{ x.categories }}</div>
 
-                <div class="p-2 border-green-700 border rounded-full">
-                    <img src="{% static '/img/hand-shake.png' %}" width="100" height="100">
-                </div>
-
-                <div class="px-4 py-2 my-2 mx-2">
-                    <div class="text-green-700 font-semibold">
-                        {{ x.title }}
-                    </div>
-
-                    <div>
-                        <span class="text-green-700 font-bold">{{ x.user }}</span> is requesting for the job
-                    </div>
-
-                    <div class="font-semibold">
-                        Category: {{ x.categories }}
-                    </div>
-
-                    <div class="font-semibold">
-                        NGN <span class="text-green-700">{{ x.budget }}</span>
-                    </div>
-                </div>
+        <div class="font-semibold">
+          NGN <span class="text-green-700">{{ x.budget }}</span>
+        </div>
+      </div>
 
                 <div class="border border-green-700 rounded-lg">
                     <div class="py-5">
@@ -72,4 +76,27 @@
         </div>
     </div>
   
+      <div class="border border-green-700 rounded-lg">
+        <div class="py-5">
+          <a
+            href="#"
+            class="bg-green-700 text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700"
+          >
+            send message
+          </a>
+        </div>
+        <div>
+          <a
+            href="{% url 'main:profile_view' user=x.user.username %}"
+            class="text-green-700 my-2 p-2 text-sm ml-4 font-semibold"
+          >
+            View profile
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock %}

@@ -20,18 +20,6 @@
         <div class="text-2xl font-bold text-veryDarkGreen px-20">Sign in</div>
       </div>
 
-      <!--Toast messages-->
-      {% if messages %}
-      {% for message in messages %}
-        <div class="max-w-xs bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
-          <div class="flex p-4">
-            {{ message }}
-          </div>
-        </div>
-      {% endfor %}
-      {% endif %}
-      <!--end Toast messages-->
-
       <form method="POST">
         {% csrf_token %}
 
@@ -74,7 +62,22 @@
             class="-ml-12 mt-5"
           />
           </div>
-        </div>
+
+          <!--Toast messages-->
+        {% if messages %}
+        {% for message in messages %}
+          <div class="mt-5">
+            <div class="max-w-xs bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
+              <div class="flex p-4">
+                {{ message }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        {% endif %}
+        <!--end Toast messages-->
+          </div>
+
 
         <div class="flex mt-10 ml-60 mb-10">
           <div class="text-base text-veryDarkGreen">Forgot your password?</div>
