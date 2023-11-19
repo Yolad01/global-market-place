@@ -3,7 +3,15 @@
 {% block content %}
 
 
-{{form}}
+<form method="POST">
+    {% csrf_token %}
+
+    {{form.msg_body}}
+    <button class="bg-gray-700 my-5 px-5 py-2 rounded-md border text-white font-semibold">Send</button>
+
+
+
+</form>
 
 
 {% endblock %}

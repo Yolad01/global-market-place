@@ -177,10 +177,8 @@ class BriefAppForm(forms.Form):
     # skilla = forms.CharField(max_length=100)
 
 
-class ChatMessageForm(forms.ModelForm):
-    
-    class Meta:
-        model = ChatMessage
-        fields = [
-            "msg_body"
-        ]
+class ChatMessageForm(forms.Form):
+    msg_body = forms.CharField(widget=forms.Textarea(attrs={
+        'rows': 4, 'cols': 20, "class": "border border-gray-700 p-2 mx-5 rounded-m",
+        "placeholder": "Enter your messsage here"
+    }))

@@ -7,7 +7,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, Contact, ChatMessage
+                         SkillaReachoutToClient, Clients, ChatMessage
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -372,8 +372,6 @@ def client_brief(request):
     )
     
     
-    
-
 def applications(request):
     skilla_client = SkillaReachoutToClient.objects.all().filter(client=request.user)
     
@@ -410,16 +408,35 @@ def profile_view(request, user): #Use the id for the querries or make the userna
     )
 
 
-def chat(request, pk):
-    user = request.user.id
-    receive = SkillaProfile.objects.get(user=pk)
-    form = ChatMessageForm(request.POST)
+def chat(request, user):
+    receive = SkillaProfile.objects.get(user__username=user)
+
+    receiver = Skillas.objects.get(username=user)    
+    sender = request.user
+    if request.method == "POST":
+        form = ChatMessageForm(request.POST)
+        if form.is_valid():
+            msg_body = form.cleaned_data["msg_body"]
+            # print(receiver)
+            # print(sender)
+            msg = ChatMessage(
+                msg_body=msg_body,
+                receiver= receiver,
+                sender=sender
+            )
+            msg.save()
+
+            
+            return redirect("main")
+        
+    form = ChatMessageForm()
 
     return render(
         request=request,
         template_name="main/messaging/chat.html",
         context={
             "form": form,
-            "contact": receive
+            "receive": receive,
+            "user": user
         }
     )

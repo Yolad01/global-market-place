@@ -60,7 +60,7 @@
       <div class="border border-green-700 rounded-lg">
         <div class="py-5">
           <a
-            href="{% url 'main:chat' pk=x.id %}"
+            href="{% url 'main:chat' user=x.user.username %}"
             class="bg-green-700 text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700"
           >
             send message

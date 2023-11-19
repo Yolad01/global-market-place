@@ -354,15 +354,7 @@ class SkillaReachoutToClient(models.Model):
 
     def __str__(self):
         return f'{self.user.username} and {self.client.username}'
-
-
-
-class Contact(models.Model):
-    name = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name.username
-    
+     
 
 
 class ChatMessage(models.Model):
