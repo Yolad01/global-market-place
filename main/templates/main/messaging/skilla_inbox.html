@@ -1,0 +1,17 @@
+{% extends 'layout/dash_nav.html' %} 
+{% load static %} 
+{% block content %}
+
+
+
+<div class="justify-center bg-gray-50">
+    {% for chat in chats %}
+    <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 px-2 w-1/6 rounded-md">
+        {{ chat.sender }}
+    </div>
+{% endfor %}
+</div>
+
+
+
+{% endblock %}

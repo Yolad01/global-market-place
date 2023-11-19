@@ -40,6 +40,8 @@ urlpatterns = [
 
     path("chat/<str:user>/", views.chat, name="chat"),
 
+    path("skilla_inbox/", views.skilla_inbox, name="skilla_inbox"),
+
     path("logout/", views.log_out, name="logout")
 ]
 

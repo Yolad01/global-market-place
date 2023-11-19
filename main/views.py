@@ -67,10 +67,10 @@ def skilla_profile(request):
         form = SkillaProfileForm(request.POST, instance=skilla_profile)
         if form.is_valid():
             form.save()
-            messages.success(request, "profile updated successfully")
             profile = SkillaProfile.objects.get(user=request.user)
             profile.activate_user()
             profile.save()
+            messages.success(request, "profile updated successfully")
             return redirect("main:skillas_dashboard")
     
     form = SkillaProfileForm()
@@ -94,10 +94,10 @@ def client_profile(request):
         form = ClientProfileForm(request.POST, instance=client_profile)
         if form.is_valid():
             form.save()
-            messages.success(request, "Updated Successfully")
-            profile = SkillaProfile.objects.get(user=request.user)
+            profile = ClientProfile.objects.get(user=request.user)
             profile.activate_user()
             profile.save()
+            messages.success(request, "Updated Successfully")
             return redirect("main:profile_dashboard")
         
     form = ClientProfileForm()
@@ -443,3 +443,24 @@ def chat(request, user):
             "chats": chats
         }
     )
+
+
+def skilla_inbox(request):
+    # receive = SkillaProfile.objects.get(user__username=user)
+    # receiver = Skillas.objects.get(username=user)    
+    # sender = request.user
+    receiver = request.user
+    chats = ChatMessage.objects.all().filter(
+        receiver=receiver
+    )
+
+    return render(
+        request=request,
+        template_name="main/messaging/skilla_inbox.html",
+        context={
+            "chats": chats
+        }
+    )
+
+
+
