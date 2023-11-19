@@ -3,13 +3,14 @@
 <div class="relative flex ml-10 font-primary">
   <!-- Body -->
   <div class="">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="bg-green-700 text-white py-10">
-            {{ message }}
-        </div>
-        {% endfor %}
-    {% endif %}
+    {% if messages %} {% for message in messages %}
+    <div
+      class="bg-green-600 px-10 mx-auto text-center mt-5 text-white font-semibold py-3 w-1/2 rounded-md"
+      role="alert"
+    >
+      {{ message }}
+    </div>
+    {% endfor %} {% endif %}
     <div>
       <div class="p-10">
         <h3 class="font-primary font-normal text-2xl">Profile</h3>
@@ -176,7 +177,7 @@
                   src="{% static '/img/Group 68.png' %}"
                   id="openModal"
                   alt=""
-                  class="mt-5 translate-x-96 ml-96"
+                  class="mt-5 translate-x-96 ml-80"
               /></a>
             </div>
             <div
@@ -188,7 +189,7 @@
             <h6 class="font-extrabold text-sm text-veryDarkGreen ml-10">
               About {{user.username}}
             </h6>
-            <div class="ml-6 mt-2 text-sm pr-12">
+            <div class="ml-10 mt-2 text-sm pr-12">
               {% for x in about_skilla %} {{ x.about }} {% endfor %}
             </div>
 
@@ -322,12 +323,12 @@
                 src="{% static '/img/Group 68.png' %}"
                 id="openTrainingModal"
                 alt=""
-                class="translate-x-96 ml-96"
+                class="translate-x-96 ml-80"
             /></a>
           </div>
         </div>
 
-        <table class="w-full mt-10 text-left ml-10">
+        <table class="w-3/4 mt-10 text-left ml-10">
           <tr>
             <th class="py-2">Courses</th>
 

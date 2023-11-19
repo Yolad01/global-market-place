@@ -2,17 +2,18 @@
 
 <div class="bg-gray-50">
   <div>
-    <div class="p-10">
+    <div class="p-10 flex">
       <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
-    </div>
 
-    {% if messages %}
-      {% for message in messages %}
-        <div class="bg-green-600 text-white py-10">
-            {{ message }}
-        </div>
-        {% endfor %}
-    {% endif %}
+      {% if messages %} {% for message in messages %}
+      <div
+        class="bg-veryDarkGreen -mt-2 ml-20 text-white py-3 max-w-xs rounded-md px-10"
+        role="alert"
+      >
+        {{ message }}
+      </div>
+      {% endfor %} {% endif %}
+    </div>
 
     <div class="mr-10 mb-20 ml-10">
       <div class="grid grid-cols-4 gap-10">
@@ -96,9 +97,9 @@
                 id="id_description"
                 class="pt-2 mt-2 mx-5 px-5 resize-none text-gray-700 font-medium text-sm border-0 bg-lightAsh rounded-lg outline-none"
                 readonly
-              >{{ x.description }}
-              </textarea
               >
+{{ x.description }}
+              </textarea>
             </p>
           </div>
         </div>

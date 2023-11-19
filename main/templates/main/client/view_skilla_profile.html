@@ -5,16 +5,61 @@
 
 {% block content %}
 
-    <div class="relative flex mx-80 font-primary justify-center">
+    <div class="relative flex mx-80 font-primary">
         <!-- Body -->
-        <div class="">
-          <div>
+
+        <!-- Side bar -->
+    
+        <div class="-ml-64 w-80">
+            <div class="w-64 mt-36 rounded-md">
+                <div class="flex p-2 mt-4">
+                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
+                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Payment</a>
+                </div>
+
+                <div class="flex p-2 mt-5">
+                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
+                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Promotions</a>
+                </div>
+
+                <div class="flex p-2 mt-5">
+                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
+                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Transaction</a>
+                </div>
+
+                <div class="flex p-2 mt-5">
+                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
+                    <a href="/applications" class="text-veryLightBlack font-normal text-3xl ml-5">Applications</a>
+                </div>
+
+                <div class="flex p-2 mt-5">
+                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-5.png' %}" alt=""></a>
+                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Support</a>
+                </div>
+
+                <div class="flex p-2 mt-5">
+                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-3.png' %}" alt=""></a>
+                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">T & C</a>
+                </div>
+
+                <div class="mb-4 flex p-2 mt-5">
+                    <a href="/logout"><img class="h-8 w-8" src="{% static '/img/icons8-logout-50.png' %}" alt=""></a>
+                    <a href="/logout" class="text-veryLightBlack font-normal text-3xl ml-4 mr-4">Logout</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="border-l-2">
+          <div class="ml-60">
             <div class="p-10">
-              <h3 class="font-primary font-normal text-2xl">{{ view_profile }}'s Profile</h3>
+              <h3 class="font-primary font-normal text-3xl">{{ view_profile }}'s Profile</h3>
             </div>
       
             <div class="flex px-20">
-                <div class="m-5 justify-center border border-green-700 shadow">
+                <div class="m-5 w-3/4 content-center justify-center border border-green-700 shadow">
                     <div class="my-5 mx-5">
                         <img
                         src="{{ view_profile_picture.image.url }}"
@@ -23,18 +68,20 @@
                         />
                     </div>
 
-                    <div class="my-4 wow fadeInLeft">
-                        <a href="#" class="justify-center border-2 mx-5 my-2 px-10 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">Contact me</a>
-                    </div>
-                    <div class="my-4">
-                        <a href="#" class="justify-center border-2 mx-5 my-2 px-10 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">Custom quote</a>
-                    </div>
-                    <div class="my-4 wow fadeInRight">
-                        <a href="#" class="justify-center border-2 mx-5 my-2 px-10 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">View gigs</a>
+                    <div class="ml-5 mr-5">
+                        <div class="my-4 wow fadeInLeft">
+                            <a href="#" class="justify-center border-2 mx-5 my-2 px-9 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">Contact me</a>
+                        </div>
+                        <div class="my-4">
+                            <a href="#" class="justify-center border-2 mx-5 my-2 px-7 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">Custom quote</a>
+                        </div>
+                        <div class="my-4 wow fadeInRight">
+                            <a href="#" class="justify-center border-2 mx-5 my-2 px-11 py-2 rounded-md font-semibold text-white bg-green-700 hover:text-green-700 hover:bg-white">View gigs</a>
+                        </div>
                     </div>
                 </div>
       
-                <div class="border border-green-700 shadow m-5 mb-10 rounded-md justify-between bg-white wow fadeInRight">
+                <div class="border border-green-700 shadow m-5 bg-white wow fadeInRight">
                     <div class="font-primary">
 
                         <div
@@ -52,16 +99,16 @@
             
                         <div class="ml-2 mt-2 mb-5 mr-24 rounded-sm">
                             <div class="ml-10">
-                            <h6 class="font-medium text-sm mt-5">Expertise</h6>
+                            <h6 class="font-bold text-sm mt-5">Expertise</h6>
                             <h4>{{view_profile.certifications}}</h4>
             
-                            <h6 class="font-medium text-sm mt-5">Phone Number</h6>
+                            <h6 class="font-bold text-sm mt-5">Phone Number</h6>
                             <h4>{{view_profile.phone_no}}</h4>
             
-                            <h6 class="font-medium text-sm mt-5">Email</h6>
+                            <h6 class="font-bold text-sm mt-5">Email</h6>
                             <h4>{{view_profile.email}}</h4>
             
-                            <h6 class="font-medium text-sm mt-5">Location</h6>
+                            <h6 class="font-bold text-sm mt-5">Location</h6>
                             <h4>{{view_profile.current_location}}</h4>
                             </div>
                         </div>
@@ -71,11 +118,10 @@
       
                 <hr class="ml-10 border border-veryLightAsh mt-2"/>
 
-                <div class="border border-green-700 shadow my-4 py-4 bg-white wow fadeInUp">
+                <div class="mt-10 mb-14 border border-green-700 shadow my-4 py-4 bg-white wow fadeInUp">
                     <table class="w-2/3 mt-5 text-left ml-20 mr-20 py-5">
 
-                        <h6 class="font-bold text-green-700 mt-5 ml-32">Training & Certification</h6>
-
+                        <h6 class="font-bold text-green-700 mt-5 ml-20 text-2xl">Training & Certification</h6>
                         <tr>
                             <th class="py-2">Courses</th>
                 
