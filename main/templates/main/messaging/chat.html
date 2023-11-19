@@ -2,6 +2,9 @@
 {% load static %} 
 {% block content %}
 
+{% for chat in chats %}
+    <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 w-1/6 rounded-md">{{ chat }}</div>
+{% endfor %}
 
 <form method="POST">
     {% csrf_token %}

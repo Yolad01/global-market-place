@@ -410,24 +410,26 @@ def profile_view(request, user): #Use the id for the querries or make the userna
 
 def chat(request, user):
     receive = SkillaProfile.objects.get(user__username=user)
-
     receiver = Skillas.objects.get(username=user)    
     sender = request.user
+    chats = ChatMessage.objects.all().filter(
+        sender=sender, receiver=receiver
+    )
+    for chat in chats:
+        print(chat)
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
         if form.is_valid():
             msg_body = form.cleaned_data["msg_body"]
-            # print(receiver)
-            # print(sender)
+            print(receiver)
+            print(sender)
             msg = ChatMessage(
                 msg_body=msg_body,
                 receiver= receiver,
                 sender=sender
             )
             msg.save()
-
-            
-            return redirect("main")
+            return redirect("main:chat", user=receiver)
         
     form = ChatMessageForm()
 
@@ -437,6 +439,7 @@ def chat(request, user):
         context={
             "form": form,
             "receive": receive,
-            "user": user
+            "user": user,
+            "chats": chats
         }
     )

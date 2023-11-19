@@ -357,7 +357,7 @@ class SkillaReachoutToClient(models.Model):
      
 
 
-class ChatMessage(models.Model):
+class ChatMessage(models.Model):#add time to this model
     msg_body = models.TextField()
     sender = models.ForeignKey(
         User,
