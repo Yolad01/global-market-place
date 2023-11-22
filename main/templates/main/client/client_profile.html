@@ -15,7 +15,7 @@
             
             <div class="text-lg pt-5 font-semibold text-center">{{ user.username }} Profile Update</div>
 
-            <form method="POST" class="rounded-lg px-8 pt-6 pb-8 mb-4">
+            <form method="POST" enctype="multipart/form-data" class="rounded-lg px-8 pt-6 pb-8 mb-4">
                 {% csrf_token %}
 
                 {{ form.as_p }}

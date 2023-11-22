@@ -91,16 +91,16 @@ def client_profile(request):
     except ClientProfile.DoesNotExist:
         client_profile = ClientProfile(user=request.user)
     if request.method == "POST":
-        form = ClientProfileForm(request.POST, instance=client_profile)
+        form = ClientProfileForm(request.POST, request.FILES, instance=client_profile)
         if form.is_valid():
             form.save()
-            profile = ClientProfile.objects.get(user=request.user)
-            profile.activate_user()
-            profile.save()
+            # profile = ClientProfile.objects.get(user=request.user)
+            client_profile.activate_user()
+            client_profile.save()
             messages.success(request, "Updated Successfully")
-            return redirect("main:profile_dashboard")
+            return redirect("main:client_dashboard")
         
-    form = ClientProfileForm()
+    form = ClientProfileForm(instance=client_profile)
     
     return render(
         request=request,

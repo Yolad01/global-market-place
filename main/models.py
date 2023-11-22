@@ -181,7 +181,7 @@ class ClientProfile(models.Model):
     activated = models.BooleanField(default=False)
     
     def activate_user(self, *args, **kwargs):
-        if self.country is not None and self.state is not None and self.current_location is not None:
+        if self.country is not None and self.home_address is not None and self.current_location is not None:
             self.activated = True
         
         super(ClientProfile, self).save(*args, **kwargs)
