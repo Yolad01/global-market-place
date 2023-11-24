@@ -26,7 +26,7 @@ urlpatterns = [
     path("client_brief/", views.client_brief, name="client_brief"),
     path("applications/", views.applications, name="applications"),
 
-    path("view_skilla_profile/<str:user>/", views.profile_view, name="profile_view"),
+    path("view_skilla_profile/<str:name>/", views.profile_view, name="profile_view"),
 
     path("skillas_dashboard/", views.skilla, name="skillas_dashboard"),
     
@@ -38,7 +38,7 @@ urlpatterns = [
 
     path("company_dashboard/", views.company, name="company_dashboard"),
 
-    path("chat/<str:user>/", views.chat, name="chat"),
+    path("chat/<str:name>/", views.chat, name="chat"),
 
     path("skilla_inbox/", views.skilla_inbox, name="skilla_inbox"),
 

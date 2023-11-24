@@ -129,7 +129,8 @@ class ChatMessageAdmin(admin.ModelAdmin):
           "sender",
           "receiver",
           "msg_body",
-          "seen"
+          "seen",
+          "timestamp"
      ]
 
 

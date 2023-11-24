@@ -3,14 +3,22 @@
 {% block content %}
 
 
-
 <div class="justify-center bg-gray-50">
     {% for chat in chats %}
     <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 px-2 w-1/6 rounded-md">
         {{ chat.sender }}
     </div>
-{% endfor %}
+    {% endfor %}
+
+    <a
+        href="{% url 'main:chat' user=chat.sender %}"
+        class="text-green-700 my-2 p-2 text-sm ml-4 font-semibold"
+    >
+        Read Message
+    </a>
+
 </div>
+
 
 
 

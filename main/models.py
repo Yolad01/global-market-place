@@ -30,6 +30,7 @@ class User(AbstractUser):
     role = models.CharField(max_length=50, choices=Role.choices)
     email = models.EmailField(unique=True)
     phone_no = models.CharField(verbose_name="Phone Number", unique=True, max_length=15)
+    message = models.ManyToManyField("ChatMessage")
     
 
     REQUIRED_FIELDS = ["first_name", "last_name", "email", "phone_no"]
@@ -354,7 +355,7 @@ class SkillaReachoutToClient(models.Model):
 
     def __str__(self):
         return f'{self.user.username} and {self.client.username}'
-     
+
 
 
 class ChatMessage(models.Model):#add time to this model
@@ -370,6 +371,7 @@ class ChatMessage(models.Model):#add time to this model
         related_name="receiver"
     )
     seen = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.msg_body
