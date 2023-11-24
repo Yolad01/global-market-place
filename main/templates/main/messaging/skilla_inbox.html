@@ -10,12 +10,12 @@
     </div>
     {% endfor %}
 
-    <a
-        href="{% url 'main:chat' user=chat.sender %}"
+    {% comment %} <a
+        href="{% url 'main:chat' name=chat.sender %}"
         class="text-green-700 my-2 p-2 text-sm ml-4 font-semibold"
     >
         Read Message
-    </a>
+    </a> {% endcomment %}
 
 </div>
 

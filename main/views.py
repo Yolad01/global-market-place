@@ -441,18 +441,14 @@ def chat(request, name):
     )
 
 
-def skilla_inbox(request, name):
-    user = request.user
-    receiving_user = User.objects.get(username=name)
-    chats = ChatMessage.objects.all().filter(
-        receiver=user, sender=receiving_user
-    )
+def skilla_inbox(request):
+    people = User.objects.all()
 
     return render(
         request=request,
         template_name="main/messaging/skilla_inbox.html",
         context={
-            "chats": chats
+            "people": people
         }
     )
 
