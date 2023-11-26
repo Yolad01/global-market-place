@@ -7,7 +7,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, ChatMessage, User
+                         SkillaReachoutToClient, Clients, ChatMessage, User, Inbox
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -385,13 +385,12 @@ def applications(request):
 
 
 
-def profile_view(request, name): #Use the id for the querries or make the username foreignkey or unique
-    view_profile = SkillaProfile.objects.get(
-        user__username=name
-        )
-    view_profile_picture = ProfilePicture.objects.get(user__username=name)
-    view_about_skilla = AboutSkilla.objects.get(user__username=name)
-    view_T_and_cert = TrainingAndCertification.objects.filter(user__username=name)
+def profile_view(request, pk): #Use the id for the querries or make the username foreignkey or unique
+    view_profile = SkillaProfile.objects.get(user__id=pk)
+    view_profile_picture = ProfilePicture.objects.get(user__id=pk)
+    view_about_skilla = AboutSkilla.objects.get(user__id=pk)
+    view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
+    skilla = User.objects.get(id=pk)
     
     return render(
         request=request,
@@ -400,21 +399,20 @@ def profile_view(request, name): #Use the id for the querries or make the userna
             "view_profile": view_profile,
             "view_profile_picture": view_profile_picture,
             "view_about_skilla": view_about_skilla,
-            "view_T_and_cert": view_T_and_cert
+            "view_T_and_cert": view_T_and_cert,
+            "skilla": skilla
         }
     )
 
 
-def chat(request, name):
+def chat(request, pk):
     user = request.user
-    receiving_user = User.objects.get(username=name)
-    print(receiving_user)
+    message_receiver = User.objects.get(id=pk)
+    print(message_receiver)
     chats = ChatMessage.objects.all().filter(
-        sender=user, receiver=receiving_user
+        msg_sender__id=user.id,
+        msg_receiver__id=pk
     )
-    for chat in chats:
-        print(chat)
-
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
         if form.is_valid():
@@ -422,11 +420,18 @@ def chat(request, name):
 
             msg = ChatMessage(
                 msg_body=msg_body,
-                receiver= receiving_user,
-                sender=user
+                msg_receiver= message_receiver,
+                msg_sender=user
             )
             msg.save()
-            return redirect("main:chat", name=receiving_user)
+
+            inbox = Inbox(
+                owner=message_receiver,
+                message=msg
+            )
+            inbox.save()
+
+            return redirect("main:chat", pk=message_receiver.id)
         
     form = ChatMessageForm()
 
@@ -435,22 +440,34 @@ def chat(request, name):
         template_name="main/messaging/chat.html",
         context={
             "form": form,
-            "user": user,
+            # "user": user,
             "chats": chats
         }
     )
 
 
-def skilla_inbox(request):
-    people = User.objects.all()
-
+def inbox(request):
+    # chats = ChatMessage.objects.all()
+    user = request.user.id
+    
     return render(
         request=request,
-        template_name="main/messaging/skilla_inbox.html",
+        template_name="main/messaging/inbox.html",
         context={
-            "people": people
         }
     )
 
 
+
+def skilla_inbox(request):
+    user = request.user
+    print(user)
+    
+    return render(
+        request=request,
+        template_name="main/messaging/skilla_inbox.html",
+        context={
+            # "chats": chats
+        }
+    )
 

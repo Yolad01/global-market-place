@@ -1,15 +1,14 @@
-{% extends 'layout/dash_nav.html' %} 
+{% extends 'layout/client_nav.html' %} 
 {% load static %} 
 {% block content %}
 
 
-<div class="justify-center bg-gray-50">
-    {% comment %} {% for chat in chats %} {% endcomment %}
+<div class="justify-center bg-gray-50 my-5">
+    {% for ind in messenger %}
     <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 px-2 w-1/6 rounded-md">
-        {{ chats }}
+        {{ ind.name }}
     </div>
-    {% comment %} {% endfor %} {% endcomment %}
-    {% comment %} {% endfor %} {% endcomment %}
+    {% endfor %}
 
     {% comment %} <a
         href="{% url 'main:chat' name=chat.sender %}"

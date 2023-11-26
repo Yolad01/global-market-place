@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
-    ProfilePicture, Brief, SkillaReachoutToClient, ChatMessage
+    ProfilePicture, Brief, SkillaReachoutToClient, ChatMessage, Inbox
 )
 
 # Register your models here.
@@ -126,8 +126,8 @@ class SkillaReachoutToClientAdmin(admin.ModelAdmin):
 
 class ChatMessageAdmin(admin.ModelAdmin):
      list_display = [
-          "sender",
-          "receiver",
+          "msg_sender",
+          "msg_receiver",
           "msg_body",
           "seen",
           "timestamp"
@@ -154,6 +154,7 @@ admin.site.register(ProfilePicture)
 admin.site.register(Brief, BriefAdmin)
 admin.site.register(SkillaReachoutToClient, SkillaReachoutToClientAdmin)
 admin.site.register(ChatMessage, ChatMessageAdmin)
+admin.site.register(Inbox)
 
 
 

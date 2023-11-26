@@ -30,7 +30,6 @@ class User(AbstractUser):
     role = models.CharField(max_length=50, choices=Role.choices)
     email = models.EmailField(unique=True)
     phone_no = models.CharField(verbose_name="Phone Number", unique=True, max_length=15)
-    message = models.ManyToManyField("ChatMessage")
     
 
     REQUIRED_FIELDS = ["first_name", "last_name", "email", "phone_no"]
@@ -358,20 +357,40 @@ class SkillaReachoutToClient(models.Model):
 
 
 
-class ChatMessage(models.Model):#add time to this model
+class Inbox(models.Model):
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+    message = models.ForeignKey(
+        "ChatMessage",
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.owner.username
+
+
+class ChatMessage(models.Model):
     msg_body = models.TextField()
-    sender = models.ForeignKey(
+    msg_sender = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name="sender"
     )
-    receiver = models.ForeignKey(
+    msg_receiver = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name="receiver"
     )
     seen = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
+    message = models.ForeignKey(
+        Inbox,
+        on_delete=models.CASCADE,
+        null=True
+    )
 
     def __str__(self):
         return self.msg_body
+    
