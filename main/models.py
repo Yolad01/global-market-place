@@ -385,11 +385,6 @@ class ChatMessage(models.Model):
     )
     seen = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
-    message = models.ForeignKey(
-        Inbox,
-        on_delete=models.CASCADE,
-        null=True
-    )
 
     def __str__(self):
         return self.msg_body

@@ -12,6 +12,7 @@ from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCat
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 
 # Create your views here.
@@ -408,11 +409,10 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 def chat(request, pk):
     user = request.user
     message_receiver = User.objects.get(id=pk)
-    print(message_receiver)
-    chats = ChatMessage.objects.all().filter(
-        msg_sender__id=user.id,
-        msg_receiver__id=pk
+    display_msg = Inbox.objects.filter(
+        Q(owner=user) | Q(message__msg_sender=user)
     )
+
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
         if form.is_valid():
@@ -441,7 +441,7 @@ def chat(request, pk):
         context={
             "form": form,
             # "user": user,
-            "chats": chats
+            "display_msg": display_msg,
         }
     )
 
@@ -466,6 +466,7 @@ def skilla_inbox(request):
         owner=user,
     )
     print(inbox)
+
     
     return render(
         request=request,

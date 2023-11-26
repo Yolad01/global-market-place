@@ -135,6 +135,13 @@ class ChatMessageAdmin(admin.ModelAdmin):
 
 
 
+class InboxAdmin(admin.ModelAdmin):
+     list_display = [
+          "owner",
+          "message"
+     ]
+
+
 
 admin.site.register(Rating, RatingAdmin)
 admin.site.register(SkillaProfile, SkillaProfileAdmin)
@@ -154,7 +161,7 @@ admin.site.register(ProfilePicture)
 admin.site.register(Brief, BriefAdmin)
 admin.site.register(SkillaReachoutToClient, SkillaReachoutToClientAdmin)
 admin.site.register(ChatMessage, ChatMessageAdmin)
-admin.site.register(Inbox)
+admin.site.register(Inbox, InboxAdmin)
 
 
 

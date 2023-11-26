@@ -2,9 +2,12 @@
 {% load static %} 
 {% block content %}
 
-{% for chat in chats %}
-    <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 w-1/6 rounded-md">{{ chat }}</div>
-{% endfor %}
+    {% for msg in display_msg %}
+    <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 w-1/6 rounded-md">
+        {{ msg.message }}
+        {{ msg.message.msg_sender.msg_body }}
+    </div>
+    {% endfor %}
 
 <form method="POST" class="mx-4 my-4 px-4 py-4">
     {% csrf_token %}

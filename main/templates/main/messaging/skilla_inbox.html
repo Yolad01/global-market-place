@@ -7,15 +7,15 @@
     {% for msg in inbox %}
     <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 px-2 w-1/6 rounded-md">
         {{ msg.message.msg_sender }}
-    </div>
-    {% endfor %}
 
-    {% comment %} <a
-        href="{% url 'main:chat' name=chat.sender %}"
+    </div>
+    <a
+        href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
         class="text-green-700 my-2 p-2 text-sm ml-4 font-semibold"
     >
         Read Message
-    </a> {% endcomment %}
+    </a>
+    {% endfor %}
 
 </div>
 
