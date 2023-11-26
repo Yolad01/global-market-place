@@ -4,12 +4,11 @@
 
 
 <div class="justify-center bg-gray-50">
-    {% comment %} {% for chat in chats %} {% endcomment %}
+    {% for msg in inbox %}
     <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 px-2 w-1/6 rounded-md">
-        {{ chats }}
+        {{ msg.message.msg_sender }}
     </div>
-    {% comment %} {% endfor %} {% endcomment %}
-    {% comment %} {% endfor %} {% endcomment %}
+    {% endfor %}
 
     {% comment %} <a
         href="{% url 'main:chat' name=chat.sender %}"

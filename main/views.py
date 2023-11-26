@@ -460,14 +460,18 @@ def inbox(request):
 
 
 def skilla_inbox(request):
-    user = request.user
+    user = request.user.id
     print(user)
+    inbox = Inbox.objects.all().filter(
+        owner=user,
+    )
+    print(inbox)
     
     return render(
         request=request,
         template_name="main/messaging/skilla_inbox.html",
         context={
-            # "chats": chats
+            "inbox": inbox
         }
     )
 
