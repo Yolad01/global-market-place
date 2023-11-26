@@ -5,7 +5,7 @@
     {% for msg in display_msg %}
     <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 w-1/6 rounded-md">
         {{ msg.message }}
-        {{ msg.message.msg_sender.msg_body }}
+        {{ msg.message.msg_sender.msg_body }}: {{ msg.message.msg_sender }}
     </div>
     {% endfor %}
 
