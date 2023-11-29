@@ -217,8 +217,6 @@ def skilla(request):
             get_categories = JobCategory.objects.get(title=categories)
             get_client = Clients.objects.get(username=client)
 
-            print(client)
-
             user = request.user
 
             reachout = SkillaReachoutToClient(
@@ -230,6 +228,7 @@ def skilla(request):
                 client=get_client
             )
             reachout.save()
+            messages.success(request, "Request successfully sent to the client")
         return redirect("main:skillas_dashboard")
 
     form = BriefAppForm()
