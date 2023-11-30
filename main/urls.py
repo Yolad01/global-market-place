@@ -39,9 +39,8 @@ urlpatterns = [
     path("company_dashboard/", views.company, name="company_dashboard"),
 
     path("chat/<int:pk>/", views.chat, name="chat"),
-
+    
     path("inbox/", views.inbox, name="inbox"),
-    path("skilla_inbox/", views.skilla_inbox, name="skilla_inbox"),
 
     path("logout/", views.log_out, name="logout")
 ]

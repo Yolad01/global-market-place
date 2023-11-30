@@ -279,7 +279,6 @@ def s_profile(request):
         if skilla_pp_form.is_valid():
             skilla_pp_form.save() ## skilla__pp == skilla profile picture
             messages.success(request, "Profile Picture updated successfully")
-            return redirect("main:s_profile")
 
         if cert_form.is_valid():
             cert_instance = cert_form.save(commit=False)
@@ -411,6 +410,12 @@ def chat(request, pk):
     display_msg = Inbox.objects.filter(
         Q(owner=user) | Q(message__msg_sender=user)
     )
+    profile_picture = ProfilePicture.objects.get(
+        user=message_receiver
+    )
+    user_profile_picture = ProfilePicture.objects.get(
+        user=user
+    )
 
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
@@ -441,37 +446,29 @@ def chat(request, pk):
             "form": form,
             # "user": user,
             "display_msg": display_msg,
+            "profile_picture": profile_picture,
+            "user_profile_picture": user_profile_picture
         }
     )
 
 
 def inbox(request):
-    # chats = ChatMessage.objects.all()
-    user = request.user.id
-    
-    return render(
-        request=request,
-        template_name="main/messaging/inbox.html",
-        context={
-        }
-    )
-
-
-
-def skilla_inbox(request):
     user = request.user.id
     print(user)
     inbox = Inbox.objects.all().filter(
         owner=user,
     )
-    print(inbox)
+    profile_picture = ProfilePicture.objects.get(
+        user=user
+    )
 
-    
     return render(
         request=request,
-        template_name="main/messaging/skilla_inbox.html",
+        template_name="main/messaging/inbox.html",
         context={
-            "inbox": inbox
+            "inbox": inbox,
+            "profile_picture": profile_picture
         }
     )
+
 

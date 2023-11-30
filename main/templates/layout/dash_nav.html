@@ -33,7 +33,10 @@
         <div class="relative min-h-screen flex ml-16 font-primary">
     
             <!-- Side bar -->
-    
+            
+            
+            {% if user.role == "SKILLAS" %}
+                
             <div class="w-72">
                 <div class="w-64 mt-44 rounded-md">
                     <div class="flex p-2 mt-4">
@@ -52,8 +55,8 @@
                     </div>
     
                     <div class="flex p-2 mt-5">
-                        <a href="/skilla_inbox"><img class="h-8 w-8" src="{% static '/img/Group 22.png' %}" alt=""></a>
-                        <a href="/skilla_inbox" class="text-veryLightBlack font-extrabold text-4xl ml-5">Messages</a>
+                        <a href="/inbox"><img class="h-8 w-8" src="{% static '/img/Group 22.png' %}" alt=""></a>
+                        <a href="/inbox" class="text-veryLightBlack font-extrabold text-4xl ml-5">Messages</a>
                     </div>
     
                     <div class="flex p-2 mt-5">
@@ -81,6 +84,8 @@
                     </div>
                 </div>
             </div>
+            
+            {% endif %}
 
 
 

@@ -385,6 +385,9 @@ class ChatMessage(models.Model):
     )
     seen = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
+    
+    def msg_body_snippet(self):
+        return self.msg_body[:15] + "..."
 
     def __str__(self):
         return self.msg_body
