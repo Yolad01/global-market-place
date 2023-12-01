@@ -48,6 +48,7 @@ module.exports = {
         shadeAsh_3: '#D9D9D9',
         shadeAsh_4: '#818181',
         red: '#C90000'
+        
       },
     }
   },

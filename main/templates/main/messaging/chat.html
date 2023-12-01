@@ -1,22 +1,16 @@
-{% extends 'layout/client_nav.html' %} 
+{% extends 'layout/dash_nav.html' %} 
 {% load static %} 
 {% block content %}
 
     {% for msg in display_msg %}
-    {% comment %} <div class="bg-green-700 pl-5 mx-5 my-5 text-white font-semibold py-2 w-1/6 rounded-md">
-        {{ msg.message }}
-        {{ msg.message.msg_sender.msg_body }}: {{ msg.message.msg_sender }}
-    </div> {% endcomment %}
-
-    <div class="bg-white border border-green-700 pl-5 mx-5 my-5 text-gray-800 py-2 px-2 w-3/6 rounded-md items-center">
-        <div class="pl-5 mx-5 my-5 text-gray-800 py-2 px-2 w-3/6 rounded-md flex flex-row items-center">
+    
+    <div class="{% if msg.message.msg_sender == user %} bg-green-200 {% endif %} border border-green-700 mx-5 my-5 text-gray-800 py-2 w-3/6 rounded-md items-center">
+        <div class="pl-5 mx-5 my-5 text-gray-800 w-3/6 rounded-md flex flex-row items-center">
             <div>
-                
-                {% if msg.message.msg_sender %}
-                <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
+                {% if msg.message.msg_sender == user %}
+                <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
                 
                 {% else %}
-                    
                 <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
                 {% endif %}
             </div>
