@@ -4,7 +4,7 @@
 
     {% for msg in display_msg %}
     
-    <div class="{% if msg.message.msg_sender == user %} bg-green-200 {% endif %} border border-green-700 mx-5 my-5 text-gray-800 py-2 w-3/6 rounded-md items-center">
+    <div class="{% if msg.message.msg_sender == user %} bg-green-200 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 w-3/6 rounded-md items-center">
         <div class="pl-5 mx-5 my-5 text-gray-800 w-3/6 rounded-md flex flex-row items-center">
             <div>
                 {% if msg.message.msg_sender == user %}
@@ -31,15 +31,17 @@
 
     {% endfor %}
 
-<form method="POST" class="mx-4 my-4 px-4 py-4">
-    {% csrf_token %}
+    <form method="POST" class="mx-1 my-1 py-1">
+        {% csrf_token %}
 
-    {{form.msg_body}}
-    <button class="bg-gray-700 my-5 px-5 py-2 rounded-md border text-white font-semibold">Send</button>
+        <div>
+            {{form.msg_body}}
+        </div>
 
-
-
-</form>
+        <div class="my-5 px-5 py-2 rounded-md font-semibold">
+            <button class="bg-gray-700 px-4 py-2 rounded-md border text-white font-semibold">Send</button>
+        </div>
+    </form>
 
 
 {% endblock %}
