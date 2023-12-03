@@ -238,8 +238,8 @@ def order_number() -> int:
 class Order(models.Model):
     status = OrderStatus
     
-    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="jobber")
-    client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="payer")
+    skilla = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobber")
+    client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payer")
     notification  = models.CharField(max_length=256, null=True, blank=True)
     paid = models.BooleanField(default=False)
     order_no = models.IntegerField(default=order_number)
@@ -262,7 +262,7 @@ class AboutSkilla(models.Model):
     work_experience = models.CharField(max_length=128, null=True, blank=True)
 
     def snip(self):
-        return self.about[:20] + "..."  
+        return self.about[:20] + "..."
 
     def __str__(self):
         return self.user.username
