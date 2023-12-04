@@ -4,7 +4,7 @@ from main.models import User
 from main.models import (JobCategory, Job, Rating,
                          SkillaProfile, Skill, ClientProfile,
                          CompanyProfile, AboutSkilla, TrainingAndCertification,
-                         ProfilePicture, Brief, ChatMessage
+                         ProfilePicture, Brief, ChatMessage, Order
                          )
 
 
@@ -182,3 +182,20 @@ class ChatMessageForm(forms.Form):
         'rows': 2, 'cols': 80, "class": "border border-gray-400 p-2 mx-3 rounded-md",
         "placeholder": "Enter your messsage here"
     }))
+
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = [
+            "gig_desc"
+        ]
+        widgets = {
+            "gig_desc": forms.Textarea(attrs={
+                "class": 'border border-gray-700 p-2 mb-4 w-full rounded-md',
+                "rows":4,
+                "cols":6,
+                "placeholder": "Describe the service you need."
+            })
+        }

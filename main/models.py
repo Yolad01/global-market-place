@@ -240,7 +240,7 @@ class Order(models.Model):
     
     skilla = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobber")
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payer")
-    notification  = models.CharField(max_length=256, null=True, blank=True)
+    notification  = models.IntegerField(max_length=256, null=True, blank=True)
     paid = models.BooleanField(default=False)
     order_no = models.IntegerField(default=order_number)
     gig_desc = models.TextField(verbose_name="Gig description", max_length=200, null=True, blank=False)

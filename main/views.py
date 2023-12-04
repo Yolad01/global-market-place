@@ -3,11 +3,11 @@ from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
-                        BriefAppForm, ChatMessageForm
+                        BriefAppForm, ChatMessageForm, OrderForm
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, ChatMessage, User, Inbox
+                         SkillaReachoutToClient, Clients, ChatMessage, User, Inbox, Order
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -472,3 +472,25 @@ def inbox(request):
     )
 
 
+def send_offer(request, pk):
+    user = request.user
+    client = User.objects.get(id=pk)
+    
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order_form = form.save(commit=False)
+            order_form.skilla = user
+            order_form.client = client
+            order_form.paid = False
+            order_form.save()
+    
+    form = OrderForm()
+
+    return render(
+        request=request,
+        template_name="main/messaging/chat.html",
+        context={
+            "order_form": form
+        }
+    )
