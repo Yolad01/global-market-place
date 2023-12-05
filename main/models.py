@@ -246,6 +246,7 @@ class Order(models.Model):
     gig_desc = models.TextField(verbose_name="Gig description", max_length=200, null=True, blank=False)
     delivery = models.IntegerField(null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
+    accepted = models.BooleanField(default=False)
     order_status = models.CharField(
         max_length=15,
         null=False,

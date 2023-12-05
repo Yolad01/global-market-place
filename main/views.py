@@ -416,6 +416,10 @@ def chat(request, pk):
     user_profile_picture = ProfilePicture.objects.get(
         user=user
     )
+    display_order = Order.objects.all().filter(
+        skilla=user,
+        client=message_receiver
+    )
 
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
@@ -442,7 +446,7 @@ def chat(request, pk):
             order_form = form_order.save(commit=False)
             order_form.skilla = user
             order_form.client = message_receiver
-            order_form.paid = False
+            # order_form.paid = False
             order_form.save()
 
             messages.success(request, "Order created successfully.")
@@ -460,7 +464,8 @@ def chat(request, pk):
             "display_msg": display_msg,
             "profile_picture": profile_picture,
             "user_profile_picture": user_profile_picture,
-             "order_form": form_order
+             "order_form": form_order,
+             "display_order": display_order
         }
     )
 
