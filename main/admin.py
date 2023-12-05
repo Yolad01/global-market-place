@@ -91,7 +91,10 @@ class ClientRequestAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-     list_display = ["skilla", "client", "paid", "order_no", "order_status", "order_created"]
+     list_display = [
+          "skilla", "client", "paid", "order_no", "order_status",
+          "delivery", "price", "order_created"
+     ]
 
 
 class AboutSkillaAdmin(admin.ModelAdmin):

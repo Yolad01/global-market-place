@@ -189,13 +189,24 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = [
-            "gig_desc"
+            "gig_desc",
+            "delivery",
+            "price"
         ]
         widgets = {
             "gig_desc": forms.Textarea(attrs={
-                "class": 'border border-gray-700 p-2 mb-4 w-full rounded-md',
+                "class": 'border border-green-700 p-2 mb-4 w-full rounded-md',
                 "rows":4,
-                "cols":6,
+                "cols":10,
                 "placeholder": "Describe the service you need."
-            })
+            }),
+            "delivery": forms.NumberInput(attrs={
+                'class': 'border border-green-700 p-2 mb-4 rounded-md',
+                "placeholder": "Days till delivery"
+            }),
+            "price": forms.NumberInput(attrs={
+                'class': 'border border-green-700 p-2 mb-4 rounded-md',
+                "placeholder": "Price"
+            }),
+
         }

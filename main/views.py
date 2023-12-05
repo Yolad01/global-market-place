@@ -419,6 +419,7 @@ def chat(request, pk):
 
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
+        form_order = OrderForm(request.POST)
         if form.is_valid():
             msg_body = form.cleaned_data["msg_body"]
 
@@ -437,7 +438,18 @@ def chat(request, pk):
 
             return redirect("main:chat", pk=message_receiver.id)
         
+        if form_order.is_valid():
+            order_form = form_order.save(commit=False)
+            order_form.skilla = user
+            order_form.client = message_receiver
+            order_form.paid = False
+            order_form.save()
+
+            messages.success(request, "Order created successfully.")
+            return redirect("main:chat", pk=message_receiver.id)
+        
     form = ChatMessageForm()
+    form_order = OrderForm()
 
     return render(
         request=request,
@@ -447,7 +459,8 @@ def chat(request, pk):
             # "user": user,
             "display_msg": display_msg,
             "profile_picture": profile_picture,
-            "user_profile_picture": user_profile_picture
+            "user_profile_picture": user_profile_picture,
+             "order_form": form_order
         }
     )
 
@@ -471,26 +484,3 @@ def inbox(request):
         }
     )
 
-
-def send_offer(request, pk):
-    user = request.user
-    client = User.objects.get(id=pk)
-    
-    if request.method == "POST":
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            order_form = form.save(commit=False)
-            order_form.skilla = user
-            order_form.client = client
-            order_form.paid = False
-            order_form.save()
-    
-    form = OrderForm()
-
-    return render(
-        request=request,
-        template_name="main/messaging/chat.html",
-        context={
-            "order_form": form
-        }
-    )
