@@ -134,6 +134,16 @@
                     <p class="font-semibold text-xl">{{ order.delivery }} Days</p>
                 </div>
 
+                <div class="">
+                    <div class="text-white bg-green-700 text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
+                        {% if order.accepted == False %}
+                            Not Accepted
+                        {% else %}
+                            Order Accepted
+                        {% endif %}
+                    </div>
+                </div>
+
                 
 
             </div>
