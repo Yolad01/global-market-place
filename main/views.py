@@ -419,7 +419,7 @@ def chat(request, pk):
     display_order = Order.objects.all().filter(
         skilla=user,
         client=message_receiver
-    )
+    ).order_by("-order_created")
 
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
