@@ -17,104 +17,109 @@
         {% endif %}
     </div>
 
-    {% for msg in display_msg %}
-    
-        <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 w-3/6 rounded-md items-center">
-            <div class="pl-5 mx-5 my-5 text-gray-800 w-3/6 rounded-md flex flex-row items-center">
-                <div>
-                    {% if msg.message.msg_sender == user %}
-                    <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-                    
-                    {% else %}
-                    <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-                    {% endif %}
-                </div>
-                <div class="flex mx-4">
-                    <div class="mx-4 font-semibold">
-                        {{ msg.message.msg_sender }}
-                    </div>
 
-                    <div class="mx-4 text-xs">
-                        {{ msg.message.timestamp }}
-                    </div>
-                </div>
-            </div>
-            <div class="mx-4 text-xs ml-40">
-                {{ msg.message.msg_body }}
-            </div>
-        </div>
+    <div class="flex">
 
-    {% endfor %}
+        <div>
 
-
-    {% for order in display_order %}
-    <div class="border border-gray-400 mx-5 my-1 text-gray-800 py-2 w-3/6 rounded-md items-center">
-        {{ order.price }}
-    </div>
-    {% endfor %}
-        
-
-    <div>
-        <form method="POST" class="mx-1 my-1 py-1">
-            {% csrf_token %}
-
-            <div>
-                {{form.msg_body}}
-            </div>
+            {% for msg in display_msg %}
             
-            <div class="flex my-2 mx-3 border py-3">
-                <div class="px-4">
-                    <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
-                </div>
-
-                <div class="px-4">
-                    <button id="openModal" class="bg-gray-700 px-4 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-green-700 hover:border-green-700">Send an offer</button>
-                </div>
-
-                
-            </div>
-        </form>
-
-        <!-- Modal -->
-        <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="myModal">
-            <div class="flex items-center justify-center min-h-screen">
-              <!-- Overlay -->
-              <div class="fixed inset-0 bg-black opacity-50"></div>
-              <div class="bg-white p-8 rounded shadow-md relative">
-                <div class="flex justify-end absolute top-0 right-0 m-4">
-                  <button class="text-gray-500 hover:text-gray-700" id="closeModal">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="mt-4">
-                  <!-- Modal content -->
-                  <form method="POST">
-                    {% csrf_token %}
-                    <div>
-                        <div class="px-4 font-semibold">
-                            Create custom order
+                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 w-3/6 rounded-md items-center">
+                    <div class="pl-5 mx-5 my-5 text-gray-800 w-3/6 rounded-md flex flex-row items-center">
+                        <div>
+                            {% if msg.message.msg_sender == user %}
+                            <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
+                            
+                            {% else %}
+                            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
+                            {% endif %}
                         </div>
-                        <div class="px-4">
-                            {{ order_form.gig_desc }}
-                        </div>
+                        <div class="flex mx-4">
+                            <div class="mx-4 font-semibold">
+                                {{ msg.message.msg_sender }}
+                            </div>
 
-                        <div class="px-4">
-                            {{ order_form.delivery }}
-                            {{ order_form.price }}
+                            <div class="mx-4 text-xs">
+                                {{ msg.message.timestamp }}
+                            </div>
                         </div>
                     </div>
-                    <div class="px-4">
-                        <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
+                    <div class="mx-4 text-xs ml-40">
+                        {{ msg.message.msg_body }}
+                    </div>
+                </div>
+                
+
+            {% endfor %}
+                
+            <div>
+                <form method="POST" class="mx-1 my-1 py-1">
+                    {% csrf_token %}
+
+                    <div>
+                        {{form.msg_body}}
+                    </div>
+                    
+                    <div class="flex my-2 mx-3 border py-3">
+                        <div class="px-4">
+                            <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
+                        </div>
+
+                        <div class="px-4">
+                            <button id="openModal" class="bg-gray-700 px-4 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-green-700 hover:border-green-700">Send an offer</button>
+                        </div>
+
+                        
                     </div>
                 </form>
+
+                <!-- Modal -->
+                <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="myModal">
+                    <div class="flex items-center justify-center min-h-screen">
+                    <!-- Overlay -->
+                    <div class="fixed inset-0 bg-black opacity-50"></div>
+                    <div class="bg-white p-8 rounded shadow-md relative">
+                        <div class="flex justify-end absolute top-0 right-0 m-4">
+                        <button class="text-gray-500 hover:text-gray-700" id="closeModal">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        </div>
+                        <div class="mt-4">
+                        <!-- Modal content -->
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div>
+                                <div class="px-4 font-semibold">
+                                    Create custom order
+                                </div>
+                                <div class="px-4">
+                                    {{ order_form.gig_desc }}
+                                </div>
+
+                                <div class="px-4">
+                                    {{ order_form.delivery }}
+                                    {{ order_form.price }}
+                                </div>
+                            </div>
+                            <div class="px-4">
+                                <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
 
-                
+        {% for order in display_order %}
+        <div class="border border-gray-400 mx-5 my-1 text-gray-800 py-2 w-3/6 rounded-md items-center">
+            {{ order.price }}
+        </div>
+        {% endfor %}
+
     </div>
 
     <script>
