@@ -18,14 +18,14 @@
     </div>
 
 
-    <div class="flex">
+    <div class="grid grid-cols-2">
 
         <div>
 
             {% for msg in display_msg %}
             
-                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 w-3/6 rounded-md items-center">
-                    <div class="pl-5 mx-5 my-5 text-gray-800 w-3/6 rounded-md flex flex-row items-center">
+                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
+                    <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
                         <div>
                             {% if msg.message.msg_sender == user %}
                             <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
@@ -114,11 +114,32 @@
             </div>
         </div>
 
-        {% for order in display_order %}
-        <div class="border border-gray-400 mx-5 my-1 text-gray-800 py-2 w-3/6 rounded-md items-center">
-            {{ order.price }}
+        <div>
+            <p class="font-semibold text-xl mx-5">Orders</p>
+
+            {% for order in display_order %}
+            <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center">
+                
+                <div class="flex justify-between border-b-2 py-2">
+                    <p class="font-semibold">Custom order <span class="font-semibold text-green-700">{{ order.order_no }}</span></p>
+                    <p class="font-semibold">NGN{{ order.price }}</p>
+                </div>
+
+                <div class="px-4 pt-2 pb-10 border-b-2">
+                    <p class="text-sm">{{ order.gig_desc }}</p>
+                </div>
+
+                <div class="px-4 pt-2 pb-5 border-b-2">
+                    <p class="">This order will be dellivered in:</p>
+                    <p class="font-semibold text-xl">{{ order.delivery }} Days</p>
+                </div>
+
+                
+
+            </div>
+            {% endfor %}
+
         </div>
-        {% endfor %}
 
     </div>
 
