@@ -1,39 +1,36 @@
-{% extends 'layout/dash_nav.html' %}
-{% load static %} 
-{% block content %}
+{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
-
-<div class="justify-center bg-gray-50">
-    {% for msg in inbox %}
-    <div class="bg-white border border-green-700 pl-5 mx-5 my-2 text-gray-800 py-2 px-2 w-3/6 rounded-md flex flex-row items-center">
-        <div>
-            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-            
-        </div>
-        <div class="flex mx-4">
-            <div class="mx-4 font-semibold">
-                {{ msg.message.msg_sender }}
-            </div>
-            <div class="mx-4 text-xs">
-                {{ msg.message.msg_body_snippet }}
-            </div>
-            <a
-                href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
-                class="text-white bg-green-700 my-2 px-4 py-2 rounded-md shadow-sm text-sm ml-4 font-semibold"
-            >
-                Open
-            </a>
-            <div class="mx-4 text-xs">
-                {{ msg.message.timestamp }}
-            </div>
-        </div>
-
+<div class="mt-10 mr-52 justify-center bg-gray-50">
+  {% for msg in inbox %}
+  <div
+    class="bg-white border border-green-700 pl-5 mx-5 my-2 text-gray-800 px-2 w-3/6 rounded-md flex flex-row items-center"
+  >
+    <div>
+      <img
+        src="{{ profile_picture.image.url }}"
+        alt="profile-img"
+        class="h-10 w-10 rounded-full"
+      />
     </div>
-    {% endfor %}
+    <div class="flex mx-4">
+      <div class="grid grid-rows-2 gap-0 -space-y-0">
+        <div class="mx-4 font-semibold">{{ msg.message.msg_sender }}</div>
+        <div class="mt-5 mx-4 text-sm">{{ msg.message.msg_body_snippet }}</div>
+      </div>
+      <div class="mx-4 text-xs">{{ msg.message.timestamp }}</div>
+      <a
+        href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
+        class="text-white ml-32 bg-green-700 my-2 px-4 py-2 rounded-md shadow-sm text-sm font-semibold"
+      >
+        Open
+      </a>
 
+      {% comment %}
+      <div class="ml-48 mx-4 text-xs">{{ msg.message.timestamp }}</div>
+      {% endcomment %}
+    </div>
+  </div>
+  {% endfor %}
 </div>
-
-
-
 
 {% endblock %}
