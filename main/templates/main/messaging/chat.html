@@ -115,7 +115,11 @@
         </div>
 
         <div>
+<<<<<<< HEAD
             <p class="font-semibold text-xl mx-5 wow fadeInDown">Orders</p>
+=======
+            <p class="font-semibold text-xl mx-5 wow fadeInDown">{% if user.role == "SKILLAS" %} Orders {% endif %}</p>
+>>>>>>> 46ea52bf42da6a6da5a502eedb1822d1ca589db8
 
             {% for order in display_order %}
             <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center wow fadeInRight">
