@@ -13,6 +13,8 @@
     <script src="{% static '/js/init-alpine.js' %}"></script>
     <script src="{% static '/js/main.js' %}"></script>
     <script src="{% static '/js/wow.min.js' %}"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+
     <script>
       new WOW().init();
     </script>
@@ -48,18 +50,32 @@
         >
           <div class="flex gap-10 font-semibold text-base">
             <a href="#">Payment</a>
-            <a href="#">Transaction History</a>
             <a href="/applications">Applications</a>
-            <a href="/logout">T&C</a>
-            <div class="flex">
-              <a href="#">Help</a>
-              <a href="#"
-                ><img
-                  src="{% static '/img/Vector (6).png' %}"
-                  alt=""
-                  class="ml-3 mt-2"
-              /></a>
-            </div>
+            
+            
+            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class=" font-semibold hover:bg-green-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-cente" type="button">Options<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              </svg>
+              </button>
+              
+              <!-- Dropdown menu -->
+              <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                    <li>
+                      <a href="/client_dashboard" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    </li>
+                    <li>
+                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                    </li>
+                    <li>
+                      <a href="/orders" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Orders</a>
+                    </li>
+                    <li>
+                      <a href="/logout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                    </li>
+                  </ul>
+              </div>
+  
             <button
               class="rounded bg-veryDarkGreen text-white font-semibold px-3 py-2"
             >
@@ -81,6 +97,8 @@
         </div>
       </nav>
     </header>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 
     {% block content %} {% endblock %}
   </body>

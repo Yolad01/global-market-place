@@ -210,3 +210,12 @@ class OrderForm(forms.ModelForm):
             }),
 
         }
+
+
+
+class AcceptQuote(forms.Form):
+    accept = forms.BooleanField(initial=True)
+
+
+class DeclineQuote(forms.Form):
+    decline = forms.BooleanField(initial=True)

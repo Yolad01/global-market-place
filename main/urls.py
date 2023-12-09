@@ -41,6 +41,8 @@ urlpatterns = [
     path("chat/<int:pk>/", views.chat, name="chat"),
     
     path("inbox/", views.inbox, name="inbox"),
+    
+    path("orders/", views.orders , name="orders"),
 
     path("logout/", views.log_out, name="logout")
 ]

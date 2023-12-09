@@ -419,7 +419,7 @@ def chat(request, pk):
     display_order = Order.objects.all().filter(
         skilla=user,
         client=message_receiver
-    )
+    ).order_by("-order_created")
 
     if request.method == "POST":
         form = ChatMessageForm(request.POST)
@@ -489,3 +489,18 @@ def inbox(request):
         }
     )
 
+
+def orders(request):
+    user = request.user
+
+    display_order = Order.objects.all().filter(
+        client=user,
+    ).order_by("-order_created")
+    
+    return render(
+        request=request,
+        template_name="main/client/orders.html",
+        context={
+            "display_order": display_order
+        }
+    )
