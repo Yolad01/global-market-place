@@ -24,7 +24,7 @@
 
             {% for msg in display_msg %}
             
-                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
+                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center wow fadeInLeft">
                     <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
                         <div>
                             {% if msg.message.msg_sender == user %}
@@ -53,7 +53,7 @@
             {% endfor %}
                 
             <div>
-                <form method="POST" class="mx-1 my-1 py-1">
+                <form method="POST" class="mx-1 my-1 py-1 wow fadeInLeft">
                     {% csrf_token %}
 
                     <div>
@@ -115,10 +115,10 @@
         </div>
 
         <div>
-            <p class="font-semibold text-xl mx-5">Orders</p>
+            <p class="font-semibold text-xl mx-5 wow fadeInDown">{% if user.role == "SKILLAS" %} Sent Quotes {% endif %}</p>
 
             {% for order in display_order %}
-            <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center">
+            <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center wow fadeInRight">
                 
                 <div class="flex justify-between border-b-2 py-2">
                     <p class="font-semibold">Custom order <span class="font-semibold text-green-700">{{ order.order_no }}</span></p>
@@ -137,14 +137,12 @@
                 <div class="">
                     <div class="text-white bg-green-700 text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
                         {% if order.accepted == False %}
-                            Not Accepted
+                            Pending
                         {% else %}
                             Order Accepted
                         {% endif %}
                     </div>
                 </div>
-
-                
 
             </div>
             {% endfor %}
@@ -169,4 +167,3 @@
 
 
 {% endblock %}
-
