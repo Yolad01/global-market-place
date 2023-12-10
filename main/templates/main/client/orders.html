@@ -1,0 +1,64 @@
+{% extends 'layout/client_nav.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="justify-center bg-gray-50">
+
+
+    <p class="font-semibold text-2xl mx-20 mt-5 wow fadeInDown">Orders</p>
+
+    <div class="grid grid-cols-3 mx-20 my-5">
+
+        {% for order in display_order %}
+        <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-md shadow items-center wow fadeInUp">
+            
+            <div class="flex justify-between border-b-2 py-2">
+                <p class="font-semibold">Custom order <span class="font-semibold text-green-700">{{ order.order_no }}</span></p>
+                <p class="font-semibold">NGN{{ order.price }}</p>
+            </div>
+
+            <div class="px-4 pt-2 pb-10 border-b-2">
+                <p class="text-sm">{{ order.gig_desc }}</p>
+            </div>
+
+            <div class="px-4 pt-2 pb-5 border-b-2">
+                <p class="">This order will be dellivered in:</p>
+                <p class="font-semibold text-xl">{{ order.delivery }} Days</p>
+            </div>
+
+            <div class="grid grid-cols-3 text-sm mx-2 my-2">
+                <div class="text-white bg-green-700 text-center py-2 mx-2 rounded-md shadow-sm font-semibold">
+                    {% if order.accepted == False %}
+                        Accept
+                    {% else %}
+                        Make payment
+                    {% endif %}
+                </div>
+
+                <div class="text-white bg-green-700 text-center py-2 mx-2 rounded-md shadow-sm font-semibold">
+                    {% if order.accepted == False %}
+                        Accept
+                    {% else %}
+                        Make payment
+                    {% endif %}
+                </div>
+
+                <div class="text-white bg-green-700 text-center py-2 mx-2 rounded-md shadow-sm font-semibold">
+                    {% if order.accepted == False %}
+                        Accept
+                    {% else %}
+                        Make payment
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    
+
+</div>
+
+
+{% endblock %}
