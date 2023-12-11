@@ -213,9 +213,11 @@ class OrderForm(forms.ModelForm):
 
 
 
-class AcceptQuote(forms.Form):
+class AcceptQuoteForm(forms.Form):
     accept = forms.BooleanField(initial=True)
+    form_id = forms.IntegerField()
 
 
-class DeclineQuote(forms.Form):
+class DeclineQuoteForm(forms.Form):
     decline = forms.BooleanField(initial=True)
+    form_id = forms.IntegerField()
