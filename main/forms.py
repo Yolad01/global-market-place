@@ -14,6 +14,18 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ("username","first_name", "last_name", "email", "phone_no", "role")
 
+
+        widgets = {
+            "username": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "first_name": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "last_name": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "email": forms.EmailInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "phone_no": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "role": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "password1": forms.PasswordInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "password2": forms.PasswordInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["email"].required = True
@@ -68,6 +80,16 @@ class ClientProfileForm(forms.ModelForm):
             "id_card",
             "terms_and_conditions"
         ]
+
+
+        widgets = {
+            "country": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "current_location": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "home_address": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "occupation": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "id_card": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "terms_and_conditions": forms.CheckboxInput(attrs={'class': 'border border-gray-700 mr-2 rounded-md'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
