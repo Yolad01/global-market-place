@@ -1,39 +1,38 @@
-{% extends 'layout/dash_nav.html' %}
-{% load static %} 
-{% block content %}
+{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
+<div class="mt-10 mr-60 justify-center bg-gray-50">
+  {% for msg in inbox %}
+  <div
+    class="bg-white border border-green-700 pl-5 mx-5 my-2 text-gray-800 px-2 w-3/6 rounded-md flex flex-row items-center"
+  >
+    <div>
+      <img
+        src="{{ profile_picture.image.url }}"
+        alt="profile-img"
+        class="h-10 w-10 rounded-full"
+      />
+    </div>
+    <div class="flex mx-4 mt-3 justify-between gap-14">
+      <div class="grid grid-cols-2">
+        <div class="mx-4 font-semibold mt-5">{{ msg.message.msg_sender }}</div>
+        <div class="mt-5 mx-4 text-sm">{{ msg.message.msg_body_snippet }}</div>
+      </div>
 
-<div class="justify-center bg-gray-50">
-    {% for msg in inbox %}
-    <div class="bg-white border border-green-700 pl-5 mx-5 my-2 text-gray-800 py-2 px-2 w-3/6 rounded-md flex flex-row items-center">
-        <div>
-            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-            
-        </div>
-        <div class="flex mx-4">
-            <div class="mx-4 font-semibold">
-                {{ msg.message.msg_sender }}
-            </div>
-            <div class="mx-4 text-xs">
-                {{ msg.message.msg_body_snippet }}
-            </div>
+      <div class="my-2 items-center justify-center">
+        <div class="mx-4 text-xs py-2">{{ msg.message.timestamp }}</div>
+          <div class="ml-4">
             <a
-                href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
-                class="text-white bg-green-700 my-2 px-4 py-2 rounded-md shadow-sm text-sm ml-4 font-semibold"
-            >
-                Open
-            </a>
-            <div class="mx-4 text-xs">
-                {{ msg.message.timestamp }}
-            </div>
-        </div>
+            href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
+            class="text-white bg-green-700 my-2 px-4 py-2 rounded-md shadow-sm text-sm font-semibold"
+          >
+            Open
+          </a>
+          </div>
+      </div>
 
     </div>
-    {% endfor %}
-
+  </div>
+  {% endfor %}
 </div>
-
-
-
 
 {% endblock %}
