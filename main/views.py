@@ -492,6 +492,7 @@ def inbox(request):
     )
 
 
+
 def orders(request):
     user = request.user.id
 
@@ -531,4 +532,12 @@ def orders(request):
             "accept_form": accept_form,
             "decline_form": decline_form
         }
+    )
+
+
+def create_gigs(request):
+
+    return render(
+        request=request,
+        template_name="main/skilla/create_gigs.html"
     )

@@ -44,6 +44,8 @@ urlpatterns = [
     
     path("orders/", views.orders , name="orders"),
 
+    path("create_gigs/", views.create_gigs , name="create_gigs"),
+
     path("logout/", views.log_out, name="logout")
 ]
 
