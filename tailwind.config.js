@@ -12,7 +12,7 @@
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./skillas-pages/**/*.{html,js}', './skillas-dashboard/**/*.{html,js}',
+  content: ['./layout/**/*.{html,js}', './skillas-dashboard/**/*.{html,js}',
     './client-pages/**/*.{html,js}',],
   theme: {
     extend: {
@@ -48,7 +48,7 @@ module.exports = {
         shadeAsh_3: '#D9D9D9',
         shadeAsh_4: '#818181',
         red: '#C90000'
-        
+
       },
     }
   },

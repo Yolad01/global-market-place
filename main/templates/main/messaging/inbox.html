@@ -12,18 +12,24 @@
         class="h-10 w-10 rounded-full"
       />
     </div>
-    <div class="flex mx-4 mt-3">
-      <div class="grid grid-rows-2 -space-y-0">
-        <div class="mx-4 font-semibold">{{ msg.message.msg_sender }}</div>
+    <div class="flex mx-4 mt-3 justify-between gap-14">
+      <div class="grid grid-cols-2">
+        <div class="mx-4 font-semibold mt-5">{{ msg.message.msg_sender }}</div>
         <div class="mt-5 mx-4 text-sm">{{ msg.message.msg_body_snippet }}</div>
       </div>
-      <div class="mx-4 text-xs">{{ msg.message.timestamp }}</div>
-      <a
-        href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
-        class="text-white ml-32 bg-green-700 my-2 px-4 py-2 rounded-md shadow-sm text-sm font-semibold"
-      >
-        Open
-      </a>
+
+      <div class="my-2 items-center justify-center">
+        <div class="mx-4 text-xs py-2">{{ msg.message.timestamp }}</div>
+          <div class="ml-4">
+            <a
+            href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
+            class="text-white bg-green-700 my-2 px-4 py-2 rounded-md shadow-sm text-sm font-semibold"
+          >
+            Open
+          </a>
+          </div>
+      </div>
+
     </div>
   </div>
   {% endfor %}
