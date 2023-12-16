@@ -93,7 +93,7 @@ class ClientRequestAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
      list_display = [
           "skilla", "client", "paid", "order_no", "order_status",
-          "delivery", "price", "accepted", "order_created"
+          "delivery", "price", "accepted", "decline", "order_created"
      ]
 
 

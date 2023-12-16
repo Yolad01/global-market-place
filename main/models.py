@@ -247,6 +247,7 @@ class Order(models.Model):
     delivery = models.IntegerField(null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
     accepted = models.BooleanField(default=False)
+    decline = models.BooleanField(default=False)
     order_status = models.CharField(
         max_length=15,
         null=False,

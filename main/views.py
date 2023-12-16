@@ -3,7 +3,9 @@ from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
-                        BriefAppForm, ChatMessageForm, OrderForm
+                        BriefAppForm, ChatMessageForm, OrderForm, AcceptQuoteForm,
+                        DeclineQuoteForm
+                            
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
@@ -491,16 +493,42 @@ def inbox(request):
 
 
 def orders(request):
-    user = request.user
+    user = request.user.id
 
     display_order = Order.objects.all().filter(
         client=user,
     ).order_by("-order_created")
+
+    if request.method == "POST":
+        accept_form = AcceptQuoteForm(request.POST)
+        decline_form = DeclineQuoteForm(request.POST)
+        
+        if accept_form.is_valid():
+            order_id = accept_form.cleaned_data["form_id"]
+            order = Order.objects.get(client=user, id=order_id)
+            order.accepted = True
+            order.save()
+            
+            return redirect("main:orders")
+        
+        if decline_form.is_valid():
+            order_id = decline_form.cleaned_data["form_id"]
+            order = Order.objects.get(client=user, id=order_id)
+            order.decline = True
+            order.save()
+            
+            return redirect("main:orders")
+        
+        
+    accept_form = AcceptQuoteForm()
+    decline_form = DeclineQuoteForm()
     
     return render(
         request=request,
         template_name="main/client/orders.html",
         context={
-            "display_order": display_order
+            "display_order": display_order,
+            "accept_form": accept_form,
+            "decline_form": decline_form
         }
     )
