@@ -13,7 +13,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./layout/**/*.{html,js}', './skillas-dashboard/**/*.{html,js}',
-    './client-pages/**/*.{html,js}',],
+    './skilla/**/*.{html,js}',],
   theme: {
     extend: {
       fontFamily: {
