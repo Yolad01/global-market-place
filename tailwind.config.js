@@ -13,7 +13,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./layout/**/*.{html,js}', './skillas-dashboard/**/*.{html,js}',
-    './client-pages/**/*.{html,js}',],
+    './skilla/**/*.{html,js}',],
   theme: {
     extend: {
       fontFamily: {
@@ -47,13 +47,8 @@ module.exports = {
         shadeAsh_2: '#6F6F6F',
         shadeAsh_3: '#D9D9D9',
         shadeAsh_4: '#818181',
-<<<<<<< HEAD
         red: '#C90000'
 
-=======
-        red: '#C90000',
-        
->>>>>>> 17395782eb5db51458a8f1d228fbcb9386ddf84a
       },
     }
   },

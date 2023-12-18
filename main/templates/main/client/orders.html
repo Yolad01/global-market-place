@@ -40,7 +40,7 @@
 
                     
                     {% if order.decline == False %}
-                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold">
+                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 ml-20 rounded-md shadow-sm font-semibold">
                         {% if order.accepted == False %}
                             Accept
                         {% else %}
@@ -70,7 +70,7 @@
                     <input type="number" name="form_id" required="" id="id_form_id" value="{{ order.id }}" hidden>
 
                     {% if order.accepted == True %}
-                    <button type="submit" class="text-white bg-gray-900 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
+                    <button type="submit" class="text-white bg-red-700 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
                         {% if order.decline == False %}
                             Decline
                         {% else %}
@@ -80,7 +80,7 @@
 
                     {% else %}
 
-                    <button type="submit" class="text-white bg-gray-900 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold">
+                    <button type="submit" class="text-white bg-red-700 text-center px-4 py-2 mx-12 rounded-md shadow-sm font-semibold">
                         {% if order.decline == False %}
                             Decline
                         {% else %}
