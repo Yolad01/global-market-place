@@ -32,47 +32,57 @@
 
     <body>
 
-        <form method="post" enctype="multipart/form-data" class="">
+        <form method="post" enctype="multipart/form-data"
+            class="flex justify-center"
+        >
             {% csrf_token %}
+            
+            <div class="border-2 my-10 py-10 px-10">
 
-            {% comment %} {{ form.as_p }} {% endcomment %}
+                <div>
+                    <p class="mx-5">Title</p>
+                    {{ form.title }}
+                </div>
 
-            <div>
-                <p>Title</p>
-                {{ form.title }}
+                <div>
+                    <p class="mx-5">description</p>
+                    {{ form.description }}
+                </div>
+
+                <div class="flex">
+                    <div>
+                        <p class="mx-5">category</p>
+                        {{ form.category }}
+                    </div>
+
+                    <div>
+                        <p class="mx-5">skill</p>
+                        {{ form.skill }}
+                    </div>
+                </div>
+
+                <div>
+                    <p class="mx-5">Select an Image that describes your skill</p>
+                    {{ form.image }}
+                </div>
+
+                <div>
+                    <p class="mx-5">Select you skill level</p>
+                    {{ form.level }}
+                </div>
+                
+                <div>
+                    <p class="mx-5">Price</p>
+                    {{ form.base_price }}
+                </div>
+
+                <div>
+                    <button class="bg-gray-700 text-white shadow-xl rounded-md mx-5 py-2 px-4 my-2" type="submit">create</button>
+                </div>
+                
             </div>
 
-            <div>
-                <p>description</p>
-                {{ form.description }}
-            </div>
-
-            <div>
-                <p>category</p>
-                {{ form.category }}
-            </div>
-
-            <div>
-                <p>skill</p>
-                {{ form.skill }}
-            </div>
-
-            <div>
-                <p>Select an Image that describes your skill</p>
-                {{ form.image }}
-            </div>
-
-            <div>
-                <p>Select you skill level</p>
-                {{ form.level }}
-            </div>
-            <p>Price</p>
-            {{ form.base_price }}
-            <div>
-
-            </div>
-
-            <button class="bg-green-800" type="submit">create</button>
+            
         </form>
 
         
