@@ -4,7 +4,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         BriefAppForm, ChatMessageForm, OrderForm, AcceptQuoteForm,
-                        DeclineQuoteForm
+                        DeclineQuoteForm, SkillForm
                             
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
@@ -536,8 +536,19 @@ def orders(request):
 
 
 def create_gigs(request):
-
+    user = request.user
+    if request.method =="POST":
+        form = SkillForm(request.POST, request.FILES)
+        if form.is_valid():
+            skill_form = form.save(commit=False)
+            skill_form.skilla = request.user
+            skill_form.save()
+            
+    form = SkillForm()
     return render(
         request=request,
-        template_name="main/skilla/create_gigs.html"
+        template_name="main/skilla/create_gigs.html",
+        context={
+            "form": form
+        }
     )

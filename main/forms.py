@@ -125,12 +125,23 @@ class SkillForm(forms.ModelForm):
     class Meta:
         model = Skill
         fields = [
-            "skilla",
-            "skill_category",
+            # "skilla",
+            "title",
+            "category",
             "skill",
-            "skill_level",
+            "image",
+            "level",
             "base_price"
         ]
+        
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'border border-veryDarkGreen p-2 my-5 mx-5 rounded-md'}),
+            "category": forms.Select(attrs={'class': 'border border-gray-700 p-2 my-5 mx-5  rounded-md'}),
+            "skill": forms.Select(attrs={'class': 'border border-gray-700 p-2 my-5 mx-5  rounded-md'}),
+            "image": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 p-2 my-5 mx-5 rounded-md'}),
+            "level": forms.Select(attrs={'class': 'border border-gray-700 p-2 my-5 mx-5  rounded-md'}),
+            "base_price": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 my-5 mx-5  rounded-md'})
+        }
     
     
 

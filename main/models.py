@@ -126,13 +126,15 @@ class ClientRequest(models.Model):
 
 class Skill(models.Model):      
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
-    skill_category = models.ForeignKey(JobCategory, blank=True, null=True, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50, blank=True)
+    category = models.ForeignKey(JobCategory, blank=True, null=True, on_delete=models.CASCADE)
     skill = models.ForeignKey(Job, null=True, blank=True, on_delete=models.CASCADE)
-    skill_level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
+    level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
+    image = models.ImageField(upload_to="skill_images", blank=True)
     base_price = models.IntegerField(blank=True, null=True)
     
     def __str__(self):
-        return f'{self.skilla.username} ::: {self.skill.title}'
+        return f'{self.skilla.username} ==> {self.skill.title}'
     
 
 

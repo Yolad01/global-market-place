@@ -78,7 +78,7 @@ class CompanyProfileAdmin(admin.ModelAdmin):
     
     
 class SkillAdmin(admin.ModelAdmin):
-     list_display = ["skilla", "skill", "skill_level", "base_price"]
+     list_display = ["title", "skill", "category", "image", "level", "base_price"]
      
 
 
