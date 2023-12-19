@@ -127,6 +127,7 @@ class ClientRequest(models.Model):
 class Skill(models.Model):      
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, blank=True)
+    description = models.TextField(blank=True)
     category = models.ForeignKey(JobCategory, blank=True, null=True, on_delete=models.CASCADE)
     skill = models.ForeignKey(Job, null=True, blank=True, on_delete=models.CASCADE)
     level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)

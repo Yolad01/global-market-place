@@ -32,10 +32,45 @@
 
     <body>
 
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" class="">
             {% csrf_token %}
 
-            {{ form.as_p }}
+            {% comment %} {{ form.as_p }} {% endcomment %}
+
+            <div>
+                <p>Title</p>
+                {{ form.title }}
+            </div>
+
+            <div>
+                <p>description</p>
+                {{ form.description }}
+            </div>
+
+            <div>
+                <p>category</p>
+                {{ form.category }}
+            </div>
+
+            <div>
+                <p>skill</p>
+                {{ form.skill }}
+            </div>
+
+            <div>
+                <p>Select an Image that describes your skill</p>
+                {{ form.image }}
+            </div>
+
+            <div>
+                <p>Select you skill level</p>
+                {{ form.level }}
+            </div>
+            <p>Price</p>
+            {{ form.base_price }}
+            <div>
+
+            </div>
 
             <button class="bg-green-800" type="submit">create</button>
         </form>
