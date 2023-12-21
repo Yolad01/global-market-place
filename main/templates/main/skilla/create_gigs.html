@@ -6,10 +6,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Skilla</title>
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/output.css' %}">
+        {% comment %} <link href="{% static '/css/main.css' %}" rel="stylesheet" />
         <link href="{% static '/css/style.min.css' %}" rel="stylesheet" />
         <link href="{% static '/css/style.css' %}" rel="stylesheet" />
-        <link href="{% static '/css/main.css' %}" rel="stylesheet" />
-        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+        <link href="{% static '/css/animate.css' %}" rel="stylesheet" /> {% endcomment %}
         <script src="{% static '/js/init-alpine.js' %}"></script>
         <script src="{% static '/js/main.js' %}"></script>
         <script src="{% static '/js/wow.min.js' %}"></script>
@@ -32,58 +34,67 @@
 
     <body>
 
-        <form method="post" enctype="multipart/form-data"
-            class="flex justify-center"
-        >
-            {% csrf_token %}
+        
+
             
-            <div class="border-2 my-10 py-10 px-10">
+
+            <form method="post" enctype="multipart/form-data"
+                class="flex justify-center"
+                >
 
                 <div>
-                    <p class="mx-5">Title</p>
-                    {{ form.title }}
-                </div>
+                <div class="my-10 font-bold text-3xl text-veryDarkGreen">Create Gig</div>
+                {% csrf_token %}
+                
+                <div class="border-2 my-10 py-10 px-10">
 
-                <div>
-                    <p class="mx-5">description</p>
-                    {{ form.description }}
-                </div>
-
-                <div class="flex">
-                    <div>
-                        <p class="mx-5">category</p>
-                        {{ form.category }}
+                    <div class="my-5">
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Title</p>
+                        {{ form.title }}
                     </div>
 
                     <div>
-                        <p class="mx-5">skill</p>
-                        {{ form.skill }}
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Description</p>
+                        {{ form.description }}
                     </div>
+
+                    <div class="flex my-5">
+                        <div>
+                            <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Category</p>
+                            {{ form.category }}
+                        </div>
+
+                        <div>
+                            <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Skill</p>
+                            {{ form.skill }}
+                        </div>
+
+                        <div>
+                            <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Select you skill level</p>
+                            {{ form.level }}
+                        </div>
+                    </div>
+
+                    <div class="my-5">
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Select an Image that describes your skill</p>
+                        {{ form.image }}
+                    </div>
+                    
+                    <div>
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Price</p>
+                        {{ form.base_price }}
+                    </div>
+
+                    <div>
+                        <button class="bg-gray-800 text-white font-semibold shadow-xl rounded-md mx-5 py-2 px-10 my-2" type="submit">Create</button>
+                    </div>
+                    
                 </div>
 
-                <div>
-                    <p class="mx-5">Select an Image that describes your skill</p>
-                    {{ form.image }}
-                </div>
-
-                <div>
-                    <p class="mx-5">Select you skill level</p>
-                    {{ form.level }}
-                </div>
-                
-                <div>
-                    <p class="mx-5">Price</p>
-                    {{ form.base_price }}
-                </div>
-
-                <div>
-                    <button class="bg-gray-700 text-white shadow-xl rounded-md mx-5 py-2 px-4 my-2" type="submit">create</button>
-                </div>
-                
             </div>
+            </form>
 
-            
-        </form>
+        
 
         
     </body>
