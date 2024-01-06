@@ -3,7 +3,7 @@
 <div class="mt-10 mr-60 justify-center">
   {% for msg in inbox %}
   <div
-    class="inline-block bg-white border border-green-700 px-2 mx-2 text-gray-600 font-semibold rounded-md items-center min-w-min shadow-xl"
+    class="inline-block bg-white border border-green-700 px-2 mx-2 my-2 text-gray-600 font-semibold rounded-md items-center min-w-min shadow-xl"
   >
     <div class="flex mx-2 justify-between">
       <div class="grid grid-cols-4">
@@ -16,7 +16,7 @@
             height="55"
           />
         </div>
-        <div class="my-5 font-semibold">{{ msg.message.msg_sender }}</div>
+        <div class="my-5 text-xl font-semibold">{{ msg.message.msg_sender }}</div>
         <div class="my-5 text-sm">{{ msg.message.msg_body_snippet }}</div>
         <div class="my-5 text-sm mx-4">{{ msg.message.timestamp }}</div>
       </div>

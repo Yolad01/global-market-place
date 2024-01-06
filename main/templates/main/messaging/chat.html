@@ -24,7 +24,7 @@
 
             {% for msg in display_msg %}
             
-                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
+                <div class="{% if msg.message.msg_sender == user %} bg-emerald-400 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
                     <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
                         <div>
                             {% if msg.message.msg_sender == user %}
@@ -121,7 +121,7 @@
             <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center wow fadeInRight">
                 
                 <div class="flex justify-between border-b-2 py-2">
-                    <p class="font-semibold">Custom order <span class="font-semibold text-green-700">{{ order.order_no }}</span></p>
+                    <p class="font-semibold">Custom order <span class="font-semibold text-emerald-700">{{ order.order_no }}</span></p>
                     <p class="font-semibold">NGN{{ order.price }}</p>
                 </div>
 
@@ -135,7 +135,7 @@
                 </div>
 
                 <div class="">
-                    <div class="text-white bg-green-700 text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
+                    <div class="bg-emerald-400 text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
                         {% if order.accepted == False %}
                             Pending
                         {% else %}

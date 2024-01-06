@@ -53,15 +53,15 @@
       </div>
     </div>
 
-    <div class="mr-10 border-0 shadow-sm rounded-md font-primary p-1">
+    <div class="shadow-sm rounded-md font-primary p-1">
       {% for x in brief %}
       <form
         method="POST"
-        class="shadow px-10 py-5 mx-auto my-5 border bg-white w-3/4 item-center rounded-2xl font-primary"
+        class="shadow mx-auto my-5 border bg-white w-3/4 item-center rounded-2xl font-primary"
       >
         {% csrf_token %}
-        <div class="flex mx-5 items-center">
-          <p class="text-green-700">
+        <div class="flex ml-4 items-center font-bold text-emerald-800">
+          <p class="">
             <input
               type="text"
               name="client"
@@ -69,13 +69,12 @@
               required=""
               id="id_client"
               value="{{ x.user.username }}"
-              class="text-base font-bold border-0 outline-none flex mx-5 items-center"
               readonly
             />
           </p>
 
-          <div class="-ml-44">
-            <p>
+          <div class="font-semibold outline-none text-gray-600">
+            <p class="ml-4">
               <input
                 type="text"
                 name="title"
@@ -83,63 +82,65 @@
                 required=""
                 id="id_title"
                 value="{{ x.title }}"
-                class="mx-10 font-bold border-0 outline-none text-gray-600"
                 readonly
               />
             </p>
 
-            <p>
+            <p class="mt-2 px-2">
               <textarea
                 name="description"
                 cols="70"
                 rows="4"
                 required=""
                 id="id_description"
-                class="pt-2 mt-2 mx-5 px-5 resize-none text-gray-700 font-medium text-sm border-0 bg-lightAsh rounded-lg outline-none"
+                class="resize-none text-gray-700 font-medium text-sm rounded-lg outline-none px-2"
                 readonly
               >
               {{ x.description }}
               </textarea>
             </p>
+
+            <p class="mt-2 px-2 mb-2">
+              <input
+                type="text"
+                name="categories"
+                maxlength="100"
+                required=""
+                id="id_categories"
+                value="{{ x.categories }}"
+                class="text-gray-100 font-medium border-0 outline-none bg-veryDarkGreen px-5 rounded-md justify-center"
+                readonly
+              />
+            </p>
+            <button
+              type="submit"
+              class="bg-veryDarkGreen shadow font-semibold text-white border mx-2 px-10 py-2 mb-2 rounded-md"
+              name="btn_pressed"
+            >
+              Request
+            </button>
+          </div>
+
+          <div class="font-semibold">
+            <p class="px-5">Budget</p>
+            <p class="flex px-5">
+              NGN
+              <input
+                type="number"
+                name="budget"
+                required=""
+                id="id_budget"
+                value="{{ x.budget }}"
+                class="text-emerald-700 outline-none rounded-md"
+                readonly
+              />
+            </p>
+            <div class="">
+
+            
           </div>
         </div>
-
-        <div class="flex pl-28">
-          <p>
-            <input
-              type="text"
-              name="categories"
-              maxlength="100"
-              required=""
-              id="id_categories"
-              value="{{ x.categories }}"
-              class="text-gray-100 ml-5 mt-5 font-medium border-0 outline-none bg-green-400 px-5 rounded-md justify-center"
-              readonly
-            />
-          </p>
-
-          <p>
-            <input
-              type="number"
-              name="budget"
-              required=""
-              id="id_budget"
-              value="{{ x.budget }}"
-              class="text-gray-100 ml-5 mt-5 font-medium border-0 outline-none bg-green-400 px-5 rounded-md"
-              readonly
-            />
-          </p>
-        </div>
-
-        <div class="float-right -mt-28">
-          <button
-            type="submit"
-            class="bg-veryDarkGreen shadow font-normal text-white border px-5 py-2 rounded-md"
-            name="btn_pressed"
-          >
-            Request
-          </button>
-        </div>
+      </div>
       </form>
       {% endfor %}
 
