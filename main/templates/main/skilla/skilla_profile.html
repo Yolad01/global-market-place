@@ -36,31 +36,33 @@
       <form method="POST" class="bg-white rounded-lg px-8 pt-6 pb-8 mb-4">
         {% csrf_token %}
 
-        {{ form.as_p }}
+        <div>
+          {{ form.country }}
+        </div>
+        <div>
+          {{ form.state }}
+        </div>
+        <div>
+          {{ form.current_location }}
+        </div>
+        <div>
+          {{ form.experience }}
+        </div>
+        <div>
+          {{ form.portfolio }}
+        </div>
+        <div>
+          {{ form.identification }}
+        </div>
+        <div>
+          {{ form.professional_profiles_links }}
+        </div>
+        <div>
+          {{ form.hourly_rate }}
+        </div>
 
         <div>
-          {{ country }}
-        </div>
-        <div>
-          {{ state }}
-        </div>
-        <div>
-          {{ current_location }}
-        </div>
-        <div>
-
-        </div>
-        <div>
-
-        </div>
-        <div>
-
-        </div>
-        <div>
-
-        </div>
-        <div>
-
+          <button type="submit" class="bg-veryDarkGreen text-white font-semi border border-gray-700 p-2 mb-4 w-full rounded-md">Update</button>
         </div>
 
         
