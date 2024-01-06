@@ -23,20 +23,21 @@
     <div class="my-5 mx-5 p-5">
       <img
         src="{% static '/img/Illustrations-06.png' %}"
-        width="700"
-        height="700"
+        width="612"
+        height="612"
       />
     </div>
 
-    <div class="mx-2 py-2 border-2 border-purple-800">
+    <div class="mx-2 py-2 border border-veryDarkGreen">
       <div class="text-md font-semibold text-center">
         {{ user.username }} Profile Update
       </div>
 
-      <form method="POST" class="bg-white rounded-lg px-8 pt-6 pb-8 mb-4">
+      <form method="POST" class="bg-white rounded-lg px-8 pt-6">
         {% csrf_token %}
 
         <div>
+          <p>Country</p>
           {{ form.country }}
         </div>
         <div>
@@ -46,23 +47,29 @@
           {{ form.current_location }}
         </div>
         <div>
+          <p>Experince</p>
           {{ form.experience }}
         </div>
         <div>
           {{ form.portfolio }}
         </div>
         <div>
+          <p>Upload a Government issued ID</p>
           {{ form.identification }}
         </div>
         <div>
           {{ form.professional_profiles_links }}
         </div>
         <div>
+          <p>Hourly rate</p>
           {{ form.hourly_rate }}
+        </div>
+        <div>
+          {{ form.terms_and_conditions }}
         </div>
 
         <div>
-          <button type="submit" class="bg-veryDarkGreen text-white font-semi border border-gray-700 p-2 mb-4 w-full rounded-md">Update</button>
+          <button type="submit" class="bg-veryDarkGreen text-white font-semibold border border-gray-700 p-2 w-full rounded-md">Update</button>
         </div>
 
         

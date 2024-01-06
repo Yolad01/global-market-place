@@ -57,17 +57,18 @@ class SkillaProfileForm(forms.ModelForm):
             "identification",
             "professional_profiles_links",
             "hourly_rate",
+            "terms_and_conditions"
         )
 
         widgets = {
             "country": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "state": forms.TextInput(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
-            "current_location": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "experience": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "portfolio": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "identification": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "professional_profiles_links": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "terms_and_conditions": forms.CheckboxInput(attrs={'class': 'border border-gray-700 mr-2 rounded-md'}),
+            "state": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "State"}),
+            "current_location": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
+            "experience": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Years of experience"}),
+            "portfolio": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Link to your works"}),
+            "identification": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md bg-veryDarkGreen text-white'}),
+            "professional_profiles_links": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Professional Profile links"}),
+            "terms_and_conditions": forms.CheckboxInput(attrs={'class': 'border border-gray-700 p-2 mb-4 mr-2 rounded-md',}),
             "hourly_rate": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'})
         }
     
