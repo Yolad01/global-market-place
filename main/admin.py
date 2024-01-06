@@ -37,7 +37,6 @@ class SkillaProfileAdmin(admin.ModelAdmin):
           "state",
           "current_location",
           "experience",
-          "certifications",
           "portfolio",
           "professional_profiles_links",
           "hourly_rate",

@@ -102,7 +102,7 @@ class JobCategory(models.Model):
 class Job(models.Model):
     category = models.ForeignKey(JobCategory, on_delete=models.CASCADE)
     title = models.CharField(max_length=15, null=True, blank=True)
-    price  = models.IntegerField()
+    price  = models.PositiveIntegerField()
     desc = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -113,7 +113,7 @@ class Job(models.Model):
 class ClientRequest(models.Model):
     category = models.ForeignKey(JobCategory, on_delete=models.CASCADE)
     title = models.CharField(max_length=15, null=True, blank=True)
-    price  = models.IntegerField()
+    price  = models.PositiveIntegerField()
     desc = models.TextField(null=True, blank=True)
     user = models.ForeignKey(Clients, on_delete=models.CASCADE)
     created = models.DateTimeField(verbose_name="Request Created on", default=timezone.now)
@@ -132,7 +132,7 @@ class Skill(models.Model):
     skill = models.ForeignKey(Job, null=True, blank=True, on_delete=models.CASCADE)
     level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
     image = models.ImageField(upload_to="skill_images", blank=True)
-    base_price = models.IntegerField(blank=True, null=True)
+    base_price = models.PositiveIntegerField(blank=True, null=True)
     
     def __str__(self):
         return f'{self.skilla.username} ==> {self.skill.title}'
@@ -144,11 +144,11 @@ class SkillaProfile(models.Model):
     country = models.CharField(max_length=20, blank=True, null=True, choices=Country.choices)# change blank to false later
     state = models.CharField(max_length=20, null=True, blank=True) # change blank to false 
     current_location = models.CharField(max_length=20, null=True, blank=True)
-    experience = models.IntegerField(verbose_name="Years of Experience", blank=True, null=True)
-    certifications = models.CharField(verbose_name="Education and Certification (Optional)", blank=True, null=True, max_length=256)# may need to be chaged to false depending
-    portfolio = models.URLField(verbose_name="Provide url/link or file upload", blank=True, null=True)
+    experience = models.PositiveSmallIntegerField(verbose_name="Years of Experience", blank=True, null=True)
+    portfolio = models.URLField(verbose_name="links to your works", blank=True, null=True)
     professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
-    hourly_rate = models.IntegerField(verbose_name="Hourly_rate or salary", blank=True, null=True)
+    identification = models.ImageField(upload_to="skillas_id_cards_for_kyc", null=True, blank=True)
+    hourly_rate = models.PositiveIntegerField(verbose_name="Hourly_rate or salary", blank=True, null=True)
     terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
     # Add BVN column
     
@@ -202,7 +202,7 @@ class CompanyProfile(models.Model):
     location = models.CharField(verbose_name="Location (City/Country)", max_length=100, blank=True, null=False, choices=Country.choices)
     state = models.CharField(max_length=50, blank=True, null=False)
     industry = models.CharField(verbose_name="Industry or Business Type", max_length=100, blank=True, null=False)
-    company_size = models.IntegerField(verbose_name="company size (Number of Employees)", blank=True, null=True)
+    company_size = models.PositiveSmallIntegerField(verbose_name="company size (Number of Employees)", blank=True, null=True)
     services = models.CharField(verbose_name="Describe the services or skills needed (Optional)", max_length=200, blank=True, null=True)
     work_history_with_freelancer = models.BooleanField(verbose_name="Have you worked with a freelancer or skilled workers Before", null=True, blank=True)
     terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
@@ -226,7 +226,7 @@ class Rating(models.Model):
         
     Rate = Rate
     
-    rating = models.IntegerField(blank=True, null=True, choices=Rate.choices)
+    rating = models.PositiveSmallIntegerField(blank=True, null=True, choices=Rate.choices)
     skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
     client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="ratings_giver")
     
@@ -243,9 +243,9 @@ class Order(models.Model):
     
     skilla = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobber")
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payer")
-    notification  = models.IntegerField(null=True, blank=True)
+    notification  = models.PositiveIntegerField(null=True, blank=True)
     paid = models.BooleanField(default=False)
-    order_no = models.IntegerField(default=order_number)
+    order_no = models.PositiveSmallIntegerField(default=order_number)
     gig_desc = models.TextField(verbose_name="Gig description", max_length=200, null=True, blank=False)
     delivery = models.IntegerField(null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)

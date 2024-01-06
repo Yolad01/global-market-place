@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skilla</title>
+
+    <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
+    <script>
+      new WOW().init();
+    </script>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
+
+  <!-- Navbar goes here -->
+  <body>
+    <header>
+        <!-- Navbar -->
+        <nav class="container flex font-primary mt-8">
+            <!-- Logo -->
+            <div class="pl-28 py-5">
+                <img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" width="150" height="150">
+            </div>
+
+            <div>
+                <p class="border mt-2 p-3 ml-10 text-base border-black flex justify-between">Search for Skills or Service
+                    <img src="{% static '/img/Vector (5).png' %}" alt="search icon" class="ml-20 pl-32">
+                </p>
+            </div>
+
+            <div>
+                <p class="text-veryDarkGreen flex justify-between items-center  text-base font-semibold mt-5 ml-12">Help
+                    <img src="{% static '/img/Vector (6).png' %}" alt="down-arrow" class="ml-1 mt-1 p-2">
+                </p>
+            </div>
+
+            <div class="mt-6">
+                <a href="#" class="rounded bg-veryDarkGreen text-white px-3 py-2 ml-12">Skillas Blog</a>
+            </div>
+
+            <div class="ml-16 mt-2">
+                <a href="#"><img src="{% static '/img/Ellipse 12.png' %}" alt="user-photo"></a>
+            </div>
+        </nav>
+
+        <div class="bg-veryDarkGreen pl-28 flex">
+            <p class="text-white font-extrabold text-xl p-5">All Categories</p>
+
+            <div>
+                <img src="{% static '/img/Group 14.png' %}" alt="hamburger menu" class="mt-7">
+            </div>
+
+            <div class="ml-48 pl-48">
+                <img src="{% static '/img/Vector (7).png' %}" alt="bell" class="mt-4 ml-28 pl-32">
+            </div>
+        </div>
+
+        <div class="ml-28 mr-28">
+            <img src="{% static '/img/Skillas Design-04 1.png' %}" alt="hero banner">
+            <img src="{% static '/img/Vector (8).png' %}" alt="forward-arrow" class="-translate-y-72">
+            <img src="{% static '/img/Vector (9).png' %}" alt="backward-arrow" class="translate-x-96 -translate-y-80 ml-96 pl-80">
+        </div>
+
+        <div class=" ml-28 font-semibold text-base flex gap-4 -translate-y-12">
+            <div>
+                <p class="border border-black px-6 py-2">UPGRADE YOUR <br>SKILLS</p>
+            </div>
+    
+            <div>
+                <p class="border-black border px-6 py-2">SUBSCRIBE TO OUR <br>EMAIL LIST</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="pt-10">{% block content %} {% endblock %}</div>
+
+    <footer>
+      <div class="bg-veryDarkGreen p-10">
+        <div class="flex items-center justify-center">
+          <img
+            src="{% static '/img/Group 213.svg' %}"
+            alt="skillas-white-logo "
+          />
+        </div>
+
+        <div class="p-10">
+          <p class="text-white font-medium text-xl text-center mb-12">
+            The easiest way to hire/sell is instantly at zero risk
+          </p>
+          <p class="text-white font-medium text-xl text-center mb-12">
+            Terms & Condition <span class="ml-5">Privacy Policy</span>
+          </p>
+          <div class="flex items-center justify-center pt-5 space-x-4">
+            <img src="{% static '/img/Group 289.png' %}" alt="" />
+            <img src="{% static '/img/Vector (1).png' %}" alt="" />
+            <img src="{% static '/img/Vector (2).png' %}" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <p class="text-veryDarkGreen p-5 font-medium text-3xl text-center">
+          &copy;2023 Yolad Global Service Limited All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+
+  <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+
+  <!-- a little JS for the mobile nav button -->
+  <script>
+    if (document.getElementById("nav-mobile-btn")) {
+      document
+        .getElementById("nav-mobile-btn")
+        .addEventListener("click", function () {
+          if (this.classList.contains("close")) {
+            document.getElementById("nav").classList.add("hidden");
+            this.classList.remove("close");
+          } else {
+            document.getElementById("nav").classList.remove("hidden");
+            this.classList.add("close");
+          }
+        });
+    }
+  </script>
+</html>
