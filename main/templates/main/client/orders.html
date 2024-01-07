@@ -3,7 +3,7 @@
 
 
 {% block content %}
-<div class="justify-center bg-gray-50">
+<div class="justify-center">
 
 
     <p class="font-semibold text-2xl mx-20 mt-5 wow fadeInDown">Quotes</p>
@@ -11,7 +11,7 @@
     <div class="grid grid-cols-3 mx-20 my-5">
 
         {% for order in display_order %}
-        <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-md shadow items-center">
+        <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-md shadow-lg items-center wow fadeInUp">
             
             <div class="flex justify-between border-b-2 py-2">
                 <p class="font-semibold">Custom order <span class="font-semibold text-green-700">{{ order.order_no }}</span></p>

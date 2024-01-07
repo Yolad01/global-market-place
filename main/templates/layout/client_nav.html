@@ -8,25 +8,19 @@
     <title>Skilla</title>
     
     <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
-    <script src="{% static '/js/init-alpine.js' %}"></script>
-    <script src="{% static '/js/main.js' %}"></script>
+    <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
     <script src="{% static '/js/wow.min.js' %}"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
-
     <script>
       new WOW().init();
     </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+
+
 
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-
-    <script src="{% static '/js/wow.min.js' %}"></script>
-    <script>
-      new WOW().init();
-    </script>
-  </head>
 
   <body class="">
     <header>
@@ -51,7 +45,7 @@
             <a href="/applications" class="mt-2">Applications</a>
             
             
-            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="font-primary font-semibold hover:bg-green-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-base px-5 py-2.5 text-center inline-flex items-center" type="button">Options<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="font-primary font-semibold hover:bg-emerald-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-base px-5 py-2.5 text-center inline-flex items-center" type="button">Options<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
               </button>
@@ -60,16 +54,19 @@
               <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                     <li>
-                      <a href="/client_dashboard" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                      <a href="/client_dashboard" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                      <a href="#" class="block px-4 py-2 hover:bg-emerald-700 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
                     </li>
                     <li>
-                      <a href="/orders" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Orders</a>
+                      <a href="/orders" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Orders</a>
                     </li>
                     <li>
-                      <a href="/logout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                      <a href="#" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Briefs</a>
+                    </li>
+                    <li>
+                      <a href="/logout" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
                     </li>
                   </ul>
               </div>
