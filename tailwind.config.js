@@ -5,10 +5,10 @@ module.exports = {
     ],
     theme: {
       extend: {
-        // fontFamily: {
-        //   'primary': ['Inter'],
-        //   'secondary': ['Poppins'],
-        // },
+        fontFamily: {
+          'primary': ['Inter'],
+          'secondary': ['Poppins'],
+        },
         colors: {
           veryDarkGreen: '#002D38',
           veryShadyGreen: '#06393F',
@@ -41,5 +41,7 @@ module.exports = {
         },
       },
     },
-    plugins: [],
+    plugins: [
+      require('@tailwindcss/typography'), require('@tailwindcss/forms')
+    ],
   }
