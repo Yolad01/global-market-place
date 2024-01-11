@@ -22,11 +22,11 @@
       rel="stylesheet"
     />
 
-  <body class="">
+  <body class="bg-gray-50">
     <header>
       <!-- Navbar -->
       <nav
-        class="container flex items-center justify-between max-w-full font-primary text-sm border-b-2"
+        class="bg-white container flex items-center justify-between max-w-full font-primary text-sm border-b-2"
       >
         <!-- Logo -->
         <div class="pl-36 py-5">
@@ -95,6 +95,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 
-    {% block content %} {% endblock %}
+    <div class="bg-gray-50">
+      {% block content %} {% endblock %}
+    </div>
+    
   </body>
 </html>
