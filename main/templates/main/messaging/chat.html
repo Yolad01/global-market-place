@@ -24,7 +24,7 @@
 
             {% for msg in display_msg %}
             
-                <div class="{% if msg.message.msg_sender == user %} bg-emerald-400 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
+                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
                     <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
                         <div>
                             {% if msg.message.msg_sender == user %}
@@ -39,12 +39,12 @@
                                 {{ msg.message.msg_sender }}
                             </div>
 
-                            <div class="mx-4 text-xs">
+                            <div class="mx-4 text-sm">
                                 {{ msg.message.timestamp }}
                             </div>
                         </div>
                     </div>
-                    <div class="mx-4 text-xs ml-40">
+                    <div class="mx-4 text-sm ml-40">
                         {{ msg.message.msg_body }}
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 <form method="POST" class="mx-1 my-1 py-1">
                     {% csrf_token %}
 
-                    <div>
+                    <div class="ml-1">
                         {{form.msg_body}}
                     </div>
                     
@@ -135,7 +135,7 @@
                 </div>
 
                 <div class="">
-                    <div class="bg-emerald-400 text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
+                    <div class="bg-lightGreen text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
                         {% if order.accepted == False %}
                             Pending
                         {% else %}
