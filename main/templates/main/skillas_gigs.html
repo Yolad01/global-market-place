@@ -1,0 +1,61 @@
+{% extends 'layout/nav.html' %}\
+
+{% load static %}
+
+
+{% block content %}
+
+<main class="my-10 bg-white">
+    <section class="mt-2">
+        <div class="bg-veryLightGreen flex">
+            <h2 class="font-extrabold text-veryDarkGreen text-5xl p-5 ml-28">Top Skills</h2>
+        </div>
+    </section>
+
+    <section>
+
+        <div class="grid grid-cols-4 ml-28 mr-28 pl-5 pr-5 pb-5 pt-5 border my-5 rounded-md">
+            {% for skill in skills %}
+            <div class="mx-4">
+                <img class="pt-2" src="{{ skill.image.url }}" alt="">
+                <div class="shadow-xl p-4">
+                <h2 class="font-extrabold text-xl text-veryDarkGreen py-2"> {{ skill.skilla.username }} </h2>
+                <hr class="border-1 w-3/4">
+                <h6 class="font-medium text-xs py-1"> {{ skill.title }} </h6>
+                <hr class="border-1 w-3/4">
+                <h6 class="font-medium text-xs py-1"> {{ skill.skill }} </h6>
+                <hr class="border-1 w-3/4">
+                <h6 class="font-medium text-xs py-1"> {{ skill.level }} </h6>
+                <hr class="border-1 w-3/4">
+                <h6 class="font-medium italic text-xs mt-2 py-1">Price ranging from <span class="not-italic font-extrabold">NGN {{ skill.base_price }}</span></h6>
+                <hr class="border-1 w-3/4">
+                <div class="flex mt-2 gap-2 py-1">
+                    <img src="{% static 'img/Vector (10).png' %}">
+                    <img src="{% static '/img/Vector (10).png' %}">
+                    <img src="{% static '/img/Vector (10).png' %}">
+                    <img src="{% static '/img/Vector (10).png' %}">
+                    <img src="{% static '/img/Group 245.png' %}">
+                </div>
+                <hr class="border-1 w-3/4">
+                <div class="mt-5">
+                    <a href="{% url 'main:skillas_gigs_details' id=skill.id %}" class="rounded bg-veryDarkGreen text-white font-medium text-base px-4 py-2">Click to see more details</a>
+                </div>
+            </div>
+        </div>
+            {% endfor %}            
+            
+        </div>
+
+
+    </section>
+
+    {% comment %} if ad show it here {% endcomment %}
+    <section class="ml-28 mr-28 mt-10">
+        <div>
+            <p class="bg-veryDarkGreen text-white p-10 text-center text-3xl">Advert</p>
+        </div>
+    </section>
+</main>
+    
+{% endblock %}
+    

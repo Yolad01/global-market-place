@@ -9,7 +9,8 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, ChatMessage, User, Inbox, Order
+                         SkillaReachoutToClient, Clients, ChatMessage, User, Inbox, Order,
+                         Skill
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -552,3 +553,27 @@ def create_gigs(request):
             "form": form
         }
     )
+
+
+def skillas_gigs(request):
+    skills = Skill.objects.all()
+    return render(
+        request=request,
+        template_name="main/skillas_gigs.html",
+        context={
+            "skills": skills
+        }
+        
+    )
+
+
+def skillas_gigs_details(request, id):
+    gig = Skill.objects.get(id=id)
+
+    # return redirect("main:skillas_gigs_details", pk=gig)
+    return render(
+        request=request,
+        template_name="main/skilla/skill_detail.html",
+        
+    )
+    

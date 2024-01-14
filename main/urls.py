@@ -45,8 +45,11 @@ urlpatterns = [
     path("orders/", views.orders , name="orders"),
 
     path("create_gigs/", views.create_gigs , name="create_gigs"),
+    path("skillas_gigs/", views.skillas_gigs , name="skillas_gigs"),
 
-    path("logout/", views.log_out, name="logout")
+    path("skillas_gigs_details/<int:id>", views.skillas_gigs_details , name="skillas_gigs_details"),
+
+    path("logout/", views.log_out, name="logout"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
