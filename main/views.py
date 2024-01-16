@@ -574,6 +574,27 @@ def skillas_gigs_details(request, id):
     return render(
         request=request,
         template_name="main/skilla/skill_detail.html",
+        context={
+            "gig": gig
+        }
+        
+    )
+
+
+def view_skills(request):
+
+    return render(
+        request=request,
+        template_name="main/skilla/view_skills.html",
+        
+    )
+    
+    
+def view_brief(request):
+
+    return render(
+        request=request,
+        template_name="main/client/view_brief.html",
         
     )
     

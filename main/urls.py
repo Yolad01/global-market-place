@@ -48,6 +48,9 @@ urlpatterns = [
     path("skillas_gigs/", views.skillas_gigs , name="skillas_gigs"),
 
     path("skillas_gigs_details/<int:id>", views.skillas_gigs_details , name="skillas_gigs_details"),
+    path("view_skills/", views.view_skills , name="view_skills"),
+
+    path("view_brief/", views.view_brief , name="view_brief"),
 
     path("logout/", views.log_out, name="logout"),
 ]
