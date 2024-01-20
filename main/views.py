@@ -592,9 +592,16 @@ def view_skills(request):
     
 def view_brief(request):
 
+    user=request.user
+    brief = Brief.objects.all().filter(user=user)
+    profile_pic = ProfilePicture.objects.get(user=user)
     return render(
         request=request,
-        template_name="main/client/view_brief.html",
+        template_name="main/client/brief/view_brief.html",
+        context={
+            "briefs": brief,
+            "profile_pics": profile_pic
+        }
         
     )
     
