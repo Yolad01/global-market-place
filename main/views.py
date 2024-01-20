@@ -605,11 +605,3 @@ def view_brief(request):
         
     )
     
-def skill_detail(request):
-
-    return render(
-        request=request,
-        template_name="main/skilla/skill_detail.html",
-        
-    )
-    
