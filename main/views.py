@@ -583,9 +583,16 @@ def skillas_gigs_details(request, id):
 
 def view_skills(request):
 
+    user=request.user
+    skills = Skill.objects.all().filter(skilla=user)
+    profile_pic = ProfilePicture.objects.get(user=user)
     return render(
         request=request,
         template_name="main/skilla/view_skills.html",
+        context={
+            "skills": skills,
+            "profile_pics": profile_pic
+        }
         
     )
     
