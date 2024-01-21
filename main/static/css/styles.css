@@ -1354,6 +1354,10 @@ select {
   height: 3.5rem;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1448,6 +1452,10 @@ select {
 
 .w-1\/5 {
   width: 20%;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .min-w-min {
@@ -2401,6 +2409,11 @@ select {
   color: rgb(22 163 74 / var(--tw-text-opacity));
 }
 
+.text-green-800 {
+  --tw-text-opacity: 1;
+  color: rgb(22 101 52 / var(--tw-text-opacity));
+}
+
 .opacity-50 {
   opacity: 0.5;
 }
@@ -2601,6 +2614,16 @@ select {
 .hover\:text-green-900:hover {
   --tw-text-opacity: 1;
   color: rgb(20 83 45 / var(--tw-text-opacity));
+}
+
+.hover\:text-veryLightGreen:hover {
+  --tw-text-opacity: 1;
+  color: rgb(98 239 180 / var(--tw-text-opacity));
+}
+
+.hover\:text-green-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
 }
 
 .focus\:outline-none:focus {
