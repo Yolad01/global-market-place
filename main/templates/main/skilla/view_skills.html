@@ -1,11 +1,50 @@
-{% extends 'layout/dash_nav.html' %}
+{% extends 'layout/client_nav.html' %} {% load static %} {% block content %}
 
-{% load static %}
+<main class="mt-10 w-1/2 justify-center items-center mx-auto font-primary">
+  <div class="mt-10 border rounded-lg shadow-md bg-gray-100 flex">
+    <!-- Skillas Profile Picture -->
+    <div class="py-5">
+      <a href="#"
+        ><img
+          src="{% static '/img/Ellipse 12.png' %}"
+          alt="Skillas photo"
+          class="mx-10"
+      /></a>
+    </div>
 
+    <!-- Skill title -->
+    <div class="mt-5 mx-10">
+      <h2 class="font-bold text-lg mt-3">Data Analyst</h2>
+    </div>
 
-{% block content %}
+    <!-- Edit button -->
+    <div class="mx-10 mt-8">
+      <a
+        href="#"
+        class="rounded bg-lightGreen font-bold text-white text-lg mt-5 px-10 py-4"
+        >Edit</a
+      >
+    </div>
 
-Main Tag
-    
+    <!-- Delete button -->
+    <div class="mx-10 mt-8">
+      <a
+        href="#"
+        class="rounded bg-lightGreen font-bold text-white text-lg mt-5 px-10 py-4"
+        >Delete</a
+      >
+    </div>
+
+    <div class="mt-8">
+      <label class="relative inline-flex items-center me-5 cursor-pointer">
+        <input type="checkbox" value="" class="sr-only peer" />
+        <div
+          class="w-14 h-6 bg-gray-400 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"
+        ></div>
+        <span class="ms-3 text-lg font-bold dark:text-gray-300">Activate</span>
+      </label>
+    </div>
+  </div>
+</main>
+
 {% endblock %}
-    

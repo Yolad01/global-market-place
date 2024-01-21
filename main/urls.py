@@ -51,6 +51,8 @@ urlpatterns = [
     path("view_skills/", views.view_skills , name="view_skills"),
 
     path("view_brief/", views.view_brief , name="view_brief"),
+    
+    path("skill_detail/", views.skill_detail , name="skill_detail"),
 
     path("logout/", views.log_out, name="logout"),
 ]

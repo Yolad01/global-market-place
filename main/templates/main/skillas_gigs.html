@@ -1,61 +1,120 @@
-{% extends 'layout/nav.html' %}
+{% extends 'layout/skills_nav.html' %} {% load static %} {% block content %}
 
-{% load static %}
+<main class="mt-12 bg-white">
+  <div class="bg-veryDarkGreen py-3 flex">
+    <p class="text-white font-extrabold text-xl ml-48 mt-1">All Categories</p>
 
+    <div>
+      <a href="#"
+        ><img
+          src="{% static '/img/Group 14.png' %}"
+          alt="hamburger menu"
+          class="mt-3 ml-2"
+        />
+      </a>
+    </div>
 
-{% block content %}
+    <div class="ml-80 pl-72">
+      <a href="#"
+        ><img
+          src="{% static '/img/Vector (7).png' %}"
+          alt="Notification bell"
+          class="ml-96 pl-80"
+      /></a>
+    </div>
+  </div>
 
-<main class="my-10 bg-white">
-    <section class="mt-2">
-        <div class="bg-veryLightGreen flex">
-            <h2 class="font-extrabold text-veryDarkGreen text-5xl p-5 ml-28">Top Skills</h2>
+  <!--Skillas Platform Banner-->
+  <section>
+    <div>
+      <img
+        src="{% static '/img/Skillas Design-04 1.svg' %}"
+        alt="hero banner"
+        class="ml-48"
+        width="1500"
+      />
+    </div>
+
+    {% comment %}
+    <div class="mt-48">
+      <img
+        src="{% static '/img/Vector (8).png' %}"
+        alt="forward-arrow"
+        class="ml-48"
+      />
+    </div>
+    <div>
+      <img
+        src="{% static '/img/Vector (9).png' %}"
+        alt="backward-arrow"
+        class="ml-96 pl-96 translate-x-96"
+      />
+    </div>
+    {% endcomment %}
+  </section>
+
+  <section>
+    <div class="bg-veryLightGreen flex">
+      <h2 class="font-extrabold text-veryDarkGreen text-6xl py-5 ml-48">
+        Top Skills
+      </h2>
+    </div>
+  </section>
+
+  <section>
+    <div
+      class="grid grid-cols-4 ml-48 mr-48 pl-5 pr-5 pb-5 pt-5 border my-5 rounded-md"
+    >
+      {% for skill in skills %}
+      <div class="mx-4">
+        <img class="pt-2" src="{{ skill.image.url }}" alt="" />
+        <div class="shadow-xl p-4">
+          <h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
+            {{ skill.skilla.username }}
+          </h2>
+          <hr class="border-1 w-3/4" />
+          <h6 class="font-medium text-xs py-1">{{ skill.title }}</h6>
+          <hr class="border-1 w-3/4" />
+          <h6 class="font-medium text-xs py-1">{{ skill.skill }}</h6>
+          <hr class="border-1 w-3/4" />
+          <h6 class="font-medium text-xs py-1">{{ skill.level }}</h6>
+          <hr class="border-1 w-3/4" />
+          <h6 class="font-medium italic text-xs mt-2 py-1">
+            Price ranging from
+            <span class="not-italic font-extrabold"
+              >NGN {{ skill.base_price }}</span
+            >
+          </h6>
+          <hr class="border-1 w-3/4" />
+          <div class="flex mt-2 gap-2 py-1">
+            <img src="{% static 'img/Vector (10).png' %}" />
+            <img src="{% static '/img/Vector (10).png' %}" />
+            <img src="{% static '/img/Vector (10).png' %}" />
+            <img src="{% static '/img/Vector (10).png' %}" />
+            <img src="{% static '/img/Group 245.png' %}" />
+          </div>
+          <hr class="border-1 w-3/4" />
+          <div class="mt-5">
+            <a
+              href="{% url 'main:skillas_gigs_details' id=skill.id %}"
+              class="rounded bg-veryDarkGreen text-white font-medium text-base px-4 py-2"
+              >Click to see more details</a
+            >
+          </div>
         </div>
-    </section>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
 
-    <section>
-
-        <div class="grid grid-cols-4 ml-28 mr-28 pl-5 pr-5 pb-5 pt-5 border my-5 rounded-md">
-            {% for skill in skills %}
-            <div class="mx-4">
-                <img class="pt-2" src="{{ skill.image.url }}" alt="">
-                <div class="shadow-xl p-4">
-                <h2 class="font-extrabold text-xl text-veryDarkGreen py-2"> {{ skill.skilla.username }} </h2>
-                <hr class="border-1 w-3/4">
-                <h6 class="font-medium text-xs py-1"> {{ skill.title }} </h6>
-                <hr class="border-1 w-3/4">
-                <h6 class="font-medium text-xs py-1"> {{ skill.skill }} </h6>
-                <hr class="border-1 w-3/4">
-                <h6 class="font-medium text-xs py-1"> {{ skill.level }} </h6>
-                <hr class="border-1 w-3/4">
-                <h6 class="font-medium italic text-xs mt-2 py-1">Price ranging from <span class="not-italic font-extrabold">NGN {{ skill.base_price }}</span></h6>
-                <hr class="border-1 w-3/4">
-                <div class="flex mt-2 gap-2 py-1">
-                    <img src="{% static 'img/Vector (10).png' %}">
-                    <img src="{% static '/img/Vector (10).png' %}">
-                    <img src="{% static '/img/Vector (10).png' %}">
-                    <img src="{% static '/img/Vector (10).png' %}">
-                    <img src="{% static '/img/Group 245.png' %}">
-                </div>
-                <hr class="border-1 w-3/4">
-                <div class="mt-5">
-                    <a href="{% url 'main:skillas_gigs_details' id=skill.id %}" class="rounded bg-veryDarkGreen text-white font-medium text-base px-4 py-2">Click to see more details</a>
-                </div>
-            </div>
-        </div>
-            {% endfor %}            
-            
-        </div>
-
-
-    </section>
-
-    {% comment %} if ad show it here {% endcomment %}
-    <section class="ml-28 mr-28 mt-10">
-        <div>
-            <p class="bg-veryDarkGreen text-white p-10 text-center text-3xl">Advert</p>
-        </div>
-    </section>
+  {% comment %} if ad show it here {% endcomment %}
+  <section class="ml-28 mr-28 mt-10 mb-10">
+    <div>
+      <p class="bg-veryDarkGreen text-white p-20 text-center text-3xl">
+        Advert
+      </p>
+    </div>
+  </section>
 </main>
-    
+
 {% endblock %}
-    

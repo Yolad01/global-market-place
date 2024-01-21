@@ -1,10 +1,68 @@
+{% extends 'layout/client_nav.html' %} {% load static %} {% block content %}
 
-{% extends 'layout/client_nav.html' %}
-{% load static %}
+<main>
+  <section
+    class="border rounded-lg shadow-md mt-10 w-1/2 bg-gray-50 mx-auto justify-center items-center"
+  >
+    <div class="grid grid-cols-2">
+      <div>
+        <div class="p-5">
+          <img src="{% static 'img/electric_skill.svg' %}" class="w-full" />
+        </div>
+      </div>
 
-{% block content %}
+      <div>
+        <div class="flex">
+          <div class="mt-10">
+            <h2 class="font-bold text-veryDarkGreen text-lg">Username:</h2>
+          </div>
 
-Main tag
+          <div class="mt-10 ml-48">
+            <h2 class="font-bold text-lg text-veryDarkGreen">Price:</h2>
+          </div>
+        </div>
 
+        <div class="mt-12">
+          <h2 class="font-bold text-2xl text-veryDarkGreen">Job Title:</h2>
+        </div>
+
+        <div class="mt-12">
+          <h2 class="mt-5 font-bold text-lg text-veryDarkGreen">
+            Description:
+          </h2>
+        </div>
+
+        <div class="mt-12 flex">
+          <div>
+            <h2 class="font-bold text-lg text-veryDarkGreen">Level:</h2>
+          </div>
+
+          <div class="ml-60">
+            <h2 class="font-bold text-lg text-veryDarkGreen">Skill:</h2>
+          </div>
+        </div>
+
+        <div class="mt-20 flex">
+          <div>
+            <a href="#"
+              ><img
+                src="{% static '/img/Ellipse 12.png' %}"
+                alt="Skillas photo"
+                class=""
+            /></a>
+          </div>
+
+          <div class="mt-3 mb-10">
+            <a
+              href="#"
+              class="bg-veryDarkGreen text-white text-lg font-bold rounded-2xl mx-10 px-16 py-3"
+              >Contact Skilla</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 {% endblock %}
