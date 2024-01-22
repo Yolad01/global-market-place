@@ -353,7 +353,7 @@ def withdraw_success(request):
     )
     
     
-def client_brief(request):
+def create_brief(request):
     if request.method =="POST":
         form = BriefForm(request.POST, request.FILES)
         if form.is_valid():
@@ -611,7 +611,10 @@ def view_brief(request):
             get_brief = Brief.objects.get(id=form_id)
             get_brief.delete()
             return redirect("main:view_brief")
-
+        elif edit_form.is_valid():
+            form_id = edit_form.cleaned_data["edit_brief"]
+            # get_object_for_edit = Brie
+            
 
     return render(
         request=request,

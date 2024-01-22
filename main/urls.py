@@ -23,7 +23,7 @@ urlpatterns = [
     path("company_profile/", views.company_profile, name="company_profile"),
     
     path("client_dashboard/", views.client_dashboard, name="client_dashboard"),
-    path("client_brief/", views.client_brief, name="client_brief"),
+    path("create_brief/", views.create_brief, name="create_brief"),
     path("applications/", views.applications, name="applications"),
 
     path("view_skilla_profile/<int:pk>/", views.profile_view, name="profile_view"),

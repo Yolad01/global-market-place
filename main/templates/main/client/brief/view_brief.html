@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="w-1/3 mx-auto mt-10 text-center text-veryDarkGreen font-semibold">
-  <a href="/client_brief"><button class="bg-veryLightGreen rounded-lg py-2 px-2 shadow">Create brief</button></a>
+  <a href="/create_brief"><button class="bg-veryLightGreen rounded-lg py-2 px-2 shadow">Create brief</button></a>
 </div>
 
 {% for brief in briefs %}
@@ -25,11 +25,7 @@
 
     <!-- Edit and Delete buttons -->
     <div class="flex items-center ml-auto mt-8 space-x-5 px-4 py-2">
-      <form method="POST">
-        {% csrf_token %}
-        <input value="{{ brief.id }}" hidden=true name="edit_brief">
-        <button class="bg-veryLightGreen rounded-full px-4 py-2 text-sm font-semibold">Edit</button>
-      </form>
+      <a href="" class="bg-veryLightGreen rounded-full px-4 py-2 text-sm font-semibold">Edit</a>
 
       <form method="POST">
         {% csrf_token %}
