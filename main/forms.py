@@ -276,3 +276,12 @@ class AcceptQuoteForm(forms.Form):
 class DeclineQuoteForm(forms.Form):
     decline = forms.BooleanField(initial=True)
     form_id = forms.IntegerField()
+
+
+
+class EditBriefForm(forms.Form):
+    edit_brief = forms.IntegerField()
+
+
+class DeleteBriefForm(forms.Form):
+    delete_brief = forms.IntegerField()

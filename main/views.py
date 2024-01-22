@@ -4,7 +4,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         BriefAppForm, ChatMessageForm, OrderForm, AcceptQuoteForm,
-                        DeclineQuoteForm, SkillForm
+                        DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm
                             
                         )
 from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
@@ -602,6 +602,17 @@ def view_brief(request):
     user=request.user
     brief = Brief.objects.all().filter(user=user)
     profile_pic = ProfilePicture.objects.get(user=user)
+
+    if request.method == "POST":
+        delete_form = DeleteBriefForm(request.POST)
+        edit_form = EditBriefForm(request.POST)
+        if delete_form.is_valid():
+            form_id = delete_form.cleaned_data.get("delete_brief")
+            get_brief = Brief.objects.get(id=form_id)
+            get_brief.delete()
+            return redirect("main:view_brief")
+
+
     return render(
         request=request,
         template_name="main/client/brief/view_brief.html",
