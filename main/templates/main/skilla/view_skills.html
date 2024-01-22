@@ -2,8 +2,8 @@
 
 
 {% for skill in skills %}
-<main class="mt-10 w-1/2 justify-center items-center mx-auto font-primary">
-  <div class="mt-10 border rounded-lg shadow-md bg-gray-100 flex">
+<main class="mt-10 w-2/4 mx-10 font-primary hover:bg-green-800">
+  <div class="mt-10 border rounded-lg shadow-md flex">
     <!-- Skillas Profile Picture -->
     <div class="py-5">
       <a href="#"
@@ -16,8 +16,8 @@
 
     <!-- Skill title -->
     <div class="mt-5 mx-10">
-      <h2 class="font-bold text-lg">{{ skill.title }}</h2>
-      <h2 class="font-bold text-lg">{{ skill.base_price }}</h2>
+      <h2 class="font-semibold text-sm">{{ skill.title }}</h2>
+      <h2 class="font-semibold text-sm">NGN{{ skill.base_price }}</h2>
     </div>
 
     <!-- Edit button -->
@@ -38,13 +38,13 @@
       >
     </div>
 
-    <div class="mt-8">
+    <div class="mt-8 pr-5">
       <label class="relative inline-flex items-center me-5 cursor-pointer">
-        <input type="checkbox" value="" class="sr-only peer" />
+        <input type="checkbox" value="" class="sr-only peer" name="activate" />
         <div
-          class="w-14 h-6 bg-gray-400 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"
+          class="w-14 h-6 bg-gray-400 rounded-full peer peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"
         ></div>
-        <span class="ms-3 text-lg font-semibold text-gray-300">Activate</span>
+        <span class="ms-3 text-sm font-semibold text-veryDarkGreen">Activate</span>
       </label>
     </div>
   </div>
