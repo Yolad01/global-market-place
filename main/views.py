@@ -627,10 +627,30 @@ def edit_brief(request, id):
     get_object_for_edit = Brief.objects.get(id=id)
     job_category = JobCategory.objects.all()
 
-    # brief = Brief(
-    #     user=user,
+    if request.method == "POST":
+        form = EditBriefForm(request.POST)
+        # if form.is_valid():
+        #     title = form.cleaned_data["title"]
+        #     description = form.cleaned_data["description"]
+        #     attach_files = form.cleaned_data["attach_files"]
+        #     categories = form.cleaned_data["categories"]
+        #     budget = form.cleaned_data["budget"]
+        #     budget_flexible = form.cleaned_data["budget_flexible"]
+        #     date = form.cleaned_data["date"]
 
-    # )
+        #     brief = Brief(
+        #         title=title,
+        #         description=description,
+        #         attach_files=attach_files,
+        #         categories=categories,
+        #         budget=budget,
+        #         budget_flexible=budget_flexible,
+        #         date=date,
+        #         user=user
+        #     )
+        #     brief.save()
+
+
 
     return render(
         request=request,
@@ -641,3 +661,4 @@ def edit_brief(request, id):
 
         }
     )
+
