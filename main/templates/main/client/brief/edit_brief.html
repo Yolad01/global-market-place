@@ -1,0 +1,158 @@
+{% extends 'layout/brief_nav.html' %}
+{% load static %}
+
+
+{% block content %}    
+<main>
+    <div class="flex">
+      <div class="mt-40 ml-60">
+        <h2 class="font-primary font-semibold text-6xl">
+          Let the matching <br />
+          begin...
+        </h2>
+
+        <p class="font-normal text-xl mt-20 mb-20">
+          Fill us in on the big picture let us <br />know what you want.
+        </p>
+
+        <img src="{% static '/img/group_357.png' %}" alt="illustration" class="mb-40" />
+      </div>
+
+      <!-- create_brief.html -->
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-4 mt-7 ml-40">
+          <div class="flex">
+            <h6 class="font-primary font-bold text-xl text-lightBlack">
+              Give your project brief a title
+            </h6>
+            <a
+              href="/client_dashboard"
+              class="text-base font-semibold font-primary translate-x-72 ml-20"
+              >Exit</a
+            >
+          </div>
+          <p
+              class="font-primary font-normal text-base text-lightBlack mt-2"
+            >
+              Keep it short and simple, this will help us match you to the
+              right category.
+          </p>
+
+            <input class="border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md" value="{{ edit_brief.title }}"
+                name="title"
+            >
+        </div>
+
+        <div class="mb-4 ml-40">
+          <h6
+                class="font-primary font-bold text-xl text-lightBlack mt-14"
+              >
+                What are you looking to get done ?
+          </h6>
+
+          <p
+            class="font-primary font-normal text-base text-lightBlack mt-3 mb-5"
+          >
+            This will help get your brief to the right talent, Specifics
+            help here
+          </p>
+
+            <Textarea 
+                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+                rows="4"
+                cols="50"
+                name="description"
+            >
+                {{ edit_brief.description }}
+            </textarea>
+        </div>
+
+        <div class="mb-4 mt-5 ml-40">
+            <input type="file"
+                id="myFile"
+                value="edit_brief.attach_files"
+                class="text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md"
+                name="attach_files"
+            >
+
+        </div>
+
+        <div class="mb-4 ml-40">
+          <div class="mt-10 mb-7">
+            <h6
+              class="font-primary font-bold text-base text-veryLightBlack"
+            >
+              What category best fits your project?
+            </h6>
+          </div>
+            <select class="border border-gray-700 p-2 mb-4 w-full rounded-md" name="categories">
+                {% for job_category in job_categories %}
+                <option value="job_category.title">{{ job_category.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-4 ml-40">
+          <div class="flex mb-5">
+            <h6
+              class="mt-10 font-primary font-extrabold text-xl text-shadeAsh_9"
+            >
+              I’m looking to spend..
+            </h6>
+          </div>
+
+            <input
+                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+                value="{{ edit_brief.budget }}"
+                name="budget"
+            >
+            <div class="flex">
+              <p class="font-normal text-[13px] text-lightBlack mt-2">
+                Average range for this service is $100 to $750
+              </p>
+              <img src="{% static '/img/question_mark.svg' %}" alt="question mark" class="ml-2" />
+            </div>
+        </div>
+        <div class="mb-4 ml-40">
+            <input
+                type="checkbox"
+                class='border border-gray-700 mr-2 rounded-md'
+                name="budget_flexible"
+            >
+            <label for="" class="text-[13px] font-normal text-veryLightBlack">
+              My budget is flexible
+            </label>
+        </div>
+        <div class="mb-4 ml-40 mt-20">
+          <h6
+            class="font-primary font-bold text-xl text-veryLightBlack mt-5 mb-5"
+          >
+            Let’s talk timing
+          </h6>
+            {% comment %} {{ Job_category.date }} {% endcomment %}
+            <input
+                type="date"
+                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+                value="{{ edit_brief.date }}"
+                name="date"
+            >
+
+            <h6 class="text-sm text-light_ash">We’ll find available skillas</h6>
+        </div>
+
+        <div class="m-5 translate-x-72 ml-72">
+          <button
+            class="text-base font-primary font-bold text-white bg-veryDarkGreen rounded-md px-5 py-2"
+            type="submit"
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>               
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% endblock %}

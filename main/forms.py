@@ -279,9 +279,17 @@ class DeclineQuoteForm(forms.Form):
 
 
 
-class EditBriefForm(forms.Form):
-    edit_brief = forms.IntegerField()
-
-
 class DeleteBriefForm(forms.Form):
     delete_brief = forms.IntegerField()
+
+
+
+class EditBriefForm(forms.Form):
+    title = forms.CharField(max_length=100)
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20})),
+    attach_files = forms.FileField(),
+    categories = forms.Select(),
+    budget = forms.IntegerField(),
+    budget_flexible = forms.BooleanField(),
+    date = forms.DateTimeField()
+

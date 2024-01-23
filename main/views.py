@@ -7,10 +7,10 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm
                             
                         )
-from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
+from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, ChatMessage, User, Inbox, Order,
-                         Skill
+                         Skill, JobCategory
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -605,17 +605,12 @@ def view_brief(request):
 
     if request.method == "POST":
         delete_form = DeleteBriefForm(request.POST)
-        edit_form = EditBriefForm(request.POST)
         if delete_form.is_valid():
             form_id = delete_form.cleaned_data.get("delete_brief")
             get_brief = Brief.objects.get(id=form_id)
             get_brief.delete()
             return redirect("main:view_brief")
-        elif edit_form.is_valid():
-            form_id = edit_form.cleaned_data["edit_brief"]
-            # get_object_for_edit = Brie
             
-
     return render(
         request=request,
         template_name="main/client/brief/view_brief.html",
@@ -626,3 +621,23 @@ def view_brief(request):
         
     )
     
+
+def edit_brief(request, id):
+    user = request.user
+    get_object_for_edit = Brief.objects.get(id=id)
+    job_category = JobCategory.objects.all()
+
+    # brief = Brief(
+    #     user=user,
+
+    # )
+
+    return render(
+        request=request,
+        template_name="main/client/brief/edit_brief.html",
+        context={
+            "edit_brief": get_object_for_edit,
+            "job_categories": job_category
+
+        }
+    )
