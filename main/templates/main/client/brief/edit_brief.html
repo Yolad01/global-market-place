@@ -26,92 +26,73 @@
             <h6 class="font-primary font-bold text-xl text-lightBlack">
               Give your project brief a title
             </h6>
-            <a
-              href="/client_dashboard"
-              class="text-base font-semibold font-primary translate-x-72 ml-20"
-              >Exit</a
-            >
+            <a href="/client_dashboard" class="text-base font-semibold font-primary translate-x-72 ml-20">Exit</a>
           </div>
-          <p
-              class="font-primary font-normal text-base text-lightBlack mt-2"
-            >
+          <p class="font-primary font-normal text-base text-lightBlack mt-2">
               Keep it short and simple, this will help us match you to the
               right category.
           </p>
 
-            {{ form.title }}
+            <input value="{{ edit_brief.title }}" type="text" name="title" class="border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md" maxlength="100" required="" id="id_title">
         </div>
 
         <div class="mb-4 ml-40">
-          <h6
-                class="font-primary font-bold text-xl text-lightBlack mt-14"
-              >
+          <h6 class="font-primary font-bold text-xl text-lightBlack mt-14">
                 What are you looking to get done ?
           </h6>
 
-          <p
-            class="font-primary font-normal text-base text-lightBlack mt-3 mb-5"
-          >
+          <p class="font-primary font-normal text-base text-lightBlack mt-3 mb-5">
             This will help get your brief to the right talent, Specifics
             help here
           </p>
-            {{ form.description }}
+            <textarea name="description" cols="20" rows="4" class="border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md" required="" id="id_description">{{ edit_brief.description }}</textarea>
         </div>
         <div class="mb-4 mt-5 ml-40">
-            {{ form.attach_files }}
+            <input value="{{ edit_brief.attach_files }}" type="file" name="attach_files" class="text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md" required="" id="id_attach_files">
         </div>
         <div class="mb-4 ml-40">
           <div class="mt-10 mb-7">
-            <h6
-              class="font-primary font-bold text-base text-veryLightBlack"
-            >
+            <h6 class="font-primary font-bold text-base text-veryLightBlack">
               What category best fits your project?
             </h6>
           </div>
-            {{ form.categories }}
+          {{ form.categories }}
         </div>
         <div class="mb-4 ml-40">
           <div class="flex mb-5">
-            <h6
-              class="mt-10 font-primary font-extrabold text-xl text-shadeAsh_9"
-            >
+            <h6 class="mt-10 font-primary font-extrabold text-xl text-shadeAsh_9">
               I’m looking to spend..
             </h6>
           </div>
-            {{ form.budget }}
+            <input value="{{ edit_brief.budget }}" type="number" name="budget" class="border border-gray-700 p-2 mb-4 w-full rounded-md" required="" id="id_budget">
             <div class="flex">
               <p class="font-normal text-[13px] text-lightBlack mt-2">
                 Average range for this service is $100 to $750
               </p>
-              <img src="{% static '/img/question_mark.svg' %}" alt="question mark" class="ml-2" />
+              <img src="/static/img/question_mark.svg" alt="question mark" class="ml-2">
             </div>
         </div>
         <div class="mb-4 ml-40">
-            {{ form.budget_flexible }}
+            <input type="checkbox" name="budget_flexible" class="border border-gray-700 mr-2 rounded-md" id="id_budget_flexible">
             <label for="" class="text-[13px] font-normal text-veryLightBlack">
               My budget is flexible
             </label>
         </div>
         <div class="mb-4 ml-40 mt-20">
-          <h6
-            class="font-primary font-bold text-xl text-veryLightBlack mt-5 mb-5"
-          >
+          <h6 class="font-primary font-bold text-xl text-veryLightBlack mt-5 mb-5">
             Let’s talk timing
           </h6>
-            {{ form.date }}
+          {{ form.date }}
 
             <h6 class="text-sm text-light_ash">We’ll find available skillas</h6>
         </div>
 
         <div class="m-5 translate-x-72 ml-72">
-          <button
-            class="text-base font-primary font-bold text-white bg-veryDarkGreen rounded-md px-5 py-2"
-            type="submit"
-          >
+          <button class="text-base font-primary font-bold text-white bg-veryDarkGreen rounded-md px-5 py-2" type="submit">
           Create brief
           </button>
         </div>
-      </form>               
+      </form>             
 
           </div>
         </div>
