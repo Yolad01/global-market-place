@@ -223,13 +223,13 @@ class BriefForm(forms.ModelForm):
         }
 
 
-# class BriefAppForm(forms.Form):
-#     client = forms.CharField(max_length=100)
-#     title = forms.CharField(max_length=100)
-#     description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20}))
-#     categories = forms.CharField(max_length=100)
-#     budget = forms.IntegerField()
-#     # skilla = forms.CharField(max_length=100)
+class BriefAppForm(forms.Form):
+    client = forms.CharField(max_length=100)
+    title = forms.CharField(max_length=100)
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20}))
+    categories = forms.CharField(max_length=100)
+    budget = forms.IntegerField()
+    # skilla = forms.CharField(max_length=100)
 
 
 class ChatMessageForm(forms.Form):
@@ -298,8 +298,8 @@ class EditBriefForm(forms.Form):
             attrs={'class': 'text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md'}
         )
     )
-    categories = forms.ChoiceField(
-        choices=[(category.id, category.title) for category in JobCategory.objects.all()],
+    categories = forms.ModelChoiceField(
+        queryset=JobCategory.objects.all(),
         widget=forms.Select(
             attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
         )

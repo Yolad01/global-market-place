@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
-                        ChatMessageForm, OrderForm, AcceptQuoteForm,
+                        ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm
                             
                         )
@@ -646,15 +646,15 @@ def edit_brief(request, id):
             print(budget_flexible)
             print(date)
             
-            # get_object_for_edit.title=title
-            # get_object_for_edit.description=description
-            # get_object_for_edit.attach_files=attach_files
-            # get_object_for_edit.categories=categories
-            # get_object_for_edit.budget=budget
-            # get_object_for_edit.budget_flexible=budget_flexible
-            # get_object_for_edit.date=date
+            get_object_for_edit.title=title
+            get_object_for_edit.description=description
+            get_object_for_edit.attach_files=attach_files
+            get_object_for_edit.categories=categories
+            get_object_for_edit.budget=budget
+            get_object_for_edit.budget_flexible=budget_flexible
+            get_object_for_edit.date=date
             
-            # get_object_for_edit.save()
+            get_object_for_edit.save()
 
             return redirect("main:view_brief")
         
