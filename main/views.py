@@ -4,13 +4,13 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         BriefAppForm, ChatMessageForm, OrderForm, AcceptQuoteForm,
-                        DeclineQuoteForm, SkillForm
+                        DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm
                             
                         )
-from main.models import ( AboutSkilla, Skillas, TrainingAndCertification, JobCategory, Job, SkillaProfile,
+from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, ChatMessage, User, Inbox, Order,
-                         Skill
+                         Skill, JobCategory
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -353,7 +353,7 @@ def withdraw_success(request):
     )
     
     
-def client_brief(request):
+def create_brief(request):
     if request.method =="POST":
         form = BriefForm(request.POST, request.FILES)
         if form.is_valid():
@@ -583,26 +583,82 @@ def skillas_gigs_details(request, id):
 
 def view_skills(request):
 
+    user=request.user
+    skills = Skill.objects.all().filter(skilla=user)
+    profile_pic = ProfilePicture.objects.get(user=user)
     return render(
         request=request,
         template_name="main/skilla/view_skills.html",
+        context={
+            "skills": skills,
+            "profile_pics": profile_pic
+        }
         
     )
     
     
 def view_brief(request):
 
+    user=request.user
+    brief = Brief.objects.all().filter(user=user)
+    profile_pic = ProfilePicture.objects.get(user=user)
+
+    if request.method == "POST":
+        delete_form = DeleteBriefForm(request.POST)
+        if delete_form.is_valid():
+            form_id = delete_form.cleaned_data.get("delete_brief")
+            get_brief = Brief.objects.get(id=form_id)
+            get_brief.delete()
+            return redirect("main:view_brief")
+            
     return render(
         request=request,
-        template_name="main/client/view_brief.html",
+        template_name="main/client/brief/view_brief.html",
+        context={
+            "briefs": brief,
+            "profile_pics": profile_pic
+        }
         
     )
     
-def skill_detail(request):
+
+def edit_brief(request, id):
+    user = request.user
+    get_object_for_edit = Brief.objects.get(id=id)
+    job_category = JobCategory.objects.all()
+
+    if request.method == "POST":
+        form = EditBriefForm(request.POST)
+        # if form.is_valid():
+        #     title = form.cleaned_data["title"]
+        #     description = form.cleaned_data["description"]
+        #     attach_files = form.cleaned_data["attach_files"]
+        #     categories = form.cleaned_data["categories"]
+        #     budget = form.cleaned_data["budget"]
+        #     budget_flexible = form.cleaned_data["budget_flexible"]
+        #     date = form.cleaned_data["date"]
+
+        #     brief = Brief(
+        #         title=title,
+        #         description=description,
+        #         attach_files=attach_files,
+        #         categories=categories,
+        #         budget=budget,
+        #         budget_flexible=budget_flexible,
+        #         date=date,
+        #         user=user
+        #     )
+        #     brief.save()
+
+
 
     return render(
         request=request,
-        template_name="main/skilla/skill_detail.html",
-        
+        template_name="main/client/brief/edit_brief.html",
+        context={
+            "edit_brief": get_object_for_edit,
+            "job_categories": job_category
+
+        }
     )
-    
+

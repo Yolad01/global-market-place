@@ -1283,6 +1283,18 @@ select{
   margin-top: 2rem;
 }
 
+.mr-2{
+  margin-right: 0.5rem;
+}
+
+.ml-auto{
+  margin-left: auto;
+}
+
+.mt-6{
+  margin-top: 1.5rem;
+}
+
 .block{
   display: block;
 }
@@ -1345,6 +1357,14 @@ select{
 
 .h-screen{
   height: 100vh;
+}
+
+.h-14{
+  height: 3.5rem;
+}
+
+.h-40{
+  height: 10rem;
 }
 
 .min-h-screen{
@@ -1429,6 +1449,14 @@ select{
 
 .w-full{
   width: 100%;
+}
+
+.w-2\/4{
+  width: 50%;
+}
+
+.w-40{
+  width: 10rem;
 }
 
 .min-w-min{
@@ -1590,6 +1618,12 @@ select{
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-5 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]){
@@ -2334,6 +2368,11 @@ select{
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-green-600{
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+
 .opacity-50{
   opacity: 0.5;
 }
@@ -2496,6 +2535,16 @@ select{
 .hover\:bg-white:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-800:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-900:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
 }
 
 .hover\:font-bold:hover{

@@ -30,7 +30,7 @@
         class="bg-white container flex items-center justify-between max-w-full font-primary text-sm border-b-2"
       >
         <!-- Logo -->
-        <div class="pl-36 py-5">
+        <div class="pl-36">
           <img
             src="{% static '/img/skillas_design-03.png' %}"
             alt="Logo"
@@ -64,7 +64,7 @@
                       <a href="/orders" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Orders</a>
                     </li>
                     <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Briefs</a>
+                      <a href="/view_brief" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Briefs</a>
                     </li>
                     <li>
                       <a href="/logout" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
@@ -73,7 +73,7 @@
               </div>
   
             <button
-              class="rounded bg-veryDarkGreen text-white font-semibold px-3 py-2"
+              class="rounded bg-veryDarkGreen text-white font-semibold px-3 py-2 mb-2"
             >
               Skillas Blog
             </button>
@@ -96,7 +96,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 
-    <div class="bg-gray-50">
+    <div class="bg-white">
       {% block content %} {% endblock %}
     </div>
     

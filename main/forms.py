@@ -145,7 +145,8 @@ class SkillForm(forms.ModelForm):
             "skill",
             "image",
             "level",
-            "base_price"
+            "base_price",
+            "activate"
         ]
         
         widgets = {
@@ -160,7 +161,8 @@ class SkillForm(forms.ModelForm):
             "skill": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
             "image": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 my-2 mx-5 rounded-md'}),
             "level": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
-            "base_price": forms.NumberInput(attrs={'class': 'border border-gray-700 my-2 mx-5  rounded-md'})
+            "base_price": forms.NumberInput(attrs={'class': 'border border-gray-700 my-2 mx-5  rounded-md'}),
+            "activate": forms.NullBooleanField()
         }
     
     
@@ -274,3 +276,20 @@ class AcceptQuoteForm(forms.Form):
 class DeclineQuoteForm(forms.Form):
     decline = forms.BooleanField(initial=True)
     form_id = forms.IntegerField()
+
+
+
+class DeleteBriefForm(forms.Form):
+    delete_brief = forms.IntegerField()
+
+
+
+class EditBriefForm(forms.Form):
+    title = forms.CharField(max_length=100)
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20})),
+    attach_files = forms.FileField(),
+    categories = forms.Select(),
+    budget = forms.IntegerField(),
+    budget_flexible = forms.BooleanField(),
+    date = forms.DateTimeField()
+

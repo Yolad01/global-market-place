@@ -133,6 +133,7 @@ class Skill(models.Model):
     level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
     image = models.ImageField(upload_to="skill_images", blank=True)
     base_price = models.PositiveIntegerField(blank=True, null=True)
+    activate = models.BooleanField(default=True, blank=True, null=True)
     
     def __str__(self):
         return f'{self.skilla.username} ==> {self.skill.title}'

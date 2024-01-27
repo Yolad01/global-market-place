@@ -34,22 +34,6 @@
       />
     </div>
 
-    {% comment %}
-    <div class="mt-48">
-      <img
-        src="{% static '/img/Vector (8).png' %}"
-        alt="forward-arrow"
-        class="ml-48"
-      />
-    </div>
-    <div>
-      <img
-        src="{% static '/img/Vector (9).png' %}"
-        alt="backward-arrow"
-        class="ml-96 pl-96 translate-x-96"
-      />
-    </div>
-    {% endcomment %}
   </section>
 
   <section>
@@ -66,11 +50,15 @@
     >
       {% for skill in skills %}
       <div class="mx-4">
+<<<<<<< HEAD
         <img
           class="pt-2 w-full object-cover h-60"
           src="{{skill.image.url}}"
           alt=""
         />
+=======
+        <img class="pt-2 h-40 w-40" src="{{ skill.image.url }}" alt="" />
+>>>>>>> a6c0bb335eb102eee6d874a30f95a94bd31e934b
         <div class="shadow-xl p-4">
           <h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
             {{ skill.skilla.username }}
