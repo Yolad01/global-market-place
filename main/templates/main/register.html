@@ -114,6 +114,15 @@
                 <option class="font-semibold" value="COMPANY">Company</option>
               </select>
             </div>
+
+              {% if messages %} {% for message in messages %}
+              <div
+                class=" ml-20 text-red text-sm text-center py-1 rounded-md px-2"
+                role="alert"
+              >
+                {{ message }}
+              </div>
+              {% endfor %} {% endif %}
           
             <div class="ml-12">
               <label class="block text-veryDarkGreen text-base" for="id_password1"
@@ -148,7 +157,8 @@
             <button type="submit"
                     class="bg-veryDarkGreen w-full border font-semibold text-white my-4 py-2 rounded-md shadow">
                     Get Started
-                </button>
+            </button>
+
 
         </form>
     </div>
