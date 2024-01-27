@@ -12,302 +12,140 @@
       </div>
 
       <div class="mx-1 my 10 py-2 w-auto">
-
         <form method="POST" enctype="multipart/form-data" class="">
-            {% csrf_token %}
+          {% csrf_token %}
 
-            <div class="ml-12">
-              <label
-                class="block text-veryDarkGreen text-base"
-                for="id_username"
-                >Username</label
-              >
-              <input
-                type="text"
-                name="username"
-                maxlength="150"
-                autocapitalize="none"
-                autocomplete="username"
-                autofocus
-                required
-                id="id_username"
-                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
-              />
-            </div>
-          
-            <div class="ml-12">
-              <label
-                class="block text-veryDarkGreen text-base"
-                for="id_first_name"
-                >First name</label
-              >
-              <input
-                type="text"
-                name="first_name"
-                maxlength="150"
-                id="id_first_name"
-                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
-              />
-            </div>
-          
-            <div class="ml-12">
-              <label
-                class="block text-veryDarkGreen text-base"
-                for="id_last_name"
-                >Last name</label
-              >
-              <input
-                type="text"
-                name="last_name"
-                maxlength="150"
-                id="id_last_name"
-                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
-              />
-            </div>
-          
-            <div class="ml-12">
-              <label class="block text-veryDarkGreen text-base" for="id_email"
-                >Email</label
-              >
-              <input
-                type="email"
-                name="email"
-                maxlength="254"
-                required
-                id="id_email"
-                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
-              />
-            </div>
-          
-            <div class="ml-12">
-              <label
-                class="block text-veryDarkGreen text-base5"
-                for="id_phone_no"
-                >Phone Number</label
-              >
-              <input
-                type="text"
-                name="phone_no"
-                maxlength="15"
-                required
-                id="id_phone_no"
-                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
-              />
-            </div>
-          
-            <div class="ml-12">
-              <label class="block text-veryDarkGreen text-lg" for="id_role"
-                >Role</label
-              >
-              <select
-                name="role"
-                required
-                id="id_role"
-                class="border py-3 pr-72 border-gray-700 p-2 mb-4 w-full rounded-md"
-              >
-                <option class="font-semibold" value="" selected>---------</option>
-          
-                <option class="font-semibold" value="CLIENT">Client</option>
-          
-                <option class="font-semibold" value="SKILLAS">Skillas</option>
-          
-                <option class="font-semibold" value="COMPANY">Company</option>
-              </select>
-            </div>
-          
-            <div class="ml-12">
-              <label class="block text-veryDarkGreen text-base" for="id_password1"
-                >Password</label
-              >
-              <input
-                type="password"
-                name="password1"
-                autocomplete="new-password"
-                required
-                id="id_password1"
-                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
-              />
-          
-            </div>
-          
-            <div class="ml-12">
-              <label class="block text-veryDarkGreen text-base" for="id_password2"
-                >Confirm Password</label
-              >
-              <input
-                type="password"
-                name="password2"
-                autocomplete="new-password"
-                required
-                id="id_password2"
-                class="border border-gray-700 p-2 mb-4 w-full rounded-md"
-              />
-              
-            </div>
+          <div class="ml-12">
+            <label class="block text-veryDarkGreen text-base" for="id_username"
+              >Username</label
+            >
+            <input
+              type="text"
+              name="username"
+              maxlength="150"
+              autocapitalize="none"
+              autocomplete="username"
+              autofocus
+              required
+              id="id_username"
+              class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+            />
+          </div>
 
-            <button type="submit"
-                    class="bg-veryDarkGreen w-full border font-semibold text-white my-4 py-2 rounded-md shadow">
-                    Get Started
-                </button>
+          <div class="ml-12">
+            <label
+              class="block text-veryDarkGreen text-base"
+              for="id_first_name"
+              >First name</label
+            >
+            <input
+              type="text"
+              name="first_name"
+              maxlength="150"
+              id="id_first_name"
+              class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+            />
+          </div>
 
+          <div class="ml-12">
+            <label class="block text-veryDarkGreen text-base" for="id_last_name"
+              >Last name</label
+            >
+            <input
+              type="text"
+              name="last_name"
+              maxlength="150"
+              id="id_last_name"
+              class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+            />
+          </div>
+
+          <div class="ml-12">
+            <label class="block text-veryDarkGreen text-base" for="id_email"
+              >Email</label
+            >
+            <input
+              type="email"
+              name="email"
+              maxlength="254"
+              required
+              id="id_email"
+              class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+            />
+          </div>
+
+          <div class="ml-12">
+            <label class="block text-veryDarkGreen text-base5" for="id_phone_no"
+              >Phone Number</label
+            >
+            <input
+              type="text"
+              name="phone_no"
+              maxlength="15"
+              required
+              id="id_phone_no"
+              class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+            />
+          </div>
+
+          <div class="ml-12">
+            <label class="block text-veryDarkGreen text-lg" for="id_role"
+              >Role</label
+            >
+            <select
+              name="role"
+              required
+              id="id_role"
+              class="border py-3 pr-72 border-gray-700 p-2 mb-4 w-full rounded-md"
+            >
+              <option class="font-semibold" value="" selected>---------</option>
+
+              <option class="font-semibold" value="CLIENT">Client</option>
+
+              <option class="font-semibold" value="SKILLAS">Skillas</option>
+
+              <option class="font-semibold" value="COMPANY">Company</option>
+            </select>
+          </div>
+
+          <div class="ml-12">
+            <label class="block text-veryDarkGreen text-base" for="id_password1"
+              >Password</label
+            >
+            <input
+              type="password"
+              name="password1"
+              autocomplete="new-password"
+              required
+              id="id_password1"
+              class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+            />
+          </div>
+
+          <div class="ml-12">
+            <label class="block text-veryDarkGreen text-base" for="id_password2"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              name="password2"
+              autocomplete="new-password"
+              required
+              id="id_password2"
+              class="border border-gray-700 p-2 mb-4 w-full rounded-md"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="bg-veryDarkGreen w-full border font-semibold text-white my-4 py-2 rounded-md shadow"
+          >
+            Get Started
+          </button>
         </form>
-    </div>
-
+      </div>
     </div>
   </div>
 </body>
 
 {% endblock %}
-
-
-
-
-{% comment %} <form method="POST" class="mt-10">
-  {% csrf_token %}
-
-  <div class="mt-5 mb-5 ml-12">
-    <label
-      class="block text-veryDarkGreen text-base mb-5"
-      for="id_username"
-      >Username</label
-    >
-    <input
-      type="text"
-      name="username"
-      maxlength="150"
-      autocapitalize="none"
-      autocomplete="username"
-      autofocus
-      required
-      id="id_username"
-      class="border border-gray-400 rounded py-3 pr-40 focus:outline-none focus:shadow-outline"
-    />
-  </div>
-
-  <div class="mt-5 mb-5 ml-12">
-    <label
-      class="block text-veryDarkGreen text-base mb-5"
-      for="id_first_name"
-      >First name</label
-    >
-    <input
-      type="text"
-      name="first_name"
-      maxlength="150"
-      id="id_first_name"
-      class="border border-gray-400 rounded py-3 pr-40 focus:outline-none focus:shadow-outline"
-    />
-  </div>
-
-  <div class="mt-5 mb-5 ml-12">
-    <label
-      class="block text-veryDarkGreen text-base mb-5"
-      for="id_last_name"
-      >Last name</label
-    >
-    <input
-      type="text"
-      name="last_name"
-      maxlength="150"
-      id="id_last_name"
-      class="border border-gray-400 rounded py-3 pr-40 focus:outline-none focus:shadow-outline"
-    />
-  </div>
-
-  <div class="mt-5 mb-5 ml-12">
-    <label class="block text-veryDarkGreen text-base" for="id_email"
-      >Email</label
-    >
-    <input
-      type="email"
-      name="email"
-      maxlength="254"
-      required
-      id="id_email"
-      class="border border-gray-400 rounded py-3 pr-40 focus:outline-none focus:shadow-outline"
-    />
-  </div>
-
-  <div class="mt-5 mb-5 ml-12">
-    <label
-      class="block text-veryDarkGreen text-base mb-5"
-      for="id_phone_no"
-      >Phone Number</label
-    >
-    <input
-      type="text"
-      name="phone_no"
-      maxlength="15"
-      required
-      id="id_phone_no"
-      class="border border-gray-400 rounded py-3 pr-40 focus:outline-none focus:shadow-outline"
-    />
-  </div>
-
-  <div class="mt-5 mb-5 ml-12">
-    <label class="block text-veryDarkGreen text-lg mb-5" for="id_role"
-      >Role</label
-    >
-    <select
-      name="role"
-      required
-      id="id_role"
-      class="border rounded py-3 pr-72 border-gray-400 focus:outline-none focus:shadow-outline"
-    >
-      <option class="font-semibold" value="" selected>---------</option>
-
-      <option class="font-semibold" value="CLIENT">Client</option>
-
-      <option class="font-semibold" value="SKILLAS">Skillas</option>
-
-      <option class="font-semibold" value="COMPANY">Company</option>
-    </select>
-  </div>
-
-  <div class="mt-5 mb-5 ml-12">
-    <label class="block text-veryDarkGreen text-base" for="id_password1"
-      >Password</label
-    >
-    <input
-      type="password"
-      name="password1"
-      autocomplete="new-password"
-      required
-      id="id_password1"
-      class="border border-gray-400 rounded py-3 pr-40 focus:outline-none focus:shadow-outline"
-    />
-
-  </div>
-
-  <div class="mt-5 mb-5 ml-12">
-    <label class="block text-veryDarkGreen text-base" for="id_password2"
-      >Confirm Password</label
-    >
-    <input
-      type="password"
-      name="password2"
-      autocomplete="new-password"
-      required
-      id="id_password2"
-      class="border border-gray-400 rounded py-3 pr-40 focus:outline-none focus:shadow-outline"
-    />
-    
-  </div>
-
-  <div class="mt-5 mb-10 ml-12">
-    <button
-      type="submit"
-      class="bg-veryDarkGreen text-white text-center font-bold text-2xl py-3 px-24 rounded focus:outline-none focus:shadow-outline"
-      type="button"
-    >
-      Create account
-    </button>
-    <a
-      ><img
-        src="{% static '/img/right_arrow.svg' %}"
-        alt="Right arrow icon"
-        class="ml-64 -mt-10 pl-12"
-      />
-    </a>
-  </div>
-</form> {% endcomment %}
