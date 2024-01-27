@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
-                        BriefAppForm, ChatMessageForm, OrderForm, AcceptQuoteForm,
+                        ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm
                             
                         )
@@ -600,7 +600,7 @@ def view_skills(request):
 def view_brief(request):
 
     user=request.user
-    brief = Brief.objects.all().filter(user=user)
+    brief = Brief.objects.all().filter(user=user).order_by("-date")
     profile_pic = ProfilePicture.objects.get(user=user)
 
     if request.method == "POST":
@@ -624,38 +624,48 @@ def view_brief(request):
 
 def edit_brief(request, id):
     user = request.user
-    get_object_for_edit = Brief.objects.get(id=id)
+    get_object_for_edit = Brief.objects.get(user=user, id=id)
     job_category = JobCategory.objects.all()
 
     if request.method == "POST":
-        form = EditBriefForm(request.POST)
-        # if form.is_valid():
-        #     title = form.cleaned_data["title"]
-        #     description = form.cleaned_data["description"]
-        #     attach_files = form.cleaned_data["attach_files"]
-        #     categories = form.cleaned_data["categories"]
-        #     budget = form.cleaned_data["budget"]
-        #     budget_flexible = form.cleaned_data["budget_flexible"]
-        #     date = form.cleaned_data["date"]
+        form = EditBriefForm(request.POST, request.FILES)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            description = form.cleaned_data["description"]
+            attach_files = form.cleaned_data["attach_files"]
+            categories = form.cleaned_data["categories"]
+            budget = form.cleaned_data["budget"]
+            budget_flexible = form.cleaned_data["budget_flexible"]
+            date = form.cleaned_data["date"]
+            
+            print(title)
+            print(description)
+            print(attach_files)
+            print(categories)
+            print(budget)
+            print(budget_flexible)
+            print(date)
+            
+            get_object_for_edit.title=title
+            get_object_for_edit.description=description
+            get_object_for_edit.attach_files=attach_files
+            get_object_for_edit.categories=categories
+            get_object_for_edit.budget=budget
+            get_object_for_edit.budget_flexible=budget_flexible
+            get_object_for_edit.date=date
+            
+            get_object_for_edit.save()
 
-        #     brief = Brief(
-        #         title=title,
-        #         description=description,
-        #         attach_files=attach_files,
-        #         categories=categories,
-        #         budget=budget,
-        #         budget_flexible=budget_flexible,
-        #         date=date,
-        #         user=user
-        #     )
-        #     brief.save()
-
+            return redirect("main:view_brief")
+        
+    form = EditBriefForm()
 
 
     return render(
         request=request,
         template_name="main/client/brief/edit_brief.html",
         context={
+            "form": form,
             "edit_brief": get_object_for_edit,
             "job_categories": job_category
 

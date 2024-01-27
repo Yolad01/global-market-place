@@ -285,11 +285,39 @@ class DeleteBriefForm(forms.Form):
 
 
 class EditBriefForm(forms.Form):
-    title = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20})),
-    attach_files = forms.FileField(),
-    categories = forms.Select(),
-    budget = forms.IntegerField(),
-    budget_flexible = forms.BooleanField(),
-    date = forms.DateTimeField()
-
+    title = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md'}
+        )
+    )
+    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20, 'class': 'border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md'}))
+    attach_files = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(
+            attrs={'class': 'text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md'}
+        )
+    )
+    categories = forms.ModelChoiceField(
+        queryset=JobCategory.objects.all(),
+        widget=forms.Select(
+            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
+        )
+    )
+    budget = forms.IntegerField(
+        widget=forms.NumberInput(
+            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
+        )
+    )
+    budget_flexible = forms.BooleanField(
+        required=False,
+        widget=forms.CheckboxInput(
+            attrs={'class': 'border border-gray-700 mr-2 rounded-md'}
+        )
+    )
+    date = forms.DateTimeField(
+        widget=forms.SelectDateWidget(
+            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
+        )
+    )
+    
