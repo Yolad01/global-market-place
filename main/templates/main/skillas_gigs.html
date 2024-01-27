@@ -26,15 +26,13 @@
 
   <!--Skillas Platform Banner-->
   <section>
-    <div>
+    <div class="ml-48 mr-48 flex justify-center">
       <img
         src="{% static '/img/Skillas Design-04 1.svg' %}"
         alt="hero banner"
-        class="ml-48"
-        width="1500"
+        class="w-full"
       />
     </div>
-
   </section>
 
   <section>
@@ -51,7 +49,11 @@
     >
       {% for skill in skills %}
       <div class="mx-4">
-        <img class="pt-2 h-40 w-40" src="{{ skill.image.url }}" alt="" />
+        <img
+          class="pt-2 w-full object-cover h-60"
+          src="{{skill.image.url}}"
+          alt=""
+        />
         <div class="shadow-xl p-4">
           <h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
             {{ skill.skilla.username }}
