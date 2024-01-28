@@ -108,6 +108,15 @@
             </select>
           </div>
 
+          {% if messages %} {% for message in messages %}
+          <div
+            class="ml-20 text-red text-sm text-center py-1 rounded-md px-2"
+            role="alert"
+          >
+            {{ message }}
+          </div>
+          {% endfor %} {% endif %}
+
           <div class="ml-12">
             <label class="block text-veryDarkGreen text-base" for="id_password1"
               >Password</label
