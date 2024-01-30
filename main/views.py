@@ -410,9 +410,11 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 def chat(request, pk):
     user = request.user
     message_receiver = User.objects.get(id=pk)
+
     display_msg = Inbox.objects.filter(
         Q(owner=user) | Q(message__msg_sender=user)
     )
+
     profile_picture = ProfilePicture.objects.get(
         user=message_receiver
     )
@@ -476,9 +478,18 @@ def chat(request, pk):
 def inbox(request):
     user = request.user.id
     print(user)
-    inbox = Inbox.objects.all().filter(
-        owner=user,
+
+    conversor = User.objects.all()[:]
+    print(conversor)
+
+    # inbox = Inbox.objects.filter(
+    #     owner=user
+    # )
+    inbox = Inbox.objects.filter(
+        owner=user
     )
+    # print(inbox)
+
     profile_picture = ProfilePicture.objects.get(
         user=user
     )

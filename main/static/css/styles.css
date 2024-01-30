@@ -2321,9 +2321,9 @@ select{
   color: rgb(148 145 145 / var(--tw-text-opacity));
 }
 
-.text-rose-700{
+.text-red{
   --tw-text-opacity: 1;
-  color: rgb(190 18 60 / var(--tw-text-opacity));
+  color: rgb(201 0 0 / var(--tw-text-opacity));
 }
 
 .text-shadeGreen{
@@ -2354,21 +2354,6 @@ select{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-red{
-  --tw-text-opacity: 1;
-  color: rgb(201 0 0 / var(--tw-text-opacity));
-}
-
-.text-amber-700{
-  --tw-text-opacity: 1;
-  color: rgb(180 83 9 / var(--tw-text-opacity));
-}
-
-.text-purple{
-  --tw-text-opacity: 1;
-  color: rgb(151 71 255 / var(--tw-text-opacity));
 }
 
 .opacity-50{
