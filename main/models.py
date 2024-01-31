@@ -401,3 +401,20 @@ class ChatMessage(models.Model):
     def __str__(self):
         return self.msg_body
     
+
+# class LastMessageManager(models.Manager):
+#     def get_last_message(self, sender, recipient):
+#         return self.filter(models.Q(sender=sender, recipient=recipient) | models.Q(sender=recipient, recipient=sender)).first()
+    
+
+# class Message(models.Model):
+#     sender = models.ForeignKey(User, related_name='sent_messages', on_delete=models.CASCADE)
+#     recipient = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
+#     content = models.TextField()
+#     timestamp = models.DateTimeField(auto_now_add=True)
+
+#     objects = models.Manager()  # The default manager
+#     last_message_manager = LastMessageManager()  # Custom manager for last messages
+
+#     class Meta:
+#         ordering = ['-timestamp']  # Order messages by timestamp in descending order

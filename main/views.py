@@ -479,17 +479,11 @@ def inbox(request):
     user = request.user.id
     print(user)
 
-    conversor = User.objects.all()[:]
-    print(conversor)
-
-    # inbox = Inbox.objects.filter(
-    #     owner=user
-    # )
     inbox = Inbox.objects.filter(
         owner=user
     )
-    # print(inbox)
-
+    print(inbox)
+    
     profile_picture = ProfilePicture.objects.get(
         user=user
     )
