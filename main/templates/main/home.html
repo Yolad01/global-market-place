@@ -2,37 +2,75 @@
 {% load static %}
 
 {% block content %}
+    <!-- Body of landing page -->
     <main class="mt-20 font-primary">
+        <!-- Menu section -->
+        <section class="pb-10">
+            <div class="mt-10 font-primary flex justify-center items-center gap-x-8">
+                <div class="flex bg-ash p-2">
+                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon">
+                    <a href="#" class="font-normal text-base ml-2">Artisans</a>
+                </div>
+
+                <div class="flex bg-ash p-2">
+                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon">
+                    <a href="#" class="font-normal text-base ml-2">Technicians</a>
+                </div>
+
+                <div class="flex bg-ash p-2">
+                    <img src="{% static 'img/icon_development.svg' %}" alt="icon">
+                    <a href="#" class="font-normal text-base ml-2">Development</a>
+                </div>
+
+                <div class="flex bg-ash p-2">
+                    <h1 class="font-normal text-base ml-2">More</h1>
+                    <a href="#"><img src="{% static 'img/more_arrow.svg' %}" alt="downward arrow" class="ml-1 mt-2"></a>
+                </div>
+            </div>
+        </section>
+            
+        <!-- Hero section -->
         <section>
             <div>
-                <div class="mt-44 flex items-center justify-center">
+                <div class="flex justify-between">
+                    <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="bg-orangeEssence ml-52 border w-56 rounded-lg">
+                    <img src="{% static 'img/skilla_service.svg' %}" alt="Photo of skilla" class="bg-pinkEssence border rounded-lg w-56 mr-64">
+                </div>
+
+                <div class="flex items-center justify-center -mt-28">
                     <img src="{% static '/img/home_banner.svg' %}" alt="banner">
                 </div>
             </div>
-            
 
-            <div class="flex items-center justify-center mt-24"> 
-                <a
-                href="/register"
-                class="rounded bg-veryLightGreen text-veryDarkGreen px-5 py-2 text-3xl font-bold"
-                >Get Started</a
-              >
+            <div class="flex justify-between -mt-28">
+                <img src="{% static 'img/left_braces.svg' %}" alt="curly braces" class="-mt-3 ml-36 border rounded-lg border-none">
+                <img src="{% static 'img/right_braces.svg' %}" alt="curly braces" class="-mt-3 mr-52 border rounded-lg border-none">
             </div>
 
+            <div>
+                <div class="flex justify-between -mt-10">
+                    <img src="{% static 'img/technician_service.svg' %}" alt="Photo of technician" class="bg-purpleEssence ml-80 border rounded-lg w-56">
+                    <img src="{% static 'img/tech_service.svg' %}" alt="Photo of tech personnel" class="bg-blueEssence  border rounded-lg w-56 mr-96">
+                </div>
+                
+    
+                <div class="flex items-center justify-center -mt-28"> 
+                    <a
+                    href="/register"
+                    class="rounded bg-veryLightGreen text-veryDarkGreen px-5 py-2 text-3xl font-bold"
+                    >Get Started</a
+                  >
+                </div>
+            </div>
+        </section>
 
-
-            
-
-        
-
-        
-
+        <!-- Service section -->
         <section>
             <div class="mt-48">
                 <h2 class="font-extrabold text-veryDarkGreen text-center text-3xl mb-10">Services</h2>
                 <div class="grid grid-cols-4 ml-52 mr-32">
                     <div class="bg-orangeEssence mr-36 rounded-lg text-white">
-                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="w-60 h-52">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl mt-3">Cleaning Service</h2> <hr class="border-b-2 border-white mr-16">
                         <p class="font-medium text-xs mt-3 pl-2">newly created service category. yoladglobal.com therefore has an enormous
@@ -42,7 +80,7 @@
                     </div>
 
                     <div class="bg-purpleEssence mr-36 rounded-lg text-white">
-                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <img src="{% static 'img/technician_service.svg' %}" alt="Photo of technician" class="w-60 h-52">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl mt-3">Technician</h2> <hr class="border-b-2 border-white w-1/2">
                         <p class="font-medium text-xs mt-3 pl-2">newly created service category. yoladglobal.com therefore has an enormous
@@ -52,7 +90,7 @@
                     </div>
 
                     <div class="bg-pinkEssence mr-36 rounded-lg text-white">
-                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <img src="{% static 'img/tech_service.svg' %}" alt="Photo of tech page" class="w-60 h-52">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl mt-3">Tech</h2> <hr class="border-b-2 border-white w-1/5">
                         <p class="font-medium text-xs mt-3 pl-2">newly created service category. yoladglobal.com therefore has an enormous
@@ -62,7 +100,7 @@
                     </div>
 
                     <div class="bg-blueEssence mr-36 rounded-lg text-white">
-                        <img src="{% static 'img/Group 252.png' %}" alt="">
+                        <img src="{% static 'img/artisan_service.svg' %}" alt="Photo of artisan" class="ml-1 w-60 h-52">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl mt-3">Artisans</h2> <hr class="border-b-2 border-white w-1/3">
                         <p class="font-medium text-xs mt-3 pl-2">newly created service category. yoladglobal.com therefore has an enormous
@@ -70,15 +108,16 @@
                         </p>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="flex justify-center items-center mt-24 mb-24">
-                    <a href="#" class="rounded bg-veryLightGreen text-veryDarkGreen text-2xl font-extrabold px-8 py-2">SIGN UP TO SEE MORE</a>
+                    <a href="/register" class="rounded bg-veryLightGreen text-veryDarkGreen text-2xl font-extrabold px-8 py-2">SIGN UP TO SEE MORE</a>
                 </div>
-                
             </div>
+        </section>
 
+        <!-- Customer review section -->
+        <section>
             <div class="mt-20 bg-navyBlue">
                 <h2 class="font-extrabold text-white text-center text-2xl pt-24">CUSTOMERS REVIEW</h2>
                 
@@ -129,8 +168,11 @@
                     </div>
                 </div>
             </div> 
+        </section>
 
-            <div class="bg-gray-100 pb-20 mt-20">
+        <!-- FAQ section -->
+        <section>
+            <div class="bg-ash pb-20 mt-20">
                 <div class="ml-48 mr-60 mb-10">
                     <h2 class="pt-20 font-semibold text-veryDarkGreen text-center text-3xl mb-10">Frequently Asked Questions</h2>
     
@@ -138,32 +180,32 @@
                         <div class=" rounded-none grid grid-rows-6 gap-y-4 cursor-pointer">
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
                                 <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="" class="mr-5 mt-2"></a>
+                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
                             </div>
     
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
                                 <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="" class="mr-5 mt-2"></a>
+                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
                             </div>
     
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
                                 <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="" class="mr-5 mt-2"></a>
+                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
                             </div>
     
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
                                 <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="" class="mr-5 mt-2"></a>
+                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
                             </div>
     
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
                                 <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="" class="mr-5 mt-2"></a>
+                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
                             </div>
     
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
                                 <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="" class="mr-5 mt-2"></a>
+                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
                             </div>
             </div>
 
@@ -184,32 +226,32 @@
         </section>
 
         <!-- Contact -->
-    <section id="contact">
-        <div class="mt-24 mb-24 flex items-center justify-center gap-20 bg-gray-100">
-            <div class="">
-                <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care rep">
-            </div>
-            <div class="ml-40">
-                <h2 class="font-black text-veryDarkGreen text-5xl mb-5">Contact Our 24/7 <br/>
-                    Customer Service   
-                </h2>
+        <section id="contact">
+            <div class="mt-24 mb-24 flex items-center justify-center gap-20 bg-ash">
+                <div class="">
+                    <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care rep">
+                </div>
+                <div class="ml-40">
+                    <h2 class="font-black text-veryDarkGreen text-5xl mb-5">Contact Our 24/7 <br/>
+                        Customer Service   
+                    </h2>
 
-                <p class="font-medium text-2xl">
-                    YOLAD GLOBAL SERVICES LIMITED positions <br/> itself as a Need-Market Platform 
-                    that offers <br /> skilled Workers, Personnels, Businesses and 
-                </p>
+                    <p class="font-medium text-2xl">
+                        YOLAD GLOBAL SERVICES LIMITED positions <br/> itself as a Need-Market Platform 
+                        that offers <br /> skilled Workers, Personnels, Businesses and 
+                    </p>
 
-                <h2 class="font-black text-veryDarkGreen mt-10 text-left text-5xl mb-14">
-                    +234 803 674 8872
-                </h2>
-                
-                <a href="/register" class="rounded bg-veryLightGreen text-veryDarkGreen text-3xl font-semibold px-10 py-2">
-                    Sign up here
-                </a>
+                    <h2 class="font-black text-veryDarkGreen mt-10 text-left text-5xl mb-14">
+                        +234 803 674 8872
+                    </h2>
+                    
+                    <a href="/register" class="rounded bg-veryLightGreen text-veryDarkGreen text-3xl font-semibold px-10 py-2">
+                        Sign up here
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
-     </main>
+        </section>
+    </main>
 
     
 {% endblock %}

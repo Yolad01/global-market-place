@@ -96,7 +96,7 @@ class ClientProfileForm(forms.ModelForm):
 
 
         widgets = {
-            "country": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "country": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md text-light_ash text-xl'}),
             "current_location": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
             "home_address": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
             "occupation": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
