@@ -28,6 +28,17 @@ def home(request):
                   context={"form": job_form}
                   )
 
+def about(request):
+    return render(
+        request=request,
+        template_name="main/about.html"
+    )
+    
+def terms_condition(request):
+    return render(
+        request=request,
+        template_name="main/terms_condition.html"
+    )
 
 def register(request):
     if request.method == "POST":

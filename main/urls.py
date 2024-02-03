@@ -17,6 +17,8 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("register/", views.register, name="register"),    
     path("sign_in/", views.sign_in, name="sign_in"),
+    path("about/", views.about, name="about"),
+    path("terms_condition/", views.terms_condition, name="terms_condition"),
     
     path("skilla_profile/", views.skilla_profile, name="skilla_profile"),
     path("client_profile/", views.client_profile, name="client_profile"),

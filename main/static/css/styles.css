@@ -838,10 +838,6 @@ select{
   margin: 5rem;
 }
 
-.m-24{
-  margin: 6rem;
-}
-
 .m-28{
   margin: 7rem;
 }
@@ -955,16 +951,16 @@ select{
   margin-left: -3rem;
 }
 
+.-ml-14{
+  margin-left: -3.5rem;
+}
+
 .-ml-20{
   margin-left: -5rem;
 }
 
 .-ml-64{
   margin-left: -16rem;
-}
-
-.-ml-80{
-  margin-left: -20rem;
 }
 
 .-mt-10{
@@ -977,10 +973,6 @@ select{
 
 .-mt-16{
   margin-top: -4rem;
-}
-
-.-mt-20{
-  margin-top: -5rem;
 }
 
 .-mt-3{
@@ -1001,10 +993,6 @@ select{
 
 .mb-14{
   margin-bottom: 3.5rem;
-}
-
-.mb-16{
-  margin-bottom: 4rem;
 }
 
 .mb-2{
@@ -1119,10 +1107,6 @@ select{
   margin-left: 15rem;
 }
 
-.ml-64{
-  margin-left: 16rem;
-}
-
 .ml-72{
   margin-left: 18rem;
 }
@@ -1169,10 +1153,6 @@ select{
 
 .mr-32{
   margin-right: 8rem;
-}
-
-.mr-36{
-  margin-right: 9rem;
 }
 
 .mr-4{
@@ -1333,6 +1313,14 @@ select{
 
 .h-2\.5{
   height: 0.625rem;
+}
+
+.h-24{
+  height: 6rem;
+}
+
+.h-28{
+  height: 7rem;
 }
 
 .h-52{
@@ -1533,10 +1521,6 @@ select{
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.grid-cols-7{
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
 .grid-rows-6{
   grid-template-rows: repeat(6, minmax(0, 1fr));
 }
@@ -1591,6 +1575,11 @@ select{
 
 .gap-6{
   gap: 1.5rem;
+}
+
+.gap-x-7{
+  -moz-column-gap: 1.75rem;
+       column-gap: 1.75rem;
 }
 
 .gap-y-4{
@@ -1826,6 +1815,11 @@ select{
   background-color: rgb(30 204 119 / var(--tw-bg-opacity));
 }
 
+.bg-navyBlue{
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 32 95 / var(--tw-bg-opacity));
+}
+
 .bg-veryDarkGreen{
   --tw-bg-opacity: 1;
   background-color: rgb(0 45 56 / var(--tw-bg-opacity));
@@ -1901,11 +1895,6 @@ select{
 .px-20{
   padding-left: 5rem;
   padding-right: 5rem;
-}
-
-.px-24{
-  padding-left: 6rem;
-  padding-right: 6rem;
 }
 
 .px-28{
@@ -2016,14 +2005,6 @@ select{
   padding-left: 2.5rem;
 }
 
-.pl-12{
-  padding-left: 3rem;
-}
-
-.pl-16{
-  padding-left: 4rem;
-}
-
 .pl-28{
   padding-left: 7rem;
 }
@@ -2078,10 +2059,6 @@ select{
 
 .pr-36{
   padding-right: 9rem;
-}
-
-.pr-40{
-  padding-right: 10rem;
 }
 
 .pr-5{
@@ -2243,17 +2220,14 @@ select{
   font-style: normal;
 }
 
-.leading-10{
-  line-height: 2.5rem;
-}
-
-.leading-8{
-  line-height: 2rem;
-}
-
 .text-aKindOfBlack{
   --tw-text-opacity: 1;
   color: rgb(73 73 73 / var(--tw-text-opacity));
+}
+
+.text-blue-600{
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
 .text-darkAsh{
