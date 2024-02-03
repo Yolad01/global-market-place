@@ -16,15 +16,21 @@
             height="55"
           />
         </div>
-        <div class="my-5 text-xl font-semibold">{{ msg.message.msg_sender }}</div>
-        <div class="my-5 text-sm">{{ msg.message.msg_body_snippet }}</div>
-        <div class="my-5 text-sm mx-4">{{ msg.message.timestamp }}</div>
+        <div class="my-5 text-xl font-semibold">
+          {% if user == msg.receiver %}
+          {{ msg.sender }}
+          {% else %}
+          {{ msg.receiver }}
+          {% endif %}
+        </div>
+        <div class="my-5 text-sm">{{ msg.content }}</div>
+        <div class="my-5 text-sm mx-4">{{ msg.timestamp }}</div>
       </div>
 
       <div class="my-4 items-center justify-center">
           <div class="ml-4">
             <a
-            href="{% url 'main:chat' pk=msg.message.msg_sender.id %}"
+            href="{% url 'main:chat' pk=msg.sender.id %}"
             class="text-white border border-veryDarkGreen bg-emerald-900 my-2 px-4 py-2 rounded-md shadow-sm text-sm font-semibold"
           >
             Open

@@ -4,7 +4,7 @@ from main.models import User
 from main.models import (JobCategory, Job, Rating,
                          SkillaProfile, Skill, ClientProfile,
                          CompanyProfile, AboutSkilla, TrainingAndCertification,
-                         ProfilePicture, Brief, ChatMessage, Order
+                         ProfilePicture, Brief, Order
                          )
 
 

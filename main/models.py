@@ -366,55 +366,53 @@ class SkillaReachoutToClient(models.Model):
 
 
 
-class Inbox(models.Model):
-    owner = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
-    message = models.ForeignKey(
-        "ChatMessage",
-        on_delete=models.CASCADE
-    )
+# class Inbox(models.Model):
+#     owner = models.ForeignKey(
+#         User,
+#         on_delete=models.CASCADE
+#     )
+#     message = models.ForeignKey(
+#         "ChatMessage",
+#         on_delete=models.CASCADE
+#     )
 
-    def __str__(self):
-        return self.owner.username
+#     def __str__(self):
+#         return self.owner.username
 
 
-class ChatMessage(models.Model):
-    msg_body = models.TextField()
-    msg_sender = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="sender"
-    )
-    msg_receiver = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="receiver"
-    )
-    seen = models.BooleanField(default=False)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    
-    def msg_body_snippet(self):
-        return self.msg_body[:15] + "..."
-
-    def __str__(self):
-        return self.msg_body
-    
-
-# class LastMessageManager(models.Manager):
-#     def get_last_message(self, sender, recipient):
-#         return self.filter(models.Q(sender=sender, recipient=recipient) | models.Q(sender=recipient, recipient=sender)).first()
-    
-
-# class Message(models.Model):
-#     sender = models.ForeignKey(User, related_name='sent_messages', on_delete=models.CASCADE)
-#     recipient = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
-#     content = models.TextField()
+# class ChatMessage(models.Model):
+#     msg_body = models.TextField()
+#     msg_sender = models.ForeignKey(
+#         User,
+#         on_delete=models.CASCADE,
+#         related_name="sender"
+#     )
+#     msg_receiver = models.ForeignKey(
+#         User,
+#         on_delete=models.CASCADE,
+#         related_name="receiver"
+#     )
+#     seen = models.BooleanField(default=False)
 #     timestamp = models.DateTimeField(auto_now_add=True)
+    
+#     def msg_body_snippet(self):
+#         return self.msg_body[:15] + "..."
 
-#     objects = models.Manager()  # The default manager
-#     last_message_manager = LastMessageManager()  # Custom manager for last messages
+#     def __str__(self):
+#         return self.msg_body
+    
 
-#     class Meta:
-#         ordering = ['-timestamp']  # Order messages by timestamp in descending order
+class Message(models.Model):
+    sender = models.ForeignKey(User, related_name='sent_messages', on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+
+    def __str__(self):
+        return f'{self.sender} to {self.receiver} at {self.timestamp}'
+    
+
+    

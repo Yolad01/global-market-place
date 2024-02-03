@@ -9,7 +9,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, ChatMessage, User, Inbox, Order,
+                         SkillaReachoutToClient, Clients, User, Order, Message,
                          Skill, JobCategory
                         )
 from django.contrib.auth.forms import AuthenticationForm
@@ -407,12 +407,48 @@ def profile_view(request, pk): #Use the id for the querries or make the username
     )
 
 
+
+def get_last_message(sender, receiver):
+    last_message = Message.objects.filter(
+        (Q(sender=sender) & Q(receiver=receiver)) |
+        (Q(sender=receiver) & Q(receiver=sender))
+    ).first()
+    
+    return last_message
+
+
+
+def inbox(request):
+    user = request.user.id
+    print(user)
+
+    inbox = Message.objects.filter(
+        Q(sender=user) | Q(receiver=user)
+    )
+    print(inbox)
+    
+    profile_picture = ProfilePicture.objects.get(
+        user=user
+    )
+
+    return render(
+        request=request,
+        template_name="main/messaging/inbox.html",
+        context={
+            "inbox": inbox,
+            "profile_picture": profile_picture
+        }
+    )
+
+
+
+
 def chat(request, pk):
     user = request.user
     message_receiver = User.objects.get(id=pk)
 
-    display_msg = Inbox.objects.filter(
-        Q(owner=user) | Q(message__msg_sender=user)
+    display_msg = Message.objects.filter(
+        Q(sender=user) | Q(receiver=user)
     )
 
     profile_picture = ProfilePicture.objects.get(
@@ -432,18 +468,12 @@ def chat(request, pk):
         if form.is_valid():
             msg_body = form.cleaned_data["msg_body"]
 
-            msg = ChatMessage(
-                msg_body=msg_body,
-                msg_receiver= message_receiver,
-                msg_sender=user
+            msg = Message(
+                content=msg_body,
+                receiver= message_receiver,
+                sender=user
             )
             msg.save()
-
-            inbox = Inbox(
-                owner=message_receiver,
-                message=msg
-            )
-            inbox.save()
 
             return redirect("main:chat", pk=message_receiver.id)
         
@@ -474,28 +504,6 @@ def chat(request, pk):
         }
     )
 
-
-def inbox(request):
-    user = request.user.id
-    print(user)
-
-    inbox = Inbox.objects.filter(
-        owner=user
-    )
-    print(inbox)
-    
-    profile_picture = ProfilePicture.objects.get(
-        user=user
-    )
-
-    return render(
-        request=request,
-        template_name="main/messaging/inbox.html",
-        context={
-            "inbox": inbox,
-            "profile_picture": profile_picture
-        }
-    )
 
 
 

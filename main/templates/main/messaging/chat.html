@@ -24,10 +24,10 @@
 
             {% for msg in display_msg %}
             
-                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
+                <div class="{% if msg.sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
                     <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
                         <div>
-                            {% if msg.message.msg_sender == user %}
+                            {% if msg.sender == user %}
                             <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
                             
                             {% else %}
@@ -36,16 +36,16 @@
                         </div>
                         <div class="flex mx-4">
                             <div class="mx-4 font-semibold">
-                                {{ msg.message.msg_sender }}
+                                {{ msg.sender }}
                             </div>
 
                             <div class="mx-4 text-sm">
-                                {{ msg.message.timestamp }}
+                                {{ msg.timestamp }}
                             </div>
                         </div>
                     </div>
                     <div class="mx-4 text-sm ml-40">
-                        {{ msg.message.msg_body }}
+                        {{ msg.content }}
                     </div>
                 </div>
                 
