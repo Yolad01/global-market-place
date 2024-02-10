@@ -126,6 +126,26 @@ class SkillaReachoutToClientAdmin(admin.ModelAdmin):
      ]
 
 
+class ContactListAdmin(admin.ModelAdmin):
+     list_filter = ['user']
+     list_display = ['user']
+     search_fields = ['user']
+     readonly_fields = ['user']
+
+     class Meta:
+          model = ContactList
+
+
+
+class ConnectRequestAdmin(admin.ModelAdmin):
+     list_filter = ["sender", "receiver"]
+     list_display = ["sender", "receiver"]
+     search_fields = ["sender__username", "receiver__username","sender__email", "receiver__email"]
+
+     class Meta:
+          model = ConnectRequest
+
+
 
 
 admin.site.register(Rating, RatingAdmin)
@@ -145,7 +165,9 @@ admin.site.register(TrainingAndCertification, TrainingAndCertificationForm)
 admin.site.register(ProfilePicture)
 admin.site.register(Brief, BriefAdmin)
 admin.site.register(SkillaReachoutToClient, SkillaReachoutToClientAdmin)
-admin.site.register(ContactList)
+
+admin.site.register(ContactList, ContactListAdmin)
+admin.site.register(ConnectRequest, ConnectRequestAdmin)
 
 
 
