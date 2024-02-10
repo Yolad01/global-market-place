@@ -9,7 +9,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, User, Order, Message,
+                         SkillaReachoutToClient, Clients, User, Order,
                          Skill, JobCategory, ContactList
                         )
 from django.contrib.auth.forms import AuthenticationForm
