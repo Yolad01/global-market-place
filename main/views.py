@@ -10,7 +10,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, User, Order, Message,
-                         Skill, JobCategory
+                         Skill, JobCategory, ContactList
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -437,6 +437,11 @@ def inbox(request):
         Q(sender=user) | Q(receiver=user)
     )
     print(inbox)
+
+    contacts = Contact.objects.filter(
+        owner=user
+    )
+    print(contacts)
     
     profile_picture = ProfilePicture.objects.get(
         user=user
@@ -447,7 +452,8 @@ def inbox(request):
         template_name="main/messaging/inbox.html",
         context={
             "inbox": inbox,
-            "profile_picture": profile_picture
+            "profile_picture": profile_picture,
+            "contacts": contacts
         }
     )
 
@@ -485,6 +491,20 @@ def chat(request, pk):
                 sender=user
             )
             msg.save()
+
+            try:
+                does_exist = Contact.objects.filter(
+                    Q(owner=user) | Q(contact=message_receiver)
+                )
+                
+                contact = Contact(
+                    owner=user,
+                    contact=message_receiver
+                )
+                contact.save()
+            except does_exist:
+                return redirect("main:chat", pk=message_receiver.id)
+
 
             return redirect("main:chat", pk=message_receiver.id)
         

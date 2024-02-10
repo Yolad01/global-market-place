@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
-    ProfilePicture, Brief, SkillaReachoutToClient, Message
+    ProfilePicture, Brief, SkillaReachoutToClient, Message, ContactList
 )
 
 # Register your models here.
@@ -163,7 +163,7 @@ admin.site.register(ProfilePicture)
 admin.site.register(Brief, BriefAdmin)
 admin.site.register(SkillaReachoutToClient, SkillaReachoutToClientAdmin)
 admin.site.register(Message)
-# admin.site.register(LastMessageManager)
+admin.site.register(ContactList)
 
 
 

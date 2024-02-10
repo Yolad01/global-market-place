@@ -6,6 +6,7 @@ from .options import Country, Role, SkillLevel, Rate, OrderStatus
 import random
 from django.utils import timezone
 from datetime import datetime
+from django.conf import settings
 
 
 
@@ -366,40 +367,28 @@ class SkillaReachoutToClient(models.Model):
 
 
 
-# class Inbox(models.Model):
-#     owner = models.ForeignKey(
-#         User,
-#         on_delete=models.CASCADE
-#     )
-#     message = models.ForeignKey(
-#         "ChatMessage",
-#         on_delete=models.CASCADE
-#     )
+class ContactList(models.Model):
+    owner = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="owner")
+    contacts = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name="contacts")
 
-#     def __str__(self):
-#         return self.owner.username
-
-
-# class ChatMessage(models.Model):
-#     msg_body = models.TextField()
-#     msg_sender = models.ForeignKey(
-#         User,
-#         on_delete=models.CASCADE,
-#         related_name="sender"
-#     )
-#     msg_receiver = models.ForeignKey(
-#         User,
-#         on_delete=models.CASCADE,
-#         related_name="receiver"
-#     )
-#     seen = models.BooleanField(default=False)
-#     timestamp = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.owner.username
     
-#     def msg_body_snippet(self):
-#         return self.msg_body[:15] + "..."
+    def add_contact(self, account):
+        if not account in self.contacts.all():
+            self.contacts.add(account)
+            self.save()
 
-#     def __str__(self):
-#         return self.msg_body
+    def remove_contact(self, account):
+        if account in self.contacts.all():
+            self.contacts.remove(account)
+
+    def uncontact(self, removee):
+        remover = self
+        remover.remove_contact(removee)
+        contact_list = ContactList.objects.get(owner=removee)
+        contact_list.remove_contact(self.owner)
+
     
 
 class Message(models.Model):
@@ -413,6 +402,4 @@ class Message(models.Model):
 
     def __str__(self):
         return f'{self.sender} to {self.receiver} at {self.timestamp}'
-    
-
     
