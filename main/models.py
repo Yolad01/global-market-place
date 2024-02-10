@@ -368,11 +368,11 @@ class SkillaReachoutToClient(models.Model):
 
 
 class ContactList(models.Model):
-    owner = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="owner")
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="owner")
     contacts = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name="contacts")
 
     def __str__(self):
-        return self.owner.username
+        return self.user.username
     
     def add_contact(self, account):
         if not account in self.contacts.all():
@@ -386,9 +386,53 @@ class ContactList(models.Model):
     def uncontact(self, removee):
         remover = self
         remover.remove_contact(removee)
-        contact_list = ContactList.objects.get(owner=removee)
+        contact_list = ContactList.objects.get(user=removee)
         contact_list.remove_contact(self.owner)
 
+    def is_contact(self, contact):
+        if contact in self.contacts.all():
+            return True
+        return False
+    
+
+
+class ConnectRequest(models.Model):
+    sender = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="sender"
+    )
+    receiver = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="receiver"
+    )
+    is_active = models.BooleanField(
+        blank=True,
+        null=False,
+        default=True
+    )
+
+    def __str__(self):
+        self.sender.username
+
+    def connect_with_contact(self):
+        receiver_contact_list = ContactList.objects.get(user=self.receiver)
+        if receiver_contact_list:
+            receiver_contact_list.add_contact(self.sender)
+            sender_contact_list = ContactList.objects.get(user=self.sender)
+            if sender_contact_list:
+                sender_contact_list.add_contact(self.receiver)
+                self.is_active: bool = False
+                self.save()
+
+    def decline(self):
+        self.is_active = False
+        self.save()
+
+    def cancel(self):
+        self.is_active = False
+        self.save()
     
 
 class Message(models.Model):
