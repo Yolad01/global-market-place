@@ -40,6 +40,12 @@ def terms_condition(request):
         template_name="main/terms_condition.html"
     )
 
+def service_policy(request):
+    return render(
+        request=request,
+        template_name="main/skilla/service_policy.html"
+    )
+
 def register(request):
     if request.method == "POST":
         registration_form = RegistrationForm(request.POST)
