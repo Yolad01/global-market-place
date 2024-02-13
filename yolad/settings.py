@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'channels',
     'django_browser_reload'
 ]
 
@@ -73,7 +73,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'yolad.wsgi.application'
+ASGI_APPLICATION = 'yolad.routing.application'
+# WSGI_APPLICATION = 'yolad.wsgi.application'
 
 
 # Database
