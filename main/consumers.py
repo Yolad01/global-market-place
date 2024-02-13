@@ -7,4 +7,8 @@ class EchoConsumer(SyncConsumer):
 
     def websocket_receive(self, event):
         print("new evenet received")
-        (print(event))
+        print(event)
+
+    def websocket_disconnect(self, event):
+        print("Disconnected connection")
+        print(event)

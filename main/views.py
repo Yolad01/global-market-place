@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, Http404
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
@@ -10,12 +10,14 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, User, Order,
-                         Skill, JobCategory, ContactList
+                         Skill, JobCategory, ContactList, Thread, Message
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
+from django.views import View
+from django.contrib.auth import get_user_model
 
 
 # Create your views here.
@@ -419,121 +421,112 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 
 
 
-def get_last_message(sender, receiver):
-    last_message = Message.objects.filter(
-        (Q(sender=sender) & Q(receiver=receiver)) |
-        (Q(sender=receiver) & Q(receiver=sender))
-    ).first()
+
+# def inbox(request):
+#     user = request.user.id
+#     print(user)
+
+#     inbox = Message.objects.filter(
+#         Q(sender=user) | Q(receiver=user)
+#     )
+#     print(inbox)
+
+#     contacts = Contact.objects.filter(
+#         owner=user
+#     )
+#     print(contacts)
     
-    return last_message
+#     profile_picture = ProfilePicture.objects.get(
+#         user=user
+#     )
 
-
-
-def inbox(request):
-    user = request.user.id
-    print(user)
-
-    inbox = Message.objects.filter(
-        Q(sender=user) | Q(receiver=user)
-    )
-    print(inbox)
-
-    contacts = Contact.objects.filter(
-        owner=user
-    )
-    print(contacts)
-    
-    profile_picture = ProfilePicture.objects.get(
-        user=user
-    )
-
-    return render(
-        request=request,
-        template_name="main/messaging/inbox.html",
-        context={
-            "inbox": inbox,
-            "profile_picture": profile_picture,
-            "contacts": contacts
-        }
-    )
+#     return render(
+#         request=request,
+#         template_name="main/messaging/inbox.html",
+#         context={
+#             "inbox": inbox,
+#             "profile_picture": profile_picture,
+#             "contacts": contacts
+#         }
+#     )
 
 
 
 
-def chat(request, pk):
-    user = request.user
-    message_receiver = User.objects.get(id=pk)
+# def chat(request, pk):
+#     user = request.user
+#     message_receiver = User.objects.get(id=pk)
 
-    display_msg = Message.objects.filter(
-        Q(sender=user) | Q(receiver=user)
-    )
+#     display_msg = Message.objects.filter(
+#         Q(sender=user) | Q(receiver=user)
+#     )
 
-    profile_picture = ProfilePicture.objects.get(
-        user=message_receiver
-    )
-    user_profile_picture = ProfilePicture.objects.get(
-        user=user
-    )
-    display_order = Order.objects.all().filter(
-        skilla=user,
-        client=message_receiver
-    ).order_by("-order_created")
+#     profile_picture = ProfilePicture.objects.get(
+#         user=message_receiver
+#     )
+#     user_profile_picture = ProfilePicture.objects.get(
+#         user=user
+#     )
+#     display_order = Order.objects.all().filter(
+#         skilla=user,
+#         client=message_receiver
+#     ).order_by("-order_created")
 
-    if request.method == "POST":
-        form = ChatMessageForm(request.POST)
-        form_order = OrderForm(request.POST)
-        if form.is_valid():
-            msg_body = form.cleaned_data["msg_body"]
+#     if request.method == "POST":
+#         form = ChatMessageForm(request.POST)
+#         form_order = OrderForm(request.POST)
+#         if form.is_valid():
+#             msg_body = form.cleaned_data["msg_body"]
 
-            msg = Message(
-                content=msg_body,
-                receiver= message_receiver,
-                sender=user
-            )
-            msg.save()
+#             msg = Message(
+#                 content=msg_body,
+#                 receiver= message_receiver,
+#                 sender=user
+#             )
+#             msg.save()
 
-            try:
-                does_exist = Contact.objects.filter(
-                    Q(owner=user) | Q(contact=message_receiver)
-                )
+#             try:
+#                 does_exist = Contact.objects.filter(
+#                     Q(owner=user) | Q(contact=message_receiver)
+#                 )
                 
-                contact = Contact(
-                    owner=user,
-                    contact=message_receiver
-                )
-                contact.save()
-            except does_exist:
-                return redirect("main:chat", pk=message_receiver.id)
+#                 contact = Contact(
+#                     owner=user,
+#                     contact=message_receiver
+#                 )
+#                 contact.save()
+#             except does_exist:
+#                 return redirect("main:chat", pk=message_receiver.id)
 
 
-            return redirect("main:chat", pk=message_receiver.id)
+#             return redirect("main:chat", pk=message_receiver.id)
         
-        if form_order.is_valid():
-            order_form = form_order.save(commit=False)
-            order_form.skilla = user
-            order_form.client = message_receiver
-            # order_form.paid = False
-            order_form.save()
+#         if form_order.is_valid():
+#             order_form = form_order.save(commit=False)
+#             order_form.skilla = user
+#             order_form.client = message_receiver
+#             # order_form.paid = False
+#             order_form.save()
 
-            messages.success(request, "Order created successfully.")
-            return redirect("main:chat", pk=message_receiver.id)
+#             messages.success(request, "Order created successfully.")
+#             return redirect("main:chat", pk=message_receiver.id)
         
-    form = ChatMessageForm()
-    form_order = OrderForm()
+#     form = ChatMessageForm()
+#     form_order = OrderForm()
 
-    return render(
-        request=request,
-        template_name="main/messaging/chat.html",
-        context={
-            "form": form,
-            # "user": user,
-            "display_msg": display_msg,
-            "profile_picture": profile_picture,
-            "user_profile_picture": user_profile_picture,
-             "order_form": form_order,
-             "display_order": display_order
-        }
-    )
+#     return render(
+#         request=request,
+#         template_name="main/messaging/chat.html",
+#         context={
+#             "form": form,
+#             # "user": user,
+#             "display_msg": display_msg,
+#             "profile_picture": profile_picture,
+#             "user_profile_picture": user_profile_picture,
+#              "order_form": form_order,
+#              "display_order": display_order
+#         }
+#     )
 
 
 
@@ -716,3 +709,40 @@ def edit_brief(request, id):
         }
     )
 
+
+
+def thread_view(request, username):
+    template_name = 'main/messaging/chat.html'
+
+    # Get current user
+    user = request.user
+
+    # Get other user
+    other_user = get_object_or_404(get_user_model(), username=username)
+
+    # Get or create thread
+    thread = Thread.objects.get_or_create_personal_thread(user, other_user)
+    if thread is None:
+        raise Http404
+
+    # Get messages for the thread
+    messages = thread.message_set.all()
+
+    if request.method == 'POST':
+        form = ChatMessageForm(request.POST)
+        if form.is_valid():
+            # Save the message
+            text = form.cleaned_data["msg_body"]
+            Message.objects.create(sender=user, thread=thread, text=text)
+            return redirect('main:chat', username=other_user.username)
+    else:
+        form = ChatMessageForm()
+
+    context = {
+        'me': user,
+        'thread': thread,
+        'user': other_user,
+        'messages': messages,
+        'form': form,
+    }
+    return render(request, template_name, context=context)

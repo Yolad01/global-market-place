@@ -5,6 +5,7 @@ from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
     ProfilePicture, Brief, SkillaReachoutToClient, ContactList, ConnectRequest,
+    Message, Thread
 
 )
 
@@ -147,6 +148,18 @@ class ConnectRequestAdmin(admin.ModelAdmin):
 
 
 
+class MessageInline(admin.StackedInline):
+    model = Message
+    fields = ('sender', 'text')
+    readonly_fields = ('sender', 'text')
+
+
+class ThreadAdmin(admin.ModelAdmin):
+    model = Thread
+    inlines = (MessageInline,)
+
+
+
 
 admin.site.register(Rating, RatingAdmin)
 admin.site.register(SkillaProfile, SkillaProfileAdmin)
@@ -169,5 +182,6 @@ admin.site.register(SkillaReachoutToClient, SkillaReachoutToClientAdmin)
 admin.site.register(ContactList, ContactListAdmin)
 admin.site.register(ConnectRequest, ConnectRequestAdmin)
 
+admin.site.register(Thread, ThreadAdmin)
 
 

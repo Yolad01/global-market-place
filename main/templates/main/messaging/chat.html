@@ -2,8 +2,8 @@
 {% load static %} 
 {% block content %}
 
-    <div class="p-10 flex">
-        <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
+    <div class="p-10">
+        <h3 class="font-primary font-normal text-2xl">Chat</h3>
 
         {% if messages %}
             {% for message in messages %}
@@ -21,37 +21,7 @@
     <div class="grid grid-cols-2">
 
         <div>
-
-            {% for msg in display_msg %}
-            
-                <div class="{% if msg.sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
-                    <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
-                        <div>
-                            {% if msg.sender == user %}
-                            <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-                            
-                            {% else %}
-                            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-                            {% endif %}
-                        </div>
-                        <div class="flex mx-4">
-                            <div class="mx-4 font-semibold">
-                                {{ msg.sender }}
-                            </div>
-
-                            <div class="mx-4 text-sm">
-                                {{ msg.timestamp }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mx-4 text-sm ml-40">
-                        {{ msg.content }}
-                    </div>
-                </div>
-                
-
-            {% endfor %}
-                
+              
             <div>
                 <form method="POST" class="mx-1 my-1 py-1">
                     {% csrf_token %}
@@ -167,3 +137,33 @@
 
 
 {% endblock %}
+
+{% comment %} {% for msg in display_msg %}
+            
+<div class="{% if msg.sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
+    <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
+        <div>
+            {% if msg.sender == user %}
+            <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
+            
+            {% else %}
+            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
+            {% endif %}
+        </div>
+        <div class="flex mx-4">
+            <div class="mx-4 font-semibold">
+                {{ msg.sender }}
+            </div>
+
+            <div class="mx-4 text-sm">
+                {{ msg.timestamp }}
+            </div>
+        </div>
+    </div>
+    <div class="mx-4 text-sm ml-40">
+        {{ msg.content }}
+    </div>
+</div>
+
+
+{% endfor %} {% endcomment %}
