@@ -425,9 +425,11 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 
 def inbox(request):
     user = request.user.id
-
-    contact_list = ContactList.objects.get_or_create(user=user)[0]
-    inbox = contact_list.contacts.all()
+    try:
+        contact_list = ContactList.objects.get_or_create(user=user)[0]
+        inbox = contact_list.contacts.all()
+    except ValueError:
+        pass
     
     print(inbox)
 
