@@ -18,6 +18,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.views import View
 from django.contrib.auth import get_user_model
+from django.db import IntegrityError
 
 
 # Create your views here.
@@ -422,33 +423,26 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 
 
 
-# def inbox(request):
-#     user = request.user.id
-#     print(user)
+def inbox(request):
+    user = request.user.id
 
-#     inbox = Message.objects.filter(
-#         Q(sender=user) | Q(receiver=user)
-#     )
-#     print(inbox)
-
-#     contacts = Contact.objects.filter(
-#         owner=user
-#     )
-#     print(contacts)
+    contact_list = ContactList.objects.get_or_create(user=user)[0]
+    inbox = contact_list.contacts.all()
     
-#     profile_picture = ProfilePicture.objects.get(
-#         user=user
-#     )
+    print(inbox)
 
-#     return render(
-#         request=request,
-#         template_name="main/messaging/inbox.html",
-#         context={
-#             "inbox": inbox,
-#             "profile_picture": profile_picture,
-#             "contacts": contacts
-#         }
-#     )
+    profile_picture = ProfilePicture.objects.get(
+        user=user
+    )
+
+    return render(
+        request=request,
+        template_name="main/messaging/inbox.html",
+        context={
+            "inbox": inbox,
+            "profile_picture": profile_picture,
+        }
+    )
 
 
 
@@ -714,18 +708,26 @@ def edit_brief(request, id):
 def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
 
-    # Get current user
     user = request.user
 
-    # Get other user
     other_user = get_object_or_404(get_user_model(), username=username)
+    print(other_user)
 
-    # Get or create thread
+    try:
+        add_to_contacts = ContactList.objects.get_or_create(user=user)[0]
+
+        add_to_other_contact = ContactList.objects.create(user=other_user)
+
+        add_to_other_contact.add_contact(user)
+
+        add_to_contacts.add_contact(other_user)
+    except IntegrityError:
+        pass
+
     thread = Thread.objects.get_or_create_personal_thread(user, other_user)
     if thread is None:
         raise Http404
 
-    # Get messages for the thread
     messages = thread.message_set.all()
 
     if request.method == 'POST':

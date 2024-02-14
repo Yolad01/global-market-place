@@ -412,8 +412,8 @@ class Message(TrackingModel):
 
 
 class ContactList(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="owner")
-    contacts = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name="contacts")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="owner")
+    contacts = models.ManyToManyField(User, blank=True, related_name="contacts")
 
     def __str__(self):
         return self.user.username
@@ -423,20 +423,20 @@ class ContactList(models.Model):
             self.contacts.add(account)
             self.save()
 
-    def remove_contact(self, account):
-        if account in self.contacts.all():
-            self.contacts.remove(account)
+    # def remove_contact(self, account):
+    #     if account in self.contacts.all():
+    #         self.contacts.remove(account)
 
-    def uncontact(self, removee):
-        remover = self
-        remover.remove_contact(removee)
-        contact_list = ContactList.objects.get(user=removee)
-        contact_list.remove_contact(self.owner)
+    # def uncontact(self, removee):
+    #     remover = self
+    #     remover.remove_contact(removee)
+    #     contact_list = ContactList.objects.get(user=removee)
+    #     contact_list.remove_contact(self.owner)
 
-    def is_contact(self, contact):
-        if contact in self.contacts.all():
-            return True
-        return False
+    # def is_contact(self, contact):
+    #     if contact in self.contacts.all():
+    #         return True
+    #     return False
     
 
 

@@ -183,5 +183,6 @@ admin.site.register(ContactList, ContactListAdmin)
 admin.site.register(ConnectRequest, ConnectRequestAdmin)
 
 admin.site.register(Thread, ThreadAdmin)
+admin.site.register(Message)
 
 

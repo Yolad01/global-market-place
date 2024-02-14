@@ -5,16 +5,12 @@
     <div class="p-10">
         <h3 class="font-primary font-normal text-2xl">Chat</h3>
 
-        {% if messages %}
             {% for message in messages %}
                 <div
-                class="bg-green-700 mx-20 text-white font-semibold text-center py-3 w-1/3 rounded-md px-5"
-                role="alert"
-                >
-                {{ message }}
+                    class="mx-4 text-white py-2 px-5">
+                    <p class="inline-block px-2 rounded-md bg-cyan-700">[{{message.sender.username}}]: {{message.text}}</p>
                 </div>
             {% endfor %}
-        {% endif %}
     </div>
 
 

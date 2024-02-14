@@ -1,7 +1,8 @@
 {% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
 <div class="mt-10 mr-60 justify-center">
-  {% for msg in inbox %}
+  {% for contact in inbox %}
+  
   <div
     class="inline-block bg-white border border-green-700 px-2 mx-2 my-2 text-gray-600 font-semibold rounded-md items-center min-w-min shadow-xl"
   >
@@ -16,24 +17,19 @@
             height="55"
           />
         </div>
-        <div class="my-5 text-xl font-semibold">
-          {% if user == msg.receiver %}
-          {{ msg.sender }}
-          {% else %}
-          {{ msg.receiver }}
-          {% endif %}
-        </div>
-        <div class="my-5 text-sm">{{ msg.content }}</div>
-        <div class="my-5 text-sm mx-4">{{ msg.timestamp }}</div>
+
+        <div class="my-5 text-sm">{{ contact }}</div>
+        <div class="my-5 text-sm mx-4">{{ contact.created_at }}</div>
+
       </div>
 
       <div class="my-4 items-center justify-center">
           <div class="ml-4">
             <a
-            href="{% url 'main:chat' pk=msg.sender.id %}"
+            href="{% url 'main:chat' username=contact.username %}"
             class="text-white border border-veryDarkGreen bg-emerald-900 my-2 px-4 py-2 rounded-md shadow-sm text-sm font-semibold"
           >
-            Open
+            Read
           </a>
           </div>
       </div>
