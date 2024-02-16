@@ -448,85 +448,6 @@ def inbox(request):
 
 
 
-
-# def chat(request, pk):
-#     user = request.user
-#     message_receiver = User.objects.get(id=pk)
-
-#     display_msg = Message.objects.filter(
-#         Q(sender=user) | Q(receiver=user)
-#     )
-
-#     profile_picture = ProfilePicture.objects.get(
-#         user=message_receiver
-#     )
-#     user_profile_picture = ProfilePicture.objects.get(
-#         user=user
-#     )
-#     display_order = Order.objects.all().filter(
-#         skilla=user,
-#         client=message_receiver
-#     ).order_by("-order_created")
-
-#     if request.method == "POST":
-#         form = ChatMessageForm(request.POST)
-#         form_order = OrderForm(request.POST)
-#         if form.is_valid():
-#             msg_body = form.cleaned_data["msg_body"]
-
-#             msg = Message(
-#                 content=msg_body,
-#                 receiver= message_receiver,
-#                 sender=user
-#             )
-#             msg.save()
-
-#             try:
-#                 does_exist = Contact.objects.filter(
-#                     Q(owner=user) | Q(contact=message_receiver)
-#                 )
-                
-#                 contact = Contact(
-#                     owner=user,
-#                     contact=message_receiver
-#                 )
-#                 contact.save()
-#             except does_exist:
-#                 return redirect("main:chat", pk=message_receiver.id)
-
-
-#             return redirect("main:chat", pk=message_receiver.id)
-        
-#         if form_order.is_valid():
-#             order_form = form_order.save(commit=False)
-#             order_form.skilla = user
-#             order_form.client = message_receiver
-#             # order_form.paid = False
-#             order_form.save()
-
-#             messages.success(request, "Order created successfully.")
-#             return redirect("main:chat", pk=message_receiver.id)
-        
-#     form = ChatMessageForm()
-#     form_order = OrderForm()
-
-#     return render(
-#         request=request,
-#         template_name="main/messaging/chat.html",
-#         context={
-#             "form": form,
-#             # "user": user,
-#             "display_msg": display_msg,
-#             "profile_picture": profile_picture,
-#             "user_profile_picture": user_profile_picture,
-#              "order_form": form_order,
-#              "display_order": display_order
-#         }
-#     )
-
-
-
-
 def orders(request):
     user = request.user.id
 
@@ -671,14 +592,6 @@ def edit_brief(request, id):
             budget_flexible = form.cleaned_data["budget_flexible"]
             date = form.cleaned_data["date"]
             
-            print(title)
-            print(description)
-            print(attach_files)
-            print(categories)
-            print(budget)
-            print(budget_flexible)
-            print(date)
-            
             get_object_for_edit.title=title
             get_object_for_edit.description=description
             get_object_for_edit.attach_files=attach_files
@@ -711,6 +624,9 @@ def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
 
     user = request.user
+
+    profile_picture = ProfilePicture.objects.get(user=user)
+
 
     other_user = get_object_or_404(get_user_model(), username=username)
     print(other_user)
@@ -748,5 +664,8 @@ def thread_view(request, username):
         'user': other_user,
         'messages': messages,
         'form': form,
+        
+        "inbox": inbox,
+        "profile_picture": profile_picture,
     }
     return render(request, template_name, context=context)

@@ -1435,6 +1435,10 @@ select{
   width: 100%;
 }
 
+.w-1\/4{
+  width: 25%;
+}
+
 .min-w-min{
   min-width: -moz-min-content;
   min-width: min-content;
@@ -2160,6 +2164,10 @@ select{
 
 .text-right{
   text-align: right;
+}
+
+.text-end{
+  text-align: end;
 }
 
 .align-bottom{

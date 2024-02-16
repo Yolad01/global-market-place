@@ -1,5 +1,7 @@
-{% extends 'layout/dash_nav.html' %} 
-{% load static %} 
+{% extends './inbox.html' %}
+
+{% load static %}
+
 {% block content %}
 
     <div class="p-10">
@@ -117,22 +119,9 @@
 
     </div>
 
-    <script>
-        const openModalBtn = document.getElementById('openModal');
-        const closeModalBtn = document.getElementById('closeModal');
-        const modal = document.getElementById('myModal');
-      
-        openModalBtn.addEventListener('click', () => {
-          modal.classList.remove('hidden');
-        });
-      
-        closeModalBtn.addEventListener('click', () => {
-          modal.classList.add('hidden');
-        });
-    </script>
-
 
 {% endblock %}
+
 
 {% comment %} {% for msg in display_msg %}
             
