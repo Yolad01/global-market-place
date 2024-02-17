@@ -43,6 +43,8 @@ urlpatterns = [
     path("chat/<str:username>/", views.thread_view, name="chat"),
     
     path("inbox/", views.inbox, name="inbox"),
+
+    # path("quotes/", views.quotes, name="quotes"),  
     
     path("orders/", views.orders , name="orders"),
 

@@ -431,7 +431,7 @@ def inbox(request):
     except ValueError:
         pass
     
-    print(inbox)
+    # print(inbox)
 
     profile_picture = ProfilePicture.objects.get(
         user=user
@@ -445,6 +445,51 @@ def inbox(request):
             "profile_picture": profile_picture,
         }
     )
+
+
+# def quotes(request, pk):
+#     user = request.user
+#     message_receiver = User.objects.get(id=pk)
+#     profile_picture = ProfilePicture.objects.get(
+#         user=message_receiver
+#     )
+#     user_profile_picture = ProfilePicture.objects.get(
+#         user=user
+#     )
+#     display_order = Order.objects.all().filter(
+#         skilla=user,
+#         client=message_receiver
+#     ).order_by("-order_created")
+
+#     if request.method == "POST":
+#         form = OrderForm(request.POST)
+        
+#         if form.is_valid():
+#             order_form = form.save(commit=False)
+#             order_form.skilla = user
+#             order_form.client = message_receiver
+#             # order_form.paid = False
+#             order_form.save()
+
+#             messages.success(request, "Order created successfully.")
+#             return redirect("main:chat", pk=message_receiver.id)
+        
+#     form = ChatMessageForm()
+#     form_order = OrderForm()
+
+#     return render(
+#         request=request,
+#         template_name="main/messaging/chat.html",
+#         context={
+#             "form": form,
+#             # "user": user,
+#             "display_msg": display_msg,
+#             "profile_picture": profile_picture,
+#             "user_profile_picture": user_profile_picture,
+#              "order_form": form_order,
+#              "display_order": display_order
+#         }
+#     )
 
 
 
@@ -624,21 +669,19 @@ def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
 
     user = request.user
+    message_receiver = User.objects.get(username=username)
 
     profile_picture = ProfilePicture.objects.get(user=user)
 
-
     other_user = get_object_or_404(get_user_model(), username=username)
-    print(other_user)
 
     try:
-        add_to_contacts = ContactList.objects.get_or_create(user=user)[0]
-
-        add_to_other_contact = ContactList.objects.create(user=other_user)
+        add_to_contacts, _ = ContactList.objects.get_or_create(user=user)
+        add_to_other_contact, _ = ContactList.objects.get_or_create(user=other_user)
 
         add_to_other_contact.add_contact(user)
-
         add_to_contacts.add_contact(other_user)
+
     except IntegrityError:
         pass
 
@@ -650,13 +693,22 @@ def thread_view(request, username):
 
     if request.method == 'POST':
         form = ChatMessageForm(request.POST)
+        order_form = OrderForm(request.POST)
         if form.is_valid():
             # Save the message
             text = form.cleaned_data["msg_body"]
             Message.objects.create(sender=user, thread=thread, text=text)
             return redirect('main:chat', username=other_user.username)
-    else:
-        form = ChatMessageForm()
+
+        if order_form.is_valid():
+            order_form = order_form.save(commit=False)
+            order_form.skilla = user
+            order_form.client = message_receiver
+            # order_form.paid = False
+            order_form.save()
+
+    form = ChatMessageForm()
+    order_form = OrderForm()
 
     context = {
         'me': user,
@@ -664,8 +716,6 @@ def thread_view(request, username):
         'user': other_user,
         'messages': messages,
         'form': form,
-        
-        "inbox": inbox,
-        "profile_picture": profile_picture,
+        "order_form": order_form
     }
     return render(request, template_name, context=context)

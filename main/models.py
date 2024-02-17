@@ -419,7 +419,8 @@ class ContactList(models.Model):
         return self.user.username
     
     def add_contact(self, account):
-        if not account in self.contacts.all():
+        # if not account in self.contacts.all():
+        if not self.contacts.filter(id=account.id).exists():
             self.contacts.add(account)
             self.save()
 

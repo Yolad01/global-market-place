@@ -44,11 +44,25 @@
         <!-- Menu Items -->
         <div class="pr-36 flex items-center justify-end w-full font-primary">
           <div class="font-bold text-base">
+            
+            {% if user.is_authenticated %}
+
+            {% if user.role == "SKILLAS" %}
             <a
               href="/skillas_dashboard"
-              class="rounded bg-veryDarkGreen text-white px-3 py-2 justify-end items-end"
-              >Dashboard</a
-            >
+              class="rounded bg-veryDarkGreen text-white px-3 py-2 justify-end items-end">
+              Dashboard
+            </a>
+
+            {% elif user.role == "CLIENT" %}
+            <a
+              href="/client_dashboard"
+              class="rounded bg-veryDarkGreen text-white px-3 py-2 justify-end items-end">
+              Dashboard
+            </a>
+            {% endif %}
+            {% endif %}
+
           </div>
         </div>
       </nav>

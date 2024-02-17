@@ -4,13 +4,17 @@
 
 {% block content %}
 
-<div class="relative min-h-screen flex ml-16 font-primary">
+<div class="relative min-h-screen font-primary pt-5">
 
-  <div class="mt-10 mr-60 justify-center">
+  <div class="bg-veryDarkGreen text-white font-semibold py-2 text-center text-xl shadow">
+    <p>{{ user.username }}'s Inbox</p>
+  </div>
+
+  <div class="mt-5 mx-10 justify-center">
     {% for contact in inbox %}
     
     <div
-      class="inline-block bg-white border border-green-700 px-2 mx-2 my-2 text-gray-600 font-semibold rounded-md items-center min-w-min shadow-xl"
+      class="border-b-2 w-1/4 border-gray-400 px-2 mx-2 text-gray-600 font-semibold items-center shadow-xl"
     >
       <div class="flex mx-2 justify-between">
         <div class="grid grid-cols-4">
@@ -23,9 +27,9 @@
               height="55"
             />
           </div>
-  
+
           <div class="my-5 text-sm">{{ contact }}</div>
-          <div class="my-5 text-sm mx-4">{{ contact.created_at }}</div>
+          {% comment %} <div class="my-5 text-sm mx-4">{{ contact.created_at }}</div> {% endcomment %}
   
         </div>
   
@@ -49,5 +53,5 @@
 
 </div>
   
-{% endblock content %}
+{% endblock %}
 
