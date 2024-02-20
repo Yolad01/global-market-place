@@ -1,17 +1,36 @@
 import json
 
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.consumer import SyncConsumer
 
 
-class ChatConsumer(WebsocketConsumer):
-    def connect(self):
-        self.accept()
 
-    def disconnect(self, close_code):
-        pass
+class ChatConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        print("WebSocket connection established")
+        
+        await self.accept()
 
-    def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json["message"]
+    async def disconnect(self, close_code):
+        print("WebSocket connection closed")
 
-        self.send(text_data=json.dumps({"message": message}))
+    async def receive(self, text_data):
+        print("Message received:", text_data)
+
+
+# class ChatConsumer(SyncConsumer):
+#     def connect(self, event):
+#         print("connect event is called")
+
+#         self.send({
+#             "type": "websocket.accept"
+#         })
+
+#     def disconnect(self, event):
+#         print("disconnected")
+#         print(event)
+
+
+#     def receive(self, event):
+#         print("New event is recieved")
+#         print(event)

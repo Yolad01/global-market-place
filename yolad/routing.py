@@ -1,24 +1,32 @@
+# from django.urls import re_path
+
+# from ..main import consumers
+
+# websocket_urlpatterns = [
+#     re_path(r"ws/main/$", consumers.ChatConsumer.as_asgi()),
+# ]
+
+
 import os
 
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
 from django.core.asgi import get_asgi_application
+from django.urls import path
+from main.consumers import ChatConsumer
 
-from yolad.routing import websocket_urlpatterns
+# from yolad.routing import websocket_urlpatterns
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
-# Initialize Django ASGI application early to ensure the AppRegistry
-# is populated before importing code that may import ORM models.
 django_asgi_app = get_asgi_application()
-
-import yolad.routing
 
 application = ProtocolTypeRouter(
     {
         "http": django_asgi_app,
-        "websocket": AllowedHostsOriginValidator(
-            AuthMiddlewareStack(URLRouter(websocket_urlpatterns))
+        "websocket": AuthMiddlewareStack(URLRouter([
+            path("ws/main/", ChatConsumer.as_asgi())
+        ])
         ),
     }
 )
