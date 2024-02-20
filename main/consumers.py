@@ -1,19 +1,17 @@
-from channels.consumer import SyncConsumer
+import json
+
+from channels.generic.websocket import WebsocketConsumer
 
 
-class EchoConsumer(SyncConsumer):
-    def websocket_connect(self, event):
-        print("connect event called")
-        self.send(
-            {
-                "type": "websocket.accept"
-            }
-        )
+class ChatConsumer(WebsocketConsumer):
+    def connect(self):
+        self.accept()
 
-    def websocket_receive(self, event):
-        print("new evenet received")
-        print(event)
+    def disconnect(self, close_code):
+        pass
 
-    def websocket_disconnect(self, event):
-        print("Disconnected connection")
-        print(event)
+    def receive(self, text_data):
+        text_data_json = json.loads(text_data)
+        message = text_data_json["message"]
+
+        self.send(text_data=json.dumps({"message": message}))

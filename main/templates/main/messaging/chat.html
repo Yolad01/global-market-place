@@ -136,34 +136,33 @@
         });
     </script>
 
+    <script type="text/javascript">
+        {% comment %} let url = "ws://127.0.0.1:8000/ws/chat"; {% endcomment %}
+        
+        let url = "ws://${window.location.host}/ws/chat/";
+        
+        const ws = new WebSocket(url)
+    
+        ws.onopen = function(event) {
+            console.log("connection opened");
+        }
+        
+        ws.onmessage = function(event) {
+            let data = JSON.parse(event.data)
+            console.log("message received", data);
+        }
+    
+        ws.onclose = function(event) {
+            console.log("connection closed");
+        }
+    
+        ws.onerror = function(event) {
+            console.log("error occurred");
+        }
+    
+    </script>
+
 {% endblock %}
-
-{% block custom_javascript %}
-
-<script>
-    const url = "ws://127.0.0.1:8000/ws/chat";
-    const ws = new WebSocket(url)
-
-    ws.onopen = function(event) {
-        console.log("connection opened");
-    }
-    
-    ws.onmessage = function(event) {
-        console.log(event)
-        console.log("message received");
-    }
-
-    ws.onclose = function(event) {
-        console.log("connection closed");
-    }
-
-    ws.onerror = function(event) {
-        console.log("error occurred");
-    }
-
-</script>
-    
-{% endblock custom_javascript %}
 
 
 {% comment %} {% for msg in display_msg %}
