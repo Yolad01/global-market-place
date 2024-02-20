@@ -7,15 +7,12 @@ from channels.auth import AuthMiddlewareStack
 
 
 
-
-
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'yolad.settings')
 
 application = get_asgi_application()
 
-# application = ProtocolTypeRouter({
-#     "http": django_asgi_app,
-#     "websocket": AuthMiddlewareStack,
+application = ProtocolTypeRouter({
+    "http": get_asgi_application,
+    # "websocket": AuthMiddlewareStack,
     
-# })
+})

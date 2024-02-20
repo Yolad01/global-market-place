@@ -30,10 +30,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'django_browser_reload'
+    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -73,8 +77,11 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'yolad.routing.application'
-# WSGI_APPLICATION = 'yolad.wsgi.application'
+
+ASGI_APPLICATION = 'yolad.asgi.application'
+
+WSGI_APPLICATION = 'yolad.wsgi.application'
+
 
 
 # Database

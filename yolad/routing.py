@@ -7,7 +7,7 @@ application = ProtocolTypeRouter(
     {
         "websocket": URLRouter(
             [
-                path("ws/main/", EchoConsumer)
+                path("ws/main/", EchoConsumer.as_asgi())
             ]
         )
     }
