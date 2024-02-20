@@ -24,7 +24,7 @@
         <div>
               
             <div>
-                <form method="POST" class="mx-1 my-1 py-1">
+                <form id="message-form" method="POST" class="mx-1 my-1 py-1">
                     {% csrf_token %}
 
                     <div class="ml-1">
@@ -147,6 +147,7 @@
     
         ws.onopen = function(event) {
             console.log("connection opened");
+            ws.send("You have been connected");
         }
         
         ws.onmessage = function(event) {
@@ -160,6 +161,15 @@
     
         ws.onerror = function(event) {
             console.log("error occurred");
+        }
+
+        const messageForm = document.getElementById("message-form")
+        messageForm.addEventListener("submit", sendMessage)
+        function sendMessage(e) {
+            if (e.preventDefault) e.preventDefault();
+            ws.send(document.getElementById("id_msg_body").value);
+            messageForm.reset()
+            return false;
         }
     
     </script>
