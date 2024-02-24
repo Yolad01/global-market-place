@@ -7,7 +7,7 @@
     <div class="p-10">
         <h3 class="font-primary font-normal text-2xl">Chat</h3>
 
-            {% for message in messages %}
+            {% comment %} {% for message in messages %}
                 <div
                     class="mx-4 py-2 px-5">
                     <p id="message-list" class="inline-block px-2 rounded-md bg-cyan-700">
@@ -15,7 +15,20 @@
                         <span class="text-xs">{{ message.created_at }}</span>
                     </p>
                 </div>
-            {% endfor %}
+            {% endfor %} {% endcomment %}
+
+
+            
+            <ul id="message-list"
+                class="mx-4 py-2 px-5">
+                {% for message in messages %}
+                    <p class="inline-block px-2 rounded-md bg-cyan-700">
+                        [{{message.sender.username}}]: <br>{{ message.text }} <br>
+                    </p>
+                {% endfor %}
+                    {% comment %} <span class="text-xs">{{ message.created_at }}</span> {% endcomment %}
+            </ul>
+
     </div>
 
 
@@ -152,11 +165,13 @@
         ws.onmessage = function(event) {
             console.log(event)
             console.log("message received");
-            const msg = document.getElementById("message-list")
+            const ul = document.getElementById("message-list")
             var p = document.createElement("p")
             var data = JSON.parse(event.data);
-            p.append(document.createTextNode(data.username))
-            msg.append(p);
+            p.append(document.createTextNode(
+                "[" + data.username + "]:" + data.text 
+            ))
+            ul.append(p);
 
         }
     
