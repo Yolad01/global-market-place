@@ -65,7 +65,7 @@ class ChatConsumer(AsyncConsumer):
 
     async def websocket_message(self, event):
         print(f'[{self.channel_name}] - message sent - {event["text"]}')
-        self.send({
+        await self.send({
             "type": "websocket.send",
             "text": event.get("text")
         })

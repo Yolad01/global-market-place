@@ -9,7 +9,7 @@
 
             {% for message in messages %}
                 <div
-                    class="mx-4 text-white py-2 px-5">
+                    class="mx-4 py-2 px-5">
                     <p id="message-list" class="inline-block px-2 rounded-md bg-cyan-700">
                         [{{message.sender.username}}]: <br>{{ message.text }} <br>
                         <span class="text-xs">{{ message.created_at }}</span>
@@ -141,8 +141,6 @@
 
     <script type="text/javascript">
 
-        {% comment %} const url = `ws://127.0.0.1:8000/ws/main/${username}/`; {% endcomment %}
-
         const url = "ws://127.0.0.1:8000/ws" + window.location.pathname;
         
         const ws = new WebSocket(url)
@@ -156,7 +154,8 @@
             console.log("message received");
             const msg = document.getElementById("message-list")
             var p = document.createElement("p")
-            p.append(document.createTextNode(event.data))
+            var data = JSON.parse(event.data);
+            p.append(document.createTextNode(data.username))
             msg.append(p);
 
         }
