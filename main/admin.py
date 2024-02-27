@@ -4,8 +4,9 @@ from django.contrib import admin
 from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
-    ProfilePicture, Brief, SkillaReachoutToClient, ContactList, ConnectRequest,
-    Message, Thread
+    ProfilePicture, Brief, SkillaReachoutToClient, ConnectRequest,
+    Message, Thread,
+    ContactList
 
 )
 

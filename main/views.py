@@ -19,6 +19,7 @@ from django.db.models import Q
 from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
+from django.db.models import Max
 
 
 # Create your views here.
@@ -430,9 +431,11 @@ def inbox(request):
         inbox = contact_list.contacts.all()
     except ValueError:
         pass
+    # except UnboundLocalError:
+    #     pass
     
 
-    messages = Message.objects.filter(sender=user)
+    msg = Message.objects.all().filter(sender=user)
 
     profile_picture = ProfilePicture.objects.get(
         user=user
@@ -445,7 +448,7 @@ def inbox(request):
             "inbox": inbox,
             "profile_picture": profile_picture,
             'me': user,
-            'messages': messages,
+            'messages': msg,
         }
     )
 
