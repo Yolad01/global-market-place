@@ -10,7 +10,7 @@
     <p>{{ user.username }}'s Inbox</p>
   </div>
 
-  <div class="mt-5 mx-10 justify-center">
+  <div class="mt-5 justify-center">
     {% for contact in inbox %}
     
     <div
@@ -29,7 +29,7 @@
           </div>
 
           <div class="my-5 text-sm">{{ contact }}</div>
-          {% comment %} <div class="my-5 text-sm mx-4">{{ contact.created_at }}</div> {% endcomment %}
+          <div class="my-5 text-sm mx-4">{% for message in messages %}{{ message.created_at }}{% endfor %}</div>
   
         </div>
   

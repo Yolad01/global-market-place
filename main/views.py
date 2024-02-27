@@ -431,7 +431,8 @@ def inbox(request):
     except ValueError:
         pass
     
-    # print(inbox)
+
+    messages = Message.objects.filter(sender=user)
 
     profile_picture = ProfilePicture.objects.get(
         user=user
@@ -443,6 +444,8 @@ def inbox(request):
         context={
             "inbox": inbox,
             "profile_picture": profile_picture,
+            'me': user,
+            'messages': messages,
         }
     )
 
