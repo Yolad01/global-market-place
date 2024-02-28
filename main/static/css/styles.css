@@ -938,6 +938,11 @@ select{
   margin-bottom: 1.25rem;
 }
 
+.mx-3{
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
 .-ml-10{
   margin-left: -2.5rem;
 }
@@ -1523,12 +1528,20 @@ select{
   align-content: center;
 }
 
+.items-start{
+  align-items: flex-start;
+}
+
 .items-end{
   align-items: flex-end;
 }
 
 .items-center{
   align-items: center;
+}
+
+.justify-start{
+  justify-content: flex-start;
 }
 
 .justify-end{
@@ -2103,6 +2116,10 @@ select{
   text-align: right;
 }
 
+.text-start{
+  text-align: start;
+}
+
 .align-bottom{
   vertical-align: bottom;
 }
@@ -2314,6 +2331,11 @@ select{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-green-500{
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 
 .opacity-50{
@@ -2591,6 +2613,10 @@ select{
     margin-right: 2rem;
   }
 
+  .sm\:mb-20{
+    margin-bottom: 5rem;
+  }
+
   .sm\:block{
     display: block;
   }
@@ -2601,6 +2627,10 @@ select{
 
   .sm\:flex{
     display: flex;
+  }
+
+  .sm\:grid{
+    display: grid;
   }
 
   .sm\:hidden{
@@ -2619,8 +2649,16 @@ select{
     width: 100%;
   }
 
+  .sm\:w-3\/4{
+    width: 75%;
+  }
+
   .sm\:max-w-2xl{
     max-width: 42rem;
+  }
+
+  .sm\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .sm\:items-center{
@@ -2629,6 +2667,10 @@ select{
 
   .sm\:justify-center{
     justify-content: center;
+  }
+
+  .sm\:gap-10{
+    gap: 2.5rem;
   }
 
   .sm\:p-0{
