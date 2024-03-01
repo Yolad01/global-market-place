@@ -21,14 +21,22 @@
     <body>
 
 
-        <p class="font-semibold text-xl wow fadeInDown bg-veryDarkGreen text-white text-center py-3">Quotes</p>
+        <div class="sm:flex sm:justify-between sm:bg-veryDarkGreen sm:px-4">
+            <p class="font-semibold text-xl wow fadeInDown bg-veryDarkGreen text-white text-center py-3">Quotes</p>
+            <p class="font-semibold text-xl wow fadeInDown bg-veryDarkGreen text-white text-center py-3">
+                <a href="/skillas_dashboard">
+                    Go Back
+                </a>
+            </p>
+        </div>
+        
         <div class="sm:grid sm:grid-cols-4">
         
             {% for order in display_order %}
             <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center wow fadeInRight">
                 
                 <div class="flex justify-between border-b-2 py-2">
-                    <p class="font-semibold">Custom order <span class="font-semibold text-emerald-700">{{ order.order_no }}</span></p>
+                    <p class="font-semibold">Custom order <span class="font-semibold text-veryLightGreen">{{ order.order_no }}</span></p>
                     <p class="font-semibold">NGN{{ order.price }}</p>
                 </div>
         
@@ -42,7 +50,7 @@
                 </div>
         
                 <div class="">
-                    <div class="bg-lightGreen text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
+                    <div class="bg-veryDarkGreen text-white text-center py-2 text-lg font-semibold">
                         {% if order.accepted == False %}
                             Pending
                         {% else %}

@@ -106,41 +106,6 @@
             </div>
         </div>
 
-        <div>
-            <p class="font-semibold text-xl mx-5 wow fadeInDown">{% if user.role == "SKILLAS" %} Sent Quotes {% endif %}</p>
-
-            {% for order in display_order %}
-            <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center wow fadeInRight">
-                
-                <div class="flex justify-between border-b-2 py-2">
-                    <p class="font-semibold">Custom order <span class="font-semibold text-emerald-700">{{ order.order_no }}</span></p>
-                    <p class="font-semibold">NGN{{ order.price }}</p>
-                </div>
-
-                <div class="px-4 pt-2 pb-10 border-b-2">
-                    <p class="text-sm">{{ order.gig_desc }}</p>
-                </div>
-
-                <div class="px-4 pt-2 pb-5 border-b-2">
-                    <p class="">This order will be dellivered in:</p>
-                    <p class="font-semibold text-xl">{{ order.delivery }} Days</p>
-                </div>
-
-                <div class="">
-                    <div class="bg-lightGreen text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
-                        {% if order.accepted == False %}
-                            Pending
-                        {% else %}
-                            Order Accepted
-                        {% endif %}
-                    </div>
-                </div>
-
-            </div>
-            {% endfor %}
-
-        </div>
-
     </div>
 
     <script>
