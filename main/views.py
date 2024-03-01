@@ -498,6 +498,23 @@ def inbox(request):
 #     )
 
 
+def quotes(request):
+
+    user = request.user
+
+    display_order = Order.objects.filter(
+        skilla=user,
+    ).order_by("-order_created")
+
+    return render(
+        request=request,
+        template_name="main/skilla/quotes_and_orders/sent_quotes.html",
+        context={
+            "display_order": display_order,
+        }
+    )
+
+
 
 def orders(request):
     user = request.user.id
