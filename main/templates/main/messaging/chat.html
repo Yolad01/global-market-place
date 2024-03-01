@@ -12,10 +12,10 @@
     </div>
 
 
-    <div class="p-10 flex justify-center">
+    <div class="p-4 sm:flex sm:justify-center">
         
         <div id="message-list"
-            class="mx-4 py-2 px-5 inline-block">
+            class="py-2 px-5 inline-block">
             {% for message in messages %}
             <p class="px-2 py-2 my-2 rounded-md text-white bg-veryDarkGreen">
                 <span class="font-bold">[{{message.sender.username}}]</span>: <br>{{ message.text }} <br>
@@ -92,10 +92,12 @@
                                     {{ order_form.delivery }}
                                     {{ order_form.price }}
                                 </div>
+
+                                <div class="px-4">
+                                    <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
+                                </div>
                             </div>
-                            <div class="px-4">
-                                <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
-                            </div>
+                           
                         </form>
                         </div>
                     </div>
