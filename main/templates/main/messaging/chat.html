@@ -1,76 +1,66 @@
-{% extends 'layout/dash_nav.html' %} 
-{% load static %} 
+{% extends 'layout/message_nav.html' %}
+
+{% load static %}
+
 {% block content %}
 
-    <div class="p-10 flex">
-        <h3 class="font-primary font-normal text-2xl">Dashboard</h3>
 
-        {% if messages %}
-            {% for message in messages %}
-                <div
-                class="bg-green-700 mx-20 text-white font-semibold text-center py-3 w-1/3 rounded-md px-5"
-                role="alert"
-                >
-                {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
+
+
+    <div class="bg-veryDarkGreen text-white font-semibold py-4 text-center justify-center items-center text-xl shadow">
+        <p>You and {{ user.username }}</p>
     </div>
 
 
-    <div class="grid grid-cols-2">
+    <div class="p-4 sm:flex sm:justify-center">
+        
+        <div id="message-list"
+            class="py-2 px-5 inline-block">
+            {% for message in messages %}
+            <p class="px-2 py-2 my-2 rounded-md text-white bg-veryDarkGreen">
+                <span class="font-bold">[{{message.sender.username}}]</span>: <br>{{ message.text }} <br>
+                <span class="text-xs">{{ message.created_at }}</span>
+            </p>
+            {% endfor %}
+            
+        </div>
+
+    </div>
+
+
+    <div class="">
 
         <div>
-
-            {% for msg in display_msg %}
-            
-                <div class="{% if msg.message.msg_sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
-                    <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
-                        <div>
-                            {% if msg.message.msg_sender == user %}
-                            <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-                            
-                            {% else %}
-                            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-                            {% endif %}
-                        </div>
-                        <div class="flex mx-4">
-                            <div class="mx-4 font-semibold">
-                                {{ msg.message.msg_sender }}
-                            </div>
-
-                            <div class="mx-4 text-sm">
-                                {{ msg.message.timestamp }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mx-4 text-sm ml-40">
-                        {{ msg.message.msg_body }}
-                    </div>
-                </div>
-                
-
-            {% endfor %}
-                
-            <div>
-                <form method="POST" class="mx-1 my-1 py-1">
+              
+            <div class="flex justify-center">
+                <form id="message-form" method="POST" class="mx-10 my-1 py-1">
                     {% csrf_token %}
 
-                    <div class="ml-1">
-                        {{form.msg_body}}
-                    </div>
-                    
-                    <div class="flex my-2 mx-3 border py-3">
-                        <div class="px-4">
-                            <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
+                        <div class="">
+                            {{form.msg_body}}
                         </div>
-
-                        <div class="px-4">
-                            <button id="openModal" class="bg-gray-700 px-4 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-green-700 hover:border-green-700">Send an offer</button>
-                        </div>
-
                         
-                    </div>
+                        <div class="my-2 mx-2 py-3 sm:flex sm:justify-center sm:items-center sm:mx-10">
+                            <div class="flex justify-center py-2">
+                                <button class="px-20 sm:px-10 sm:mr-8 py-2 rounded-md border-2 border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-lightGreen hover:text-white" type="submit">Send</button>
+                            </div>
+    
+                            <div class="flex justify-center py-2">
+                                <button id="openModal" class="bg-veryDarkGreen px-16 sm:px-5 sm:ml-8 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-lightGreen hover:border-lightGreen">Send Quote</button>
+                            </div>
+
+                            <div class="flex justify-center py-2 sm:hidden">
+                                <a
+                                href="/inbox"
+                                class="rounded bg-veryDarkGreen px-20 text-white py-2 justify-end items-end">
+                                back
+                              </a>
+                            </div>
+
+                            
+                        </div>
+
+
                 </form>
 
                 <!-- Modal -->
@@ -102,51 +92,18 @@
                                     {{ order_form.delivery }}
                                     {{ order_form.price }}
                                 </div>
+
+                                <div class="px-4">
+                                    <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
+                                </div>
                             </div>
-                            <div class="px-4">
-                                <button class="px-10 py-2 rounded-md border-2 border-green-700 text-green-700 font-semibold hover:bg-gray-200 " type="submit">Send</button>
-                            </div>
+                           
                         </form>
                         </div>
                     </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div>
-            <p class="font-semibold text-xl mx-5 wow fadeInDown">{% if user.role == "SKILLAS" %} Sent Quotes {% endif %}</p>
-
-            {% for order in display_order %}
-            <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center wow fadeInRight">
-                
-                <div class="flex justify-between border-b-2 py-2">
-                    <p class="font-semibold">Custom order <span class="font-semibold text-emerald-700">{{ order.order_no }}</span></p>
-                    <p class="font-semibold">NGN{{ order.price }}</p>
-                </div>
-
-                <div class="px-4 pt-2 pb-10 border-b-2">
-                    <p class="text-sm">{{ order.gig_desc }}</p>
-                </div>
-
-                <div class="px-4 pt-2 pb-5 border-b-2">
-                    <p class="">This order will be dellivered in:</p>
-                    <p class="font-semibold text-xl">{{ order.delivery }} Days</p>
-                </div>
-
-                <div class="">
-                    <div class="bg-lightGreen text-center my-2 mx-10 py-2 rounded-md shadow-sm text-lg font-semibold">
-                        {% if order.accepted == False %}
-                            Pending
-                        {% else %}
-                            Order Accepted
-                        {% endif %}
-                    </div>
-                </div>
-
-            </div>
-            {% endfor %}
-
         </div>
 
     </div>
@@ -165,5 +122,87 @@
         });
     </script>
 
+    
+    {% block javascript %}
+
+    <script type="text/javascript">
+
+        const url = "ws://127.0.0.1:8000/ws" + window.location.pathname;
+        
+        const ws = new WebSocket(url)
+    
+        ws.onopen = function(event) {
+            console.log("connection opened");
+        }
+        
+        ws.onmessage = function(event) {
+            console.log(event)
+            console.log("message received");
+            const div = document.getElementById("message-list")
+            var p = document.createElement("p")
+            var data = JSON.parse(event.data);
+            p.classList.add("px-2", "py-2", "my-2", "text-white", "rounded-md", "bg-veryDarkGreen");
+            //p.append(document.createTextNode(
+            //    "[" + data.username + "]: <br>" + data.text
+            //));
+            var message = "<strong>[" + data.username + "]</strong>: <br>" + data.text;
+            p.innerHTML = message;
+            div.append(p);
+           
+        }
+    
+        ws.onclose = function(event) {
+            console.log("connection closed");
+        }
+    
+        ws.onerror = function(event) {
+            console.log("error occurred");
+        }
+
+        const messageForm = document.getElementById("message-form")
+        messageForm.addEventListener("submit", sendMessage)
+        function sendMessage(e) {
+            if (e.preventDefault) e.preventDefault();
+            ws.send(document.getElementById("id_msg_body").value);
+            messageForm.reset()
+            return false;
+        }
+    
+    </script>
+        
+    {% endblock javascript %}
+        
+
 
 {% endblock %}
+
+
+{% comment %} {% for msg in display_msg %}
+            
+<div class="{% if msg.sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
+    <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
+        <div>
+            {% if msg.sender == user %}
+            <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
+            
+            {% else %}
+            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
+            {% endif %}
+        </div>
+        <div class="flex mx-4">
+            <div class="mx-4 font-semibold">
+                {{ msg.sender }}
+            </div>
+
+            <div class="mx-4 text-sm">
+                {{ msg.timestamp }}
+            </div>
+        </div>
+    </div>
+    <div class="mx-4 text-sm ml-40">
+        {{ msg.content }}
+    </div>
+</div>
+
+
+{% endfor %} {% endcomment %}

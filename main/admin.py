@@ -4,7 +4,10 @@ from django.contrib import admin
 from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
-    ProfilePicture, Brief, SkillaReachoutToClient, ChatMessage, Inbox
+    ProfilePicture, Brief, SkillaReachoutToClient, ConnectRequest,
+    Message, Thread,
+    ContactList
+
 )
 
 # Register your models here.
@@ -125,23 +128,37 @@ class SkillaReachoutToClientAdmin(admin.ModelAdmin):
      ]
 
 
+class ContactListAdmin(admin.ModelAdmin):
+     list_filter = ['user']
+     list_display = ['user']
+     search_fields = ['user']
+     readonly_fields = ['user']
 
-class ChatMessageAdmin(admin.ModelAdmin):
-     list_display = [
-          "msg_sender",
-          "msg_receiver",
-          "msg_body",
-          "seen",
-          "timestamp"
-     ]
-
+     class Meta:
+          model = ContactList
 
 
-class InboxAdmin(admin.ModelAdmin):
-     list_display = [
-          "owner",
-          "message"
-     ]
+
+class ConnectRequestAdmin(admin.ModelAdmin):
+     list_filter = ["sender", "receiver"]
+     list_display = ["sender", "receiver"]
+     search_fields = ["sender__username", "receiver__username","sender__email", "receiver__email"]
+
+     class Meta:
+          model = ConnectRequest
+
+
+
+class MessageInline(admin.StackedInline):
+    model = Message
+    fields = ('sender', 'text')
+    readonly_fields = ('sender', 'text')
+
+
+class ThreadAdmin(admin.ModelAdmin):
+    model = Thread
+    inlines = (MessageInline,)
+
 
 
 
@@ -162,8 +179,11 @@ admin.site.register(TrainingAndCertification, TrainingAndCertificationForm)
 admin.site.register(ProfilePicture)
 admin.site.register(Brief, BriefAdmin)
 admin.site.register(SkillaReachoutToClient, SkillaReachoutToClientAdmin)
-admin.site.register(ChatMessage, ChatMessageAdmin)
-admin.site.register(Inbox, InboxAdmin)
 
+admin.site.register(ContactList, ContactListAdmin)
+admin.site.register(ConnectRequest, ConnectRequestAdmin)
+
+admin.site.register(Thread, ThreadAdmin)
+admin.site.register(Message)
 
 

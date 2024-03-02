@@ -6,6 +6,11 @@ from .options import Country, Role, SkillLevel, Rate, OrderStatus
 import random
 from django.utils import timezone
 from datetime import datetime
+from django.conf import settings
+
+from main.managers import ThreadManager
+from django.db import models
+
 
 
 
@@ -363,41 +368,116 @@ class SkillaReachoutToClient(models.Model):
 
     def __str__(self):
         return f'{self.user.username} and {self.client.username}'
+    
 
 
 
-class Inbox(models.Model):
-    owner = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
+class TrackingModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+
+
+class Thread(TrackingModel):
+    THREAD_TYPE = (
+        ('personal', 'Personal'),
+        ('group', 'Group')
     )
-    message = models.ForeignKey(
-        "ChatMessage",
-        on_delete=models.CASCADE
-    )
+
+    name = models.CharField(max_length=50, null=True, blank=True)
+    thread_type = models.CharField(max_length=15, choices=THREAD_TYPE, default='group')
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL)
+
+    objects = ThreadManager()
+
+    def __str__(self) -> str:
+        if self.thread_type == 'personal' and self.users.count() == 2:
+            return f'{self.users.first()} and {self.users.last()}'
+        return f'{self.name}'
+
+
+
+class Message(TrackingModel):
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    text = models.TextField(blank=False, null=False)
+
+    def __str__(self) -> str:
+        return f'From <Thread - {self.thread}>'
+
+
+
+class ContactList(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="owner")
+    contacts = models.ManyToManyField(User, blank=True, related_name="contacts")
 
     def __str__(self):
-        return self.owner.username
+        return self.user.username
+    
+    def add_contact(self, account):
+        # if not account in self.contacts.all():
+        if not self.contacts.filter(id=account.id).exists():
+            self.contacts.add(account)
+            self.save()
+
+    # def remove_contact(self, account):
+    #     if account in self.contacts.all():
+    #         self.contacts.remove(account)
+
+    # def uncontact(self, removee):
+    #     remover = self
+    #     remover.remove_contact(removee)
+    #     contact_list = ContactList.objects.get(user=removee)
+    #     contact_list.remove_contact(self.owner)
+
+    # def is_contact(self, contact):
+    #     if contact in self.contacts.all():
+    #         return True
+    #     return False
+    
 
 
-class ChatMessage(models.Model):
-    msg_body = models.TextField()
-    msg_sender = models.ForeignKey(
-        User,
+class ConnectRequest(models.Model):
+    sender = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="sender"
     )
-    msg_receiver = models.ForeignKey(
-        User,
+    receiver = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="receiver"
     )
-    seen = models.BooleanField(default=False)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    
-    def msg_body_snippet(self):
-        return self.msg_body[:15] + "..."
+    is_active = models.BooleanField(
+        blank=True,
+        null=False,
+        default=True
+    )
 
     def __str__(self):
-        return self.msg_body
+        self.sender.username
+
+    def connect_with_contact(self):
+        receiver_contact_list = ContactList.objects.get(user=self.receiver)
+        if receiver_contact_list:
+            receiver_contact_list.add_contact(self.sender)
+            sender_contact_list = ContactList.objects.get(user=self.sender)
+            if sender_contact_list:
+                sender_contact_list.add_contact(self.receiver)
+                self.is_active: bool = False
+                self.save()
+
+    def decline(self):
+        self.is_active = False
+        self.save()
+
+    def cancel(self):
+        self.is_active = False
+        self.save()
     
+
+

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, Http404
 from django.contrib.auth import login, authenticate, logout
 from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
@@ -9,13 +9,17 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         )
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, ChatMessage, User, Inbox, Order,
-                         Skill, JobCategory
+                         SkillaReachoutToClient, Clients, User, Order,
+                         Skill, JobCategory, ContactList, Thread, Message
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
+from django.views import View
+from django.contrib.auth import get_user_model
+from django.db import IntegrityError
+from django.db.models import Max
 
 
 # Create your views here.
@@ -424,78 +428,21 @@ def profile_view(request, pk): #Use the id for the querries or make the username
     )
 
 
-def chat(request, pk):
-    user = request.user
-    message_receiver = User.objects.get(id=pk)
-    display_msg = Inbox.objects.filter(
-        Q(owner=user) | Q(message__msg_sender=user)
-    )
-    profile_picture = ProfilePicture.objects.get(
-        user=message_receiver
-    )
-    user_profile_picture = ProfilePicture.objects.get(
-        user=user
-    )
-    display_order = Order.objects.all().filter(
-        skilla=user,
-        client=message_receiver
-    ).order_by("-order_created")
-
-    if request.method == "POST":
-        form = ChatMessageForm(request.POST)
-        form_order = OrderForm(request.POST)
-        if form.is_valid():
-            msg_body = form.cleaned_data["msg_body"]
-
-            msg = ChatMessage(
-                msg_body=msg_body,
-                msg_receiver= message_receiver,
-                msg_sender=user
-            )
-            msg.save()
-
-            inbox = Inbox(
-                owner=message_receiver,
-                message=msg
-            )
-            inbox.save()
-
-            return redirect("main:chat", pk=message_receiver.id)
-        
-        if form_order.is_valid():
-            order_form = form_order.save(commit=False)
-            order_form.skilla = user
-            order_form.client = message_receiver
-            # order_form.paid = False
-            order_form.save()
-
-            messages.success(request, "Order created successfully.")
-            return redirect("main:chat", pk=message_receiver.id)
-        
-    form = ChatMessageForm()
-    form_order = OrderForm()
-
-    return render(
-        request=request,
-        template_name="main/messaging/chat.html",
-        context={
-            "form": form,
-            # "user": user,
-            "display_msg": display_msg,
-            "profile_picture": profile_picture,
-            "user_profile_picture": user_profile_picture,
-             "order_form": form_order,
-             "display_order": display_order
-        }
-    )
 
 
 def inbox(request):
     user = request.user.id
-    print(user)
-    inbox = Inbox.objects.all().filter(
-        owner=user,
-    )
+    try:
+        contact_list = ContactList.objects.get_or_create(user=user)[0]
+        inbox = contact_list.contacts.all()
+    except ValueError:
+        pass
+    # except UnboundLocalError:
+    #     pass
+    
+
+    msg = Message.objects.all().filter(sender=user)
+
     profile_picture = ProfilePicture.objects.get(
         user=user
     )
@@ -505,7 +452,71 @@ def inbox(request):
         template_name="main/messaging/inbox.html",
         context={
             "inbox": inbox,
-            "profile_picture": profile_picture
+            "profile_picture": profile_picture,
+            'me': user,
+            'messages': msg,
+        }
+    )
+
+
+# def quotes(request, pk):
+#     user = request.user
+#     message_receiver = User.objects.get(id=pk)
+#     profile_picture = ProfilePicture.objects.get(
+#         user=message_receiver
+#     )
+#     user_profile_picture = ProfilePicture.objects.get(
+#         user=user
+#     )
+#     display_order = Order.objects.all().filter(
+#         skilla=user,
+#         client=message_receiver
+#     ).order_by("-order_created")
+
+#     if request.method == "POST":
+#         form = OrderForm(request.POST)
+        
+#         if form.is_valid():
+#             order_form = form.save(commit=False)
+#             order_form.skilla = user
+#             order_form.client = message_receiver
+#             # order_form.paid = False
+#             order_form.save()
+
+#             messages.success(request, "Order created successfully.")
+#             return redirect("main:chat", pk=message_receiver.id)
+        
+#     form = ChatMessageForm()
+#     form_order = OrderForm()
+
+#     return render(
+#         request=request,
+#         template_name="main/messaging/chat.html",
+#         context={
+#             "form": form,
+#             # "user": user,
+#             "display_msg": display_msg,
+#             "profile_picture": profile_picture,
+#             "user_profile_picture": user_profile_picture,
+#              "order_form": form_order,
+#              "display_order": display_order
+#         }
+#     )
+
+
+def quotes(request):
+
+    user = request.user
+
+    display_order = Order.objects.filter(
+        skilla=user,
+    ).order_by("-order_created")
+
+    return render(
+        request=request,
+        template_name="main/skilla/quotes_and_orders/sent_quotes.html",
+        context={
+            "display_order": display_order,
         }
     )
 
@@ -655,14 +666,6 @@ def edit_brief(request, id):
             budget_flexible = form.cleaned_data["budget_flexible"]
             date = form.cleaned_data["date"]
             
-            print(title)
-            print(description)
-            print(attach_files)
-            print(categories)
-            print(budget)
-            print(budget_flexible)
-            print(date)
-            
             get_object_for_edit.title=title
             get_object_for_edit.description=description
             get_object_for_edit.attach_files=attach_files
@@ -689,3 +692,59 @@ def edit_brief(request, id):
         }
     )
 
+
+
+def thread_view(request, username):
+    template_name = 'main/messaging/chat.html'
+
+    user = request.user
+    message_receiver = User.objects.get(username=username)
+
+    profile_picture = ProfilePicture.objects.get(user=user)
+
+    other_user = get_object_or_404(get_user_model(), username=username)
+
+    try:
+        add_to_contacts, _ = ContactList.objects.get_or_create(user=user)
+        add_to_other_contact, _ = ContactList.objects.get_or_create(user=other_user)
+
+        add_to_other_contact.add_contact(user)
+        add_to_contacts.add_contact(other_user)
+
+    except IntegrityError:
+        pass
+
+    thread = Thread.objects.get_or_create_personal_thread(user, other_user)
+    if thread is None:
+        raise Http404
+
+    messages = thread.message_set.all()
+
+    if request.method == 'POST':
+        form = ChatMessageForm(request.POST)
+        order_form = OrderForm(request.POST)
+        if form.is_valid():
+            # Save the message
+            text = form.cleaned_data["msg_body"]
+            Message.objects.create(sender=user, thread=thread, text=text)
+            return redirect('main:chat', username=other_user.username)
+
+        if order_form.is_valid():
+            order_form = order_form.save(commit=False)
+            order_form.skilla = user
+            order_form.client = message_receiver
+            # order_form.paid = False
+            order_form.save()
+
+    form = ChatMessageForm()
+    order_form = OrderForm()
+
+    context = {
+        'me': user,
+        'thread': thread,
+        'user': other_user,
+        'messages': messages,
+        'form': form,
+        "order_form": order_form
+    }
+    return render(request, template_name, context=context)
