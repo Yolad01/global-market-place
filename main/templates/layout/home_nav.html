@@ -31,7 +31,7 @@
     <header>
       <!-- Navbar -->
       <nav
-        class="container h-24 border-b-2 flex bg-white max-w-full font-primary shadow-md fixed"
+        class="container h-20 border-b-2 flex bg-white max-w-full font-primary shadow-md fixed"
       >
         <!-- Logo -->
         <div class="ml-36 mt-4">
@@ -42,33 +42,33 @@
           />
         </div>
 
-        <div class="ml-60 flex items-center justify-center gap-x-7 w-full font-primary font-bold text-base">
+        <div class="ml-72 flex items-center justify-center w-full font-primary font-bold text-base">
             <a href="#" class=" bg-veryDarkGreen text-white py-3 pl-3 pr-12">View</a>
             <img
             src="{% static '/img/downward_arrow.svg' %}"
-            alt=""
-            class="w-5 -ml-14"
+            alt="downward arrow"
+            class="w-5 -ml-10"
           />
 
 
             {% if not user.is_authenticated %}
             <a
-              href="/register"
-              class="bg-veryDarkGreen text-white px-5 py-3"
-              >Use Web App</a
+              href="/sign_in"
+              class="bg-veryDarkGreen text-white px-5 py-3 ml-12"
+              >Sign in</a
             >
 
             {% elif user.role == "SKILLAS" %}
             <a
               href="/skillas_dashboard"
-              class="bg-veryDarkGreen text-white px-3 py-2"
+              class="bg-veryDarkGreen text-white px-3 py-2 ml-12"
               >Dashboard</a
             >
 
             {% elif user.role == "CLIENT" %}
             <a
               href="/client_dashboard"
-              class="bg-veryDarkGreen text-white px-3 py-2"
+              class="bg-veryDarkGreen text-white px-3 py-2 ml-12"
               >Dashboard</a
             >
             {% endif %}

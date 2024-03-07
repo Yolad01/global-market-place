@@ -14,7 +14,7 @@
       </a>
     </div>
 
-    <div class="ml-80 pl-72">
+    <div class="ml-80">
       <a href="#"
         ><img
           src="{% static '/img/Vector (7).png' %}"
@@ -33,13 +33,24 @@
         class="w-full"
       />
     </div>
+
+    <div class="mt-5 mb-5 ml-48 font-semibold text-base text-veryDarkGreen flex gap-4">
+      <div class="">
+          <button type="submit"  class="border-2 border-light_ash px-6 py-2">UPGRADE YOUR <br>SKILLS</button>
+      </div>
+
+      <div>
+          <button type="submit" class="border-light_ash border-2 px-6 py-2">SUBSCRIBE TO OUR <br>EMAIL LIST</button>
+      </div>
+  </div>
   </section>
 
   <section>
-    <div class="bg-veryLightGreen flex">
-      <h2 class="font-extrabold text-veryDarkGreen text-6xl py-5 ml-48">
-        Top Skills
+    <div class="bg-veryLightGreen flex ml-48 mr-48">
+      <h2 class="font-medium text-veryDarkGreen text-4xl py-5 pl-10">
+        Top Skillas
       </h2>
+      <a href="#" class="text-base font-medium text-veryDarkGreen mt-8 ml-10">See more</a>
     </div>
   </section>
 
@@ -58,32 +69,32 @@
           <h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
             {{ skill.skilla.username }}
           </h2>
-          <hr class="border-1 w-3/4" />
-          <h6 class="font-medium text-xs py-1">{{ skill.title }}</h6>
-          <hr class="border-1 w-3/4" />
-          <h6 class="font-medium text-xs py-1">{{ skill.skill }}</h6>
-          <hr class="border-1 w-3/4" />
-          <h6 class="font-medium text-xs py-1">{{ skill.level }}</h6>
-          <hr class="border-1 w-3/4" />
-          <h6 class="font-medium italic text-xs mt-2 py-1">
+          <hr class="border-gray-400 w-full" />
+          <h6 class="font-medium text-xs py-2">{{ skill.title }}</h6>
+          <hr class="border-gray-400 w-full" />
+          <h6 class="font-medium text-xs py-2">{{ skill.skill }}</h6>
+          <hr class="border-gray-400 w-full" />
+          <h6 class="font-medium text-xs py-2">{{ skill.level }}</h6>
+          <hr class="border-gray-400 w-full" />
+          <h6 class="font-medium italic text-xs mt-2 py-2">
             Price ranging from
             <span class="not-italic font-extrabold"
               >NGN {{ skill.base_price }}</span
             >
           </h6>
-          <hr class="border-1 w-3/4" />
-          <div class="flex mt-2 gap-2 py-1">
+          <hr class="border-gray-400 w-full" />
+          <div class="flex mt-2 gap-2 py-2">
             <img src="{% static 'img/Vector (10).png' %}" />
             <img src="{% static '/img/Vector (10).png' %}" />
             <img src="{% static '/img/Vector (10).png' %}" />
             <img src="{% static '/img/Vector (10).png' %}" />
             <img src="{% static '/img/Group 245.png' %}" />
           </div>
-          <hr class="border-1 w-3/4" />
+          <hr class="border-gray-400 w-full" />
           <div class="mt-5">
             <a
               href="{% url 'main:skillas_gigs_details' id=skill.id %}"
-              class="rounded bg-veryDarkGreen text-white font-medium text-base px-4 py-2"
+              class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
               >Click to see more details</a
             >
           </div>
@@ -94,9 +105,9 @@
   </section>
 
   {% comment %} if ad show it here {% endcomment %}
-  <section class="ml-28 mr-28 mt-10 mb-10">
+  <section class="ml-48 mr-48 mt-10 mb-10">
     <div>
-      <p class="bg-veryDarkGreen text-white p-20 text-center text-3xl">
+      <p class="bg-veryDarkGreen text-white p-20 text-center text-5xl font-medium">
         Advert
       </p>
     </div>

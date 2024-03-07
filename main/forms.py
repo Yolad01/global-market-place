@@ -96,7 +96,7 @@ class ClientProfileForm(forms.ModelForm):
 
 
         widgets = {
-            "country": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "country": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md text-light_ash text-xl'}),
             "current_location": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
             "home_address": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
             "occupation": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
@@ -239,7 +239,6 @@ class ChatMessageForm(forms.Form):
     }))
 
 
-
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
@@ -321,3 +320,13 @@ class EditBriefForm(forms.Form):
         )
     )
     
+
+
+class SearchForm(forms.Form):
+    search_input = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'class': 'border border-gray-700 w-full ml-20 pr-5 rounded-md',
+                   "placeholder": "Search"
+            }
+        )
+    )

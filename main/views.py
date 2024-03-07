@@ -4,9 +4,10 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
-                        DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm
-                            
+                        DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm,
+                        SearchForm
                         )
+
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, User, Order,
@@ -20,6 +21,7 @@ from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.db.models import Max
+from .search import search_brief_title, search_brief_category
 
 
 # Create your views here.
@@ -42,6 +44,12 @@ def terms_condition(request):
     return render(
         request=request,
         template_name="main/terms_condition.html"
+    )
+
+def service_policy(request):
+    return render(
+        request=request,
+        template_name="main/skilla/service_policy.html"
     )
 
 def register(request):
@@ -220,10 +228,12 @@ def client_dashboard(request):
     
 
 #### add @login_required decorator
+@login_required
 def skilla(request):
     brief = Brief.objects.all().order_by("-title")
     if request.method == "POST":
         form = BriefAppForm(request.POST)
+        search_form = SearchForm(request.POST)
         if form.is_valid():
             client = form.cleaned_data["client"]
             title = form.cleaned_data["title"]
@@ -247,15 +257,23 @@ def skilla(request):
             )
             reachout.save()
             messages.success(request, "Request successfully sent to the client")
-        return redirect("main:skillas_dashboard")
+            return redirect("main:skillas_dashboard")
+        if search_form.is_valid():
+            search_input = search_form.cleaned_data["search_input"]
+            single_search = search_brief_title(Brief, search_input) or search_brief_category(Brief, search_input)
+            print(single_search)
+
 
     form = BriefAppForm()
+    search_form = SearchForm()
     return render(
         request=request, template_name="main/skilla/skillas_dashboard.html",
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "brief": brief,
-            "form": form
+            "form": form,
+            "search_form": search_form,
+            "single_search": single_search
         }
     )
 

@@ -31,7 +31,7 @@
     <header>
       <!-- Navbar -->
       <nav
-        class="container h-28 border-b-2 flex bg-white items-center justify-between max-w-full font-primary fixed"
+        class="container h-24 border-b-2 shadow-sm flex bg-white items-center justify-between max-w-full font-primary fixed"
       >
         <!-- Logo -->
         <div class="ml-36">
@@ -60,14 +60,14 @@
             {% elif user.role == "SKILLAS" %}
             <a
               href="/skillas_dashboard"
-              class="rounded bg-veryDarkGreen text-white px-3 py-2"
+              class="rounded bg-veryDarkGreen text-white px-3 py-2 -mt-3"
               >Dashboard</a
             >
 
             {% elif user.role == "CLIENT" %}
             <a
               href="/client_dashboard"
-              class="rounded bg-veryDarkGreen text-white px-3 py-2"
+              class="rounded bg-veryDarkGreen text-white px-3 py-2 -mt-3"
               >Dashboard</a
             >
             {% endif %}
@@ -103,7 +103,7 @@
       </div>
 
       <div class="p-5">
-        <p class="text-veryDarkGreen p-5 font-medium text-3xl text-center">
+        <p class="text-veryDarkGreen p-5 font-medium text-xl text-center">
           &copy;2023 Yolad Global Service Limited All rights reserved.
         </p>
       </div>

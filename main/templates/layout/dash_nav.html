@@ -91,11 +91,23 @@
                      <div class="border-b-2 pb-5 py-5">
                         <div class="flex mt-5 justify-between">
                             <div class="flex">
-                                <input type="search" name="search" id="search" class="rounded border-2 px-80 text-base ml-10 pl-10 py-2 " placeholder="Search here">
-                                <a href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></a>
+                                {% comment %} <input type="search" name="search" id="search" class="rounded border-2 px-80 text-base ml-10 pl-10 py-2 " placeholder="Search here">
+                                <a href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></a> {% endcomment %}
+                                <form method="POST">
+                                    {% csrf_token %}
+
+                                    <div class="flex items-center">
+                                        <div>{{ search_form.search_input }}</div>
+                                        <button type="submit" class="bg-veryDarkGreen text-white px-2 rounded-md shadow-md">
+                                            Search
+                                        </button>
+                                        
+                                    </div>
+                                    
+                                </form>
                             </div>
     
-                            <div class="mr-28 flex items-center">
+                            <div class="sm:mr-28 sm:flex items-center hidden">
                                 {% for x in profile_pic %}
                                 <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
                                 {% endfor %}
