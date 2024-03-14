@@ -239,7 +239,6 @@ class ChatMessageForm(forms.Form):
     }))
 
 
-
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
@@ -321,3 +320,13 @@ class EditBriefForm(forms.Form):
         )
     )
     
+
+
+class SearchForm(forms.Form):
+    search_input = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'class': 'border border-gray-700 w-full ml-20 pr-5 rounded-md',
+                   "placeholder": "Search"
+            }
+        )
+    )

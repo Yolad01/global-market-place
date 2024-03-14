@@ -2718,6 +2718,10 @@ select{
     margin-right: 2rem;
   }
 
+  .sm\:mr-28{
+    margin-right: 7rem;
+  }
+
   .sm\:block{
     display: block;
   }

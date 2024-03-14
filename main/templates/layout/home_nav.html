@@ -69,9 +69,15 @@
               
             {% if not user.is_authenticated %}
             <a
+<<<<<<< HEAD
+              href="/sign_in"
+              class="bg-veryDarkGreen text-white px-5 py-3 ml-12"
+              >Sign in</a
+=======
               href="/register"
               class="bg-veryDarkGreen text-white px-5 py-3 ml-12"
               >Use Web App</a
+>>>>>>> 6544a4249db727add9bf70da5be5cb4e1f6da913
             >
 
             {% elif user.role == "SKILLAS" %}

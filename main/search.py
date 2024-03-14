@@ -1,15 +1,8 @@
-from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
-                        ClientProfileForm, CompanyProfileForm, AboutSkillaForm,
-                        TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
-                        ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
-                        DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm
-                            
-                        )
-from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
-                         ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, User, Order,
-                         Skill, JobCategory, ContactList, Thread, Message
-                        )
+
+def search_brief_title(model, param: str):
+    return model.objects.filter(title__icontains=param)
 
 
+def search_brief_category(model, param: str):
+    return model.objects.filter(categories__title__icontains=param)
 
