@@ -17,37 +17,37 @@
 
     <div class="mr-10 sm:mb-20 ml-10">
       <div class="sm:grid sm:grid-cols-4 sm:gap-10">
-        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4">
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
           <a href="#"><img src="{% static '/img/Group 306.png' %}" alt="" /></a>
-          <div>
-            <a href="#" class="ml-5 text-veryDarkGreen text-lg font-bold">
+          <div class="">
+            <a href="#" class="ml-5 text-veryDarkGreen text-lg font-bold hover:text-white">
               Incoming Transactions
             </a>
-            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">50</h3>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">{{ count_of_order }}</h3>
           </div>
         </div>
 
-        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4">
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
           <a href="#"><img src="{% static '/img/Group 307.png' %}" alt="" /></a>
           <div>
             <a href="#" class="ml-5 text-veryDarkGreen text-lg font-bold"
               >Messages</a
             >
-            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">12</h3>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">{{ count }}</h3>
           </div>
         </div>
 
-        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4">
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
           <a href="#"><img src="{% static '/img/Group 308.png' %}" alt="" /></a>
           <div>
             <a href="#" class="ml-5 text-veryDarkGreen text-lg font-bold"
               >Wallet</a
             >
-            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold">#300,000</h3>
+            <h3 class="ml-5 text-veryDarkGreen text-lg font-bold"><span>NGN</span>300,000</h3>
           </div>
         </div>
 
-        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4">
+        <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
           <a href="#"><img src="{% static '/img/Group 309.png' %}" alt="" /></a>
           <div>
             <a
@@ -61,11 +61,11 @@
       </div>
     </div>
 
-    <div class="shadow-sm rounded-md font-primary p-1">
+    <div class="shadow-sm rounded-md font-primary p-1 ">
       {% for x in brief %}
       <form
         method="POST"
-        class="shadow mx-auto my-5 bg-white sm:w-3/4 item-center rounded-md font-primary"
+        class="shadow mx-auto my-5 bg-white sm:w-3/4 item-center rounded-md font-primary overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px]"
       >
         {% csrf_token %}
         <div class="mx-4 font-bold text-veryDarkGreen">
