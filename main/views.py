@@ -22,6 +22,8 @@ from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.db.models import Max
 from .search import search_brief_title, search_brief_category
+from .functions import msg_count, orders_count
+from django.db.models.query import QuerySet
 
 
 # Create your views here.
@@ -230,7 +232,14 @@ def client_dashboard(request):
 #### add @login_required decorator
 @login_required
 def skilla(request):
+
+    user = request.user
+    single_search = None
+
+    count_of_message = msg_count(model=Thread, user=user)
+    count_of_order = orders_count(Order, user)
     brief = Brief.objects.all().order_by("-title")
+
     if request.method == "POST":
         form = BriefAppForm(request.POST)
         search_form = SearchForm(request.POST)
@@ -245,8 +254,6 @@ def skilla(request):
             get_categories = JobCategory.objects.get(title=categories)
             get_client = Clients.objects.get(username=client)
 
-            user = request.user
-
             reachout = SkillaReachoutToClient(
                 user=user,
                 title=title,
@@ -260,8 +267,11 @@ def skilla(request):
             return redirect("main:skillas_dashboard")
         if search_form.is_valid():
             search_input = search_form.cleaned_data["search_input"]
-            single_search = search_brief_title(Brief, search_input) or search_brief_category(Brief, search_input)
-            print(single_search)
+            # single_search = search_brief_title(Brief, search_input) or search_brief_category(Brief, search_input)
+            # print(single_search)
+            # print(type(single_search))
+            return redirect("main:search_results", param=search_input)
+
 
 
     form = BriefAppForm()
@@ -273,9 +283,13 @@ def skilla(request):
             "brief": brief,
             "form": form,
             "search_form": search_form,
-            "single_search": single_search
+            "single_search": single_search,
+            "count":count_of_message,
+            "count_of_order": count_of_order
         }
     )
+
+
 
 
 #### add @login_required decorator
@@ -471,49 +485,6 @@ def inbox(request):
     )
 
 
-# def quotes(request, pk):
-#     user = request.user
-#     message_receiver = User.objects.get(id=pk)
-#     profile_picture = ProfilePicture.objects.get(
-#         user=message_receiver
-#     )
-#     user_profile_picture = ProfilePicture.objects.get(
-#         user=user
-#     )
-#     display_order = Order.objects.all().filter(
-#         skilla=user,
-#         client=message_receiver
-#     ).order_by("-order_created")
-
-#     if request.method == "POST":
-#         form = OrderForm(request.POST)
-        
-#         if form.is_valid():
-#             order_form = form.save(commit=False)
-#             order_form.skilla = user
-#             order_form.client = message_receiver
-#             # order_form.paid = False
-#             order_form.save()
-
-#             messages.success(request, "Order created successfully.")
-#             return redirect("main:chat", pk=message_receiver.id)
-        
-#     form = ChatMessageForm()
-#     form_order = OrderForm()
-
-#     return render(
-#         request=request,
-#         template_name="main/messaging/chat.html",
-#         context={
-#             "form": form,
-#             # "user": user,
-#             "display_msg": display_msg,
-#             "profile_picture": profile_picture,
-#             "user_profile_picture": user_profile_picture,
-#              "order_form": form_order,
-#              "display_order": display_order
-#         }
-#     )
 
 
 def quotes(request):
@@ -760,3 +731,28 @@ def thread_view(request, username):
         "order_form": order_form
     }
     return render(request, template_name, context=context)
+
+
+
+def search_results(request, param):
+
+    single_search = param
+    single_search = search_brief_title(Brief, single_search) or search_brief_category(Brief, single_search)
+
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            search_input = search_form.cleaned_data["search_input"]
+
+            single_search = search_brief_title(Brief, search_input) or search_brief_category(Brief, search_input)
+            print(single_search)
+    
+    search_form = SearchForm()
+    return render(
+        request=request, template_name="main/search.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "single_search": single_search,
+            "search_form": search_form,
+        }
+    )

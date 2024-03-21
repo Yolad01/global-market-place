@@ -4,6 +4,7 @@ from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
+from django.db.models.query import QuerySet
 
 
 
@@ -57,6 +58,8 @@ urlpatterns = [
 
     path("view_brief/", views.view_brief , name="view_brief"),
     path("edit_brief/<int:id>", views.edit_brief , name="edit_brief"),
+
+    path("search_results/<str:param>/", views.search_results , name="search_results"),
     
     # path("skill_detail/", views.skill_detail , name="skill_detail"),
 

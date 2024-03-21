@@ -44,44 +44,41 @@
           <div class="flex gap-10 font-semibold text-base">
             <a href="#" class="mt-2">Payment</a>
             <a href="/applications" class="mt-2">Applications</a>
-            
-            
-            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="font-primary font-semibold hover:bg-emerald-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 text-base px-3 -mt-1 rounded-md text-center inline-flex items-center" type="button">Options<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-              </svg>
-              </button>
-              
-              <!-- Dropdown menu -->
-              <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                    <li>
-                      <a href="/client_dashboard" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                    </li>
-                    <li>
-                      <a href="#" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                    </li>
-                    <li>
-                      <a href="/orders" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Orders</a>
-                    </li>
-                    <li>
-                      <a href="/view_brief" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Briefs</a>
-                    </li>
-                    <li>
-                      <a href="/logout" class="block px-4 py-2 hover:bg-emerald-800 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-                    </li>
-                  </ul>
-              </div>
+
+            <li class="mr-7 xl:mr-[40px] mt-2 relative group list-none">
+
+              <a href="#" class="transition-all hover:text-secondary">Options</a>
+
+              <ul class="list-none bg-white drop-shadow-[0px_6px_10px_rgba(0,0,0,0.2)] rounded-[12px] flex flex-wrap flex-col w-[220px] absolute top-[120%] left-1/2 -translate-x-1/2 transition-all
+                  group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opacity-100
+
+                ">
+                <li class="border-b border-solid border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                    <a href="/client_dashboard" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary hover:bg-green-400 text-center my-[-1px] rounded-t-[12px]">Dashboard</a>
+                </li>
+                <li class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                    <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary hover:bg-green-400 text-center my-[-1px]">Settings</a>
+                </li>
+                <li class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                    <a href="/orders" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary hover:bg-green-400 text-center my-[-1px]">Orders</a>
+                </li>
+                <li class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                    <a href="/view_brief" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary hover:bg-green-400 text-center my-[-1px]">Briefs</a>
+                </li>
+                <li class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                    <a href="/logout" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary hover:bg-green-400 text-center my-[-1px]">Sign out</a>
+                </li>
+              </ul>
+            </li>
+
   
             <button
               class="rounded bg-veryDarkGreen text-white font-semibold px-3 py-2 mb-2"
             >
               Skillas Blog
             </button>
-            {% comment %}
-            <a href="#"
-              ><img src="{% static '/img/Ellipse 12.png' %}" alt="client-Photo"
-            /></a>
-            {% endcomment %} {% for x in profile_pic %}
+            
+            {% for x in profile_pic %}
             <a href="#"
               ><img
                 src="{{ x.image.url }}"
