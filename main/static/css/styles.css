@@ -1170,10 +1170,6 @@ select{
   margin-right: 6rem;
 }
 
-.mr-28{
-  margin-right: 7rem;
-}
-
 .mr-32{
   margin-right: 8rem;
 }
@@ -2714,12 +2710,12 @@ select{
     margin-left: 2rem;
   }
 
-  .sm\:mr-8{
-    margin-right: 2rem;
-  }
-
   .sm\:mr-28{
     margin-right: 7rem;
+  }
+
+  .sm\:mr-8{
+    margin-right: 2rem;
   }
 
   .sm\:block{
