@@ -6,7 +6,7 @@
     <main class="mt-20 font-primary">
         <!-- Menu section -->
         <section class="pb-10">
-            <div class="mt-10 font-primary flex justify-center items-center gap-x-8">
+            <div class="mt-10 font-primary sm:flex justify-center items-center gap-x-8">
                 <div class="flex bg-ash p-2">
                     <img src="{% static 'img/icon_artisan.svg' %}" alt="icon">
                     <a href="#" class="font-normal text-base ml-2">Artisans</a>
@@ -30,27 +30,27 @@
         </section>
             
         <!-- Hero section -->
-        <section>
+        <section class="overflow-hidden">
             <div>
-                <div class="flex justify-between">
-                    <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="bg-orangeEssence ml-52 border w-56 rounded-lg">
-                    <img src="{% static 'img/skilla_service.svg' %}" alt="Photo of skilla" class="bg-pinkEssence border rounded-lg w-56 mr-64">
+                <div class="sm:flex items-center justify-between hidden sm:visible">
+                    <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="bg-orangeEssence sm:ml-52 border w-80 sm:w-56 rounded-lg">
+                    <img src="{% static 'img/skilla_service.svg' %}" alt="Photo of skilla" class="bg-pinkEssence border sm:ml-52 w-80 sm:w-56 rounded-lg mr-64">
                 </div>
 
-                <div class="flex items-center justify-center -mt-28">
+                <div class="sm:flex items-center justify-center sm:-mt-28">
                     <img src="{% static '/img/home_banner.svg' %}" alt="banner">
                 </div>
             </div>
 
             <div class="flex justify-between -mt-28">
                 <img src="{% static 'img/left_braces.svg' %}" alt="curly braces" class="-mt-3 ml-36 border rounded-lg border-none">
-                <img src="{% static 'img/right_braces.svg' %}" alt="curly braces" class="-mt-3 mr-52 border rounded-lg border-none">
+                <img src="{% static 'img/right_braces.svg' %}" alt="curly braces" class="-mt-3 mr-52 border rounded-lg border-none invisible sm:visible">
             </div>
 
             <div>
-                <div class="flex justify-between -mt-10">
+                <div class="sm:flex justify-between -mt-10 ">
                     <img src="{% static 'img/technician_service.svg' %}" alt="Photo of technician" class="bg-purpleEssence ml-80 border rounded-lg w-56">
-                    <img src="{% static 'img/tech_service.svg' %}" alt="Photo of tech personnel" class="bg-blueEssence  border rounded-lg w-56 mr-96">
+                    <img src="{% static 'img/tech_service.svg' %}" alt="Photo of tech personnel" class="bg-blueEssence  border rounded-lg w-56 mr-96 invisible sm:visible">
                 </div>
                 
     
@@ -66,9 +66,9 @@
 
         <!-- Service section -->
         <section>
-            <div class="mt-48">
+            <div class="sm:mt-48 mt-20">
                 <h2 class="font-extrabold text-veryDarkGreen text-center text-3xl mb-10">Services</h2>
-                <div class="grid grid-cols-4 ml-52 mr-32">
+                <div class="sm:grid sm:grid-cols-2 md:grid md:grid-cols-2 xl:grid xl:grid-cols-4 sm:ml-52 sm:mr-32">
                     <div class="bg-orangeEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
                         <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="w-60 h-52">
                         <div class="p-5">

@@ -736,7 +736,6 @@ def thread_view(request, username):
 
 def search_results(request, param):
 
-    # single_search = None
     single_search = param
     single_search = search_brief_title(Brief, single_search) or search_brief_category(Brief, single_search)
 
@@ -755,6 +754,5 @@ def search_results(request, param):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "single_search": single_search,
             "search_form": search_form,
-            # "skilla_page_search": skilla_page_search
         }
     )
