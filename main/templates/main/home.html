@@ -3,7 +3,7 @@
 
 {% block content %}
     <!-- Body of landing page -->
-    <main class="mt-20 font-primary">
+    <div class="mt-20 font-primary">
         <!-- Menu section -->
         <section class="pb-10">
             <div class="mt-10 font-primary sm:flex justify-center items-center gap-x-8">
@@ -19,13 +19,28 @@
 
                 <div class="flex bg-ash p-2">
                     <img src="{% static 'img/icon_development.svg' %}" alt="icon">
-                    <a href="#" class="font-normal text-base ml-2">Development</a>
+                    <a href="#" class="font-normal text-base ml-2">Development and IT</a>
                 </div>
 
-                <div class="flex bg-ash p-2">
-                    <h1 class="font-normal text-base ml-2">More</h1>
-                    <a href="#"><img src="{% static 'img/more_arrow.svg' %}" alt="downward arrow" class="ml-1 mt-2"></a>
+                
+                <div class="flex bg-ash p-2 relative" >
+                    <button id="dropdownToggle" class="font-normal text-base ml-2">More</button>
+                    <img src="{% static 'img/more_arrow.svg' %}" alt="downward arrow" class="ml-2 mt-1 cursor-pointer" id="dropdownToggleImage">
+                
+    
+                    <!-- Dropdown menu -->
+                    <div id="dropdownMoreMenu" class="origin-top-left absolute left-0 font-primary text-black mt-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none hidden">
+                        <div class="py-1" role="none">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Craftsmen</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Accounting and Finance</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Writing and Translation</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Marketing and Sales</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Legal</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Architecture and Engineering</a>
+                    </div>
                 </div>
+                
+                
             </div>
         </section>
             
@@ -122,8 +137,8 @@
                 <h2 class="font-extrabold text-white text-center text-2xl pt-24">CUSTOMERS REVIEW</h2>
                 
                 <div class="mt-10 mx-40 pb-24 flex">
-                    <div class="">
-                        <img src="{% static '/img/white_left_arrow.png' %}" alt="Photo of customer" class="h-10 mt-14 mr-5">
+                    <div>
+                        <a href="#"><img src="{% static '/img/white_left_arrow.png' %}" alt="Photo of customer" class="h-10 mt-14 mr-5"></a>
                     </div>
                     <div class="mx-5 grid grid-cols-3 gap-4 shadow">
                         
@@ -164,7 +179,7 @@
                     </div>
 
                     <div>
-                        <img src="{% static '/img/white_right_arrow.png' %}" alt="Photo of customer" class="h-10 mt-14 mr-5">
+                        <a href="#"><img src="{% static '/img/white_right_arrow.png' %}" alt="Photo of customer" class="h-10 mt-14 mr-5"></a>
                     </div>
                 </div>
             </div> 
@@ -176,50 +191,74 @@
                 <div class="ml-48 mr-60 mb-10">
                     <h2 class="pt-20 font-semibold text-veryDarkGreen text-center text-3xl mb-10">Frequently Asked Questions</h2>
     
-                    <div class="">
-                        <div class=" rounded-none grid grid-rows-6 gap-y-4 cursor-pointer">
+                    <div>
+                        <div class="rounded-none grid grid-rows-6 gap-y-4 cursor-pointer">
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
-                                <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
                             </div>
-    
-                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
-                                <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
-                            </div>
-    
-                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
-                                <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
-                            </div>
-    
-                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
-                                <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
-                            </div>
-    
-                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
-                                <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
-                            </div>
-    
-                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
-                                <a class="font-normal text-xl text-navyBlue pl-5">What Is The Refund Policy?</a>
-                                <a href="#"><img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2"></a>
-                            </div>
-            </div>
-
-                        <!-- <div class="accodion-body">
-                            <div class="p-4 border-t">
-                                <p>A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                            <div class="accordion-content hidden bg-white">
+                                <p class="font-normal text-xl px-5">A Refund Policy is where you state your policy on whether or not you issue refunds, 
                                     and in what circumstances this may be limited. You can let users know how to go about requesting 
                                     a refund, what steps they must take to get one, what form the refund will be issued in, and how 
-                                    long the entire process will take.
-                                </p>
-                            </div> 
-
-                        </div> -->
-
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white">
+                                <p class="font-normal text-xl px-5">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white">
+                                <p class="font-normal text-xl px-5">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white">
+                                <p class="font-normal text-xl px-5">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white">
+                                <p class="font-normal text-xl px-5">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white">
+                                <p class="font-normal text-xl px-5">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -251,7 +290,50 @@
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 
-    
+    <!-- Script for More button -->
+    <script>
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownToggleImage = document.getElementById('dropdownToggleImage');
+        const dropdownMoreMenu = document.getElementById('dropdownMoreMenu');
+      
+        dropdownToggle.addEventListener('click', toggleDropdown);
+        dropdownToggleImage.addEventListener('click', toggleDropdown);
+      
+        // Function to toggle dropdown menu
+        function toggleDropdown() {
+          dropdownMoreMenu.classList.toggle('hidden');
+        }
+      
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+          if (!dropdownToggle.contains(event.target) && !dropdownToggleImage.contains(event.target)) {
+            dropdownMoreMenu.classList.add('hidden');
+          }
+        });
+      </script>
+
+      <!-- Script for FAQ Section -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleDropdowns = document.querySelectorAll('.toggle-dropdown');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+            // Function to toggle dropdown content
+            function toggleDropdown(event) {
+                event.preventDefault();
+                const content = this.parentElement.nextElementSibling; // Get the next sibling element
+                content.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the content
+            }
+        
+            toggleDropdowns.forEach(function(toggle) {
+                toggle.addEventListener('click', toggleDropdown);
+            });
+        
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', toggleDropdown);
+            });
+        });
+        </script>
 {% endblock %}
