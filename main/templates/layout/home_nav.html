@@ -20,20 +20,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS (Bootstrap & Icon Font) -->
-
-    <!-- Plugins CSS (All Plugins Files) -->
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-
-    <link rel="stylesheet" href="{% static 'assets/css/plugins/swiper-bundle.min.css' %}" />
 
     <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup.css' %}" />
 
     <link rel="stylesheet" href="{% static 'assets/css/plugins/nice-select.css' %}" />
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{% static './assets/css/style.css' %}" />
 
 </head>
 
@@ -48,7 +42,7 @@
                     <div class="col-span-12">
                         <div class="flex flex-wrap items-center justify-between">
                             <a href="/" class="block">
-                                <img class="w-full h-full" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
+                                <img class="w-full h-full invisible sm:visible" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
                             </a>
                             <nav class="flex flex-wrap items-center font-semibold text-[#1E1E1E] sm:mr-40">
                                 <ul class="hidden lg:flex flex-wrap items-center font-lora text-[16px] xl:text-[18px] leading-none">
@@ -68,6 +62,9 @@
                                             <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
                                                 <a href="/service_policy" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">service policy</a>
                                             </li>
+                                            <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                                                <a href="/register" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Register</a>
+                                            </li>
 
                                         </ul>
 
@@ -79,9 +76,9 @@
                                   <li>
                                     {% if not user.is_authenticated %}
                                     <a
-                                      href="/register"
+                                      href="/sign_in"
                                       class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen"
-                                      >Use Web App</a
+                                      >Log in</a
                                     >
                         
                                     {% elif user.role == "SKILLAS" %}
@@ -100,23 +97,40 @@
                                     {% endif %}
                                       
                                   </li>
-                                  <div class="md:hidden flex items-center">
-                                    <button class="outline-none mobile-menu-button">
-                                        <svg class=" w-6 h-6 text-veryDarkGreen hover:text-veryLightGreen "6
-                                            x-show="!showMenu"
-                                            fill="none"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                                        </svg>
-                                      </button>
+                                    <div class="md:hidden flex items-center">
+                                        <button class="outline-none mobile-menu-button">
+                                            <svg class=" w-6 h-6 text-veryDarkGreen"6
+                                                x-show="!showMenu"
+                                                fill="none"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                                            </svg>
+                                        </button>
                                     </div>
-                                    
                                 </ul>
+                                <div class="hidden mobile-menu">
+                                    <ul class="">
+                                        <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-blue-900 font-semibold">Home</a></li>
+                                        <li><a href="/about" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">About us</a></li>
+                                        <li><a href="/terms_and_services" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Terms and Conditions</a></li>
+                                        <li><a href="/contact" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Contact Us</a></li>
+                                        <li><a href="/login" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Log in</a></li>
+                                        <li><a href="/sign_up" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Sign up</a></li>
+                                    </ul>
+                                </div>
+                                <script>
+                                    const btn = document.querySelector("button.mobile-menu-button");
+                                    const menu = document.querySelector(".mobile-menu");
+                        
+                                    btn.addEventListener("click", () => {
+                                        menu.classList.toggle("hidden");
+                                    });
+                                </script>
                             </nav>
                         </div>
                     </div>
@@ -213,11 +227,8 @@
     <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'assets/js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
     <!-- Plugins JS -->
-    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.ajaxchimp.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugins/parallax.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/jquery.nice-select.min.js' %}"></script>
 
     <!-- Activation JS -->
