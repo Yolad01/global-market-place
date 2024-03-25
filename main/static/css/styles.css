@@ -1379,6 +1379,10 @@ select{
   margin-bottom: 1.5rem;
 }
 
+.mb-36{
+  margin-bottom: 9rem;
+}
+
 .block{
   display: block;
 }
@@ -1969,6 +1973,16 @@ select{
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.border-blue-400{
+  --tw-border-opacity: 1;
+  border-color: rgb(96 165 250 / var(--tw-border-opacity));
+}
+
+.border-veryLightGreen{
+  --tw-border-opacity: 1;
+  border-color: rgb(98 239 180 / var(--tw-border-opacity));
+}
+
 .border-opacity-40{
   --tw-border-opacity: 0.4;
 }
@@ -2453,6 +2467,14 @@ select{
   padding-top: 80px;
 }
 
+.pb-60{
+  padding-bottom: 15rem;
+}
+
+.pt-12{
+  padding-top: 3rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -2764,6 +2786,11 @@ select{
 .text-indigo-600{
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
+}
+
+.text-lightGreen{
+  --tw-text-opacity: 1;
+  color: rgb(30 204 119 / var(--tw-text-opacity));
 }
 
 .underline{

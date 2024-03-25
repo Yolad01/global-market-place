@@ -9,9 +9,8 @@
 <script src="{% static '/js/main.js' %}"></script>
 
 {% block content %}
-<body>
 
-  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 pb-60 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <img class="mx-auto h-10 w-auto" src="{% static '/img/skillas_design-03.png' %}" alt="Your Company">
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
@@ -19,141 +18,45 @@
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" action="#" method="POST">
+        {% csrf_token %}
         <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+          <label for="id_username" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
           <div class="mt-2">
-            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input id="username" name="username" type="text" autocomplete="username" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
   
         <div>
           <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+            <label for="id_password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
             <div class="text-sm">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+              <a href="#" class="font-semibold text-veryDarkGreen hover:text-veryLightGreen">Forgot password?</a>
             </div>
           </div>
           <div class="mt-2">
-            <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input id="id_password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+            <input class="border border-veryLightGreen rounded" type="checkbox" onclick="myFunction()"> Show Password
           </div>
         </div>
   
         <div>
-          <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+          <button type="submit" class="w-full before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-2 capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen">Sign in</button>
         </div>
       </form>
   
       <p class="mt-10 text-center text-sm text-gray-500">
-        Not a member?
-        <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
+        Not a Member?
+        <a href="/register" class="font-semibold leading-6 text-veryDarkGreen hover:text-veryLightGreen">Register</a>
       </p>
     </div>
   </div>
 
-{% comment %} <div class="font-primary container mx-auto mb-20">
-  <div class="mt-40 ml-72 mr-72 ">
-    <div class="border-2 items-center justify-center">
 
-      <div class="flex mt-20">
-        <div class="text-2xl font-semibold ml-60">Welcome back!</div>
-        <div class="text-2xl font-bold text-veryDarkGreen px-20">Sign in</div>
-      </div>
-
-      <form method="POST">
-        {% csrf_token %}
-
-        <div class="mt-10 ml-60">
-          <label
-            class="block text-veryDarkGreen text-base font-normal"
-            for="id_username"
-            >Work email or username:</label
-          >
-          <input
-            type="text"
-            name="username"
-            autofocus
-            autocapitalize="none"
-            autocomplete="username"
-            maxlength="150"
-            required
-            id="id_username"
-            class="mt-5 border border-gray-400 rounded py-3 pr-56 focus:outline-none focus:shadow-outline"
-          />
-        </div>
-
-        <div class="ml-60 mt-10">
-          <label class="block text-veryDarkGreen text-base" for="id_password"
-            >Password:</label
-          >
-          <div class="flex"> 
-            <input
-            type="password"
-            name="password"
-            autocomplete="current-password"
-            required
-            id="id_password"
-            class="mt-5 border border-gray-400 rounded py-3 pr-56 focus:outline-none focus:shadow-outline"
-          />
-
-          <img
-            src="{% static '/img/password_eye.svg' %}"
-            alt="reveal password"
-            class="-ml-12 mt-5"
-          />
-          </div>
-
-          <!--Toast messages-->
-        {% if messages %}
-        {% for message in messages %}
-          <div class="mt-5">
-            <div class="max-w-xs bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
-              <div class="flex p-4">
-                {{ message }}
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-        {% endif %}
-        <!--end Toast messages-->
-          </div>
-
-
-        <div class="flex mt-10 ml-60 mb-10">
-          <div class="text-base text-veryDarkGreen">Forgot your password?</div>
-
-          <button
-            type="submit"
-            class="bg-veryDarkGreen hover:bg-gray-500 text-white font-normal py-1 ml-44 px-5 rounded-md focus:outline-none focus:shadow-outline"
-            type="button"
-          >
-            Sign in
-          </button>
-        </div>
-      </form>
-
-      
-
-      <div class="mb-10 ml-60 mr-64">
-        <hr class="border border-black mr-5" />
-
-        <div class="flex mt-10">
-          <img src="{% static '/img/google_icon.svg' %}" alt="Google icon" />
-
-          <button
-            class="bg-veryDarkGreen text-white font-extrabold text-base py-3 px-28 ml-9 rounded-md focus:outline-none focus:shadow-outline"
-            type="button"
-          >
-            Continue with Gmail
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div> {% endcomment %}
 
   <script>
     function myFunction() {
-      var x = document.getElementById("myInput");
+      var x = document.getElementById("id_password");
       if (x.type === "password") {
         x.type = "text";
       } else {
