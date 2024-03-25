@@ -3,10 +3,10 @@
 
 {% block content %}
     <!-- Body of landing page -->
-    <div class="mt-20 font-primary">
+    <div class="font-primary">
         <!-- Menu section -->
         <section class="pb-10">
-            <div class="mt-10 font-primary sm:flex justify-center items-center gap-x-8">
+            <div class="mt-2 font-primary sm:flex justify-center items-center gap-x-8">
                 <div class="flex bg-ash p-2">
                     <img src="{% static 'img/icon_artisan.svg' %}" alt="icon">
                     <a href="#" class="font-normal text-base ml-2">Artisans</a>
@@ -72,9 +72,8 @@
                 <div class="flex items-center justify-center -mt-28"> 
                     <a
                     href="/register"
-                    class="rounded bg-veryLightGreen text-veryDarkGreen px-5 py-2 text-3xl font-bold"
-                    >Get Started</a
-                  >
+                    class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize text-veryDarkGreen font-semibold hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryLightGreen after:rounded-md after:transition-all hover:text-veryLightGreen"
+                    >Get Started</a>
                 </div>
             </div>
         </section>
