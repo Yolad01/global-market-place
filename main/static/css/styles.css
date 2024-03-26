@@ -3370,6 +3370,11 @@ select{
     padding-bottom: 2.5rem;
   }
 
+  .lg\:py-\[30px\]{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
   .lg\:pb-\[110px\]{
     padding-bottom: 110px;
   }

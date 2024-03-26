@@ -567,12 +567,15 @@ def create_gigs(request):
 
 
 def skillas_gigs(request):
+
+    search_form = SearchForm()
     skills = Skill.objects.all()
     return render(
         request=request,
         template_name="main/skillas_gigs.html",
         context={
-            "skills": skills
+            "skills": skills,
+            "search_form": search_form
         }
         
     )
