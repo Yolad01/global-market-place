@@ -60,84 +60,104 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
   </div>
 
   <!--Skillas Platform Banner-->
-  <section>
-    <div class="ml-48 mr-48 flex justify-center">
-      <img
-        src="{% static '/img/Skillas Design-04 1.svg' %}"
-        alt="hero banner"
-        class="w-full"
-      />
-    </div>
+	<section>
+		<div class="ml-48 mr-48 flex justify-center">
+		<img
+			src="{% static '/img/Skillas Design-04 1.svg' %}"
+			alt="hero banner"
+			class="w-full"
+		/>
+		</div>
 
-    <div class="mt-5 mb-5 ml-48 font-semibold text-base text-veryDarkGreen flex gap-4">
-      <div class="">
-          <button type="submit"  class="border-2 border-light_ash px-6 py-2">UPGRADE YOUR <br>SKILLS</button>
-      </div>
+		<div class="mt-5 mb-5 ml-48 font-semibold text-base text-veryDarkGreen flex gap-4">
+		<div class="">
+			<button type="submit"  class="border-2 border-light_ash px-6 py-2">UPGRADE YOUR <br>SKILLS</button>
+		</div>
 
-      <div>
-          <button type="submit" class="border-light_ash border-2 px-6 py-2">SUBSCRIBE TO OUR <br>EMAIL LIST</button>
-      </div>
-  </div>
-  </section>
+		<div>
+			<button type="submit" class="border-light_ash border-2 px-6 py-2">SUBSCRIBE TO OUR <br>EMAIL LIST</button>
+		</div>
+	</div>
+	</section>
 
-  <section>
-    <div class="bg-veryLightGreen flex ml-48 mr-48">
-      <h2 class="font-medium text-veryDarkGreen text-4xl py-5 pl-10">
-        Top Skillas
-      </h2>
-      <a href="#" class="text-base font-medium text-veryDarkGreen mt-8 ml-10">See more</a>
-    </div>
-  </section>
+	<section>
+		<div class="bg-veryLightGreen flex ml-48 mr-48">
+		<h2 class="font-medium text-veryDarkGreen text-4xl py-5 pl-10">
+			Top Skillas
+		</h2>
+		<a href="#" class="text-base font-medium text-veryDarkGreen mt-8 ml-10">See more</a>
+		</div>
+	</section>
 
-  <section>
-    <div
-      class="grid grid-cols-4 ml-48 mr-48 pl-5 pr-5 pb-5 pt-5 border my-5 rounded-md"
-    >
-      {% for skill in skills %}
-      <div class="mx-4">
-        <img
-          class="pt-2 w-full object-cover h-60"
-          src="{{skill.image.url}}"
-          alt=""
-        />
-        <div class="shadow-xl p-4">
-          <h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
-            {{ skill.skilla.username }}
-          </h2>
-          <hr class="border-gray-400 w-full" />
-          <h6 class="font-medium text-xs py-2">{{ skill.title }}</h6>
-          <hr class="border-gray-400 w-full" />
-          <h6 class="font-medium text-xs py-2">{{ skill.skill }}</h6>
-          <hr class="border-gray-400 w-full" />
-          <h6 class="font-medium text-xs py-2">{{ skill.level }}</h6>
-          <hr class="border-gray-400 w-full" />
-          <h6 class="font-medium italic text-xs mt-2 py-2">
-            Price ranging from
-            <span class="not-italic font-extrabold"
-              >NGN {{ skill.base_price }}</span
-            >
-          </h6>
-          <hr class="border-gray-400 w-full" />
-          <div class="flex mt-2 gap-2 py-2">
-            <img src="{% static 'img/Vector (10).png' %}" />
-            <img src="{% static '/img/Vector (10).png' %}" />
-            <img src="{% static '/img/Vector (10).png' %}" />
-            <img src="{% static '/img/Vector (10).png' %}" />
-            <img src="{% static '/img/Group 245.png' %}" />
-          </div>
-          <hr class="border-gray-400 w-full" />
-          <div class="mt-5">
-            <a
-              href="{% url 'main:skillas_gigs_details' id=skill.id %}"
-              class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
-              >Click to see more details</a
-            >
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
+	<section>
+		<div
+		class="grid grid-cols-4 ml-48 mr-48 pl-5 pr-5 pb-5 pt-5 border my-5 rounded-md"
+		>
+		{% for skill in page_object %}
+		<div class="mx-4">
+			<img
+			class="pt-2 w-full object-cover h-60"
+			src="{{skill.image.url}}"
+			alt=""
+			/>
+			<div class="shadow-xl p-4">
+			<h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
+				{{ skill.skilla.username }}
+			</h2>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium text-xs py-2">{{ skill.title }}</h6>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium text-xs py-2">{{ skill.skill }}</h6>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium text-xs py-2">{{ skill.level }}</h6>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium italic text-xs mt-2 py-2">
+				Price ranging from
+				<span class="not-italic font-extrabold"
+				>NGN {{ skill.base_price }}</span
+				>
+			</h6>
+			<hr class="border-gray-400 w-full" />
+			<div class="flex mt-2 gap-2 py-2">
+				<img src="{% static 'img/Vector (10).png' %}" />
+				<img src="{% static '/img/Vector (10).png' %}" />
+				<img src="{% static '/img/Vector (10).png' %}" />
+				<img src="{% static '/img/Vector (10).png' %}" />
+				<img src="{% static '/img/Group 245.png' %}" />
+			</div>
+			<hr class="border-gray-400 w-full" />
+			<div class="mt-5">
+				<a
+				href="{% url 'main:skillas_gigs_details' id=skill.id %}"
+				class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
+				
+				>Click to see more details
+				</a>
+			</div>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+
+		<div class="">
+			<span class="">
+				{% if page_object.has_previous %}
+					<a href="?page=1">&laquo; first</a>
+					<a href="?page={{ page_object.previous_page_number }}">previous</a>
+				{% endif %}
+
+				<span class="current">
+					Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}.
+				</span>
+
+				{% if page_object.has_next %}
+					<a href="?page={{ page_object.next_page_number }}">next</a>
+					<a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a>
+				{% endif %}
+			</span>
+		</div>
+	</section>
+	
 
   {% comment %} if ad show it here {% endcomment %}
   <section class="ml-48 mr-48 mt-10 mb-10">
@@ -147,6 +167,8 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
       </p>
     </div>
   </section>
+
+  
 </main>
 
 {% endblock %}

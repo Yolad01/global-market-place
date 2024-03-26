@@ -23,7 +23,7 @@ from django.db import IntegrityError
 from django.db.models import Max
 from .search import search_brief_title, search_brief_category
 from .functions import msg_count, orders_count
-from django.db.models.query import QuerySet
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -553,8 +553,9 @@ def create_gigs(request):
         form = SkillForm(request.POST, request.FILES)
         if form.is_valid():
             skill_form = form.save(commit=False)
-            skill_form.skilla = request.user
+            skill_form.skilla = user
             skill_form.save()
+            return redirect("main:skillas_dashboard")
             
     form = SkillForm()
     return render(
@@ -570,11 +571,16 @@ def skillas_gigs(request):
 
     search_form = SearchForm()
     skills = Skill.objects.all()
+    paginator = Paginator(skills, 4)
+
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
     return render(
         request=request,
         template_name="main/skillas_gigs.html",
         context={
-            "skills": skills,
+            "page_object": page_object,
+            # "skills": skills,
             "search_form": search_form
         }
         

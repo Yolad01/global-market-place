@@ -36,8 +36,8 @@
         top: 0;
         left: 0;
         width: 100%;
-        background-color: white; /* Adjust background color as needed */
-        z-index: 1000; /* Adjust z-index as needed */
+        background-color: white;
+        z-index: 1000;
     }
     </style>
 
@@ -48,7 +48,7 @@
     <div class="overflow-x-hidden">
         <!-- Header start -->
 
-        <header id="sticky-header" class="sticky-header lg:py-10 z-[25] secondary-sticky">
+        <header id="sticky-header" class="sticky-header z-[25] secondary-sticky">
             <div class="container mx-auto">
                 <div class="grid grid-cols-12">
                     <div class="col-span-12">
@@ -57,15 +57,15 @@
                                 <img class="w-full h-full invisible sm:visible" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
                             </a>
                             <nav class="flex flex-wrap items-center font-semibold text-[#1E1E1E] sm:mr-40">
-                                <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
+                                <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none mr-40">
                                     
-                                    <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
+                                    <li class="mr-10 xl:mr-[40px] relative group py-[20px]">
                                       <form method="POST">
                                         {% csrf_token %}
     
                                         <div class="flex items-center">
                                             <div>{{ search_form.search_input }}</div>
-                                            <button type="submit" class="bg-veryDarkGreen text-white px-2 rounded-md shadow-md">
+                                            <button type="submit" class="bg-veryDarkGreen text-white px-2 py-2 rounded-md shadow-md">
                                                 Search
                                             </button>
                                             
