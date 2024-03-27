@@ -1,7 +1,79 @@
-{% extends 'layout/client_nav.html' %} {% load static %} {% block content %}
+{% extends 'layout/skills_nav.html' %} {% load static %} {% block content %}
 
-<main>
-  <section
+<main class="mx-2">
+
+   <section class="pt-[80px] lg:pt-[120px]">
+    <div class="container mx-auto">
+        <div class="grid sm:grid-cols-12 gap-[30px]">
+            <div class="col-span-12 lg:col-span-5 xl:col-span-6">
+                <div class="p-[30px] drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] bg-[#FFFDFC]">
+                    <img class="self-center mb-[15px] w-full h-full" src="{{ gig.image.url }}" width="499" height="988" loading="lazy" alt="brand logo">
+
+                </div>
+            </div>
+            <div class="col-span-12 lg:col-span-7 xl:col-span-6">
+                <div class="xl:pl-[40px]">
+                    <h4 class="text-primary text-[22px] lg:text-[36px] font-medium"> {{ gig.skilla.username }}<span class="text-secondary"></span></h4>
+                    <span class="underline font-normal block text-[18px] mb-[15px]">{{ gig.title }}</span>
+
+                    <h4 class="text-primary text-[22px] lg:text-[28px] mb-[10px]">Description <span
+                            class="text-secondary">.</span></h4>
+                    <p class="mb-[30px] max-w-[480px]">
+                      {{ gig.description }}
+                    </p>
+                    <ul class="text-[18px] flex flex-wrap sm:items-center justify-between m-[-10px] flex-col sm:flex-row items-start">
+                        <li class="m-[10px]">
+                            <span class="text-veryDarkGreen block text-sm font-semibold">From</span>
+                            <a href="tel:+9985254784" class="text-primary">NGN{{ gig.base_price }}</a>
+                        </li>
+                        <li class="m-[10px]">
+                            <span class="text-veryDarkGreen block text-sm font-semibold">Level</span>
+                            <span class="text-primary">{{ gig.level }}</span>
+                        </li>
+                        <li class="m-[10px]">
+                            <span class="text-veryDarkGreen block text-sm font-semibold">Category</span>
+                            <span class="text-primary">{{ gig.skill }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		<div class="mt-5 mb-10">
+            <a
+              href="#"
+              class="text-center before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all before:duration-1000 leading-none px-[20px] py-[15px] capitalize font-medium text-white w-full sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all after:duration-1000 hover:text-veryDarkGreen"
+              >Contact {{ gig.skilla.username }}</a
+            >
+          </div>
+
+        {% comment %} <div class="py-[80px] lg:py-[120px]">
+            <div class="grid grid-cols-12 gap-x-[30px]">
+                <div class="col-span-12">
+                    <ul class="flex flex-wrap list-none justify-between max-w-[800px] mx-auto">
+                        <li class="sm:border-r sm:border-[#CFCFCF] sm:pr-[60px] md:pr-[115px]">
+                            <span class="text-secondary text-lg"><span class="counter-up">150</span> <span>k+</span></span>
+                            <p>Properties</p>
+                        </li>
+                        <li class="sm:border-r sm:border-[#CFCFCF] sm:pr-[60px] md:pr-[115px]">
+                            <span class="text-secondary text-lg"><span class="counter-up">160</span> <span>k+</span></span>
+                            <p>Customers</p>
+                        </li>
+                        <li>
+                            <span class="text-secondary text-lg"><span class="counter-up">90</span>
+                            <span>+</span></span>
+                            <p>Awards Win</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> {% endcomment %}
+
+    </div>
+</section>
+
+
+
+  {% comment %} <section
     class="border rounded-lg shadow-md mt-10 w-1/2 bg-gray-50 mx-auto justify-center items-center"
   >
     <div class="grid grid-cols-2">
@@ -64,7 +136,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 </main>
 
 {% endblock %}

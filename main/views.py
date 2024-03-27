@@ -571,7 +571,7 @@ def skillas_gigs(request):
 
     search_form = SearchForm()
     skills = Skill.objects.all()
-    paginator = Paginator(skills, 4)
+    paginator = Paginator(skills, 12)
 
     page_number = request.GET.get("page")
     page_object = paginator.get_page(page_number)
