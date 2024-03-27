@@ -870,6 +870,10 @@ select{
   z-index: 25;
 }
 
+.z-\[1\]{
+  z-index: 1;
+}
+
 .col-span-12{
   grid-column: span 12 / span 12;
 }
@@ -1484,6 +1488,10 @@ select{
   height: 100vh;
 }
 
+.h-\[350px\]{
+  height: 350px;
+}
+
 .min-h-full{
   min-height: 100%;
 }
@@ -1602,6 +1610,14 @@ select{
 
 .max-w-\[800px\]{
   max-width: 800px;
+}
+
+.max-w-\[500px\]{
+  max-width: 500px;
+}
+
+.max-w-\[700px\]{
+  max-width: 700px;
 }
 
 .flex-1{
@@ -2128,6 +2144,19 @@ select{
   background-color: rgb(1,97,78,0.8);
 }
 
+.bg-\[\#FFF6F0\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 246 240 / var(--tw-bg-opacity));
+}
+
+.bg-cover{
+  background-size: cover;
+}
+
+.bg-center{
+  background-position: center;
+}
+
 .bg-no-repeat{
   background-repeat: no-repeat;
 }
@@ -2584,6 +2613,10 @@ select{
   font-size: 18px;
 }
 
+.text-\[32px\]{
+  font-size: 32px;
+}
+
 .font-black{
   font-weight: 900;
 }
@@ -2940,6 +2973,11 @@ select{
   position: absolute;
 }
 
+.before\:inset-0::before{
+  content: var(--tw-content);
+  inset: 0px;
+}
+
 .before\:inset-y-0::before{
   content: var(--tw-content);
   top: 0px;
@@ -2988,6 +3026,27 @@ select{
   background-color: rgb(98 239 180 / var(--tw-bg-opacity));
 }
 
+.before\:bg-\[\#000000\]::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.before\:opacity-\[70\%\]::before{
+  content: var(--tw-content);
+  opacity: 70%;
+}
+
+.before\:opacity-\[50\%\]::before{
+  content: var(--tw-content);
+  opacity: 50%;
+}
+
+.before\:opacity-\[0\%\]::before{
+  content: var(--tw-content);
+  opacity: 0%;
+}
+
 .before\:transition-all::before{
   content: var(--tw-content);
   transition-property: all;
@@ -2998,6 +3057,11 @@ select{
 .before\:duration-1000::before{
   content: var(--tw-content);
   transition-duration: 1000ms;
+}
+
+.before\:content-\[\'\'\]::before{
+  --tw-content: '';
+  content: var(--tw-content);
 }
 
 .after\:absolute::after{
@@ -3537,6 +3601,10 @@ select{
     font-size: 30px;
   }
 
+  .sm\:text-\[50px\]{
+    font-size: 50px;
+  }
+
   .sm\:leading-6{
     line-height: 1.5rem;
   }
@@ -3578,6 +3646,10 @@ select{
 
   .md\:pr-\[115px\]{
     padding-right: 115px;
+  }
+
+  .md\:text-\[68px\]{
+    font-size: 68px;
   }
 }
 
@@ -3627,6 +3699,10 @@ select{
 
   .lg\:flex{
     display: flex;
+  }
+
+  .lg\:h-\[513px\]{
+    height: 513px;
   }
 
   .lg\:grid-cols-3{
@@ -3679,6 +3755,10 @@ select{
 
   .lg\:text-\[36px\]{
     font-size: 36px;
+  }
+
+  .lg\:text-\[50px\]{
+    font-size: 50px;
   }
 }
 
