@@ -2473,6 +2473,10 @@ select{
   padding-right: 25px;
 }
 
+.pb-\[80px\]{
+  padding-bottom: 80px;
+}
+
 .text-left{
   text-align: left;
 }
@@ -3604,6 +3608,10 @@ select{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
@@ -3634,6 +3642,10 @@ select{
 
   .lg\:pt-\[120px\]{
     padding-top: 120px;
+  }
+
+  .lg\:pb-\[120px\]{
+    padding-bottom: 120px;
   }
 
   .lg\:text-\[28px\]{

@@ -89,9 +89,9 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
 		</div>
 	</section>
 
-	<section>
+	<section class="pt-[80px] lg:pt-[120px] mx-20">
 		<div
-		class="grid grid-cols-4 ml-48 mr-48 pl-5 pr-5 pb-5 pt-5 border my-5 rounded-md"
+		class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-[30px] mb-[-30px]"
 		>
 		{% for skill in page_object %}
 		<div class="mx-4">
@@ -126,12 +126,13 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
 				<img src="{% static '/img/Group 245.png' %}" />
 			</div>
 			<hr class="border-gray-400 w-full" />
-			<div class="mt-5">
+			<div class="mt-5 flex justify-center">
 				<a
-				href="{% url 'main:skillas_gigs_details' id=skill.id %}"
-				class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
+					href="{% url 'main:skillas_gigs_details' id=skill.id %}"
+					class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
 				
-				>Click to see more details
+				>
+					View details
 				</a>
 			</div>
 			</div>
@@ -139,17 +140,20 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
 		{% endfor %}
 		</div>
 
-		<div class="">
+	</section>
+
+	<section class="mt-10">
+		<div class="px-10">
 			<span class="">
 				{% if page_object.has_previous %}
 					<a href="?page=1">&laquo; first</a>
 					<a href="?page={{ page_object.previous_page_number }}">previous</a>
 				{% endif %}
-
+	
 				<span class="current">
 					Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}.
 				</span>
-
+	
 				{% if page_object.has_next %}
 					<a href="?page={{ page_object.next_page_number }}">next</a>
 					<a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a>
@@ -157,7 +161,6 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
 			</span>
 		</div>
 	</section>
-	
 
   {% comment %} if ad show it here {% endcomment %}
   <section class="ml-48 mr-48 mt-10 mb-10">
