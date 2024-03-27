@@ -145,8 +145,7 @@ class SkillForm(forms.ModelForm):
             "skill",
             "image",
             "level",
-            "base_price",
-            "activate"
+            "base_price"
         ]
         
         widgets = {
@@ -162,7 +161,6 @@ class SkillForm(forms.ModelForm):
             "image": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 my-2 mx-5 rounded-md'}),
             "level": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
             "base_price": forms.NumberInput(attrs={'class': 'border border-gray-700 my-2 mx-5  rounded-md'}),
-            "activate": forms.NullBooleanField()
         }
     
     
