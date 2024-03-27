@@ -3350,6 +3350,11 @@ select{
     margin-bottom: 2rem;
   }
 
+  .sm\:mx-12{
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
   .sm\:-mt-28{
     margin-top: -7rem;
   }
@@ -3538,6 +3543,11 @@ select{
 }
 
 @media (min-width: 768px){
+  .md\:mx-9{
+    margin-left: 2.25rem;
+    margin-right: 2.25rem;
+  }
+
   .md\:block{
     display: block;
   }
@@ -3594,6 +3604,21 @@ select{
 
   .lg\:col-span-7{
     grid-column: span 7 / span 7;
+  }
+
+  .lg\:mx-20{
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+  .lg\:mx-16{
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  .lg\:mx-10{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 
   .lg\:mb-\[30px\]{
@@ -3660,6 +3685,16 @@ select{
 @media (min-width: 1280px){
   .xl\:col-span-6{
     grid-column: span 6 / span 6;
+  }
+
+  .xl\:mx-20{
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+  .xl\:mx-40{
+    margin-left: 10rem;
+    margin-right: 10rem;
   }
 
   .xl\:mb-\[40px\]{
