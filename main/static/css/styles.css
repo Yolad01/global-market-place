@@ -3526,6 +3526,10 @@ select{
 }
 
 @media (min-width: 1024px){
+  .lg\:visible{
+    visibility: visible;
+  }
+
   .lg\:invisible{
     visibility: hidden;
   }
@@ -3561,6 +3565,10 @@ select{
 
   .lg\:flex{
     display: flex;
+  }
+
+  .lg\:hidden{
+    display: none;
   }
 
   .lg\:h-\[513px\]{
