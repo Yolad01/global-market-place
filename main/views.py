@@ -74,12 +74,11 @@ def register(request):
             elif user.role == "COMPANY":
                 messages.success(request, f"Logged in as {username}")
                 return redirect("main:company_profile")
-        else:
-            messages.error(request, "Passwords isn't complex enough.")
-            return redirect("main:register")
-            
-    else:
-        registration_form = RegistrationForm()
+        messages.error(request,
+                        "Your password should not be less than 8 characters. the characters should include an uppercase, lowercase a symbol and a number."
+                        )
+        # return redirect("main:register")
+    registration_form = RegistrationForm()
     return render(request=request, template_name="main/register.html",
                   context={
                         "reg_form": registration_form,
@@ -188,8 +187,8 @@ def sign_in(request):
                     messages.success(request, f"Logged in as {username}")
                     return redirect("main:skillas_dashboard")
         else:
-            messages.error(request, "Wrong login credentials. Please enter a correct credential to access your dashboard")
-            return redirect("main:sign_in")
+            messages.error(request, "Wrong login credentials. Please enter a correct username and password to access your dashboard")
+            # return redirect("main:sign_in")
 
             
     return render(request=request, template_name="main/sign_in.html",
