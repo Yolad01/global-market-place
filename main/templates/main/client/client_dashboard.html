@@ -4,54 +4,13 @@
 
 {% block content %}
 
-<main>
-  <div class="ml-48 mr-44">
-      <div class="mt-10 flex">
-        <input
-          type="text"
-          name=""
-          id=""
-          placeholder="What skill/service are looking for?"
-          class="w-1/2 font-normal text-base border border-black py-2 px-5 wow fadeInLeft"
-          data-wow-duration="2s"
-        />
-        <a href="#"
-          ><img
-            src="{% static '/img/Vector-search.png' %}"
-            alt=""
-            class="-translate-x-8 translate-y-4"
-        /></a>
-
-        <a
-        href="#"
-        class="text-veryDarkGreen bg-veryLightGreen text-base font-bold py-3 px-8 rounded-md ml-14"
-        >View brief</a
-      >
-
-        <a
-          href="/create_brief"
-          class="text-veryDarkGreen bg-veryLightGreen text-base font-bold py-3 px-8 rounded-md ml-5"
-          >Create a brief</a
-        >
-        <a href="/inbox"
-          ><img
-            src="{% static '/img/Vector-message.png' %}"
-            alt="message icon"
-            class="ml-10 mt-3"
-        /></a>
-
-        <a href="#"
-          ><img
-            src="{% static '/img/message_bell.svg' %}"
-            alt="message bell"
-            class="mt-1 ml-10"
-        /></a>
-      </div>
+<main class="mt-24 bg-white">
+  <div class="container mx-auto">
 
       <div class="mt-16 flex">
         <!-- picture Modal  -->
         <div
-          class="fixed z-10 inset-0 overflow-y-auto hidden"
+          class="fixed z-10 inset-x-12 overflow-y-auto hidden"
           id="editPictureModal"
         >
           <div
