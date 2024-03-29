@@ -818,6 +818,38 @@ select{
   inset: 0px;
 }
 
+.inset-10{
+  inset: 2.5rem;
+}
+
+.inset-20{
+  inset: 5rem;
+}
+
+.inset-auto{
+  inset: auto;
+}
+
+.inset-x-7{
+  left: 1.75rem;
+  right: 1.75rem;
+}
+
+.inset-x-10{
+  left: 2.5rem;
+  right: 2.5rem;
+}
+
+.inset-y-12{
+  top: 3rem;
+  bottom: 3rem;
+}
+
+.inset-x-12{
+  left: 3rem;
+  right: 3rem;
+}
+
 .bottom-16{
   bottom: 4rem;
 }
