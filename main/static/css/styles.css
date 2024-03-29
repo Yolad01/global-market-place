@@ -818,33 +818,6 @@ select{
   inset: 0px;
 }
 
-.inset-10{
-  inset: 2.5rem;
-}
-
-.inset-20{
-  inset: 5rem;
-}
-
-.inset-auto{
-  inset: auto;
-}
-
-.inset-x-7{
-  left: 1.75rem;
-  right: 1.75rem;
-}
-
-.inset-x-10{
-  left: 2.5rem;
-  right: 2.5rem;
-}
-
-.inset-y-12{
-  top: 3rem;
-  bottom: 3rem;
-}
-
 .inset-x-12{
   left: 3rem;
   right: 3rem;
@@ -1178,10 +1151,6 @@ select{
   margin-left: 3rem;
 }
 
-.ml-14{
-  margin-left: 3.5rem;
-}
-
 .ml-16{
   margin-left: 4rem;
 }
@@ -1304,10 +1273,6 @@ select{
 
 .mr-40{
   margin-right: 10rem;
-}
-
-.mr-44{
-  margin-right: 11rem;
 }
 
 .mr-48{
@@ -1660,11 +1625,6 @@ select{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.-translate-x-8{
-  --tw-translate-x: -2rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .-translate-y-11{
   --tw-translate-y: -2.75rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1687,11 +1647,6 @@ select{
 
 .translate-y-10{
   --tw-translate-y: 2.5rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-4{
-  --tw-translate-y: 1rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1936,11 +1891,6 @@ select{
 
 .border-none{
   border-style: none;
-}
-
-.border-black{
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .border-emerald-800{

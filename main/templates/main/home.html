@@ -46,8 +46,8 @@
         <section class="">
             <div class="">
                 <div class="lg:flex items-center justify-between hidden lg:visible">
-                    <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="bg-orangeEssence sm:ml-52 border w-80 sm:w-56 rounded-lg mt-20">
-                    <img src="{% static 'img/skilla_service.svg' %}" alt="Photo of skilla" class="bg-pinkEssence border sm:ml-52 w-80 sm:w-56 rounded-lg mr-64 mt-20">
+                    <img src="{% static 'img/photo_cleaner.svg' %}" alt="Photo of cleaner" class="sm:ml-52 border w-80 sm:w-56 rounded-lg mt-20">
+                    <img src="{% static 'img/skilla_service.svg' %}" alt="Photo of skilla" class="border sm:ml-52 w-80 sm:w-56 rounded-lg mr-64 mt-20">
                 </div>
 
                 <div class="lg:flex lg:items-center lg:justify-center">
@@ -67,8 +67,8 @@
 
             <div>
                 <div class="hidden lg:visbile lg:flex lg:justify-between">
-                    <img src="{% static 'img/technician_service.svg' %}" alt="Photo of technician" class="bg-purpleEssence ml-80 border rounded-lg w-56 invisible lg:visible">
-                    <img src="{% static 'img/tech_service.svg' %}" alt="Photo of tech personnel" class="bg-blueEssence  border rounded-lg w-56 mr-96 invisible lg:visible">
+                    <img src="{% static 'img/photo_artisan.svg' %}" alt="Photo of technician" class="ml-80 border rounded-lg w-56 invisible lg:visible">
+                    <img src="{% static 'img/photo_techie.svg' %}" alt="Photo of tech personnel" class="border rounded-lg w-56 mr-96 invisible lg:visible">
                 </div>
                 
     
@@ -85,52 +85,24 @@
         <section>
             <div class="sm:mt-48 mt-20">
                 <h2 class="font-extrabold text-veryDarkGreen text-center text-3xl mb-10">Services</h2>
-                <div class="sm:grid sm:grid-cols-2 md:grid md:grid-cols-2 xl:grid xl:grid-cols-4 sm:ml-52 sm:mr-32 mx-40">
-                    <div class="hidden lg:visible bg-orangeEssence lg:mr-36 mx-32 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
-                        <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="w-60 h-52 items-center justify-center mx-auto">
-                        <div class="p-5">
-                            <h2 class="font-semibold text-2xl text-left mt-3">Cleaning Service</h2> <hr class="border-b-2 border-white mr-16">
-                        <p class="font-medium text-xs mt-3 text-left mx-auto">newly created service category. yoladglobal.com therefore has an enormous
-                            upside potential and is poised for rapid growth.
-                        </p>
+                <div class="sm:grid sm:grid-cols-2 md:grid md:grid-cols-2 xl:grid xl:grid-cols-4 sm:ml-52 sm:mr-32">
+                    <div class="lg:mr-36 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px]">
+                        
+                        <!--Mobile-->
+                        <div class="mb-5 lg:hidden flex justify-center">
+                            <a href="#"><img src="{% static 'img/mobile_cleaning_service.svg' %}" alt="Photo of cleaner" class=""></a>
                         </div>
-                    </div>
 
-                    <div class="ml-9 mb-5">
-                        <img src="{% static 'img/mobile_cleaning_service.svg' %}" alt="Photo of cleaner" class="w-full">
-                    </div>
-
-                    <div class="ml-9">
-                        <img src="{% static 'img/mobile_technician.svg' %}" alt="Photo of cleaner" class="w-full">
-                    </div>
-
-                    <div class="hidden bg-purpleEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
-                        <img src="{% static 'img/technician_service.svg' %}" alt="Photo of technician" class="w-60 h-52">
-                        <div class="p-5">
-                            <h2 class="font-semibold text-2xl mt-3 text-left">Technician</h2> <hr class="border-b-2 border-white w-1/2">
-                        <p class="font-medium text-xs mt-3 text-left">newly created service category. yoladglobal.com therefore has an enormous
-                            upside potential and is poised for rapid growth.
-                        </p>
+                        <div class="mb-5 lg:hidden flex justify-center">
+                            <a href="#"><img src="{% static 'img/technician_mobile.svg' %}" alt="Photo of technician" class="w-full"></a>
                         </div>
-                    </div>
 
-                    <div class="hidden bg-pinkEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
-                        <img src="{% static 'img/tech_service.svg' %}" alt="Photo of tech page" class="w-60 h-52">
-                        <div class="p-5">
-                            <h2 class="font-semibold text-2xl text-left mt-3">Tech</h2> <hr class="border-b-2 border-white w-1/5">
-                        <p class="font-medium text-xs mt-3 text-left">newly created service category. yoladglobal.com therefore has an enormous
-                            upside potential and is poised for rapid growth.
-                        </p>
+                        <div class="mb-5 lg:hidden flex justify-center">
+                            <a href="#"><img src="{% static 'img/tech_mobile.svg' %}" alt="Photo of technician" class="w-full"></a>
                         </div>
-                    </div>
 
-                    <div class="hidden bg-blueEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
-                        <img src="{% static 'img/artisan_service.svg' %}" alt="Photo of artisan" class="ml-1 w-60 h-52">
-                        <div class="p-5">
-                            <h2 class="font-semibold text-2xl text-left mt-3">Artisans</h2> <hr class="border-b-2 border-white w-1/3">
-                        <p class="font-medium text-xs mt-3 text-left">newly created service category. yoladglobal.com therefore has an enormous
-                            upside potential and is poised for rapid growth.
-                        </p>
+                        <div class="mb-5 lg:hidden flex justify-center">
+                            <a href="#"><img src="{% static 'img/artisan_mobile.svg' %}" alt="Photo of technician" class="w-full"></a>
                         </div>
                     </div>
                 </div>
@@ -201,7 +173,7 @@
             </div> 
 
             <!--Mobile view codes -->
-            <div class="bg-navyBlue">
+            <div class="bg-navyBlue lg:hidden">
                 <h2 class="font-extrabold text-white text-center text-2xl pt-10">CUSTOMERS REVIEW</h2>
 
                 <div class="mt-10 mx-10 flex pb-10">
@@ -238,7 +210,7 @@
 
         <!-- FAQ section -->
         <section>
-            <div class="bg-ash lg:pb-20 lg:mt-20 mt-10">
+            <div class="bg-ash lg:pb-20 lg:mt-20 mt-10 pb-20">
                 <div class="lg:ml-48 lg:mr-60 lg:mb-10 pt-10">
                     <h2 class="lg:pt-20 font-semibold text-veryDarkGreen text-center text-3xl  lg:text-3xl mb-10">Frequently Asked Questions</h2>
     
@@ -323,7 +295,7 @@
                     <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care rep">
                 </div>
                 <div class="ml-40 hidden lg:visible">
-                    <h2 class="font-black text-veryDarkGreenlg:text-5xl mb-5">Contact Our 24/7 <br/>
+                    <h2 class="font-black text-veryDarkGreen text-5xl mb-5">Contact Our 24/7 <br/>
                         Customer Service   
                     </h2>
 
