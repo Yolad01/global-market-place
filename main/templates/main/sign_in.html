@@ -9,8 +9,17 @@
       <img class="mx-auto h-10 w-auto" src="{% static '/img/skillas_design-03.png' %}" alt="Your Company">
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
     </div>
-  
+
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+
+      {% if messages %}
+      {% for message in messages %}
+      <div class="mt-2 text-sm text-center py-1 rounded-md px-2" role="alert">
+        <p class="text-white bg-rose-500 px-2 py-2 rounded shadow">{{ message }}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+      
       <form class="space-y-6" action="#" method="POST">
         {% csrf_token %}
         <div>
@@ -35,7 +44,7 @@
         </div>
   
         <div>
-          <button type="submit" class="w-full before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-2 capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen">Sign in</button>
+          <button type="submit" class="w-full before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-2 capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen before:duration-1000 after:duration-1000">Sign in</button>
         </div>
       </form>
   
@@ -45,6 +54,7 @@
       </p>
     </div>
   </div>
+  
 
 
 

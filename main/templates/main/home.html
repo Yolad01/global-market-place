@@ -39,8 +39,6 @@
                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Architecture and Engineering</a>
                     </div>
                 </div>
-                
-                
             </div>
         </section>
             
@@ -58,7 +56,7 @@
                 </div>
 
                 <div class="lg:hidden">
-                    <img class="mx-auto w-2/3 -mt-28" src="{% static 'img/hero_image_mobile.png' %}" alt="Photo of cleaner" class="">
+                    <img class="mx-auto w-2/3 -mt-28" src="{% static 'img/mobile_hero.svg' %}" alt="Photo of cleaner" class="">
                 </div>
             </div>
 
@@ -87,8 +85,8 @@
         <section>
             <div class="sm:mt-48 mt-20">
                 <h2 class="font-extrabold text-veryDarkGreen text-center text-3xl mb-10">Services</h2>
-                <div class="sm:grid sm:grid-cols-2 md:grid md:grid-cols-2 xl:grid xl:grid-cols-4 sm:ml-52 sm:mr-32">
-                    <div class="bg-orangeEssence lg:mr-36 mx-32 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
+                <div class="sm:grid sm:grid-cols-2 md:grid md:grid-cols-2 xl:grid xl:grid-cols-4 sm:ml-52 sm:mr-32 mx-40">
+                    <div class="hidden lg:visible bg-orangeEssence lg:mr-36 mx-32 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
                         <img src="{% static 'img/cleaning_service.svg' %}" alt="Photo of cleaner" class="w-60 h-52 items-center justify-center mx-auto">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl text-left mt-3">Cleaning Service</h2> <hr class="border-b-2 border-white mr-16">
@@ -98,7 +96,15 @@
                         </div>
                     </div>
 
-                    <div class="bg-purpleEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
+                    <div class="ml-9 mb-5">
+                        <img src="{% static 'img/mobile_cleaning_service.svg' %}" alt="Photo of cleaner" class="w-full">
+                    </div>
+
+                    <div class="ml-9">
+                        <img src="{% static 'img/mobile_technician.svg' %}" alt="Photo of cleaner" class="w-full">
+                    </div>
+
+                    <div class="hidden bg-purpleEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
                         <img src="{% static 'img/technician_service.svg' %}" alt="Photo of technician" class="w-60 h-52">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl mt-3 text-left">Technician</h2> <hr class="border-b-2 border-white w-1/2">
@@ -108,7 +114,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-pinkEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
+                    <div class="hidden bg-pinkEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
                         <img src="{% static 'img/tech_service.svg' %}" alt="Photo of tech page" class="w-60 h-52">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl text-left mt-3">Tech</h2> <hr class="border-b-2 border-white w-1/5">
@@ -118,7 +124,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-blueEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
+                    <div class="hidden bg-blueEssence mr-36 rounded-lg text-white overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] text-center transition-all duration-300 hover:-translate-y-[10px]">
                         <img src="{% static 'img/artisan_service.svg' %}" alt="Photo of artisan" class="ml-1 w-60 h-52">
                         <div class="p-5">
                             <h2 class="font-semibold text-2xl text-left mt-3">Artisans</h2> <hr class="border-b-2 border-white w-1/3">
