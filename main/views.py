@@ -32,6 +32,9 @@ from django.core.paginator import Paginator
 
 def home(request):
     job_form = JobForm(request.POST)
+    user = request.user
+    if user.is_authenticated:
+        return redirect("main:skillas_gigs")
     return render(request=request, template_name="main/home.html",
                   context={"form": job_form}
                   )
