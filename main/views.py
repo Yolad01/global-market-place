@@ -25,6 +25,8 @@ from .search import search_brief_title, search_brief_category
 from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
 
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+
 
 # Create your views here.
 
