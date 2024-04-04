@@ -183,3 +183,6 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = "main.User"
 
 # ASGI_APPLICATION = "main.asgi.application"
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend' # remember to remove during deployment
+# EMAIL_FILE_PATH = BASE_DIR / 'emails'
