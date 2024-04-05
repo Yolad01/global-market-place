@@ -184,5 +184,10 @@ AUTH_USER_MODEL = "main.User"
 
 # ASGI_APPLICATION = "main.asgi.application"
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend' # remember to remove during deployment
-# EMAIL_FILE_PATH = BASE_DIR / 'emails'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # remember to remove during deployment
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
+EMAIL_HOST_PASSWORD = 'N@n$er1234'
+EMAIL_USE_TLS = True
