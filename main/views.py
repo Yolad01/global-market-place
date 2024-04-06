@@ -11,7 +11,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, User, Order,
-                         Skill, JobCategory, ContactList, Thread, Message
+                         Skill, JobCategory, ContactList, Thread, Message, Skillas
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -21,7 +21,7 @@ from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.db.models import Max
-from .search import search_brief_title, search_brief_category
+from .search import search_brief_title, search_brief_category, search_skilla, skill_search
 from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
 
@@ -775,3 +775,7 @@ def search_results(request, param):
             "search_form": search_form,
         }
     )
+
+
+def skilla_search(request, param):
+    skilla = skilla_search(Skillas, param)
