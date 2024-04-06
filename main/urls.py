@@ -62,6 +62,8 @@ urlpatterns = [
     path("edit_brief/<int:id>", views.edit_brief , name="edit_brief"),
 
     path("search_results/<str:param>/", views.search_results , name="search_results"),
+
+    path("skilla_search/<str:param>/", views.skilla_search , name="skilla_search"),
     
     # path("skill_detail/", views.skill_detail , name="skill_detail"),
 

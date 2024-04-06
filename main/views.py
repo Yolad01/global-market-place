@@ -579,12 +579,23 @@ def create_gigs(request):
 
 def skillas_gigs(request):
 
-    search_form = SearchForm()
     skills = Skill.objects.all()
     paginator = Paginator(skills, 12)
 
     page_number = request.GET.get("page")
     page_object = paginator.get_page(page_number)
+
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            search_input = search_form.cleaned_data["search_input"]
+            print(search_input)
+            return redirect("main:skilla_search", param=search_input)
+
+    search_form = SearchForm()
+
+
+    
     return render(
         request=request,
         template_name="main/skillas_gigs.html",
@@ -778,4 +789,24 @@ def search_results(request, param):
 
 
 def skilla_search(request, param):
-    skilla = skilla_search(Skillas, param)
+
+    single_search = param
+    print(single_search)
+    skilla = skill_search(Skill, single_search)
+
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            search_input = search_form.cleaned_data["search_input"]
+            print(search_input)
+            skilla = skill_search(Skill, search_input)
+            print(skilla)
+
+    search_form = SearchForm()
+    return render(
+        request=request, template_name="main/skilla_search.html",
+        context={
+            "search_form": search_form,
+            # "page_object": page_object,
+        }
+    )
