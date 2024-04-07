@@ -1,10 +1,12 @@
 
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
 from django.db.models.query import QuerySet
+
+from django.contrib.auth import views as auth_views
 
 
 
@@ -60,10 +62,13 @@ urlpatterns = [
     path("edit_brief/<int:id>", views.edit_brief , name="edit_brief"),
 
     path("search_results/<str:param>/", views.search_results , name="search_results"),
+
+    path("skilla_search/<str:param>/", views.skilla_search , name="skilla_search"),
     
     # path("skill_detail/", views.skill_detail , name="skill_detail"),
 
     path("logout/", views.log_out, name="logout"),
+    
 ]
 
 urlpatterns += staticfiles_urlpatterns()

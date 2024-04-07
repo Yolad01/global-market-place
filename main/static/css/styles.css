@@ -1565,10 +1565,13 @@ select{
   flex: 1 1 0%;
 }
 
+<<<<<<< HEAD
 .flex-grow{
   flex-grow: 1;
 }
 
+=======
+>>>>>>> 595bd64d23d2cadbea155f778bd8768826bf71b4
 .origin-top-left{
   transform-origin: top left;
 }
@@ -2017,6 +2020,11 @@ select{
 .bg-navyBlue{
   --tw-bg-opacity: 1;
   background-color: rgb(34 32 95 / var(--tw-bg-opacity));
+}
+
+.bg-rose-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
 }
 
 .bg-rose-500{

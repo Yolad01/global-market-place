@@ -12,9 +12,9 @@ env = Env(
 )
 
 #new
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Env.read_env(os.path.join(BASE_DIR, '.env'))
+Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 
@@ -31,7 +31,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = 'django-insecure-2l3o0(u8z&xz1age*felsx@chp2@z!3u4otvuh#_2_i@f224+w'
+=======
+>>>>>>> 595bd64d23d2cadbea155f778bd8768826bf71b4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
@@ -183,3 +186,11 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = "main.User"
 
 # ASGI_APPLICATION = "main.asgi.application"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # remember to remove during deployment
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
+# EMAIL_HOST_PASSWORD = 'N@n$er1234'
+EMAIL_USE_TLS = True

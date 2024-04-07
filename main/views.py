@@ -11,7 +11,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, User, Order,
-                         Skill, JobCategory, ContactList, Thread, Message
+                         Skill, JobCategory, ContactList, Thread, Message, Skillas
                         )
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -21,7 +21,7 @@ from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.db.models import Max
-from .search import search_brief_title, search_brief_category
+from .search import search_brief_title, search_brief_category, search_skilla, skill_search
 from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
 
@@ -579,12 +579,23 @@ def create_gigs(request):
 
 def skillas_gigs(request):
 
-    search_form = SearchForm()
     skills = Skill.objects.all()
     paginator = Paginator(skills, 12)
 
     page_number = request.GET.get("page")
     page_object = paginator.get_page(page_number)
+
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            search_input = search_form.cleaned_data["search_input"]
+            print(search_input)
+            return redirect("main:skilla_search", param=search_input)
+
+    search_form = SearchForm()
+
+
+    
     return render(
         request=request,
         template_name="main/skillas_gigs.html",
@@ -773,5 +784,29 @@ def search_results(request, param):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "single_search": single_search,
             "search_form": search_form,
+        }
+    )
+
+
+def skilla_search(request, param):
+
+    single_search = param
+    print(single_search)
+    skilla = skill_search(Skill, single_search)
+
+    if request.method == "POST":
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            search_input = search_form.cleaned_data["search_input"]
+            print(search_input)
+            skilla = skill_search(Skill, search_input)
+            print(skilla)
+
+    search_form = SearchForm()
+    return render(
+        request=request, template_name="main/skilla_search.html",
+        context={
+            "search_form": search_form,
+            # "page_object": page_object,
         }
     )
