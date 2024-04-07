@@ -78,8 +78,21 @@
                                 <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
                                     
                                     <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
-
-                                        <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen">Skillas Blog</a>
+                                      
+                                        {% if user.role == "SKILLAS" %}
+                                        <a
+                                          href="/skillas_dashboard"
+                                          class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen"
+                                          >Dashboard</a
+                                        >
+                            
+                                        {% elif user.role == "CLIENT" %}
+                                        <a
+                                          href="/client_dashboard"
+                                          class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen"
+                                          >Dashboard</a
+                                        >
+                                        {% endif %}
 
                                     </li>
                                 </ul>

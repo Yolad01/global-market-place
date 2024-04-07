@@ -32,6 +32,9 @@ from django.core.paginator import Paginator
 
 def home(request):
     job_form = JobForm(request.POST)
+    user = request.user
+    if user.is_authenticated:
+        return redirect("main:skillas_gigs")
     return render(request=request, template_name="main/home.html",
                   context={"form": job_form}
                   )
@@ -48,11 +51,13 @@ def terms_condition(request):
         template_name="main/terms_condition.html"
     )
 
+
 def service_policy(request):
     return render(
         request=request,
         template_name="main/skilla/service_policy.html"
     )
+
 
 def register(request):
     if request.method == "POST":
@@ -457,6 +462,9 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 
 def inbox(request):
     user = request.user.id
+    inbox = None
+    profile_picture = None
+
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
         inbox = contact_list.contacts.all()
@@ -468,9 +476,12 @@ def inbox(request):
 
     msg = Message.objects.all().filter(sender=user)
 
-    profile_picture = ProfilePicture.objects.get(
-        user=user
-    )
+    try:
+        profile_picture = ProfilePicture.objects.get(
+            user=user
+        )
+    except ProfilePicture.DoesNotExist:
+        pass
 
     return render(
         request=request,
