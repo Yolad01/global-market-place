@@ -96,10 +96,14 @@ def register(request):
             elif user.role == "COMPANY":
                 messages.success(request, f"Logged in as {username}")
                 return redirect("main:company_profile")
-        messages.error(request,
-                        "Your password should not be less than 8 characters. the characters should include an uppercase, lowercase a symbol and a number."
-                        )
-        # return redirect("main:register")
+        for mssg in registration_form.error_messages:
+            messages.error(request, registration_form.error_messages[mssg])
+            print(f'Printing {mssg}')
+            # request._messages.clear()
+        # messages.error(request,
+        #                 "Your password should not be less than 8 characters. the characters should include an uppercase, lowercase a symbol and a number."
+        #                 )
+        return redirect("main:register")
     registration_form = RegistrationForm()
     return render(request=request, template_name="main/register.html",
                   context={
