@@ -55,14 +55,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'django_browser_reload',
+    # 'django_browser_reload',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # "django_browser_reload.middleware.BrowserReloadMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -183,10 +183,9 @@ AUTH_USER_MODEL = "main.User"
 
 # ASGI_APPLICATION = "main.asgi.application"
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # remember to remove during deployment
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # remember to remove during deployment
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
-# EMAIL_HOST_PASSWORD = 'N@n$er1234'
+EMAIL_HOST_PASSWORD = 'lztthecjycjsgtnf'
 EMAIL_USE_TLS = True
