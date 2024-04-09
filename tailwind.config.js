@@ -9,10 +9,12 @@ module.exports = {
         'primary': ['Inter'],
         'secondary': ['Poppins'],
       },
-      // screens: {
-      //   'sm': '640px',     // Small screens
 
-      // },
+      screens: {
+        'custom': '400px', // Breakpoint at 400px
+        'portable': '500px', // Breakpoint at 500px
+      },
+
       colors: {
         veryDarkGreen: '#002D38',
         veryShadyGreen: '#06393F',

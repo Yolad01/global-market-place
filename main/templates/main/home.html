@@ -6,26 +6,26 @@
     <div class="font-primary mt-24">
         <!-- Menu section -->
         <section class="">
-            <div class="mt-2 font-primary flex justify-center items-center gap-x-5 lg:gap-x-12 mx-10 md:gap-x-8">
-                <div class="lg:bg-ash md:bg-ash flex shadow-md p-2 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon">
-                    <a href="#" class="font-normal text-sm ml-2">Artisans</a>
+            <div class="mt-2 font-primary flex justify-center items-center sm:gap-x-5 lg:gap-x-12 mx-10 custom:mx-2 md:gap-x-8 custom:gap-x-2">
+                <div class="lg:bg-ash md:bg-ash flex shadow-md sm:p-2 custom:p-2 custom:-ml-1 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                    <a href="#" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">Artisans</a>
                 </div>
 
-                <div class="lg:bg-ash md:bg-ash flex shadow-md p-2 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon">
-                    <a href="#" class="font-normal text-sm ml-2">Technicians</a>
+                <div class="lg:bg-ash md:bg-ash flex shadow-md sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                    <a href="#" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">Technicians</a>
                 </div>
 
-                <div class="lg:bg-ash md:bg-ash flex shadow-md p-2 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_development.svg' %}" alt="icon">
-                    <a href="#" class="font-normal text-sm ml-2">Development and IT</a>
+                <div class="lg:bg-ash md:bg-ash flex shadow-md sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                    <a href="#" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">Development and IT</a>
                 </div>
 
                 
-                <div class="lg:bg-ash md:bg-ash flex shadow-md p-2 md:pt-3 relative mt-5 lg:mt-12">
-                    <button id="dropdownToggle" class="font-normal text-sm ml-2">More</button>
-                    <img src="{% static 'img/more_arrow.svg' %}" alt="downward arrow" class="ml-2 cursor-pointer" id="dropdownToggleImage">
+                <div class="lg:bg-ash md:bg-ash flex shadow-md sm:p-2 custom:p-2 md:pt-3 relative mt-5 lg:mt-12">
+                    <button id="dropdownToggle" class="font-normal text-sm sm:ml-2 custom:ml-0">More</button>
+                    <img src="{% static 'img/more_arrow.svg' %}" alt="downward arrow" class="ml-2 cursor-pointer portable:ml-1 invisible portable:visible sm:visible" id="dropdownToggleImage">
                 
     
                     <!-- Dropdown menu -->
@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="flex justify-center items-center mt-24 mb-20">
-                    <a href="/register" class="md:visible lg:visible lg:text-2xl before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryDarkGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize text-veryDarkGreen font-semibold text-[14px] xl:text-2xl relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryLightGreen after:rounded-md after:transition-all hover:text-veryLightGreen">
+                    <a href="/register" class="portable:text-xl md:visible lg:visible lg:text-2xl before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryDarkGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize text-veryDarkGreen font-semibold text-[14px] xl:text-2xl relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryLightGreen after:rounded-md after:transition-all hover:text-veryLightGreen">
                         SIGN UP TO SEE MORE
                     </a>
 
@@ -176,8 +176,8 @@
             <div class="bg-navyBlue lg:hidden">
                 <h2 class="font-extrabold text-white text-center text-2xl pt-10">CUSTOMERS REVIEW</h2>
 
-                <div class="mt-10 mx-10 flex pb-10">
-                    <div class="shadow md:grid md:grid-cols-2 md:gap-x-5">
+                <div class="mt-10 mx-10 flex pb-10 custom:mx-2">
+                    <div class="shadow md:grid md:grid-cols-2 md:gap-x-5 sm:mx-10">
                         <div class="flex">
                             <img src="{% static '/img/customer_one.png' %}" alt="Photo of customer" class="">
 
@@ -212,10 +212,10 @@
         <section>
             <div class="bg-ash lg:mt-20  mt-10 pb-10">
                 <div class="lg:mb-10 pt-10">
-                    <h2 class="font-semibold text-veryDarkGreen text-center text-3xl  lg:text-3xl mb-10">Frequently Asked Questions</h2>
+                    <h2 class="font-semibold text-veryDarkGreen text-center text-3xl  lg:text-3xl mb-10 custom:text-2xl">Frequently Asked Questions</h2>
     
 
-                    <div class="mx-14 lg:mx-10 xl:mx-20 2xl:mx-36">
+                    <div class="mx-14 lg:mx-10 xl:mx-20 2xl:mx-36 custom:mx-2 custom:ml-2 portable:mx-5">
                         <div class="rounded-none cursor-pointer">
                             <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
                                 <a class="font-normal text-xl text-navyBlue pl-5  toggle-dropdown">What Is The Refund Policy?</a>
@@ -294,14 +294,14 @@
                 <div class="hidden lg:flex lg:visible xl:mx-36">
                     <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care rep" class="lg:visible">
                 
-                <div class="md:ml-16 md:mt-20 md:visible md:pb-10 lg:visible xl:ml-40">
+                <div class="md:ml-16 md:mt-20 md:visible md:pb-10 lg:visible lg:ml-20 xl:ml-60">
                     <h2 class="font-black text-veryDarkGreen md:text-4xl mb-5">Contact Our 24/7 <br/>
                         Customer Service   
                     </h2>
 
                     <p class="font-medium md:mt-10 text-2xl">
                         YOLAD GLOBAL SERVICES LIMITED positions <br/> itself as a Need-Market Platform 
-                        that offers <br /> skilled Workers, Personnels, Businesses and 
+                        that offers <br /> skilled Workers and Personnels to businesses. 
                     </p>
 
                     <h2 class="font-black text-veryDarkGreen mt-10 text-left text-5xl mb-14 md:text-4xl">
@@ -315,19 +315,19 @@
                 </div>
             </div>
                 <!--Mobile and small screens -->
-                <div class="mt-10 mx-24 mb-10  md:invisible lg:hidden">
+                <div class="mt-10 mx-24 mb-10 custom:ml-10 sm:-mt-10 md:invisible lg:hidden">
                     <h2 class="font-black text-veryDarkGreen text-2xl mb-5">Contact Our 24/7 Customer Service</h2>
 
-                    <p class="font-medium text-base">
+                    <p class="font-medium text-base sm:mr-16">
                         YOLAD GLOBAL SERVICES LIMITED positions itself as a Need-Market Platform 
-                        that offers skilled Workers, Personnels, Businesses and 
+                        that offers skilled Workers and Personnels to businesses. 
                     </p>
 
-                    <h2 class="font-black text-veryDarkGreen mt-10 text-left text-4xl mb-14">
+                    <h2 class="font-black text-veryDarkGreen mt-10 text-left text-4xl mb-14 custom:text-2xl">
                         +234 803 674 8872
                     </h2>
                     
-                    <a href="/register" class="rounded bg-veryDarkGreen text-white text-3xl font-semibold px-10 py-2">
+                    <a href="/register" class="rounded bg-veryDarkGreen text-white text-3xl font-semibold px-10 py-2 custom:text-2xl">
                         Sign up here
                     </a>
                 </div>
