@@ -24,7 +24,8 @@ from django.db.models import Max
 from .search import search_brief_title, search_brief_category, search_skilla, skill_search
 from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
-
+from django.conf import settings
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -66,13 +67,29 @@ def register(request):
             registration_form.save()
             username = registration_form.cleaned_data["username"]
             password = registration_form.cleaned_data["password1"]
+            email = registration_form.cleaned_data["email"]
             user = authenticate(username=username, password=password)
+
+            # Sending mail to the new user
+            subject = "Welcome to Skillas. You know what time it is"
+            message = f'Hi {username}, we are happy to have you here'
+            email_from = settings.EMAIL_HOST_USER
+            recipient = [email]
+            send_mail_to_user = send_mail(
+                subject=subject,
+                message=message,
+                from_email=email_from,
+                recipient_list=recipient
+            )
+
             login(request, user)
             if user.role == "CLIENT":
+                send_mail_to_user
                 ClientProfile.objects.create(user_id=request.user.id)
                 messages.success(request, f"Logged in as {username}")
                 return redirect("main:client_profile")
             elif user.role == "SKILLAS":
+                send_mail_to_user
                 SkillaProfile.objects.create(user_id=request.user.id)
                 messages.success(request, f"Logged in as {username}")
                 return redirect("main:skilla_profile")
