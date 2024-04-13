@@ -30,6 +30,13 @@ class RegistrationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields["email"].required = True
         self.fields["phone_no"].required = True
+
+    # def clean_email(self):
+    #     email_input = self.cleaned_data.get('email')
+    #     if User.objects.filter(email=email_input).exists():
+    #         raise forms.ValidationError("email already exists!")
+
+    #     return email_input
         
         
 
