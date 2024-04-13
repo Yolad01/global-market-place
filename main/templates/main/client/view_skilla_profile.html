@@ -10,7 +10,7 @@
 
         <!-- Side bar -->
     
-        <div class="-ml-64 w-80">
+        {% comment %} <div class="-ml-64 w-80">
             <div class="w-64 mt-36 rounded-md">
                 <div class="flex p-2 mt-4">
                     <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
@@ -47,12 +47,12 @@
                     <a href="/logout" class="text-veryLightBlack font-normal text-3xl ml-4 mr-4">Logout</a>
                 </div>
             </div>
-        </div>
+        </div> {% endcomment %}
 
 
         <!-- Main Content -->
 
-        <div class="border-l-2">
+        <div>
           <div class="ml-60">
             <div class="p-10">
               <h3 class="font-primary font-normal text-3xl">{{ view_profile }}'s Profile</h3>

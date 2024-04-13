@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skilla</title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
+
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <script src="{% static '/js/init-alpine.js' %}"></script>
     <script src="{% static '/js/main.js' %}"></script>
@@ -28,25 +31,25 @@
 
   <!-- Navbar goes here -->
   <body>
-    <header>
+    <header class="hidden xl:visible">
       <!-- Navbar -->
       <nav
-        class="container h-24 border-b-2 flex bg-white items-center justify-between max-w-full shadow-md font-primary fixed"
+        class="container h-24 border-b-2 flex bg-white items-center justify-between gap-x-96 max-w-full shadow-md font-primary fixed"
       >
         <!-- Logo -->
-        <div class="ml-36 mt-4">
+        <div class="ml-56 mt-4">
           <a href="/">
             <img
             src="{% static '/img/skillas_design-03.png' %}"
             alt="Logo"
-            class="w-1/3"
+            class="w-60"
           />
           </a>
         </div>
         
         <!-- Menu Items -->
         <div class="mt-5 pr-36 items-center justify-center w-full font-primary">
-          <div class="flex gap-16 font-bold text-base">
+          <div class="flex gap-16 font-bold text-base ml-20">
             <a href="#about" class="-ml-20">About Us</a>
             <a href="#">Service</a>
             <a href="#contact">Contact</a>
