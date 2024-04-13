@@ -1,9 +1,13 @@
+{% extends 'layout/home_nav.html' %}
 {% load static %}
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skilla</title>
+
+ <!-- Favicon -->
+ <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
 
   <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
   <link
@@ -18,18 +22,17 @@
 </head>
 
 {% block content %}
-<body class="bg-white font-family-karla h-screen">
-  <div class="flex m-10 justify-center">
-    <div class="my-5 mx-5 p-5">
+<body class="bg-white font-primary">
+  <div class="lg:grid lg:grid-cols-2 custom:mx-4 portable:mx-20 justify-center">
+    <div class="mx-5 py-5 p-5 hidden lg:block xl:mt-14">
       <img
         src="{% static '/img/Illustrations-06.png' %}"
-        width="612"
-        height="612"
+        class="w-3/4 ml-60 mt-10 lg:-ml-5 lg:w-full lg:mt-60 xl:w-3/4 xl:ml-36"
       />
     </div>
 
-    <div class="mx-2 py-2 border border-veryDarkGreen">
-      <div class="text-md font-semibold text-center">
+    <div class="py-2 border border-veryDarkGreen custom:mt-32 custom:mb-10 custom:w-full portable:w-full lg:w-full xl:w-1/2 xl:mt-32 xl:mb-10">
+      <div class="text-lg text-veryDarkGreen font-semibold text-center">
         {{ user.username }} Profile Update
       </div>
 

@@ -2,18 +2,17 @@
 
 
 <body class="bg-white font-primary">
-  <div class="sm:grid sm:grid-cols-2 mt-2 container mx-auto">
-      <div class="ml-28 hidden sm:block">
-        <img src="{% static '/img/Illustrations-04.png' %}" class="mt-28" />
+  <div class="mt-2 lg:grid lg:grid-cols-2 container mx-auto xl:mt-32 xl:border xl:shadow-lg xl:mb-20">
+      <div class="ml-28 hidden lg:block">
+        <img src="{% static '/img/Illustrations-04.png' %}" class="xl:mt-64 lg:mt-96"/>
       </div>
-
-      <div class="flex min-h-full flex-col justify-center px-6 py-12 pb-60 lg:px-8">
+      <div class="flex min-h-full flex-col justify-center px-6 py-12 pb-60 lg:px-8 xl:-mt-20 lg:mt-10">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
           {% comment %} <img class="mx-auto h-10 w-auto" src="{% static '/img/skillas_design-03.png' %}" alt="Your Company"> {% endcomment %}
           <h2 class="mt-16 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">SIGN UP</h2>
         </div>
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm custom:-mb-32 xl:-mt-5 xl:-mb-40 lg:-mt-5">
 
           {% if messages %}
           {% for message in messages %}

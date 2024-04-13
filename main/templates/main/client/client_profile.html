@@ -4,14 +4,14 @@
 {% block content %}
 
 <body class="font-primary h-screen">
-    <div class="flex m-10 justify-center">
+    <div class="lg:grid lg:grid-cols-2 m-10 justify-center">
 
-        <div class="mt-40 mr-96">
-            <img src="{% static '/img/second_frame.svg' %}" alt="Illustration">
+        <div class="hidden lg:block lg:w-1/2 lg:mt-40 xl:ml-48">
+            <img src="{% static '/img/second_frame.svg' %}" alt="Illustration" class="lg:mt-20 lg:ml-20">
         </div>
 
-        <div class="mx-1 my 10 py-2 w-auto mt-10 -ml-40">
-            <div class="text-lg mt-10 pt-5 font-semibold text-center">{{ user.username }}' Profile Update</div>
+        <div class="custom:mx-1 custom:-mb-10 portable:mx-10 sm:mx-16 md:mx-32 lg:w-full lg:-ml-5 xl:w-1/2">
+            <div class="text-lg mt-10 pt-5 font-semibold text-center custom:mt-28">{{ user.username }}' Profile Update</div>
 
             <form method="POST" enctype="multipart/form-data" class="rounded-lg px-8 pt-6 pb-8 mb-4">
                 {% csrf_token %}
