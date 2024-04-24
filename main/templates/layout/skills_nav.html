@@ -52,44 +52,42 @@
             <div class="container mx-auto">
                 <div class="grid grid-cols-12">
                     <div class="col-span-12">
-                        <div class="flex flex-wrap items-center justify-between">
-                            <a href="/" class="block">
-                                <img class="w-full h-full invisible sm:visible" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
+                        <div class="flex flex-wrap items-center justify-between xl:mr-40 lg:mr-20 sm:mr-5 md:gap-x-10 lg:gap-x-48">
+                            <a href="/" class="hidden sm:block">
+                                <img class="w-full h-full" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
                             </a>
-                            <nav class="flex flex-wrap items-center font-semibold text-[#1E1E1E] sm:mr-40 lg:ml-10">
-                                <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none mr-40">
+                            <nav class="flex flex-wrap items-center mx-auto custom:gap-x-5 portable:gap-x-10  sm:gap-x-8 lg:gap-x-10 font-semibold text-[#1E1E1E]">
+                                <ul class="lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
                                     
-                                    <li class="mr-10 xl:mr-[40px] relative group py-[20px]">
+                                    <li class="xl:mr-[40px] relative group py-[20px]">
                                       <form method="POST">
                                         {% csrf_token %}
     
-                                        <div class="flex items-center">
-                                            <div>{{ search_form.search_input }}</div>
-                                            <button type="submit" class="bg-veryDarkGreen text-white px-2 py-2 rounded-md shadow-md">
+                                        <div class="hidden portable:flex items-center portable:-ml-16 xl:-ml-20">
+                                            <div class="hidden portable:block">{{ search_form.search_input }}</div>
+                                            <button type="submit" class="hidden portable:block portable:ml-0 bg-veryDarkGreen text-white px-2 py-2 rounded-md shadow-md">
                                                 Search
                                             </button>
-                                            
                                         </div>
-                                        
                                     </form>
                                     </li>
                                 </ul>
                                 
-                                <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
+                                <ul class="mt-5 ml-28 mx-auto portable:ml-0 portable:mt-0  sm:mr-0 flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
                                     
-                                    <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
+                                    <li class="xl:mr-[40px] relative group py-[20px]">
                                       
                                         {% if user.role == "SKILLAS" %}
                                         <a
                                           href="/skillas_dashboard"
-                                          class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen"
+                                          class="bg-veryDarkGreen before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryLightGreen"
                                           >Dashboard</a
                                         >
                             
                                         {% elif user.role == "CLIENT" %}
                                         <a
                                           href="/client_dashboard"
-                                          class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen"
+                                          class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen"
                                           >Dashboard</a
                                         >
                                         {% endif %}
@@ -99,54 +97,17 @@
                                 
                                 <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
                                     
-                                  <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
+                                  <li class="xl:mr-[40px} relative group py-[20px]">
                                     <div class="">
                                       <a href="#"
                                         ><img
                                           src="{% static '/img/Ellipse 12.png' %}"
                                           alt="Skillas photo"
-                                          class=""
+                                          class="lg:mr-10"
                                       /></a>
                                     </div>
                                   </li>
                                 </ul>
-                                
-
-                                <ul class="flex flex-wrap items-center">
-                                    <div class="md:hidden flex items-center">
-                                        <button class="outline-none mobile-menu-button">
-                                            <svg class=" w-6 h-6 text-veryDarkGreen"6
-                                                x-show="!showMenu"
-                                                fill="none"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path d="M4 6h16M4 12h16M4 18h16"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </ul>
-                                <div class="hidden mobile-menu">
-                                    <ul class="">
-                                        <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-blue-900 font-semibold">Home</a></li>
-                                        <li><a href="/about" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">About us</a></li>
-                                        <li><a href="/terms_and_services" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Terms and Conditions</a></li>
-                                        <li><a href="#" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Contact Us</a></li>
-                                        <li><a href="/sign_in" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Log in</a></li>
-                                        <li><a href="/register" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Sign up</a></li>
-                                    </ul>
-                                </div>
-                                <script>
-                                    const btn = document.querySelector("button.mobile-menu-button");
-                                    const menu = document.querySelector(".mobile-menu");
-                        
-                                    btn.addEventListener("click", () => {
-                                        menu.classList.toggle("hidden");
-                                    });
-                                </script>
                             </nav>
                         </div>
                     </div>
