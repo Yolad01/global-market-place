@@ -278,7 +278,7 @@ def skilla(request):
         if form.is_valid():
             client = form.cleaned_data["client"]
             title = form.cleaned_data["title"]
-            description = form.cleaned_data["description"]
+            # description = form.cleaned_data["description"]
             categories = form.cleaned_data["categories"]
             budget = form.cleaned_data["budget"]
             client = form.cleaned_data["client"]
@@ -289,7 +289,7 @@ def skilla(request):
             reachout = SkillaReachoutToClient(
                 user=user,
                 title=title,
-                description=description,
+                # description=description,
                 categories=get_categories,
                 budget=budget,
                 client=get_client

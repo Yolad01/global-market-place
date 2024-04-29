@@ -231,7 +231,7 @@ class BriefForm(forms.ModelForm):
 class BriefAppForm(forms.Form):
     client = forms.CharField(max_length=100)
     title = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20}))
+    # description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20}))
     categories = forms.CharField(max_length=100)
     budget = forms.IntegerField()
     # skilla = forms.CharField(max_length=100)
