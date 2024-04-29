@@ -32,10 +32,17 @@ from django.core.mail import send_mail
 
 
 def home(request):
+    
     job_form = JobForm(request.POST)
     user = request.user
+
     if user.is_authenticated:
         return redirect("main:skillas_gigs")
+    
+    if request.method == "POST":
+        var = request.POST["var"]
+        print(var)
+        # return redirect("main:search_results", param=search_input)
     return render(request=request, template_name="main/home.html",
                   context={"form": job_form}
                   )
@@ -292,9 +299,6 @@ def skilla(request):
             return redirect("main:skillas_dashboard")
         if search_form.is_valid():
             search_input = search_form.cleaned_data["search_input"]
-            # single_search = search_brief_title(Brief, search_input) or search_brief_category(Brief, search_input)
-            # print(single_search)
-            # print(type(single_search))
             return redirect("main:search_results", param=search_input)
 
 
