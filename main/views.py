@@ -32,7 +32,7 @@ from django.core.mail import send_mail
 
 
 def home(request):
-    
+
     job_form = JobForm(request.POST)
     user = request.user
 
@@ -42,7 +42,7 @@ def home(request):
     if request.method == "POST":
         var = request.POST["var"]
         print(var)
-        # return redirect("main:search_results", param=search_input)
+        return redirect("main:search_results", param=var)
     return render(request=request, template_name="main/home.html",
                   context={"form": job_form}
                   )
