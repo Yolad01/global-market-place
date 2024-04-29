@@ -4,13 +4,17 @@
 
 {% block content %}
 
-<div class="relative min-h-screen font-primary pt-5">
+<div class="relative min-h-screen font-primary lg:mt-20">
 
   <div class="bg-veryDarkGreen text-white font-semibold py-2 text-center text-xl shadow">
-    <p>{{ user.username }}'s Inbox</p>
   </div>
 
-  <div class="mt-2">
+  <div class="mt-10">
+
+    <div class="bg-veryDarkGreen text-white font-semibold py-2 text-center text-xl shadow">
+      <p>{{ user.username }}'s Inbox</p>
+    </div>
+
     {% for contact in inbox %}
     
     <div

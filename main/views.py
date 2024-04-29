@@ -366,6 +366,7 @@ def s_profile(request):
     about_form = AboutSkillaForm()
     cert_form = TrainingAndCertificationForm()
     skilla_pp_form = ProfilePictureForm()
+    search_form = SearchForm()
 
     return render(
         request=request,
@@ -377,18 +378,23 @@ def s_profile(request):
             "about_form": about_form,
             "cert_form": cert_form,
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "profile_pic_form": skilla_pp_form
+            "profile_pic_form": skilla_pp_form,
+
+            "search_form": search_form
         }
     )
 
 
 
 def wallet(request):
+
+    search_form = SearchForm()
     return render(
         request=request,
         template_name="main/skilla/wallet/wallet.html",
         context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "search_form": search_form
         }
     )
 
