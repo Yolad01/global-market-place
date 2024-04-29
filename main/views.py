@@ -21,7 +21,7 @@ from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.db.models import Max
-from .search import search_brief_title, search_brief_category, search_skilla, skill_search
+from .search import search_brief_title, search_brief_category, search_skill_category, search_skilla, skill_search
 from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
 from django.conf import settings
@@ -42,7 +42,7 @@ def home(request):
     if request.method == "POST":
         var = request.POST["var"]
         print(var)
-        return redirect("main:search_results", param=var)
+        return redirect("main:skilla_search", param=var)
     return render(request=request, template_name="main/home.html",
                   context={"form": job_form}
                   )
@@ -622,10 +622,14 @@ def skillas_gigs(request):
             search_input = search_form.cleaned_data["search_input"]
             print(search_input)
             return redirect("main:skilla_search", param=search_input)
+        
+    if request.method == "POST":
+        var = request.POST["var"]
+        print(var)
+        return redirect("main:skilla_search", param=var)
+    
 
     search_form = SearchForm()
-
-
     
     return render(
         request=request,
@@ -633,6 +637,7 @@ def skillas_gigs(request):
         context={
             "page_object": page_object,
             # "skills": skills,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "search_form": search_form
         }
         
@@ -812,7 +817,7 @@ def search_results(request, param):
     return render(
         request=request, template_name="main/search.html",
         context={
-            # "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "single_search": single_search,
             "search_form": search_form,
         }
@@ -823,7 +828,11 @@ def skilla_search(request, param):
 
     single_search = param
     print(single_search)
-    skilla = skill_search(Skill, single_search)
+    skilla = skill_search(Skill, single_search) or search_skill_category(Skill, single_search)
+
+    paginator = Paginator(skilla, 12)
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
 
     if request.method == "POST":
         search_form = SearchForm(request.POST)
@@ -838,6 +847,6 @@ def skilla_search(request, param):
         request=request, template_name="main/skilla_search.html",
         context={
             "search_form": search_form,
-            # "page_object": page_object,
+            "page_object": page_object,
         }
     )
