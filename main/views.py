@@ -812,7 +812,7 @@ def search_results(request, param):
     return render(
         request=request, template_name="main/search.html",
         context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            # "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "single_search": single_search,
             "search_form": search_form,
         }
