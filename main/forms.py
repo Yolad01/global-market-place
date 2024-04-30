@@ -26,6 +26,17 @@ class RegistrationForm(UserCreationForm):
             "password2": forms.PasswordInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
         }
 
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if User.objects.filter(email=email).exists():
+            print("It exists")
+        else:
+            print("e no dey")
+            raise forms.ValidationError("This email address is already in use.")
+        return email
+
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["email"].required = True

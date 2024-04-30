@@ -16,8 +16,8 @@ from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Jo
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Q
-from django.views import View
+# from django.db.models import Q
+# from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.db.models import Max
@@ -103,13 +103,12 @@ def register(request):
             elif user.role == "COMPANY":
                 messages.success(request, f"Logged in as {username}")
                 return redirect("main:company_profile")
-        for mssg in registration_form.error_messages:
-            messages.error(request, registration_form.error_messages[mssg])
-            print(f'Printing {mssg}')
-            # request._messages.clear()
-        # messages.error(request,
-        #                 "Your password should not be less than 8 characters. the characters should include an uppercase, lowercase a symbol and a number."
-        #                 )
+        else:
+            for field, errors in registration_form.errors.items():
+                for error in errors:
+                    m = messages.error(request, f"{field}: {error}")
+                    print(m)
+
         return redirect("main:register")
     registration_form = RegistrationForm()
     return render(request=request, template_name="main/register.html",
