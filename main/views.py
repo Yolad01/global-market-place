@@ -106,8 +106,8 @@ def register(request):
         else:
             for field, errors in registration_form.errors.items():
                 for error in errors:
-                    m = messages.error(request, f"{field}: {error}")
-                    print(m)
+                    messages.error(request, f"{field}: {error}")
+                    print(error)
 
         return redirect("main:register")
     registration_form = RegistrationForm()
