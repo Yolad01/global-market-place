@@ -220,9 +220,7 @@ def sign_in(request):
                     return redirect("main:skillas_dashboard")
         else:
             messages.error(request, "Wrong login credentials. Please enter a correct username and password to access your dashboard")
-            # return redirect("main:sign_in")
 
-            
     return render(request=request, template_name="main/sign_in.html",
                     context={"form": form})
 
@@ -491,9 +489,26 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 
 
 def inbox(request):
+
+    # mssg: list = []
+
     user = request.user.id
     inbox = None
     profile_picture = None
+
+    t = Thread.objects.filter(users=user)
+    t =  list(t)
+    t = str(t[0])
+    second_person = t.split(" ")
+    second_person = second_person[-1]
+
+    second_person_id = User.objects.get(username=second_person).id
+
+    mssg_thread = Message.objects.filter(sender=user)
+    
+    for msg in mssg_thread:
+        mssg: list = []
+        mssg.append(msg.text)
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
@@ -521,6 +536,7 @@ def inbox(request):
             "profile_picture": profile_picture,
             'me': user,
             'messages': msg,
+            "mssg":mssg,
         }
     )
 
