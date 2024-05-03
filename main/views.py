@@ -16,12 +16,12 @@ from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Jo
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Q
-from django.views import View
+# from django.db.models import Q
+# from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.db.models import Max
-from .search import search_brief_title, search_brief_category, search_skilla, skill_search
+from .search import search_brief_title, search_brief_category, search_skill_category, search_skilla, skill_search
 from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
 from django.conf import settings
@@ -32,10 +32,17 @@ from django.core.mail import send_mail
 
 
 def home(request):
+
     job_form = JobForm(request.POST)
     user = request.user
+
     if user.is_authenticated:
         return redirect("main:skillas_gigs")
+    
+    if request.method == "POST":
+        var = request.POST["var"]
+        print(var)
+        return redirect("main:skilla_search", param=var)
     return render(request=request, template_name="main/home.html",
                   context={"form": job_form}
                   )
@@ -96,13 +103,12 @@ def register(request):
             elif user.role == "COMPANY":
                 messages.success(request, f"Logged in as {username}")
                 return redirect("main:company_profile")
-        for mssg in registration_form.error_messages:
-            messages.error(request, registration_form.error_messages[mssg])
-            print(f'Printing {mssg}')
-            # request._messages.clear()
-        # messages.error(request,
-        #                 "Your password should not be less than 8 characters. the characters should include an uppercase, lowercase a symbol and a number."
-        #                 )
+        else:
+            for field, errors in registration_form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+                    print(error)
+
         return redirect("main:register")
     registration_form = RegistrationForm()
     return render(request=request, template_name="main/register.html",
@@ -214,9 +220,7 @@ def sign_in(request):
                     return redirect("main:skillas_dashboard")
         else:
             messages.error(request, "Wrong login credentials. Please enter a correct username and password to access your dashboard")
-            # return redirect("main:sign_in")
 
-            
     return render(request=request, template_name="main/sign_in.html",
                     context={"form": form})
 
@@ -271,7 +275,7 @@ def skilla(request):
         if form.is_valid():
             client = form.cleaned_data["client"]
             title = form.cleaned_data["title"]
-            description = form.cleaned_data["description"]
+            # description = form.cleaned_data["description"]
             categories = form.cleaned_data["categories"]
             budget = form.cleaned_data["budget"]
             client = form.cleaned_data["client"]
@@ -282,7 +286,7 @@ def skilla(request):
             reachout = SkillaReachoutToClient(
                 user=user,
                 title=title,
-                description=description,
+                # description=description,
                 categories=get_categories,
                 budget=budget,
                 client=get_client
@@ -292,9 +296,6 @@ def skilla(request):
             return redirect("main:skillas_dashboard")
         if search_form.is_valid():
             search_input = search_form.cleaned_data["search_input"]
-            # single_search = search_brief_title(Brief, search_input) or search_brief_category(Brief, search_input)
-            # print(single_search)
-            # print(type(single_search))
             return redirect("main:search_results", param=search_input)
 
 
@@ -366,6 +367,7 @@ def s_profile(request):
     about_form = AboutSkillaForm()
     cert_form = TrainingAndCertificationForm()
     skilla_pp_form = ProfilePictureForm()
+    search_form = SearchForm()
 
     return render(
         request=request,
@@ -377,18 +379,23 @@ def s_profile(request):
             "about_form": about_form,
             "cert_form": cert_form,
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "profile_pic_form": skilla_pp_form
+            "profile_pic_form": skilla_pp_form,
+
+            "search_form": search_form
         }
     )
 
 
 
 def wallet(request):
+
+    search_form = SearchForm()
     return render(
         request=request,
         template_name="main/skilla/wallet/wallet.html",
         context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "search_form": search_form
         }
     )
 
@@ -482,9 +489,26 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 
 
 def inbox(request):
+
+    # mssg: list = []
+
     user = request.user.id
     inbox = None
     profile_picture = None
+
+    t = Thread.objects.filter(users=user)
+    t =  list(t)
+    t = str(t[0])
+    second_person = t.split(" ")
+    second_person = second_person[-1]
+
+    second_person_id = User.objects.get(username=second_person).id
+
+    mssg_thread = Message.objects.filter(sender=user)
+    
+    for msg in mssg_thread:
+        mssg: list = []
+        mssg.append(msg.text)
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
@@ -512,6 +536,7 @@ def inbox(request):
             "profile_picture": profile_picture,
             'me': user,
             'messages': msg,
+            "mssg":mssg,
         }
     )
 
@@ -612,10 +637,14 @@ def skillas_gigs(request):
             search_input = search_form.cleaned_data["search_input"]
             print(search_input)
             return redirect("main:skilla_search", param=search_input)
+        
+    if request.method == "POST":
+        var = request.POST["var"]
+        print(var)
+        return redirect("main:skilla_search", param=var)
+    
 
     search_form = SearchForm()
-
-
     
     return render(
         request=request,
@@ -623,6 +652,7 @@ def skillas_gigs(request):
         context={
             "page_object": page_object,
             # "skills": skills,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "search_form": search_form
         }
         
@@ -813,7 +843,11 @@ def skilla_search(request, param):
 
     single_search = param
     print(single_search)
-    skilla = skill_search(Skill, single_search)
+    skilla = skill_search(Skill, single_search) or search_skill_category(Skill, single_search)
+
+    paginator = Paginator(skilla, 12)
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
 
     if request.method == "POST":
         search_form = SearchForm(request.POST)
@@ -828,6 +862,6 @@ def skilla_search(request, param):
         request=request, template_name="main/skilla_search.html",
         context={
             "search_form": search_form,
-            # "page_object": page_object,
+            "page_object": page_object,
         }
     )

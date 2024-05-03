@@ -400,7 +400,6 @@ class Thread(TrackingModel):
         return f'{self.name}'
 
 
-
 class Message(TrackingModel):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
     sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

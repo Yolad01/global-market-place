@@ -7,6 +7,9 @@ def search_brief_title(model, param) -> QuerySet:
 def search_brief_category(model, param) -> QuerySet:
     return model.objects.filter(categories__title__icontains=param)
 
+def search_skill_category(model, param) -> QuerySet:
+    return model.objects.filter(category__title__icontains=param)
+
 
 def search_skilla(model, param) -> QuerySet:
     return model.objects.filter(username__icontains=param)

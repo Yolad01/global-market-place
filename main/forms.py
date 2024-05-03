@@ -26,6 +26,7 @@ class RegistrationForm(UserCreationForm):
             "password2": forms.PasswordInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
         }
 
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["email"].required = True
@@ -231,7 +232,7 @@ class BriefForm(forms.ModelForm):
 class BriefAppForm(forms.Form):
     client = forms.CharField(max_length=100)
     title = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20}))
+    # description = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 20}))
     categories = forms.CharField(max_length=100)
     budget = forms.IntegerField()
     # skilla = forms.CharField(max_length=100)
