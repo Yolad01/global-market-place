@@ -1,4 +1,3 @@
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -48,43 +47,47 @@
         <!-- Header start -->
 
         <header id="sticky-header" class="sticky-header z-[25] secondary-sticky">
-          <div class="container mx-auto">
+          <div class="container mx-auto lg:-mt-5">
               <div class="grid grid-cols-12">
                   <div class="col-span-12">
                       <div class="flex flex-wrap items-center justify-between sm:mx-10">
-                        <div class="flex custom:gap-x-40 portable:gap-x-60 sm:gap-x-80 md:hidden lg:hidden justify-between">
+                        <div class="flex md-compact:gap-x-32 compact:gap-x-10 custom:gap-x-40 portable:gap-x-60 sm:gap-x-80 md:hidden lg:hidden justify-between">
                           <a href="/">
-                              <img class="pt-10 pl-10" src="{% static '/img/skilla_mini_logo.jpg' %}" loading="lazy" alt="brand logo">
+                              <img class="mt-10 ml-10 -mb-5" src="{% static '/img/skilla_mini_logo.jpg' %}" loading="lazy" alt="brand logo">
                           </a>
 
-                          <a href="#">
-                            <img id="hamburger-menu" class="w-1/3 h-1/3 mt-10 ml-20 portable:ml-24 cursor-pointer" src="{% static '/img/green_hamburger_menu.png' %}" loading="lazy" alt="hamburger menu" onclick="toggleDropdown()">
-                          </a>
-                          {% comment %} <div class="flex justify-end flex-grow relative">
-                              <a>
-                                <img id="hamburger-menu" class="w-1/3 h-1/3 mt-10 ml-20 cursor-pointer" src="{% static '/img/green_hamburger_menu.png' %}" loading="lazy" alt="hamburger menu" onclick="toggleDropdown()">
-                              </a>
-                              <div id="dropdown-menu" class="hidden absolute bg-white py-2 px-4 mt-10 mr-10 shadow-lg">
-                                  <ul>
-                                      <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-blue-900 font-semibold">Home</a></li>
-                                      <li><a href="/about" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">About us</a></li>
-                                      <li><a href="/terms_and_services" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Terms and Conditions</a></li>
-                                      <li><a href="/contact" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Contact Us</a></li>
-                                      <li><a href="/login" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Log in</a></li>
-                                      <li><a href="/sign_up" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Sign up</a></li>
-                                  </ul>
-                              </div>
-                          </div> {% endcomment %}
+                          
+                          <a href="#"><img id="hamburger-menu" class="-mb-5 mt-10 ml-20 compact:mt-11 portable:ml-24 cursor-pointer" src="{% static '/img/green_hamburger_menu.png' %}" loading="lazy" alt="hamburger menu"></a>
+                          <div id="dropdown-menu" class="hidden absolute compact:ml-16 compact:mt-20 portable:ml-72 custom:ml-40 custom:mt-20 sm:ml-96 sm:pl-14 py-2 px-4 mt-10 mr-10 shadow-lg bg-white">
+                              <ul>
+                                  <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-veryDarkGreen font-semibold">Home</a></li>
+                                  <li><a href="/about" class="block text-sm py-4 px-2 hover:bg-blue-900 hover:text-blue-50 transition duration-300">About</a></li>
+                                  <li><a href="/terms_condition" class="block px-2 text-sm py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Terms & Condition</a></li>
+                                  <li><a href="/sign_in" class="block text-sm py-4 px-2 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Log in</a></li>
+                                  <li><a href="/register" class="block text-sm py-4 px-2 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Sign up</a></li>
+                              </ul>
+                          </div>
+                          
                       </div>
                           <!--nav for medium screen-->
-                          <div class="md:flex md:justify-between gap-x-96 md:visible hidden lg:hidden">
+                          <div class="md:-mb-5 md:flex md:justify-between gap-x-96 md:visible hidden lg:hidden">
                             <a href="/" class="block">
                               <img class="ml-2 mt-10" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
                             </a>
 
                             <a href="#">
-                              <img id="hamburger-menu" class="w-1/3 h-1/3 mt-10 ml-20 cursor-pointer" src="{% static '/img/green_hamburger_menu.png' %}" loading="lazy" alt="hamburger menu" onclick="toggleDropdown()">
-                            </a>
+                              <img id="hamburger-icon" class="md:mt-10 ml-10 cursor-pointer" src="{% static '/img/green_hamburger_menu.png' %}" loading="lazy" alt="hamburger menu">
+                          </a>
+                          
+                          <div id="menu-dropdown" class="hidden absolute md:ml-96  md:mt-20 py-2 px-4 mt-10 mr-10 shadow-lg bg-white">
+                              <ul>
+                                  <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-veryDarkGreen font-semibold">Home</a></li>
+                                  <li><a href="/about" class="block text-sm py-4 px-2 hover:bg-blue-900 hover:text-blue-50 transition duration-300">About</a></li>
+                                  <li><a href="/terms_condition" class="block px-2 text-sm py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Terms & Condition</a></li>
+                                  <li><a href="/sign_in" class="block text-sm py-4 px-2 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Log in</a></li>
+                                  <li><a href="/register" class="block text-sm py-4 px-2 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Sign up</a></li>
+                              </ul>
+                          </div>
                         </div>
                           <!--nav for large screen-->
                             <a href="/" class="block">
@@ -99,14 +102,14 @@
                                         <ul class="list-none bg-white drop-shadow-[0px_6px_10px_rgba(0,0,0,0.2)] rounded-[12px] flex flex-wrap flex-col w-[220px] absolute top-[120%] left-1/2 -translate-x-1/2 transition-all
                                                   group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opacity-100">
                                             <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
-                                                <a href="/about" class="font-primary leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px] rounded-t-[12px]">about</a>
+                                                <a href="/about" class="font-primary leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px] rounded-t-[12px]">About</a>
                                             </li>
                                             <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
-                                                <a href="/terms_condition" class="font-primary leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">terms condition</a>
+                                                <a href="/terms_condition" class="font-primary leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Terms & condition</a>
                                             </li>
 
                                             <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
-                                                <a href="/service_policy" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">service policy</a>
+                                                <a href="/service_policy" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Service policy</a>
                                             </li>
                                             <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
                                                 <a href="/register" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Register</a>
@@ -139,49 +142,7 @@
                                     >
                                     {% endif %}
                                       
-                                  </li>
-                                    <div class="md:hidden flex items-center">
-                                        <button class="outline-none mobile-menu-button">
-                                            {% comment %} <svg class=" w-6 h-6 text-veryDarkGreen"6
-                                                x-show="!showMenu"
-                                                fill="none"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="2"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path d="M4 6h16M4 12h16M4 18h16"></path>
-                                            </svg> {% endcomment %}
-                                        </button>
-                                    </div>
-                                </ul>
-                                <div class="hidden mobile-menu">
-                                    <ul class="">
-                                        <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-blue-900 font-semibold">Home</a></li>
-                                        <li><a href="/about" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">About us</a></li>
-                                        <li><a href="/terms_and_services" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Terms and Conditions</a></li>
-                                        <li><a href="/contact" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Contact Us</a></li>
-                                        <li><a href="/login" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Log in</a></li>
-                                        <li><a href="/sign_up" class="block text-sm px-2 py-4 hover:bg-blue-900 hover:text-blue-50 transition duration-300">Sign up</a></li>
-                                    </ul>
-                                </div>
-                                <script>
-                                    const btn = document.querySelector("button.mobile-menu-button");
-                                    const menu = document.querySelector(".mobile-menu");
-                        
-                                    btn.addEventListener("click", () => {
-                                        menu.classList.toggle("hidden");
-                                    });
-                                </script>
-
-                                <!--Hamburger drop down -->
-                                <script>
-                                  function toggleDropdown() {
-                                      var dropdownMenu = document.getElementById("dropdown-menu");
-                                      dropdownMenu.classList.toggle("hidden");
-                                  }
-                              </script>
+                                  </li>  
                             </nav>
                         </div>
                     </div>
@@ -196,8 +157,8 @@
         {% endblock %}
 
         <!-- Footer Start -->
-        <footer class="footer bg-veryDarkGreen text-white pt-[80px] pb-10 md:pb-[80px] lg:pb-[80px] font-normal bg-no-repeat">
-            <div class="container mx-20 lg:mx-0 xl:mx-20 custom:ml-6">
+        <footer class="footer bg-veryDarkGreen text-white pt-[80px] pb-10 md:pb-[80px] lg:pb-[80px] font-normal bg-no-repeat" style="background-image: url('assets/images/footer/pattern.png');">
+            <div class="container md-compact:ml-5 compact:ml-1 mx-20 lg:mx-0 xl:mx-20 custom:ml-6">
                 <div class="grid grid-cols-12 gap-x-[30px] mb-[-30px]">
                     <div class="col-span-12 sm:col-span-6 lg:col-span-4 mb-[30px] sm:ml-5 lg:ml-10">
                         <a href="index.html" class="block mb-[25px]">
@@ -228,7 +189,7 @@
                     <div class="col-span-12 sm:col-span-6 lg:col-span-2 mb-[30px] sm:-ml-16 md:ml-3 2xl:-ml-10">
                         <h3 class="font-lora font-normal text-[22px] leading-[1.222] text-primary mb-[20px] lg:mb-[30px]">
                             Address<span class="text-secondary">.</span></h3>
-                        <p>Herbert Macaulay Way Alagomeji</p>
+                        <p class="compact:text-sm">38 Olonode Street,  Alagomeji Yaba, Lagos</p>
                         <ul class="inline-flex items-center justify-center mt-[20px]">
                             <li class="first:ml-0 ml-[15px]">
                                 <a href="https://www.facebook.com/" aria-label="svg" class="w-[26px] h-[26px] transition-all rounded-full bg-veryDarkGreen flex items-center justify-center hover:drop-shadow-[0px_4px_10px_rgba(0,0,0,0.25)] text-white hover:text-veryDarkGreen hover:bg-veryLightGreen">
@@ -255,7 +216,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="text-sm md:hidden mt-[20px]">&copy; <a href="https://themeforest.net/user/codecarnival/portfolio" class="text-secondary">Abby Cares Foundation.</a> All Rights Reserved - Privacy Policy</p>
+                        <p class="text-sm md:hidden mt-[20px]">&copy; <a href="https://themeforest.net/user/codecarnival/portfolio" class="text-secondary"></a> All Rights Reserved - Privacy Policy</p>
                     </div>
                 </div>
             </div>
@@ -285,6 +246,21 @@
     <!-- Activation JS -->
     <script src="{% static 'assets/js/main.js' %}"></script>
 
+    <!--Hamburger drop down for screens between compact and sm -->
+    <script>
+      document.getElementById("hamburger-menu").addEventListener("click", function() {
+          var dropdownMenu = document.getElementById("dropdown-menu");
+          dropdownMenu.classList.toggle("hidden");
+      });
+  </script>
+
+  <script>
+    document.getElementById("hamburger-icon").addEventListener("click", function() {
+        var dropdownMenu = document.getElementById("menu-dropdown");
+        dropdownMenu.classList.toggle("hidden");
+    });
+</script>
+
 </body>
 
 </html>
@@ -296,196 +272,3 @@
 
 
 
-{% comment %} {% load static %}
-<!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skilla</title>
-
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <script src="{% static '/js/init-alpine.js' %}"></script>
-    <script src="{% static '/js/main.js' %}"></script>
-    <script src="{% static '/js/wow.min.js' %}"></script>
-
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
-    <script>
-      new WOW().init();
-    </script>
-    
-
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-
-  <!-- Navbar goes here -->
-  <body>
-    <header class="absolute left-0 w-full z-10">
-      <!-- Navbar -->
-      <nav
-        class="container h-20 border-b-2 flex bg-white max-w-full font-primary shadow-md fixed"
-      >
-        <!-- Logo -->
-        <div class="ml-36 mt-4">
-          <a href="/">
-            <img
-            src="{% static '/img/skillas_design-03.png' %}"
-            alt="Logo"
-            class="w-1/3"
-          />
-          </a>
-        </div>
-
-        <div class="ml-72 flex items-center justify-center w-full font-primary font-bold text-base">
-          <div class="relative inline-block text-left -mt-5">
-              <button id="dropdownButton" type="button" class=" bg-veryDarkGreen text-white py-3 pl-3 pr-12">View</button>
-                  <img
-                    src="{% static '/img/downward_arrow.svg' %}"
-                    alt="downward arrow"
-                    class="w-5 -mt-7 ml-16 cursor-pointer"
-                    id="dropdownArrow"/>
-                
-
-                <!-- Dropdown menu -->
-              <div id="dropdownMenu" class="origin-top-left absolute left-0 mt-10 w-56 rounded-md shadow-lg border border-lightBlack bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none hidden">
-                <div class="py-1" role="none">
-                  <a href="/about" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">
-                    About Us 
-                  </a>
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Services</a>
-                  <a href="/terms_condition" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Terms and Conditions</a>
-                  <a href="/service_policy" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Privacy Policy</a>
-                </div>
-              </div> 
-            </div>
-              
-            {% if not user.is_authenticated %}
-            <a
-              href="/register"
-              class="bg-veryDarkGreen text-white px-5 py-3 ml-12"
-              >Use Web App</a
-            >
-
-            {% elif user.role == "SKILLAS" %}
-            <a
-              href="/skillas_dashboard"
-              class="bg-veryDarkGreen text-white px-3 py-2 ml-12"
-              >Dashboard</a
-            >
-
-            {% elif user.role == "CLIENT" %}
-            <a
-              href="/client_dashboard"
-              class="bg-veryDarkGreen text-white px-3 py-2 ml-12"
-              >Dashboard</a
-            >
-            {% endif %}
-        </div>
-
-        <li class="ml-2 sm:ml-5 lg:invisible list-none">
-            <a href="#offcanvas-mobile-menu" class="offcanvas-toggle flex text-[#016450] hover:text-secondary">
-                <svg width="24" height="24" class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
-                </svg>
-            </a>
-        </li>
-
-      </nav>
-    </header>
-
-    <!-- Mobile menu -->
-
-    <div class="pt-10">{% block content %} {% endblock %}</div>
-
-    <footer>
-      <div class="bg-veryDarkGreen p-10">
-        <div class="mt-10 flex items-center justify-center">
-          <img
-            src="{% static '/img/Group 213.svg' %}"
-            alt="skillas-white-logo"
-          />
-        </div>
-
-        <div class="p-10">
-          <p class="text-white font-medium text-xl text-center mb-12">
-            The easiest way to hire/sell is instantly at zero risk
-          </p>
-          <p class="text-white font-medium text-xl text-center mb-12">
-            <a href="/terms_condition"> Terms & Condition</a><span class="ml-5"> <a href="/service_policy">Privacy Policy</a></span>
-          </p>
-          <div class="flex items-center justify-center pt-5 space-x-4">
-            <img src="{% static '/img/Group 289.png' %}" alt="Instagram" />
-            <img src="{% static '/img/Vector (1).png' %}" alt="Twitter" />
-            <img src="{% static '/img/Vector (2).png' %}" alt="LinkedIn" />
-          </div>
-        </div>
-      </div>
-
-      <div class="">
-        <p class="text-veryDarkGreen p-5 font-medium text-lg text-center">
-          &copy;2023 Yolad Global Service Limited All rights reserved.
-        </p>
-      </div>
-    </footer>
-
-
-    
-
-
-  </body>
- 
-
-  
-    <script>
-      const btn = document.querySelector("button.mobile-menu-button");
-      const menu = document.querySelector(".mobile-menu");
-
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
-    </script>
-
-    <!-- a little JS for the mobile nav button -->
-    <script>
-      if (document.getElementById("nav-mobile-btn")) {
-        document
-          .getElementById("nav-mobile-btn")
-          .addEventListener("click", function () {
-            if (this.classList.contains("close")) {
-              document.getElementById("nav").classList.add("hidden");
-              this.classList.remove("close");
-            } else {
-              document.getElementById("nav").classList.remove("hidden");
-              this.classList.add("close");
-            }
-          });
-      }
-    </script>
-
-    <!-- Drop down for View Button -->
-    <script>
-      const dropdownButton = document.getElementById('dropdownButton');
-      const dropdownArrow = document.getElementById('dropdownArrow');
-      const dropdownMenu = document.getElementById('dropdownMenu');
-
-      dropdownButton.addEventListener('click', toggleDropdown);
-      dropdownArrow.addEventListener('click', toggleDropdown);
-
-      // Function to toggle dropdown menu
-      function toggleDropdown() {
-        dropdownMenu.classList.toggle('hidden');
-      }
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', (event) => {
-        if (!dropdownButton.contains(event.target) && !dropdownArrow.contains(event.target)) {
-          dropdownMenu.classList.add('hidden');
-        }
-      });
-    </script>
-  </body>
-</html> {% endcomment %}
