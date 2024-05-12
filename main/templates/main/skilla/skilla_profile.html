@@ -23,15 +23,14 @@
 
 {% block content %}
 <body class="bg-white font-primary">
-  <div class="lg:grid lg:grid-cols-2 custom:mx-4 portable:mx-20 justify-center">
+  <div class="lg:grid lg:grid-cols-2 custom:mx-4 portable:mx-20 md:mx-40 justify-center compact:mt-32">
     <div class="mx-5 py-5 p-5 hidden lg:block xl:mt-14">
       <img
         src="{% static '/img/Illustrations-06.png' %}"
-        class="w-3/4 ml-60 mt-10 lg:-ml-5 lg:w-full lg:mt-60 xl:w-3/4 xl:ml-36"
-      />
+        class="w-3/4 mt-10 lg:-ml-5 lg:w-full lg:mt-60 xl:w-3/4 xl:ml-36 xl:mt-10"/>
     </div>
 
-    <div class="py-2 border border-veryDarkGreen custom:mt-32 custom:mb-10 custom:w-full portable:w-full lg:w-full xl:w-1/2 xl:mt-32 xl:mb-10">
+    <div class="py-2 border border-veryDarkGreen custom:mt-32 custom:mb-10 custom:w-full portable:w-full lg:w-full xl:w-1/2 xl:mt-10 xl:mb-10 lg:mt-10">
       <div class="text-lg text-veryDarkGreen font-semibold text-center">
         {{ user.username }} Profile Update
       </div>

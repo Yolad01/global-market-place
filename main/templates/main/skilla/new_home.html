@@ -6,27 +6,15 @@
     <div class="font-primary mt-24">
         <!-- Menu section -->
         <section class="">
-            {% comment %} <div class="mt-2 font-primary flex justify-center items-center compact:gap-x-3 sm:gap-x-5 lg:gap-x-12 mx-10 custom:mx-2 md:gap-x-8 custom:gap-x-2"> {% endcomment %}
-                
-                {% comment %} <div class="lg:bg-ash md:bg-ash shadow-md flex compact:p-1 sm:p-2 custom:p-2 md:pt-3 relative mt-5 lg:mt-12"> {% endcomment %}
-
-            <div class="mt-2 font-primary flex justify-center items-center sm:gap-x-5 lg:gap-x-12 mx-10 custom:mx-2 md:gap-x-8 custom:gap-x-2">
-                <div class="lg:bg-ash md:bg-ash flex shadow-md sm:p-2 custom:p-2 custom:-ml-1 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
-                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
-                        {% csrf_token %}
-                        <input id="" value="Artisans" name="var" class="hidden">
-                        <button type="submit">Artisans</button>
-                    </form>
+            <div class="mt-2 font-primary flex justify-center items-center compact:gap-x-3 sm:gap-x-5 lg:gap-x-12 mx-10 custom:mx-2 md:gap-x-8 custom:gap-x-2">
+                <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 custom:-ml-1 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon" class="hidden portable:block">
+                    <a href="#" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">Artisans</a>
                 </div>
 
                 <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
-                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
-                        {% csrf_token %}
-                        <input id="" value="Technicians" name="var" class="hidden">
-                        <button type="submit">Technicians</button>
-                    </form>
+                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon" class="hidden portable:block">
+                    <a href="#" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">Technicians</a>
                 </div>
 
                 <!-- This div is for compact screens only -->
@@ -36,12 +24,8 @@
                 </div>
 
                 <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12 compact:hidden custom:block portable:flex">
-                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
-                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
-                        {% csrf_token %}
-                        <input id="" value="Development and IT" name="var" class="hidden">
-                        <button type="submit">Development and IT</button>
-                    </form>
+                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="hidden portable:block">
+                    <a href="#" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">Development and IT</a>
                 </div>
                 
                 <div class="lg:bg-ash md:bg-ash shadow-md flex compact:p-1 sm:p-2 custom:p-2 md:pt-3 relative mt-5 lg:mt-12">
@@ -52,32 +36,11 @@
                     <!-- Dropdown menu -->
                     <div id="dropdownMoreMenu" class="absolute compact:-ml-48 custom:-ml-44 portable:-ml-40 sm:-ml-28 font-primary mt-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none hidden">
                         <div class="py-1" role="none">
-
-                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
-                            {% csrf_token %}
-                            <input id="" value="Craftsmen" name="var" class="hidden">
-                            <button type="submit">Craftsmen</button>
-                        </form>
-                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
-                            {% csrf_token %}
-                            <input id="" value="Accounting and Finance" name="var" class="hidden">
-                            <button type="submit">Accounting and Finance</button>
-                        </form>
-                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
-                            {% csrf_token %}
-                            <input id="" value="Writing and Translation" name="var" class="hidden">
-                            <button type="submit">Writing and Translation</button>
-                        </form>
-                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
-                            {% csrf_token %}
-                            <input id="" value="Marketing and Sales" name="var" class="hidden">
-                            <button type="submit">Marketing and Sales</button>
-                        </form>
-                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
-                            {% csrf_token %}
-                            <input id="" value="Architecture and Engineering" name="var" class="hidden">
-                            <button type="submit">Architecture and Engineering</button>
-                        </form>
+                        <a href="#" class="block py-2 text-sm px-4 font-primary leading-[1.571] text-primary capitalize transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen my-[-1px] rounded-t-[12px]" role="menuitem" tabindex="-1">Craftsmen</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Accounting and Finance</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Writing and Translation</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Marketing and Sales</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Architecture and Engineering</a>
                     </div>
                 </div>
             </div>
@@ -92,14 +55,12 @@
                 </div>
 
                 <div class="lg:flex lg:items-center lg:justify-center compact:-mt-7 compact:mb-7">
-                <div class="lg:flex lg:items-center lg:justify-center compact:-mt-7 compact:mb-7">
                     <img class="lg:hidden mx-auto w-2/3 mt-20" src="{% static '/img/home_banner.svg' %}" alt="banner">
                     <img class="invisible lg:visible xl:visible lg:-mt-20 lg:w-1/3 xl:w-1/3 xl:-mt-40" src="{% static '/img/home_banner.svg' %}" alt="banner">
                 </div>
 
                 <div class="lg:hidden">
                     <img class="mx-auto w-2/3 -mt-28" src="{% static 'img/mobile_hero.svg' %}" alt="Photo of cleaner" class="mt-14">
-                    {% comment %} <img class="mx-auto w-2/3 -mt-28" src="{% static 'img/mobile_hero.svg' %}" alt="Photo of cleaner" class="mt-14"> {% endcomment %}
                 </div>
             </div>
             
@@ -421,4 +382,4 @@
             });
         });
         </script>
-{% endblock %}
+{% endblock %}

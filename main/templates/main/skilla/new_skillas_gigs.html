@@ -1,0 +1,177 @@
+{% extends 'layout/skills_nav.html' %} {% load static %} {% block content %}
+
+<main class="mt-20 bg-white mx-auto">
+  <div class="bg-veryDarkGreen py-3 flex">
+
+    <ul class="flex flex-wrap items-center text-[16px] font-semibold xl:text-[18px] leading-none">
+      <p class="text-white font-extrabold text-lg portable:text-xl xl:ml-52 xl:mt-1 lg:ml-10 lg:mt-4 md:ml-20 sm:ml-20 portable:ml-10 ml-5">All Categories</p>
+      <li class="mr-7 xl:mr-[40px] relative group">
+
+        <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[10px] capitalize font-medium text-white sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen">
+          <img
+          src="{% static '/img/Group 14.png' %}"
+          alt="hamburger menu"
+		  class="lg:mt-3 portable:ml-5 custom:ml-3 ml-3"
+        />
+        </a>
+          <ul class="list-none bg-white drop-shadow-[0px_6px_10px_rgba(0,0,0,0.2)] rounded-[12px] flex flex-wrap flex-col w-[220px] absolute top-[120%] left-1/2 -translate-x-1/2 transition-all
+group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opacity-100">
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px] rounded-t-[12px]">Artisans</a>
+              </li>
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Technicians</a>
+              </li>
+
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Development and IT</a>
+              </li>
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Craftsmen</a>
+              </li>
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Accounting and Finance</a>
+              </li>
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Writing and Translation</a>
+              </li>
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Marketing and Sales</a>
+              </li>
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Legal</a>
+            </li>
+              <li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
+                  <a href="#" class="font-lora leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px]">Architecture and Engineering</a>
+              </li>
+
+          </ul>
+
+        </li>
+    </ul>
+
+    <div class="xl:ml-80 mx-auto">
+      <a href="#"
+        ><img
+          src="{% static '/img/Vector (7).png' %}"
+          alt="Notification bell"
+          class="xl:ml-96 xl:pl-80 xl:mt-4 lg:mt-5 lg:ml-96  md:ml-52 sm:ml-48 portable:ml-16"
+      /></a>
+    </div>
+  </div>
+
+	<section>
+		<div class="xl:ml-48 xl:mr-48 flex justify-center">
+		<img
+			src="{% static '/img/Skillas Design-04 1.svg' %}"
+			alt="hero banner"
+			class="w-full lg:w-full"
+		/>
+		</div>
+
+		<div class="mt-5 mb-5 xl:ml-48 lg:ml-28 font-semibold text-sm portable:text-base text-veryDarkGreen flex gap-4">
+		<div class="">
+			<button type="submit"  class="border-2 border-light_ash px-6 py-2">UPGRADE YOUR <br>SKILLS</button>
+		</div>
+
+		<div>
+			<button type="submit" class="border-light_ash border-2 px-6 py-2">SUBSCRIBE TO OUR <br>EMAIL LIST</button>
+		</div>
+	</div>
+	</section>
+
+	<section>
+		<div class="bg-veryLightGreen flex xl:ml-48 xl:mr-48">
+		<h2 class="font-medium text-veryDarkGreen text-2xl portable:text-4xl py-5 pl-10 lg:pl-36 xl:-ml-28">
+			Top Skillas
+		</h2>
+		<a href="#" class="text-base font-medium text-veryDarkGreen mt-8 ml-10">See more</a>
+		</div>
+	</section>
+
+	<section class="xl:pt-[80px] lg:pt-10 mx-4 md:mx-9 lg:mx-10 xl:mx-40 portable:pt-10 portable:mx-10">
+		<div
+		class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-[30px] mb-[-30px]"
+		>
+		{% for skill in page_object %}
+		<div class="mx-4 portable:mb-4">
+			<img
+			class="pt-2 w-full object-cover h-60"
+			src="{{skill.image.url}}"
+			alt=""
+			/>
+			<div class="shadow-xl p-4">
+			<h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
+				{{ skill.skilla.username }}
+			</h2>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium text-xs py-2">{{ skill.title }}</h6>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium text-xs py-2">{{ skill.skill }}</h6>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium text-xs py-2">{{ skill.level }}</h6>
+			<hr class="border-gray-400 w-full" />
+			<h6 class="font-medium italic text-xs mt-2 py-2">
+				Price ranging from
+				<span class="not-italic font-extrabold"
+				>NGN {{ skill.base_price }}</span
+				>
+			</h6>
+			<hr class="border-gray-400 w-full" />
+			<div class="flex mt-2 gap-2 py-2">
+				<img src="{% static 'img/Vector (10).png' %}" />
+				<img src="{% static '/img/Vector (10).png' %}" />
+				<img src="{% static '/img/Vector (10).png' %}" />
+				<img src="{% static '/img/Vector (10).png' %}" />
+				<img src="{% static '/img/Group 245.png' %}" />
+			</div>
+			<hr class="border-gray-400 w-full" />
+			<div class="mt-5 flex justify-center">
+				<a
+					href="{% url 'main:skillas_gigs_details' id=skill.id %}"
+					class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
+				
+				>
+					View details
+				</a>
+			</div>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+
+	</section>
+
+	<section class="mt-10">
+		<div class="px-10">
+			<span class="">
+				{% if page_object.has_previous %}
+					<a href="?page=1">&laquo; first</a>
+					<a href="?page={{ page_object.previous_page_number }}">previous</a>
+				{% endif %}
+	
+				<span class="current">
+					Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}.
+				</span>
+	
+				{% if page_object.has_next %}
+					<a href="?page={{ page_object.next_page_number }}">next</a>
+					<a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a>
+				{% endif %}
+			</span>
+		</div>
+	</section>
+
+  {% comment %} if ad show it here {% endcomment %}
+  {% comment %} <section class="ml-48 mr-48 mt-10 mb-10">
+    <div>
+      <p class="bg-veryDarkGreen text-white p-20 text-center text-5xl font-medium">
+        Advert
+      </p>
+    </div>
+  </section> {% endcomment %}
+
+  
+</main>
+
+{% endblock %}

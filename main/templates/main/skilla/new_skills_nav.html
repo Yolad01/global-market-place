@@ -1,3 +1,5 @@
+
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -92,14 +94,19 @@
 
                                     </li>
                                 </ul>
-
+                                
                                 <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
-                                    <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
-                                        {% for x in profile_pic %}
-                                        <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
-                                        {% endfor %}
-                                    </li>
-                                        {% comment %} <div class="pl-3 text-md font-semibold">{{ user.username }}</div> {% endcomment %}
+                                    
+                                  <li class="xl:mr-[40px} relative group py-[20px]">
+                                    <div class="">
+                                      <a href="#"
+                                        ><img
+                                          src="{% static '/img/Ellipse 12.png' %}"
+                                          alt="Skillas photo"
+                                          class="lg:mr-10"
+                                      /></a>
+                                    </div>
+                                  </li>
                                 </ul>
                             </nav>
                         </div>
@@ -209,3 +216,380 @@
 </html>
 
 
+
+
+
+
+
+
+{% comment %} {% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skilla</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <script src="{% static '/js/init-alpine.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/wow.min.js' %}"></script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
+    <script>
+      new WOW().init();
+    </script>
+    
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <!-- Navbar goes here -->
+  <body>
+    <header class="absolute left-0 w-full z-10">
+      <!-- Navbar -->
+      <nav
+        class="container h-20 border-b-2 flex bg-white max-w-full font-primary shadow-md fixed"
+      >
+        <!-- Logo -->
+        <div class="ml-36 mt-4">
+          <a href="/">
+            <img
+            src="{% static '/img/skillas_design-03.png' %}"
+            alt="Logo"
+            class="w-1/3"
+          />
+          </a>
+        </div>
+
+        <div class="ml-72 flex items-center justify-center w-full font-primary font-bold text-base">
+          <div class="relative inline-block text-left -mt-5">
+              <button id="dropdownButton" type="button" class=" bg-veryDarkGreen text-white py-3 pl-3 pr-12">View</button>
+                  <img
+                    src="{% static '/img/downward_arrow.svg' %}"
+                    alt="downward arrow"
+                    class="w-5 -mt-7 ml-16 cursor-pointer"
+                    id="dropdownArrow"/>
+                
+
+                <!-- Dropdown menu -->
+              <div id="dropdownMenu" class="origin-top-left absolute left-0 mt-10 w-56 rounded-md shadow-lg border border-lightBlack bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none hidden">
+                <div class="py-1" role="none">
+                  <a href="/about" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">
+                    About Us 
+                  </a>
+                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Services</a>
+                  <a href="/terms_condition" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Terms and Conditions</a>
+                  <a href="/service_policy" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">Privacy Policy</a>
+                </div>
+              </div> 
+            </div>
+              
+            {% if not user.is_authenticated %}
+            <a
+              href="/register"
+              class="bg-veryDarkGreen text-white px-5 py-3 ml-12"
+              >Use Web App</a
+            >
+
+            {% elif user.role == "SKILLAS" %}
+            <a
+              href="/skillas_dashboard"
+              class="bg-veryDarkGreen text-white px-3 py-2 ml-12"
+              >Dashboard</a
+            >
+
+            {% elif user.role == "CLIENT" %}
+            <a
+              href="/client_dashboard"
+              class="bg-veryDarkGreen text-white px-3 py-2 ml-12"
+              >Dashboard</a
+            >
+            {% endif %}
+        </div>
+
+        <li class="ml-2 sm:ml-5 lg:invisible list-none">
+            <a href="#offcanvas-mobile-menu" class="offcanvas-toggle flex text-[#016450] hover:text-secondary">
+                <svg width="24" height="24" class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
+                </svg>
+            </a>
+        </li>
+
+      </nav>
+    </header>
+
+    <!-- Mobile menu -->
+
+    <div class="pt-10">{% block content %} {% endblock %}</div>
+
+    <footer>
+      <div class="bg-veryDarkGreen p-10">
+        <div class="mt-10 flex items-center justify-center">
+          <img
+            src="{% static '/img/Group 213.svg' %}"
+            alt="skillas-white-logo"
+          />
+        </div>
+
+        <div class="p-10">
+          <p class="text-white font-medium text-xl text-center mb-12">
+            The easiest way to hire/sell is instantly at zero risk
+          </p>
+          <p class="text-white font-medium text-xl text-center mb-12">
+            <a href="/terms_condition"> Terms & Condition</a><span class="ml-5"> <a href="/service_policy">Privacy Policy</a></span>
+          </p>
+          <div class="flex items-center justify-center pt-5 space-x-4">
+            <img src="{% static '/img/Group 289.png' %}" alt="Instagram" />
+            <img src="{% static '/img/Vector (1).png' %}" alt="Twitter" />
+            <img src="{% static '/img/Vector (2).png' %}" alt="LinkedIn" />
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+        <p class="text-veryDarkGreen p-5 font-medium text-lg text-center">
+          &copy;2023 Yolad Global Service Limited All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+
+    
+
+
+  </body>
+ 
+
+  
+    <script>
+      const btn = document.querySelector("button.mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+
+    <!-- a little JS for the mobile nav button -->
+    <script>
+      if (document.getElementById("nav-mobile-btn")) {
+        document
+          .getElementById("nav-mobile-btn")
+          .addEventListener("click", function () {
+            if (this.classList.contains("close")) {
+              document.getElementById("nav").classList.add("hidden");
+              this.classList.remove("close");
+            } else {
+              document.getElementById("nav").classList.remove("hidden");
+              this.classList.add("close");
+            }
+          });
+      }
+    </script>
+
+    <!-- Drop down for View Button -->
+    <script>
+      const dropdownButton = document.getElementById('dropdownButton');
+      const dropdownArrow = document.getElementById('dropdownArrow');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+
+      dropdownButton.addEventListener('click', toggleDropdown);
+      dropdownArrow.addEventListener('click', toggleDropdown);
+
+      // Function to toggle dropdown menu
+      function toggleDropdown() {
+        dropdownMenu.classList.toggle('hidden');
+      }
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !dropdownArrow.contains(event.target)) {
+          dropdownMenu.classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skilla</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <script src="{% static '/js/init-alpine.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+      new WOW().init();
+    </script>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </head>
+
+  <!-- Navbar goes here -->
+  <body>
+    <header>
+      <!-- Navbar -->
+      <nav
+        class="container border-b-2 py-3 flex bg-white justify-center items-center max-w-full font-primary fixed"
+      >
+        <!-- Logo -->
+        <div class="-ml-10">
+          <img src="{% static '/img/Group 215.svg' %}" alt="Logo" />
+        </div>
+        <!-- Menu Items -->
+
+        <div class="flex ml-20">
+          <input
+            type="search"
+            name="search"
+            id="search"
+            class="rounded border-2 px-80 font-normal text-base ml-16 pl-10 py-4"
+            placeholder="Search for Skills or Service"
+          />
+          <a href="#"
+            ><img
+              src="{% static '/img/search_icon.svg' %}"
+              alt=""
+              class="-translate-x-10 mt-4"
+          /></a>
+        </div>
+
+        <div class="flex ml-12">
+          <h3 class="ml-5 font-primary font-semibold text-lg">Help</h3>
+          <a href="#"
+            ><img
+              src="{% static '/img/drop_down.svg' %}"
+              alt=""
+              class="mt-3 ml-2"
+          /></a>
+        </div>
+
+        <div class="ml-20">
+          <a
+            class="ml-12 rounded bg-veryDarkGreen text-white font-semibold px-7 py-4 text-lg"
+          >
+            Skillas Blog
+          </a>
+        </div>
+
+        <div class="ml-20">
+          <a href="#"
+            ><img
+              src="{% static '/img/Ellipse 12.png' %}"
+              alt="Skillas photo"
+              class="ml-20"
+          /></a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="pt-10">{% block content %}{% endblock %}</div>
+
+    <footer>
+      <div class="bg-veryDarkGreen p-10">
+        <div class="flex items-center justify-center">
+          <img
+            src="{% static '/img/Group 213.svg' %}"
+            alt="skillas-white-logo "
+          />
+        </div>
+
+        <div class="p-10">
+          <p class="text-white font-medium text-xl text-center mb-12">
+            The easiest way to hire/sell is instantly at zero risk
+          </p>
+          <p class="text-white font-medium text-xl text-center mb-12">
+            Terms & Condition <span class="ml-5">Privacy Policy</span>
+          </p>
+          <div class="flex items-center justify-center pt-5 space-x-4">
+            <img src="{% static '/img/Group 289.png' %}" alt="" />
+            <img src="{% static '/img/Vector (1).png' %}" alt="" />
+            <img src="{% static '/img/Vector (2).png' %}" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <p class="text-veryDarkGreen p-5 font-medium text-xl text-center">
+          &copy;2023 Yolad Global Service Limited All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+
+  <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+
+  <!-- a little JS for the mobile nav button -->
+  <script>
+    if (document.getElementById("nav-mobile-btn")) {
+      document
+        .getElementById("nav-mobile-btn")
+        .addEventListener("click", function () {
+          if (this.classList.contains("close")) {
+            document.getElementById("nav").classList.add("hidden");
+            this.classList.remove("close");
+          } else {
+            document.getElementById("nav").classList.remove("hidden");
+            this.classList.add("close");
+          }
+        });
+    }
+  </script>
+</html> {% endcomment %}
