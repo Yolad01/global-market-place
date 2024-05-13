@@ -32,7 +32,11 @@
                 <!-- This div is for compact screens only -->
                 <div class="hidden compact:block custom:hidden compact:p-1 lg:bg-ash md:bg-ash shadow-md sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
                     <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="hidden compact:visible">
-                    <a href="#" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">IT</a>
+                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
+                        {% csrf_token %}
+                        <input id="" value="Development and IT" name="var" class="hidden">
+                        <button type="submit">IT</button>
+                    </form>
                 </div>
 
                 <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12 compact:hidden custom:block portable:flex">
@@ -91,7 +95,7 @@
                     <img src="{% static 'img/photo_customer.svg' %}" alt="Photo of skilla" class="mr-32 mt-20 xl:w-60">
                 </div>
 
-                <div class="lg:flex lg:items-center lg:justify-center compact:-mt-7 compact:mb-7">
+
                 <div class="lg:flex lg:items-center lg:justify-center compact:-mt-7 compact:mb-7">
                     <img class="lg:hidden mx-auto w-2/3 mt-20" src="{% static '/img/home_banner.svg' %}" alt="banner">
                     <img class="invisible lg:visible xl:visible lg:-mt-20 lg:w-1/3 xl:w-1/3 xl:-mt-40" src="{% static '/img/home_banner.svg' %}" alt="banner">

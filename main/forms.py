@@ -159,7 +159,7 @@ class SkillForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(
                 attrs={
-                    'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md w-3/4',
+                    'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md xl:w-3/4 portable:w-1/4 lg:w-3/4',
                     "placeholder": "Choose the title of your service"
                 }
             ),
