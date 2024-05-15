@@ -490,8 +490,6 @@ def profile_view(request, pk): #Use the id for the querries or make the username
 
 def inbox(request):
 
-    # mssg: list = []
-
     user = request.user.id
     inbox = None
     profile_picture = None
@@ -761,14 +759,11 @@ def edit_brief(request, id):
 def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
 
-    try:
-        contact_list = ContactList.objects.get_or_create(user=user)[0]
-        inbox = contact_list.contacts.all()
-    except ValueError:
-        pass
-
-    user = request.user.id
+    user = request.user
     message_receiver = User.objects.get(username=username)
+
+    contact_list = ContactList.objects.get(user=user)
+    inbox = contact_list.contacts.all()
 
     profile_picture = ProfilePicture.objects.get(user=user)
 
@@ -806,19 +801,25 @@ def thread_view(request, username):
             # order_form.paid = False
             order_form.save()
 
+    mssg_thread = Message.objects.filter(sender=user)
+    
+    for msg in mssg_thread:
+        mssg: list = []
+        mssg.append(msg.text)
+
     form = ChatMessageForm()
     order_form = OrderForm()
 
     context = {
-        'me': user,
+        'user': user,
         'thread': thread,
-        'user': other_user,
+        'other_user': other_user,
         'messages': messages,
         'form': form,
         "order_form": order_form,
         "inbox": inbox,
-
-
+        "profile_picture": profile_picture,
+        "mssg":mssg,
     }
     return render(request, template_name, context=context)
 
