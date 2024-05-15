@@ -70,7 +70,7 @@
 
           <img
             src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="h-50 w-96 rounded-full"
+            class="h-96 w-80 rounded-full"
             alt=""
           />
 
@@ -79,7 +79,7 @@
               src="{% static '/img/camera.png' %}"
               alt=""
               id="openPictureModal"
-              class="translate-x-72 translate-y-5 -mt-16 ml-10"
+              class="xl:translate-x-72 xl:translate-y-5 -mt-16 ml-10"
           /></a>
         </div>
 
