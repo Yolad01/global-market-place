@@ -6,53 +6,6 @@
 
 
 
-<div class="relative min-h-screen font-primary lg:mt-20">
-
-  <div class="mt-10">
-
-    <div class="bg-veryDarkGreen text-white font-semibold py-2 text-center text-xl shadow">
-      <p>{{ user.username }}'s Inbox</p>
-    </div>
-
-    {% for contact in inbox %}
-    
-    <div
-      class="container mx-auto border-b-2 border-veryDarkGreen text-gray-600 font-semibold items-center shadow-xl"
-    >
-        <div class="flex justify-center items-center">
-            <div class="flex items-center">
-                <div>
-                    <img
-                    src="{{ profile_picture.image.url }}"5
-                    alt="profile-img"
-                    class="rounded-full my-1 w-12 h-12">
-                </div>
-
-                <div class="my-5 mx-4 text-lg text-veryDarkGreen font-semibold">{{ contact.username }}</div>
-
-                <div class="my-5 text-sm mx-4">{{ contact.role }}</div>
-
-                    <div class="my-5 text-sm mx-4">{{ mssg }}</div>
-
-                <div class="mx-4 flex">
-                    <a
-                    href="{% url 'main:chat' username=contact.username %}"
-                    class="text-white border border-gray-500 bg-veryDarkGreen my-2 px-10 rounded-md shadow-sm text-sm font-semibold"
-                >
-                    Read
-                </a>
-                </div>
-        
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-  </div>
-
-  
-
-</div>
   
 {% endblock %}
 
