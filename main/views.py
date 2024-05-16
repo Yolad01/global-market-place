@@ -335,12 +335,13 @@ def log_out(request):
 
 
 def s_profile(request):
+    user = request.user
     try:
         about_skilla = AboutSkilla.objects.get(user=request.user)
         skilla_pp = ProfilePicture.objects.get(user=request.user)
     except (AboutSkilla.DoesNotExist, ProfilePicture.DoesNotExist):
-        about_skilla = AboutSkilla(user=request.user)
-        skilla_pp = ProfilePicture(user=request.user)
+        about_skilla = AboutSkilla(user=user)
+        skilla_pp = ProfilePicture(user=user)
 
     if request.method == "POST":
         about_form = AboutSkillaForm(request.POST, instance=about_skilla)
@@ -765,8 +766,11 @@ def thread_view(request, username):
     user = request.user
     message_receiver = User.objects.get(username=username)
 
-    contact_list = ContactList.objects.get(user=user)
-    inbox = contact_list.contacts.all()
+    try:
+        contact_list = ContactList.objects.get_or_create(user=user)[0]
+        inbox = contact_list.contacts.all()
+    except ValueError:
+        pass
 
     profile_picture = ProfilePicture.objects.get(user=user)
 
