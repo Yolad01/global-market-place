@@ -12,20 +12,20 @@
     </div>
 
 
-    <div class="p-4 sm:flex sm:justify-center">
-        
-        <div id="message-list"
-            class="py-2 px-5 inline-block">
+    <div class="p-4 sm:flex {% if message.sender.username == user.username %} flex justify-start {% else %} justify-end {% endif %}">
+
+        <div id="message-list" class="py-2 px-5 inline-block">
             {% for message in messages %}
-            <p class="px-2 py-2 my-2 rounded-md text-white bg-veryDarkGreen">
+            <p class="px-2 py-2 my-2 rounded-md text-white {% if message.sender.username == user.username %}bg-stone-500{% else %}bg-veryDarkGreen{% endif %}">
                 <span class="font-bold">[{{message.sender.username}}]</span>: <br>{{ message.text }} <br>
                 <span class="text-xs">{{ message.created_at }}</span>
             </p>
             {% endfor %}
-            
-        </div>
 
+        </div>
+    
     </div>
+    
 
 
     <div class="">
@@ -33,7 +33,7 @@
         <div>
               
             <div class="flex justify-center">
-                <form id="message-form" method="POST" class="mx-10 my-1 py-1">
+                <form id="message-form" method="POST" class=" my-1 py-1 z-10">
                     {% csrf_token %}
 
                         <div class="">

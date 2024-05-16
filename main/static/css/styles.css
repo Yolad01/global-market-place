@@ -935,6 +935,10 @@ select{
   grid-column: span 4 / span 4;
 }
 
+.float-left{
+  float: left;
+}
+
 .m-10{
   margin: 2.5rem;
 }
@@ -1501,6 +1505,10 @@ select{
   height: 24rem;
 }
 
+.h-auto{
+  height: auto;
+}
+
 .min-h-full{
   min-height: 100%;
 }
@@ -1772,6 +1780,10 @@ select{
   align-items: center;
 }
 
+.justify-start{
+  justify-content: flex-start;
+}
+
 .justify-end{
   justify-content: flex-end;
 }
@@ -1782,6 +1794,10 @@ select{
 
 .justify-between{
   justify-content: space-between;
+}
+
+.justify-items-center{
+  justify-items: center;
 }
 
 .gap-10{
@@ -2186,6 +2202,16 @@ select{
 .bg-veryShadyGreen{
   --tw-bg-opacity: 1;
   background-color: rgb(6 57 63 / var(--tw-bg-opacity));
+}
+
+.bg-blue-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.bg-stone-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
 }
 
 .bg-cover{

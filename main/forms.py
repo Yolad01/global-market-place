@@ -240,7 +240,7 @@ class BriefAppForm(forms.Form):
 
 class ChatMessageForm(forms.Form):
     msg_body = forms.CharField(widget=forms.Textarea(attrs={
-        'rows': 2, 'cols': 48, "class": "border border-veryDarkGreen p-2 mx-3 rounded-md resize-none",
+        'rows': 5, 'cols': 48, "class": "border border-veryDarkGreen p-2 mx-3 rounded-md resize-none",
         "placeholder": "Enter your messsage here"
     }))
 
