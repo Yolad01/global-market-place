@@ -16,7 +16,7 @@
 
         <div id="message-list" class="py-2 px-5 inline-block">
             {% for message in messages %}
-            <p class="px-2 py-2 my-2 rounded-md text-white {% if message.sender.username == user.username %}bg-stone-500{% else %}bg-veryDarkGreen{% endif %}">
+            <p class="px-2 py-2 my-2 rounded-md text-white {% if message.sender.username == user.username %} bg-stone-500 {% else %}bg-veryDarkGreen{% endif %}">
                 <span class="font-bold">[{{message.sender.username}}]</span>: <br>{{ message.text }} <br>
                 <span class="text-xs">{{ message.created_at }}</span>
             </p>
@@ -42,11 +42,11 @@
                         
                         <div class="my-2 mx-2 py-3 sm:flex sm:justify-center sm:items-center sm:mx-10">
                             <div class="flex justify-center py-2">
-                                <button class="px-20 sm:px-10 sm:mr-8 py-2 rounded-md border-2 border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-lightGreen hover:text-white" type="submit">Send</button>
+                                <button class="px-20 sm:px-10 sm:mr-8 py-2 rounded-md border-2 border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-veryLightGreen hover:text-white" type="submit">Send</button>
                             </div>
     
                             <div class="flex justify-center py-2">
-                                <button id="openModal" class="bg-veryDarkGreen px-16 sm:px-5 sm:ml-8 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-lightGreen hover:border-lightGreen">Send Quote</button>
+                                <button id="openModal" class="bg-veryDarkGreen px-16 sm:px-5 sm:ml-8 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-veryLightGreen hover:border-veryLightGreen">Send Quote</button>
                             </div>
 
                             <div class="flex justify-center py-2 sm:hidden">

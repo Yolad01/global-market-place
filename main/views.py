@@ -492,6 +492,7 @@ def inbox(request):
 
     user = request.user.id
     inbox = None
+    mssg = None
     profile_picture = None
 
     t = Thread.objects.filter(users=user)
@@ -758,6 +759,8 @@ def edit_brief(request, id):
 
 def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
+
+    mssg = None
 
     user = request.user
     message_receiver = User.objects.get(username=username)
