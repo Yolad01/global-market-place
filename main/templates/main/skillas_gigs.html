@@ -1,21 +1,21 @@
 {% extends 'layout/skills_nav.html' %} {% load static %} {% block content %}
 
 <main class="mt-20 bg-white mx-auto">
-  <div class="bg-veryDarkGreen py-3 flex">
+  <div class="bg-veryDarkGreen py-5 flex mx-auto">
 
-    <ul class="flex flex-wrap items-center text-[16px] font-semibold xl:text-[18px] leading-none">
-      <p class="text-white font-extrabold text-lg portable:text-xl xl:ml-52 xl:mt-1 lg:ml-10 lg:mt-4 md:ml-20 sm:ml-20 portable:ml-10 ml-5">All Categories</p>
+    <ul class="flex flex-wrap items-center text-[16px] font-semibold xl:text-[18px] leading-none relative">
+      <p class="text-white font-extrabold text-lg portable:text-xl xl:ml-52 xl:mt-1 lg:ml-10 lg:mt-4 md:ml-20 sm:ml-20 portable:ml-10 portable:pt-1 custom:-mr-16 ml-5">All Categories</p>
       <li class="mr-7 xl:mr-[40px] relative group">
 
         <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[10px] capitalize font-medium text-white sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen">
           <img
           src="{% static '/img/Group 14.png' %}"
           alt="hamburger menu"
-		  class="lg:mt-3 portable:ml-5 custom:ml-3 ml-3"
+		  class="xl:-mt-1 lg:mt-0 md:-mt-2 sm:-mt-1 portable:translate-x-16 portable:mt-1 custom:translate-x-16 ml-3 absolute left-0 custom:right-0"
         />
         </a>
           <ul class="list-none bg-white drop-shadow-[0px_6px_10px_rgba(0,0,0,0.2)] rounded-[12px] flex flex-wrap flex-col w-[220px] absolute top-[120%] left-1/2 -translate-x-1/2 transition-all
-group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opacity-100">
+						group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opacity-100">
 				<li class="border-b border-solid border-veryDarkGreen border-opacity-40 last:border-b-0 hover:border-solid transition-all">
 						<form method="POST" class="leading-[1.571] text-[14px] text-primary p-[10px] capitalize block transition-all hover:bg-primary text-veryDarkGreen hover:bg-veryLightGreen text-center my-[-1px] rounded-t-[12px]">
 							{% csrf_token %}
@@ -86,12 +86,12 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
         </li>
     </ul>
 
-    <div class="ml-80">
+    <div class="mx-auto">
       <a href="#"
         ><img
           src="{% static '/img/Vector (7).png' %}"
           alt="Notification bell"
-          class="xl:ml-96 xl:pl-80 xl:mt-4 lg:mt-5 lg:ml-96  md:ml-52 sm:ml-48 portable:ml-16"
+          class="xl:ml-72 lg:mt-1 lg:ml-60 md:ml-28 md:-mt-1 custom:ml-8 -ml-5 absolute "
       /></a>
     </div>
   </div>
@@ -127,7 +127,7 @@ group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opaci
 
 	<section class="xl:pt-[80px] lg:pt-10 mx-4 md:mx-9 lg:mx-10 xl:mx-40 portable:pt-10 portable:mx-10">
 		<div
-		class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-[30px] mb-[-30px]">
+		class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-[30px] mb-[-30px]">
 		{% for skill in page_object %}
 		<div class="mx-4 portable:mb-4">
 			<img
