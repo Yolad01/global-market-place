@@ -1335,6 +1335,14 @@ select{
   margin-top: 20px;
 }
 
+.ml-14{
+  margin-left: 3.5rem;
+}
+
+.-ml-5{
+  margin-left: -1.25rem;
+}
+
 .block{
   display: block;
 }
@@ -3278,6 +3286,11 @@ select{
     padding: 0.25rem;
   }
 
+  .compact\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .compact\:pb-5{
     padding-bottom: 1.25rem;
   }
@@ -3402,6 +3415,14 @@ select{
     margin-left: -11rem;
   }
 
+  .custom\:-mr-16{
+    margin-right: -4rem;
+  }
+
+  .custom\:-mt-5{
+    margin-top: -1.25rem;
+  }
+
   .custom\:mb-10{
     margin-bottom: 2.5rem;
   }
@@ -3432,6 +3453,10 @@ select{
 
   .custom\:ml-40{
     margin-left: 10rem;
+  }
+
+  .custom\:ml-48{
+    margin-left: 12rem;
   }
 
   .custom\:ml-5{
@@ -3470,6 +3495,10 @@ select{
     margin-top: 10rem;
   }
 
+  .custom\:ml-8{
+    margin-left: 2rem;
+  }
+
   .custom\:block{
     display: block;
   }
@@ -3492,6 +3521,31 @@ select{
 
   .custom\:-translate-x-5{
     --tw-translate-x: -1.25rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .custom\:translate-x-36{
+    --tw-translate-x: 9rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .custom\:translate-x-72{
+    --tw-translate-x: 18rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .custom\:translate-x-10{
+    --tw-translate-x: 2.5rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .custom\:translate-x-14{
+    --tw-translate-x: 3.5rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .custom\:translate-x-16{
+    --tw-translate-x: 4rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
@@ -3604,6 +3658,10 @@ select{
     margin-left: -10rem;
   }
 
+  .portable\:-ml-96{
+    margin-left: -24rem;
+  }
+
   .portable\:mb-4{
     margin-bottom: 1rem;
   }
@@ -3640,12 +3698,24 @@ select{
     margin-top: 0px;
   }
 
+  .portable\:mt-1{
+    margin-top: 0.25rem;
+  }
+
   .portable\:mt-32{
     margin-top: 8rem;
   }
 
   .portable\:mt-40{
     margin-top: 10rem;
+  }
+
+  .portable\:-ml-52{
+    margin-left: -13rem;
+  }
+
+  .portable\:-ml-60{
+    margin-left: -15rem;
   }
 
   .portable\:block{
@@ -3660,6 +3730,11 @@ select{
     width: 100%;
   }
 
+  .portable\:translate-x-16{
+    --tw-translate-x: 4rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
   .portable\:gap-x-10{
     -moz-column-gap: 2.5rem;
          column-gap: 2.5rem;
@@ -3668,6 +3743,10 @@ select{
   .portable\:gap-x-60{
     -moz-column-gap: 15rem;
          column-gap: 15rem;
+  }
+
+  .portable\:pt-1{
+    padding-top: 0.25rem;
   }
 
   .portable\:pt-10{
@@ -3745,6 +3824,14 @@ select{
 
   .sm\:-ml-28{
     margin-left: -7rem;
+  }
+
+  .sm\:-ml-48{
+    margin-left: -12rem;
+  }
+
+  .sm\:-mt-1{
+    margin-top: -0.25rem;
   }
 
   .sm\:mb-16{
@@ -3883,10 +3970,6 @@ select{
     justify-content: center;
   }
 
-  .sm\:justify-between{
-    justify-content: space-between;
-  }
-
   .sm\:gap-10{
     gap: 2.5rem;
   }
@@ -3915,11 +3998,6 @@ select{
     border-color: rgb(207 207 207 / var(--tw-border-opacity));
   }
 
-  .sm\:bg-veryDarkGreen{
-    --tw-bg-opacity: 1;
-    background-color: rgb(0 45 56 / var(--tw-bg-opacity));
-  }
-
   .sm\:p-0{
     padding: 0px;
   }
@@ -3931,11 +4009,6 @@ select{
   .sm\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-
-  .sm\:px-4{
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 
   .sm\:px-5{
@@ -4027,6 +4100,18 @@ select{
     margin-bottom: -1.25rem;
   }
 
+  .md\:-ml-12{
+    margin-left: -3rem;
+  }
+
+  .md\:-mt-1{
+    margin-top: -0.25rem;
+  }
+
+  .md\:-mt-2{
+    margin-top: -0.5rem;
+  }
+
   .md\:-mt-\[100px\]{
     margin-top: -100px;
   }
@@ -4105,6 +4190,22 @@ select{
 
   .md\:mt-5{
     margin-top: 1.25rem;
+  }
+
+  .md\:ml-28{
+    margin-left: 7rem;
+  }
+
+  .md\:ml-56{
+    margin-left: 14rem;
+  }
+
+  .md\:ml-44{
+    margin-left: 11rem;
+  }
+
+  .md\:ml-32{
+    margin-left: 8rem;
   }
 
   .md\:block{
@@ -4310,6 +4411,10 @@ select{
     margin-left: 8rem;
   }
 
+  .lg\:ml-52{
+    margin-left: 13rem;
+  }
+
   .lg\:ml-64{
     margin-left: 16rem;
   }
@@ -4340,6 +4445,14 @@ select{
 
   .lg\:mr-64{
     margin-right: 16rem;
+  }
+
+  .lg\:mt-0{
+    margin-top: 0px;
+  }
+
+  .lg\:mt-1{
+    margin-top: 0.25rem;
   }
 
   .lg\:mt-10{
@@ -4396,6 +4509,14 @@ select{
 
   .lg\:mt-96{
     margin-top: 24rem;
+  }
+
+  .lg\:-ml-4{
+    margin-left: -1rem;
+  }
+
+  .lg\:ml-60{
+    margin-left: 15rem;
   }
 
   .lg\:block{
@@ -4590,6 +4711,10 @@ select{
     margin-left: -7rem;
   }
 
+  .xl\:-mt-1{
+    margin-top: -0.25rem;
+  }
+
   .xl\:-mt-20{
     margin-top: -5rem;
   }
@@ -4616,6 +4741,10 @@ select{
 
   .xl\:mb-\[40px\]{
     margin-bottom: 40px;
+  }
+
+  .xl\:ml-20{
+    margin-left: 5rem;
   }
 
   .xl\:ml-36{
@@ -4724,6 +4853,46 @@ select{
 
   .xl\:mt-7{
     margin-top: 1.75rem;
+  }
+
+  .xl\:-ml-14{
+    margin-left: -3.5rem;
+  }
+
+  .xl\:-ml-16{
+    margin-left: -4rem;
+  }
+
+  .xl\:-ml-12{
+    margin-left: -3rem;
+  }
+
+  .xl\:-ml-8{
+    margin-left: -2rem;
+  }
+
+  .xl\:-ml-6{
+    margin-left: -1.5rem;
+  }
+
+  .xl\:-ml-4{
+    margin-left: -1rem;
+  }
+
+  .xl\:-ml-2{
+    margin-left: -0.5rem;
+  }
+
+  .xl\:ml-40{
+    margin-left: 10rem;
+  }
+
+  .xl\:ml-64{
+    margin-left: 16rem;
+  }
+
+  .xl\:ml-72{
+    margin-left: 18rem;
   }
 
   .xl\:block{

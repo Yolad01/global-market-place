@@ -23,17 +23,13 @@
 
     <body>
 
-
-        <div class="sm:flex sm:justify-between sm:bg-veryDarkGreen sm:px-4">
-            <p class="font-semibold text-xl wow fadeInDown bg-veryDarkGreen text-white text-center py-3">Quotes</p>
-            <p class="font-semibold text-xl wow fadeInDown bg-veryDarkGreen text-white text-center py-3">
-                <a href="/skillas_dashboard">
-                    Go Back
-                </a>
-            </p>
+        <div class="flex justify-between bg-veryDarkGreen compact:px-4">
+            <a href="#" class="block  font-semibold text-xl wow fadeInDown bg-veryDarkGreen text-white text-center py-3 ml-5">Quotes</a>
+            
+            <a href="/skillas_dashboard" class="block font-semibold text-xl wow fadeInDown bg-veryDarkGreen text-white text-center py-3 mr-5">Go Back</a>
         </div>
         
-        <div class="sm:grid sm:grid-cols-4">
+        <div class="sm:grid sm:grid-cols-2 lg:grid-cols-4">
         
             {% for order in display_order %}
             <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-sm items-center wow fadeInRight">
