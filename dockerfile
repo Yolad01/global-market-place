@@ -12,7 +12,6 @@ COPY . .
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=your_project.settings
 
 # Expose port 8000 (or the port your app runs on)
 EXPOSE 8000
