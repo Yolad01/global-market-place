@@ -39,7 +39,6 @@ SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com"]
 
-CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "localhost"]
 
 
 
