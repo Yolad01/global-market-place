@@ -761,7 +761,13 @@ def edit_brief(request, id):
 def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
 
-    user = request.user
+    try:
+        contact_list = ContactList.objects.get_or_create(user=user)[0]
+        inbox = contact_list.contacts.all()
+    except ValueError:
+        pass
+
+    user = request.user.id
     message_receiver = User.objects.get(username=username)
 
     profile_picture = ProfilePicture.objects.get(user=user)
@@ -809,7 +815,10 @@ def thread_view(request, username):
         'user': other_user,
         'messages': messages,
         'form': form,
-        "order_form": order_form
+        "order_form": order_form,
+        "inbox": inbox,
+
+
     }
     return render(request, template_name, context=context)
 

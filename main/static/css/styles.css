@@ -891,6 +891,14 @@ select{
   grid-column: span 12 / span 12;
 }
 
+.col-span-1{
+  grid-column: span 1 / span 1;
+}
+
+.col-span-6{
+  grid-column: span 6 / span 6;
+}
+
 .m-10{
   margin: 2.5rem;
 }
@@ -989,6 +997,11 @@ select{
 .my-\[-1px\]{
   margin-top: -1px;
   margin-bottom: -1px;
+}
+
+.my-\[\.4rem\]{
+  margin-top: .4rem;
+  margin-bottom: .4rem;
 }
 
 .-mb-5{
@@ -1555,6 +1568,10 @@ select{
   flex: 1 1 0%;
 }
 
+.flex-grow{
+  flex-grow: 1;
+}
+
 .origin-top-left{
   transform-origin: top left;
 }
@@ -1602,6 +1619,12 @@ select{
   cursor: pointer;
 }
 
+.select-none{
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
 .resize-none{
   resize: none;
 }
@@ -1620,6 +1643,10 @@ select{
 
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-5{
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -1725,6 +1752,10 @@ select{
   border-color: rgb(243 244 246 / var(--tw-divide-opacity));
 }
 
+.self-start{
+  align-self: flex-start;
+}
+
 .self-center{
   align-self: center;
 }
@@ -1781,6 +1812,10 @@ select{
   border-radius: 0.75rem;
 }
 
+.rounded-\[\.95rem\]{
+  border-radius: .95rem;
+}
+
 .rounded-r-lg{
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -1809,6 +1844,10 @@ select{
 
 .border-b-2{
   border-bottom-width: 2px;
+}
+
+.border-r-2{
+  border-right-width: 2px;
 }
 
 .border-solid{
@@ -2199,6 +2238,11 @@ select{
   padding-bottom: 80px;
 }
 
+.py-\[\.775rem\]{
+  padding-top: .775rem;
+  padding-bottom: .775rem;
+}
+
 .pb-10{
   padding-bottom: 2.5rem;
 }
@@ -2319,6 +2363,18 @@ select{
   padding-top: 80px;
 }
 
+.pb-96{
+  padding-bottom: 24rem;
+}
+
+.pl-2{
+  padding-left: 0.5rem;
+}
+
+.pr-2{
+  padding-right: 0.5rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -2420,6 +2476,10 @@ select{
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[1\.15rem\]{
+  font-size: 1.15rem;
 }
 
 .font-black{
@@ -2628,6 +2688,11 @@ select{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-stone-500{
+  --tw-text-opacity: 1;
+  color: rgb(120 113 108 / var(--tw-text-opacity));
 }
 
 .underline{
