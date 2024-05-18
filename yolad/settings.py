@@ -37,10 +37,10 @@ DEBUG = env("DEBUG")
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com"]
+ALLOWED_HOSTS = ["https://getskillas.com", "https://www.getskillas.com"]
 
 
-
+CSRF_TRUSTED_ORIGINS=["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
 
 
 
