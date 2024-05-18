@@ -33,8 +33,8 @@
 
 <body>
 
-    <div class="grid grid-cols-5">
-        <aside class="self-start sticky top-0 col-span-1 border-r-2 bg-veryDarkGreen z-10 pb-96 pr-2">
+    <div class="grid grid-cols-5 h-full">
+        <aside class="self-start sticky top-0 col-span-1 border-r-2 bg-veryDarkGreen pb-10 z-10 pr-2 flex flex-col h-full">
             <!-- // Fixed Sidebar -->
             <div class="bg-veryDarkGreen text-white font-semibold py-2 text-center text-xl shadow">
                 <a href="/">Skillas</a>
@@ -47,15 +47,14 @@
             <!-- menu item -->
             <div>
                 <span class="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                <a href="javascript:;" class="flex items-center flex-grow text-[1.15rem] text-stone-500 hover:text-dark">Sales</a>
-                </span>
-            </div>
 
+                    {% if user.role == "SKILLAS" %}
+                    <a href="/skillas_dashboard" class="flex items-center flex-grow text-[1.15rem] text-gray-400 font-semibold hover:text-dark"><img class="h-8 w-8" src="{% static '/img/dashboard_message.png' %}"> Dashboard</a>
 
-            <!-- menu item -->
-            <div>
-                <span class="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                <a href="javascript:;" class="flex items-center flex-grow text-[1.15rem] text-stone-500 hover:text-dark">Profile</a>
+                    {% elif user.role == "CLIENT" %}
+                    <a href="/client_dashboard" class="flex items-center flex-grow text-[1.15rem] text-gray-400 font-semibold hover:text-dark"><img class="h-8 w-8" src="{% static '/img/dashboard_message.png' %}"> Dashboard</a>
+                    {% endif %}
+
                 </span>
             </div>
 
@@ -63,7 +62,7 @@
             {% for contact in inbox %}
     
             <div
-                class="container mx-auto border border-gray-400 text-gray-400 font-semibold items-center shadow-xl pl-2"
+                class="container mx-auto border border-gray-400 text-gray-400 font-semibold items-center shadow-xl pl-2 my-1 hover:bg-stone-500 transition-all duration-300 hover:translate-x-[10px]"
             >
                 <div class="flex justify-center items-center">
                     <div class="flex items-center">
@@ -78,7 +77,9 @@
 
                         {% comment %} <div class="my-5 text-sm mx-4">{{ contact.role }}</div> {% endcomment %}
 
-                            <div class="my-5 text-sm mx-4">{{ mssg }}</div>
+                        {% for m in mssg%}
+                            <div class="my-5 text-sm mx-4">{{ m|slice:":12" }}...</div>
+                        {% endfor %}
 
                         <div class="mx-4 flex">
                             <a
@@ -94,38 +95,9 @@
             </div>
             {% endfor %}
 
-            <!-- menu item -->
-            <div>
-                <span class="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                <a href="javascript:;" class="flex items-center flex-grow text-[1.15rem] text-stone-500 hover:text-dark">Users</a>
-                </span>
-            </div>
-
-
-            <!-- menu item -->
-            <div>
-                <span class="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                <a href="javascript:;" class="flex items-center flex-grow text-[1.15rem] text-stone-500 hover:text-dark">Orders</a>
-                </span>
-            </div>
-
-            <!-- menu item -->
-            <div>
-                <span class="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                <a href="javascript:;" class="flex items-center flex-grow text-[1.15rem] text-stone-500 hover:text-dark">Track Order</a>
-                </span>
-            </div>
-
-            <!-- menu item -->
-            <div>
-                <span class="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
-                <a href="javascript:;" class="flex items-center flex-grow text-[1.15rem] text-stone-500 hover:text-dark">Products</a>
-                </span>
-            </div>
-
         </aside>
         
-        <main class="col-span-6">
+        <main class="col-span-4">
             <!-- content-->
             {% block content %}
             {% endblock %}
