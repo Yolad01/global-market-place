@@ -1,6 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.12-slim
-
+FROM python:3.12
 # Set the working directory in the container
 WORKDIR /app
 
@@ -13,7 +12,6 @@ COPY . .
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=your_project.settings
 
 # Expose port 8000 (or the port your app runs on)
 EXPOSE 8000
