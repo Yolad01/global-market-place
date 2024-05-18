@@ -3,3 +3,4 @@ node_modules
 env
 db
 yolad/settings.py
+db.sqlite3
