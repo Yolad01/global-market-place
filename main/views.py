@@ -356,7 +356,7 @@ def s_profile(request):
             return redirect("main:s_profile")
 
         if skilla_pp_form.is_valid():
-            skilla_pp_form.save() ## skilla__pp == skilla profile picture
+            skilla_pp_form.save() ## skilla_pp == skilla profile picture
             messages.success(request, "Profile Picture updated successfully")
 
         if cert_form.is_valid():
