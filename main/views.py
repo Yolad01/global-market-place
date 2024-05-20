@@ -27,6 +27,8 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from django.core.mail import send_mail
 
+from django.core.exceptions import ObjectDoesNotExist
+
 # Create your views here.
 
 
@@ -468,11 +470,19 @@ def applications(request):
 
 
 def profile_view(request, pk): #Use the id for the querries or make the username foreignkey or unique
-    view_profile = SkillaProfile.objects.get(user__id=pk)
-    view_profile_picture = ProfilePicture.objects.get(user__id=pk)
-    view_about_skilla = AboutSkilla.objects.get(user__id=pk)
-    view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
-    skilla = User.objects.get(id=pk)
+
+    try:
+        view_profile = SkillaProfile.objects.get(user__id=pk)
+        view_profile_picture = ProfilePicture.objects.get(user__id=pk)
+        view_about_skilla = AboutSkilla.objects.get(user__id=pk)
+        view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
+        skilla = User.objects.get(id=pk)
+    except ObjectDoesNotExist:
+        view_profile = None
+        view_profile_picture = None
+        view_about_skilla = None
+        view_T_and_cert = None
+        skilla = None
     
     return render(
         request=request,
@@ -777,7 +787,10 @@ def thread_view(request, username):
     except ValueError:
         pass
 
-    profile_picture = ProfilePicture.objects.get(user=user)
+    try:
+        profile_picture = ProfilePicture.objects.get(user=user)
+    except ObjectDoesNotExist:
+        profile_picture = None
 
     other_user = get_object_or_404(get_user_model(), username=username)
 
