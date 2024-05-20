@@ -37,10 +37,10 @@ DEBUG = env("DEBUG")
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
 
 
-
+CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
 
 
 
@@ -113,17 +113,17 @@ WSGI_APPLICATION = 'yolad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # DATABASES = {
-#     'default':  Env.db_url_config(env('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+
+DATABASES = {
+    'default':  Env.db_url_config(env('DATABASE_URL'))
+}
 
 
 
