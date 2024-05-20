@@ -339,11 +339,15 @@ def log_out(request):
 def s_profile(request):
     user = request.user
     try:
-        about_skilla = AboutSkilla.objects.get(user=request.user)
-        skilla_pp = ProfilePicture.objects.get(user=request.user)
+        about_skilla = AboutSkilla.objects.get(user=user)
     except (AboutSkilla.DoesNotExist, ProfilePicture.DoesNotExist):
         about_skilla = AboutSkilla(user=user)
-        skilla_pp = ProfilePicture(user=user)
+
+
+    try:
+        skilla_pp = ProfilePicture.objects.get(user=user)
+    except  ProfilePicture.DoesNotExist:
+        skilla_pp = None
 
     if request.method == "POST":
         about_form = AboutSkillaForm(request.POST, instance=about_skilla)
