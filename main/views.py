@@ -498,11 +498,16 @@ def inbox(request):
 
     t = Thread.objects.filter(users=user)
     t =  list(t)
-    t = str(t[0])
-    second_person = t.split(" ")
-    second_person = second_person[-1]
 
-    second_person_id = User.objects.get(username=second_person).id
+    try:
+        t = str(t[0])
+        second_person = t.split(" ")
+        second_person = second_person[-1]
+        second_person_id = User.objects.get(username=second_person).id
+    except IndexError:
+        t = None
+
+   
 
     mssg_thread = Message.objects.filter(sender=user)
     
