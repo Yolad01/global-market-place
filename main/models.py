@@ -413,9 +413,9 @@ class Message(TrackingModel):
 class ContactList(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="owner")
     contacts = models.ManyToManyField(User, blank=True, related_name="contacts")
-    picture = models.ForeignKey(ProfilePicture, on_delete=models.DO_NOTHING,
-                                null=True, blank=True, related_name="message_image",
-                                default=None)
+    # picture = models.ForeignKey(ProfilePicture, on_delete=models.DO_NOTHING,
+    #                             null=True, blank=True, related_name="message_image",
+    #                             default=None)
 
     def __str__(self):
         return self.user.username
