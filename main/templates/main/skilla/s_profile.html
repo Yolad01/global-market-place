@@ -72,7 +72,7 @@
 
           <img
             src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="lg:h-80 lg:w-80 md:h-72 md:w-72 sm:w-60 sm:h-60 w-40 h-40 rounded-full"
+            class="rounded-full hidden portable:block"
             alt="Profile picture"
           />
 
@@ -81,11 +81,11 @@
               src="{% static '/img/camera.png' %}"
               alt=""
               id="openPictureModal"
-              class="xl:translate-x-72 lg:translate-y-5 lg:translate-x-60 md:translate-x-44 sm:translate-x-20 md:-mt-7 lg:-mt-16 w-8"
+              class="hidden portable:block xl:translate-x-60 lg:translate-y-5 lg:translate-x-44 md:translate-x-32 sm:translate-x-10 portable:ml-10 md:-mt-7 lg:-mt-16 ml-10 sm:w-8 w-6"
           /></a>
         </div>
 
-        <div class="sm:border -mt-10 lg:ml-20 md:ml-10 sm:ml-5 mb-10 xl:pr-80 sm:mr-10 rounded-md">
+        <div class="sm:border -mt-10 lg:ml-20 md:ml-10 sm:ml-5 mb-10 xl:pr-80 sm:mr-10 sm:pl-0 portable:pl-10 -ml-10 rounded-md">
           <div class="font-primary">
 
             <!-- about Modal  -->
@@ -181,7 +181,7 @@
                   src="{% static '/img/Group 68.png' %}"
                   id="openModal"
                   alt=""
-                  class="mt-5 xl:translate-x-96 xl:ml-96 lg:ml-80 md:ml-60 sm:ml-56 portable:ml-52"
+                  class="mt-5 xl:translate-x-96 xl:ml-96 lg:ml-80 md:ml-60 sm:ml-56 portable:ml-52 custom:ml-52 md-compact:ml-48 ml-36"
               /></a>
             </div>
             <div
@@ -193,13 +193,13 @@
             <h6 class="font-extrabold text-sm text-veryDarkGreen ml-10">
               About {{user.username}}
             </h6>
-            <div class="ml-10 mt-2 text-sm pr-12">
+            <div class="ml-10 mt-2 text-sm pr-12 mr-24">
               {% for x in about_skilla %} {{ x.about }} {% endfor %}
             </div>
 
             {% for info in profile %}
 
-            <div class="ml-2 mt-2 mb-5 mr-24 rounded-sm">
+            <div class="ml-2 mt-2 mb-5 mr-24  rounded-sm">
               <div class="ml-8">
                 <h6 class="font-medium text-sm mt-5">Expertise</h6>
                 <h4>{{info.certifications}}</h4>
@@ -220,7 +220,7 @@
         </div>
       </div>
 
-      <hr class="xl:ml-10 mr-10 border border-veryLightAsh" />
+      <hr class="hidden custom:block xl:ml-10 portable:mr-10 mr-16 border border-veryLightAsh" />
 
       <div class="sm:shadow sm:border mb-20 sm:mr-10 font-primary mt-12">
 
@@ -324,20 +324,20 @@
         <!-- Training Modal  -->
         
 
-        <div class="sm:ml-10 mt-20 mb-5 flex">
-          <h6 class="font-bold text-base">Training & Certification</h6>
+        <div class="sm:ml-10 mt-20 mb-5 flex -ml-5">
+          <h6 class="font-bold md-compact:text-base compact:text-sm">Training & Certification</h6>
           <div class="lg:ml-80">
             <a href="#"
               ><img
                 src="{% static '/img/Group 68.png' %}"
                 id="openTrainingModal"
                 alt=""
-                class="xl:translate-x-96 xl:ml-80 lg:translate-x-52 md:translate-x-72 sm:translate-x-44 translate-x-32"
+                class="xl:translate-x-96 xl:ml-80 lg:translate-x-52 md:translate-x-72 sm:translate-x-44 portable:translate-x-32 custom:ml-10 md-compact:ml-20"
             /></a>
           </div>
         </div>
 
-        <table class="w-3/4 mt-10 text-left sm:ml-10">
+        <table class="sm:w-3/4 w-1/4 mt-10 text-left text-xs portable:text-base sm:ml-10 custom:-ml-3 -ml-5">
           <tr>
             <th class="py-2">Courses</th>
 
