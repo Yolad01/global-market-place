@@ -1,6 +1,6 @@
 {% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
-<div class="relative flex ml-10 font-primary">
+<div class="relative flex sm:ml-10 ml-5 font-primary">
   <!-- Body -->
   <div class="">
     {% if messages %} {% for message in messages %}
@@ -17,7 +17,7 @@
       </div>
 
       <div class="flex">
-        <div class="ml-10">
+        <div class="xl:ml-10">
 
           <!-- picture Modal  -->
           <div
@@ -72,8 +72,8 @@
 
           <img
             src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="h-96 w-80 rounded-full"
-            alt=""
+            class="lg:h-80 lg:w-80 md:h-72 md:w-72 sm:w-60 sm:h-60 w-40 h-40 rounded-full"
+            alt="Profile picture"
           />
 
           <a href="#"
@@ -81,11 +81,11 @@
               src="{% static '/img/camera.png' %}"
               alt=""
               id="openPictureModal"
-              class="xl:translate-x-72 xl:translate-y-5 -mt-16 ml-10"
+              class="xl:translate-x-72 lg:translate-y-5 lg:translate-x-60 md:translate-x-44 sm:translate-x-20 md:-mt-7 lg:-mt-16 w-8"
           /></a>
         </div>
 
-        <div class="border -mt-10 ml-20 mb-10 pr-96 rounded-md">
+        <div class="sm:border -mt-10 lg:ml-20 md:ml-10 sm:ml-5 mb-10 xl:pr-80 sm:mr-10 rounded-md">
           <div class="font-primary">
 
             <!-- about Modal  -->
@@ -181,11 +181,11 @@
                   src="{% static '/img/Group 68.png' %}"
                   id="openModal"
                   alt=""
-                  class="mt-5 translate-x-96 ml-80"
+                  class="mt-5 xl:translate-x-96 xl:ml-96 lg:ml-80 md:ml-60 sm:ml-56 portable:ml-52"
               /></a>
             </div>
             <div
-              class="font-extrabold text-veryDarkGreen text-6xl p-5 ml-5 -mt-12"
+              class="font-extrabold text-veryDarkGreen xl:text-6xl lg:text-4xl md:text-2xl sm:text-xl text-lg p-5 ml-5 -mt-12"
             >
               {{user.first_name}} {{user.last_name}}
             </div>
@@ -220,9 +220,9 @@
         </div>
       </div>
 
-      <hr class="ml-10 border border-veryLightAsh" />
+      <hr class="xl:ml-10 mr-10 border border-veryLightAsh" />
 
-      <div class="shadow border mb-20 font-primary mt-12">
+      <div class="sm:shadow sm:border mb-20 sm:mr-10 font-primary mt-12">
 
         <!-- Training Modal  -->
         <div
@@ -324,26 +324,26 @@
         <!-- Training Modal  -->
         
 
-        <div class="ml-10 mt-20 mb-5 flex">
+        <div class="sm:ml-10 mt-20 mb-5 flex">
           <h6 class="font-bold text-base">Training & Certification</h6>
-          <div class="ml-80">
+          <div class="lg:ml-80">
             <a href="#"
               ><img
                 src="{% static '/img/Group 68.png' %}"
                 id="openTrainingModal"
                 alt=""
-                class="translate-x-96 ml-80"
+                class="xl:translate-x-96 xl:ml-80 lg:translate-x-52 md:translate-x-72 sm:translate-x-44 translate-x-32"
             /></a>
           </div>
         </div>
 
-        <table class="w-3/4 mt-10 text-left ml-10">
+        <table class="w-3/4 mt-10 text-left sm:ml-10">
           <tr>
             <th class="py-2">Courses</th>
 
-            <th class="py-2">skills</th>
+            <th class="py-2 pr-2">skills</th>
 
-            <th class="py-2">Grade</th>
+            <th class="py-2 pr-2">Grade</th>
 
             <th class="py-2">Assessed</th>
           </tr>
@@ -363,11 +363,11 @@
         </table>
 
         <div class="mt-20">
-          <div class="ml-10 flex">
+          <div class="sm:ml-10 flex">
             <h6 class="font-extrabold text-base">Work Experience</h6>
           </div>
 
-          <div class="ml-10 font-primary font-normal text-sm pb-16">
+          <div class="sm:ml-10 font-primary font-normal text-sm pb-16">
             {% for x in about_skilla %} {{ x.work_experience }} {% endfor %}
           </div>
         </div>
