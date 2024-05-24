@@ -40,10 +40,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ["first_name", "last_name", "email", "phone_no"]
 
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.role = self.role
-            return super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.pk:
+    #         self.role = self.role
+    #         return super().save(*args, **kwargs)
         
 
 

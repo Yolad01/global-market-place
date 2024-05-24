@@ -10,24 +10,36 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
-                         SkillaReachoutToClient, Clients, User, Order,
-                         Skill, JobCategory, ContactList, Thread, Message, Skillas
+                         SkillaReachoutToClient, Clients, Order, User,
+                         Skill, JobCategory, ContactList, Thread, Message
                         )
+
+from django.contrib.auth.hashers import make_password
+
+# from django.contrib.auth.models import User
+
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-# from django.db.models import Q
-# from django.views import View
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
-from django.db.models import Max
-from .search import search_brief_title, search_brief_category, search_skill_category, search_skilla, skill_search
+from .search import search_brief_title, search_brief_category, search_skill_category, skill_search
 from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.core.mail import send_mail
-
 from django.core.exceptions import ObjectDoesNotExist
+
+from django.urls import reverse
+# from django.contrib.auth.models import User
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from .forms import PasswordResetRequestForm, SetPasswordForm
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -904,3 +916,66 @@ def skilla_search(request, param):
             "page_object": page_object,
         }
     )
+
+
+
+
+def password_reset_request(request):
+    if request.method == "POST":
+        form = PasswordResetRequestForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data["email"]
+            user = User.objects.filter(email=email).first()
+            if user:
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                reset_link = request.build_absolute_uri(
+                    reverse("main:password_reset_confirm", kwargs={"uidb64": uid, "token": token})
+                )
+                send_mail(
+                    "Password Reset Request",
+                    f"Use the link below to reset your password:\n{reset_link}",
+                    # settings.EMAIL_HOST_USER,
+                    "admin@example.com",
+                    [user.email],
+                    fail_silently=False,
+                )
+                return redirect("main:password_reset_done")
+    else:
+        form = PasswordResetRequestForm()
+
+    return render(request, template_name="main/password_reset_request.html", context={"form": form})
+
+
+def password_reset_confirm(request, uidb64=None, token=None):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        if request.method == "POST":
+            form = SetPasswordForm(request.POST)
+            if form.is_valid():
+                password_1 = form.cleaned_data["new_password1"]
+                user.set_password(password_1)
+                user.save()
+
+                return redirect("main:password_reset_complete")
+        else:
+            form = SetPasswordForm()
+    else:
+        form = None
+
+    return render(request, template_name="main/password_reset_confirm.html", context={"form": form})
+
+
+
+def password_reset_done(request):
+    return render(request, template_name="main/password_reset_done.html")
+
+
+
+def password_reset_complete(request):
+    return render(request, template_name="main/password_reset_complete.html")

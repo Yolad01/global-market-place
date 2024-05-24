@@ -6,9 +6,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.db.models.query import QuerySet
 
-from django.contrib.auth import views as auth_views
-
-
 
 
 
@@ -68,7 +65,12 @@ urlpatterns = [
     # path("skill_detail/", views.skill_detail , name="skill_detail"),
 
     path("logout/", views.log_out, name="logout"),
-    
+
+    path("password_reset/", views.password_reset_request, name="password_reset_request"),
+    path("password_reset/done/", views.password_reset_done, name="password_reset_done"),
+    path("reset/<uidb64>/<token>/", views.password_reset_confirm, name="password_reset_confirm"),
+    path("reset/done/", views.password_reset_complete, name="password_reset_complete"),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
