@@ -159,14 +159,14 @@ class SkillForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(
                 attrs={
-                    'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md xl:w-3/4 portable:w-1/4 lg:w-3/4',
-                    "placeholder": "Choose the title of your service"
+                    'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md w-3/4',
+                    "placeholder": "Title of your service"
                 }
             ),
-            "description": forms.Textarea(attrs={'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md resize-none', "rows": 7, "cols": 80, "placeholder": "Describe what you are offering"}),
-            "category": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
+            "description": forms.Textarea(attrs={'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md resize-none w-3/4', "placeholder": "Describe what you are offering"}),
+            "category": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl w-3/4'}),
             "skill": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
-            "image": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 my-2 mx-5 rounded-md'}),
+            "image": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 my-2 mx-5 rounded-md w-1/2'}),
             "level": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
             "base_price": forms.NumberInput(attrs={'class': 'border border-gray-700 my-2 mx-5  rounded-md'}),
         }
