@@ -13,10 +13,10 @@
     {% endfor %} {% endif %}
     <div>
       <div class="p-10">
-        <h3 class="font-primary font-normal text-2xl">Profile</h3>
+        <h3 class="font-primary font-normal text-2xl -ml-10">Profile</h3>
       </div>
 
-      <div class="flex">
+      <div class="lg:flex">
         <div class="xl:ml-10">
 
           <!-- picture Modal  -->
@@ -72,7 +72,7 @@
 
           <img
             src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="rounded-full hidden portable:block"
+            class="rounded-full mx-0 portable:mx-10 sm:mx-10 md:mx-10 lg:mx-0 -mt-5 lg:w-full w-1/2"
             alt="Profile picture"
           />
 
@@ -81,11 +81,11 @@
               src="{% static '/img/camera.png' %}"
               alt=""
               id="openPictureModal"
-              class="hidden portable:block xl:translate-x-60 lg:translate-y-5 lg:translate-x-44 md:translate-x-32 sm:translate-x-10 portable:ml-10 md:-mt-7 lg:-mt-16 ml-10 sm:w-8 w-6"
+              class="xl:translate-x-52 lg:translate-y-5 lg:translate-x-44 md:translate-x-64 sm:translate-x-52 sm:-mt-6 portable:translate-x-40 custom:translate-x-20 md-compact:translate-x-20 translate-x-16 md-compact:-mt-2 custom:-mt-4 portable:-mt-4 md:-mt-7 lg:-mt-16 ml-10 sm:w-8 w-6"
           /></a>
         </div>
 
-        <div class="sm:border -mt-10 lg:ml-20 md:ml-10 sm:ml-5 mb-10 xl:pr-80 sm:mr-10 sm:pl-0 portable:pl-10 -ml-10 rounded-md">
+        <div class="sm:border mt-10 lg:-mt-10 lg:ml-20 md:ml-10 sm:ml-5 mb-10 xl:pr-80 sm:mr-10 sm:pl-0 portable:mt-12 portable:border portable:mx-5 rounded-md custom:mt-12 md-compact:-ml-10 -ml-10">
           <div class="font-primary">
 
             <!-- about Modal  -->
@@ -181,11 +181,11 @@
                   src="{% static '/img/Group 68.png' %}"
                   id="openModal"
                   alt=""
-                  class="mt-5 xl:translate-x-96 xl:ml-96 lg:ml-80 md:ml-60 sm:ml-56 portable:ml-52 custom:ml-52 md-compact:ml-48 ml-36"
+                  class="mt-5 xl:translate-x-96 xl:ml-96 lg:translate-x-96 md:translate-x-96 sm:translate-x-80 portable:translate-x-64 custom:translate-x-56 md-compact:translate-x-52 translate-x-32"
               /></a>
             </div>
             <div
-              class="font-extrabold text-veryDarkGreen xl:text-6xl lg:text-4xl md:text-2xl sm:text-xl text-lg p-5 ml-5 -mt-12"
+              class="font-extrabold text-veryDarkGreen xl:text-6xl lg:text-4xl md:text-2xl md-compact:text-xl text-lg p-5 ml-5 -mt-12"
             >
               {{user.first_name}} {{user.last_name}}
             </div>
@@ -193,7 +193,7 @@
             <h6 class="font-extrabold text-sm text-veryDarkGreen ml-10">
               About {{user.username}}
             </h6>
-            <div class="ml-10 mt-2 text-sm pr-12 mr-24">
+            <div class="ml-10 mt-2 text-xs custom:text-sm pr-28 custom:pr-0 md-compact:pr-12 sm:mr-24">
               {% for x in about_skilla %} {{ x.about }} {% endfor %}
             </div>
 
@@ -202,16 +202,16 @@
             <div class="ml-2 mt-2 mb-5 mr-24  rounded-sm">
               <div class="ml-8">
                 <h6 class="font-medium text-sm mt-5">Expertise</h6>
-                <h4>{{info.certifications}}</h4>
+                <h4 class="text-xs custom:text-sm">{{info.certifications}}</h4>
 
                 <h6 class="font-medium text-sm mt-5">Phone Number</h6>
-                <h4>{{user.phone_no}}</h4>
+                <h4 class="text-xs custom:text-sm">{{user.phone_no}}</h4>
 
                 <h6 class="font-medium text-sm mt-5">Email</h6>
-                <h4>{{user.email}}</h4>
+                <h4 class="text-xs custom:text-sm">{{user.email}}</h4>
 
                 <h6 class="font-medium text-sm mt-5">Location</h6>
-                <h4>{{info.current_location}}</h4>
+                <h4 class="text-xs custom:text-sm">{{info.current_location}}</h4>
               </div>
             </div>
 
@@ -324,7 +324,7 @@
         <!-- Training Modal  -->
         
 
-        <div class="sm:ml-10 mt-20 mb-5 flex -ml-5">
+        <div class="sm:ml-10 custom:pl-5 md-compact:pl-3 mt-20 mb-5 flex -ml-5">
           <h6 class="font-bold md-compact:text-base compact:text-sm">Training & Certification</h6>
           <div class="lg:ml-80">
             <a href="#"
@@ -332,7 +332,7 @@
                 src="{% static '/img/Group 68.png' %}"
                 id="openTrainingModal"
                 alt=""
-                class="xl:translate-x-96 xl:ml-80 lg:translate-x-52 md:translate-x-72 sm:translate-x-44 portable:translate-x-32 custom:ml-10 md-compact:ml-20"
+                class="xl:translate-x-96 xl:ml-80 lg:translate-x-52 md:translate-x-64 sm:translate-x-36 portable:translate-x-28 custom:translate-x-10 md-compact:translate-x-10 translate-x-1"
             /></a>
           </div>
         </div>
@@ -345,7 +345,7 @@
 
             <th class="py-2 pr-2">Grade</th>
 
-            <th class="py-2">Assessed</th>
+            <th class="py-2 hidden md-compact:block">Assessed</th>
           </tr>
 
           {% for x in train_and_cert %}
@@ -354,8 +354,8 @@
 
             <td>{{ x.skill_learned }}</td>
 
-            <td>{{ x.grade }}</td>
-            <td class="mr-5">
+            <td class="pl-2">{{ x.grade }}</td>
+            <td class="mr-5 hidden md-compact:flex justify-center md-compact:mt-5 portable:mt-7 md:mt-5 lg:mt-3 xl:mt-0">
               <img src="{% static '/img/Vector (14).png' %}" />
             </td>
           </tr>
@@ -364,10 +364,10 @@
 
         <div class="mt-20">
           <div class="sm:ml-10 flex">
-            <h6 class="font-extrabold text-base">Work Experience</h6>
+            <h6 class="font-extrabold custom:ml-0 md-compact:text-base compact:text-sm -ml-4">Work Experience</h6>
           </div>
 
-          <div class="sm:ml-10 font-primary font-normal text-sm pb-16">
+          <div class="sm:ml-10 font-primary font-normal custom:ml-0 -ml-4 text-xs md-compact:text-sm compact:text-sm pb-16">
             {% for x in about_skilla %} {{ x.work_experience }} {% endfor %}
           </div>
         </div>
