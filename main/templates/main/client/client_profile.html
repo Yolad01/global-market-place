@@ -1,0 +1,34 @@
+{% extends 'layout/home_nav.html' %}
+{% load static %}
+
+{% block content %}
+
+<body class="font-primary h-screen">
+    <div class="lg:grid lg:grid-cols-2 m-10 justify-center">
+
+        <div class="hidden lg:block lg:w-1/2 lg:mt-40 xl:ml-48">
+            <img src="{% static '/img/second_frame.svg' %}" alt="Illustration" class="lg:mt-20 lg:ml-20">
+        </div>
+
+        <div class="compact:mt-24 custom:mt-0 custom:mx-1 custom:-mb-10 portable:mx-10 sm:mx-16 md:mx-32 lg:w-full lg:-ml-5 xl:w-1/2 compact:-mx-5">
+            <div class="border border-veryDarkGreen xl:mb-16 xl:mt-32 compact:mt-28 compact:mb-20">
+                <div class="text-lg compact:mt-3 pt-5 font-semibold text-center">{{ user.username }}' Profile Update</div>
+
+                    <form method="POST" enctype="multipart/form-data" class="rounded-lg px-8 pt-6 pb-8 mb-4">
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                        <button type="submit"
+                            class="bg-veryDarkGreen w-full border font-semibold text-white my-4 py-2 px-4 rounded-md shadow">
+                            Get Started
+                        </button>
+                    </form>
+               </div>
+            </div>
+    </div>
+</body>  
+    
+{% endblock %}
+
+

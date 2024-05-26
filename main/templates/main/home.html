@@ -1,0 +1,429 @@
+{% extends 'layout/home_nav.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Body of landing page -->
+    <div class="font-primary mt-24">
+        <!-- Menu section -->
+        <section class="">
+            {% comment %} <div class="mt-2 font-primary flex justify-center items-center compact:gap-x-3 sm:gap-x-5 lg:gap-x-12 mx-10 custom:mx-2 md:gap-x-8 custom:gap-x-2"> {% endcomment %}
+                
+                {% comment %} <div class="lg:bg-ash md:bg-ash shadow-md flex compact:p-1 sm:p-2 custom:p-2 md:pt-3 relative mt-5 lg:mt-12"> {% endcomment %}
+
+            <div class="mt-2 font-primary flex justify-center items-center sm:gap-x-5 lg:gap-x-12 mx-10 custom:mx-2 md:gap-x-8 custom:gap-x-2">
+                <div class="lg:bg-ash md:bg-ash flex shadow-md sm:p-2 custom:p-2 custom:-ml-1 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
+                        {% csrf_token %}
+                        <input id="" value="Artisans" name="var" class="hidden">
+                        <button type="submit">Artisans</button>
+                    </form>
+                </div>
+
+                <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
+                        {% csrf_token %}
+                        <input id="" value="Technicians" name="var" class="hidden">
+                        <button type="submit">Technicians</button>
+                    </form>
+                </div>
+
+                <!-- This div is for compact screens only -->
+                <div class="hidden compact:block custom:hidden compact:p-1 lg:bg-ash md:bg-ash shadow-md sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="hidden compact:visible">
+                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
+                        {% csrf_token %}
+                        <input id="" value="Development and IT" name="var" class="hidden">
+                        <button type="submit">IT</button>
+                    </form>
+                </div>
+
+                <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12 compact:hidden custom:block portable:flex">
+                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+
+                    <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
+                        {% csrf_token %}
+                        <input id="" value="Development and IT" name="var" class="hidden">
+                        <button type="submit">Development and IT</button>
+                    </form>
+                </div>
+                
+                <div class="lg:bg-ash md:bg-ash shadow-md flex compact:p-1 sm:p-2 custom:p-2 md:pt-3 relative mt-5 lg:mt-12">
+                    <button id="dropdownToggle" class="font-normal text-sm sm:ml-2 custom:ml-0">More</button>
+                    <img src="{% static 'img/more_arrow.svg' %}" alt="downward arrow" class="ml-2 cursor-pointer portable:ml-1 hidden portable:block" id="dropdownToggleImage">
+                
+    
+                    <!-- Dropdown menu -->
+                    <div id="dropdownMoreMenu" class="absolute compact:-ml-48 custom:-ml-44 portable:-ml-40 sm:-ml-28 font-primary mt-10 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none hidden">
+                        <div class="py-1" role="none">
+
+                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
+                            {% csrf_token %}
+                            <input id="" value="Craftsmen" name="var" class="hidden">
+                            <button type="submit">Craftsmen</button>
+                        </form>
+                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
+                            {% csrf_token %}
+                            <input id="" value="Accounting and Finance" name="var" class="hidden">
+                            <button type="submit">Accounting and Finance</button>
+                        </form>
+                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
+                            {% csrf_token %}
+                            <input id="" value="Writing and Translation" name="var" class="hidden">
+                            <button type="submit">Writing and Translation</button>
+                        </form>
+                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
+                            {% csrf_token %}
+                            <input id="" value="Marketing and Sales" name="var" class="hidden">
+                            <button type="submit">Marketing and Sales</button>
+                        </form>
+                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
+                            {% csrf_token %}
+                            <input id="" value="Architecture and Engineering" name="var" class="hidden">
+                            <button type="submit">Architecture and Engineering</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
+        <!-- Hero section -->
+        <section class="">
+            <div class="xl:mx-40">
+                <div class="lg:flex justify-between  hidden lg:visible">
+                    <img src="{% static 'img/photo_cleaner.svg' %}" alt="Photo of cleaner" class="lg:ml-32 lg:mt-20 xl:w-60">
+                    <img src="{% static 'img/photo_customer.svg' %}" alt="Photo of skilla" class="mr-32 mt-20 xl:w-60">
+                </div>
+
+
+                <div class="lg:flex lg:items-center lg:justify-center compact:-mt-7 compact:mb-7">
+                    <img class="lg:hidden mx-auto w-2/3 mt-20" src="{% static '/img/home_banner.svg' %}" alt="banner">
+                    <img class="invisible lg:visible xl:visible lg:-mt-20 lg:w-1/3 xl:w-1/3 xl:-mt-40" src="{% static '/img/home_banner.svg' %}" alt="banner">
+                </div>
+
+                <div class="lg:hidden">
+                    <img class="mx-auto w-2/3 -mt-28" src="{% static 'img/mobile_hero.svg' %}" alt="Photo of cleaner" class="mt-14">
+                    {% comment %} <img class="mx-auto w-2/3 -mt-28" src="{% static 'img/mobile_hero.svg' %}" alt="Photo of cleaner" class="mt-14"> {% endcomment %}
+                </div>
+            </div>
+            
+            <div class="hidden lg:visible lg:flex justify-between xl:mt-7 xl:mx-40">
+                <img src="{% static 'img/left_braces.svg' %}" alt="curly braces" class="lg:-mt-14 lg:ml-20  border rounded-lg border-none">
+                <img src="{% static 'img/right_braces.svg' %}" alt="curly braces" class="lg:mr-20 lg:-mt-14 invisible sm:visible">
+            </div>
+
+            <div>
+                <div class="hidden lg:visbile lg:flex lg:justify-between xl:mx-36">
+                    <img src="{% static 'img/photo_artisan.svg' %}" alt="Photo of technician" class="lg:ml-64 invisible lg:visible xl:w-60">
+                    <img src="{% static 'img/photo_techie.svg' %}" alt="Photo of tech personnel" class="lg:mr-64 invisible lg:visible xl:w-60">
+                </div>
+                
+    
+                <div class="flex items-center justify-center mt-20"> 
+                    <a
+                    href="/register"
+                    class="compact:text-base custom:text-xl text-[25px] lg:text-2xl font-bold before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryDarkGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize text-veryDarkGreen lg:font-semibold xl:text-2xl relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryLightGreen after:rounded-md after:transition-all hover:text-veryLightGreen"
+                    >Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service section -->
+        <section>
+            <div class="sm:mt-32 mt-20">
+                <h2 class="font-extrabold text-veryDarkGreen text-center text-3xl mb-10 compact:text-xl custom:text-2xl">Services</h2>
+                <div class="2xl:mt-20 xl:mx-40">
+                    <div class="compact:ml-16 custom:ml-5 sm:grid sm:grid-cols-2 sm:mx-10 md:grid md:grid-cols-2 md:mx-16 md:mt-5 lg:grid lg:grid-cols-4 lg:gap-5 2xl:mx-36 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px]">
+                        
+                        <!--Mobile-->
+                        <div class="mb-5 flex justify-center">
+                            <a href="#"><img src="{% static 'img/cleaner_mobile.svg' %}" alt="Photo of cleaner" class="compact:w-3/4 custom:w-full"></a>
+                        </div>
+
+                        <div class="mb-5 flex justify-center">
+                            <a href="#"><img src="{% static 'img/technician_mobile.svg' %}" alt="Photo of technician" class="w-1/2 compact:w-3/4 custom:w-full"></a>
+                        </div>
+
+                        <div class="mb-5 flex justify-center">
+                            <a href="#"><img src="{% static 'img/tech_mobile.svg' %}" alt="Photo of technician" class="w-1/2 compact:w-3/4 custom:w-full"></a>
+                        </div>
+
+                        <div class="mb-5 flex justify-center">
+                            <a href="#"><img src="{% static 'img/artisan_mobile.svg' %}" alt="Photo of technician" class="w-1/2 compact:w-3/4 custom:w-full"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center items-center mt-24 mb-20">
+                    <a href="/register" class=" custom:text-xl portable:text-xl md:visible lg:visible lg:text-2xl before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryDarkGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize text-veryDarkGreen font-semibold text-[14px] xl:text-2xl relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryLightGreen after:rounded-md after:transition-all hover:text-veryLightGreen">
+                        SIGN UP TO SEE MORE
+                    </a>
+
+                    <a href="/register" class="hidden sm:hidden md:hidden lg:hidden before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryDarkGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize text-veryDarkGreen font-bold text-[25px] xl:text-2xl relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryLightGreen after:rounded-md after:transition-all hover:text-veryLightGreen">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer review section -->
+        <section>
+            <div class="hidden lg:visible lg:mt-20 bg-navyBlue">
+                <h2 class="font-extrabold text-white text-center text-2xl pt-24 lg:visible">CUSTOMERS REVIEW</h2>
+                
+                <div class="mt-10 pb-24 flex xl:mx-10 2xl:mx-36">
+                    <div>
+                        <a href="#"><img src="{% static '/img/white_left_arrow.png' %}" alt="Photo of customer" class="h-10 mt-20 mr-5"></a>
+                    </div>
+                    <div class="mx-5 grid grid-cols-3 gap-4 shadow">
+                        
+                        <div class="flex">
+                            <img src="{% static '/img/customer_one.png' %}" alt="Photo of customer" class="">
+
+                        <div class="bg-white border rounded-r-lg">
+                            <h1 class="text-blackEssence font-semibold text-sm mt-5 ml-4">Mike Ben</h1>
+                            <p class="text-blackEssence text-xs mx-4 mt-2">Lorem Ipsum is simply dummy text of the printing and 
+                                typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                when an unknown printer took a galley, standard dummy text ever since the 1500s, when an unknown printer 
+                                took a galley</p>
+                        </div>
+                        </div>
+                    
+
+                        <div class="flex">
+                            <img src="{% static '/img/customer_two.png' %}" alt="Photo of customer">
+                            <div class="bg-white border rounded-r-lg">
+                                <h1 class="text-blackEssence font-semibold text-sm mt-5 ml-4">Mike Ben</h1>
+                                <p class="text-blackEssence text-xs mx-4 mt-2">Lorem Ipsum is simply dummy text of the printing and 
+                                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                    when an unknown printer took a galley, standard dummy text ever since the 1500s, when an unknown printer 
+                                    took a galley</p>
+                            </div>
+                        </div> 
+
+                        <div class="flex">
+                            <img src="{% static '/img/customer_three.png' %}" alt="Photo of customer">
+                            <div class="bg-white border rounded-r-lg">
+                                <h1 class="text-blackEssence font-semibold text-sm mt-5 ml-4">Mike Ben</h1>
+                                <p class="text-blackEssence text-xs mx-4 mt-2">Lorem Ipsum is simply dummy text of the printing and 
+                                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                    when an unknown printer took a galley, standard dummy text ever since the 1500s, when an unknown printer 
+                                    took a galley</p>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div>
+                        <a href="#"><img src="{% static '/img/white_right_arrow.png' %}" alt="Photo of customer" class="h-10 mt-20 mr-5"></a>
+                    </div>
+                </div>
+            </div> 
+
+            <!--Mobile  and Tablet view codes -->
+            <div class="bg-navyBlue lg:hidden">
+                <h2 class="font-extrabold text-white text-center text-2xl compact:text-xl pt-10">CUSTOMERS REVIEW</h2>
+
+                <div class="mt-10 mx-10 flex pb-10 custom:mx-2 portable:mx-5">
+                    <div class="shadow md:grid md:grid-cols-2 md:gap-x-5 sm:mx-10">
+                        <div class="flex">
+                            <img src="{% static '/img/customer_one.png' %}" alt="Photo of customer" class="compact:hidden">
+
+                            <div class="bg-white border rounded-r-lg">
+                                <h1 class="text-blackEssence font-semibold text-sm mt-5 ml-4">Mike Ben</h1>
+                                <p class="text-blackEssence text-xs mx-4 mt-2">Lorem Ipsum is simply dummy text of the printing and 
+                                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                    when an unknown printer took a galley, standard dummy text ever since the 1500s, when an unknown printer 
+                                    took a galley</p>
+                            </div>
+                            </div>
+
+                            <div class="flex mt-5 md:mt-0">
+                                <img src="{% static '/img/customer_two.png' %}" alt="Photo of customer" class="compact:hidden">
+                                <div class="bg-white border rounded-r-lg">
+                                    <h1 class="text-blackEssence font-semibold text-sm mt-5 ml-4">Mike Ben</h1>
+                                    <p class="text-blackEssence text-xs mx-4 mt-2">Lorem Ipsum is simply dummy text of the printing and 
+                                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                        when an unknown printer took a galley, standard dummy text ever since the 1500s, when an unknown printer 
+                                        took a galley</p>
+                                </div>
+                            </div> 
+                    </div>
+
+                </div>
+
+                
+            </div>
+        </section>
+
+        <!-- FAQ section -->
+        <section>
+            <div class="bg-ash lg:mt-20  mt-10 pb-10">
+                <div class="lg:mb-10 pt-10">
+                    <h2 class="font-semibold text-veryDarkGreen text-center text-3xl  lg:text-3xl mb-10 custom:text-2xl compact:text-xl compact:mx-3">Frequently Asked Questions</h2>
+    
+
+                    <div class="mx-14 lg:mx-10 xl:mx-20 2xl:mx-36 compact:mx-1 custom:mx-2 custom:ml-2 portable:mx-5 sm:mx-10">
+                        <div class="rounded-none cursor-pointer">
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                                <a class="font-normal text-xl text-navyBlue pl-5  toggle-dropdown compact:text-base">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white mb-3">
+                                <p class="font-normal text-xl px-5 compact:text-base">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown compact:text-base">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white mb-3">
+                                <p class="font-normal text-xl px-5 compact:text-base">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown compact:text-base">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white mb-3">
+                                <p class="font-normal text-xl px-5 compact:text-base">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown compact:text-base">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white mb-3">
+                                <p class="font-normal text-xl px-5 compact:text-base">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown compact:text-base">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white mb-3">
+                                <p class="font-normal text-xl px-5 compact:text-base">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+    
+                            <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                                <a class="font-normal text-xl text-navyBlue pl-5 toggle-dropdown compact:text-base">What Is The Refund Policy?</a>
+                                <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="mr-5 mt-2 dropdown-toggle">
+                            </div>
+                            <div class="accordion-content hidden bg-white mb-3">
+                                <p class="font-normal text-xl px-5 compact:text-base">A Refund Policy is where you state your policy on whether or not you issue refunds, 
+                                    and in what circumstances this may be limited. You can let users know how to go about requesting 
+                                    a refund, what steps they must take to get one, what form the refund will be issued in, and how 
+                                    long the entire process will take.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="md:visible lg:visible xl:visible  mt-24 mb-24 items-center justify-center gap-20 bg-ash">
+                <div class="hidden lg:flex lg:visible xl:mx-36">
+                    <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care rep" class="lg:visible">
+                
+                <div class="md:ml-16 md:mt-20 md:visible md:pb-10 lg:visible lg:ml-20 xl:ml-60">
+                    <h2 class="font-black text-veryDarkGreen md:text-4xl mb-5">Contact Our 24/7 <br/>
+                        Customer Service   
+                    </h2>
+
+                    <p class="font-medium md:mt-10 text-2xl">
+                        YOLAD GLOBAL SERVICES LIMITED positions <br/> itself as a Need-Market Platform 
+                        that offers <br /> skilled Workers and Personnels to businesses. 
+                    </p>
+
+                    <h2 class="font-black text-veryDarkGreen mt-10 text-left text-5xl mb-14 md:text-4xl">
+                        +234 803 674 8872
+                    </h2>
+                    
+                    <a href="/register" class="rounded bg-veryLightGreen text-veryDarkGreen text-3xl font-semibold px-10 py-2 md:bg-veryDarkGreen md:text-white">
+                        Sign up here
+                    </a>
+                </div>
+                </div>
+            </div>
+                <!--Mobile and small screens -->
+                <div class="custom:mt-10  mb-10 lg:hidden pb-10 bg-ash">
+                    <h2 class="font-bold text-veryDarkGreen text-2xl mb-5 ml-10 pt-10 compact:ml-3 md-compact:ml-5">Contact Our 24/7 Customer Service</h2>
+    
+                    <p class="custom:text-xl ml-10 md:mr-24 sm:mr-20 compact:text-lg compact:ml-3 md-compact:ml-5 md-compact:mr-20">
+                        YOLAD GLOBAL SERVICES LIMITED positions itself as a Need-Market Platform 
+                        that offers skilled Workers and Personnels to businesses. 
+                    </p>
+    
+                    <h2 class="font-black text-veryDarkGreen mt-10 text-left text-4xl mb-14 compact:text-lg custom:text-2xl ml-10 compact:ml-3 md-compact:ml-5">
+                        +234 803 674 8872
+                    </h2>
+                    
+                    <a href="/register" class="rounded bg-veryDarkGreen text-white compact:text-lg text-3xl font-semibold px-10 py-2 custom:text-2xl ml-10 compact:ml-3 md-compact:ml-5">
+                        Sign up here
+                    </a>
+                </div>
+        </section>
+    </div>
+
+    <!-- Script for More button -->
+    <script>
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownToggleImage = document.getElementById('dropdownToggleImage');
+        const dropdownMoreMenu = document.getElementById('dropdownMoreMenu');
+      
+        dropdownToggle.addEventListener('click', toggleDropdown);
+        dropdownToggleImage.addEventListener('click', toggleDropdown);
+      
+        // Function to toggle dropdown menu
+        function toggleDropdown() {
+          dropdownMoreMenu.classList.toggle('hidden');
+        }
+      
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+          if (!dropdownToggle.contains(event.target) && !dropdownToggleImage.contains(event.target)) {
+            dropdownMoreMenu.classList.add('hidden');
+          }
+        });
+      </script>
+
+      <!-- Script for FAQ Section -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleDropdowns = document.querySelectorAll('.toggle-dropdown');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+            // Function to toggle dropdown content
+            function toggleDropdown(event) {
+                event.preventDefault();
+                const content = this.parentElement.nextElementSibling; // Get the next sibling element
+                content.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the content
+            }
+        
+            toggleDropdowns.forEach(function(toggle) {
+                toggle.addEventListener('click', toggleDropdown);
+            });
+        
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', toggleDropdown);
+            });
+        });
+        </script>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'layout/home_nav.html' %} {% load static %} {% block content %}
+
+
+<body class="bg-white font-primary">
+  <div class="mt-2 lg:grid lg:grid-cols-2 container mx-auto xl:mt-32 xl:border xl:shadow-lg xl:mb-20">
+      <div class="ml-28 hidden lg:block">
+        <img src="{% static '/img/Illustrations-04.png' %}" class="xl:mt-64 lg:mt-96"/>
+      </div>
+      <div class="flex min-h-full flex-col justify-center px-6 py-12 pb-60 lg:px-8 xl:-mt-20 lg:mt-10">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          {% comment %} <img class="mx-auto h-10 w-auto" src="{% static '/img/skillas_design-03.png' %}" alt="Your Company"> {% endcomment %}
+          <h2 class="mt-16 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">SIGN UP</h2>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm custom:-mb-32 xl:-mt-5 xl:-mb-40 lg:-mt-5 compact:-mb-32">
+
+          {% if messages %}
+          {% for message in messages %}
+          <div class="mt-2 text-sm text-center py-1 rounded-md px-2" role="alert">
+            <p class="text-white bg-rose-500 px-2 py-2 rounded shadow">{{ message }}</p>
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          <form method="POST" enctype="multipart/form-data" class="space-y-6">
+            {% csrf_token %}
+          
+            <div>
+              <label for="id_username" class="block text-veryDarkGreen text-base">Username</label>
+              <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username" class="border border-gray-700 p-2 mb-4 w-full rounded-md">
+            </div>
+          
+            <div>
+              <label for="id_first_name" class="block text-veryDarkGreen text-base">First name</label>
+              <input type="text" name="first_name" maxlength="150" id="id_first_name" class="border border-gray-700 p-2 mb-4 w-full rounded-md">
+            </div>
+          
+            <div>
+              <label for="id_last_name" class="block text-veryDarkGreen text-base">Last name</label>
+              <input type="text" name="last_name" maxlength="150" id="id_last_name" class="border border-gray-700 p-2 mb-4 w-full rounded-md">
+            </div>
+          
+            <div>
+              <label for="id_email" class="block text-veryDarkGreen text-base">Email</label>
+              <input type="email" name="email" maxlength="254" required id="id_email" class="border border-gray-700 p-2 mb-4 w-full rounded-md">
+            </div>
+          
+            <div>
+              <label for="id_phone_no" class="block text-veryDarkGreen text-lg">Phone Number</label>
+              <input type="text" name="phone_no" maxlength="15" required id="id_phone_no" class="border border-gray-700 p-2 mb-4 w-full rounded-md">
+            </div>
+          
+            <div>
+              <label for="id_role" class="block text-veryDarkGreen text-lg">Role</label>
+              <select name="role" required id="id_role" class="border py-3 border-gray-700 p-2 mb-4 w-full rounded-md">
+                <option class="font-normal" value="" selected>---------</option>
+                <option class="font-normal text-light_ash text-xl" value="CLIENT">Client</option>
+                <option class="font-normal text-light_ash text-xl" value="SKILLAS">Skillas</option>
+                <option class="font-normal text-light_ash text-xl" value="COMPANY">Company</option>
+              </select>
+            </div>
+          
+            <div>
+              <label for="id_password1" class="block text-veryDarkGreen text-base">Password</label>
+              <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="border border-gray-700 p-2 mb-4 w-full rounded-md">
+            </div>
+          
+            <div>
+              <label for="id_password2" class="block text-veryDarkGreen text-base">Confirm Password</label>
+              <input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="border border-gray-700 p-2 mb-4 w-full rounded-md">
+
+              <input class="border border-veryLightGreen rounded" type="checkbox" onclick="myFunction()"> Show Password
+              <ul>
+                <li>Your password should not be less than 8 characters.</li><br>
+                <li>the characters should include an uppercase, lowercase a symbol and a number.</li>
+              </ul>
+              
+            </div>
+          
+            <div>
+              <button type="submit" class="w-full before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-4 capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen">
+                Create account
+              </button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+  </div>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("id_password1");
+      var y = document.getElementById("id_password2");
+      if ((x.type === "password") && (y.type === "password")) {
+        x.type = "text";
+        y.type = "text";
+      } else {
+        x.type = "password";
+        y.type = "password";
+      }
+    }
+  </script>
+</body>
+
+{% endblock %}

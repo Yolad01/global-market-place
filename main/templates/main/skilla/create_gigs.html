@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Skilla</title>
+        
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <script src="{% static '/js/init-alpine.js' %}"></script>
+        <script src="{% static '/js/main.js' %}"></script>
+        <script src="{% static '/js/wow.min.js' %}"></script>
+        <script>
+        new WOW().init();
+        </script>
+
+        <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet"
+        />
+
+        <script src="{% static '/js/wow.min.js' %}"></script>
+        <script>
+        new WOW().init();
+        </script>
+    </head>
+
+    <body>
+
+        
+
+            
+
+            <form method="post" enctype="multipart/form-data"
+                class="md:flex justify-center"
+                >
+
+                <div>
+                <div class="my-10 font-bold text-3xl text-veryDarkGreen">Create Gig</div>
+                {% csrf_token %}
+                
+                <div class="border-2 my-10 py-10 px-10">
+
+                    <div class="my-5">
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold rounded-lg"></p>
+                        {{ form.title }}
+                    </div>
+
+                    <div>
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Description</p>
+                        {{ form.description }}
+                    </div>
+
+                    <div class="flex my-5">
+                        <div>
+                            <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Category</p>
+                            {{ form.category }}
+                        </div>
+
+                        <div>
+                            <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Skill</p>
+                            {{ form.skill }}
+                        </div>
+
+                        <div>
+                            <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Select you skill level</p>
+                            {{ form.level }}
+                        </div>
+                    </div>
+
+                    <div class="my-5">
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Select an Image that describes your skill</p>
+                        {{ form.image }}
+                    </div>
+                    
+                    <div>
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Price</p>
+                        {{ form.base_price }}
+                    </div>
+
+                    <div>
+                        <button class="bg-gray-800 text-white font-semibold shadow-xl rounded-md mx-5 py-2 px-10 my-2" type="submit">Create</button>
+                    </div>
+                    
+                </div>
+
+            </div>
+            </form>
+
+        
+
+        
+    </body>
+    
+</html>

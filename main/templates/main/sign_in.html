@@ -1,0 +1,73 @@
+{% extends 'layout/home_nav.html' %} 
+{% load static %}
+
+
+{% block content %}
+
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 pb-60 lg:px-8 custom:-mb-36">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm lg:mt-16 compact:mt-10">
+      {% comment %} <img class="mx-auto h-10 w-auto" src="{% static '/img/skillas_design-03.png' %}" alt="Your Company"> {% endcomment %}
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+    </div>
+
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+
+      {% if messages %}
+      {% for message in messages %}
+      <div class="mt-2 text-sm text-center py-1 rounded-md px-2" role="alert">
+        <p class="text-white bg-rose-500 px-2 py-2 rounded shadow">{{ message }}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+      
+      <form class="space-y-6" action="#" method="POST">
+        {% csrf_token %}
+        <div>
+          <label for="id_username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+          <div class="mt-2">
+            <input id="username" name="username" type="text" autocomplete="username" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+  
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="id_password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+            <div class="text-sm">
+              <a href="/password_reset" class="font-semibold text-veryDarkGreen hover:text-veryLightGreen">Forgot password?</a>
+            </div>
+          </div>
+          <div class="mt-2">
+            <input id="id_password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+            <input class="border border-veryLightGreen rounded" type="checkbox" onclick="myFunction()"> Show Password
+          </div>
+        </div>
+  
+        <div>
+          <button type="submit" class="w-full before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-2 capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen before:duration-1000 after:duration-1000">Sign in</button>
+        </div>
+      </form>
+  
+      <p class="mt-10 text-center text-sm text-gray-500 compact:-mb-40 custom:mb-3">
+        Not a Member?
+        <a href="/register" class="font-semibold leading-6 text-veryDarkGreen hover:text-veryLightGreen">Register</a>
+      </p>
+    </div>
+  </div>
+  
+
+
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("id_password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
+</body>
+
+{% endblock %}
