@@ -4,98 +4,95 @@
 
 {% block content %}    
 <main>
-    <div class="flex">
-      <div class="mt-40 ml-60">
-        <h2 class="font-primary font-semibold text-6xl">
+    <div class="flex lg:mr-20 sm:mx-10 portable:mx-20 custom:mx-10 md-compact:mx-10 mx-5">
+      <div class="hidden sm:block sm:mt-40 sm:ml-0 xl:ml-60 lg:ml-20">
+        <h2 class="font-primary font-semibold xl:text-6xl lg:text-4xl md:text-2xl sm:text-xl">
           Let the matching <br />
           begin...
         </h2>
 
-        <p class="font-normal text-xl mt-20 mb-20">
+        <p class="hidden xl:block font-normal xl:mb-20 xl:mt-10">
           Fill us in on the big picture let us <br />know what you want.
         </p>
 
-        <img src="{% static '/img/group_357.png' %}" alt="illustration" class="mb-40" />
+        <p class="xl:hidden font-normal lg:text-xl md:text-base sm:mt-10 lg:mt-20 xl:mb-20 sm:mb-10">
+          Fill us in on the big picture let us know what you want.
+        </p>
+
+        <img src="{% static '/img/group_357.png' %}" alt="illustration" class="xl:mb-40" />
       </div>
 
       <!-- create_brief.html -->
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="mb-4 mt-7 ml-40">
+        <div class="xl:mb-4 mt-7 xl:ml-40 lg:ml-20 sm:ml-10">
           <div class="flex">
-            <h6 class="font-primary font-bold text-xl text-lightBlack">
+            <h6 class="font-primary font-bold portable:text-xl text-lg text-lightBlack">
               Give your project brief a title
             </h6>
-            <a
-              href="/client_dashboard"
-              class="text-base font-semibold font-primary translate-x-72 ml-20"
-              >Exit</a
-            >
+            {% comment %} <a href="/client_dashboard" class="text-base font-semibold font-primary xl:translate-x-72 xl:ml-20">
+              Exit
+            </a> {% endcomment %}
           </div>
-          <p
-              class="font-primary font-normal text-base text-lightBlack mt-2"
-            >
+          
+          <p class="font-primary font-normal text-base text-lightBlack mt-2">
               Keep it short and simple, this will help us match you to the
               right category.
           </p>
-
-            {{ form.title }}
+              {{ form.title }}
         </div>
 
-        <div class="mb-4 ml-40">
-          <h6
-                class="font-primary font-bold text-xl text-lightBlack mt-14"
-              >
-                What are you looking to get done ?
+        <div class="mb-4 xl:ml-40 lg:ml-20 sm:ml-10">
+          <h6 class="font-primary font-bold portable:text-xl text-lg text-lightBlack mt-14">
+                What are you looking to get done?
           </h6>
 
-          <p
-            class="font-primary font-normal text-base text-lightBlack mt-3 mb-5"
-          >
+          <p class="font-primary font-normal text-base text-lightBlack mt-3 mb-5">
             This will help get your brief to the right talent, Specifics
             help here
           </p>
             {{ form.description }}
         </div>
-        <div class="mb-4 mt-5 ml-40">
+
+        <div class="mb-4 mt-5 xl:ml-40 lg:ml-20 sm:ml-10">
             {{ form.attach_files }}
         </div>
-        <div class="mb-4 ml-40">
+
+        <div class="mb-4 xl:ml-40 lg:ml-20 sm:ml-10">
           <div class="mt-10 mb-7">
-            <h6
-              class="font-primary font-bold text-base text-veryLightBlack"
-            >
+            <h6 class="font-primary font-bold text-base text-veryLightBlack">
               What category best fits your project?
             </h6>
           </div>
             {{ form.categories }}
         </div>
-        <div class="mb-4 ml-40">
+
+        <div class="mb-4 xl:ml-40 lg:ml-20 sm:ml-10">
           <div class="flex mb-5">
-            <h6
-              class="mt-10 font-primary font-extrabold text-xl text-shadeAsh_9"
-            >
+            <h6 class="mt-10 font-primary font-extrabold portable:text-xl text-lg text-shadeAsh_9">
               I’m looking to spend..
             </h6>
           </div>
+
             {{ form.budget }}
+
             <div class="flex">
               <p class="font-normal text-[13px] text-lightBlack mt-2">
                 Average range for this service is $100 to $750
               </p>
-              <img src="{% static '/img/question_mark.svg' %}" alt="question mark" class="ml-2" />
+              <img src="{% static '/img/question_mark.svg' %}" alt="question mark" class="hidden md-compact:block md-compact:ml-2" />
             </div>
         </div>
-        <div class="mb-4 ml-40">
+
+        <div class="mb-4 xl:ml-40 lg:ml-20 sm:ml-10">
             {{ form.budget_flexible }}
             <label for="" class="text-[13px] font-normal text-veryLightBlack">
               My budget is flexible
             </label>
         </div>
-        <div class="mb-4 ml-40 mt-20">
-          <h6
-            class="font-primary font-bold text-xl text-veryLightBlack mt-5 mb-5"
-          >
+
+        <div class="mb-4 xl:ml-40 lg:ml-20 sm:ml-10 mt-20">
+          <h6 class="font-primary font-bold portable:text-xl text-lg text-veryLightBlack mt-5 mb-5">
             Let’s talk timing
           </h6>
             {{ form.date }}
@@ -103,7 +100,7 @@
             <h6 class="text-sm text-light_ash">We’ll find available skillas</h6>
         </div>
 
-        <div class="m-5 translate-x-72 ml-72">
+        <div class="m-5 xl:translate-x-72 xl:ml-72 lg:ml-20 sm:ml-10">
           <button
             class="text-base font-primary font-bold text-white bg-veryDarkGreen rounded-md px-5 py-2"
             type="submit"

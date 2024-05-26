@@ -219,13 +219,13 @@ class BriefForm(forms.ModelForm):
             "date"
         ]
         widgets = {
-            "title": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md'}),
-            "description": forms.Textarea(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "attach_files": forms.ClearableFileInput(attrs={'class': 'text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md'}),
-            "categories": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "budget": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "title": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 mt-10 rounded-md'}),
+            "description": forms.Textarea(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}),
+            "attach_files": forms.ClearableFileInput(attrs={'class': 'text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md w-3/4'}),
+            "categories": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}),
+            "budget": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}),
             "budget_flexible": forms.CheckboxInput(attrs={'class': 'border border-gray-700 mr-2 rounded-md'}),
-            "date": forms.SelectDateWidget(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'})
+            "date": forms.SelectDateWidget(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'})
         }
 
 
