@@ -2401,6 +2401,14 @@ select{
   padding-top: 80px;
 }
 
+.pt-\[20px\]{
+  padding-top: 20px;
+}
+
+.pt-\[30px\]{
+  padding-top: 30px;
+}
+
 .text-left{
   text-align: left;
 }
@@ -4051,6 +4059,11 @@ select{
     padding-right: 0.5rem;
   }
 
+  .portable\:py-5{
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
   .portable\:pt-1{
     padding-top: 0.25rem;
   }
@@ -4092,6 +4105,10 @@ select{
 
   .sm\:col-span-6{
     grid-column: span 6 / span 6;
+  }
+
+  .sm\:m-10{
+    margin: 2.5rem;
   }
 
   .sm\:mx-10{
@@ -4262,6 +4279,10 @@ select{
     margin-left: 0px;
   }
 
+  .sm\:ml-4{
+    margin-left: 1rem;
+  }
+
   .sm\:block{
     display: block;
   }
@@ -4402,6 +4423,11 @@ select{
   .sm\:px-5{
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  .sm\:py-5{
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
   }
 
   .sm\:pb-10{
@@ -4799,6 +4825,10 @@ select{
     grid-column: span 7 / span 7;
   }
 
+  .lg\:m-10{
+    margin: 2.5rem;
+  }
+
   .lg\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
@@ -5109,6 +5139,10 @@ select{
     background-color: rgb(243 242 247 / var(--tw-bg-opacity));
   }
 
+  .lg\:p-5{
+    padding: 1.25rem;
+  }
+
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
@@ -5149,6 +5183,10 @@ select{
 
   .lg\:pt-\[200px\]{
     padding-top: 200px;
+  }
+
+  .lg\:pt-\[50px\]{
+    padding-top: 50px;
   }
 
   .lg\:text-2xl{
@@ -5492,6 +5530,10 @@ select{
 
   .xl\:p-10{
     padding: 2.5rem;
+  }
+
+  .xl\:p-20{
+    padding: 5rem;
   }
 
   .xl\:px-20{
