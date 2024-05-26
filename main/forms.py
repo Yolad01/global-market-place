@@ -7,6 +7,25 @@ from main.models import (JobCategory, Job, Rating,
                          ProfilePicture, Brief, Order
                          )
 
+from django.contrib.auth.hashers import make_password
+
+
+class PasswordResetRequestForm(forms.Form):
+    email = forms.EmailField(label="Email")
+
+class SetPasswordForm(forms.Form):
+    new_password1 = forms.CharField(label="New password", widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label="Confirm new password", widget=forms.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("new_password1")
+        password2 = cleaned_data.get("new_password2")
+
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Passwords do not match")
+
+        return cleaned_data
 
 class RegistrationForm(UserCreationForm):
 
