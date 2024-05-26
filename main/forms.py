@@ -26,15 +26,6 @@ class SetPasswordForm(forms.Form):
             raise forms.ValidationError("Passwords do not match")
 
         return cleaned_data
-    
-
-    # def save(self):
-    #     password = self.cleaned_data["new_password1"]
-    #     self.user.password = make_password(password)
-    #     self.user.save()
-    #     return self.user
-
-
 
 class RegistrationForm(UserCreationForm):
 
