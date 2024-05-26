@@ -8,6 +8,10 @@
         <title>Skilla</title>
         
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
+
         <script src="{% static '/js/init-alpine.js' %}"></script>
         <script src="{% static '/js/main.js' %}"></script>
         <script src="{% static '/js/wow.min.js' %}"></script>
@@ -27,23 +31,15 @@
     </head>
 
     <body>
-
-        
-
-            
-
-            <form method="post" enctype="multipart/form-data"
-                class="md:flex justify-center"
-                >
-
+            <form method="post" enctype="multipart/form-data" class="md:flex justify-center">
                 <div>
-                <div class="my-10 font-bold text-3xl text-veryDarkGreen">Create Gig</div>
+                <div class="my-10 font-bold text-3xl text-veryDarkGreen lg:ml-0 md-compact:ml-16 ml-8">Create Gig</div>
                 {% csrf_token %}
                 
-                <div class="border-2 my-10 py-10 px-10">
+                <div class="border-2 my-10 py-10 md-compact:px-10">
 
                     <div class="my-5">
-                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold rounded-lg"></p>
+                        <p class="mx-5 text-xl text-veryDarkGreen font-semibold rounded-lg">Title</p>
                         {{ form.title }}
                     </div>
 
@@ -52,7 +48,7 @@
                         {{ form.description }}
                     </div>
 
-                    <div class="flex my-5">
+                    <div class="flex my-5 flex-wrap compact:flex-col md-compact:flex-col custom:flex-row portable:flex-row">
                         <div>
                             <p class="mx-5 text-xl text-veryDarkGreen font-semibold">Category</p>
                             {{ form.category }}

@@ -7,7 +7,7 @@
 <main class="mt-40 bg-white">
   <div class="container mx-auto">
 
-      <div class="mt-16 flex">
+      <div class="mt-16 portable:flex">
         <!-- picture Modal  -->
         <div
           class="fixed z-10 inset-x-12 overflow-y-auto hidden"
@@ -58,10 +58,10 @@
         </div>
         <!-- Picture Modal  -->
 
-        <div>
+        <div class="-mt-7">
           <img
             src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="h-50 w-96"
+            class="xl:w-72 lg:w-72 sm:ml-10 sm:w-52 w-40 portable:ml-5 mx-10"
             alt=""
           />
           <a href="#"
@@ -69,27 +69,27 @@
               src="{% static '/img/camera.png' %}"
               alt=""
               id="openPictureModal"
-              class="translate-x-72 ml-5 -translate-y-11"
+              class="xl:translate-x-72 xl:mt-5 xl:-translate-y-11 lg:translate-x-72 lg:-mt-6 md:translate-x-52 md:-mt-6 sm:translate-x-52 sm:-mt-6 portable:translate-x-36 portable:-mt-6 custom:translate-x-40 custom:-mt-6 md-compact:translate-x-40 md-compact:-mt-6 translate-x-40 -mt-6 w-8"
           /></a>
         </div>
 
-        <div class="ml-16">
-          <div class="flex">
-            <h1 class="font-extrabold text-6xl -mt-3">
+        <div class="lg:ml-16 sm:ml-10  portable:-mt-5 portable:-ml-5 mt-10 ml-5 portable:mx-0 md-compact:mx-10 portable:border-none border-2 rounded-md">
+          <div class="flex portable:p-0 p-2">
+            <h1 class="font-extrabold lg:text-4xl portable:text-2xl text-xl xl:mt-5 lg:mt-10">
               {{ user.first_name }} {{ user.last_name }}
             </h1>
             <a href="#"
               ><img
                 src="{% static '/img/Group 68.png' %}"
                 alt=""
-                class="translate-x-72 ml-20 translate-y-10"
+                class="xl:translate-x-56 xl:translate-y-10 lg:translate-x-20 portable:translate-x-10 md-compact:translate-x-10 translate-x-3"
             /></a>
           </div>
 
-          <div class="mt-10 p-4">
-            <h6 class="font-medium text-xl">{{ user.phone_no }}</h6>
-            <h6 class="mt-7 font-medium text-xl">{{ user.email }}</h6>
-            <h6 class="mt-7 font-medium text-xl">
+          <div class="lg:mt-10 sm:mt-5 p-4">
+            <h6 class="font-medium text-base md:text-xl">{{ user.phone_no }}</h6>
+            <h6 class="mt-7 font-medium text-base md:text-xl">{{ user.email }}</h6>
+            <h6 class="mt-7 font-medium text-base md:text-xl">
               Yolad Global Service Limted
             </h6>
 
@@ -100,10 +100,10 @@
         </div>
       </div>
 
-      <div class="mt-10 rounded-xl border-2 border-lightAsh py-5 mr-60">
-        <div class="flex">
-          <div class="ml-20">
-            <p class="font-bold text-xl text-someKindBlack">
+      <div class="mt-10 xl:ml-0 sm:mx-6 rounded-xl portable:mx-4 portable:border-2 border-lightAsh py-5 lg:mr-60">
+        <div class="portable:flex">
+          <div class="xl:ml-20 lg:ml-10 md:ml-5 portable:mx-4 custom:mx-6 mx-4">
+            <p class="font-bold lg:text-xl text-lg text-someKindBlack">
               Get proposals from the most relevant sellers
             </p>
             <p class="font-normal text-base mt-2">
@@ -111,10 +111,10 @@
             </p>
           </div>
 
-          <div class="translate-x-72 mt-4">
+          <div class="flex portable:hidden sm:block xl:translate-x-72 md:ml-10 sm:mt-4 sm:-ml-4 mt-5 md-compact:ml-56 ml-36">
             <a
               href="/create_brief"
-              class="bg-veryLightGreen text-base font-bold py-3 px-8 ml-60 rounded-md"
+              class="bg-veryLightGreen text-xs sm:text-base font-bold py-3 portable:px-2 sm:px-1 md:px-6 lg:px-8 px-5 xl:ml-60 rounded-md"
             >
               Create a brief
           </a>
@@ -122,8 +122,8 @@
         </div>
       </div>
 
-      <div class="mt-20 bg-veryDarkGreen p-5 pb-10 mb-20">
-        <p class="font-medium text-8xl text-white text-center py-8">Advert</p>
+      <div class="mt-20 bg-veryDarkGreen p-5 pb-10 mb-20 xl:mx-0 md:mx-10 sm:mx-6 mx-4 rounded-lg">
+        <p class="font-medium md:text-8xl text-2xl text-white text-center py-8">Advert</p>
       </div>
     </div>
   </div>

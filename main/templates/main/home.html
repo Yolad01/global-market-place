@@ -11,8 +11,8 @@
                 {% comment %} <div class="lg:bg-ash md:bg-ash shadow-md flex compact:p-1 sm:p-2 custom:p-2 md:pt-3 relative mt-5 lg:mt-12"> {% endcomment %}
 
             <div class="mt-2 font-primary flex justify-center items-center sm:gap-x-5 lg:gap-x-12 mx-10 custom:mx-2 md:gap-x-8 custom:gap-x-2">
-                <div class="lg:bg-ash md:bg-ash flex shadow-md sm:p-2 custom:p-2 custom:-ml-1 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 custom:-ml-1 md:pt-3 mt-5 lg:mt-12">
+                    <img src="{% static 'img/icon_artisan.svg' %}" alt="icon" class="hidden portable:block">
                     <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
                         {% csrf_token %}
                         <input id="" value="Artisans" name="var" class="hidden">
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                    <img src="{% static 'img/icon_technician.svg' %}" alt="icon" class="hidden portable:block">
                     <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
                         {% csrf_token %}
                         <input id="" value="Technicians" name="var" class="hidden">
@@ -31,7 +31,7 @@
 
                 <!-- This div is for compact screens only -->
                 <div class="hidden compact:block custom:hidden compact:p-1 lg:bg-ash md:bg-ash shadow-md sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12">
-                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="hidden compact:visible">
+                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="hidden">
                     <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
                         {% csrf_token %}
                         <input id="" value="Development and IT" name="var" class="hidden">
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="lg:bg-ash md:bg-ash flex shadow-md compact:p-1 sm:p-2 custom:p-2 md:pt-3 mt-5 lg:mt-12 compact:hidden custom:block portable:flex">
-                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="invisible portable:visible sm:visible">
+                    <img src="{% static 'img/icon_development.svg' %}" alt="icon" class="hidden portable:block">
 
                     <form method="POST" class="font-normal text-sm portable:ml-1 sm:ml-2 custom:ml-0">
                         {% csrf_token %}
@@ -78,7 +78,7 @@
                             <input id="" value="Marketing and Sales" name="var" class="hidden">
                             <button type="submit">Marketing and Sales</button>
                         </form>
-                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm"">
+                        <form method="POST" class="text-gray-700 block px-4 py-2 text-sm">
                             {% csrf_token %}
                             <input id="" value="Architecture and Engineering" name="var" class="hidden">
                             <button type="submit">Architecture and Engineering</button>

@@ -178,14 +178,14 @@ class SkillForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(
                 attrs={
-                    'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md xl:w-3/4 portable:w-1/4 lg:w-3/4',
-                    "placeholder": "Choose the title of your service"
+                    'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md w-3/4',
+                    "placeholder": "Title of your service"
                 }
             ),
-            "description": forms.Textarea(attrs={'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md resize-none', "rows": 7, "cols": 80, "placeholder": "Describe what you are offering"}),
-            "category": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
+            "description": forms.Textarea(attrs={'class': 'border border-veryDarkGreen my-2 mx-5 rounded-md resize-none w-3/4', "placeholder": "Describe what you are offering"}),
+            "category": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl w-3/4'}),
             "skill": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
-            "image": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 my-2 mx-5 rounded-md'}),
+            "image": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 my-2 mx-5 rounded-md w-1/2'}),
             "level": forms.Select(attrs={'class': 'border border-gray-700 my-5 mx-5 rounded-md text-2xl'}),
             "base_price": forms.NumberInput(attrs={'class': 'border border-gray-700 my-2 mx-5  rounded-md'}),
         }
@@ -238,13 +238,13 @@ class BriefForm(forms.ModelForm):
             "date"
         ]
         widgets = {
-            "title": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full mt-10 rounded-md'}),
-            "description": forms.Textarea(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "attach_files": forms.ClearableFileInput(attrs={'class': 'text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md'}),
-            "categories": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
-            "budget": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+            "title": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 mt-10 rounded-md'}),
+            "description": forms.Textarea(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}),
+            "attach_files": forms.ClearableFileInput(attrs={'class': 'text-veryDarkGreen font-bold text-base bg-veryLightGreen rounded-md w-3/4'}),
+            "categories": forms.Select(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}),
+            "budget": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}),
             "budget_flexible": forms.CheckboxInput(attrs={'class': 'border border-gray-700 mr-2 rounded-md'}),
-            "date": forms.SelectDateWidget(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'})
+            "date": forms.SelectDateWidget(attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'})
         }
 
 
@@ -325,7 +325,7 @@ class EditBriefForm(forms.Form):
     categories = forms.ModelChoiceField(
         queryset=JobCategory.objects.all(),
         widget=forms.Select(
-            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
+            attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}
         )
     )
     budget = forms.IntegerField(
@@ -341,7 +341,7 @@ class EditBriefForm(forms.Form):
     )
     date = forms.DateTimeField(
         widget=forms.SelectDateWidget(
-            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
+            attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}
         )
     )
     

@@ -30,7 +30,7 @@
             {% if user.role == "SKILLAS" %}
                 
             <div class="w-72">
-                <div class="w-64 mt-10 rounded-md portable:-ml-10 -ml-12 fixed">
+                <div class="w-64 mt-10 rounded-md portable:-ml-10 -ml-14 fixed">
                     <div class="">
                         <a href="/" class="hidden xl:block">
                             <img class="-ml-8" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
@@ -41,47 +41,47 @@
                     </div>
 
                     <div class="flex p-2 mt-28">
-                        <a href="/skillas_dashboard"><img class="h-8 w-8" src="{% static '/img/Dash-Vector.png' %}" alt=""></a>
+                        <a href="/skillas_dashboard"><img class="h-8 w-8" src="{% static '/img/Dash-Vector.png' %}" alt="Dashboard icon"></a>
                         <a href="/skillas_dashboard" class="text-veryLightBlack font-bold text-2xl ml-5 hidden xl:block">Dashboard</a>
                     </div>
     
                     <div class="flex p-2 mt-2">
-                        <a href="/s_profile"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-1.png' %}" alt=""></a>
+                        <a href="/s_profile"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-1.png' %}" alt="Profile icon"></a>
                         <a href="/s_profile" class="text-veryLightBlack font-bold text-2xl ml-5 hidden xl:block">Profile</a>
                     </div>
     
                     <div class="flex p-2 mt-2">
-                        <a href="\wallet"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-2.png' %}" alt=""></a>
+                        <a href="\wallet"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-2.png' %}" alt="Wallet icon"></a>
                         <a href="\wallet" class="text-veryLightBlack font-bold text-2xl ml-5 hidden xl:block">Wallet</a>
                     </div>
     
                     <div class="flex p-2 mt-2">
-                        <a href="/inbox"><img class="h-8 w-8" src="{% static '/img/Group 22.png' %}" alt=""></a>
+                        <a href="/inbox"><img class="h-8 w-8" src="{% static '/img/Group 22.png' %}" alt="Message icon"></a>
                         <a href="/inbox" class="text-veryLightBlack font-bold text-2xl ml-5 hidden xl:block">Messages</a>
                     </div>
     
                     <div class="flex p-2 mt-2">
-                        <a href="/quotes"><img class="h-8 w-8" src="{% static '/img/Group 22.png' %}" alt=""></a>
+                        <a href="/quotes"><img class="h-8 w-8" src="{% static '/img/Group 22.png' %}" alt="Custom quote icon"></a>
                         <a href="/quotes" class="text-veryLightBlack font-bold text-2xl ml-5 hidden xl:block">Custom Quotes</a>
                     </div>
     
                     <div class="flex p-2 mt-2">
-                        <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-3.png' %}" alt=""></a>
+                        <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-3.png' %}" alt="History icon"></a>
                         <a href="#" class="text-gray-400 font-bold text-2xl ml-5 hidden xl:block">History</a>
                     </div>
     
                     <div class="flex p-2 mt-2">
-                        <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-4.png' %}" alt=""></a>
+                        <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-4.png' %}" alt="Portfolio icon"></a>
                         <a href="#" class="text-gray-400 font-bold text-2xl ml-5 hidden xl:block">Portfolio</a>
                     </div>
     
                     <div class="flex p-2 mt-2">
-                        <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-5.png' %}" alt=""></a>
+                        <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-5.png' %}" alt="Support icon"></a>
                         <a href="#" class="text-gray-400 font-bold text-2xl ml-5 hidden xl:block">Support</a>
                     </div>
 
                     <div class="mb-4 flex p-2 mt-2">
-                        <a href="/logout"><img class="h-8 w-8" src="{% static '/img/icons8-logout-50.png' %}" alt=""></a>
+                        <a href="/logout"><img class="h-8 w-8" src="{% static '/img/icons8-logout-50.png' %}" alt="Logout icon"></a>
                         <a href="/logout" class="text-veryLightBlack font-bold text-2xl ml-4 mr-4 hidden xl:block">Logout</a>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
             
 
             <!--Over head nav goes here-->
-            <div class="w-full xl:ml-5 -ml-64 border-2">
+            <div class="w-full xl:ml-5 -ml-64 border-2 border-r-0">
                 <div class="flex-1 font-primary">
                      <div class="border-b-2 pb-5 py-5">
                         <div class="flex mt-5 justify-between">
@@ -101,7 +101,7 @@
                                 <form method="POST">
                                     {% csrf_token %}
 
-                                    <div class="flex items-center portable:-ml-10 custom:w-4/5  custom:-ml-10 -ml-20 mr-4 custom:mr-5">
+                                    <div class="flex items-center portable:-ml-10 -ml-20 mr-5 sm:-ml-16 md-compact:mr-4 custom:mr-5">
                                         <div>{{ search_form.search_input }}</div>
                                         <button type="submit" class="bg-veryDarkGreen text-white px-2 rounded-md shadow-md">
                                             Search
@@ -117,7 +117,7 @@
                                 <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
                                 {% endfor %}
                                 <div class="pl-3 text-md font-semibold">{{ user.username }}</div>
-                                <div class="ml-10 mt-2 xl:pr-32 hidden lg:block">
+                                <div class="ml-10 mt-2 xl:pr-32">
                                     <a href="#"><img src="{% static '/img/Vector 3.png' %}" alt=""></a>
                                 </div>
                             </div>
