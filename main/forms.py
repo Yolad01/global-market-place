@@ -306,7 +306,7 @@ class EditBriefForm(forms.Form):
     categories = forms.ModelChoiceField(
         queryset=JobCategory.objects.all(),
         widget=forms.Select(
-            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
+            attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}
         )
     )
     budget = forms.IntegerField(
@@ -322,7 +322,7 @@ class EditBriefForm(forms.Form):
     )
     date = forms.DateTimeField(
         widget=forms.SelectDateWidget(
-            attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}
+            attrs={'class': 'border border-gray-700 p-2 mb-4 xl:w-full w-3/4 rounded-md'}
         )
     )
     
