@@ -47,16 +47,7 @@
                             <a href="#">Make payment</a>
                         {% endif %}
                     </button>
-
-                    {% else %}
-
-                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
-                        {% if order.accepted == False %}
-                            Accept
-                        {% else %}
-                            Make payment
-                        {% endif %}
-                    </button>
+                    
                     {% endif %}
                         
                     
@@ -69,18 +60,8 @@
                     </div>
                     <input type="number" name="form_id" required="" id="id_form_id" value="{{ order.id }}" hidden>
 
-                    {% if order.accepted == True %}
-                    <button type="submit" class="text-white bg-red-700 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
-                        {% if order.decline == False %}
-                            Decline
-                        {% else %}
-                            Quote Rejected
-                        {% endif %}
-                    </button>
-
-                    {% else %}
-
-                    <button type="submit" class="text-white bg-red-700 text-center px-4 py-2 mx-12 rounded-md shadow-sm font-semibold">
+                    {% if order.accepted == False %}
+                    <button type="submit" class="text-veryDarkGreen bg-zinc-500 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold">
                         {% if order.decline == False %}
                             Decline
                         {% else %}
