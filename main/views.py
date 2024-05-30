@@ -14,7 +14,7 @@ from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Jo
                          Skill, JobCategory, ContactList, Thread, Message
                         )
 
-from django.contrib.auth.hashers import make_password
+from main.payment import PayStackIt
 
 # from django.contrib.auth.models import User
 
@@ -990,7 +990,11 @@ def add_money(request):
             amount = form.cleaned_data["amount"]
             print(amount)
             print(user.email)
-            
+            send_fund = PayStackIt(email=user.email, amount=amount, api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea")
+            response = send_fund.pay()
+            print(response["status"])
+
+
 
     form = PaymentForm()
     return render(
