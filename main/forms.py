@@ -1,13 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from main.models import User
+from main.models import Payment, User
 from main.models import (JobCategory, Job, Rating,
                          SkillaProfile, Skill, ClientProfile,
                          CompanyProfile, AboutSkilla, TrainingAndCertification,
                          ProfilePicture, Brief, Order
                          )
-
-from django.contrib.auth.hashers import make_password
+from django.core.exceptions import ValidationError
 
 
 class PasswordResetRequestForm(forms.Form):
@@ -346,7 +345,6 @@ class EditBriefForm(forms.Form):
     )
     
 
-
 class SearchForm(forms.Form):
     search_input = forms.CharField(
         widget=forms.TextInput(
@@ -355,3 +353,15 @@ class SearchForm(forms.Form):
             }
         )
     )
+
+
+class paymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ["amount"]
+
+    def clean_amount(self):
+        amount = self.cleaned_data["amount"]
+        if amount < 2000:
+            raise ValidationError("Amount shall not be less than 2000")
+        return amount

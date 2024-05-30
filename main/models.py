@@ -483,3 +483,17 @@ class ConnectRequest(models.Model):
     
 
 
+class Payment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.EmailField(blank=True, null=True)
+    amount = models.IntegerField(default=0)
+    verified = models.CharField(max_length=50, blank=True, null=True)
+    status = models.CharField(max_length=12, blank=True, null=True)
+    channel = models.CharField(max_length=10, blank=True, null=True)
+    card_type = models.CharField(max_length=10, blank=True, null=True)
+    time_of_payment = models.CharField(max_length=20, blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.email
+
+

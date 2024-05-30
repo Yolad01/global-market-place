@@ -5,7 +5,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm,
-                        SearchForm
+                        SearchForm, paymentForm
                         )
 
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
@@ -979,3 +979,25 @@ def password_reset_done(request):
 
 def password_reset_complete(request):
     return render(request, template_name="main/password_reset_complete.html")
+
+
+
+def add_money(request):
+    
+    if request.method == "POST":
+        form = paymentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data["email"]
+            amount = form.cleaned_data["amount"]
+            print(email)
+            print(amount)
+
+    form = paymentForm()
+    return render(
+        request=request,
+        template_name="main/payment/add_money.html",
+        context={
+            "form": form
+        }
+    )
