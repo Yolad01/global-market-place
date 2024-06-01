@@ -14,18 +14,16 @@ class PayStackIt:
     
     def __init__(
             self,
-            email: str,
-            amount: int,
             api_key: str,
             callback_url: str = None
     ):
         self.SECRET_KEY = api_key
-        self.email = email
-        self.amount = amount * 100
         self.callback_url = callback_url
 
-    def pay(self):
+    def pay(self, amount: int, email: str, ):
         """Returns a dictionary object."""
+        self.email = email
+        self.amount = amount * 100
         url_initialize = "https://api.paystack.co/transaction/initialize"
         self.headers = {
             "Authorization": f'Bearer {self.SECRET_KEY}',
@@ -53,6 +51,10 @@ class PayStackIt:
     
     def verify_transaction(self, reference_code):
         self.transaction_verification_url = f'https://api.paystack.co/transaction/verify/{reference_code}'
+        self.headers = {
+            "Authorization": f'Bearer {self.SECRET_KEY}',
+            "Content-Type": "application/json"
+        }
         self.response = requests.get(
             url=self.transaction_verification_url,
             headers=self.headers,

@@ -979,16 +979,12 @@ def make_payment(request):
         form = PaymentForm(request.POST)
         if form.is_valid():
             amount = form.cleaned_data["amount"]
-            print(amount)
-            print(user.email)
             send_fund = PayStackIt(
-                email=user.email,
-                amount=amount,
                 api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea",
                 callback_url="http://127.0.0.1:8000/success_page"
             )
 
-            send_fund.pay()
+            send_fund.pay(email=user.email, amount=amount)
             print("reference_code: ",  send_fund.reference_code)
             print("status: ", send_fund.status)
             print("message: ", send_fund.message)
@@ -1014,6 +1010,16 @@ def make_payment(request):
 
 
 def withdraw_success(request):
+    user = request.user
+    payment = Payment.objects.filter(user=user).last()
+    print(payment.reference)
+    verify = PayStackIt(
+        api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea",
+        callback_url="http://127.0.0.1:8000/success_page"
+    )
+    verify = verify.verify_transaction(payment.reference)
+    print(json.dumps(verify, indent=3))
+    
     return render(
         request=request,
         template_name="main/skilla/wallet/success_page.html",
