@@ -6,21 +6,28 @@ import json
 class PayStackIt:
     authorization_url: str = ""
     reference_code: str = ""
-    status: bool
+    status: str = ""
     message: str = ""
     access_code: str = ""
+    time_of_payment: str = ""
+    card_type: str = ""
+    payment_channel: str = ""
+
+
 
     trans_total_url="https://api.paystack.co/transaction/totals"
     
     def __init__(
             self,
             api_key: str,
-            callback_url: str = None
+            callback_url: str = None,
+            on_cancel_url: str = None
     ):
         self.SECRET_KEY = api_key
         self.callback_url = callback_url
+        self.on_cancel_url = on_cancel_url
 
-    def pay(self, amount: int, email: str, ):
+    def pay(self, amount: int, email: str):
         """Returns a dictionary object."""
         self.email = email
         self.amount = amount * 100
@@ -32,7 +39,11 @@ class PayStackIt:
         self.data = {
             "email": self.email,
             "amount": self.amount,
-            "callback_url": self.callback_url
+            "callback_url": self.callback_url,
+            "metadata": {
+            "cancel_action": self.on_cancel_url
+        }
+
         }
         self.response = requests.post(
             url=url_initialize,
@@ -49,7 +60,7 @@ class PayStackIt:
 
         return None
     
-    def verify_transaction(self, reference_code):
+    def verify_transaction(self, reference_code) -> dict:
         self.transaction_verification_url = f'https://api.paystack.co/transaction/verify/{reference_code}'
         self.headers = {
             "Authorization": f'Bearer {self.SECRET_KEY}',
@@ -59,7 +70,17 @@ class PayStackIt:
             url=self.transaction_verification_url,
             headers=self.headers,
         )
-        return self.response.json()
+        self.response = self.response.json()
+
+        self.status = self.response["data"]["status"]
+        self.message = self.response["message"]
+        self.time_of_payment = self.response["data"]["paid_at"]
+        self.card_type = self.response["data"]["authorization"]["card_type"]
+        self.payment_channel = self.response["data"]["channel"]
+
+        return self.response
+
+
     
 
 

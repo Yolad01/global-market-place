@@ -488,6 +488,7 @@ class Payment(models.Model):
     email = models.EmailField(blank=True, null=True)
     amount = models.IntegerField(default=0)
     reference = models.CharField(max_length=50, blank=True, null=True)
+    message = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=12, blank=True, null=True)
     channel = models.CharField(max_length=10, blank=True, null=True)
     card_type = models.CharField(max_length=10, blank=True, null=True)

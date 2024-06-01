@@ -1012,13 +1012,22 @@ def make_payment(request):
 def withdraw_success(request):
     user = request.user
     payment = Payment.objects.filter(user=user).last()
-    print(payment.reference)
     verify = PayStackIt(
         api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea",
-        callback_url="http://127.0.0.1:8000/success_page"
+        callback_url="http://127.0.0.1:8000/success_page",
+        on_cancel_url="http://127.0.0.1:8000/success_page"
     )
-    verify = verify.verify_transaction(payment.reference)
-    print(json.dumps(verify, indent=3))
+    verify.verify_transaction(payment.reference)
+    # print(json.dumps(verify, indent=3))
+    payment.status = verify.status
+    payment.message = verify.message
+    payment.time_of_payment = verify.time_of_payment
+    payment.card_type = verify.card_type
+    payment.channel = verify.payment_channel
+    print(verify.status)
+    if verify.status == "success":
+        payment.completed = True
+    payment.save()
     
     return render(
         request=request,
@@ -1027,6 +1036,8 @@ def withdraw_success(request):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
+
+
 # def confirm_payment(request, rtrt):
 #     # user_id = request.user.id
 #     # payment = Payment.objects.get(id=user_id)
