@@ -40,10 +40,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ["first_name", "last_name", "email", "phone_no"]
 
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.role = self.role
-            return super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.pk:
+    #         self.role = self.role
+    #         return super().save(*args, **kwargs)
         
 
 
@@ -413,6 +413,9 @@ class Message(TrackingModel):
 class ContactList(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="owner")
     contacts = models.ManyToManyField(User, blank=True, related_name="contacts")
+    # picture = models.ForeignKey(ProfilePicture, on_delete=models.DO_NOTHING,
+    #                             null=True, blank=True, related_name="message_image",
+    #                             default=None)
 
     def __str__(self):
         return self.user.username
