@@ -3,7 +3,7 @@
 
 
 {% block content %}
-<div class="justify-center">
+<div class="justify-center h-screen">
 
 
     <p class="font-semibold text-2xl mx-20 mt-5 wow fadeInDown">Quotes</p>
@@ -50,8 +50,8 @@
 
                     {% else %}
 
-                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
                         {% if order.accepted == False %}
+                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
                             Accept
                         {% else %}
                             Make payment
@@ -70,7 +70,7 @@
                     <input type="number" name="form_id" required="" id="id_form_id" value="{{ order.id }}" hidden>
 
                     {% if order.accepted == True %}
-                    <button type="submit" class="text-white bg-red-700 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
+                    <button type="submit" class="text-veryDarkGreen bg-red text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold" hidden>
                         {% if order.decline == False %}
                             Decline
                         {% else %}
