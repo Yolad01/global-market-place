@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 import os
 
@@ -55,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    
 ]
 
 MIDDLEWARE = [
@@ -190,4 +187,3 @@ EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
 EMAIL_HOST_PASSWORD = 'lztthecjycjsgtnf'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-
