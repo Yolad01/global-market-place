@@ -5,16 +5,17 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm,
-                        SearchForm
+                        SearchForm, PaymentForm
                         )
 
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, Order, User,
-                         Skill, JobCategory, ContactList, Thread, Message
+                         Skill, JobCategory, ContactList, Thread, Message, Payment
                         )
 
-from django.contrib.auth.hashers import make_password
+from main.payment import PayStackIt
+import json 
 
 # from django.contrib.auth.models import User
 
@@ -439,17 +440,7 @@ def continue_to_withdrawal(request):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
-
-
-def withdraw_success(request):
-    return render(
-        request=request,
-        template_name="main/skilla/wallet/success_page.html",
-        context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
-        }
-    )
-    
+ 
     
 def create_brief(request):
     if request.method =="POST":
@@ -979,3 +970,82 @@ def password_reset_done(request):
 
 def password_reset_complete(request):
     return render(request, template_name="main/password_reset_complete.html")
+
+
+
+def make_payment(request):
+    user = request.user
+    if request.method == "POST":
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data["amount"]
+            send_fund = PayStackIt(
+                api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea",
+                callback_url="http://127.0.0.1:8000/success_page"
+            )
+
+            send_fund.pay(email=user.email, amount=amount)
+            print("reference_code: ",  send_fund.reference_code)
+            print("status: ", send_fund.status)
+            print("message: ", send_fund.message)
+            print("access_code: ", send_fund.access_code)
+            print("authorization_url: ", send_fund.authorization_url)
+
+            payment, _ = Payment.objects.get_or_create(
+                user=user,
+                email=user.email,
+                amount=amount,
+                reference=send_fund.reference_code
+            )
+            return redirect(send_fund.authorization_url)
+
+    form = PaymentForm()
+    return render(
+        request=request,
+        template_name="main/payment/make_payment.html",
+        context={
+            "form": form
+        }
+    )
+
+
+def withdraw_success(request):
+    user = request.user
+    payment = Payment.objects.filter(user=user).last()
+    verify = PayStackIt(
+        api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea",
+        callback_url="http://127.0.0.1:8000/success_page",
+        on_cancel_url="http://127.0.0.1:8000/success_page"
+    )
+    verify.verify_transaction(payment.reference)
+    # print(json.dumps(verify, indent=3))
+    payment.status = verify.status
+    payment.message = verify.message
+    payment.time_of_payment = verify.time_of_payment
+    payment.card_type = verify.card_type
+    payment.channel = verify.payment_channel
+    print(verify.status)
+    if verify.status == "success":
+        payment.completed = True
+    payment.save()
+    
+    return render(
+        request=request,
+        template_name="main/skilla/wallet/success_page.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+        }
+    )
+
+
+# def confirm_payment(request, rtrt):
+#     # user_id = request.user.id
+#     # payment = Payment.objects.get(id=user_id)
+#     paystack_signature = request.GET.get(rtrt)
+#     print("code: ", paystack_signature)
+#     return render(
+#         request=request,
+#         template_name="main/skilla/wallet/success_page.html",
+#         context={
+#         }
+#     )
