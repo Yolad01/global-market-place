@@ -8,13 +8,13 @@
 
     <p class="font-semibold text-2xl mx-20 mt-5 wow fadeInDown">Quotes</p>
 
-    <div class="grid grid-cols-3 mx-20 my-5">
+    <div class="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 xl:mx-20 xl:my-5 xl:mt-16 lg:mt-14 lg:mx-10 sm:mt-16 sm:mx-5 mt-16">
 
         {% for order in display_order %}
         <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-md shadow-lg items-center wow fadeInUp">
             
             <div class="flex justify-between border-b-2 py-2">
-                <p class="font-semibold">Custom order <span class="font-semibold text-green-700">{{ order.order_no }}</span></p>
+                <p class="font-semibold">Custom order <span class="font-semibold text-green-700 ml-2">{{ order.order_no }}</span></p>
                 <p class="font-semibold">NGN{{ order.price }}</p>
             </div>
 
@@ -40,7 +40,7 @@
 
                     
                     {% if order.decline == False %}
-                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 ml-20 rounded-md shadow-sm font-semibold">
+                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 xl:ml-20 rounded-md shadow-sm font-semibold">
                         {% if order.accepted == False %}
                             Accept
                         {% else %}
@@ -61,7 +61,9 @@
                     <input type="number" name="form_id" required="" id="id_form_id" value="{{ order.id }}" hidden>
 
                     {% if order.accepted == False %}
-                    <button type="submit" class="text-veryDarkGreen bg-zinc-500 text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold">
+                  
+                    <button type="submit" class="text-white bg-red text-center px-4 py-2 mx-5 rounded-md shadow-sm font-semibold">
+
                         {% if order.decline == False %}
                             Decline
                         {% else %}
@@ -70,8 +72,6 @@
                     </button>
                         
                     {% endif %}
-                        
-                    
                 </form>
             </div>
 
