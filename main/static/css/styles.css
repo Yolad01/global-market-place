@@ -4830,10 +4830,6 @@ select{
     margin-top: 1.25rem;
   }
 
-  .md\:mt-16{
-    margin-top: 4rem;
-  }
-
   .md\:block{
     display: block;
   }
@@ -5087,26 +5083,6 @@ select{
   .lg\:my-4{
     margin-top: 1rem;
     margin-bottom: 1rem;
-  }
-
-  .lg\:my-3{
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .lg\:my-10{
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .lg\:my-20{
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-  }
-
-  .lg\:my-40{
-    margin-top: 10rem;
-    margin-bottom: 10rem;
   }
 
   .lg\:-ml-16{
@@ -5575,16 +5551,6 @@ select{
   .xl\:my-5{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
-  }
-
-  .xl\:mx-2{
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
-  .xl\:my-2{
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
   }
 
   .xl\:-mb-40{
