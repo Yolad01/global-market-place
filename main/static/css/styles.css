@@ -959,11 +959,6 @@ select{
   margin-right: 1.25rem;
 }
 
-.mx-80{
-  margin-left: 20rem;
-  margin-right: 20rem;
-}
-
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -1204,10 +1199,6 @@ select{
   margin-left: 14rem;
 }
 
-.ml-60{
-  margin-left: 15rem;
-}
-
 .ml-72{
   margin-left: 18rem;
 }
@@ -1238,10 +1229,6 @@ select{
 
 .mr-2{
   margin-right: 0.5rem;
-}
-
-.mr-20{
-  margin-right: 5rem;
 }
 
 .mr-24{
@@ -1314,6 +1301,10 @@ select{
 
 .mt-3{
   margin-top: 0.75rem;
+}
+
+.mt-32{
+  margin-top: 8rem;
 }
 
 .mt-36{
@@ -1396,8 +1387,8 @@ select{
   height: 6rem;
 }
 
-.h-52{
-  height: 13rem;
+.h-40{
+  height: 10rem;
 }
 
 .h-6{
@@ -1488,10 +1479,6 @@ select{
   width: 1.25rem;
 }
 
-.w-52{
-  width: 13rem;
-}
-
 .w-56{
   width: 14rem;
 }
@@ -1518,10 +1505,6 @@ select{
 
 .w-80{
   width: 20rem;
-}
-
-.w-96{
-  width: 24rem;
 }
 
 .w-\[220px\]{
@@ -2027,6 +2010,11 @@ select{
   background-color: rgb(34 32 95 / var(--tw-bg-opacity));
 }
 
+.bg-red{
+  --tw-bg-opacity: 1;
+  background-color: rgb(201 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-rose-500{
   --tw-bg-opacity: 1;
   background-color: rgb(244 63 94 / var(--tw-bg-opacity));
@@ -2100,6 +2088,10 @@ select{
   padding: 5rem;
 }
 
+.p-3{
+  padding: 0.75rem;
+}
+
 .p-4{
   padding: 1rem;
 }
@@ -2124,14 +2116,14 @@ select{
   padding: 30px;
 }
 
+.px-1{
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .px-10{
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-}
-
-.px-11{
-  padding-left: 2.75rem;
-  padding-right: 2.75rem;
 }
 
 .px-16{
@@ -2182,11 +2174,6 @@ select{
 .px-80{
   padding-left: 20rem;
   padding-right: 20rem;
-}
-
-.px-9{
-  padding-left: 2.25rem;
-  padding-right: 2.25rem;
 }
 
 .px-\[20px\]{
@@ -2280,6 +2267,10 @@ select{
   padding-bottom: 6rem;
 }
 
+.pb-3{
+  padding-bottom: 0.75rem;
+}
+
 .pb-5{
   padding-bottom: 1.25rem;
 }
@@ -2348,6 +2339,10 @@ select{
   padding-right: 7rem;
 }
 
+.pr-3{
+  padding-right: 0.75rem;
+}
+
 .pr-36{
   padding-right: 9rem;
 }
@@ -2387,7 +2382,10 @@ select{
 .pt-\[80px\]{
   padding-top: 80px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7aa4f905cec4228c3370eb693e0548aa54522631
 .text-left{
   text-align: left;
 }
@@ -3447,6 +3445,11 @@ select{
     margin-right: 2.5rem;
   }
 
+  .md-compact\:mx-3{
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+
   .md-compact\:mx-4{
     margin-left: 1rem;
     margin-right: 1rem;
@@ -3509,10 +3512,9 @@ select{
     margin-top: 0px;
   }
 
-  .md-compact\:mt-5{
-    margin-top: 1.25rem;
+  .md-compact\:mt-24{
+    margin-top: 6rem;
   }
-
   .md-compact\:block{
     display: block;
   }
@@ -3583,6 +3585,11 @@ select{
 
   .md-compact\:pr-12{
     padding-right: 3rem;
+  }
+
+  .md-compact\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md-compact\:text-base{
@@ -3917,6 +3924,11 @@ select{
     margin-right: 5rem;
   }
 
+  .portable\:mx-3{
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+
   .portable\:mx-36{
     margin-left: 9rem;
     margin-right: 9rem;
@@ -4020,6 +4032,10 @@ select{
 
   .portable\:mt-12{
     margin-top: 3rem;
+  }
+
+  .portable\:mt-28{
+    margin-top: 7rem;
   }
 
   .portable\:mt-32{
@@ -4128,11 +4144,15 @@ select{
     padding: 0px;
   }
 
+  .portable\:px-1{
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
   .portable\:px-2{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-
   .portable\:pt-1{
     padding-top: 0.25rem;
   }
@@ -4161,9 +4181,18 @@ select{
     line-height: 1.5rem;
   }
 
+  .portable\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
   .portable\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .portable\:font-semibold{
+    font-weight: 600;
   }
 }
 
@@ -4195,6 +4224,11 @@ select{
     margin-right: 5rem;
   }
 
+  .sm\:mx-4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   .sm\:mx-40{
     margin-left: 10rem;
     margin-right: 10rem;
@@ -4218,6 +4252,11 @@ select{
   .sm\:mx-auto{
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .sm\:my-4{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .sm\:my-8{
@@ -4272,7 +4311,6 @@ select{
   .sm\:ml-20{
     margin-left: 5rem;
   }
-
   .sm\:ml-4{
     margin-left: 1rem;
   }
@@ -4337,6 +4375,10 @@ select{
     margin-top: 5rem;
   }
 
+  .sm\:mt-28{
+    margin-top: 7rem;
+  }
+
   .sm\:mt-32{
     margin-top: 8rem;
   }
@@ -4356,7 +4398,6 @@ select{
   .sm\:mt-5{
     margin-top: 1.25rem;
   }
-
   .sm\:block{
     display: block;
   }
@@ -4380,7 +4421,6 @@ select{
   .sm\:h-16{
     height: 4rem;
   }
-
   .sm\:h-screen{
     height: 100vh;
   }
@@ -4399,6 +4439,10 @@ select{
 
   .sm\:w-52{
     width: 13rem;
+  }
+
+  .sm\:w-72{
+    width: 18rem;
   }
 
   .sm\:w-8{
@@ -4508,6 +4552,10 @@ select{
     padding: 0.5rem;
   }
 
+  .sm\:p-3{
+    padding: 0.75rem;
+  }
+
   .sm\:px-1{
     padding-left: 0.25rem;
     padding-right: 0.25rem;
@@ -4518,13 +4566,21 @@ select{
     padding-right: 2.5rem;
   }
 
+  .sm\:px-11{
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+  }
+
   .sm\:px-5{
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
-
   .sm\:pb-10{
     padding-bottom: 2.5rem;
+  }
+
+  .sm\:pb-5{
+    padding-bottom: 1.25rem;
   }
 
   .sm\:pl-0{
@@ -4533,6 +4589,10 @@ select{
 
   .sm\:pl-14{
     padding-left: 3.5rem;
+  }
+
+  .sm\:pr-5{
+    padding-right: 1.25rem;
   }
 
   .sm\:pr-\[60px\]{
@@ -4617,6 +4677,11 @@ select{
     margin-right: 10rem;
   }
 
+  .md\:mx-5{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
   .md\:mx-9{
     margin-left: 2.25rem;
     margin-right: 2.25rem;
@@ -4626,7 +4691,6 @@ select{
     margin-left: auto;
     margin-right: auto;
   }
-
   .md\:-mb-5{
     margin-bottom: -1.25rem;
   }
@@ -4657,6 +4721,10 @@ select{
 
   .md\:mb-10{
     margin-bottom: 2.5rem;
+  }
+
+  .md\:mb-8{
+    margin-bottom: 2rem;
   }
 
   .md\:ml-0{
@@ -4715,6 +4783,10 @@ select{
     margin-right: 6rem;
   }
 
+  .md\:mr-5{
+    margin-right: 1.25rem;
+  }
+
   .md\:mr-64{
     margin-right: 16rem;
   }
@@ -4758,11 +4830,6 @@ select{
   .md\:h-20{
     height: 5rem;
   }
-
-  .md\:h-\[400px\]{
-    height: 400px;
-  }
-
   .md\:w-2\/3{
     width: 66.666667%;
   }
@@ -4770,7 +4837,6 @@ select{
   .md\:w-20{
     width: 5rem;
   }
-
   .md\:w-\[400px\]{
     width: 400px;
   }
@@ -4839,9 +4905,28 @@ select{
     background-color: rgb(0 45 56 / var(--tw-bg-opacity));
   }
 
+  .md\:p-3{
+    padding: 0.75rem;
+  }
+
+  .md\:px-10{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .md\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .md\:px-6{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .md\:py-1{
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   .md\:pb-10{
@@ -4928,6 +5013,10 @@ select{
     margin: 2.5rem;
   }
 
+  .lg\:m-5{
+    margin: 1.25rem;
+  }
+
   .lg\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
@@ -4941,6 +5030,26 @@ select{
   .lg\:mx-20{
     margin-left: 5rem;
     margin-right: 5rem;
+  }
+
+  .lg\:mx-40{
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+
+  .lg\:mx-5{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
+  .lg\:my-2{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .lg\:my-4{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .lg\:-ml-16{
@@ -5011,6 +5120,14 @@ select{
     margin-left: 8rem;
   }
 
+  .lg\:ml-5{
+    margin-left: 1.25rem;
+  }
+
+  .lg\:ml-6{
+    margin-left: 1.5rem;
+  }
+
   .lg\:ml-60{
     margin-left: 15rem;
   }
@@ -5079,6 +5196,10 @@ select{
     margin-top: 4rem;
   }
 
+  .lg\:mt-2{
+    margin-top: 0.5rem;
+  }
+
   .lg\:mt-20{
     margin-top: 5rem;
   }
@@ -5133,6 +5254,10 @@ select{
 
   .lg\:h-24{
     height: 6rem;
+  }
+
+  .lg\:h-72{
+    height: 18rem;
   }
 
   .lg\:w-1\/2{
@@ -5242,14 +5367,43 @@ select{
     padding: 1.25rem;
   }
 
+  .lg\:px-2{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .lg\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .lg\:px-5{
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
+  .lg\:py-2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:py-4{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .lg\:py-\[120px\]{
     padding-top: 120px;
     padding-bottom: 120px;
+  }
+
+  .lg\:pb-10{
+    padding-bottom: 2.5rem;
   }
 
   .lg\:pb-20{
@@ -5350,7 +5504,6 @@ select{
     margin-left: 10rem;
     margin-right: 10rem;
   }
-
   .xl\:-mb-40{
     margin-bottom: -10rem;
   }
@@ -5383,6 +5536,10 @@ select{
     margin-bottom: 2.5rem;
   }
 
+  .xl\:mb-14{
+    margin-bottom: 3.5rem;
+  }
+
   .xl\:mb-16{
     margin-bottom: 4rem;
   }
@@ -5398,7 +5555,6 @@ select{
   .xl\:mb-40{
     margin-bottom: 10rem;
   }
-
   .xl\:mb-\[40px\]{
     margin-bottom: 40px;
   }
@@ -5410,7 +5566,6 @@ select{
   .xl\:ml-10{
     margin-left: 2.5rem;
   }
-
   .xl\:ml-20{
     margin-left: 5rem;
   }
@@ -5459,6 +5614,14 @@ select{
     margin-left: 24rem;
   }
 
+  .xl\:mr-20{
+    margin-right: 5rem;
+  }
+
+  .xl\:mr-24{
+    margin-right: 6rem;
+  }
+
   .xl\:mr-32{
     margin-right: 8rem;
   }
@@ -5497,6 +5660,10 @@ select{
 
   .xl\:mt-14{
     margin-top: 3.5rem;
+  }
+
+  .xl\:mt-16{
+    margin-top: 4rem;
   }
 
   .xl\:mt-20{
@@ -5543,6 +5710,14 @@ select{
     display: none;
   }
 
+  .xl\:h-52{
+    height: 13rem;
+  }
+
+  .xl\:h-72{
+    height: 18rem;
+  }
+
   .xl\:w-1\/2{
     width: 50%;
   }
@@ -5551,8 +5726,16 @@ select{
     width: 33.333333%;
   }
 
+  .xl\:w-2\/3{
+    width: 66.666667%;
+  }
+
   .xl\:w-3\/4{
     width: 75%;
+  }
+
+  .xl\:w-52{
+    width: 13rem;
   }
 
   .xl\:w-60{
@@ -5618,9 +5801,33 @@ select{
     padding: 5rem;
   }
 
+  .xl\:px-2{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
   .xl\:px-20{
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .xl\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .xl\:px-8{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .xl\:py-5{
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .xl\:pb-16{
+    padding-bottom: 4rem;
   }
 
   .xl\:pb-40{
@@ -5635,8 +5842,16 @@ select{
     padding-left: 40px;
   }
 
+  .xl\:pr-12{
+    padding-right: 3rem;
+  }
+
   .xl\:pr-32{
     padding-right: 8rem;
+  }
+
+  .xl\:pr-5{
+    padding-right: 1.25rem;
   }
 
   .xl\:pr-80{
