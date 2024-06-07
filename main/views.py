@@ -15,7 +15,7 @@ from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Jo
                         )
 
 from main.payment import PayStackIt
-import json 
+from datetime import datetime
 
 # from django.contrib.auth.models import User
 
@@ -973,8 +973,11 @@ def password_reset_complete(request):
 
 
 
-def make_payment(request):
+def make_payment(request, order_no):
     user = request.user
+
+    order = Order.objects.get(order_no=order_no)
+
     if request.method == "POST":
         form = PaymentForm(request.POST)
         if form.is_valid():
@@ -985,17 +988,13 @@ def make_payment(request):
             )
 
             send_fund.pay(email=user.email, amount=amount)
-            print("reference_code: ",  send_fund.reference_code)
-            print("status: ", send_fund.status)
-            print("message: ", send_fund.message)
-            print("access_code: ", send_fund.access_code)
-            print("authorization_url: ", send_fund.authorization_url)
 
             payment, _ = Payment.objects.get_or_create(
                 user=user,
                 email=user.email,
                 amount=amount,
-                reference=send_fund.reference_code
+                reference=send_fund.reference_code,
+                skilla=order.skilla,
             )
             return redirect(send_fund.authorization_url)
 
@@ -1019,9 +1018,13 @@ def withdraw_success(request):
     )
     verify.verify_transaction(payment.reference)
     # print(json.dumps(verify, indent=3))
+    timestamp = verify.time_of_payment
+    timestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+    timestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+
     payment.status = verify.status
     payment.message = verify.message
-    payment.time_of_payment = verify.time_of_payment
+    payment.time_of_payment = timestamp
     payment.card_type = verify.card_type
     payment.channel = verify.payment_channel
     print(verify.status)
@@ -1033,19 +1036,29 @@ def withdraw_success(request):
         request=request,
         template_name="main/skilla/wallet/success_page.html",
         context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+            # "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
 
 
-# def confirm_payment(request, rtrt):
-#     # user_id = request.user.id
-#     # payment = Payment.objects.get(id=user_id)
-#     paystack_signature = request.GET.get(rtrt)
-#     print("code: ", paystack_signature)
-#     return render(
-#         request=request,
-#         template_name="main/skilla/wallet/success_page.html",
-#         context={
-#         }
-#     )
+
+def paid_order_history(request):
+    user = request.user
+    payment = Payment.objects.filter(user=user)
+    # skilla_img = payment.values("skilla")
+    # skilla_img: str
+    for x in payment:
+        skilla_img = x.skilla
+    skilla_img = ProfilePicture.objects.get(user=skilla_img)
+    # print(skilla_img.image)
+
+    return render(
+        request=request,
+        template_name="main/client/paid_order_history.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "user_profile_pic": ProfilePicture.objects.get(user=request.user),
+            "payment": payment,
+            "skilla_img": skilla_img
+        }
+    )

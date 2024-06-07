@@ -484,8 +484,10 @@ class ConnectRequest(models.Model):
 
 
 class Payment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="client_payer")
     email = models.EmailField(blank=True, null=True)
+    skilla = models.ForeignKey(User,  on_delete=models.CASCADE, related_name="skilla_paid", blank=True, null=True)
+    skilla_image = models.ImageField()
     amount = models.IntegerField(default=0)
     reference = models.CharField(max_length=50, blank=True, null=True)
     message = models.CharField(max_length=50, blank=True, null=True)
@@ -497,5 +499,9 @@ class Payment(models.Model):
 
     def __str__(self) -> str:
         return self.user.username
+    
+
+
+
 
 
