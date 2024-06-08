@@ -17,7 +17,16 @@
         new WOW().init();
     </script>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
+
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nice-select.css' %}" />
 
     
 
@@ -28,18 +37,18 @@
     
 </head>
 
-<body>
+<body class="lg:mt-32 xl:mx-[700px] lg:mx-80 md:mx-60 sm:mx-40 sm:mt-44 pb-10 lg:pb-20 md-compact:mx-20 mx-5 mt-44 border shadow-lg">
     
-    <div class="flex items-center justify-center mt-28">
+    <div class="flex items-center justify-center mt-20">
         <img src="{% static '/img/image 32.png' %}" alt="">
     </div>
 
-    <div class="flex items-center justify-center mt-12">
-        <h2 class="font-primary text-shadeGreen font-bold text-6xl">Successful</h2>
+    <div class="flex items-center justify-center xl:mt-12 lg:mt-16 mt-10">
+        <h2 class="font-primary text-shadeGreen font-bold xl:text-4xl md:text-3xl text-xl">Successful</h2>
     </div>
 
-    <div class="flex items-center justify-center mt-20">
-        <a href="/wallet" class="py-2 px-20 rounded-sm bg-veryDarkGreen font-primary font-extrabold text-5xl text-white">Exit</a>
+    <div class="flex items-center justify-center lg:mt-20 mt-10">
+        <a href="/wallet" class="py-2 lg:px-20 px-10 rounded-sm bg-veryDarkGreen font-primary font-extrabold xl:text-xl text-white">Exit</a>
     </div>
 </body>
 </html>
