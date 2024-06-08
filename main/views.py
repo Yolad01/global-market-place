@@ -25,7 +25,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from .search import search_brief_title, search_brief_category, search_skill_category, skill_search
-from .functions import msg_count, orders_count
+from .functions import msg_count
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.core.mail import send_mail
@@ -281,8 +281,16 @@ def skilla(request):
     single_search = None
 
     count_of_message = msg_count(model=Thread, user=user)
-    count_of_order = orders_count(Order, user)
+    
+    from .models import get_unread_messages_count
+
+    user = User.objects.get(username=user.username)
+    unread_count = get_unread_messages_count(user)
+    # print(f'Total unread messages for {user.username}: {unread_count}')
+
     brief = Brief.objects.all().order_by("-title")
+
+    trans_count = Payment().get_skilla_message_count(user=user)
 
     if request.method == "POST":
         form = BriefAppForm(request.POST)
@@ -325,8 +333,8 @@ def skilla(request):
             "form": form,
             "search_form": search_form,
             "single_search": single_search,
-            "count":count_of_message,
-            "count_of_order": count_of_order
+            "count":unread_count,
+            "count_of_order": trans_count,
         }
     )
 
@@ -1030,7 +1038,6 @@ def withdraw_success(request):
     payment.time_of_payment = timestamp
     payment.card_type = verify.card_type
     payment.channel = verify.payment_channel
-    print(verify.status)
     if verify.status == "success":
         payment.completed = True
     payment.save()

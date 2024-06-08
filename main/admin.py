@@ -5,8 +5,7 @@ from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
     ProfilePicture, Brief, SkillaReachoutToClient, ConnectRequest,
-    Message, Thread,
-    ContactList, Payment
+    Message, Thread, ContactList, Payment, MessageReadStatus
 
 )
 
@@ -185,6 +184,6 @@ admin.site.register(ConnectRequest, ConnectRequestAdmin)
 
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Message)
-admin.site.register(Payment)
+admin.site.register(MessageReadStatus)
 
 
