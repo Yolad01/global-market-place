@@ -487,7 +487,7 @@ class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="client_payer")
     email = models.EmailField(blank=True, null=True)
     skilla = models.ForeignKey(User,  on_delete=models.CASCADE, related_name="skilla_paid", blank=True, null=True)
-    skilla_image = models.ImageField()
+    skilla_image = models.ImageField(default=None)
     amount = models.IntegerField(default=0)
     reference = models.CharField(max_length=50, blank=True, null=True)
     message = models.CharField(max_length=50, blank=True, null=True)

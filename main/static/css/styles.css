@@ -2876,6 +2876,11 @@ select{
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-gray-50{
+  --tw-text-opacity: 1;
+  color: rgb(249 250 251 / var(--tw-text-opacity));
+}
+
 .underline{
   text-decoration-line: underline;
 }
@@ -6238,6 +6243,11 @@ select{
   .dark\:divide-gray-700 > :not([hidden]) ~ :not([hidden]){
     --tw-divide-opacity: 1;
     border-color: rgb(55 65 81 / var(--tw-divide-opacity));
+  }
+
+  .dark\:divide-veryDarkGreen > :not([hidden]) ~ :not([hidden]){
+    --tw-divide-opacity: 1;
+    border-color: rgb(0 45 56 / var(--tw-divide-opacity));
   }
 
   .dark\:border-gray-600{

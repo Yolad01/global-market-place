@@ -648,7 +648,7 @@ def create_gigs(request):
 def skillas_gigs(request):
 
     skills = Skill.objects.all()
-    paginator = Paginator(skills, 12)
+    paginator = Paginator(skills, 16)
 
     page_number = request.GET.get("page")
     page_object = paginator.get_page(page_number)
@@ -977,6 +977,8 @@ def make_payment(request, order_no):
     user = request.user
 
     order = Order.objects.get(order_no=order_no)
+    skilla_img = ProfilePicture.objects.get(user=order.skilla)
+    print(skilla_img)
 
     if request.method == "POST":
         form = PaymentForm(request.POST)
@@ -995,6 +997,7 @@ def make_payment(request, order_no):
                 amount=amount,
                 reference=send_fund.reference_code,
                 skilla=order.skilla,
+                skilla_image=skilla_img.image
             )
             return redirect(send_fund.authorization_url)
 
@@ -1045,12 +1048,10 @@ def withdraw_success(request):
 def paid_order_history(request):
     user = request.user
     payment = Payment.objects.filter(user=user)
-    # skilla_img = payment.values("skilla")
-    # skilla_img: str
-    for x in payment:
-        skilla_img = x.skilla
-    skilla_img = ProfilePicture.objects.get(user=skilla_img)
-    # print(skilla_img.image)
+
+    paginator = Paginator(payment, 5)
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
 
     return render(
         request=request,
@@ -1058,7 +1059,7 @@ def paid_order_history(request):
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "user_profile_pic": ProfilePicture.objects.get(user=request.user),
-            "payment": payment,
-            "skilla_img": skilla_img
+            # "payment": payment,
+            "payment": page_object,
         }
     )
