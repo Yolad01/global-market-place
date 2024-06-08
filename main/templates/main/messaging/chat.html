@@ -12,19 +12,29 @@
     </div>
 
 
-    <div class="p-4 sm:flex {% if message.sender.username == user.username %} flex justify-start {% else %} justify-end {% endif %}">
-
-        <div id="message-list" class="py-2 px-5 inline-block">
+    <div class="md-compact:p-4">
+        <div id="message-list" class="py-2 px-5 inline-block w-full">
             {% for message in messages %}
-            <p class="px-2 py-2 my-2 rounded-md text-white {% if message.sender.username == user.username %} bg-stone-500 {% else %}bg-veryDarkGreen{% endif %}">
-                <span class="font-bold">[{{message.sender.username}}]</span>: <br>{{ message.text }} <br>
-                <span class="text-xs">{{ message.created_at }}</span>
-            </p>
+            <div class="flex {% if message.sender.username == user.username %} justify-start {% else %} justify-end {% endif %}">
+                <div class="w-auto xl:max-w-[500px] lg:max-w-96 md:max-w-80 sm:max-w-72">
+                    <p class="px-2 py-2 my-2 rounded-md text-white {% if message.sender.username == user.username %} bg-stone-500 {% else %} bg-veryDarkGreen {% endif %}">
+                        <span class="font-bold">[{{ message.sender.username }}]</span>: <br>{{ message.text }} <br>
+                        <span class="text-xs">{{ message.created_at }}</span>
+                    </p>
+                </div>
+            </div>
             {% endfor %}
-
         </div>
-    
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 
