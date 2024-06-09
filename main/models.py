@@ -265,6 +265,7 @@ class Order(models.Model):
         choices=status.choices,
         default=status.PENDING
     )
+    completed = models.BooleanField(default=False)
 
     order_created = models.DateTimeField(default=timezone.now)
     
@@ -514,6 +515,7 @@ class Wallet(models.Model):
     main = models.DecimalField(max_digits=10, decimal_places=2, default=0) 
     pending = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     withdrawn = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
 
     def __str__(self) -> str:
         return self.user.username
