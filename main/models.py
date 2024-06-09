@@ -13,7 +13,8 @@ from main.managers import ThreadManager
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.db.models import Count
+
+from django.contrib.auth import get_user_model
 
 
 
@@ -508,12 +509,24 @@ def get_unread_messages_count(user):
 
 
 
+class Wallet(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_wallet")
+    main = models.DecimalField(max_digits=10, decimal_places=2, default=0) 
+    pending = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    withdrawn = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    def __str__(self) -> str:
+        return self.user.username
+    
+
+
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="client_payer")
     email = models.EmailField(blank=True, null=True)
     skilla = models.ForeignKey(User,  on_delete=models.CASCADE, related_name="skilla_paid", blank=True, null=True)
     skilla_image = models.ImageField(default=None)
-    amount = models.IntegerField(default=0)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    pending = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     reference = models.CharField(max_length=50, blank=True, null=True)
     message = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=12, blank=True, null=True)
@@ -522,21 +535,14 @@ class Payment(models.Model):
     time_of_payment = models.CharField(max_length=20, blank=True, null=True)
     completed = models.BooleanField(default=False)
 
+
     def get_skilla_message_count(self, user):
         self.count = Payment.objects.filter(skilla=user).count()
         return self.count
-
-
+    
 
     def __str__(self) -> str:
         return self.user.username
     
 
 
-class Wallet(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_wallet")
-    wallet = models.DecimalField(max_digits=10, decimal_places=2, default=0) 
-    pending = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-
-    def __str__(self) -> str:
-        return self.user.username

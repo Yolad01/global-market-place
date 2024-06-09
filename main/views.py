@@ -11,13 +11,12 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, Order, User,
-                         Skill, JobCategory, ContactList, Thread, Message, Payment
+                         Skill, JobCategory, ContactList, Thread, Message, Payment,
+                         get_unread_messages_count
                         )
 
 from main.payment import PayStackIt
 from datetime import datetime
-
-# from django.contrib.auth.models import User
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -25,22 +24,19 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from .search import search_brief_title, search_brief_category, search_skill_category, skill_search
-from .functions import msg_count
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.exceptions import ObjectDoesNotExist
 
 from django.urls import reverse
-# from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from .forms import PasswordResetRequestForm, SetPasswordForm
 
-import logging
+from . import functions
 
-logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -280,13 +276,8 @@ def skilla(request):
     user = request.user
     single_search = None
 
-    count_of_message = msg_count(model=Thread, user=user)
-    
-    from .models import get_unread_messages_count
-
     user = User.objects.get(username=user.username)
     unread_count = get_unread_messages_count(user)
-    # print(f'Total unread messages for {user.username}: {unread_count}')
 
     brief = Brief.objects.all().order_by("-title")
 
@@ -416,14 +407,16 @@ def s_profile(request):
 
 
 def wallet(request):
+    user = request.user
+    wallet = functions.user_wallet(user=user)
+    print(wallet)
 
-    search_form = SearchForm()
     return render(
         request=request,
         template_name="main/skilla/wallet/wallet.html",
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "search_form": search_form
+            "search_form": SearchForm()
         }
     )
 
@@ -1003,6 +996,7 @@ def make_payment(request, order_no):
                 user=user,
                 email=user.email,
                 amount=amount,
+                pending=amount,
                 reference=send_fund.reference_code,
                 skilla=order.skilla,
                 skilla_image=skilla_img.image

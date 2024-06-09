@@ -5,7 +5,7 @@ from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
     ProfilePicture, Brief, SkillaReachoutToClient, ConnectRequest,
-    Message, Thread, ContactList, Payment, MessageReadStatus
+    Message, Thread, ContactList, Payment, MessageReadStatus, Wallet
 
 )
 
@@ -157,6 +157,31 @@ class MessageInline(admin.StackedInline):
 class ThreadAdmin(admin.ModelAdmin):
     model = Thread
     inlines = (MessageInline,)
+
+
+
+class PaymentAdmin(admin.ModelAdmin):
+     list_display = [
+          "user",
+          "skilla",
+          "amount",
+          "reference",
+          "status",
+          "completed"
+     ]
+
+admin.site.register(Payment, PaymentAdmin)
+
+
+class WalletAdmin(admin.ModelAdmin):
+     list_display = [
+          "user",
+          "main",
+          "pending",
+          "withdrawn"
+     ]
+
+admin.site.register(Wallet, WalletAdmin)
 
 
 
