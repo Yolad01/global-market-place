@@ -44,7 +44,7 @@
                         {% if order.accepted == False %}
                             Accept
                         {% else %}
-                            <a href="#">Make payment</a>
+                            <a href="{% url 'main:make_payment' order_no=order.order_no %}">Make payment</a>
                         {% endif %}
                     </button>
                     
