@@ -8,17 +8,17 @@
 
     <p class="font-semibold text-2xl mx-20 mt-5 wow fadeInDown">Quotes</p>
 
-    <div class="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 xl:mx-20 xl:my-5 xl:mt-16 lg:mt-14 lg:mx-10 sm:mt-16 sm:mx-5 mt-16">
+    <div class="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 xl:my-5 xl:mt-16 lg:mt-14 sm:mt-16 mx-0 md-compact:w-full w-1/6 mt-16">
 
         {% for order in display_order %}
-        <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 px-4 rounded-md shadow-lg items-center wow fadeInUp">
+        <div class="border border-gray-400 mx-5 my-4 text-gray-800 py-2 md-compact:px-4 rounded-md shadow-lg items-center wow fadeInUp">
             
-            <div class="flex justify-between border-b-2 py-2">
+            <div class="md-compact:flex justify-between border-b-2 py-2 ml-2">
                 <p class="font-semibold">Custom order <span class="font-semibold text-green-700 ml-2">{{ order.order_no }}</span></p>
                 <p class="font-semibold">NGN{{ order.price }}</p>
             </div>
 
-            <div class="px-4 pt-2 pb-10 border-b-2">
+            <div class="px-4 pt-2 pb-10 border-b-2 xl:h-40 lg:h-44 sm:h-40 h-36 overflow-auto">
                 <p class="text-sm">{{ order.gig_desc }}</p>
             </div>
 
@@ -29,7 +29,7 @@
 
             
 
-            <div class="grid grid-cols-2 text-sm mx-2 my-2">
+            <div class="flex justify-between text-sm mx-2 my-2">
 
                 <form method="POST">
                     {% csrf_token %}
@@ -40,7 +40,7 @@
 
                     
                     {% if order.decline == False %}
-                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 xl:ml-20 rounded-md shadow-sm font-semibold">
+                    <button type="submit" class="text-white bg-green-700 text-center px-4 py-2 mx-5 xl:ml-2 rounded-md shadow-sm font-semibold">
                         {% if order.accepted == False %}
                             Accept
                         {% else %}
