@@ -1696,6 +1696,14 @@ select{
   flex-shrink: 0;
 }
 
+.shrink{
+  flex-shrink: 1;
+}
+
+.shrink-\[10\]{
+  flex-shrink: 10;
+}
+
 .flex-grow{
   flex-grow: 1;
 }
@@ -2279,6 +2287,16 @@ select{
 
 .bg-transparent{
   background-color: transparent;
+}
+
+.bg-blue-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.bg-green-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{
@@ -2958,6 +2976,11 @@ select{
 .text-rose-400{
   --tw-text-opacity: 1;
   color: rgb(251 113 133 / var(--tw-text-opacity));
+}
+
+.text-blue-500{
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
 .underline{

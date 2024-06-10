@@ -579,7 +579,8 @@ def quotes(request):
         template_name="main/skilla/quotes_and_orders/sent_quotes.html",
         context={
             "display_order": display_order,
-            "search_form": SearchForm()
+            "search_form": SearchForm(),
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
     )
 

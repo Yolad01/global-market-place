@@ -9,24 +9,30 @@
     <div class="border border-veryDarkGreen mx-2 my-4 text-gray-800 px-2 rounded-lg items-center wow fadeInRight">
         
         <div class="flex justify-between border-b border-veryShadyGreen py-2">
-            <p class="font-semibold">Custom order <span class="font-semibold text-veryLightGreen">{{ order.order_no }}</span></p>
+            <p class="font-semibold">Custom order <span class="font-semibold text-blue-500">{{ order.order_no }}</span></p>
             <p class="font-semibold">NGN{{ order.price }}</p>
         </div>
 
-        <div class="px-4 pt-2 pb-10 h-full">
+        <div class="px-4 pt-2 h-full">
             <p class="text-sm break-words h-28">{{ order.gig_desc }}</p>
 
             <div class="px-4 pt-2 pb-5 border-t border-veryShadyGreen">
                 <p class="">Order Duration: <span class="font-semibold">{{ order.delivery }} Days</span></p>
             </div>
 
-            <div class="bg-veryDarkGreen text-white text-center py-2 text-lg font-semibold">
+            <div class="bg-blue-500 text-white text-center py-2 font-semibold my-2">
                 {% if order.accepted == False %}
                     Pending
                 {% else %}
                     Order Accepted
                 {% endif %}
             </div>
+
+            {% if order.paid == False %}
+                <div class="bg-green-700 text-white text-center py-2 font-semibold my-2">
+                    paid
+                </div>
+            {% endif %}
             
         </div>
 
