@@ -11,7 +11,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, Order, User,
-                         Skill, JobCategory, ContactList, Thread, Message, Payment,
+                         Skill, JobCategory, ContactList, Thread, Message, Payment, Wallet,
                          get_unread_messages_count
                         )
 
@@ -408,15 +408,15 @@ def s_profile(request):
 
 def wallet(request):
     user = request.user
-    wallet = functions.user_wallet(user=user)
-    print(wallet)
-
+    wallet, _ = Wallet.objects.get_or_create(user=user)
+    
     return render(
         request=request,
         template_name="main/skilla/wallet/wallet.html",
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "search_form": SearchForm()
+            "search_form": SearchForm(),
+            "wallet": wallet
         }
     )
 
@@ -600,7 +600,6 @@ def orders(request):
             order = Order.objects.get(client=user, id=order_id)
             order.accepted = True
             order.save()
-            
             return redirect("main:orders")
         
         if decline_form.is_valid():
@@ -608,20 +607,31 @@ def orders(request):
             order = Order.objects.get(client=user, id=order_id)
             order.decline = True
             order.save()
-            
             return redirect("main:orders")
         
+        order_id = request.POST["mark"]
+        if order_id:
+            order = Order.objects.get(id=order_id)
+            order.completed = True
+            order.save()
+
+            user_wallet = Wallet.objects.get(user=order.skilla)
+            user_wallet.pending -= order.price
+            user_wallet.main += order.price
+            user_wallet.save()
+            return redirect("main:orders")
+
         
     accept_form = AcceptQuoteForm()
     decline_form = DeclineQuoteForm()
-    
+   
     return render(
         request=request,
         template_name="main/client/orders.html",
         context={
             "display_order": display_order,
             "accept_form": accept_form,
-            "decline_form": decline_form
+            "decline_form": decline_form,
         }
     )
 
@@ -911,7 +921,6 @@ def skilla_search(request, param):
 
 
 
-
 def password_reset_request(request):
     if request.method == "POST":
         form = PasswordResetRequestForm(request.POST)
@@ -976,10 +985,8 @@ def password_reset_complete(request):
 
 def make_payment(request, order_no):
     user = request.user
-
     order = Order.objects.get(order_no=order_no)
     skilla_img = ProfilePicture.objects.get(user=order.skilla)
-    print(skilla_img)
 
     if request.method == "POST":
         form = PaymentForm(request.POST)
@@ -999,7 +1006,8 @@ def make_payment(request, order_no):
                 pending=amount,
                 reference=send_fund.reference_code,
                 skilla=order.skilla,
-                skilla_image=skilla_img.image
+                skilla_image=skilla_img.image,
+                order_no=order_no
             )
             return redirect(send_fund.authorization_url)
 
@@ -1013,7 +1021,7 @@ def make_payment(request, order_no):
     )
 
 
-def withdraw_success(request):
+def payment_success(request):
     user = request.user
     payment = Payment.objects.filter(user=user).last()
     verify = PayStackIt(
@@ -1035,12 +1043,17 @@ def withdraw_success(request):
     if verify.status == "success":
         payment.completed = True
     payment.save()
+    ##### Marking order as paid
+    order = Order.objects.get(order_no=payment.order_no)
+    order.paid = True
+    order.save()
+    ##### Adding to user pending balance
+    user_wallet = functions.user_wallet(payment.skilla)
     
     return render(
         request=request,
         template_name="main/skilla/wallet/success_page.html",
         context={
-            # "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
 

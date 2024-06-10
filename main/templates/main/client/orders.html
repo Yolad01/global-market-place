@@ -73,10 +73,19 @@
                         
                     {% endif %}
                 </form>
-                {{ order.order_status }}
+                
             </div>
-
-            
+            {% if order.paid == True %}
+            <form method="POST">
+                {% csrf_token %}
+                <input id="" value="{{ order.id }}" name="mark" class="hidden">
+                {% if order.completed == False %}
+                <button class="bg-veryDarkGreen text-white rounded px-2 py-1 shadow hover:bg-gray-500 w-full" type="submit">Mark as complete</button>
+                {% else %}
+                <button class="bg-veryLightGreen font-bold text-veryDarkGreen rounded px-2 py-1 shadow w-full" type="button">Order completed</button>
+                {% endif %}
+            </form>
+            {% endif %}
         </div>
         {% endfor %}
 

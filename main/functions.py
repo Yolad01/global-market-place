@@ -13,6 +13,6 @@ def user_wallet(user):
         wallet.save()
         payment.pending = 0.00
         payment.save()
-        return wallet.pending
+    return wallet
     
 

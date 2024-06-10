@@ -37,7 +37,7 @@ urlpatterns = [
     path("wallet/", views.wallet, name="wallet"),
     path("fund_withdrawal/", views.fund_withdrawal, name="fund_withdrawal"),
     path("continue_to_withdrawal/", views.continue_to_withdrawal, name="continue_to_withdrawal"),
-    path("success_page/", views.withdraw_success, name="withdraw_success"),
+    path("success_page/", views.payment_success, name="payment_success"),
 
     path("company_dashboard/", views.company, name="company_dashboard"),
 

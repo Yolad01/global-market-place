@@ -247,8 +247,6 @@ def order_number() -> int:
     return num
     
 class Order(models.Model):
-    status = OrderStatus
-    
     skilla = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobber")
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payer")
     notification  = models.PositiveIntegerField(null=True, blank=True)
@@ -259,12 +257,6 @@ class Order(models.Model):
     price = models.IntegerField(null=True, blank=True)
     accepted = models.BooleanField(default=False)
     decline = models.BooleanField(default=False)
-    order_status = models.CharField(
-        max_length=15,
-        null=False,
-        choices=status.choices,
-        default=status.PENDING
-    )
     completed = models.BooleanField(default=False)
 
     order_created = models.DateTimeField(default=timezone.now)
@@ -535,6 +527,7 @@ class Payment(models.Model):
     channel = models.CharField(max_length=10, blank=True, null=True)
     card_type = models.CharField(max_length=10, blank=True, null=True)
     time_of_payment = models.CharField(max_length=20, blank=True, null=True)
+    order_no = models.PositiveSmallIntegerField(default=0)
     completed = models.BooleanField(default=False)
 
 
