@@ -1084,6 +1084,11 @@ select{
   margin-bottom: 5rem;
 }
 
+.my-auto{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .-mb-5{
   margin-bottom: -1.25rem;
 }
@@ -2620,6 +2625,14 @@ select{
 
 .pt-\[80px\]{
   padding-top: 80px;
+}
+
+.pb-2{
+  padding-bottom: 0.5rem;
+}
+
+.pb-1{
+  padding-bottom: 0.25rem;
 }
 
 .text-left{

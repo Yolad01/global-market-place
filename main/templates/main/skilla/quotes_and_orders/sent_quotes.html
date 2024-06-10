@@ -1,26 +1,26 @@
-
 {% extends "layout/dash_nav.html" %}
+{% load static %}
 
 
 {% block content %}
 
-<div class="sm:grid sm:grid-cols-2 lg:grid-cols-4">
+<div class="sm:grid sm:grid-cols-2 lg:grid-cols-3">
     {% for order in display_order %}
-    <div class="border border-veryDarkGreen mx-2 my-4 text-gray-800 px-2 rounded-lg items-center wow fadeInRight">
+    <div class="border border-veryDarkGreen mx-4 my-4 text-gray-800 px-2 rounded-lg items-center wow fadeInRight">
         
         <div class="flex justify-between border-b border-veryShadyGreen py-2">
             <p class="font-semibold">Custom order <span class="font-semibold text-blue-500">{{ order.order_no }}</span></p>
             <p class="font-semibold">NGN{{ order.price }}</p>
         </div>
 
-        <div class="px-4 pt-2 h-full">
+        <div class="px-4 pt-2 pb-1 h-full">
             <p class="text-sm break-words h-28">{{ order.gig_desc }}</p>
 
             <div class="px-4 pt-2 pb-5 border-t border-veryShadyGreen">
                 <p class="">Order Duration: <span class="font-semibold">{{ order.delivery }} Days</span></p>
             </div>
 
-            <div class="bg-blue-500 text-white text-center py-2 font-semibold my-2">
+            <div class="bg-blue-500 text-white text-center py-2 font-semibold my-2 rounded-md">
                 {% if order.accepted == False %}
                     Pending
                 {% else %}
@@ -28,10 +28,13 @@
                 {% endif %}
             </div>
 
-            {% if order.paid == False %}
-                <div class="bg-green-700 text-white text-center py-2 font-semibold my-2">
-                    paid
-                </div>
+            {% if order.paid == True %}
+            <div class="flex border text-veryDarkGreen text-xl text-center justify-center font-semibold my-2 rounded-md">
+                <p class="my-auto">Paid</p>
+                <img class="h-14 w-14 my-auto" src="{% static 'img/check_mark.png' %}">
+            </div>
+                
+                
             {% endif %}
             
         </div>
