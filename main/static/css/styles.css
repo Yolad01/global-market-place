@@ -1319,6 +1319,10 @@ select{
   margin-top: 10rem;
 }
 
+.mt-44{
+  margin-top: 11rem;
+}
+
 .mt-5{
   margin-top: 1.25rem;
 }
@@ -1337,14 +1341,6 @@ select{
 
 .mt-\[20px\]{
   margin-top: 20px;
-}
-
-.mt-44{
-  margin-top: 11rem;
-}
-
-.mt-0{
-  margin-top: 0px;
 }
 
 .block{
@@ -1395,6 +1391,10 @@ select{
   height: 6rem;
 }
 
+.h-36{
+  height: 9rem;
+}
+
 .h-40{
   height: 10rem;
 }
@@ -1427,22 +1427,6 @@ select{
   height: 100vh;
 }
 
-.h-32{
-  height: 8rem;
-}
-
-.h-36{
-  height: 9rem;
-}
-
-.h-72{
-  height: 18rem;
-}
-
-.h-96{
-  height: 24rem;
-}
-
 .min-h-full{
   min-height: 100%;
 }
@@ -1461,6 +1445,10 @@ select{
 
 .w-1\/4{
   width: 25%;
+}
+
+.w-1\/6{
+  width: 16.666667%;
 }
 
 .w-10{
@@ -1547,22 +1535,6 @@ select{
   width: 100%;
 }
 
-.w-1\/6{
-  width: 16.666667%;
-}
-
-.w-96{
-  width: 24rem;
-}
-
-.w-20{
-  width: 5rem;
-}
-
-.w-\[500px\]{
-  width: 500px;
-}
-
 .max-w-\[270px\]{
   max-width: 270px;
 }
@@ -1577,10 +1549,6 @@ select{
 
 .max-w-full{
   max-width: 100%;
-}
-
-.max-w-\[500px\]{
-  max-width: 500px;
 }
 
 .flex-1{
@@ -1807,10 +1775,6 @@ select{
 
 .scroll-smooth{
   scroll-behavior: smooth;
-}
-
-.text-wrap{
-  text-wrap: wrap;
 }
 
 .rounded{
@@ -2082,6 +2046,10 @@ select{
   background-color: rgb(120 113 108 / var(--tw-bg-opacity));
 }
 
+.bg-transparent{
+  background-color: transparent;
+}
+
 .bg-veryDarkGreen{
   --tw-bg-opacity: 1;
   background-color: rgb(0 45 56 / var(--tw-bg-opacity));
@@ -2100,10 +2068,6 @@ select{
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-transparent{
-  background-color: transparent;
 }
 
 .bg-cover{
@@ -2471,11 +2435,6 @@ select{
 
 .text-5xl{
   font-size: 3rem;
-  line-height: 1;
-}
-
-.text-6xl{
-  font-size: 3.75rem;
   line-height: 1;
 }
 
@@ -3493,6 +3452,11 @@ select{
     margin-right: 2.5rem;
   }
 
+  .md-compact\:mx-20{
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
   .md-compact\:mx-3{
     margin-left: 0.75rem;
     margin-right: 0.75rem;
@@ -3506,11 +3470,6 @@ select{
   .md-compact\:mx-5{
     margin-left: 1.25rem;
     margin-right: 1.25rem;
-  }
-
-  .md-compact\:mx-20{
-    margin-left: 5rem;
-    margin-right: 5rem;
   }
 
   .md-compact\:-ml-10{
@@ -4121,10 +4080,6 @@ select{
     margin-top: 1.75rem;
   }
 
-  .portable\:mt-20{
-    margin-top: 5rem;
-  }
-
   .portable\:block{
     display: block;
   }
@@ -4310,6 +4265,11 @@ select{
     margin-right: 4rem;
   }
 
+  .sm\:mx-2{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
   .sm\:mx-20{
     margin-left: 5rem;
     margin-right: 5rem;
@@ -4353,16 +4313,6 @@ select{
   .sm\:my-8{
     margin-top: 2rem;
     margin-bottom: 2rem;
-  }
-
-  .sm\:mx-60{
-    margin-left: 15rem;
-    margin-right: 15rem;
-  }
-
-  .sm\:mx-2{
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
   }
 
   .sm\:-ml-16{
@@ -4501,16 +4451,16 @@ select{
     margin-top: 10rem;
   }
 
+  .sm\:mt-44{
+    margin-top: 11rem;
+  }
+
   .sm\:mt-5{
     margin-top: 1.25rem;
   }
 
   .sm\:mt-7{
     margin-top: 1.75rem;
-  }
-
-  .sm\:mt-44{
-    margin-top: 11rem;
   }
 
   .sm\:block{
@@ -4537,16 +4487,16 @@ select{
     height: 4rem;
   }
 
+  .sm\:h-40{
+    height: 10rem;
+  }
+
   .sm\:h-72{
     height: 18rem;
   }
 
   .sm\:h-screen{
     height: 100vh;
-  }
-
-  .sm\:h-40{
-    height: 10rem;
   }
 
   .sm\:w-11\/12{
@@ -4581,12 +4531,12 @@ select{
     max-width: 42rem;
   }
 
-  .sm\:max-w-sm{
-    max-width: 24rem;
-  }
-
   .sm\:max-w-72{
     max-width: 18rem;
+  }
+
+  .sm\:max-w-sm{
+    max-width: 24rem;
   }
 
   .sm\:translate-x-36{
@@ -4811,6 +4761,11 @@ select{
     margin-right: 8rem;
   }
 
+  .md\:mx-4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   .md\:mx-40{
     margin-left: 10rem;
     margin-right: 10rem;
@@ -4819,6 +4774,11 @@ select{
   .md\:mx-5{
     margin-left: 1.25rem;
     margin-right: 1.25rem;
+  }
+
+  .md\:mx-60{
+    margin-left: 15rem;
+    margin-right: 15rem;
   }
 
   .md\:mx-9{
@@ -4834,16 +4794,6 @@ select{
   .md\:my-5{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
-  }
-
-  .md\:mx-60{
-    margin-left: 15rem;
-    margin-right: 15rem;
-  }
-
-  .md\:mx-4{
-    margin-left: 1rem;
-    margin-right: 1rem;
   }
 
   .md\:-mb-5{
@@ -4966,24 +4916,8 @@ select{
     margin-top: 1.25rem;
   }
 
-  .md\:mt-16{
-    margin-top: 4rem;
-  }
-
-  .md\:mt-32{
-    margin-top: 8rem;
-  }
-
-  .md\:mt-44{
-    margin-top: 11rem;
-  }
-
   .md\:block{
     display: block;
-  }
-
-  .md\:inline{
-    display: inline;
   }
 
   .md\:flex{
@@ -5010,18 +4944,6 @@ select{
     height: 400px;
   }
 
-  .md\:h-60{
-    height: 15rem;
-  }
-
-  .md\:h-56{
-    height: 14rem;
-  }
-
-  .md\:h-40{
-    height: 10rem;
-  }
-
   .md\:w-2\/3{
     width: 66.666667%;
   }
@@ -5036,14 +4958,6 @@ select{
 
   .md\:w-\[400px\]{
     width: 400px;
-  }
-
-  .md\:w-1\/2{
-    width: 50%;
-  }
-
-  .md\:max-w-72{
-    max-width: 18rem;
   }
 
   .md\:max-w-80{
@@ -5163,6 +5077,11 @@ select{
     line-height: 2rem;
   }
 
+  .md\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .md\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -5181,15 +5100,6 @@ select{
   .md\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-3xl{
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
-  .md\:font-semibold{
-    font-weight: 600;
   }
 
   .md\:text-white{
@@ -5245,6 +5155,11 @@ select{
     margin-right: 2.5rem;
   }
 
+  .lg\:mx-2{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
   .lg\:mx-20{
     margin-left: 5rem;
     margin-right: 5rem;
@@ -5260,6 +5175,11 @@ select{
     margin-right: 1.25rem;
   }
 
+  .lg\:mx-80{
+    margin-left: 20rem;
+    margin-right: 20rem;
+  }
+
   .lg\:my-2{
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -5268,21 +5188,6 @@ select{
   .lg\:my-4{
     margin-top: 1rem;
     margin-bottom: 1rem;
-  }
-
-  .lg\:mx-80{
-    margin-left: 20rem;
-    margin-right: 20rem;
-  }
-
-  .lg\:mx-1{
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-  }
-
-  .lg\:mx-2{
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
   }
 
   .lg\:-ml-16{
@@ -5445,6 +5350,10 @@ select{
     margin-top: 0.75rem;
   }
 
+  .lg\:mt-32{
+    margin-top: 8rem;
+  }
+
   .lg\:mt-4{
     margin-top: 1rem;
   }
@@ -5469,24 +5378,8 @@ select{
     margin-top: 24rem;
   }
 
-  .lg\:mt-32{
-    margin-top: 8rem;
-  }
-
-  .lg\:-ml-1{
-    margin-left: -0.25rem;
-  }
-
-  .lg\:mr-2{
-    margin-right: 0.5rem;
-  }
-
   .lg\:block{
     display: block;
-  }
-
-  .lg\:inline{
-    display: inline;
   }
 
   .lg\:flex{
@@ -5509,24 +5402,12 @@ select{
     height: 6rem;
   }
 
-  .lg\:h-72{
-    height: 18rem;
-  }
-
-  .lg\:h-56{
-    height: 14rem;
-  }
-
-  .lg\:h-40{
-    height: 10rem;
-  }
-
-  .lg\:h-52{
-    height: 13rem;
-  }
-
   .lg\:h-44{
     height: 11rem;
+  }
+
+  .lg\:h-72{
+    height: 18rem;
   }
 
   .lg\:w-1\/2{
@@ -5645,6 +5526,11 @@ select{
     padding-right: 0.5rem;
   }
 
+  .lg\:px-20{
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
   .lg\:px-4{
     padding-left: 1rem;
     padding-right: 1rem;
@@ -5673,11 +5559,6 @@ select{
   .lg\:py-\[120px\]{
     padding-top: 120px;
     padding-bottom: 120px;
-  }
-
-  .lg\:px-20{
-    padding-left: 5rem;
-    padding-right: 5rem;
   }
 
   .lg\:pb-10{
@@ -5782,6 +5663,11 @@ select{
     margin-right: 9rem;
   }
 
+  .xl\:mx-4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   .xl\:mx-40{
     margin-left: 10rem;
     margin-right: 10rem;
@@ -5792,6 +5678,11 @@ select{
     margin-right: 20rem;
   }
 
+  .xl\:mx-\[700px\]{
+    margin-left: 700px;
+    margin-right: 700px;
+  }
+
   .xl\:my-4{
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -5800,41 +5691,6 @@ select{
   .xl\:my-5{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
-  }
-
-  .xl\:mx-60{
-    margin-left: 15rem;
-    margin-right: 15rem;
-  }
-
-  .xl\:mx-\[500px\]{
-    margin-left: 500px;
-    margin-right: 500px;
-  }
-
-  .xl\:mx-\[400px\]{
-    margin-left: 400px;
-    margin-right: 400px;
-  }
-
-  .xl\:mx-\[600px\]{
-    margin-left: 600px;
-    margin-right: 600px;
-  }
-
-  .xl\:mx-\[700px\]{
-    margin-left: 700px;
-    margin-right: 700px;
-  }
-
-  .xl\:mx-5{
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
-
-  .xl\:mx-4{
-    margin-left: 1rem;
-    margin-right: 1rem;
   }
 
   .xl\:-mb-40{
@@ -5907,6 +5763,10 @@ select{
 
   .xl\:ml-12{
     margin-left: 3rem;
+  }
+
+  .xl\:ml-2{
+    margin-left: 0.5rem;
   }
 
   .xl\:ml-20{
@@ -6001,6 +5861,10 @@ select{
     margin-top: 2.5rem;
   }
 
+  .xl\:mt-12{
+    margin-top: 3rem;
+  }
+
   .xl\:mt-14{
     margin-top: 3.5rem;
   }
@@ -6045,14 +5909,6 @@ select{
     margin-top: 1.75rem;
   }
 
-  .xl\:mt-12{
-    margin-top: 3rem;
-  }
-
-  .xl\:ml-2{
-    margin-left: 0.5rem;
-  }
-
   .xl\:block{
     display: block;
   }
@@ -6065,16 +5921,16 @@ select{
     display: none;
   }
 
+  .xl\:h-40{
+    height: 10rem;
+  }
+
   .xl\:h-52{
     height: 13rem;
   }
 
   .xl\:h-72{
     height: 18rem;
-  }
-
-  .xl\:h-40{
-    height: 10rem;
   }
 
   .xl\:w-1\/2{
@@ -6197,6 +6053,10 @@ select{
     padding-bottom: 1.25rem;
   }
 
+  .xl\:pb-10{
+    padding-bottom: 2.5rem;
+  }
+
   .xl\:pb-16{
     padding-bottom: 4rem;
   }
@@ -6217,6 +6077,10 @@ select{
     padding-right: 3rem;
   }
 
+  .xl\:pr-2{
+    padding-right: 0.5rem;
+  }
+
   .xl\:pr-32{
     padding-right: 8rem;
   }
@@ -6231,18 +6095,6 @@ select{
 
   .xl\:pt-\[80px\]{
     padding-top: 80px;
-  }
-
-  .xl\:pb-20{
-    padding-bottom: 5rem;
-  }
-
-  .xl\:pb-10{
-    padding-bottom: 2.5rem;
-  }
-
-  .xl\:pr-2{
-    padding-right: 0.5rem;
   }
 
   .xl\:text-2xl{
