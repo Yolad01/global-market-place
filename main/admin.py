@@ -5,8 +5,7 @@ from .models import (
     User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
     ProfilePicture, Brief, SkillaReachoutToClient, ConnectRequest,
-    Message, Thread,
-    ContactList, Payment
+    Message, Thread, ContactList, Payment, MessageReadStatus, Wallet
 
 )
 
@@ -161,6 +160,31 @@ class ThreadAdmin(admin.ModelAdmin):
 
 
 
+class PaymentAdmin(admin.ModelAdmin):
+     list_display = [
+          "user",
+          "skilla",
+          "amount",
+          "reference",
+          "status",
+          "completed"
+     ]
+
+admin.site.register(Payment, PaymentAdmin)
+
+
+class WalletAdmin(admin.ModelAdmin):
+     list_display = [
+          "user",
+          "main",
+          "pending",
+          "withdrawn"
+     ]
+
+admin.site.register(Wallet, WalletAdmin)
+
+
+
 
 admin.site.register(Rating, RatingAdmin)
 admin.site.register(SkillaProfile, SkillaProfileAdmin)
@@ -185,6 +209,6 @@ admin.site.register(ConnectRequest, ConnectRequestAdmin)
 
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Message)
-admin.site.register(Payment)
+admin.site.register(MessageReadStatus)
 
 

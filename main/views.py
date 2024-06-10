@@ -11,13 +11,12 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, Order, User,
-                         Skill, JobCategory, ContactList, Thread, Message, Payment
+                         Skill, JobCategory, ContactList, Thread, Message, Payment,
+                         get_unread_messages_count
                         )
 
 from main.payment import PayStackIt
-import json 
-
-# from django.contrib.auth.models import User
+from datetime import datetime
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -25,22 +24,19 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from .search import search_brief_title, search_brief_category, search_skill_category, skill_search
-from .functions import msg_count, orders_count
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.exceptions import ObjectDoesNotExist
 
 from django.urls import reverse
-# from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from .forms import PasswordResetRequestForm, SetPasswordForm
 
-import logging
+from . import functions
 
-logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -280,9 +276,12 @@ def skilla(request):
     user = request.user
     single_search = None
 
-    count_of_message = msg_count(model=Thread, user=user)
-    count_of_order = orders_count(Order, user)
+    user = User.objects.get(username=user.username)
+    unread_count = get_unread_messages_count(user)
+
     brief = Brief.objects.all().order_by("-title")
+
+    trans_count = Payment().get_skilla_message_count(user=user)
 
     if request.method == "POST":
         form = BriefAppForm(request.POST)
@@ -325,8 +324,8 @@ def skilla(request):
             "form": form,
             "search_form": search_form,
             "single_search": single_search,
-            "count":count_of_message,
-            "count_of_order": count_of_order
+            "count":unread_count,
+            "count_of_order": trans_count,
         }
     )
 
@@ -408,14 +407,16 @@ def s_profile(request):
 
 
 def wallet(request):
+    user = request.user
+    wallet = functions.user_wallet(user=user)
+    print(wallet)
 
-    search_form = SearchForm()
     return render(
         request=request,
         template_name="main/skilla/wallet/wallet.html",
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "search_form": search_form
+            "search_form": SearchForm()
         }
     )
 
@@ -648,7 +649,7 @@ def create_gigs(request):
 def skillas_gigs(request):
 
     skills = Skill.objects.all()
-    paginator = Paginator(skills, 12)
+    paginator = Paginator(skills, 16)
 
     page_number = request.GET.get("page")
     page_object = paginator.get_page(page_number)
@@ -973,8 +974,13 @@ def password_reset_complete(request):
 
 
 
-def make_payment(request):
+def make_payment(request, order_no):
     user = request.user
+
+    order = Order.objects.get(order_no=order_no)
+    skilla_img = ProfilePicture.objects.get(user=order.skilla)
+    print(skilla_img)
+
     if request.method == "POST":
         form = PaymentForm(request.POST)
         if form.is_valid():
@@ -985,17 +991,15 @@ def make_payment(request):
             )
 
             send_fund.pay(email=user.email, amount=amount)
-            print("reference_code: ",  send_fund.reference_code)
-            print("status: ", send_fund.status)
-            print("message: ", send_fund.message)
-            print("access_code: ", send_fund.access_code)
-            print("authorization_url: ", send_fund.authorization_url)
 
             payment, _ = Payment.objects.get_or_create(
                 user=user,
                 email=user.email,
                 amount=amount,
-                reference=send_fund.reference_code
+                pending=amount,
+                reference=send_fund.reference_code,
+                skilla=order.skilla,
+                skilla_image=skilla_img.image
             )
             return redirect(send_fund.authorization_url)
 
@@ -1019,12 +1023,15 @@ def withdraw_success(request):
     )
     verify.verify_transaction(payment.reference)
     # print(json.dumps(verify, indent=3))
+    timestamp = verify.time_of_payment
+    timestamp = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+    timestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+
     payment.status = verify.status
     payment.message = verify.message
-    payment.time_of_payment = verify.time_of_payment
+    payment.time_of_payment = timestamp
     payment.card_type = verify.card_type
     payment.channel = verify.payment_channel
-    print(verify.status)
     if verify.status == "success":
         payment.completed = True
     payment.save()
@@ -1033,19 +1040,27 @@ def withdraw_success(request):
         request=request,
         template_name="main/skilla/wallet/success_page.html",
         context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
+            # "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
 
 
-# def confirm_payment(request, rtrt):
-#     # user_id = request.user.id
-#     # payment = Payment.objects.get(id=user_id)
-#     paystack_signature = request.GET.get(rtrt)
-#     print("code: ", paystack_signature)
-#     return render(
-#         request=request,
-#         template_name="main/skilla/wallet/success_page.html",
-#         context={
-#         }
-#     )
+
+def paid_order_history(request):
+    user = request.user
+    payment = Payment.objects.filter(user=user)
+
+    paginator = Paginator(payment, 5)
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
+
+    return render(
+        request=request,
+        template_name="main/client/paid_order_history.html",
+        context={
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "user_profile_pic": ProfilePicture.objects.get(user=request.user),
+            # "payment": payment,
+            "payment": page_object,
+        }
+    )

@@ -175,26 +175,42 @@
 		{% endfor %}
 		</div>
 
-	</section>
-
-	<section class="mt-10">
-		<div class="px-10">
-			<span class="">
-				{% if page_object.has_previous %}
-					<a href="?page=1">&laquo; first</a>
-					<a href="?page={{ page_object.previous_page_number }}">previous</a>
-				{% endif %}
-	
-				<span class="current">
-					Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}.
-				</span>
-	
-				{% if page_object.has_next %}
-					<a href="?page={{ page_object.next_page_number }}">next</a>
-					<a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a>
-				{% endif %}
+		<!--Pagination start-->
+		<div
+			class="grid px-4 py-3 my-5 text-xs font-semibold tracking-wide text-gray-500 border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+		>
+			<span class="flex items-center col-span-3">
+			<span class="current">
+				Showing page {{ page_object.number }} of {{ page_object.paginator.num_pages }} pages
 			</span>
+			</span>
+			<span class="col-span-2"></span>
+			<!-- Pagination -->
+			<span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+				<nav aria-label="Table navigation">
+					<ul class="inline-flex items-center text-white">
+
+						<li class="">
+							{% if page_object.has_previous %}
+							<li class="px-5 border border-gray-500"><a href="?page=1">&laquo; first</a></li>
+							<li class="px-5 border border-gray-500"><a href="?page={{ page_object.previous_page_number }}">previous</a></li>
+							{% endif %}
+						</li>
+
+						<li>
+							{% if page_object.has_next %}
+							<li class="px-5 border border-gray-500"><a href="?page={{ page_object.next_page_number }}">next</a></li>
+							<li class="px-5 border border-gray-500"><a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a></li>
+							{% endif %}
+						</li>
+
+					</ul>
+				</nav>
+			</span>
+			<!--pagination end-->
 		</div>
+<!--Pagination end-->
+
 	</section>
 
   {% comment %} if ad show it here {% endcomment %}

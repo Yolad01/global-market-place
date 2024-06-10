@@ -9,10 +9,12 @@ from datetime import datetime
 from django.conf import settings
 
 from main.managers import ThreadManager
-from django.db import models
 
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-
+from django.contrib.auth import get_user_model
 
 
 
@@ -263,6 +265,7 @@ class Order(models.Model):
         choices=status.choices,
         default=status.PENDING
     )
+    completed = models.BooleanField(default=False)
 
     order_created = models.DateTimeField(default=timezone.now)
     
@@ -413,9 +416,7 @@ class Message(TrackingModel):
 class ContactList(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="owner")
     contacts = models.ManyToManyField(User, blank=True, related_name="contacts")
-    # picture = models.ForeignKey(ProfilePicture, on_delete=models.DO_NOTHING,
-    #                             null=True, blank=True, related_name="message_image",
-    #                             default=None)
+
 
     def __str__(self):
         return self.user.username
@@ -483,10 +484,51 @@ class ConnectRequest(models.Model):
     
 
 
+
+class MessageReadStatus(models.Model):
+    message = models.ForeignKey(Message, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    is_read = models.BooleanField(default=False)
+    read_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        unique_together = ('message', 'user')
+
+    def __str__(self) -> str:
+        return self.user.username
+
+
+@receiver(post_save, sender=Message)
+def create_message_read_status(sender, instance, created, **kwargs):
+    if created:
+        for user in instance.thread.users.all():
+            if user != instance.sender:
+                MessageReadStatus.objects.create(message=instance, user=user, is_read=False)
+
+def get_unread_messages_count(user):
+    return MessageReadStatus.objects.filter(user=user, is_read=False).count()
+
+
+
+class Wallet(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_wallet")
+    main = models.DecimalField(max_digits=10, decimal_places=2, default=0) 
+    pending = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    withdrawn = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+
+    def __str__(self) -> str:
+        return self.user.username
+    
+
+
 class Payment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="client_payer")
     email = models.EmailField(blank=True, null=True)
-    amount = models.IntegerField(default=0)
+    skilla = models.ForeignKey(User,  on_delete=models.CASCADE, related_name="skilla_paid", blank=True, null=True)
+    skilla_image = models.ImageField(default=None)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    pending = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     reference = models.CharField(max_length=50, blank=True, null=True)
     message = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=12, blank=True, null=True)
@@ -495,7 +537,14 @@ class Payment(models.Model):
     time_of_payment = models.CharField(max_length=20, blank=True, null=True)
     completed = models.BooleanField(default=False)
 
+
+    def get_skilla_message_count(self, user):
+        self.count = Payment.objects.filter(skilla=user).count()
+        return self.count
+    
+
     def __str__(self) -> str:
         return self.user.username
+    
 
 
