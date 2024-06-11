@@ -5,7 +5,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm,
-                        SearchForm, PaymentForm
+                        SearchForm, PaymentForm, UserReviewForm
                         )
 
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
@@ -1088,6 +1088,10 @@ def paid_order_history(request):
 
 def rate_user(request):
 
+    form = UserReviewForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            ...
     #### after everything we will redirect to clients order page
     return render(
         request=request,

@@ -149,7 +149,7 @@ class CompanyProfileForm(forms.ModelForm):
      ]
     
     
-class UserreviewForm(forms.ModelForm):
+class UserReviewForm(forms.ModelForm):
     class Meta:
         model = UserReview
         fields = [

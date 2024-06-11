@@ -517,7 +517,7 @@ class UserReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rated_user")
     rater = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="rater")
     rating = models.IntegerField(choices=Rate.choices, default=None)
-    comment = models.CharField(max_length=100)
+    comment = models.CharField(max_length=100, null=True, blank=True)
 
     def get_rating(self, user_id) -> tuple:
         """
