@@ -12,7 +12,7 @@ from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Jo
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, Order, User,
                          Skill, JobCategory, ContactList, Thread, Message, Payment, Wallet,
-                         get_unread_messages_count
+                         get_unread_messages_count, UserReview,
                         )
 
 from main.payment import PayStackIt
@@ -477,7 +477,7 @@ def applications(request):
 
 
 
-def profile_view(request, pk): #Use the id for the querries or make the username foreignkey or unique
+def profile_view(request, pk):
 
     try:
         view_profile = SkillaProfile.objects.get(user__id=pk)
@@ -492,6 +492,8 @@ def profile_view(request, pk): #Use the id for the querries or make the username
         view_T_and_cert = None
         skilla = None
     
+    average_rating, _ = UserReview().get_rating(pk)
+    
     return render(
         request=request,
         template_name="main/client/view_skilla_profile.html",
@@ -500,7 +502,9 @@ def profile_view(request, pk): #Use the id for the querries or make the username
             "view_profile_picture": view_profile_picture,
             "view_about_skilla": view_about_skilla,
             "view_T_and_cert": view_T_and_cert,
-            "skilla": skilla
+            "skilla": skilla,
+            # "rating": rating,
+            "average_rating": average_rating["average_rating"]
         }
     )
 
@@ -611,7 +615,7 @@ def orders(request):
             order.save()
             return redirect("main:orders")
         
-        order_id = request.POST["mark"]
+        order_id = request.POST["mark_order_as_complete"]
         if order_id:
             order = Order.objects.get(id=order_id)
             order.completed = True
@@ -621,7 +625,7 @@ def orders(request):
             user_wallet.pending -= order.price
             user_wallet.main += order.price
             user_wallet.save()
-            return redirect("main:orders")
+            return redirect("main:rate_user")
 
         
     accept_form = AcceptQuoteForm()
@@ -1077,5 +1081,18 @@ def paid_order_history(request):
             "user_profile_pic": ProfilePicture.objects.get(user=request.user),
             # "payment": payment,
             "payment": page_object,
+        }
+    )
+
+
+
+def rate_user(request):
+
+    #### after everything we will redirect to clients order page
+    return render(
+        request=request,
+        template_name="main/rate_user.html",
+        context={
+
         }
     )

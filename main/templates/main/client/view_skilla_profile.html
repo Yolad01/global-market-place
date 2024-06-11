@@ -72,6 +72,11 @@
                 
                                 <h6 class="font-bold text-sm mt-5">Location</h6>
                                 <h4 class="text-xs custom:text-sm portable:text-base">{{view_profile.current_location}}</h4>
+                                <h6 class="font-bold text-sm mt-5">Rating</h6>
+                                <h4 class="text-xs custom:text-sm portable:text-base font-semibold">
+                                    {{ average_rating }}/5
+                                    {% comment %} {% for rate in rating %}{{ rate.ratings }}{% endfor %} {% endcomment %}
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -83,7 +88,7 @@
                 <div class="xl:mt-10 md:mt-5 portable:mt-7 mt-5 md:mb-8 sm:mb-10 mb-10 xl:mb-14 border border-green-700 shadow lg:my-4 lg:py-4 bg-white wow fadeInUp md-compact:mx-3">
                     <table class="xl:w-2/3 custom:w-3/4 w-1/4 mt-5 text-left xl:ml-20 xl:mr-20 xl:py-5 lg:mx-10 sm:mx-5 portable:mx-3 mx-3">
 
-                        <h6 class="font-bold text-green-700 mt-5 xl:ml-20 lg:ml-10 sm:ml-5 ml-3 md-compact:text-2xl text-base">Training & Certification</h6>
+                        <h6 class="font-bold text-veryDarkGreen mt-5 xl:ml-20 lg:ml-10 sm:ml-5 ml-3 md-compact:text-2xl text-base">Training & Certification</h6>
                         <tr class="portable:text-base md-compact:text-sm text-xs">
                             <th class="py-2">Courses</th>
                 

@@ -74,6 +74,8 @@ urlpatterns = [
     path("make-payment/<int:order_no>", views.make_payment, name="make_payment"),
     path("paid-order-history/", views.paid_order_history, name="paid_order_history"),
 
+    path("rate-user/", views.rate_user, name="rate_user"),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
