@@ -8,48 +8,6 @@
     <div class="relative flex xl:mx-80 lg:mx-40 md:mx-20 font-primary">
         <!-- Body -->
 
-        <!-- Side bar -->
-    
-        {% comment %} <div class="-ml-64 w-80">
-            <div class="w-64 mt-36 rounded-md">
-                <div class="flex p-2 mt-4">
-                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
-                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Payment</a>
-                </div>
-
-                <div class="flex p-2 mt-5">
-                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
-                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Promotions</a>
-                </div>
-
-                <div class="flex p-2 mt-5">
-                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
-                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Transaction</a>
-                </div>
-
-                <div class="flex p-2 mt-5">
-                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Group 65.svg' %}" alt=""></a>
-                    <a href="/applications" class="text-veryLightBlack font-normal text-3xl ml-5">Applications</a>
-                </div>
-
-                <div class="flex p-2 mt-5">
-                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-5.png' %}" alt=""></a>
-                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">Support</a>
-                </div>
-
-                <div class="flex p-2 mt-5">
-                    <a href="#"><img class="h-8 w-8" src="{% static '/img/Dash-Vector-3.png' %}" alt=""></a>
-                    <a href="#" class="text-veryLightBlack font-normal text-3xl ml-5">T & C</a>
-                </div>
-
-                <div class="mb-4 flex p-2 mt-5">
-                    <a href="/logout"><img class="h-8 w-8" src="{% static '/img/icons8-logout-50.png' %}" alt=""></a>
-                    <a href="/logout" class="text-veryLightBlack font-normal text-3xl ml-4 mr-4">Logout</a>
-                </div>
-            </div>
-        </div> {% endcomment %}
-
-
         <!-- Main Content -->
 
         <div>
@@ -70,14 +28,20 @@
 
                     <div class="md:ml-5 md:mr-5 sm:mx-4 mx-3">
                         <div class="xl:my-4 wow fadeInLeft mt-4">
-                            <a href="#" class="justify-center border-2 portable:text-lg xl:px-2 lg:mx-5 lg:my-2 lg:px-2 lg:py-2 md:px-4 md:py-1 sm:px-5 sm:py-1 portable:py-1 portable:px-1 py-1 px-1 rounded-md portable:font-semibold font-normal text-sm text-white bg-green-700 hover:text-green-700 hover:bg-white">Contact me</a>
+                            <a href="{% url 'main:chat' username=view_profile.user.username %}" class="justify-center border-2 portable:text-lg xl:px-2 lg:mx-5 lg:my-2 lg:px-2 lg:py-2 md:px-4 md:py-1 sm:px-5 sm:py-1 portable:py-1 portable:px-1 py-1 px-1 rounded-md portable:font-semibold font-normal text-sm text-white bg-green-700 hover:text-green-700 hover:bg-white">
+                                Contact  {{view_profile.user.username}}
+                            </a>
                         </div>
-                        <div class="my-4">
-                            <a href="#" class="justify-center border-2 portable:text-lg xl:px-8 lg:mx-5 lg:my-2 lg:px-8 lg:py-2 md:px-10 md:py-1 sm:px-11 sm:py-1 portable:py-1 portable:px-7 py-1 px-5 rounded-md portable:font-semibold font-normal text-sm text-white bg-green-700 hover:text-green-700 hover:bg-white">Quote</a>
+                        {% comment %} <div class="my-4">
+                            <a href="#" class="justify-center border-2 portable:text-lg xl:px-8 lg:mx-5 lg:my-2 lg:px-8 lg:py-2 md:px-10 md:py-1 sm:px-11 sm:py-1 portable:py-1 portable:px-7 py-1 px-5 rounded-md portable:font-semibold font-normal text-sm text-white bg-green-700 hover:text-green-700 hover:bg-white">
+                                Quote
+                            </a>
                         </div>
                         <div class="my-4 wow fadeInRight">
-                            <a href="#" class="justify-center border-2 portable:text-lg xl:px-4 lg:mx-5 lg:my-2 lg:px-4 lg:py-2 md:px-6 md:py-1 sm:px-7 sm:py-1 portable:py-1 portable:px-3 py-1 px-2 rounded-md portable:font-semibold font-normal text-sm text-white bg-green-700 hover:text-green-700 hover:bg-white">View gigs</a>
-                        </div>
+                            <a href="#" class="justify-center border-2 portable:text-lg xl:px-4 lg:mx-5 lg:my-2 lg:px-4 lg:py-2 md:px-6 md:py-1 sm:px-7 sm:py-1 portable:py-1 portable:px-3 py-1 px-2 rounded-md portable:font-semibold font-normal text-sm text-white bg-green-700 hover:text-green-700 hover:bg-white">
+                                View gigs
+                            </a>
+                        </div> {% endcomment %}
                     </div>
                 </div>
       

@@ -48,12 +48,12 @@
             <div class="mt-20 sm:mt-5">
                 <span class="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem]">
                     {% if user.role == "SKILLAS" %}
-                    <a href="/skillas_dashboard" class="flex items-center flex-grow text-gray-400 font-semibold hover:text-dark">
-                        <img class="h-8 w-8" src="{% static '/img/dashboard_message.png' %}">
+                    <a href="/skillas_dashboard" class="flex items-center flex-grow text-gray-400 font-semibold hover:text-white">
+                        <img class="h-5 w-5" src="{% static '/img/dashboard_message.png' %}">
                         <span class="text-[1.15rem] ml-2 hidden md:block">Dashboard</span>
                     </a>
                     {% elif user.role == "CLIENT" %}
-                    <a href="/client_dashboard" class="flex items-center flex-grow text-gray-400 font-semibold hover:text-dark">
+                    <a href="/client_dashboard" class="flex items-center flex-grow text-gray-400 font-semibold hover:text-white">
                         <img class="h-8 w-8" src="{% static '/img/dashboard_message.png' %}">
                         <span class="text-[1.15rem] ml-2 hidden md:block">Dashboard</span>
                     </a>
