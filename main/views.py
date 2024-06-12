@@ -372,7 +372,9 @@ def s_profile(request):
             return redirect("main:s_profile")
 
         if skilla_pp_form.is_valid():
-            skilla_pp_form.save() ## skilla_pp == skilla profile picture
+            skilla_pp_instance = skilla_pp_form.save(commit=False)
+            skilla_pp_instance.user = request.user  # Set the user
+            skilla_pp_instance.save()
             messages.success(request, "Profile Picture updated successfully")
 
         if cert_form.is_valid():
@@ -480,31 +482,43 @@ def applications(request):
 def profile_view(request, pk):
 
     try:
-        view_profile = SkillaProfile.objects.get(user__id=pk)
-        view_profile_picture = ProfilePicture.objects.get(user__id=pk)
+        skilla = User.objects.get(id=pk)
+        user_profile = SkillaProfile.objects.get(user=skilla.id)
+        picture = ProfilePicture.objects.get(user=skilla.id)
+        trans_count = Payment().get_skilla_order_count(user=skilla.id)
+        average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+
         view_about_skilla = AboutSkilla.objects.get(user__id=pk)
         view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
-        skilla = User.objects.get(id=pk)
+        
     except ObjectDoesNotExist:
-        view_profile = None
-        view_profile_picture = None
         view_about_skilla = None
         view_T_and_cert = None
+
         skilla = None
-    
-    average_rating, _ = UserReview().get_rating(pk)
+        user_profile = None
+        picture = None
+        trans_count = None
+        average_rating = None
+        ratings = None
+
+    skilla = User.objects.get(id=pk)
+    user_profile = SkillaProfile.objects.get(user=skilla.id)
+    picture = ProfilePicture.objects.get(user=skilla.id)
+    trans_count = Payment().get_skilla_order_count(user=skilla.id)
+    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
     
     return render(
         request=request,
         template_name="main/client/view_skilla_profile.html",
         context={
-            "view_profile": view_profile,
-            "view_profile_picture": view_profile_picture,
-            "view_about_skilla": view_about_skilla,
-            "view_T_and_cert": view_T_and_cert,
             "skilla": skilla,
-            # "rating": rating,
-            "average_rating": average_rating["average_rating"]
+            "user_profile": user_profile,
+            "picture": picture,
+            "total_order": trans_count,
+            "average_rating": average_rating["average_rating"],
+            "ratings":ratings,
+            "view_about_skilla": view_about_skilla,
         }
     )
 
