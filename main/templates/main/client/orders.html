@@ -78,6 +78,7 @@
             {% if order.paid == True %}
             <form method="POST">
                 {% csrf_token %}
+                <input id="" value="{{ order.skilla }}" name="skilla" class="hidden">
                 <input id="" value="{{ order.id }}" name="mark_order_as_complete" class="hidden">
                 {% if order.completed == False %}
                 <button class="bg-veryDarkGreen text-white rounded px-2 py-1 shadow hover:bg-gray-500 w-full" type="submit">Mark as complete</button>

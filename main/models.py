@@ -502,7 +502,7 @@ class Payment(models.Model):
     completed = models.BooleanField(default=False)
 
 
-    def get_skilla_message_count(self, user):
+    def get_skilla_order_count(self, user):
         self.count = Payment.objects.filter(skilla=user).count()
         return self.count
     

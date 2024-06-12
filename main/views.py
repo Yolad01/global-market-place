@@ -281,7 +281,7 @@ def skilla(request):
 
     brief = Brief.objects.all().order_by("-title")
 
-    trans_count = Payment().get_skilla_message_count(user=user)
+    trans_count = Payment().get_skilla_order_count(user=user)
 
     if request.method == "POST":
         form = BriefAppForm(request.POST)
@@ -620,6 +620,10 @@ def orders(request):
             order = Order.objects.get(id=order_id)
             order.completed = True
             order.save()
+            ##### Using session to store data to be used on order page
+            skilla = order.skilla.username
+            request.session["skilla"] = skilla
+            # Using session to store data to be used on order page #####
 
             user_wallet = Wallet.objects.get(user=order.skilla)
             user_wallet.pending -= order.price
@@ -1087,6 +1091,13 @@ def paid_order_history(request):
 
 
 def rate_user(request):
+    user = request.user.id
+    skilla = request.session.get("skilla")
+    skilla = User.objects.get(username=skilla)
+    user_profile = SkillaProfile.objects.get(user=skilla.id)
+    picture = ProfilePicture.objects.get(user=skilla.id)
+    trans_count = Payment().get_skilla_order_count(user=skilla.id)
+    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
 
     form = UserReviewForm(request.POST)
     if request.method == "POST":
@@ -1097,6 +1108,11 @@ def rate_user(request):
         request=request,
         template_name="main/rate_user.html",
         context={
-
+            "skilla": skilla,
+            "user_profile": user_profile,
+            "picture": picture,
+            "total_order": trans_count,
+            "average_rating": average_rating["average_rating"],
+            "ratings":ratings,
         }
     )
