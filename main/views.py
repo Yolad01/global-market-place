@@ -1102,7 +1102,11 @@ def rate_user(request):
     form = UserReviewForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
-            ...
+            user_review = form.save(commit=False)
+            user_review.user = skilla
+            user_review.rater = request.user
+            user_review.save()
+            return redirect("main:rate_user")
     #### after everything we will redirect to clients order page
     return render(
         request=request,

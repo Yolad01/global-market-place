@@ -74,13 +74,14 @@
         </div>
 
             <!--confirm modal-->
-            <div class="flex flex-col p-4 relative items-center justify-center bg-veryDarkGreen border border-gray-800 shadow-lg  rounded-2xl">
-                <form method="POST">
+            <form method="POST" class="flex flex-col py-1 relative items-center justify-center bg-veryDarkGreen border border-gray-800 shadow-lg  rounded-2xl">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <p class="font-semibold text-gray-200">Rate Skilla</p>
+                    <p class="text-gray-200 ml-2 py-1"> Rating: <span class="text-veryDarkGreen">{{ form.rating }}</span></p>
+                    <p class="text-gray-200 py-1"> Remark: <span class="text-veryDarkGreen">{{ form.comment }}</span></p>
+                    <button class="bg-veryLightGreen text-veryDarkGreen rounded px-2 py-1 shadow font-semibold hover:bg-gray-500 w-48" type="submit">Submit</button>
 
-                </form>
-            </div>
+            </form>
         
             <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
                 
@@ -113,7 +114,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg> {{ rate.rater }}
                             </h5>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-veryLightGreen ml-2" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                             </svg>
                             </div>

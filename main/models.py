@@ -519,14 +519,14 @@ class UserReview(models.Model):
     rating = models.IntegerField(choices=Rate.choices, default=None)
     comment = models.CharField(max_length=100, null=True, blank=True)
 
-    def get_rating(self, user_id) -> tuple:
+    def get_rating(self, user_id) -> list:
         """
             returns the average rating, and 
             a queryset of all the ratings
         """
         self.ratings = UserReview.objects.filter(user=user_id)
         self.average_rating = UserReview.objects.aggregate(average_rating=Avg("rating"))
-        return self.average_rating, self.ratings
+        return [self.average_rating, self.ratings]
 
     def __str__(self) -> str:
         return f'{self.rater.username} rated {self.user.username} {self.rating} star(s)'

@@ -156,6 +156,12 @@ class UserReviewForm(forms.ModelForm):
             "rating",
             "comment"
         ]
+
+        widgets = {
+                "rating": forms.Select(attrs={'class': 'rounded-md bg-gray-300 w-40'}),
+                "comment": forms.TextInput(attrs={'class': 'rounded-md bg-gray-300 w-40'}),
+                
+            }
     
     
 class SkillForm(forms.ModelForm):
