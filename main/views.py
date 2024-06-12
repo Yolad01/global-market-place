@@ -1114,5 +1114,6 @@ def rate_user(request):
             "total_order": trans_count,
             "average_rating": average_rating["average_rating"],
             "ratings":ratings,
+            "form": form,
         }
     )
