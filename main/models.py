@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.query import QuerySet
 
-from .options import Country, Role, SkillLevel, Rate, OrderStatus
+from .options import Country, Role, SkillLevel, Rate
 import random
 from django.utils import timezone
 from datetime import datetime
@@ -13,8 +13,7 @@ from main.managers import ThreadManager
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
-from django.contrib.auth import get_user_model
+from django.db.models import Avg
 
 
 
@@ -80,18 +79,18 @@ class Clients(User):
     
     
     
-class CompanyManager(BaseUserManager):
-    def get_queryset(self, *args, **kwargs) -> QuerySet:
-        results =  super().get_queryset(*args, **kwargs)
-        return results.filter(role=User.Role.COMPANY)
+# class CompanyManager(BaseUserManager):
+#     def get_queryset(self, *args, **kwargs) -> QuerySet:
+#         results =  super().get_queryset(*args, **kwargs)
+#         return results.filter(role=User.Role.COMPANY)
 
 
-class Company(User):
-    base_role = User.Role.COMPANY
+# class Company(User):
+#     base_role = User.Role.COMPANY
 
-    class Meta:
-        proxy = True # links to the original model table. this means that all the user types will be in the same table
-    company = CompanyManager()
+#     class Meta:
+#         proxy = True # links to the original model table. this means that all the user types will be in the same table
+#     company = CompanyManager()
 
 
 
@@ -230,25 +229,11 @@ class CompanyProfile(models.Model):
     
     
 
-class Rating(models.Model):
-        
-    Rate = Rate
-    
-    rating = models.PositiveSmallIntegerField(blank=True, null=True, choices=Rate.choices)
-    skilla = models.ForeignKey(Skillas, on_delete=models.CASCADE, related_name="Ratings_reciever")
-    client = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name="ratings_giver")
-    
-    def __str__(self):
-        return f'{self.client} rated {self.skilla}'
-    
-
 def order_number() -> int:
     num = random.randint(100000, 999999)
     return num
     
 class Order(models.Model):
-    status = OrderStatus
-    
     skilla = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobber")
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payer")
     notification  = models.PositiveIntegerField(null=True, blank=True)
@@ -259,12 +244,6 @@ class Order(models.Model):
     price = models.IntegerField(null=True, blank=True)
     accepted = models.BooleanField(default=False)
     decline = models.BooleanField(default=False)
-    order_status = models.CharField(
-        max_length=15,
-        null=False,
-        choices=status.choices,
-        default=status.PENDING
-    )
     completed = models.BooleanField(default=False)
 
     order_created = models.DateTimeField(default=timezone.now)
@@ -427,22 +406,6 @@ class ContactList(models.Model):
             self.contacts.add(account)
             self.save()
 
-    # def remove_contact(self, account):
-    #     if account in self.contacts.all():
-    #         self.contacts.remove(account)
-
-    # def uncontact(self, removee):
-    #     remover = self
-    #     remover.remove_contact(removee)
-    #     contact_list = ContactList.objects.get(user=removee)
-    #     contact_list.remove_contact(self.owner)
-
-    # def is_contact(self, contact):
-    #     if contact in self.contacts.all():
-    #         return True
-    #     return False
-    
-
 
 class ConnectRequest(models.Model):
     sender = models.ForeignKey(
@@ -535,10 +498,11 @@ class Payment(models.Model):
     channel = models.CharField(max_length=10, blank=True, null=True)
     card_type = models.CharField(max_length=10, blank=True, null=True)
     time_of_payment = models.CharField(max_length=20, blank=True, null=True)
+    order_no = models.PositiveSmallIntegerField(default=0)
     completed = models.BooleanField(default=False)
 
 
-    def get_skilla_message_count(self, user):
+    def get_skilla_order_count(self, user):
         self.count = Payment.objects.filter(skilla=user).count()
         return self.count
     
@@ -548,3 +512,21 @@ class Payment(models.Model):
     
 
 
+class UserReview(models.Model):
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rated_user")
+    rater = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="rater")
+    rating = models.IntegerField(choices=Rate.choices, default=None)
+    comment = models.CharField(max_length=100, null=True, blank=True)
+
+    def get_rating(self, user_id) -> list:
+        """
+            returns the average rating, and 
+            a queryset of all the ratings
+        """
+        self.ratings = UserReview.objects.filter(user=user_id)
+        self.average_rating = UserReview.objects.aggregate(average_rating=Avg("rating"))
+        return [self.average_rating, self.ratings]
+
+    def __str__(self) -> str:
+        return f'{self.rater.username} rated {self.user.username} {self.rating} star(s)'

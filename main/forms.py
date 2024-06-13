@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from main.models import Payment, User
-from main.models import (JobCategory, Job, Rating,
+from main.models import (Payment, User, UserReview, JobCategory, Job,
                          SkillaProfile, Skill, ClientProfile,
                          CompanyProfile, AboutSkilla, TrainingAndCertification,
                          ProfilePicture, Brief, Order
@@ -150,14 +149,19 @@ class CompanyProfileForm(forms.ModelForm):
      ]
     
     
-class RatingForm(forms.ModelForm):
+class UserReviewForm(forms.ModelForm):
     class Meta:
-        model = Rating
+        model = UserReview
         fields = [
             "rating",
-            "skilla",
-            "client"
+            "comment"
         ]
+
+        widgets = {
+                "rating": forms.Select(attrs={'class': 'rounded-md bg-gray-300 w-40'}),
+                "comment": forms.TextInput(attrs={'class': 'rounded-md bg-gray-300 w-40'}),
+                
+            }
     
     
 class SkillForm(forms.ModelForm):

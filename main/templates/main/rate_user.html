@@ -1,12 +1,10 @@
-{% extends 'layout/client_nav.html' %}
+{% extends "layout/client_nav.html" %}
 {% load static %}
 
 
-
 {% block content %}
-
     <!-- component -->
-<div class="flex flex-col items-center justify-center min-h-screen mt-20 compact:mt-20">
+<div class="flex flex-col items-center justify-center min-h-screen">
 
     <div class="container m-4">
         <div class="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
@@ -68,43 +66,22 @@
                     </svg>
                     <p class="">{{ total_order }} Total orders</p>
                     </div>
-                    <a href="{% url 'main:chat' username=user_profile.user.username %}" target="_blank" class="flex-no-shrink bg-veryLightGreen hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg tracking-wider border-2 border-green-300 hover:border-green-500 text-veryDarkGreen rounded-full transition ease-in duration-300 font-semibold">
-                        Contact
-                    </a>
+                    <a href="#" target="_blank" class="flex-no-shrink bg-veryLightGreen hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-veryDarkGreen rounded-full transition ease-in duration-300">Contact</a>
                 </div>
                 </div>
             </div>
             </div>
         </div>
 
-        <div class="flex flex-col py-1 relative items-center justify-center bg-veryDarkGreen border border-veryDarkGreen border-shadow-lg rounded-2xl w-fit px-4">
-            <div class="mt-2 rounded-sm text-gray-200 w-full">
-                <div class="px-4">
-        
-                    <div class="mb-4">
-                        <h6 class="font-bold text-sm">Phone Number</h6>
-                        <h4 class="text-xs custom:text-sm portable:text-base lg:text-sm">{{skilla.phone_no}}</h4>
-                    </div>
-        
-                    <div class="mb-4">
-                        <h6 class="font-bold text-sm">Email</h6>
-                        <h4 class="text-xs custom:text-sm portable:text-base lg:text-sm">{{skilla.email}}</h4>
-                    </div>
-        
-                    <div class="mb-4">
-                        <h6 class="font-bold text-sm">About</h6>
-                        <p class="text-sm">{{ view_about_skilla.about }}</p>
-                    </div>
-        
-                    <div class="mb-4">
-                        <h6 class="font-bold text-sm">Work Experience</h6>
-                        <p class="text-sm">{{ view_about_skilla.work_experience }}</p>
-                    </div>
-        
-                </div>
-            </div>
-        </div>
-        
+            <!--confirm modal-->
+            <form method="POST" class="flex flex-col py-1 relative items-center justify-center bg-veryDarkGreen border border-gray-800 shadow-lg  rounded-2xl">
+                    {% csrf_token %}
+                    <p class="font-semibold text-gray-200">Rate Skilla</p>
+                    <p class="text-gray-200 ml-2 py-1"> Rating: <span class="text-veryDarkGreen">{{ form.rating }}</span></p>
+                    <p class="text-gray-200 py-1"> Remark: <span class="text-veryDarkGreen">{{ form.comment }}</span></p>
+                    <button class="bg-veryLightGreen text-veryDarkGreen rounded px-2 py-1 shadow font-semibold hover:bg-gray-500 w-48" type="submit">Submit</button>
+
+            </form>
         
             <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
                 
@@ -152,5 +129,5 @@
     
     </div>
 </div>
-
 {% endblock %}
+    

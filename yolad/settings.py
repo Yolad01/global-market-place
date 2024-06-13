@@ -120,7 +120,8 @@ DATABASES = {
 
 
 # DATABASES = {
-# 'default': Env.db_url_config(env('DATABASE_URL'))
+
+#     'default':  Env.db_url_config(env('DATABASE_URL'))
 # }
 
 

@@ -5,14 +5,14 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm,
-                        SearchForm, PaymentForm
+                        SearchForm, PaymentForm, UserReviewForm
                         )
 
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, Order, User,
-                         Skill, JobCategory, ContactList, Thread, Message, Payment,
-                         get_unread_messages_count
+                         Skill, JobCategory, ContactList, Thread, Message, Payment, Wallet,
+                         get_unread_messages_count, UserReview,
                         )
 
 from main.payment import PayStackIt
@@ -281,7 +281,7 @@ def skilla(request):
 
     brief = Brief.objects.all().order_by("-title")
 
-    trans_count = Payment().get_skilla_message_count(user=user)
+    trans_count = Payment().get_skilla_order_count(user=user)
 
     if request.method == "POST":
         form = BriefAppForm(request.POST)
@@ -372,7 +372,9 @@ def s_profile(request):
             return redirect("main:s_profile")
 
         if skilla_pp_form.is_valid():
-            skilla_pp_form.save() ## skilla_pp == skilla profile picture
+            skilla_pp_instance = skilla_pp_form.save(commit=False)
+            skilla_pp_instance.user = request.user  # Set the user
+            skilla_pp_instance.save()
             messages.success(request, "Profile Picture updated successfully")
 
         if cert_form.is_valid():
@@ -408,15 +410,15 @@ def s_profile(request):
 
 def wallet(request):
     user = request.user
-    wallet = functions.user_wallet(user=user)
-    print(wallet)
-
+    wallet, _ = Wallet.objects.get_or_create(user=user)
+    
     return render(
         request=request,
         template_name="main/skilla/wallet/wallet.html",
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "search_form": SearchForm()
+            "search_form": SearchForm(),
+            "wallet": wallet
         }
     )
 
@@ -477,30 +479,46 @@ def applications(request):
 
 
 
-def profile_view(request, pk): #Use the id for the querries or make the username foreignkey or unique
+def profile_view(request, pk):
 
     try:
-        view_profile = SkillaProfile.objects.get(user__id=pk)
-        view_profile_picture = ProfilePicture.objects.get(user__id=pk)
+        skilla = User.objects.get(id=pk)
+        user_profile = SkillaProfile.objects.get(user=skilla.id)
+        picture = ProfilePicture.objects.get(user=skilla.id)
+        trans_count = Payment().get_skilla_order_count(user=skilla.id)
+        average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+
         view_about_skilla = AboutSkilla.objects.get(user__id=pk)
         view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
-        skilla = User.objects.get(id=pk)
+        
     except ObjectDoesNotExist:
-        view_profile = None
-        view_profile_picture = None
         view_about_skilla = None
         view_T_and_cert = None
+
         skilla = None
+        user_profile = None
+        picture = None
+        trans_count = None
+        average_rating = None
+        ratings = None
+
+    skilla = User.objects.get(id=pk)
+    user_profile = SkillaProfile.objects.get(user=skilla.id)
+    picture = ProfilePicture.objects.get(user=skilla.id)
+    trans_count = Payment().get_skilla_order_count(user=skilla.id)
+    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
     
     return render(
         request=request,
         template_name="main/client/view_skilla_profile.html",
         context={
-            "view_profile": view_profile,
-            "view_profile_picture": view_profile_picture,
+            "skilla": skilla,
+            "user_profile": user_profile,
+            "picture": picture,
+            "total_order": trans_count,
+            "average_rating": average_rating["average_rating"],
+            "ratings":ratings,
             "view_about_skilla": view_about_skilla,
-            "view_T_and_cert": view_T_and_cert,
-            "skilla": skilla
         }
     )
 
@@ -579,6 +597,8 @@ def quotes(request):
         template_name="main/skilla/quotes_and_orders/sent_quotes.html",
         context={
             "display_order": display_order,
+            "search_form": SearchForm(),
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
     )
 
@@ -600,7 +620,6 @@ def orders(request):
             order = Order.objects.get(client=user, id=order_id)
             order.accepted = True
             order.save()
-            
             return redirect("main:orders")
         
         if decline_form.is_valid():
@@ -608,20 +627,35 @@ def orders(request):
             order = Order.objects.get(client=user, id=order_id)
             order.decline = True
             order.save()
-            
             return redirect("main:orders")
         
+        order_id = request.POST["mark_order_as_complete"]
+        if order_id:
+            order = Order.objects.get(id=order_id)
+            order.completed = True
+            order.save()
+            ##### Using session to store data to be used on order page
+            skilla = order.skilla.username
+            request.session["skilla"] = skilla
+            # Using session to store data to be used on order page #####
+
+            user_wallet = Wallet.objects.get(user=order.skilla)
+            user_wallet.pending -= order.price
+            user_wallet.main += order.price
+            user_wallet.save()
+            return redirect("main:rate_user")
+
         
     accept_form = AcceptQuoteForm()
     decline_form = DeclineQuoteForm()
-    
+   
     return render(
         request=request,
         template_name="main/client/orders.html",
         context={
             "display_order": display_order,
             "accept_form": accept_form,
-            "decline_form": decline_form
+            "decline_form": decline_form,
         }
     )
 
@@ -911,7 +945,6 @@ def skilla_search(request, param):
 
 
 
-
 def password_reset_request(request):
     if request.method == "POST":
         form = PasswordResetRequestForm(request.POST)
@@ -976,10 +1009,8 @@ def password_reset_complete(request):
 
 def make_payment(request, order_no):
     user = request.user
-
     order = Order.objects.get(order_no=order_no)
     skilla_img = ProfilePicture.objects.get(user=order.skilla)
-    print(skilla_img)
 
     if request.method == "POST":
         form = PaymentForm(request.POST)
@@ -999,7 +1030,8 @@ def make_payment(request, order_no):
                 pending=amount,
                 reference=send_fund.reference_code,
                 skilla=order.skilla,
-                skilla_image=skilla_img.image
+                skilla_image=skilla_img.image,
+                order_no=order_no
             )
             return redirect(send_fund.authorization_url)
 
@@ -1013,7 +1045,7 @@ def make_payment(request, order_no):
     )
 
 
-def withdraw_success(request):
+def payment_success(request):
     user = request.user
     payment = Payment.objects.filter(user=user).last()
     verify = PayStackIt(
@@ -1035,12 +1067,17 @@ def withdraw_success(request):
     if verify.status == "success":
         payment.completed = True
     payment.save()
+    ##### Marking order as paid
+    order = Order.objects.get(order_no=payment.order_no)
+    order.paid = True
+    order.save()
+    ##### Adding to user pending balance
+    user_wallet = functions.user_wallet(payment.skilla)
     
     return render(
         request=request,
         template_name="main/skilla/wallet/success_page.html",
         context={
-            # "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
 
@@ -1062,5 +1099,39 @@ def paid_order_history(request):
             "user_profile_pic": ProfilePicture.objects.get(user=request.user),
             # "payment": payment,
             "payment": page_object,
+        }
+    )
+
+
+
+def rate_user(request):
+    user = request.user.id
+    skilla = request.session.get("skilla")
+    skilla = User.objects.get(username=skilla)
+    user_profile = SkillaProfile.objects.get(user=skilla.id)
+    picture = ProfilePicture.objects.get(user=skilla.id)
+    trans_count = Payment().get_skilla_order_count(user=skilla.id)
+    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+
+    form = UserReviewForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            user_review = form.save(commit=False)
+            user_review.user = skilla
+            user_review.rater = request.user
+            user_review.save()
+            return redirect("main:rate_user")
+    #### after everything we will redirect to clients order page
+    return render(
+        request=request,
+        template_name="main/rate_user.html",
+        context={
+            "skilla": skilla,
+            "user_profile": user_profile,
+            "picture": picture,
+            "total_order": trans_count,
+            "average_rating": average_rating["average_rating"],
+            "ratings":ratings,
+            "form": form,
         }
     )

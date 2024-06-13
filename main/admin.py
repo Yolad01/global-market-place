@@ -2,10 +2,10 @@ from django.contrib import admin
 # from django.contrib.auth.admin import UserAdmin
 
 from .models import (
-    User, Clients, Skillas, SkillaProfile, Skill, Rating, ClientRequest, Order,
+    User, Clients, Skillas, SkillaProfile, Skill, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
     ProfilePicture, Brief, SkillaReachoutToClient, ConnectRequest,
-    Message, Thread, ContactList, Payment, MessageReadStatus, Wallet
+    Message, Thread, ContactList, Payment, MessageReadStatus, UserReview, Wallet
 
 )
 
@@ -81,10 +81,6 @@ class CompanyProfileAdmin(admin.ModelAdmin):
 class SkillAdmin(admin.ModelAdmin):
      list_display = ["title", "skill", "category", "image", "level", "base_price"]
      
-
-
-class RatingAdmin(admin.ModelAdmin):
-     list_display = ["skilla", "rating", "client"]
      
 
 class ClientRequestAdmin(admin.ModelAdmin):
@@ -93,7 +89,7 @@ class ClientRequestAdmin(admin.ModelAdmin):
 
 class OrderAdmin(admin.ModelAdmin):
      list_display = [
-          "skilla", "client", "paid", "order_no", "order_status",
+          "skilla", "client", "paid", "order_no",
           "delivery", "price", "accepted", "decline", "order_created"
      ]
 
@@ -184,9 +180,18 @@ class WalletAdmin(admin.ModelAdmin):
 admin.site.register(Wallet, WalletAdmin)
 
 
+class UserReviewAdmin(admin.ModelAdmin):
+     list_display = [
+          "user",
+          "rater",
+          "rating",
+          "comment"
+     ]
+admin.site.register(UserReview, UserReviewAdmin)
 
 
-admin.site.register(Rating, RatingAdmin)
+
+
 admin.site.register(SkillaProfile, SkillaProfileAdmin)
 admin.site.register(User, UsersAdmin)
 admin.site.register(Clients)

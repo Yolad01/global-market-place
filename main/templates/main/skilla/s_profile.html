@@ -1,4 +1,6 @@
-{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
+{% extends 'layout/dash_nav.html' %}
+{% load static %}
+{% block content %}
 
 <div class="relative flex sm:ml-10 ml-5 font-primary">
   <!-- Body -->
@@ -10,7 +12,8 @@
     >
       {{ message }}
     </div>
-    {% endfor %} {% endif %}
+    {% endfor %} 
+    {% endif %}
     <div>
       <div class="p-10">
         <h3 class="font-primary font-normal text-2xl -ml-10">Profile</h3>
