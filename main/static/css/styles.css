@@ -1408,10 +1408,6 @@ select{
   margin-top: 0.75rem;
 }
 
-.mt-32{
-  margin-top: 8rem;
-}
-
 .mt-4{
   margin-top: 1rem;
 }
@@ -1668,6 +1664,11 @@ select{
   width: 100%;
 }
 
+.w-fit{
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .min-w-0{
   min-width: 0px;
 }
@@ -1825,10 +1826,6 @@ select{
   flex-wrap: wrap;
 }
 
-.content-center{
-  align-content: center;
-}
-
 .items-start{
   align-items: flex-start;
 }
@@ -1931,6 +1928,18 @@ select{
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-1 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-5 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]){
@@ -2333,6 +2342,11 @@ select{
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-gray-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
 }
@@ -2366,10 +2380,6 @@ select{
   padding: 5rem;
 }
 
-.p-3{
-  padding: 0.75rem;
-}
-
 .p-4{
   padding: 1rem;
 }
@@ -2392,11 +2402,6 @@ select{
 
 .p-\[30px\]{
   padding: 30px;
-}
-
-.px-1{
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 .px-10{
@@ -2544,10 +2549,6 @@ select{
   padding-bottom: 6rem;
 }
 
-.pb-3{
-  padding-bottom: 0.75rem;
-}
-
 .pb-5{
   padding-bottom: 1.25rem;
 }
@@ -2614,10 +2615,6 @@ select{
 
 .pr-28{
   padding-right: 7rem;
-}
-
-.pr-3{
-  padding-right: 0.75rem;
 }
 
 .pr-36{
@@ -3170,6 +3167,10 @@ select{
   transition-duration: 500ms;
 }
 
+.duration-700{
+  transition-duration: 700ms;
+}
+
 .ease-in{
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
@@ -3468,6 +3469,11 @@ select{
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-blue-700:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
 .hover\:font-bold:hover{
   font-weight: 700;
 }
@@ -3515,6 +3521,11 @@ select{
 .hover\:text-white:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-gray-300:hover{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-lg:hover{
@@ -3592,6 +3603,11 @@ select{
 
 .focus-visible\:outline-veryLightGreen:focus-visible{
   outline-color: #62EFB4;
+}
+
+.active\:bg-green-600:active{
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
 .group:hover .group-hover\:visible{
@@ -3844,11 +3860,6 @@ select{
     margin-right: 5rem;
   }
 
-  .md-compact\:mx-3{
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
-  }
-
   .md-compact\:mx-4{
     margin-left: 1rem;
     margin-right: 1rem;
@@ -3909,10 +3920,6 @@ select{
 
   .md-compact\:mt-0{
     margin-top: 0px;
-  }
-
-  .md-compact\:mt-24{
-    margin-top: 6rem;
   }
 
   .md-compact\:mt-5{
@@ -4002,11 +4009,6 @@ select{
 
   .md-compact\:pr-12{
     padding-right: 3rem;
-  }
-
-  .md-compact\:text-2xl{
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   .md-compact\:text-base{
@@ -4337,11 +4339,6 @@ select{
     margin-right: 5rem;
   }
 
-  .portable\:mx-3{
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
-  }
-
   .portable\:mx-36{
     margin-left: 9rem;
     margin-right: 9rem;
@@ -4441,10 +4438,6 @@ select{
 
   .portable\:mt-12{
     margin-top: 3rem;
-  }
-
-  .portable\:mt-28{
-    margin-top: 7rem;
   }
 
   .portable\:mt-32{
@@ -4553,29 +4546,9 @@ select{
     padding: 0px;
   }
 
-  .portable\:px-1{
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-  }
-
   .portable\:px-2{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-  }
-
-  .portable\:px-3{
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-
-  .portable\:px-7{
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
-  }
-
-  .portable\:py-1{
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
   }
 
   .portable\:pt-1{
@@ -4606,18 +4579,9 @@ select{
     line-height: 1.5rem;
   }
 
-  .portable\:text-lg{
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
   .portable\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .portable\:font-semibold{
-    font-weight: 600;
   }
 }
 
@@ -4654,11 +4618,6 @@ select{
     margin-right: 5rem;
   }
 
-  .sm\:mx-4{
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
   .sm\:mx-40{
     margin-left: 10rem;
     margin-right: 10rem;
@@ -4682,11 +4641,6 @@ select{
   .sm\:mx-auto{
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .sm\:my-4{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
   }
 
   .sm\:my-8{
@@ -4814,10 +4768,6 @@ select{
     margin-top: 5rem;
   }
 
-  .sm\:mt-28{
-    margin-top: 7rem;
-  }
-
   .sm\:mt-32{
     margin-top: 8rem;
   }
@@ -4840,10 +4790,6 @@ select{
 
   .sm\:mt-5{
     margin-top: 1.25rem;
-  }
-
-  .sm\:mt-7{
-    margin-top: 1.75rem;
   }
 
   .sm\:mt-auto{
@@ -5017,10 +4963,6 @@ select{
     padding: 0.5rem;
   }
 
-  .sm\:p-3{
-    padding: 0.75rem;
-  }
-
   .sm\:px-1{
     padding-left: 0.25rem;
     padding-right: 0.25rem;
@@ -5031,24 +4973,9 @@ select{
     padding-right: 2.5rem;
   }
 
-  .sm\:px-11{
-    padding-left: 2.75rem;
-    padding-right: 2.75rem;
-  }
-
   .sm\:px-5{
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-  }
-
-  .sm\:px-7{
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
-  }
-
-  .sm\:py-1{
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
   }
 
   .sm\:pb-10{
@@ -5065,10 +4992,6 @@ select{
 
   .sm\:pl-14{
     padding-left: 3.5rem;
-  }
-
-  .sm\:pr-5{
-    padding-right: 1.25rem;
   }
 
   .sm\:pr-\[60px\]{
@@ -5158,11 +5081,6 @@ select{
     margin-right: 10rem;
   }
 
-  .md\:mx-5{
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
-
   .md\:mx-60{
     margin-left: 15rem;
     margin-right: 15rem;
@@ -5176,11 +5094,6 @@ select{
   .md\:mx-auto{
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .md\:my-5{
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
   }
 
   .md\:-mb-5{
@@ -5213,10 +5126,6 @@ select{
 
   .md\:mb-10{
     margin-bottom: 2.5rem;
-  }
-
-  .md\:mb-8{
-    margin-bottom: 2rem;
   }
 
   .md\:ml-0{
@@ -5273,10 +5182,6 @@ select{
 
   .md\:mr-24{
     margin-right: 6rem;
-  }
-
-  .md\:mr-5{
-    margin-right: 1.25rem;
   }
 
   .md\:mr-64{
@@ -5419,28 +5324,9 @@ select{
     background-color: rgb(0 45 56 / var(--tw-bg-opacity));
   }
 
-  .md\:p-3{
-    padding: 0.75rem;
-  }
-
-  .md\:px-10{
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
-  .md\:px-4{
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   .md\:px-6{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-
-  .md\:py-1{
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
   }
 
   .md\:pb-10{
@@ -5528,10 +5414,6 @@ select{
     margin: 2.5rem;
   }
 
-  .lg\:m-5{
-    margin: 1.25rem;
-  }
-
   .lg\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
@@ -5552,29 +5434,9 @@ select{
     margin-right: 5rem;
   }
 
-  .lg\:mx-40{
-    margin-left: 10rem;
-    margin-right: 10rem;
-  }
-
-  .lg\:mx-5{
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
-
   .lg\:mx-80{
     margin-left: 20rem;
     margin-right: 20rem;
-  }
-
-  .lg\:my-2{
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .lg\:my-4{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
   }
 
   .lg\:-ml-16{
@@ -5649,10 +5511,6 @@ select{
     margin-left: 1.25rem;
   }
 
-  .lg\:ml-6{
-    margin-left: 1.5rem;
-  }
-
   .lg\:ml-60{
     margin-left: 15rem;
   }
@@ -5715,10 +5573,6 @@ select{
 
   .lg\:mt-16{
     margin-top: 4rem;
-  }
-
-  .lg\:mt-2{
-    margin-top: 0.5rem;
   }
 
   .lg\:mt-20{
@@ -5904,43 +5758,14 @@ select{
     padding: 1.25rem;
   }
 
-  .lg\:px-2{
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .lg\:px-4{
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .lg\:px-5{
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
-  .lg\:py-2{
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .lg\:py-4{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
   .lg\:py-\[120px\]{
     padding-top: 120px;
     padding-bottom: 120px;
-  }
-
-  .lg\:pb-10{
-    padding-bottom: 2.5rem;
   }
 
   .lg\:pb-20{
@@ -5998,14 +5823,14 @@ select{
     font-size: 36px;
   }
 
-  .lg\:text-xl{
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
   .lg\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .lg\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .lg\:font-semibold{
@@ -6056,19 +5881,9 @@ select{
     margin-right: 10rem;
   }
 
-  .xl\:mx-80{
-    margin-left: 20rem;
-    margin-right: 20rem;
-  }
-
   .xl\:mx-\[700px\]{
     margin-left: 700px;
     margin-right: 700px;
-  }
-
-  .xl\:my-4{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
   }
 
   .xl\:my-5{
@@ -6108,10 +5923,6 @@ select{
     margin-bottom: 2.5rem;
   }
 
-  .xl\:mb-14{
-    margin-bottom: 3.5rem;
-  }
-
   .xl\:mb-16{
     margin-bottom: 4rem;
   }
@@ -6128,10 +5939,6 @@ select{
     margin-bottom: 10rem;
   }
 
-  .xl\:mb-5{
-    margin-bottom: 1.25rem;
-  }
-
   .xl\:mb-\[40px\]{
     margin-bottom: 40px;
   }
@@ -6142,10 +5949,6 @@ select{
 
   .xl\:ml-10{
     margin-left: 2.5rem;
-  }
-
-  .xl\:ml-12{
-    margin-left: 3rem;
   }
 
   .xl\:ml-2{
@@ -6198,10 +6001,6 @@ select{
 
   .xl\:ml-96{
     margin-left: 24rem;
-  }
-
-  .xl\:mr-20{
-    margin-right: 5rem;
   }
 
   .xl\:mr-24{
@@ -6304,10 +6103,6 @@ select{
     height: 10rem;
   }
 
-  .xl\:h-52{
-    height: 13rem;
-  }
-
   .xl\:h-72{
     height: 18rem;
   }
@@ -6324,16 +6119,8 @@ select{
     width: 25%;
   }
 
-  .xl\:w-2\/3{
-    width: 66.666667%;
-  }
-
   .xl\:w-3\/4{
     width: 75%;
-  }
-
-  .xl\:w-52{
-    width: 13rem;
   }
 
   .xl\:w-60{
@@ -6342,10 +6129,6 @@ select{
 
   .xl\:w-72{
     width: 18rem;
-  }
-
-  .xl\:w-96{
-    width: 24rem;
   }
 
   .xl\:w-full{
@@ -6398,17 +6181,8 @@ select{
     border-width: 1px;
   }
 
-  .xl\:p-10{
-    padding: 2.5rem;
-  }
-
   .xl\:p-20{
     padding: 5rem;
-  }
-
-  .xl\:px-2{
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
   }
 
   .xl\:px-20{
@@ -6416,27 +6190,8 @@ select{
     padding-right: 5rem;
   }
 
-  .xl\:px-4{
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .xl\:px-8{
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .xl\:py-5{
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-  }
-
   .xl\:pb-10{
     padding-bottom: 2.5rem;
-  }
-
-  .xl\:pb-16{
-    padding-bottom: 4rem;
   }
 
   .xl\:pb-40{
@@ -6447,16 +6202,8 @@ select{
     padding-left: 40px;
   }
 
-  .xl\:pr-12{
-    padding-right: 3rem;
-  }
-
   .xl\:pr-2{
     padding-right: 0.5rem;
-  }
-
-  .xl\:pr-5{
-    padding-right: 1.25rem;
   }
 
   .xl\:pr-80{
