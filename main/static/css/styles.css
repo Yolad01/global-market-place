@@ -1540,6 +1540,14 @@ select{
   height: 100vh;
 }
 
+.h-1{
+  height: 0.25rem;
+}
+
+.h-2{
+  height: 0.5rem;
+}
+
 .max-h-0{
   max-height: 0px;
 }
@@ -1667,6 +1675,14 @@ select{
 
 .w-full{
   width: 100%;
+}
+
+.w-2{
+  width: 0.5rem;
+}
+
+.w-1\/12{
+  width: 8.333333%;
 }
 
 .min-w-0{
@@ -1856,10 +1872,6 @@ select{
 
 .justify-evenly{
   justify-content: space-evenly;
-}
-
-.justify-items-end{
-  justify-items: end;
 }
 
 .gap-16{
@@ -6178,10 +6190,6 @@ select{
 
   .xl\:pt-\[80px\]{
     padding-top: 80px;
-  }
-
-  .xl\:pl-96{
-    padding-left: 24rem;
   }
 
   .xl\:text-2xl{
