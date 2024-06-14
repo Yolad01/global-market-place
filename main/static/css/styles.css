@@ -1660,13 +1660,13 @@ select{
   width: auto;
 }
 
-.w-full{
-  width: 100%;
-}
-
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-full{
+  width: 100%;
 }
 
 .min-w-0{
@@ -1858,6 +1858,10 @@ select{
   justify-content: space-evenly;
 }
 
+.justify-items-end{
+  justify-items: end;
+}
+
 .gap-16{
   gap: 4rem;
 }
@@ -1928,18 +1932,6 @@ select{
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-
-.space-y-1 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-
-.space-y-5 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]){
@@ -2340,11 +2332,6 @@ select{
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-gray-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{
@@ -3469,11 +3456,6 @@ select{
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-700:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
-}
-
 .hover\:font-bold:hover{
   font-weight: 700;
 }
@@ -3481,6 +3463,11 @@ select{
 .hover\:text-blue-50:hover{
   --tw-text-opacity: 1;
   color: rgb(239 246 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-gray-300:hover{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-700:hover{
@@ -3521,11 +3508,6 @@ select{
 .hover\:text-white:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:text-gray-300:hover{
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-lg:hover{
@@ -4700,10 +4682,6 @@ select{
     margin-left: 5rem;
   }
 
-  .sm\:ml-3{
-    margin-left: 0.75rem;
-  }
-
   .sm\:ml-4{
     margin-left: 1rem;
   }
@@ -4980,10 +4958,6 @@ select{
 
   .sm\:pb-10{
     padding-bottom: 2.5rem;
-  }
-
-  .sm\:pb-5{
-    padding-bottom: 1.25rem;
   }
 
   .sm\:pl-0{
@@ -5507,10 +5481,6 @@ select{
     margin-left: 8rem;
   }
 
-  .lg\:ml-5{
-    margin-left: 1.25rem;
-  }
-
   .lg\:ml-60{
     margin-left: 15rem;
   }
@@ -6003,10 +5973,6 @@ select{
     margin-left: 24rem;
   }
 
-  .xl\:mr-24{
-    margin-right: 6rem;
-  }
-
   .xl\:mr-32{
     margin-right: 8rem;
   }
@@ -6212,6 +6178,10 @@ select{
 
   .xl\:pt-\[80px\]{
     padding-top: 80px;
+  }
+
+  .xl\:pl-96{
+    padding-left: 24rem;
   }
 
   .xl\:text-2xl{

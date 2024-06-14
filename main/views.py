@@ -22,7 +22,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.db import IntegrityError
+from django.db import IntegrityError, OperationalError
 from .search import search_brief_title, search_brief_category, search_skill_category, skill_search
 from django.core.paginator import Paginator
 from django.conf import settings
@@ -75,6 +75,12 @@ def service_policy(request):
     return render(
         request=request,
         template_name="main/skilla/service_policy.html"
+    )
+    
+def frequently_asked_questions(request):
+    return render(
+        request=request,
+        template_name="main/faq.html"
     )
 
 
@@ -481,13 +487,13 @@ def applications(request):
 
 def profile_view(request, pk):
 
+    # skilla = None
+    # user_profile = None
+    # picture = None
+    # trans_count = None
+    # average_rating = None
+    # ratings = None
     try:
-        skilla = User.objects.get(id=pk)
-        user_profile = SkillaProfile.objects.get(user=skilla.id)
-        picture = ProfilePicture.objects.get(user=skilla.id)
-        trans_count = Payment().get_skilla_order_count(user=skilla.id)
-        average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
-
         view_about_skilla = AboutSkilla.objects.get(user__id=pk)
         view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
         
@@ -495,18 +501,18 @@ def profile_view(request, pk):
         view_about_skilla = None
         view_T_and_cert = None
 
-        skilla = None
-        user_profile = None
-        picture = None
+    try:
+        skilla = User.objects.get(id=pk)
+        user_profile = SkillaProfile.objects.get(user=skilla.id)
+        picture = ProfilePicture.objects.get(user=skilla.id)
+        trans_count = Payment().get_skilla_order_count(user=skilla.id)
+        average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+        
+    except OperationalError:
+       
         trans_count = None
-        average_rating = None
+        average_rating = {"average_rating":0}
         ratings = None
-
-    skilla = User.objects.get(id=pk)
-    user_profile = SkillaProfile.objects.get(user=skilla.id)
-    picture = ProfilePicture.objects.get(user=skilla.id)
-    trans_count = Payment().get_skilla_order_count(user=skilla.id)
-    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
     
     return render(
         request=request,
