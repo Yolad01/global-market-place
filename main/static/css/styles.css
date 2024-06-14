@@ -1540,6 +1540,14 @@ select{
   height: 100vh;
 }
 
+.h-52{
+  height: 13rem;
+}
+
+.h-96{
+  height: 24rem;
+}
+
 .max-h-0{
   max-height: 0px;
 }
@@ -1667,6 +1675,10 @@ select{
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-96{
+  width: 24rem;
 }
 
 .min-w-0{

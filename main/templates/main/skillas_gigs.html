@@ -96,7 +96,7 @@
     </div>
   </div>
 
-	<section>
+	<section class="bg-veryLightGreen">
 		<div class="xl:ml-48 xl:mr-48 flex justify-center">
 		<img
 			src="{% static '/img/Skillas Design-04 1.svg' %}"
@@ -106,22 +106,7 @@
 		</div>
 
 		<div class="mt-5 mb-5 xl:ml-48 lg:ml-28 font-semibold text-sm portable:text-base text-veryDarkGreen flex gap-4">
-		<div class="">
-			<button type="submit"  class="border-2 border-light_ash px-6 py-2">UPGRADE YOUR <br>SKILLS</button>
-		</div>
-
-		<div>
-			<button type="submit" class="border-light_ash border-2 px-6 py-2">SUBSCRIBE TO OUR <br>EMAIL LIST</button>
-		</div>
-	</div>
-	</section>
-
-	<section>
-		<div class="bg-veryLightGreen flex xl:ml-48 xl:mr-48">
-		<h2 class="font-medium text-veryDarkGreen text-2xl portable:text-4xl py-5 pl-10 lg:pl-36 xl:-ml-28">
-			Top Skillas
-		</h2>
-		<a href="#" class="text-base font-medium text-veryDarkGreen mt-8 ml-10">See more</a>
+		
 		</div>
 	</section>
 
@@ -131,7 +116,7 @@
 		{% for skill in page_object %}
 		<div class="mx-4 portable:mb-4">
 			<img
-			class="pt-2 w-full object-cover h-60"
+			class="pt-2 w-full object-cover h-40"
 			src="{{skill.image.url}}"
 			alt=""
 			/>
@@ -148,18 +133,18 @@
 			<hr class="border-gray-400 w-full" />
 			<h6 class="font-medium italic text-xs mt-2 py-2">
 				Price ranging from
-				<span class="not-italic font-extrabold"
-				>NGN {{ skill.base_price }}</span
-				>
+				<span class="not-italic font-extrabold">
+					NGN {{ skill.base_price }}
+				</span>
 			</h6>
 			<hr class="border-gray-400 w-full" />
-			<div class="flex mt-2 gap-2 py-2">
+			{% comment %} <div class="flex mt-2 gap-2 py-2">
 				<img src="{% static 'img/Vector (10).png' %}" />
 				<img src="{% static '/img/Vector (10).png' %}" />
 				<img src="{% static '/img/Vector (10).png' %}" />
 				<img src="{% static '/img/Vector (10).png' %}" />
 				<img src="{% static '/img/Group 245.png' %}" />
-			</div>
+			</div> {% endcomment %}
 			<hr class="border-gray-400 w-full" />
 			<div class="mt-5 flex justify-center">
 				<a

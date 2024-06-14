@@ -6,8 +6,8 @@
     <div class="container mx-auto">
         <div class="grid sm:grid-cols-12 gap-[30px]">
             <div class="col-span-12 lg:col-span-5 xl:col-span-6">
-                <div class="p-[30px] drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] bg-[#FFFDFC]">
-                    <img class="self-center mb-[15px] w-full h-full" src="{{ gig.image.url }}" width="499" height="988" loading="lazy" alt="brand logo">
+                <div class="p-[30px] bg-[#FFFDFC] flex justify-end">
+                    <img class="self-center mb-[15px] w-96 h-96" src="{{ gig.image.url }}" loading="lazy" alt="brand logo">
 
                 </div>
             </div>
@@ -49,97 +49,12 @@
             >
         </div>
 
-        {% comment %} <div class="py-[80px] lg:py-[120px]">
-            <div class="grid grid-cols-12 gap-x-[30px]">
-                <div class="col-span-12">
-                    <ul class="flex flex-wrap list-none justify-between max-w-[800px] mx-auto">
-                        <li class="sm:border-r sm:border-[#CFCFCF] sm:pr-[60px] md:pr-[115px]">
-                            <span class="text-secondary text-lg"><span class="counter-up">150</span> <span>k+</span></span>
-                            <p>Properties</p>
-                        </li>
-                        <li class="sm:border-r sm:border-[#CFCFCF] sm:pr-[60px] md:pr-[115px]">
-                            <span class="text-secondary text-lg"><span class="counter-up">160</span> <span>k+</span></span>
-                            <p>Customers</p>
-                        </li>
-                        <li>
-                            <span class="text-secondary text-lg"><span class="counter-up">90</span>
-                            <span>+</span></span>
-                            <p>Awards Win</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> {% endcomment %}
-
     </div>
 </section>
 
 
 
-  {% comment %} <section
-    class="border rounded-lg shadow-md mt-10 w-1/2 bg-gray-50 mx-auto justify-center items-center"
-  >
-    <div class="grid grid-cols-2">
-      <div>
-        <div class="p-5">
-          <img src="{{ gig.image.url }}" class="" height="14" weight="14" />
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-center">
-          <div class="mt-10">
-            <h2 class="font-semibold text-veryDarkGreen text-lg">{{ gig.skilla.username }}</h2>
-          </div>
-
-          <div class="mt-10 ml-48">
-            <h2 class="font-semibold text-lg text-green-600">NGN{{ gig.base_price }}</h2>
-          </div>
-        </div>
-
-        <div class="mt-10 flex justify-center">
-          <h2 class="font-semibold text-2xl text-veryDarkGreen">{{ gig.title }}</h2>
-        </div>
-
-        <div class="mt-1 flex justify-center">
-          <h2 class="mt-5 text-sm text-veryDarkGreen">
-            {{ gig.description }}
-          </h2>
-        </div>
-
-        <div class="mt-6">
-          <div class="flex items-center justify-center">
-            <h2 class="font-semibold text-lg text-veryDarkGreen">{{ gig.skill }}</h2>
-          </div>
-
-          <div class="flex items-center justify-center">
-            <h2 class="font-semibold text-sm text-veryDarkGreen">{{ gig.level }}</h2>
-          </div>
-        </div>
-
-        <div class="mt-10 ml-10 flex">
-          <div>
-            <a href="#"
-              ><img
-                src="{{ gig.image.url }}"
-                alt="Skillas photo"
-                class="rounded-full w-10 h-10"
-                height="14"
-                weight="14"
-            /></a>
-          </div>
-
-          <div class="mt-3 mb-10">
-            <a
-              href="#"
-              class="bg-veryDarkGreen text-white text-lg font-bold rounded-2xl mx-10 px-16 py-3"
-              >Contact {{ gig.skilla.username }}</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> {% endcomment %}
+  
 </main>
 
 {% endblock %}

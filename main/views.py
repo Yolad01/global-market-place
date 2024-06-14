@@ -500,7 +500,7 @@ def profile_view(request, pk):
         picture = None
 
         trans_count = None
-        average_rating = {"average_rating": 0}
+        average_rating["average_rating"] = 0
         ratings = None
     
     return render(
@@ -511,7 +511,7 @@ def profile_view(request, pk):
             "user_profile": user_profile,
             "picture": picture,
             "total_order": trans_count,
-            "average_rating": round(average_rating["average_rating"], 2),
+            "average_rating": average_rating["average_rating"],
             "ratings":ratings,
             "view_about_skilla": view_about_skilla,
         }
@@ -1114,8 +1114,8 @@ def rate_user(request):
             user_review.user = skilla
             user_review.rater = request.user
             user_review.save()
-            return redirect("main:rate_user")
-    #### after everything we will redirect to clients order page
+            return redirect("main:orders")
+        
     return render(
         request=request,
         template_name="main/rate_user.html",
@@ -1127,5 +1127,18 @@ def rate_user(request):
             "average_rating": average_rating["average_rating"],
             "ratings":ratings,
             "form": form,
+        }
+    )
+
+
+def manage_gigs(request):
+
+    search_form = SearchForm()
+    return render(
+        request=request,
+        template_name="main/skilla/manage_gigs.html",
+        context={
+            "search_form": search_form,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
     )
