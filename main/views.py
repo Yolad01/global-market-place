@@ -22,7 +22,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.db import IntegrityError
+from django.db import IntegrityError, OperationalError
 from .search import search_brief_title, search_brief_category, search_skill_category, skill_search
 from django.core.paginator import Paginator
 from django.conf import settings
@@ -491,22 +491,17 @@ def profile_view(request, pk):
         view_about_skilla = AboutSkilla.objects.get(user__id=pk)
         view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
         
-    except ObjectDoesNotExist:
+    except (ObjectDoesNotExist, OperationalError):
         view_about_skilla = None
         view_T_and_cert = None
 
         skilla = None
         user_profile = None
         picture = None
-        trans_count = None
-        average_rating = None
-        ratings = None
 
-    skilla = User.objects.get(id=pk)
-    user_profile = SkillaProfile.objects.get(user=skilla.id)
-    picture = ProfilePicture.objects.get(user=skilla.id)
-    trans_count = Payment().get_skilla_order_count(user=skilla.id)
-    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+        trans_count = None
+        average_rating = {"average_rating": 0}
+        ratings = None
     
     return render(
         request=request,
@@ -516,12 +511,11 @@ def profile_view(request, pk):
             "user_profile": user_profile,
             "picture": picture,
             "total_order": trans_count,
-            "average_rating": average_rating["average_rating"],
+            "average_rating": round(average_rating["average_rating"], 2),
             "ratings":ratings,
             "view_about_skilla": view_about_skilla,
         }
     )
-
 
 
 
