@@ -277,11 +277,15 @@ def skilla(request):
     single_search = None
 
     user = User.objects.get(username=user.username)
-    unread_count = get_unread_messages_count(user)
 
-    brief = Brief.objects.all().order_by("-title")
-
-    trans_count = Payment().get_skilla_order_count(user=user)
+    try:
+        unread_count = get_unread_messages_count(user)
+        brief = Brief.objects.all().order_by("-title")
+        trans_count = Payment().get_skilla_order_count(user=user)
+    except Exception as e:
+        unread_count = None
+        brief = None
+        trans_count = None
 
     if request.method == "POST":
         form = BriefAppForm(request.POST)
@@ -704,7 +708,7 @@ def skillas_gigs(request):
             "page_object": page_object,
             # "skills": skills,
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "search_form": search_form
+            "search_form": search_form,
         }
         
     )
@@ -713,12 +717,15 @@ def skillas_gigs(request):
 def skillas_gigs_details(request, id):
     gig = Skill.objects.get(id=id)
 
+    search_form = SearchForm()
+
     # return redirect("main:skillas_gigs_details", pk=gig)
     return render(
         request=request,
         template_name="main/skilla/skill_detail.html",
         context={
-            "gig": gig
+            "gig": gig,
+            "search_form": search_form
         }
         
     )

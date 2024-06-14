@@ -7,7 +7,7 @@
         <div class="grid sm:grid-cols-12 gap-[30px]">
             <div class="col-span-12 lg:col-span-5 xl:col-span-6">
                 <div class="p-[30px] bg-[#FFFDFC] flex justify-end">
-                    <img class="self-center mb-[15px] w-96 h-96" src="{{ gig.image.url }}" loading="lazy" alt="brand logo">
+                    <img class="self-center mb-[15px] w-96 h-auto" src="{{ gig.image.url }}" loading="lazy" alt="brand logo">
 
                 </div>
             </div>
@@ -21,18 +21,18 @@
                     <p class="mb-[30px] max-w-[480px]">
                       {{ gig.description }}
                     </p>
-                    <ul class="text-[18px] flex flex-wrap sm:items-center justify-between m-[-10px] flex-col sm:flex-row items-start">
+                    <ul class="sm:items-center justify-between m-[-10px] flex-col sm:flex-row items-start">
                         <li class="m-[10px]">
                             <span class="text-veryDarkGreen block text-sm font-semibold">From</span>
-                            <a href="tel:+9985254784" class="text-primary">NGN{{ gig.base_price }}</a>
+                            <a href="" class="">NGN{{ gig.base_price }}</a>
                         </li>
                         <li class="m-[10px]">
                             <span class="text-veryDarkGreen block text-sm font-semibold">Level</span>
-                            <span class="text-primary">{{ gig.level }}</span>
+                            <span class="">{{ gig.level }}</span>
                         </li>
                         <li class="m-[10px]">
                             <span class="text-veryDarkGreen block text-sm font-semibold">Category</span>
-                            <span class="text-primary">{{ gig.skill }}</span>
+                            <span class="">{{ gig.skill }}</span>
                         </li>
                     </ul>
                 </div>

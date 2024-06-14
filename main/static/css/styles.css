@@ -1548,6 +1548,10 @@ select{
   height: 24rem;
 }
 
+.h-auto{
+  height: auto;
+}
+
 .max-h-0{
   max-height: 0px;
 }
