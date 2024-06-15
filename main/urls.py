@@ -20,6 +20,7 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("terms_condition/", views.terms_condition, name="terms_condition"),
     path("service_policy/", views.service_policy, name="service_policy"),
+    path("frequently_asked_questions/", views.frequently_asked_questions, name="frequently_asked_questions"),
     
     path("skilla_profile/", views.skilla_profile, name="skilla_profile"),
     path("client_profile/", views.client_profile, name="client_profile"),

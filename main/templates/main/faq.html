@@ -1,0 +1,250 @@
+{% extends 'layout/home_nav.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<!-- FAQ section -->
+<section>
+    <div class="bg-ash lg:mt-40  mt-28 pb-10">
+        <div class="lg:mb-10 pt-10">
+            
+            <h2 class="font-semibold text-veryDarkGreen text-center text-3xl  lg:text-3xl mb-10 custom:text-2xl compact:text-xl compact:mx-3">Frequently Asked Questions</h2>
+            
+
+            <div class="mx-14 lg:mx-10 xl:mx-20 2xl:mx-36 compact:mx-1 custom:mx-2 custom:ml-2 portable:mx-5 sm:mx-10">
+                <div class="rounded-none cursor-pointer">
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5  toggle-dropdown compact:text-base">How do I find a skilled service provider on Skillas?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3">
+                        <p class="font-normal text-xl px-5 compact:text-base p-2">Skillas offers a search feature that allows you to find service providers based on
+                            specific skills, location and reviews. Simply enter your requirements and our platform will match you with suitable providers.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">What measures does Skillas take to ensure the reliability
+                            of service providers?
+                        </a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3">
+                        <p class="font-normal text-xl px-5 compact:text-base p-2">We carefully vet and verify service providers on our platform, checking their credentials
+                            and reviews from other users. This helps ensure the quality and reliability of the services offered.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How can I communicate with a service provider
+                            before hiring them?
+                        </a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas provide a secure messaging system within the platform that allows users
+                            to communicate with service providers. This ensures easy and transparent communication throughout the hiring process.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">What happens if I'm not satisfied with the services provided?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas has a resolution system in place to address any dissatisfaction.
+                            You can report this issue and our team will work to find a fair resolution, including possible refunds or finding an alternative
+                            service provider.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">Is my payment information secure on Skillas?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Yes, Skillas takes the security of your payment information seriously. We use
+                            industry-standard encryption and secure payment gateways to protect your financial data.</p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How can I create compelling profile on Skillas?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">To create an appealing profile, include details about your skills, experience and any
+                            certifications. Upload high-quality photos of your work and encourage satisfied clients to leave reviews.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">What happens if I need to cancel a job due to unforedeen circumstances?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Life happens, and we understand that. If you need to cancel a job, please notify the client
+                            as soon as possible. Skillas has a cancellation policy in place to address such situations fairly.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How are payments processed on Skillas?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas handles payments securely through the platform. Clients pay for services upfront, and funds
+                            are released to you after the successful completion of the job, ensuring a reliable and transparent payment process.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">Can I offer discounts or promotions on Skillas?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Yes, Skillas allows service providers to offer discounts or promotions. You can set special rates for 
+                            specific services or create package deals to attract more clients.
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How does Skillas handle disputes between service providers and users?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas has a dispute resolution process in place. If any issues arise, both parties will have an opportunity 
+                            to present their case and our team will work to find a fair resolution for all parties involved.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How does Skillas ensure the safety of users during in-person services?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Your safety is our priority. Skillas provides features like user reviews, background checks and a secure messaging system to ensure a safe and reliable hiring process. 
+                            We encourage users to share their experiences to help build a trustworthy community.
+                        </p>
+                    </div>
+                    
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">What support does Skillas offer if I encounter challenges during a service?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">We understand that challenges may arise. Skillas provides customer support to assist you in navigating any issues or concerns
+                            during the service. Your satisfaction is important to us and we're here to help every step of the way.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">Can I request a specific service provider if I'm particularly satisfied with their work?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Absolutely! Skillas allows users to request specific service providers for future jobs. We value the connections you make 
+                            on our platform and encourage ongoing relationships between service users and providers.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How does Skillas foster a sense of community among users?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas is more than a platform. It's a community. We host events, forums and features that encourage users to connect, 
+                            share experiences and build a supportive community of skilled professionals and satisfied clients.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">What happens if a service provider doesn't show up for a scheduled job?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">We understand the inconvenience of a no-show. Skillas has protocols in place to address such situations promptly. You 
+                            can report the issue and we'll take immediate action to find a replacement or ofer support to ensure your needs are met.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How can Skillas help me build a strong reputation as a service provider?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas value your commitment to excellence. Building a strong reputation involves delivering 
+                            quality service, encouraging satisfied clients to leave reviews, and actively participating in our community. We believe in showcasing your 
+                            skills and professionalism.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">What support does Skillas offer to service providers facing unforeseen challenges?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">We understand that challenges are a part of life. Skillas provides support to service providers 
+                            facing unforeseen circumstances, helping you navigate challenges and maintain a positive relationship with your clients.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How does Skillas recognize and reward outstanding service providers?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas appreciates your dedication. We have recognition programs in place to highlight outstanding service providers, 
+                            including features, badges and opportunities for increased visibility on the platform. 
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">Can I share my story or achievements as a service provider on Skillas?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Absolutely! Skillas encourages service providers to share their stories, achievements and unique skills. We believe in 
+                            highlighting the personal touch behind the servuces, helping you connect with clients on a deeper level.
+                        </p>
+                    </div>
+
+                    <div class="accordion-header border py-4 shadow-md flex justify-between bg-white mb-3">
+                        <a class="font-normal text-xl text-navyBlue px-5 toggle-dropdown compact:text-base">How does Skillas support service providers in continuous improvement?</a>
+                        <img src="{% static '/img/right_arrow.png' %}" alt="arrow icon" class="hidden sm:block mr-5 mt-2 dropdown-toggle w-3 h-3">
+                    </div>
+                    <div class="accordion-content hidden bg-white mb-3 p-2">
+                        <p class="font-normal text-xl px-5 compact:text-base">Skillas is committed to your growth. We provide resources, workshops, and opportunities for skill enhancemnt, helping 
+                            you stay competitive in your field and offering clients an ever-improving level of service through our training platform. Your success is 
+                            our success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Script for FAQ Section -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleDropdowns = document.querySelectorAll('.toggle-dropdown');
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+        // Function to toggle dropdown content
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const content = this.parentElement.nextElementSibling; // Get the next sibling element
+            content.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the content
+        }
+    
+        toggleDropdowns.forEach(function(toggle) {
+            toggle.addEventListener('click', toggleDropdown);
+        });
+    
+        dropdownToggles.forEach(function(toggle) {
+            toggle.addEventListener('click', toggleDropdown);
+        });
+    });
+    </script>
+{% endblock %}
