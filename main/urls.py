@@ -77,6 +77,8 @@ urlpatterns = [
 
     path("rate-user/", views.rate_user, name="rate_user"),
 
+    path("manage-gigs/", views.manage_gigs, name="manage_gigs"),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

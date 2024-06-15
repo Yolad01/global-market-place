@@ -1568,10 +1568,10 @@ select{
 .h-screen{
   height: 100vh;
 }
-
-.h-\[30vh\]{
-  height: 30vh;
+.h-96{
+  height: 24rem;
 }
+
 
 .max-h-0{
   max-height: 0px;
@@ -1704,6 +1704,10 @@ select{
 
 .w-5\/12{
   width: 41.666667%;
+}
+
+.w-96{
+  width: 24rem;
 }
 
 .min-w-0{
