@@ -1544,10 +1544,6 @@ select{
   height: 2rem;
 }
 
-.h-\[15vh\]{
-  height: 15vh;
-}
-
 .h-\[26px\]{
   height: 26px;
 }
@@ -1564,6 +1560,9 @@ select{
   height: 100vh;
 }
 
+.h-\[30vh\]{
+  height: 30vh;
+}
 
 .max-h-0{
   max-height: 0px;
@@ -1689,6 +1688,10 @@ select{
   width: auto;
 }
 
+.w-fit{
+  width: -moz-fit-content;
+  width: fit-content;
+}
 
 .w-full{
   width: 100%;
