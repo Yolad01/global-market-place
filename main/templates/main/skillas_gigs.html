@@ -95,7 +95,7 @@
     </div>
   </div>
 
-	<section class="bg-veryLightGreen">
+	<section class="">
 		<div class="xl:ml-48 xl:mr-48 flex justify-center">
 			<div x-data="carousel()" x-init="startCarousel()" class="relative w-full lg:w-full">
                 <!-- Carousel Container -->
@@ -234,11 +234,11 @@
         return {
             current: 0,
             images: [
-                "{% static 'img/white_skillas_hero.png' %}",
-                "{% static 'img/red_skillas_hero.png' %}",
-                "{% static 'img/blue_skillas_hero.png' %}",
-                "{% static 'img/purple_skillas_hero.png' %}",
-                "{% static 'img/orange_skillas_hero.png' %}"
+                "{% static 'img/white_skillas_hero.svg' %}",
+                "{% static 'img/red_skillas_hero.svg' %}",
+                "{% static 'img/blue_skillas_hero.svg' %}",
+                "{% static 'img/purple_skillas_hero.svg' %}",
+                "{% static 'img/orange_skillas_hero.svg' %}"
             ],
             startCarousel() {
                 this.carouselInterval = setInterval(() => {
