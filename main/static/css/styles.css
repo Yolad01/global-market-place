@@ -6292,6 +6292,10 @@ select{
     width: 100%;
   }
 
+  .xl\:w-64{
+    width: 16rem;
+  }
+
   .xl\:max-w-\[500px\]{
     max-width: 500px;
   }
