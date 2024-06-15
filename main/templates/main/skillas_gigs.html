@@ -97,33 +97,33 @@
 
 	<section>
 		<div class="xl:ml-48 xl:mr-48 flex justify-center">
-            <div x-data="carousel()" class="relative w-full lg:w-full">
+			<div x-data="carousel()" x-init="startCarousel()" class="relative w-full lg:w-full">
                 <!-- Carousel Container -->
-                <div class="relative xl:h-[75vh] lg:h-[60vh] md:h-[50vh] sm:h-[40vh] portable:h-[30vh] custom:h-[25vh] md-compact:h-[20vh] h-[15vh] rounded-lg shadow-lg">
-                    <!-- Carousel Items -->
-                    <template x-for="(image, index) in images" :key="index">
-                        <div x-show="current === index" class="absolute inset-0 transition-transform transform duration-500">
-                            <img :src="image" class="w-full h-full object-cover sm:object-fill md:object-cover lg:object-fill xl:object-cover" alt="Carousel Image">
-                        </div>
-                    </template>
-                </div>
+                <div class="relative xl:h-[75vh] lg:h-[60vh] md:h-[50vh] sm:h-[40vh] h-[30vh] rounded-lg shadow-lg overflow-hidden">
+					<!-- Carousel Items -->
+					<template x-for="(image, index) in images" :key="index">
+						<div x-show="current === index" class="absolute inset-0 transition-opacity duration-5000" x-transition:enter="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="opacity-100" x-transition:leave-end="opacity-0">
+							<img :src="image" class="w-full h-full object-cover sm:object-fill md:object-cover lg:object-fill xl:object-cover" alt="Carousel Image">
+						</div>
+					</template>
+				</div>
 
-                <!-- Navigation Controls -->
-                <div class="absolute inset-0 flex items-center justify-between">
-                    <button @click="current = current > 0 ? current - 1 : images.length - 1" class="bg-white bg-opacity-50 p-2 rounded-full shadow-lg">
-                        &larr;
-                    </button>
-                    <button @click="current = current < images.length - 1 ? current + 1 : 0" class="bg-white bg-opacity-50 p-2 rounded-full shadow-lg">
-                        &rarr;
-                    </button>
-                </div>
+                 <!-- Navigation Controls -->
+        <div class="absolute inset-0 flex items-center justify-between">
+            <button @click="prev" class="bg-white bg-opacity-50 p-2 rounded-full shadow-lg">
+                &larr;
+            </button>
+            <button @click="next" class="bg-white bg-opacity-50 p-2 rounded-full shadow-lg">
+                &rarr;
+            </button>
+        </div>
 
-                <!-- Pagination Dots -->
-                <div class="absolute bottom-0 left-0 right-0 flex justify-center p-2">
-                    <template x-for="(image, index) in images" :key="index">
-                        <span @click="current = index" :class="{ 'bg-gray-800': current === index }" class="w-3 h-3 mx-1 bg-gray-400 rounded-full cursor-pointer"></span>
-                    </template>
-                </div>
+        <!-- Pagination Dots -->
+        <div class="absolute bottom-0 left-0 right-0 flex justify-center p-2">
+            <template x-for="(image, index) in images" :key="index">
+                <span @click="current = index" :class="{ 'bg-gray-800': current === index }" class="w-3 h-3 mx-1 bg-gray-400 rounded-full cursor-pointer"></span>
+            </template>
+        </div>
             </div>
         </div>
 
@@ -247,21 +247,33 @@
 </main>
 
 <script>
-	function carousel() {
-		return {
-			current: 0,
-			images: [
-				"{% static 'img/white_hero.png' %}",
-				"{% static 'img/red_hero.png' %}",
-				"{% static 'img/blue_hero.png' %}",
-				"{% static 'img/purple_hero.png' %}",
-				"{% static 'img/orange_hero.png' %}"
-			]
-		}
-	}
-	document.addEventListener('alpine:init', () => {
-		Alpine.data('carousel', carousel);
-	});
+    function carousel() {
+        return {
+            current: 0,
+            images: [
+                "{% static 'img/white_skillas_hero.png' %}",
+                "{% static 'img/red_skillas_hero.png' %}",
+                "{% static 'img/blue_skillas_hero.png' %}",
+                "{% static 'img/purple_skillas_hero.png' %}",
+                "{% static 'img/orange_skillas_hero.png' %}"
+            ],
+            startCarousel() {
+                this.carouselInterval = setInterval(() => {
+                    this.next();
+                }, 5000); // 5 seconds interval
+            },
+            next() {
+                this.current = (this.current + 1) % this.images.length;
+            },
+            prev() {
+                this.current = (this.current - 1 + this.images.length) % this.images.length;
+            }
+        };
+    }
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('carousel', carousel);
+    });
 </script>
 
 {% endblock %}
