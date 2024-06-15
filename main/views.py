@@ -93,6 +93,7 @@ def register(request):
             password = registration_form.cleaned_data["password1"]
             email = registration_form.cleaned_data["email"]
             user = authenticate(username=username, password=password)
+            # wallet, _ = Wallet.objects.create(user=user)
 
             # Sending mail to the new user
             subject = "Welcome to Skillas. You know what time it is"
@@ -476,6 +477,7 @@ def create_brief(request):
     )
     
     
+
 def applications(request):
     skilla_client = SkillaReachoutToClient.objects.all().filter(client=request.user)
     
@@ -488,22 +490,6 @@ def applications(request):
     )
 
 
-
-def profile_view(request, pk):
-
-    # skilla = None
-    # user_profile = None
-    # picture = None
-    # trans_count = None
-    # average_rating = None
-    # ratings = None
-    try:
-        view_about_skilla = AboutSkilla.objects.get(user__id=pk)
-        view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
-        
-    except (ObjectDoesNotExist, OperationalError):
-        view_about_skilla = None
-        view_T_and_cert = None
 
 def profile_view(request, pk):
 
@@ -542,6 +528,7 @@ def profile_view(request, pk):
             "view_about_skilla": view_about_skilla,
         }
     )
+
 
 
 def inbox(request):
@@ -626,9 +613,12 @@ def quotes(request):
 def orders(request):
     user = request.user.id
 
-    display_order = Order.objects.all().filter(
-        client=user,
-    ).order_by("-order_created")
+    try:
+        display_order = Order.objects.all().filter(
+            client=user,
+        ).order_by("-order_created")
+    except Exception as e:
+        display_order = None
 
     if request.method == "POST":
         accept_form = AcceptQuoteForm(request.POST)
