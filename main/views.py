@@ -76,6 +76,12 @@ def service_policy(request):
         request=request,
         template_name="main/skilla/service_policy.html"
     )
+    
+def frequently_asked_questions(request):
+    return render(
+        request=request,
+        template_name="main/faq.html"
+    )
 
 
 def register(request):
@@ -485,6 +491,22 @@ def applications(request):
 
 def profile_view(request, pk):
 
+    # skilla = None
+    # user_profile = None
+    # picture = None
+    # trans_count = None
+    # average_rating = None
+    # ratings = None
+    try:
+        view_about_skilla = AboutSkilla.objects.get(user__id=pk)
+        view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
+        
+    except (ObjectDoesNotExist, OperationalError):
+        view_about_skilla = None
+        view_T_and_cert = None
+
+def profile_view(request, pk):
+
     try:
         skilla = User.objects.get(id=pk)
         user_profile = SkillaProfile.objects.get(user=skilla.id)
@@ -520,7 +542,6 @@ def profile_view(request, pk):
             "view_about_skilla": view_about_skilla,
         }
     )
-
 
 
 def inbox(request):
