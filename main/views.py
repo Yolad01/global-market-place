@@ -283,11 +283,15 @@ def skilla(request):
     single_search = None
 
     user = User.objects.get(username=user.username)
-    unread_count = get_unread_messages_count(user)
 
-    brief = Brief.objects.all().order_by("-title")
-
-    trans_count = Payment().get_skilla_order_count(user=user)
+    try:
+        unread_count = get_unread_messages_count(user)
+        brief = Brief.objects.all().order_by("-title")
+        trans_count = Payment().get_skilla_order_count(user=user)
+    except Exception as e:
+        unread_count = None
+        brief = None
+        trans_count = None
 
     if request.method == "POST":
         form = BriefAppForm(request.POST)
