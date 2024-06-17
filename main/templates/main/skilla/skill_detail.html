@@ -34,19 +34,20 @@
                             <span class="text-veryDarkGreen block text-sm font-semibold">Category</span>
                             <span class="">{{ gig.skill }}</span>
                         </li>
+
+                        <div class="mt-5 mb-10">
+                            <a
+                              href="{% url 'main:chat' username=gig.skilla.username %}"
+                              class="text-center before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all before:duration-1000 leading-none px-[20px] py-[15px] capitalize font-medium text-white w-full sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all after:duration-1000 hover:text-veryDarkGreen"
+                            >
+                                Contact {{ gig.skilla.username }}
+                
+                            </a
+                            >
+                        </div>
                     </ul>
                 </div>
             </div>
-        </div>
-		<div class="mt-5 mb-10">
-            <a
-              href="#"
-              class="text-center before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all before:duration-1000 leading-none px-[20px] py-[15px] capitalize font-medium text-white w-full sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all after:duration-1000 hover:text-veryDarkGreen"
-            >
-				Contact {{ gig.skilla.username }}
-
-			</a
-            >
         </div>
 
     </div>
