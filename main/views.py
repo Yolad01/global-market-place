@@ -330,8 +330,6 @@ def skilla(request):
             search_input = search_form.cleaned_data["search_input"]
             return redirect("main:search_results", param=search_input)
 
-
-
     form = BriefAppForm()
     search_form = SearchForm()
     return render(
@@ -342,7 +340,7 @@ def skilla(request):
             "form": form,
             "search_form": search_form,
             "single_search": single_search,
-            "count":unread_count,
+            "unread_count":unread_count,
             "count_of_order": trans_count,
             "wallet": wallet,
         }
@@ -371,8 +369,12 @@ def s_profile(request):
     user = request.user
     try:
         about_skilla = AboutSkilla.objects.get(user=user)
+        unread_count = get_unread_messages_count(user)
+        trans_count = Payment().get_skilla_order_count(user=user)
     except (AboutSkilla.DoesNotExist, ProfilePicture.DoesNotExist):
         about_skilla = AboutSkilla(user=user)
+        unread_count = 0
+        trans_count = 0
 
 
     try:
@@ -420,8 +422,9 @@ def s_profile(request):
             "cert_form": cert_form,
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "profile_pic_form": skilla_pp_form,
-
-            "search_form": search_form
+            "search_form": search_form,
+            "unread_count":unread_count,
+            "count_of_order": trans_count,
         }
     )
 
@@ -430,6 +433,12 @@ def s_profile(request):
 def wallet(request):
     user = request.user
     wallet, _ = Wallet.objects.get_or_create(user=user)
+    try:
+        unread_count = get_unread_messages_count(user)
+        trans_count = Payment().get_skilla_order_count(user=user)
+    except Exception as e:
+        unread_count = 0
+        trans_count = 0
     
     return render(
         request=request,
@@ -438,6 +447,8 @@ def wallet(request):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "search_form": SearchForm(),
             "wallet": wallet,
+            "unread_count":unread_count,
+            "count_of_order": trans_count,
         }
     )
 
