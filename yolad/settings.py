@@ -1,3 +1,5 @@
+
+
 from pathlib import Path
 import os
 
@@ -35,10 +37,10 @@ DEBUG = env("DEBUG")
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
 
 
-
+CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
 
 
 
@@ -89,17 +91,17 @@ TEMPLATES = [
 ASGI_APPLICATION = 'yolad.routing.application'
 
 # CHANNEL_LAYERS = {
-# "default": {
-# "BACKEND": "channels_redis.core.RedisChannelLayer",
-# "CONFIG": {
-# "hosts": [("127.0.0.1", 6379)],
-# },
-# },
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("127.0.0.1", 6379)],
+#         },
+#     },
 # }
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer", # Use InMemoryChannelLayer for testing/dev
+        "BACKEND": "channels.layers.InMemoryChannelLayer",  # Use InMemoryChannelLayer for testing/dev
         # For production use, consider using Redis or other suitable backends.
     },
 }
@@ -111,18 +113,17 @@ WSGI_APPLICATION = 'yolad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # DATABASES = {
-
-#     'default':  Env.db_url_config(env('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+
+DATABASES = {
+    'default':  Env.db_url_config(env('DATABASE_URL'))
+}
 
 
 
@@ -188,3 +189,4 @@ EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
 EMAIL_HOST_PASSWORD = 'lztthecjycjsgtnf'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
