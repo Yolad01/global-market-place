@@ -66,12 +66,17 @@
                             <ul class="flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
 
                               <li class="hidden custom:block mr-7 xl:mr-[40px] relative group py-[20px]">
+                                
                                 <a href="/inbox"
                                   ><img
                                     src="{% static '/img/Vector-message.png' %}"
                                     alt="message icon"
                                     class=""
-                                /></a>
+                                />
+                                </a>
+                                <a href="#" class="absolute -right-2 bottom-2   -ml-3  text-white p-1 text-xs bg-veryLightGreen hover:bg-green-500 font-medium tracking-wider rounded-full transition ease-in duration-300">
+                                    4
+                                </a>
                               </li>
                               <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
                                 <a href="#"
@@ -135,7 +140,7 @@
                                   
                                 <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
                                   {% for x in profile_pic %}
-                                  <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
+                                  <a href="/client_dashboard"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
                                   {% endfor %}
                               </li>
                               </ul>
@@ -213,7 +218,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="text-sm md:hidden mt-[20px]">&copy; <a href="https://themeforest.net/user/codecarnival/portfolio" class="text-secondary">Abby Cares Foundation.</a> All Rights Reserved - Privacy Policy</p>
+                        <p class="text-sm md:hidden mt-[20px]">&copy; <a href="" class="text-secondary">Yolad Global Services.</a> All Rights Reserved - Privacy Policy</p>
                     </div>
                 </div>
             </div>

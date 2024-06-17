@@ -485,7 +485,8 @@ def applications(request):
         request=request,
         template_name="main/client/application.html",
         context={
-            "skilla_client": skilla_client
+            "skilla_client": skilla_client,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
     )
 
@@ -665,6 +666,7 @@ def orders(request):
             "display_order": display_order,
             "accept_form": accept_form,
             "decline_form": decline_form,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
     )
 
@@ -777,7 +779,8 @@ def view_brief(request):
         template_name="main/client/brief/view_brief.html",
         context={
             "briefs": brief,
-            "profile_pics": profile_pic
+            "profile_pics": profile_pic,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
         
     )

@@ -942,6 +942,14 @@ select{
   top: 120%;
 }
 
+.-right-2{
+  right: -0.5rem;
+}
+
+.bottom-2{
+  bottom: 0.5rem;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -1454,6 +1462,10 @@ select{
 
 .mt-\[20px\]{
   margin-top: 20px;
+}
+
+.-ml-3{
+  margin-left: -0.75rem;
 }
 
 .block{
@@ -2347,6 +2359,11 @@ select{
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-green-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{
