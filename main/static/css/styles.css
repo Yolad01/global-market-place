@@ -2366,6 +2366,11 @@ select{
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
 }
 
+.bg-rose-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(190 18 60 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
 }

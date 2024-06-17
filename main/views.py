@@ -245,9 +245,14 @@ def sign_in(request):
 
 @login_required
 def client_dashboard(request):
-    job_categories = JobCategory.objects.all()
-    jobs = Job.objects.all()
-    profile = ClientProfile.objects.all().filter(user=request.user)
+    user = request.user
+    try:
+        job_categories = JobCategory.objects.all()
+        jobs = Job.objects.all()
+        profile = ClientProfile.objects.all().filter(user=request.user)
+        unread_count = get_unread_messages_count(user)
+    except Exception as e:
+        pass
 
     try:
         client_pp = ProfilePicture.objects.get(user=request.user)
@@ -271,7 +276,8 @@ def client_dashboard(request):
                 "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
                 "profile": profile,
                 "profile_pic_form": client_pp_form,
-                "client_profile_info": ClientProfile.objects.all().filter(user=request.user)
+                "client_profile_info": ClientProfile.objects.all().filter(user=request.user),
+                "unread_count": unread_count,
             }
         )
     
@@ -286,6 +292,7 @@ def skilla(request):
     user = User.objects.get(username=user.username)
 
     try:
+        wallet, _ = Wallet.objects.get_or_create(user=user)
         unread_count = get_unread_messages_count(user)
         brief = Brief.objects.all().order_by("-title")
         trans_count = Payment().get_skilla_order_count(user=user)
@@ -337,6 +344,7 @@ def skilla(request):
             "single_search": single_search,
             "count":unread_count,
             "count_of_order": trans_count,
+            "wallet": wallet,
         }
     )
 
@@ -429,7 +437,7 @@ def wallet(request):
         context={
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "search_form": SearchForm(),
-            "wallet": wallet
+            "wallet": wallet,
         }
     )
 
