@@ -12,7 +12,7 @@ from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Jo
                          ClientProfile, CompanyProfile, ProfilePicture, Brief,
                          SkillaReachoutToClient, Clients, Order, User,
                          Skill, JobCategory, ContactList, Thread, Message, Payment, Wallet,
-                         get_unread_messages_count, UserReview,
+                         get_unread_messages_count, UserReview, MessageReadStatus,
                         )
 
 from main.payment import PayStackIt
@@ -569,8 +569,6 @@ def inbox(request):
     except IndexError:
         t = None
 
-   
-
     mssg_thread = Message.objects.filter(sender=user)
     
     for msg in mssg_thread:
@@ -582,17 +580,15 @@ def inbox(request):
         inbox = contact_list.contacts.all()
     except ValueError:
         pass
-    # except UnboundLocalError:
-    #     pass
     
-
     msg = Message.objects.all().filter(sender=user)
 
     try:
-        profile_picture = ProfilePicture.objects.get(
-            user=user
-        )
-    except ProfilePicture.DoesNotExist:
+        profile_picture = ProfilePicture.objects.get(user=user)
+        read_messages = MessageReadStatus.objects.latest("user")
+        read_messages.is_read = True
+        read_messages.save()
+    except (ProfilePicture.DoesNotExist, MessageReadStatus.DoesNotExist):
         pass
 
     return render(
@@ -906,7 +902,7 @@ def thread_view(request, username):
     
     for msg in mssg_thread:
         mssg: list = []
-        mssg.append(msg.text)
+        mssg.append(msg.text)  
 
     form = ChatMessageForm()
     order_form = OrderForm()
