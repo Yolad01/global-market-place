@@ -753,7 +753,8 @@ def skillas_gigs_details(request, id):
         template_name="main/skilla/skill_detail.html",
         context={
             "gig": gig,
-            "search_form": search_form
+            "search_form": search_form,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
         
     )
