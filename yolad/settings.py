@@ -185,8 +185,8 @@ AUTH_USER_MODEL = "main.User"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # remember to remove during deployment
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
-EMAIL_HOST_PASSWORD = 'lztthecjycjsgtnf'
+EMAIL_HOST_USER = 'yemirichard@yoladservices.com'
+EMAIL_HOST_PASSWORD = 'vllhwhciyktjkuyf'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
