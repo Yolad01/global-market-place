@@ -527,13 +527,15 @@ def profile_view(request, pk):
         view_about_skilla = None
         view_T_and_cert = None
 
-        skilla = None
-        user_profile = None
-        picture = None
+        # skilla = None
+        # user_profile = None
+        # picture = None
 
         trans_count = None
         average_rating["average_rating"] = 0
         ratings = None
+
+    print(user_profile)
     
     return render(
         request=request,
