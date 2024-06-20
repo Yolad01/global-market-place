@@ -2124,11 +2124,6 @@ select{
   border-style: none;
 }
 
-.border-emerald-800{
-  --tw-border-opacity: 1;
-  border-color: rgb(6 95 70 / var(--tw-border-opacity));
-}
-
 .border-gray-100{
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
@@ -3415,11 +3410,6 @@ select{
   border-color: rgb(98 239 180 / var(--tw-border-opacity));
 }
 
-.hover\:bg-emerald-900:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(6 78 59 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gray-100:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -3473,10 +3463,6 @@ select{
 .hover\:bg-white:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:font-bold:hover{
-  font-weight: 700;
 }
 
 .hover\:text-gray-300:hover{
@@ -5414,10 +5400,6 @@ select{
     grid-column: span 7 / span 7;
   }
 
-  .lg\:m-10{
-    margin: 2.5rem;
-  }
-
   .lg\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
@@ -5757,10 +5739,6 @@ select{
   .lg\:object-fill{
     -o-object-fit: fill;
        object-fit: fill;
-  }
-
-  .lg\:p-5{
-    padding: 1.25rem;
   }
 
   .lg\:px-8{
@@ -6206,10 +6184,6 @@ select{
   .xl\:object-cover{
     -o-object-fit: cover;
        object-fit: cover;
-  }
-
-  .xl\:p-20{
-    padding: 5rem;
   }
 
   .xl\:px-20{
