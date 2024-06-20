@@ -1565,6 +1565,10 @@ select{
   height: 100vh;
 }
 
+.h-auto{
+  height: auto;
+}
+
 .max-h-0{
   max-height: 0px;
 }
@@ -1692,6 +1696,10 @@ select{
 
 .w-full{
   width: 100%;
+}
+
+.w-96{
+  width: 24rem;
 }
 
 .min-w-0{

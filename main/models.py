@@ -140,6 +140,9 @@ class Skill(models.Model):
     image = models.ImageField(upload_to="skill_images", blank=True)
     base_price = models.PositiveIntegerField(blank=True, null=True)
     activate = models.BooleanField(default=True, blank=True, null=True)
+
+    def view_gigs(self, user_id, *args, **kwargs):
+        ...
     
     def __str__(self):
         return f'{self.skilla.username} ==> {self.skill.title}'

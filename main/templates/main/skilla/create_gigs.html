@@ -31,12 +31,15 @@
     </head>
 
     <body>
-            <form method="post" enctype="multipart/form-data" class="md:flex justify-center">
-                <div>
-                <div class="my-10 font-bold text-3xl text-veryDarkGreen lg:ml-0 md-compact:ml-16 ml-8">Create Gig</div>
+        <div class=" flex justify-center my-5 font-semibold text-2xl text-veryDarkGreen lg:ml-0 md-compact:ml-16 ml-8">
+            <p>Create gig</P>
+            {% comment %} <p><a href="\manage-gigs">Create gig</a></P> {% endcomment %}
+        </div>
+        <form method="post" enctype="multipart/form-data" class="md:flex justify-center">
+            <div>
                 {% csrf_token %}
                 
-                <div class="border-2 my-10 py-10 md-compact:px-10">
+                <div class="border border-gray-400 my-5 py-5 md-compact:px-10">
 
                     <div class="my-5">
                         <p class="mx-5 text-xl text-veryDarkGreen font-semibold rounded-lg">Title</p>
@@ -82,11 +85,8 @@
                 </div>
 
             </div>
-            </form>
+        </form>
 
-        
-
-        
     </body>
     
 </html>

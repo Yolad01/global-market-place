@@ -82,16 +82,18 @@
                                         {% if user.role == "SKILLAS" %}
                                         <a
                                           href="/skillas_dashboard"
-                                          class="bg-veryDarkGreen before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryLightGreen"
-                                          >Dashboard</a
+                                          class="flex items-center justify-between w-full px-4 py-2 text-sm leading-5 text-veryDarkGreen transition-colors duration-700 bg-veryLightGreen border border-transparent rounded-lg active:bg-green-600 hover:bg-veryDarkGreen hover:text-gray-300 focus:outline-none focus:shadow-outline-veryLightGreen"
                                         >
+                                            Dashboard
+                                        </a>
                             
                                         {% elif user.role == "CLIENT" %}
                                         <a
                                           href="/client_dashboard"
-                                          class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen"
-                                          >Dashboard</a
+                                          class="flex items-center justify-between w-full px-4 py-2 text-sm leading-5 text-veryDarkGreen transition-colors duration-700 bg-veryLightGreen border border-transparent rounded-lg active:bg-green-600 hover:bg-veryDarkGreen hover:text-gray-300 focus:outline-none focus:shadow-outline-veryLightGreen"
                                         >
+                                          Dashboard
+                                        </a>
                                         {% endif %}
 
                                     </li>

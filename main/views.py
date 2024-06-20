@@ -501,9 +501,11 @@ def profile_view(request, pk):
         view_about_skilla = AboutSkilla.objects.get(user__id=pk)
         view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
         
-    except ObjectDoesNotExist:
+    except (ObjectDoesNotExist, OperationalError):
         view_about_skilla = None
         view_T_and_cert = None
+
+def profile_view(request, pk):
 
     try:
         skilla = User.objects.get(id=pk)
@@ -511,11 +513,20 @@ def profile_view(request, pk):
         picture = ProfilePicture.objects.get(user=skilla.id)
         trans_count = Payment().get_skilla_order_count(user=skilla.id)
         average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+
+        view_about_skilla = AboutSkilla.objects.get(user__id=pk)
+        view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
         
-    except OperationalError:
-       
+    except (ObjectDoesNotExist, OperationalError):
+        view_about_skilla = None
+        view_T_and_cert = None
+
+        skilla = None
+        user_profile = None
+        picture = None
+
         trans_count = None
-        average_rating = {"average_rating":0}
+        average_rating["average_rating"] = 0
         ratings = None
     
     return render(
@@ -531,8 +542,6 @@ def profile_view(request, pk):
             "view_about_skilla": view_about_skilla,
         }
     )
-
-
 
 
 def inbox(request):
@@ -720,7 +729,7 @@ def skillas_gigs(request):
             "page_object": page_object,
             # "skills": skills,
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "search_form": search_form
+            "search_form": search_form,
         }
         
     )
@@ -729,12 +738,15 @@ def skillas_gigs(request):
 def skillas_gigs_details(request, id):
     gig = Skill.objects.get(id=id)
 
+    search_form = SearchForm()
+
     # return redirect("main:skillas_gigs_details", pk=gig)
     return render(
         request=request,
         template_name="main/skilla/skill_detail.html",
         context={
-            "gig": gig
+            "gig": gig,
+            "search_form": search_form
         }
         
     )
@@ -1130,8 +1142,8 @@ def rate_user(request):
             user_review.user = skilla
             user_review.rater = request.user
             user_review.save()
-            return redirect("main:rate_user")
-    #### after everything we will redirect to clients order page
+            return redirect("main:orders")
+        
     return render(
         request=request,
         template_name="main/rate_user.html",
@@ -1143,5 +1155,18 @@ def rate_user(request):
             "average_rating": average_rating["average_rating"],
             "ratings":ratings,
             "form": form,
+        }
+    )
+
+
+def manage_gigs(request):
+
+    search_form = SearchForm()
+    return render(
+        request=request,
+        template_name="main/skilla/manage_gigs.html",
+        context={
+            "search_form": search_form,
+            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
         }
     )
