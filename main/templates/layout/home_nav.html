@@ -185,13 +185,13 @@
         <!-- Footer Start -->
         <footer class="footer bg-veryDarkGreen text-white pt-[80px] lg:pt-[200px] pb-30 md:pb-[80px] lg:pb-[110px] font-normal bg-no-repeat" style="background-image: url('assets/images/footer/pattern.png');">
             <div class="container mx-auto xl:-mt-20">
-                <div class="grid grid-cols-12 gap-x-[30px] mb-[-30px] md:ml-5">
+                <div class="grid grid-cols-12 gap-x-[5px] mb-[-30px] md:mx-5 ml-5">
                     <div class="col-span-12 sm:col-span-6 lg:col-span-4 mb-[30px]">
                         <a href="index.html" class="block mb-[25px]">
                             <img src="{% static '/img/white_skillas_logo.png' %}" loading=lazy alt="footer logo">
                         </a>
-                        <p class="mb-[5px] xl:mb-[40px] max-w-[270px]">Building a global marketplace </p>
-                        <p class="text-sm hidden md:block">&copy; <a href="" class="text-secondary">2023 Yolad Global Service Limited.</a> All Rights Reserved</p>
+                        <p class="mb-[5px] xl:mb-[40px]">Building a global marketplace </p>
+                        <p class="text-sm hidden md:block">&copy; <a href="" class="text-secondary">2023 Yolad Global Service Limited.</a> <br/> All Rights Reserved</p>
                     </div>
                     <div class="col-span-12 sm:col-span-6 lg:col-span-3 mb-[30px]">
                         <h3 class="font-lora font-normal text-[22px] leading-[1.222] text-primary mb-[20px] lg:mb-[30px]">
@@ -215,7 +215,11 @@
                     <div class="col-span-12 sm:col-span-6 lg:col-span-2 mb-[30px]">
                         <h3 class="font-lora font-normal text-[22px] leading-[1.222] text-primary mb-[20px] lg:mb-[30px]">
                             Head Office:<span class="text-secondary">.</span></h3>
-                        <p>13 Lewis Cresent, Exeter Devon, EX2 7TD, United Kingdom.</p>
+                            <div>
+                                <p class="md-compact:hidden">13 Lewis Cresent, Exeter Devon,<br/> EX2 7TD, United Kingdom.</p>
+                                <p class="hidden md-compact:block">13 Lewis Cresent, Exeter Devon, EX2 7TD, United Kingdom.</p>
+                            </div>
+                        
                         <ul class="inline-flex items-center justify-center mt-[20px]">
                             <li class="first:ml-0 ml-[15px]">
                                 <a href="https://www.facebook.com/" aria-label="svg" class="w-[26px] h-[26px] transition-all rounded-full bg-veryDarkGreen flex items-center justify-center hover:drop-shadow-[0px_4px_10px_rgba(0,0,0,0.25)] text-white hover:text-veryDarkGreen hover:bg-veryLightGreen">
@@ -242,7 +246,10 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="text-sm md:hidden mt-[20px]">&copy; <a href="" class="text-secondary">Yolad Global Services.</a> All Rights Reserved - Privacy Policy</p>
+                        {% comment %} <p class="text-sm md:hidden mt-[20px]">&copy; <a href="" class="text-secondary">Yolad Global Services.</a> All Rights Reserved - Privacy Policy</p> {% endcomment %}
+                        <div>
+                            <p class="text-sm custom:text-base md:hidden mt-[20px]">&copy; <a href="" class="text-secondary">Yolad Global Services.</a> <br/>All Rights Reserved - Privacy Policy</p>
+                        </div>
                     </div>
                 </div>
             </div>

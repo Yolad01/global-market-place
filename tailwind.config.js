@@ -12,6 +12,7 @@ module.exports = {
 
       screens: {
         'compact': '280px', // Breakpoint at 280px
+        'sm-compact': '350px', // Breakpoint at 350px
         'md-compact': '375px', //Breakpoint at 375px
         'custom': '400px', // Breakpoint at 400px
         'portable': '500px', // Breakpoint at 500px
