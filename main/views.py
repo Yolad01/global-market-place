@@ -781,8 +781,12 @@ def view_skills(request):
 def view_brief(request):
 
     user=request.user
-    brief = Brief.objects.all().filter(user=user).order_by("-date")
-    profile_pic = ProfilePicture.objects.get(user=user)
+    try:
+        brief = Brief.objects.all().filter(user=user).order_by("-date")
+        profile_pic = ProfilePicture.objects.get(user=user)
+    except ObjectDoesNotExist:
+        brief = None
+        profile_pic = None
 
     if request.method == "POST":
         delete_form = DeleteBriefForm(request.POST)
