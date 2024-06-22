@@ -784,7 +784,7 @@ def view_brief(request):
     try:
         brief = Brief.objects.all().filter(user=user).order_by("-date")
         profile_pic = ProfilePicture.objects.get(user=user)
-    except ObjectDoesNotExist:
+    except Exception as e:
         brief = None
         profile_pic = None
 
