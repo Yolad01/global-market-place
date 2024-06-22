@@ -96,10 +96,10 @@
   </div>
 
 	<section class="">
-		<div class="xl:ml-48 xl:mr-48 flex justify-center">
+		<div class="xl:mx-48 flex justify-center">
 			<div x-data="carousel()" x-init="startCarousel()" class="relative w-full lg:w-full">
                 <!-- Carousel Container -->
-                <div class="relative xl:h-[75vh] lg:h-[60vh] md:h-[50vh] sm:h-[40vh] h-[30vh] rounded-lg shadow-lg overflow-hidden">
+                <div class="relative xl:h-[75vh] lg:h-[60vh] md:h-[50vh] sm:h-[40vh] h-[30vh] rounded-lg shadow-lg">
 					<!-- Carousel Items -->
 					<template x-for="(image, index) in images" :key="index">
 						<div x-show="current === index" class="absolute inset-0 transition-opacity duration-5000" x-transition:enter="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="opacity-100" x-transition:leave-end="opacity-0">
@@ -234,11 +234,11 @@
         return {
             current: 0,
             images: [
-                "{% static 'img/white_skillas_hero.svg' %}",
-                "{% static 'img/red_skillas_hero.svg' %}",
-                "{% static 'img/blue_skillas_hero.svg' %}",
-                "{% static 'img/purple_skillas_hero.svg' %}",
-                "{% static 'img/orange_skillas_hero.svg' %}"
+                "{% static 'img/white_banner.png' %}",
+                "{% static 'img/red_banner.png' %}",
+                "{% static 'img/blue_banner.png' %}",
+                "{% static 'img/purple_banner.png' %}",
+                "{% static 'img/orange_banner.png' %}"
             ],
             startCarousel() {
                 this.carouselInterval = setInterval(() => {
