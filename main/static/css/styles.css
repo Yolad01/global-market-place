@@ -1190,6 +1190,10 @@ select{
   margin-bottom: 3.5rem;
 }
 
+.mb-16{
+  margin-bottom: 4rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -1470,10 +1474,6 @@ select{
   margin-top: 20px;
 }
 
-.mb-16{
-  margin-bottom: 4rem;
-}
-
 .block{
   display: block;
 }
@@ -1558,6 +1558,10 @@ select{
   height: 1.75rem;
 }
 
+.h-72{
+  height: 18rem;
+}
+
 .h-8{
   height: 2rem;
 }
@@ -1576,10 +1580,6 @@ select{
 
 .h-screen{
   height: 100vh;
-}
-
-.h-72{
-  height: 18rem;
 }
 
 .max-h-0{
@@ -1654,6 +1654,10 @@ select{
   width: 1rem;
 }
 
+.w-4\/5{
+  width: 80%;
+}
+
 .w-40{
   width: 10rem;
 }
@@ -1715,8 +1719,8 @@ select{
   width: 100%;
 }
 
-.w-4\/5{
-  width: 80%;
+.w-11\/12{
+  width: 91.666667%;
 }
 
 .min-w-0{
@@ -1811,11 +1815,6 @@ select{
 
 .translate-x-96{
   --tw-translate-x: 24rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-x-60{
-  --tw-translate-x: 15rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2432,6 +2431,10 @@ select{
 
 .p-\[30px\]{
   padding: 30px;
+}
+
+.p-\[2px\]{
+  padding: 2px;
 }
 
 .px-10{
@@ -3813,6 +3816,10 @@ select{
     padding: 0.25rem;
   }
 
+  .compact\:p-\[2px\]{
+    padding: 2px;
+  }
+
   .compact\:pb-5{
     padding-bottom: 1.25rem;
   }
@@ -3844,24 +3851,12 @@ select{
 }
 
 @media (min-width: 350px){
-  .sm-compact\:h-40{
-    height: 10rem;
-  }
-
-  .sm-compact\:h-48{
-    height: 12rem;
-  }
-
-  .sm-compact\:h-52{
-    height: 13rem;
-  }
-
   .sm-compact\:h-44{
     height: 11rem;
   }
 
-  .sm-compact\:pt-3{
-    padding-top: 0.75rem;
+  .sm-compact\:p-1{
+    padding: 0.25rem;
   }
 }
 
@@ -4163,6 +4158,10 @@ select{
     margin-left: 0.5rem;
   }
 
+  .custom\:ml-3{
+    margin-left: 0.75rem;
+  }
+
   .custom\:ml-48{
     margin-left: 12rem;
   }
@@ -4207,32 +4206,12 @@ select{
     margin-top: 10rem;
   }
 
-  .custom\:ml-3{
-    margin-left: 0.75rem;
-  }
-
   .custom\:block{
     display: block;
   }
 
   .custom\:hidden{
     display: none;
-  }
-
-  .custom\:h-56{
-    height: 14rem;
-  }
-
-  .custom\:h-48{
-    height: 12rem;
-  }
-
-  .custom\:h-44{
-    height: 11rem;
-  }
-
-  .custom\:h-40{
-    height: 10rem;
   }
 
   .custom\:h-52{
@@ -4334,22 +4313,6 @@ select{
 
   .custom\:pt-10{
     padding-top: 2.5rem;
-  }
-
-  .custom\:pt-4{
-    padding-top: 1rem;
-  }
-
-  .custom\:pt-5{
-    padding-top: 1.25rem;
-  }
-
-  .custom\:pt-6{
-    padding-top: 1.5rem;
-  }
-
-  .custom\:pt-8{
-    padding-top: 2rem;
   }
 
   .custom\:text-center{
@@ -4535,34 +4498,6 @@ select{
 
   .portable\:h-20{
     height: 5rem;
-  }
-
-  .portable\:h-52{
-    height: 13rem;
-  }
-
-  .portable\:h-56{
-    height: 14rem;
-  }
-
-  .portable\:h-32{
-    height: 8rem;
-  }
-
-  .portable\:h-40{
-    height: 10rem;
-  }
-
-  .portable\:h-48{
-    height: 12rem;
-  }
-
-  .portable\:h-80{
-    height: 20rem;
-  }
-
-  .portable\:h-60{
-    height: 15rem;
   }
 
   .portable\:h-64{
@@ -4928,14 +4863,6 @@ select{
     height: 100vh;
   }
 
-  .sm\:h-\[44vh\]{
-    height: 44vh;
-  }
-
-  .sm\:h-\[48vh\]{
-    height: 48vh;
-  }
-
   .sm\:w-11\/12{
     width: 91.666667%;
   }
@@ -5212,11 +5139,6 @@ select{
     margin-right: auto;
   }
 
-  .md\:mx-28{
-    margin-left: 7rem;
-    margin-right: 7rem;
-  }
-
   .md\:-mb-5{
     margin-bottom: -1.25rem;
   }
@@ -5349,36 +5271,8 @@ select{
     height: 400px;
   }
 
-  .md\:h-\[50vh\]{
-    height: 50vh;
-  }
-
-  .md\:h-\[52vh\]{
-    height: 52vh;
-  }
-
   .md\:h-\[48vh\]{
     height: 48vh;
-  }
-
-  .md\:h-\[49vh\]{
-    height: 49vh;
-  }
-
-  .md\:h-\[46vh\]{
-    height: 46vh;
-  }
-
-  .md\:h-\[42vh\]{
-    height: 42vh;
-  }
-
-  .md\:h-\[40vh\]{
-    height: 40vh;
-  }
-
-  .md\:w-1\/2{
-    width: 50%;
   }
 
   .md\:w-2\/3{
@@ -5395,10 +5289,6 @@ select{
 
   .md\:w-\[400px\]{
     width: 400px;
-  }
-
-  .md\:w-1\/3{
-    width: 33.333333%;
   }
 
   .md\:max-w-80{
@@ -5484,16 +5374,6 @@ select{
     padding-right: 1.5rem;
   }
 
-  .md\:px-10{
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
-  .md\:py-10{
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-
   .md\:pb-10{
     padding-bottom: 2.5rem;
   }
@@ -5508,10 +5388,6 @@ select{
 
   .md\:pt-3{
     padding-top: 0.75rem;
-  }
-
-  .md\:pl-10{
-    padding-left: 2.5rem;
   }
 
   .md\:text-2xl{
@@ -5595,14 +5471,14 @@ select{
     margin-right: 5rem;
   }
 
-  .lg\:mx-80{
-    margin-left: 20rem;
-    margin-right: 20rem;
-  }
-
   .lg\:mx-40{
     margin-left: 10rem;
     margin-right: 10rem;
+  }
+
+  .lg\:mx-80{
+    margin-left: 20rem;
+    margin-right: 20rem;
   }
 
   .lg\:-ml-16{
@@ -5801,14 +5677,6 @@ select{
     height: 60vh;
   }
 
-  .lg\:h-20{
-    height: 5rem;
-  }
-
-  .lg\:h-52{
-    height: 13rem;
-  }
-
   .lg\:w-1\/2{
     width: 50%;
   }
@@ -5835,14 +5703,6 @@ select{
 
   .lg\:w-full{
     width: 100%;
-  }
-
-  .lg\:w-16{
-    width: 4rem;
-  }
-
-  .lg\:w-20{
-    width: 5rem;
   }
 
   .lg\:max-w-96{
@@ -5889,10 +5749,6 @@ select{
 
   .lg\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .lg\:grid-cols-1{
-    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .lg\:items-center{
@@ -6059,6 +5915,16 @@ select{
   .xl\:my-5{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
+  }
+
+  .xl\:mx-2{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .xl\:mx-1{
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
   }
 
   .xl\:-mb-40{
@@ -6289,10 +6155,6 @@ select{
     width: 33.333333%;
   }
 
-  .xl\:w-1\/4{
-    width: 25%;
-  }
-
   .xl\:w-3\/4{
     width: 75%;
   }
@@ -6323,10 +6185,6 @@ select{
 
   .xl\:w-full{
     width: 100%;
-  }
-
-  .xl\:w-24{
-    width: 6rem;
   }
 
   .xl\:max-w-\[500px\]{
@@ -6373,12 +6231,12 @@ select{
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
-  .xl\:grid-cols-4{
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .xl\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xl\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .xl\:gap-20{
@@ -6388,6 +6246,11 @@ select{
   .xl\:gap-x-4{
     -moz-column-gap: 1rem;
          column-gap: 1rem;
+  }
+
+  .xl\:gap-x-2{
+    -moz-column-gap: 0.5rem;
+         column-gap: 0.5rem;
   }
 
   .xl\:border{

@@ -12,9 +12,9 @@
             </div>
         </div> {% endcomment %}
 
-        <div class="grid grid-cols-1 xl:grid-cols-3 lg:mx-40 xl:mx-0 xl:gap-x-4 md:mx-20 sm:ml-10 portable:ml-5 custom:ml-3">
+        <div class="grid grid-cols-1 xl:grid-cols-3 xl:mx-2 lg:mx-40 xl:gap-x-2 md:mx-20 sm:ml-10 portable:ml-5 custom:ml-3">
             <!--main balance begin-->
-            <div class="mt-5 bg-veryShadyGreen rounded-xl mx-2 bg-cover bg-no-repeat lg:h-72 w-4/5 xl:w-full"
+            <div class="mt-5 bg-veryShadyGreen rounded-xl mx-2 bg-cover bg-no-repeat lg:h-72 sm:w-3/4 w-11/12 xl:w-full"
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
@@ -35,12 +35,12 @@
         
                 <div class="flex custom:ml-5 ml-2 mt-20 pb-10">
                     <div
-                        class="custom:px-3 custom:py-2 p-1 rounded-md bg-white text-veryDarkGreen font-semibold portable:text-xl custom:text-base text-sm"
+                        class="custom:px-3 custom:py-2 sm-compact:p-1 compact:p-1 p-[2px] rounded-md bg-white text-veryDarkGreen font-semibold sm:text-xl custom:text-base text-sm"
                     >
                         <a href="#">Add Cash</a>
                     </div>
                     <div
-                        class="custom:px-3 custom:py-2 p-1 custom:ml-5 ml-2 rounded-md bg-veryLightGreen text-veryDarkGreen font-semibold portable:text-xl custom:text-base text-sm"
+                        class="custom:px-3 custom:py-2 sm-compact:p-1 compact:p-1 p-[2px] custom:ml-5 ml-2 rounded-md bg-veryLightGreen text-veryDarkGreen font-semibold sm:text-xl custom:text-base text-sm"
                     >
                         <a href="/fund_withdrawal">Withdraw</a>
                     </div>
@@ -49,7 +49,7 @@
             <!--main balance end-->
         
             <!--pending balance begin-->
-            <div class="mt-5 bg-green-900 rounded-xl mx-2 bg-cover bg-no-repeat h-72 w-4/5 xl:w-full"
+            <div class="mt-5 bg-green-900 rounded-xl mx-2 bg-cover bg-no-repeat h-72 sm:w-3/4 w-11/12 xl:w-full"
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
@@ -72,7 +72,7 @@
             <!--pending balance end-->
         
             <!--withdrawn balance begin-->
-            <div class="mt-5 bg-rose-900 rounded-xl mx-2 xl:w-full w-4/5 bg-cover bg-no-repeat h-72 mb-16"
+            <div class="mt-5 bg-rose-900 rounded-xl mx-2 xl:w-full sm:w-3/4 w-11/12 bg-cover bg-no-repeat h-72 mb-16"
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
