@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="lg:hidden">
-                    <img class="mx-auto w-2/3 -mt-32" src="{% static 'img/mobile_hero.svg' %}" alt="Photo of cleaner" class="mt-14">
+                    <img class="mx-auto w-2/3 md-compact:-mt-32 -mt-28" src="{% static 'img/mobile_hero.png' %}" alt="Photo of cleaner">
                     {% comment %} <img class="mx-auto w-2/3 -mt-28" src="{% static 'img/mobile_hero.svg' %}" alt="Photo of cleaner" class="mt-14"> {% endcomment %}
                 </div>
             </div>
@@ -340,23 +340,23 @@
 
         <!-- Contact -->
         <section id="contact">
-            <div class="md:visible lg:visible xl:visible  mt-24 mb-24 items-center justify-center gap-20 bg-ash">
+            <div class="lg:visible xl:visible  mt-24 mb-24 items-center justify-center gap-20 bg-ash">
                 <div class="hidden lg:flex lg:visible xl:mx-36">
-                    <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care agent" class="lg:visible">
+                    <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care agent" class="lg:visible lg:w-72 xl:w-96">
                 
                 <div class="md:ml-16 md:mt-20 md:visible md:pb-10 lg:visible lg:ml-20 xl:ml-60">
                     <h2 class="font-black text-veryDarkGreen md:text-4xl mb-5">Contact Our 24/7 <br/>
                         Customer Service   
                     </h2>
 
-                    <p class="font-medium md:mt-10 text-2xl">
+                    <p class="font-medium md:mt-10 text-2xl mb-14">
                         YOLAD GLOBAL SERVICES LIMITED positions <br/> itself as a Need-Market Platform 
                         that offers <br /> skilled Workers and Personnels to businesses. 
                     </p>
 
-                    <h2 class="font-black text-veryDarkGreen mt-10 text-left text-5xl mb-14 md:text-4xl">
+                    {% comment %} <h2 class="font-black text-veryDarkGreen mt-10 text-left text-5xl mb-14 md:text-4xl">
                         +234 803 674 8872
-                    </h2>
+                    </h2> {% endcomment %}
                     
                     <a href="/register" class="rounded bg-veryLightGreen text-veryDarkGreen text-3xl font-semibold px-10 py-2 md:bg-veryDarkGreen md:text-white">
                         Sign up here
@@ -366,20 +366,25 @@
             </div>
                 <!--Mobile and small screens -->
                 <div class="custom:mt-10  mb-10 lg:hidden pb-10 bg-ash">
-                    <h2 class="font-bold text-veryDarkGreen text-2xl mb-5 ml-10 pt-10 compact:ml-3 md-compact:ml-5">Contact Our 24/7 Customer Service</h2>
-    
-                    <p class="custom:text-xl ml-10 md:mr-24 sm:mr-20 compact:text-lg compact:ml-3 md-compact:ml-5 md-compact:mr-20">
-                        YOLAD GLOBAL SERVICES LIMITED positions itself as a Need-Market Platform 
-                        that offers skilled Workers and Personnels to businesses. 
-                    </p>
-    
-                    <h2 class="font-black text-veryDarkGreen mt-10 text-left text-4xl mb-14 compact:text-lg custom:text-2xl ml-10 compact:ml-3 md-compact:ml-5">
-                        +234 803 674 8872
-                    </h2>
-                    
-                    <a href="/register" class="rounded bg-veryDarkGreen text-white compact:text-lg text-3xl font-semibold px-10 py-2 custom:text-2xl ml-10 compact:ml-3 md-compact:ml-5">
-                        Sign up here
-                    </a>
+                    <div class="flex">
+                        <img src="{% static 'img/Rectangle 100.png' %}" alt="Customer care agent" class="hidden portable:block sm:w-48 portable:w-40">
+                    <div class="md:mx-5">
+                        <h2 class="font-bold text-veryDarkGreen text-lg sm:text-xl md:text-2xl mb-5 ml-10 pt-10 compact:ml-3 md-compact:ml-5">Contact Our 24/7 Customer Service</h2>
+        
+                        <p class="mb-14 custom:text-lg ml-10 md:mr-24 sm:mr-20 compact:text-lg compact:ml-3 md-compact:ml-5 md-compact:mr-20">
+                            YOLAD GLOBAL SERVICES LIMITED positions itself as a Need-Market Platform 
+                            that offers skilled Workers and Personnels to businesses. 
+                        </p>
+        
+                        {% comment %} <h2 class="font-black text-veryDarkGreen mt-10 text-left text-4xl mb-14 compact:text-lg custom:text-2xl ml-10 compact:ml-3 md-compact:ml-5">
+                            +234 803 674 8872
+                        </h2> {% endcomment %}
+                        
+                        <a href="/register" class="rounded bg-veryDarkGreen text-white compact:text-lg text-3xl font-semibold px-10 py-2 custom:text-2xl ml-10 compact:ml-3 md-compact:ml-5">
+                            Sign up here
+                        </a>
+                    </div>
+                    </div>
                 </div>
         </section>
     </div>
