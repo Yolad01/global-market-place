@@ -3,22 +3,23 @@
 <div>
     <div>
         <div class="mt-5 custom:ml-10 ml-5">
-            <h3 class="font-primary font-normal text-2xl">Wallet</h3>
+            <h3 class="font-primary font-normal text-2xl mb-10">Wallet</h3>
         </div>
 
-        <div class="mt-5 sm:ml-5">
+        {% comment %} <div class="mt-5 sm:ml-5">
             <div class="font-primary">
                 <h2 class="font-extrabold text-veryDarkGreen custom:text-3xl text-xl p-5">Payment</h2>
             </div>
-        </div>
+        </div> {% endcomment %}
 
-        <div class="flex flex-wrap justify-center w-full">
+        <div class="grid grid-cols-1 xl:grid-cols-3 lg:mx-40 xl:mx-0 xl:gap-x-4 md:mx-20 sm:ml-10 portable:ml-5 custom:ml-3">
             <!--main balance begin-->
-            <div class="mt-5 bg-veryShadyGreen rounded-xl mx-2 xl:w-1/3 lg:w-1/3 md:w-1/2 sm:w-full w-full bg-cover bg-no-repeat"
+            <div class="mt-5 bg-veryShadyGreen rounded-xl mx-2 bg-cover bg-no-repeat lg:h-72 w-4/5 xl:w-full"
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
-                    <h3 class="font-semibold text-white custom:text-xl text-lg mt-8 ml-5">Main Balance</h3>
+                    <h3 class="hidden portable:block font-semibold text-white custom:text-xl text-lg mt-8 ml-5">Main Balance</h3>
+                    <h3 class="portable:hidden font-semibold text-white text-base mt-8 ml-5">Main <br/> Balance</h3>
                     <img
                         src="{% static '/img/Group 215.png' %}"
                         alt=""
@@ -48,11 +49,12 @@
             <!--main balance end-->
         
             <!--pending balance begin-->
-            <div class="mt-5 bg-green-900 rounded-xl mx-2 xl:w-1/3 lg:w-1/3 md:w-1/2 sm:w-full bg-cover bg-no-repeat"
+            <div class="mt-5 bg-green-900 rounded-xl mx-2 bg-cover bg-no-repeat h-72 w-4/5 xl:w-full"
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
-                    <h3 class="font-semibold text-white custom:text-xl text-lg mt-8 ml-5">Pending Balance</h3>
+                    <h3 class="hidden portable:block font-semibold text-white custom:text-xl text-lg mt-8 ml-5">Pending Balance</h3>
+                    <h3 class="portable:hidden font-semibold text-white text-base mt-8 ml-5">Pending <br/> Balance</h3>
                     <img
                         src="{% static '/img/Group 215.png' %}"
                         alt=""
@@ -70,11 +72,12 @@
             <!--pending balance end-->
         
             <!--withdrawn balance begin-->
-            <div class="mt-5 bg-rose-900 rounded-xl mx-2 xl:w-1/4 lg:w-1/3 md:w-1/2 sm:w-full w-full bg-cover bg-no-repeat"
+            <div class="mt-5 bg-rose-900 rounded-xl mx-2 xl:w-full w-4/5 bg-cover bg-no-repeat h-72 mb-16"
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
-                    <h3 class="font-semibold text-white custom:text-xl text-lg mt-8 ml-5">Withdrawn</h3>
+                    <h3 class="hidden portable:block font-semibold text-white custom:text-xl text-lg mt-8 ml-5">withdrawn</h3>
+                    <h3 class="portable:hidden font-semibold text-white text-base mt-8 ml-5">Withdrawn</h3>
                     <img
                         src="{% static '/img/Group 215.png' %}"
                         alt=""
