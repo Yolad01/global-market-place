@@ -1128,7 +1128,8 @@ def paid_order_history(request):
         profile_pic = ProfilePicture.objects.all().filter(user=request.user)
         user_profile_pic =  ProfilePicture.objects.get(user=request.user)
     except ObjectDoesNotExist:
-        pass
+        profile_pic = None
+        user_profile_pic = None
 
     return render(
         request=request,
