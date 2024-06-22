@@ -1124,12 +1124,18 @@ def paid_order_history(request):
     page_number = request.GET.get("page")
     page_object = paginator.get_page(page_number)
 
+    try:
+        profile_pic = ProfilePicture.objects.all().filter(user=request.user)
+        user_profile_pic =  ProfilePicture.objects.get(user=request.user)
+    except ObjectDoesNotExist:
+        pass
+
     return render(
         request=request,
         template_name="main/client/paid_order_history.html",
         context={
-            "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
-            "user_profile_pic": ProfilePicture.objects.get(user=request.user),
+            "profile_pic": profile_pic,
+            "user_profile_pic": user_profile_pic,
             # "payment": payment,
             "payment": page_object,
         }
