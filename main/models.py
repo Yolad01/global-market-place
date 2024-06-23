@@ -137,7 +137,7 @@ class Skill(models.Model):
     category = models.ForeignKey(JobCategory, blank=True, null=True, on_delete=models.CASCADE)
     skill = models.ForeignKey(Job, null=True, blank=True, on_delete=models.CASCADE)
     level = models.CharField(max_length=15, blank=True, null=True, choices=SkillLevel.choices)
-    image = models.ImageField(upload_to="skill_images", blank=True)
+    image = models.ImageField(upload_to="skill_images", blank=True, null=False, default=None)
     base_price = models.PositiveIntegerField(blank=True, null=True)
     activate = models.BooleanField(default=True, blank=True, null=True)
 
@@ -300,7 +300,8 @@ class Brief(models.Model):
     attach_files = models.FileField(
         upload_to="project_description_files",
         blank=True,
-        null=True
+        null=False,
+        default=None
     )
     categories = models.ForeignKey(
         JobCategory,
