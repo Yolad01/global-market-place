@@ -17,3 +17,5 @@ class ThreadManager(models.Manager):
 
     def by_user(self, user):
         return self.get_queryset().filter(users__in=[user])
+    
+    
