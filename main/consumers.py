@@ -9,7 +9,7 @@ from .models import Message, Thread, User
 
 class EchoConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        print("WebSocket connection established")
+        # print("WebSocket connection established")
         self.room_name = "broadcast"
         await self.accept()
         (self.channel_layer.group_add)(self.room_name, self.channel_name)
@@ -28,7 +28,7 @@ class EchoConsumer(AsyncWebsocketConsumer):
     async def message(self, event):
         text_data_json = json.loads(event)
         message = text_data_json['message']
-        print(f'[{self.channel_name}] - Received - {message}')
+        # print(f'[{self.channel_name}] - Received - {message}')
         self.send({
             "type": "websocket.send",
             "text": message
@@ -53,7 +53,9 @@ class ChatConsumer(AsyncConsumer):
         print(f'[{self.channel_name}] - Received message - {event["text"]}')
         msg = json.dumps({
             "text": event.get("text"),
-            "username": self.scope["user"].username
+            "username": self.scope["user"].username,
+            "role": self.scope["user"].role,
+            # "others": self.scope["user"]
         })
 
         await self.store_messages(event.get("text"))

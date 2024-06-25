@@ -17,7 +17,7 @@
             {% for message in messages %}
             <div class="flex {% if message.sender.username == user.username %} justify-start {% else %} justify-end {% endif %}">
                 <div class="w-auto xl:max-w-[500px] lg:max-w-96 md:max-w-80 sm:max-w-72">
-                    <p class="px-2 py-2 my-2 rounded-md text-white {% if message.sender.username == user.username %} bg-stone-500 {% else %} bg-veryDarkGreen {% endif %}">
+                    <p class="px-2 py-2 my-2 rounded-xl text-white {% if message.sender.username == user.username %} bg-stone-500 {% else %} bg-veryDarkGreen {% endif %}">
                         <span class="font-bold">[{{ message.sender.username }}]</span>: <br>{{ message.text }} <br>
                         <span class="text-xs">{{ message.created_at }}</span>
                     </p>
@@ -42,9 +42,11 @@
                             {{form.msg_body}}
                         </div>
                         
-                        <div class="my-2 mx-2 py-3 sm:flex sm:justify-center sm:items-center sm:mx-10">
-                            <div class="flex justify-center py-2 w-full">
-                                <button class="px-20 sm:px-10 sm:mr-8 py-2 rounded-md border-2 border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-veryDarkGreen hover:text-white w-full" type="submit">Send</button>
+                        <div class="my-2 mx-2 sm:flex sm:justify-center sm:items-center sm:mx-10">
+                            <div class="flex justify-center w-full">
+                                <button class="px-20 sm:px-10 sm:mr-8 py-2 rounded-md border-2 border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-veryDarkGreen hover:text-white w-full" type="submit">
+                                    Send
+                                </button>
                             </div>
 
                             {% if user.role == "SKILLAS" %}    
@@ -128,10 +130,10 @@
     
     {% block javascript %}
 
-    <script type="text/javascript">
 
+    <script type="text/javascript">
         /*const url = "ws://127.0.0.1:8000/ws" + window.location.pathname;*/
-        const url = "wss://getskillas.com/ws" + window.location.pathname;
+        const url = "wss://getskillas.com/ws" + window.location.pathname; 
         
         const ws = new WebSocket(url)
     
@@ -140,19 +142,20 @@
         }
         
         ws.onmessage = function(event) {
-            console.log(event)
+            console.log(event);
             console.log("message received");
-            const div = document.getElementById("message-list")
-            var p = document.createElement("p")
+            const div = document.getElementById("message-list");
+            var p = document.createElement("p");
             var data = JSON.parse(event.data);
-            p.classList.add("px-2", "py-2", "my-2", "text-white", "rounded-md", "bg-veryDarkGreen");
-            //p.append(document.createTextNode(
-            //    "[" + data.username + "]: <br>" + data.text
-            //));
+    
+            // Create a span element to wrap the message text
+            var messageSpan = document.createElement("span");
+            messageSpan.classList.add("px-2", "py-2", "my-2", "text-white", "rounded-xl", "bg-veryDarkGreen", "w-auto", "inline-block");
             var message = "<strong>[" + data.username + "]</strong>: <br>" + data.text;
-            p.innerHTML = message;
-            div.append(p);
-           
+            messageSpan.innerHTML = message;
+    
+            p.appendChild(messageSpan);
+            div.appendChild(p);
         }
     
         ws.onclose = function(event) {
@@ -162,16 +165,15 @@
         ws.onerror = function(event) {
             console.log("error occurred");
         }
-
-        const messageForm = document.getElementById("message-form")
-        messageForm.addEventListener("submit", sendMessage)
+    
+        const messageForm = document.getElementById("message-form");
+        messageForm.addEventListener("submit", sendMessage);
         function sendMessage(e) {
             if (e.preventDefault) e.preventDefault();
             ws.send(document.getElementById("id_msg_body").value);
-            messageForm.reset()
+            messageForm.reset();
             return false;
         }
-    
     </script>
         
     {% endblock javascript %}
@@ -179,34 +181,3 @@
 
 
 {% endblock %}
-
-
-{% comment %} {% for msg in display_msg %}
-            
-<div class="{% if msg.sender == user %} bg-gray-100 {% endif %} border border-gray-400 mx-5 my-1 text-gray-800 py-2 rounded-md items-center">
-    <div class="pl-5 mx-5 my-5 text-gray-800 rounded-md flex flex-row items-center">
-        <div>
-            {% if msg.sender == user %}
-            <img src="{{ user_profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-            
-            {% else %}
-            <img src="{{ profile_picture.image.url }}" alt="profile-img" class="h-10 w-10 rounded-full"/>
-            {% endif %}
-        </div>
-        <div class="flex mx-4">
-            <div class="mx-4 font-semibold">
-                {{ msg.sender }}
-            </div>
-
-            <div class="mx-4 text-sm">
-                {{ msg.timestamp }}
-            </div>
-        </div>
-    </div>
-    <div class="mx-4 text-sm ml-40">
-        {{ msg.content }}
-    </div>
-</div>
-
-
-{% endfor %} {% endcomment %}
