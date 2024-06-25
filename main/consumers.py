@@ -64,7 +64,7 @@ class ChatConsumer(AsyncConsumer):
         }) 
 
     async def websocket_message(self, event):
-        print(f'[{self.channel_name}] - message sent - {event["text"]}')
+        # print(f'[{self.channel_name}] - message sent - {event["text"]}')
         await self.send({
             "type": "websocket.send",
             "text": event.get("text")
@@ -72,7 +72,7 @@ class ChatConsumer(AsyncConsumer):
 
 
     async def websocket_disconnect(self, event):
-        print(f'[{self.channel_name}] - disconnected')
+        # print(f'[{self.channel_name}] - disconnected')
         await (self.channel_layer.group_discard)(self.room_name, self.channel_name)
 
     @database_sync_to_async

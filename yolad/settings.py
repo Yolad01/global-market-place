@@ -40,10 +40,7 @@ SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
 
 
-CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
-
-
-# SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com", "getskillas.com", "www.getskillas.com"]
 
 
 
