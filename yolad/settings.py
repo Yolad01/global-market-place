@@ -43,7 +43,7 @@ ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.1
 CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
 
 
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+# SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 
 
