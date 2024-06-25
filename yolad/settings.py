@@ -43,6 +43,9 @@ ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.1
 CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
 
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+
 
 # Application definition
 
@@ -61,7 +64,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # "django_browser_reload.middleware.BrowserReloadMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
