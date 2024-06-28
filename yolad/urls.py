@@ -15,6 +15,7 @@ urlpatterns = [
     # path("__reload__/", include("django_browser_reload.urls")),
     path('admin/', admin.site.urls),
     path("", include("main.urls")),
+    path("", include("pwa.urls")),
 
     # path("password_reset/", auth_views.PasswordResetView.as_view(), name="password_reset"),
     # path("reset_password_sent/done/", auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
