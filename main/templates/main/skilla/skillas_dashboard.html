@@ -121,6 +121,14 @@
               />
             </p>
 
+            <p class="text-veryDarkGreen font-semibold border-none outline-none mx-3">
+              {% if x.attach_files %}
+                <a href="{{ x.attach_files.url }}" download class="text-blue-500">Download file</a>
+              {% else %}
+                  No file uploaded
+              {% endif %}
+            </p>
+
 
 
           <div class="font-semibold flex">
