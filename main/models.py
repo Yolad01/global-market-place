@@ -36,6 +36,7 @@ class User(AbstractUser):
     role = models.CharField(max_length=50, choices=Role.choices)
     email = models.EmailField(unique=True)
     phone_no = models.CharField(verbose_name="Phone Number", unique=True, max_length=15)
+    is_certified = models.BooleanField(default=False)
     
 
     REQUIRED_FIELDS = ["first_name", "last_name", "email", "phone_no"]

@@ -22,7 +22,7 @@
         <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
           <a href="#"><img src="{% static '/img/Group 306.png' %}" alt="" /></a>
           <div class="">
-            <a href="#" class="ml-5 text-veryDarkGreen xl:text-lg font-bold hover:text-white">
+            <a href="#" class="ml-5 text-veryDarkGreen xl:text-lg font-bold">
               Transaction
             </a>
             <h3 class="ml-5 text-veryDarkGreen xl:text-lg font-bold">{{ count_of_order }}</h3>
@@ -32,7 +32,7 @@
         <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
           <a href="#"><img src="{% static '/img/Group 307.png' %}" alt="" /></a>
           <div>
-            <a href="#" class="ml-5 text-veryDarkGreen xl:text-lg font-bold"
+            <a href="/inbox" class="ml-5 text-veryDarkGreen xl:text-lg font-bold"
               >Messages</a
             >
             <h3 class="ml-5 text-veryDarkGreen xl:text-lg font-bold">{{ unread_count }}</h3>
@@ -42,7 +42,7 @@
         <div class="flex border-0 shadow rounded-sm p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
           <a href="#"><img src="{% static '/img/Group 308.png' %}" alt="" /></a>
           <div>
-            <a href="#" class="ml-5 text-veryDarkGreen xl:text-lg font-bold"
+            <a href="/wallet" class="ml-5 text-veryDarkGreen xl:text-lg font-bold"
               >Wallet</a
             >
             <h3 class="ml-5 text-veryDarkGreen xl:text-lg font-bold"><span>NGN</span> {{ wallet.main }}</h3>
@@ -64,6 +64,7 @@
     </div>
 
     <div class="shadow-sm rounded-md font-primary md-compact:p-1">
+      {% if user.is_certified %}
       {% for x in brief %}
       <form
         method="POST"
@@ -158,7 +159,19 @@
       </form>
       {% endfor %}
 
-      <div class="shadow-sm pb-10 mx-auto sm:w-3/4">
+      {% else %}
+
+      <div class="pb-10 mx-auto sm:w-3/4">
+        <div class="mt-20 p-20 bg-veryDarkGreen rounded-md shadow-lg transition-all duration-500 hover:-translate-y-[10px] hover:translate-x-[10px] hover:bg-gray-500">
+          <h2 class="font-primary font-medium text-white text-xl text-center">
+            You need to be a certified skilla to view clients
+          </h2>
+        </div>
+      </div>
+
+      {% endif %}
+
+      <div class="pb-10 mx-auto sm:w-3/4">
         <div class="mt-20 p-20 bg-veryDarkGreen rounded-md">
           <h2 class="font-primary font-medium text-white text-2xl text-center">
             ADS

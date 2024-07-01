@@ -37,10 +37,10 @@ DEBUG = env("DEBUG")
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
+ALLOWED_HOSTS = []
 
 
-CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
+
 
 
 
@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # "django_browser_reload.middleware.BrowserReloadMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -113,17 +114,17 @@ WSGI_APPLICATION = 'yolad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    'default':  Env.db_url_config(env('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     'default':  Env.db_url_config(env('DATABASE_URL'))
+# }
 
 
 
@@ -177,6 +178,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "yolad", "serviceworker.js")
+
 
 AUTH_USER_MODEL = "main.User"
 
@@ -185,15 +188,17 @@ AUTH_USER_MODEL = "main.User"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # remember to remove during deployment
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'yemirichard@yoladservices.com'
-EMAIL_HOST_PASSWORD = 'vllhwhciyktjkuyf'
+EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
+EMAIL_HOST_PASSWORD = 'lztthecjycjsgtnf'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
 
-PWA_APP_NAME = 'skillas'
-PWA_APP_DESCRIPTION = "skillas PWA"
-PWA_APP_THEME_COLOR = '#000000'
+
+
+PWA_APP_NAME = 'Skillas'
+PWA_APP_DESCRIPTION = "One stop shop for your handy person"
+PWA_APP_THEME_COLOR = '#0A0302'
 PWA_APP_BACKGROUND_COLOR = '#ffffff'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_SCOPE = '/'
@@ -202,21 +207,35 @@ PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default'
 PWA_APP_ICONS = [
     {
-        'src': 'static/img/white_skillas_logo.png',
+        'src': '/static/img/pwa/skilla_mini_logo.png',
         'sizes': '160x160'
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': 'static/img/skilla_mini_logo.jpg',
+        'src': '/static/img/pwa/skilla_mini_logo.png',
         'sizes': '160x160'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': 'static/img/white_skillas_logo.png',
+        'src': '/static/img/pwa/icons/splash-640x1136.png',
         'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
     }
 ]
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
+PWA_APP_SHORTCUTS = [
+    {
+        'name': 'Shortcut',
+        'url': '/target',
+        'description': 'Shortcut to a page in my application'
+    }
+]
+PWA_APP_SCREENSHOTS = [
+    {
+      'src': '/static/img/pwa/icons/splash-750x1334.png',
+      'sizes': '750x1334',
+      "type": "image/png"
+    }
+]
