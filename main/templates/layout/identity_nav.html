@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth font-primary" lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% comment %} <title>{{ user.username }} dashboard</title> {% endcomment %}
+
+        <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
+        <script src="{% static '/js/init-alpine.js' %}"></script>
+        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+        <script src="{% static '/js/wow.min.js' %}"></script>
+
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
+
+        <script>
+            new WOW().init();
+        </script>
+
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="relative min-h-screen flex ml-16 font-secondary bg-white">
+    
+            <!-- Side bar -->
+            
+            {% if user.role == "SKILLAS" %}
+                
+            <div class="xl:w-40 w-72">
+                <div class="mt-10 rounded-md portable:-ml-10 -ml-14 fixed">
+                    <div class="">
+                        <a href="/" class="hidden xl:block">
+                            <img class="-ml-8" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
+                          </a>
+                        <a href="/" class="xl:hidden block">
+                            <img class="ml-2 -mb-5" src="{% static '/img/skilla_mini_logo.jpg' %}" loading="lazy" alt="brand logo">
+                        </a>
+                    </div>
+
+                    <div class="flex p-2 mt-28">
+                        {% comment %} <a href="/skillas_dashboard"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/Dash-Vector.png' %}" alt="Dashboard icon"></a> {% endcomment %}
+                        <a href="#" class="text-shadeAsh_5 font-medium text-base ml-5 -mt-1 hidden xl:block">PERSONAL DETAILS</a>
+                    </div>
+    
+                    <div class="flex p-2 mt-2">
+                        {% comment %} <a href="/s_profile"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/Dash-Vector-1.png' %}" alt="Profile icon"></a> {% endcomment %}
+                        <a href="#" class="text-mintBlue font-medium text-base ml-5 hidden -mt-1 xl:block">ADDRESS DETAILS</a>
+                    </div>
+
+                    <div class="flex p-2 mt-2">
+                        {% comment %} <a href="/s_profile"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/Dash-Vector-1.png' %}" alt="Profile icon"></a> {% endcomment %}
+                        <a href="#" class="text-darkBlue font-medium text-base ml-5 hidden -mt-1 xl:block">IDENTITY DETAILS</a>
+                    </div>
+    
+                    <div class="flex p-2 mt-2">
+                        {% comment %} <a href="\wallet"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/Dash-Vector-2.png' %}" alt="Wallet icon"></a> {% endcomment %}
+                        <a href="#" class="text-darkBlue font-medium text-base ml-5 hidden -mt-1 xl:block">DOCUMENTS UPLOAD</a>
+                    </div>
+    
+                    <div class="flex p-2 mt-2">
+                        {% comment %} <a href="\wallet"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/Dash-Vector-2.png' %}" alt="Wallet icon"></a> {% endcomment %}
+                        <a href="#" class="text-darkBlue font-medium text-base ml-5 hidden -mt-1 xl:block">REVIEW</a>
+                    </div>
+
+                    <div class="mb-4 flex p-2 mt-2">
+                        {% comment %} <a href="/logout"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/icons8-logout-50.png' %}" alt="Logout icon"></a> {% endcomment %}
+                        <a href="/logout" class="text-darkBlue font-medium text-base ml-5 mr-4 hidden -mt-1 xl:block">LOG OUT</a>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+
+                {% block content %}
+                            
+                {% endblock %}
+    </body>
+</html>

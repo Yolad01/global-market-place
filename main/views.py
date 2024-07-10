@@ -83,6 +83,11 @@ def frequently_asked_questions(request):
         template_name="main/faq.html"
     )
 
+def s_identity(request):
+    return render(
+        request=request,
+        template_name="main/skilla/kyc/s_identity.html"
+    )
 
 def register(request):
     if request.method == "POST":
