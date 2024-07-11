@@ -55,6 +55,7 @@ module.exports = {
         navyBlue: '#22205F',
         mintBlue: '#005EFE',
         darkBlue: '#404B7C',
+        darkBlue_2: '#0D1D54',
         orangeEssence: '#FF7126',
         purpleEssence: '#58479F',
         pinkEssence: '#D1334D',
