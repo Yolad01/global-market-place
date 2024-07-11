@@ -88,6 +88,18 @@ def s_identity(request):
         request=request,
         template_name="main/skilla/kyc/s_identity.html"
     )
+    
+def identity_details(request):
+    return render(
+        request=request,
+        template_name="main/skilla/kyc/identity_details.html"
+    )
+    
+def review(request):
+    return render(
+        request=request,
+        template_name="main/skilla/kyc/review.html"
+    )
 
 def register(request):
     if request.method == "POST":

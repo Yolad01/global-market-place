@@ -21,6 +21,8 @@ urlpatterns = [
     path("terms_condition/", views.terms_condition, name="terms_condition"),
     path("service_policy/", views.service_policy, name="service_policy"),
     path("s_identity/", views.s_identity, name="s_identity"),
+    path("identity_details/", views.identity_details, name="identity_details"),
+    path("review/", views.review, name="review"),
     path("frequently_asked_questions/", views.frequently_asked_questions, name="frequently_asked_questions"),
     
     path("skilla_profile/", views.skilla_profile, name="skilla_profile"),
