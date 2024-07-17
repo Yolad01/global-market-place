@@ -1,65 +1,65 @@
 {% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
-<div class="xl:mt-14 lg:mt-10 xl:mx-96 lg:mx-10">
+<div class="sm:flex justify-center items-center xl:mt-14 lg:mt-10 xl:mx-96 lg:mx-10 mb-10">
 
-    <div class="flex mb-20">
-        <div class="lg:w-72 bg-veryShadyGreen">
+    <div class="sm:flex">
+        <div class="hidden sm:flex lg:w-72 md:w-72 sm:w-80 bg-veryShadyGreen">
             <div class="py-36">
                 <div class="flex">
-                    <img class="lg:h-14 lg:w-14" src="{% static '/img/check_mark.png' %}" alt="icon" />
+                    <img class="lg:h-14 lg:w-14 md:h-12 sm:w-12" src="{% static '/img/check_mark.png' %}" alt="icon" />
                     <a href="#" class="text-darkBlue font-medium text-base lg:ml-5 mt-3">PERSONAL DETAILS</a>
                 </div>
     
                 <div class="border-l-2 border-brightGreen h-8 ml-6"></div>
     
-                <div class="flex">
-                    <img class="lg:h-14 lg:w-14" src="{% static '/img/check_mark.png' %}" alt="icon" />
-                    <a href="#" class="text-darkBlue font-medium text-base lg:ml-5 mt-3">ADDRESS DETAILS</a>
+                <div class="mt-5 flex">
+                    <img class="h-7 w-7 ml-3" src="{% static '/img/icon_2.png' %}" alt="icon" />
+                    <a href="#" class="text-mintBlue font-medium text-base lg:ml-9 ml-3">ADDRESS DETAILS</a>
                 </div>
     
-                <div class="border-l-2 border-brightGreen h-8 ml-6"></div>
+                <div class="border-l-2 border-shadeAsh_5 h-8 ml-6 mt-3"></div>
     
                 <div class="mt-5 flex">
                     <img class="h-8 w-8 ml-3" src="{% static '/img/icon_3.png' %}" alt=" icon" />
-                    <a href="#" class="text-mintBlue font-medium text-base lg:ml-9">IDENTITY DETAILS</a>
+                    <a href="#" class="text-white font-medium text-base lg:ml-9 ml-3">IDENTITY DETAILS</a>
                 </div>
     
                 <div class="border-l-2 border-shadeAsh_5 h-8 ml-6 mt-3"></div>
     
                 <div class="mt-5 flex">
                     <img class="h-8 w-8 ml-3" src="{% static '/img/icon_4.png' %}" alt=" icon" />
-                    <a href="#" class="text-white font-medium text-base lg:ml-9">DOCUMENTS UPLOAD</a>
+                    <a href="#" class="text-white font-medium text-base lg:ml-9 ml-3">DOCUMENTS UPLOAD</a>
                 </div>
     
                 <div class="border-l-2 border-shadeAsh_5 h-8 ml-6 mt-3"></div>
     
                 <div class="mt-5 flex">
                     <img class="h-8 w-8 ml-3" src="{% static '/img/icon_5.png' %}" alt=" icon" />
-                    <a href="#" class="text-white font-medium text-base ml-9">REVIEW</a>
+                    <a href="#" class="text-white font-medium text-base lg:ml-9 ml-3">REVIEW</a>
                 </div>
             </div>
         </div>
 
-        <div class="bg-gray-100 w-[650px]">
-            <h6 class="text-shadeAsh_7 flex justify-end mr-10 mt-5">Having trouble? <a href="#" class="text-darkBlue">Get help</a></h6>
+        <div class="bg-gray-100 lg:w-[650px] md:w-[415px] lg:pl-0 lg:ml-0 md:pl-10 sm:pl-10 custom:pl-10 md-compact:pl-5 pl-2 lg:mx-auto sm:mt-0 -mt-5 pb-10">
+            <h6 class="text-shadeAsh_7 custom:flex justify-end custom:mr-10 mt-5">Having trouble? <a href="#" class="text-darkBlue">Get help</a></h6>
     
             <div class="mt-10 lg:ml-14">
-                <h3 class="text-darkBlue_2 font-semibold text-2xl">Identity details</h3>
+                <h3 class="text-darkBlue_2 font-semibold portable:text-2xl text-lg">Identity details</h3>
 
                 <form class="mt-10">
-                    <div class="flex mt-5 gap-x-7">
+                    <div class="lg:flex mt-5 gap-x-7">
                         <div class="">
                             <label class="text-darkBlue font-normal text-base" for="username">Country identity name</label><br />
-                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter identity name">
+                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 lg:w-11/12 md:w-5/6 custom:w-4/5 md-compact:w-2/3 w-4/5 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Identity name">
                         </div>
 
-                        <div class="">
+                        <div class="lg:mt-0 mt-5">
                             <label class="block text-darkBlue font-normal text-base" for="dropdown">Identity number</label>
-                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter identity number">
+                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 lg:w-11/12 md:w-5/6 custom:w-4/5 md-compact:w-2/3 w-4/5 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Identity number">
                         </div>
                     </div>
 
-                    <div class=" flex rounded-md w-11/12 bg-shadeAsh_8 border py-3 px-5 mt-5">
+                    <div class="flex rounded-md lg:w-11/12 md:w-5/6 custom:w-4/5 md-compact:w-2/3 w-4/5 bg-shadeAsh_8 border py-3 px-5 mt-5">
                         <div>
                             <h4 class="text-darkBlue_2 font-normal text-base">Country identity card</h4>
                             <p class="text-veryDarkAsh font-normal text-xs mt-3">On desktop, Simply drag and drop your file in this field. acceptable formats: JPEG, JPG or PNG.</p>
@@ -72,18 +72,18 @@
 
                     <div class="mt-5">
                         <h4 class="text-darkBlue_2 font-normal text-base">Upload passport size photo</h4>
-                        <div class="bg-gray-200 py-10 mr-96 rounded-md">
-                            <a href="#"><img class="mt-2 lg:w-14 mx-20" src="{% static '/img/green_camera.png' %}" alt="icon" /></a>
+                        <div class="bg-white py-10 lg:mr-96 rounded-md lg:w-56 md:w-52 portable:w-48  md-compact:w-2/3 w-4/5">
+                            <a href="#"><img class="mt-2 lg:w-14 w-8 lg:mx-20 md:mx-20 custom:mx-20 md-compact:mx-[68px] sm-compact:mx-16 mx-14" src="{% static '/img/green_camera.png' %}" alt="icon" /></a>
                         </div>
                     </div>
 
                     <div class="mt-5">
                         <label class="block text-darkBlue font-normal text-base" for="dropdown">Passport</label>
-                        <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter passport">
+                        <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 lg:w-1/2 md:w-5/6 custom:w-4/5 md-compact:w-2/3 w-4/5 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter passport">
                     </div>
 
                     <div class="flex items-center justify-between mt-10">
-                        <button id="loadReviewPage" class="bg-veryDarkGreen mb-20 text-white font-medium text-lg py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
+                        <button id="loadReviewPage" class="bg-veryDarkGreen mb-20 text-white font-medium lg:text-lg text-base py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
                             SAVE & COUNTINUE
                         </button>
                     </div>
