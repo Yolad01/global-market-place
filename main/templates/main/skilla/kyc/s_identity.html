@@ -1,12 +1,12 @@
 {% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
-<div class="xl:mt-14 lg:mt-10 xl:mx-96 lg:mx-10">
+<div class="xl:mt-14 lg:mt-10 xl:mx-96 lg:mx-10 sm:pb-10 mx=auto">
 
-    <div class="flex">
-        <div class="lg:w-72 bg-veryShadyGreen">
+    <div class="sm:flex">
+        <div class="hidden sm:block lg:w-72 md:w-96 sm:w-80 bg-veryShadyGreen">
             <div class="py-36">
                 <div class="flex">
-                    <img class="lg:h-14 lg:w-14" src="{% static '/img/check_mark.png' %}" alt="icon" />
+                    <img class="lg:h-14 lg:w-14 md:h-12 sm:w-12" src="{% static '/img/check_mark.png' %}" alt="icon" />
                     <a href="#" class="text-darkBlue font-medium text-base lg:ml-5 mt-3">PERSONAL DETAILS</a>
                 </div>
     
@@ -14,79 +14,79 @@
     
                 <div class="mt-5 flex">
                     <img class="h-7 w-7 ml-3" src="{% static '/img/icon_2.png' %}" alt="icon" />
-                    <a href="#" class="text-mintBlue font-medium text-base lg:ml-9">ADDRESS DETAILS</a>
+                    <a href="#" class="text-mintBlue font-medium text-base lg:ml-9 ml-3">ADDRESS DETAILS</a>
                 </div>
     
                 <div class="border-l-2 border-shadeAsh_5 h-8 ml-6 mt-3"></div>
     
                 <div class="mt-5 flex">
                     <img class="h-8 w-8 ml-3" src="{% static '/img/icon_3.png' %}" alt=" icon" />
-                    <a href="#" class="text-white font-medium text-base lg:ml-9">IDENTITY DETAILS</a>
+                    <a href="#" class="text-white font-medium text-base lg:ml-9 ml-3">IDENTITY DETAILS</a>
                 </div>
     
                 <div class="border-l-2 border-shadeAsh_5 h-8 ml-6 mt-3"></div>
     
                 <div class="mt-5 flex">
                     <img class="h-8 w-8 ml-3" src="{% static '/img/icon_4.png' %}" alt=" icon" />
-                    <a href="#" class="text-white font-medium text-base lg:ml-9">DOCUMENTS UPLOAD</a>
+                    <a href="#" class="text-white font-medium text-base lg:ml-9 ml-3">DOCUMENTS UPLOAD</a>
                 </div>
     
                 <div class="border-l-2 border-shadeAsh_5 h-8 ml-6 mt-3"></div>
     
                 <div class="mt-5 flex">
                     <img class="h-8 w-8 ml-3" src="{% static '/img/icon_5.png' %}" alt=" icon" />
-                    <a href="#" class="text-white font-medium text-base ml-9">REVIEW</a>
+                    <a href="#" class="text-white font-medium text-base lg:ml-9 ml-3">REVIEW</a>
                 </div>
             </div>
         </div>
 
-        <div class="bg-gray-100 w-[650px]">
-            <h6 class="text-shadeAsh_7 flex justify-end mr-10 mt-5">Having trouble? <a href="#" class="text-darkBlue">Get help</a></h6>
+        <div class="bg-gray-100 lg:w-[650px] md:w-11/12 sm:w-5/6 lg:pl-0 lg:ml-0 md:pl-14 sm:pl-10 custom:pl-10 pl-3 lg:mx-auto sm:mt-0 -mt-5 pb-10">
+            <h6 class="text-shadeAsh_7 custom:flex justify-end mr-10 mt-5">Having trouble? <a href="#" class="text-darkBlue">Get help</a></h6>
     
             <div class="mt-10 lg:ml-14">
-                <h3 class="text-darkBlue_2 font-semibold text-2xl">Address details</h3>
+                <h3 class="text-darkBlue_2 font-semibold custom:text-2xl text-lg">Address details</h3>
 
                 <form class="mt-10">
                     <div class="">
                         <label class="text-darkBlue font-normal text-base" for="username">Line 1</label><br />
-                        <input class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6 py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Flat no / House no">
+                        <input class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6  py-3 lg:px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="House no">
                     </div>
 
                     <div class="mt-5">
                         <label class="text-darkBlue font-normal text-base" for="username">Line 2</label><br />
-                        <input class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6 py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Street name / Bulding no / Plot  no">
+                        <input class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6 py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Street name">
                     </div>
 
-                    <div class="flex mt-5 gap-x-7">
+                    <div class="lg:flex mt-5 gap-x-2">
                         <div class="">
                             <label class="text-darkBlue font-normal text-base" for="username">City</label><br />
-                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter city name">
+                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter city name">
                         </div>
 
-                        <div class="">
+                        <div class="lg:mt-0 mt-5">
                             <label class="block text-darkBlue font-normal text-base" for="dropdown">Region</label>
-                            <select class="mt-3 block appearance-none text-darkBlue_2 pr-28 bg-white border border-shadeAsh_6 hover:border-veryDarkGreen px-3 py-3 rounded-md shadow leading-tight focus:outline-none focus:shadow-outline" id="dropdown">
-                                <option>Select region</option>
+                            <select class="mt-3 block appearance-none text-darkBlue_2 sm:pr-28 bg-white border border-shadeAsh_6 hover:border-veryDarkGreen lg:w-full w-5/6 px-3 py-3 rounded-md shadow leading-tight focus:outline-none focus:shadow-outline" id="dropdown">
+                                <option>Select</option>
                                 <option>Option 2</option>
                                 <option>Option 3</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="flex mt-5 gap-x-7">
+                    <div class="lg:flex mt-5 gap-x-2">
                         <div class="">
                             <label class="text-darkBlue font-normal text-base" for="username">Country</label><br />
-                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter country name">
+                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Country name">
                         </div>
 
-                        <div class="">
+                        <div class="lg:mt-0 mt-5">
                             <label class="block text-darkBlue font-normal text-base" for="dropdown">Postal / Zip code</label>
-                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter postal / zip code">
+                            <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 lg:w-5/6 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Zip code">
                         </div>
                     </div>
 
                     <div class="flex items-center justify-between mt-10">
-                        <button id="loadIdentityPage" class="bg-veryDarkGreen text-white font-medium text-lg py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
+                        <button id="loadIdentityPage" class="bg-veryDarkGreen text-white font-medium lg:text-lg custom:text-base text-sm py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
                             SAVE & COUNTINUE
                         </button>
                     </div>
