@@ -100,7 +100,43 @@ def review(request):
         request=request,
         template_name="main/skilla/kyc/review.html"
     )
+    
+def compliance(request):
+    return render(
+        request=request,
+        template_name="main/skilla/compliance/compliance.html"
+    )
+    
+def guide_one(request):
+    return render(
+        request=request,
+        template_name="main/skilla/compliance/guide_one.html"
+    )
+    
+def guide_two(request):
+    return render(
+        request=request,
+        template_name="main/skilla/compliance/guide_two.html"
+    )
+    
+def guide_three(request):
+    return render(
+        request=request,
+        template_name="main/skilla/compliance/guide_three.html"
+    )
 
+def guide_four(request):
+    return render(
+        request=request,
+        template_name="main/skilla/compliance/guide_four.html"
+    )
+    
+def guide_five(request):
+    return render(
+        request=request,
+        template_name="main/skilla/compliance/guide_five.html"
+    )
+    
 def register(request):
     if request.method == "POST":
         registration_form = RegistrationForm(request.POST)

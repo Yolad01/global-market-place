@@ -1,6 +1,7 @@
-{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
+{% extends 'layout/dash_nav.html' %} 
+{% load static %} {% block content %}
 
-<div class="sm:flex justify-center items-center xl:mt-14 lg:mt-10 xl:mx-96 lg:mx-10 sm:pb-10 mx=auto">
+<div class="sm:flex justify-center items-center xl:mt-14 lg:mt-10 xl:mx-96 lg:mx-10 sm:pb-10 mx-auto">
 
     <div class="sm:flex">
         <div class="hidden sm:block lg:w-72 md:w-80 sm:w-80 bg-veryShadyGreen">
@@ -86,9 +87,9 @@
                     </div>
 
                     <div class="flex items-center justify-between mt-10">
-                        <button id="loadIdentityPage" class="bg-veryDarkGreen text-white font-medium lg:text-lg custom:text-base text-sm py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
+                        <a href="/identity_details" class="bg-veryDarkGreen text-white font-medium lg:text-lg custom:text-base text-sm py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
                             SAVE & COUNTINUE
-                        </button>
+                        </a>
                     </div>
                 </form>
             </div>

@@ -23,6 +23,12 @@ urlpatterns = [
     path("s_identity/", views.s_identity, name="s_identity"),
     path("identity_details/", views.identity_details, name="identity_details"),
     path("review/", views.review, name="review"),
+    path("compliance/", views.compliance, name="compliance"),
+    path("guide_one/", views.guide_one, name="guide_one"),
+    path("guide_two/", views.guide_two, name="guide_two"),
+    path("guide_three/", views.guide_three, name="guide_three"),
+    path("guide_four/", views.guide_four, name="guide_four"),
+    path("guide_five/", views.guide_five, name="guide_five"),
     path("frequently_asked_questions/", views.frequently_asked_questions, name="frequently_asked_questions"),
     
     path("skilla_profile/", views.skilla_profile, name="skilla_profile"),

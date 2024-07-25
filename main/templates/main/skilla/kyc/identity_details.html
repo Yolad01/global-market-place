@@ -1,4 +1,6 @@
-{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
+{% extends 'layout/dash_nav.html' %} 
+{% load static %} 
+{% block content %}
 
 <div class="sm:flex justify-center items-center xl:mt-14 lg:mt-10 xl:mx-96 lg:mx-10 mb-10">
 
@@ -83,9 +85,9 @@
                     </div>
 
                     <div class="flex items-center justify-between mt-10">
-                        <button id="loadReviewPage" class="bg-veryDarkGreen mb-20 text-white font-medium lg:text-lg text-base py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
+                        <a href="/review" class="bg-veryDarkGreen mb-20 text-white font-medium lg:text-lg text-base py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
                             SAVE & COUNTINUE
-                        </button>
+                        </a>
                     </div>
                 </form>
             </div>
