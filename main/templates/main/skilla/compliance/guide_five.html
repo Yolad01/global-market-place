@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth font-primary" lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Compliance-1</title>
+
+        <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
+        <script src="{% static '/js/init-alpine.js' %}"></script>
+        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+        <script src="{% static '/js/wow.min.js' %}"></script>
+
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/skilla_mini_logo.jpg' %}" />
+
+        <script>
+            new WOW().init();
+        </script>
+
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="xl:my-24 xl:mx-64 lg:mt-44 lg:mx-40 lg:border lg:shadow-lg mt-40">
+            <div class="flex justify-center items-center">
+                <img class="lg:w-1/2 md:w-2/3" src="{% static '/img/guide_6.png' %}" alt="Guide icon">
+            </div>
+
+            <h2 class="hidden sm:block mt-10 mb-10 text-veryLightBlack font-primary font-bold text-xl text-center">5. Your ratings after the job is done affect your<br/>
+                credibility and will determine your value and<br/>
+                visibility on Skillas platform.</h2>
+
+            <h2 class="mt-10 sm:hidden text-veryLightBlack font-primary font-bold text-base text-center">5. Your ratings after the job is done<br/> affect your
+                credibility and <br/>will determine your value and<br/>
+                visibility on Skillas platform.</h2>
+
+            
+            <div class="xl:mt-5 mt-14 xl:mx-80 lg:mx-56 lg:mb-10 md:mx-72 sm:mx-56 portable:mx-40 mx-10 py-2 bg-veryDarkGreen flex justify-center items-center">
+                <a href="/guide_four"><img class="h-5" src="{% static '/img/white_left_arrow.png' %}" alt="left arrow"></a>
+                <p class="text-white font-primary font-bold text-xl px-10">Next</p>
+                <a href="/skillas_dashboard"><img class="h-5 " src="{% static '/img/white_right_arrow.png' %}" alt="right arrow"></a>
+            </div>
+        </div>
+    
+    </body>
+</html>
