@@ -1102,41 +1102,6 @@ select{
   margin-bottom: auto;
 }
 
-.mx-40{
-  margin-left: 10rem;
-  margin-right: 10rem;
-}
-
-.my-20{
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
-.mx-60{
-  margin-left: 15rem;
-  margin-right: 15rem;
-}
-
-.my-28{
-  margin-top: 7rem;
-  margin-bottom: 7rem;
-}
-
-.my-24{
-  margin-top: 6rem;
-  margin-bottom: 6rem;
-}
-
-.mx-28{
-  margin-left: 7rem;
-  margin-right: 7rem;
-}
-
-.mx-16{
-  margin-left: 4rem;
-  margin-right: 4rem;
-}
-
 .-mb-5{
   margin-bottom: -1.25rem;
 }
@@ -3586,6 +3551,11 @@ select{
   background-color: rgb(20 83 45 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-lightGreen:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 204 119 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-stone-500:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(120 113 108 / var(--tw-bg-opacity));
@@ -3604,11 +3574,6 @@ select{
 .hover\:bg-white:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-lightGreen:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 204 119 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-300:hover{
@@ -4016,16 +3981,6 @@ select{
   .md-compact\:mx-\[68px\]{
     margin-left: 68px;
     margin-right: 68px;
-  }
-
-  .md-compact\:mx-32{
-    margin-left: 8rem;
-    margin-right: 8rem;
-  }
-
-  .md-compact\:mx-36{
-    margin-left: 9rem;
-    margin-right: 9rem;
   }
 
   .md-compact\:-ml-10{
@@ -4557,6 +4512,11 @@ select{
     margin-right: 1rem;
   }
 
+  .portable\:mx-40{
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+
   .portable\:mx-5{
     margin-left: 1.25rem;
     margin-right: 1.25rem;
@@ -4570,11 +4530,6 @@ select{
   .portable\:mx-auto{
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .portable\:mx-40{
-    margin-left: 10rem;
-    margin-right: 10rem;
   }
 
   .portable\:-ml-10{
@@ -4799,13 +4754,13 @@ select{
     line-height: 1.5rem;
   }
 
-  .portable\:text-xl{
-    font-size: 1.25rem;
+  .portable\:text-lg{
+    font-size: 1.125rem;
     line-height: 1.75rem;
   }
 
-  .portable\:text-lg{
-    font-size: 1.125rem;
+  .portable\:text-xl{
+    font-size: 1.25rem;
     line-height: 1.75rem;
   }
 }
@@ -4858,6 +4813,11 @@ select{
     margin-right: 13rem;
   }
 
+  .sm\:mx-56{
+    margin-left: 14rem;
+    margin-right: 14rem;
+  }
+
   .sm\:mx-6{
     margin-left: 1.5rem;
     margin-right: 1.5rem;
@@ -4871,16 +4831,6 @@ select{
   .sm\:my-8{
     margin-top: 2rem;
     margin-bottom: 2rem;
-  }
-
-  .sm\:mx-60{
-    margin-left: 15rem;
-    margin-right: 15rem;
-  }
-
-  .sm\:mx-56{
-    margin-left: 14rem;
-    margin-right: 14rem;
   }
 
   .sm\:-ml-16{
@@ -5109,6 +5059,10 @@ select{
 
   .sm\:w-full{
     width: 100%;
+  }
+
+  .sm\:w-96{
+    width: 24rem;
   }
 
   .sm\:max-w-2xl{
@@ -5349,6 +5303,11 @@ select{
     margin-right: 15rem;
   }
 
+  .md\:mx-72{
+    margin-left: 18rem;
+    margin-right: 18rem;
+  }
+
   .md\:mx-9{
     margin-left: 2.25rem;
     margin-right: 2.25rem;
@@ -5357,26 +5316,6 @@ select{
   .md\:mx-auto{
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .md\:mx-64{
-    margin-left: 16rem;
-    margin-right: 16rem;
-  }
-
-  .md\:mx-80{
-    margin-left: 20rem;
-    margin-right: 20rem;
-  }
-
-  .md\:mx-96{
-    margin-left: 24rem;
-    margin-right: 24rem;
-  }
-
-  .md\:mx-72{
-    margin-left: 18rem;
-    margin-right: 18rem;
   }
 
   .md\:-mb-5{
@@ -5555,8 +5494,8 @@ select{
     width: 415px;
   }
 
-  .md\:w-1\/2{
-    width: 50%;
+  .md\:w-\[500px\]{
+    width: 500px;
   }
 
   .md\:max-w-80{
@@ -5585,6 +5524,14 @@ select{
 
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:items-center{
+    align-items: center;
+  }
+
+  .md\:justify-center{
+    justify-content: center;
   }
 
   .md\:justify-between{
@@ -5752,6 +5699,11 @@ select{
     margin-right: 10rem;
   }
 
+  .lg\:mx-56{
+    margin-left: 14rem;
+    margin-right: 14rem;
+  }
+
   .lg\:mx-80{
     margin-left: 20rem;
     margin-right: 20rem;
@@ -5760,21 +5712,6 @@ select{
   .lg\:mx-auto{
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .lg\:my-32{
-    margin-top: 8rem;
-    margin-bottom: 8rem;
-  }
-
-  .lg\:mx-56{
-    margin-left: 14rem;
-    margin-right: 14rem;
-  }
-
-  .lg\:mx-5{
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
   }
 
   .lg\:-ml-16{
@@ -5937,6 +5874,10 @@ select{
     margin-top: 10rem;
   }
 
+  .lg\:mt-44{
+    margin-top: 11rem;
+  }
+
   .lg\:mt-5{
     margin-top: 1.25rem;
   }
@@ -5951,10 +5892,6 @@ select{
 
   .lg\:mt-96{
     margin-top: 24rem;
-  }
-
-  .lg\:mt-44{
-    margin-top: 11rem;
   }
 
   .lg\:block{
@@ -5995,10 +5932,6 @@ select{
 
   .lg\:h-\[60vh\]{
     height: 60vh;
-  }
-
-  .lg\:h-5{
-    height: 1.25rem;
   }
 
   .lg\:w-1\/2{
@@ -6049,16 +5982,8 @@ select{
     width: 100%;
   }
 
-  .lg\:w-5{
-    width: 1.25rem;
-  }
-
-  .lg\:w-2{
-    width: 0.5rem;
-  }
-
-  .lg\:w-10{
-    width: 2.5rem;
+  .lg\:w-10\/12{
+    width: 83.333333%;
   }
 
   .lg\:max-w-96{
@@ -6292,6 +6217,16 @@ select{
     margin-right: 10rem;
   }
 
+  .xl\:mx-64{
+    margin-left: 16rem;
+    margin-right: 16rem;
+  }
+
+  .xl\:mx-80{
+    margin-left: 20rem;
+    margin-right: 20rem;
+  }
+
   .xl\:mx-96{
     margin-left: 24rem;
     margin-right: 24rem;
@@ -6302,29 +6237,14 @@ select{
     margin-right: 700px;
   }
 
-  .xl\:my-5{
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .xl\:mx-60{
-    margin-left: 15rem;
-    margin-right: 15rem;
-  }
-
   .xl\:my-24{
     margin-top: 6rem;
     margin-bottom: 6rem;
   }
 
-  .xl\:mx-64{
-    margin-left: 16rem;
-    margin-right: 16rem;
-  }
-
-  .xl\:mx-80{
-    margin-left: 20rem;
-    margin-right: 20rem;
+  .xl\:my-5{
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
   }
 
   .xl\:-mb-40{
