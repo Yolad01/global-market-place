@@ -1132,6 +1132,11 @@ select{
   margin-right: 7rem;
 }
 
+.mx-16{
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
 .-mb-5{
   margin-bottom: -1.25rem;
 }
@@ -3978,6 +3983,10 @@ select{
     height: 11rem;
   }
 
+  .sm-compact\:w-2\/3{
+    width: 66.666667%;
+  }
+
   .sm-compact\:p-1{
     padding: 0.25rem;
   }
@@ -5761,6 +5770,11 @@ select{
   .lg\:mx-56{
     margin-left: 14rem;
     margin-right: 14rem;
+  }
+
+  .lg\:mx-5{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
   }
 
   .lg\:-ml-16{
