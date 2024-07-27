@@ -535,3 +535,22 @@ class UserReview(models.Model):
 
     def __str__(self) -> str:
         return f'{self.rater.username} rated {self.user.username} {self.rating} star(s)'
+    
+
+
+
+class Compliance(models.Model):
+    ...
+
+
+class Identity(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    house_address = models.CharField(max_length=100)
+    street_name = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    region = models.CharField(max_length=100)
+    country = models.CharField(max_length=50)
+    Postal_code = models.CharField(max_length=10)
+    passport_photo = models.ImageField(upload_to="compliance", height_field=None, width_field=None)
+    ...
+
