@@ -5,7 +5,7 @@ from main.forms import (RegistrationForm, JobForm, SkillaProfileForm,
                         TrainingAndCertificationForm, ProfilePictureForm, BriefForm,
                         ChatMessageForm, OrderForm, AcceptQuoteForm, BriefAppForm,
                         DeclineQuoteForm, SkillForm, DeleteBriefForm, EditBriefForm,
-                        SearchForm, PaymentForm, UserReviewForm
+                        SearchForm, PaymentForm, UserReviewForm, ComplianceForm
                         )
 
 from main.models import ( AboutSkilla, TrainingAndCertification, JobCategory, Job, SkillaProfile,
@@ -132,9 +132,22 @@ def guide_four(request):
     )
     
 def guide_five(request):
+    user = request.user
+    if request.method == "POST":
+        form = ComplianceForm(request.POST)
+        if form.is_valid():
+            compliance_form = form.save(commit=False)
+            compliance_form.user = user
+            compliance_form.save()
+
+    form = ComplianceForm()
+
     return render(
         request=request,
-        template_name="main/skilla/compliance/guide_five.html"
+        template_name="main/skilla/compliance/guide_five.html",
+        context={
+            "form": form
+        }
     )
     
 def register(request):
@@ -165,15 +178,12 @@ def register(request):
                 send_mail_to_user
                 ClientProfile.objects.create(user_id=request.user.id)
                 messages.success(request, f"Logged in as {username}")
-                return redirect("main:client_profile")
+                return redirect("main:client_dashboard")
             elif user.role == "SKILLAS":
                 send_mail_to_user
                 SkillaProfile.objects.create(user_id=request.user.id)
                 messages.success(request, f"Logged in as {username}")
-                return redirect("main:skilla_profile")
-            elif user.role == "COMPANY":
-                messages.success(request, f"Logged in as {username}")
-                return redirect("main:company_profile")
+                return redirect("main:skillas_dashboard")
         else:
             for field, errors in registration_form.errors.items():
                 for error in errors:

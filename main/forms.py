@@ -3,9 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from main.models import (Payment, User, UserReview, JobCategory, Job,
                          SkillaProfile, Skill, ClientProfile,
                          CompanyProfile, AboutSkilla, TrainingAndCertification,
-                         ProfilePicture, Brief, Order
+                         ProfilePicture, Brief, Order, Compliance
                          )
 from django.core.exceptions import ValidationError
+
 
 
 class PasswordResetRequestForm(forms.Form):
@@ -79,10 +80,15 @@ class SkillaProfileForm(forms.ModelForm):
             "current_location",
             "experience",
             "portfolio",
-            "identification",
+            "passport_photo",
             "professional_profiles_links",
-            "hourly_rate",
-            "terms_and_conditions"
+            # new fields
+            "house_address",
+            "street_name",
+            "region",
+            "city",
+            "Postal_code",
+
         )
 
         widgets = {
@@ -94,7 +100,14 @@ class SkillaProfileForm(forms.ModelForm):
             "identification": forms.ClearableFileInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md bg-veryDarkGreen text-white'}),
             "professional_profiles_links": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Professional Profile links"}),
             "terms_and_conditions": forms.CheckboxInput(attrs={'class': 'border border-gray-700 p-2 mb-4 mr-2 rounded-md',}),
-            "hourly_rate": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'})
+            "hourly_rate": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
+
+            "house_address": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
+            "street_name": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
+            "region": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
+            "city": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
+            "Postal_code": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
+
         }
     
       ##### Validation checks
@@ -368,3 +381,8 @@ class PaymentForm(forms.Form):
        
     )
 
+
+class ComplianceForm(forms.ModelForm):
+    class Meta:
+        model = Compliance
+        fields = ["complied"]

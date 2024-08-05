@@ -34,14 +34,19 @@ class JobsAdmin(admin.ModelAdmin):
 
 class SkillaProfileAdmin(admin.ModelAdmin):
      list_display = [
-          "user",
           "country",
           "state",
           "current_location",
           "experience",
           "portfolio",
+          "passport_photo",
           "professional_profiles_links",
-          "hourly_rate",
+          # new fields
+          "house_address",
+          "street_name",
+          "region",
+          "city",
+          "Postal_code",
           "activated"
      ]
      

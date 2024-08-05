@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.query import QuerySet
 
-from .options import Country, Role, SkillLevel, Rate
+from .utils.options import Country, Role, SkillLevel, Rate
 import random
 from django.utils import timezone
 from datetime import datetime
@@ -154,13 +154,18 @@ class SkillaProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     country = models.CharField(max_length=20, blank=True, null=True, choices=Country.choices)# change blank to false later
     state = models.CharField(max_length=20, null=True, blank=True) # change blank to false 
+    house_address = models.CharField(max_length=100, default=None, null=True, blank=True)
+    street_name = models.CharField(max_length=100, default=None, null=True, blank=True)
+    region = models.CharField(max_length=100, default=None, null=True, blank=True)
+    city = models.CharField(max_length=100, default=None, null=True, blank=True)
+    Postal_code = models.CharField(max_length=10, default=None, null=True, blank=True)
     current_location = models.CharField(max_length=20, null=True, blank=True)
     experience = models.PositiveSmallIntegerField(verbose_name="Years of Experience", blank=True, null=True)
     portfolio = models.URLField(verbose_name="links to your works", blank=True, null=True)
     professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
-    identification = models.ImageField(upload_to="skillas_id_cards_for_kyc", null=True, blank=True)
-    hourly_rate = models.PositiveIntegerField(verbose_name="Hourly_rate or salary", blank=True, null=True)
-    terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
+    passport_photo = models.ImageField(upload_to="skillas_id_cards_for_kyc", null=True, blank=True)
+    # hourly_rate = models.PositiveIntegerField(verbose_name="Hourly_rate or salary", blank=True, null=True)
+    # terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
     # Add BVN column
     
     activated = models.BooleanField(default=False)
@@ -540,17 +545,24 @@ class UserReview(models.Model):
 
 
 class Compliance(models.Model):
-    ...
-
-
-class Identity(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    house_address = models.CharField(max_length=100)
-    street_name = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    region = models.CharField(max_length=100)
-    country = models.CharField(max_length=50)
-    Postal_code = models.CharField(max_length=10)
-    passport_photo = models.ImageField(upload_to="compliance", height_field=None, width_field=None)
-    ...
+    complied = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        if self.complied == True:
+            return f'{self.user} has complied'
+        else:
+            return f'{self.user} has not complied'
+
+
+# class Identity(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     house_address = models.CharField(max_length=100)
+#     street_name = models.CharField(max_length=100)
+#     city = models.CharField(max_length=100)
+#     region = models.CharField(max_length=100)
+#     country = models.CharField(max_length=50)
+#     Postal_code = models.CharField(max_length=10)
+#     passport_photo = models.ImageField(upload_to="compliance", height_field=None, width_field=None)
+#     ...
 

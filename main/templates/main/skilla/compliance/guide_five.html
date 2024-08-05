@@ -37,6 +37,11 @@
                 credibility and <br/>will determine your value and<br/>
                 visibility on Skillas platform.</h2>
 
+            <form method="POST" class="mt-10 flex items-center justify-center font-semibold">
+                {% csrf_token %}
+                {{ form }}
+            </form>
+
             
             <div class="xl:mt-5 mt-14 xl:mx-80 lg:mx-56 lg:mb-10 md:mx-72 sm:mx-56 portable:mx-40 mx-10 py-2 bg-veryDarkGreen flex justify-center items-center">
                 <a href="/guide_four"><img class="h-5" src="{% static '/img/white_left_arrow.png' %}" alt="left arrow"></a>
@@ -44,6 +49,5 @@
                 <a href="/skillas_dashboard"><img class="h-5 " src="{% static '/img/white_right_arrow.png' %}" alt="right arrow"></a>
             </div>
         </div>
-    
     </body>
 </html>
