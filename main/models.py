@@ -151,7 +151,7 @@ class Skill(models.Model):
 
 
 class SkillaProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="skillas_profile")
     country = models.CharField(max_length=20, blank=True, null=True, choices=Country.choices)# change blank to false later
     state = models.CharField(max_length=20, null=True, blank=True) # change blank to false 
     house_address = models.CharField(max_length=100, default=None, null=True, blank=True)
