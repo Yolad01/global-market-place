@@ -1302,6 +1302,10 @@ select{
   margin-left: 1rem;
 }
 
+.ml-40{
+  margin-left: 10rem;
+}
+
 .ml-48{
   margin-left: 12rem;
 }
@@ -2656,6 +2660,10 @@ select{
   padding-left: 1.25rem;
 }
 
+.pl-6{
+  padding-left: 1.5rem;
+}
+
 .pl-8{
   padding-left: 2rem;
 }
@@ -3538,6 +3546,11 @@ select{
   background-color: rgb(22 101 52 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-green-900:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-lightGreen:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(30 204 119 / var(--tw-bg-opacity));
@@ -3556,11 +3569,6 @@ select{
 .hover\:bg-veryLightGreen:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(98 239 180 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-veryShadyGreen:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(6 57 63 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-white:hover{
@@ -3934,6 +3942,11 @@ select{
   .sm-compact\:mx-16{
     margin-left: 4rem;
     margin-right: 4rem;
+  }
+
+  .sm-compact\:mx-5{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
   }
 
   .sm-compact\:h-44{
@@ -4447,6 +4460,11 @@ select{
     line-height: 2rem;
   }
 
+  .custom\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .custom\:text-base{
     font-size: 1rem;
     line-height: 1.5rem;
@@ -4549,6 +4567,10 @@ select{
 
   .portable\:-mt-6{
     margin-top: -1.5rem;
+  }
+
+  .portable\:mb-16{
+    margin-bottom: 4rem;
   }
 
   .portable\:mb-4{
@@ -5469,6 +5491,10 @@ select{
     width: 20rem;
   }
 
+  .md\:w-96{
+    width: 24rem;
+  }
+
   .md\:w-\[400px\]{
     width: 400px;
   }
@@ -5747,6 +5773,10 @@ select{
 
   .lg\:ml-20{
     margin-left: 5rem;
+  }
+
+  .lg\:ml-3{
+    margin-left: 0.75rem;
   }
 
   .lg\:ml-32{
