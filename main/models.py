@@ -163,7 +163,9 @@ class SkillaProfile(models.Model):
     experience = models.PositiveSmallIntegerField(verbose_name="Years of Experience", blank=True, null=True)
     portfolio = models.URLField(verbose_name="links to your works", blank=True, null=True)
     professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
-    passport_photo = models.ImageField(upload_to="skillas_id_cards_for_kyc", null=True, blank=True)
+    nin = models.CharField(max_length=11, null=True, blank=True)
+    id_card = models.ImageField(upload_to="skillas_id_cards_for_kyc", null=True, blank=True)
+    passport_photo = models.ImageField(upload_to="passport_photo", null=True, blank=True)
     # hourly_rate = models.PositiveIntegerField(verbose_name="Hourly_rate or salary", blank=True, null=True)
     # terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
     # Add BVN column

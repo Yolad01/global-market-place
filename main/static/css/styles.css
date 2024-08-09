@@ -1302,10 +1302,6 @@ select{
   margin-left: 1rem;
 }
 
-.ml-40{
-  margin-left: 10rem;
-}
-
 .ml-48{
   margin-left: 12rem;
 }
@@ -3546,11 +3542,6 @@ select{
   background-color: rgb(22 101 52 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-green-900:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-lightGreen:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(30 204 119 / var(--tw-bg-opacity));
@@ -3569,6 +3560,11 @@ select{
 .hover\:bg-veryLightGreen:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(98 239 180 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-veryShadyGreen:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 57 63 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-white:hover{
@@ -4458,11 +4454,6 @@ select{
   .custom\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
-  }
-
-  .custom\:text-3xl{
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 
   .custom\:text-base{

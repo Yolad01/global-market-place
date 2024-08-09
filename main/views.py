@@ -92,7 +92,6 @@ def s_identity(request):
         region = request.POST["region"]
         country = request.POST["country"]
         zip_code = request.POST["zip_code"]
-        print(f'{house_no}, {street_name}, {city_name}, {region}, {house_no}, {country}, {zip_code}') 
         
         instance = SkillaProfile.objects.get(user=user)
         instance.country = country
@@ -103,22 +102,42 @@ def s_identity(request):
         instance.Postal_code = zip_code
         instance.save()
 
-        return redirect("main:skilla_search")
+        return redirect("main:identity_details")
     return render(
         request=request,
         template_name="main/skilla/kyc/s_identity.html"
     )
     
 def identity_details(request):
+    user = request.user
+    if request.method == "POST":
+        nin = request.POST["nin"]
+        id_image = request.FILES["id_image"]
+        passport = request.FILES["passport"]
+
+        instance = SkillaProfile.objects.get(user=user)
+        instance.nin = nin
+        instance.id_card = id_image
+        instance.passport_photo = passport
+        instance.save()
+
+        return redirect("main:review")
     return render(
         request=request,
-        template_name="main/skilla/kyc/identity_details.html"
+        template_name="main/skilla/kyc/identity_details.html",
+        
     )
     
 def review(request):
+    user = request.user
+    review = SkillaProfile.objects.get(user=user)
+    
     return render(
         request=request,
-        template_name="main/skilla/kyc/review.html"
+        template_name="main/skilla/kyc/review.html",
+        context={
+            "review": review
+        }
     )
     
 def compliance(request):
