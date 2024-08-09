@@ -71,29 +71,34 @@
                     <div class="mt-10 lg:ml-14">
                         <h3 class="text-darkBlue_2 font-semibold custom:text-2xl text-lg">Address details</h3>
 
-                        <form class="mt-10">
+                        <form method="POST" class="mt-10">
+                            {% csrf_token %}
                             <div class="">
                                 <label class="text-darkBlue font-normal text-base" for="username">Line 1</label><br />
-                                <input class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6  py-3 lg:px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="House no">
+                                <input required name="house_no" class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6  py-3 lg:px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="house_no" type="text" placeholder="House no">
                             </div>
 
                             <div class="mt-5">
                                 <label class="text-darkBlue font-normal text-base" for="username">Line 2</label><br />
-                                <input class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6 py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Street name">
+                                <input required name="street_name" class="mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6 py-3 px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="street_name" type="text" placeholder="Street name">
                             </div>
 
                             <div class="lg:flex mt-5 gap-x-2">
                                 <div class="">
-                                    <label class="text-darkBlue font-normal text-base" for="username">City</label><br />
-                                    <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter city name">
+                                    <label class="text-darkBlue font-normal text-base">City</label><br />
+                                    <input required name="city_name" class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="city_name" type="text" placeholder="Enter city name">
                                 </div>
 
                                 <div class="lg:mt-0 mt-5">
                                     <label class="block text-darkBlue font-normal text-base" for="dropdown">Region</label>
-                                    <select class="mt-3 block appearance-none text-darkBlue_2 sm:pr-28 bg-white border border-shadeAsh_6 hover:border-veryDarkGreen lg:w-full w-5/6 px-3 py-3 rounded-md shadow leading-tight focus:outline-none focus:shadow-outline" id="dropdown">
+                                    <select name="region" class="mt-3 block appearance-none text-darkBlue_2 sm:pr-28 bg-white border border-shadeAsh_6 hover:border-veryDarkGreen lg:w-full w-5/6 px-3 py-3 rounded-md shadow leading-tight focus:outline-none focus:shadow-outline" id="region">
                                         <option>Select</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+                                        <option>South South</option>
+                                        <option>South East</option>
+                                        <option>South West</option>
+                                        <option>North Central</option>
+                                        <option>North West</option>
+                                        <option>North East</option>
                                     </select>
                                 </div>
                             </div>
@@ -101,19 +106,22 @@
                             <div class="lg:flex mt-5 gap-x-2">
                                 <div class="">
                                     <label class="text-darkBlue font-normal text-base" for="username">Country</label><br />
-                                    <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Country name">
+                                    <input required name="country" class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="country" type="text" placeholder="Country name">
                                 </div>
 
                                 <div class="lg:mt-0 mt-5">
                                     <label class="block text-darkBlue font-normal text-base" for="dropdown">Postal / Zip code</label>
-                                    <input class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 lg:w-5/6 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Zip code">
+                                    <input required name="zip_code" class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 lg:w-5/6 w-5/6 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="zip_code" type="text" placeholder="Zip code">
                                 </div>
                             </div>
 
                             <div class="flex items-center justify-between mt-10">
-                                <a href="/identity_details" class="bg-veryDarkGreen text-white font-medium lg:text-lg custom:text-base text-sm py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
+                                <button type="submit" class="bg-veryDarkGreen text-white font-medium lg:text-lg custom:text-base text-sm py-3 px-4 rounded-md focus:outline-none focus:shadow-outline">
                                     SAVE & COUNTINUE
-                                </a>
+                                </button>
+                                <!--<a href="/identity_details" class="bg-veryDarkGreen text-white font-medium lg:text-lg custom:text-base text-sm py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
+                                    SAVE & COUNTINUE
+                                </a> -->
                             </div>
                         </form>
                     </div>

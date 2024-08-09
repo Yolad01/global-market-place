@@ -102,7 +102,7 @@ class SkillaProfileForm(forms.ModelForm):
             "terms_and_conditions": forms.CheckboxInput(attrs={'class': 'border border-gray-700 p-2 mb-4 mr-2 rounded-md',}),
             "hourly_rate": forms.NumberInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md'}),
 
-            "house_address": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
+            "house_address": forms.TextInput(attrs={'class': 'mt-3 shadow appearance-none border border-shadeAsh_6 hover:border-veryDarkGreen rounded-md w-5/6  py-3 lg:px-3 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline', "placeholder": "House no"}),
             "street_name": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
             "region": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),
             "city": forms.TextInput(attrs={'class': 'border border-gray-700 p-2 mb-4 w-full rounded-md', "placeholder": "Current location"}),

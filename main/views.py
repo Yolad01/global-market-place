@@ -84,6 +84,26 @@ def frequently_asked_questions(request):
     )
 
 def s_identity(request):
+    user = request.user
+    if request.method == "POST":
+        house_no = request.POST["house_no"]
+        street_name = request.POST["street_name"]
+        city_name = request.POST["city_name"]
+        region = request.POST["region"]
+        country = request.POST["country"]
+        zip_code = request.POST["zip_code"]
+        print(f'{house_no}, {street_name}, {city_name}, {region}, {house_no}, {country}, {zip_code}') 
+        
+        instance = SkillaProfile.objects.get(user=user)
+        instance.country = country
+        instance.house_address = house_no
+        instance.street_name = street_name
+        instance.region = region
+        instance.city = city_name
+        instance.Postal_code = zip_code
+        instance.save()
+
+        return redirect("main:skilla_search")
     return render(
         request=request,
         template_name="main/skilla/kyc/s_identity.html"
@@ -788,7 +808,6 @@ def skillas_gigs(request):
         
     if request.method == "POST":
         var = request.POST["var"]
-        print(var)
         return redirect("main:skilla_search", param=var)
     
 
