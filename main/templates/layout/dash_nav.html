@@ -111,18 +111,26 @@
                      <div class="border-b-2 pb-5 py-5">
                         <div class="flex mt-5 justify-between">
                             <div class="flex">
-                                {% comment %} <input type="search" name="search" id="search" class="rounded border-2 px-80 text-base ml-10 pl-10 py-2 " placeholder="Search here">
-                                <a href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></a> {% endcomment %}
-                                <form method="POST">
+                                <!-- <input type="search" name="search" id="search" class="rounded border-2 px-80 text-base ml-10 pl-10 py-2 " placeholder="Search here">
+                                <a href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></a> --> 
+                                <form method="POST" class="flex">
                                     {% csrf_token %}
 
-                                    <div class="flex items-center portable:-ml-10 -ml-20 mr-5 sm:-ml-16 md-compact:mr-4 custom:mr-5">
+                                    <input type="text" name="search_input" id="id_search_input" class="rounded border-2 px-80 text-base ml-10 pl-10 py-2 md-compact:mr-4 custom:mr-5" placeholder="Search here">
+                                    <p href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></p>
+                                    <button type="submit" class="bg-veryDarkGreen text-white px-5 rounded-md shadow-md">
+                                        Search
+                                    </button>
+
+                                    <!-- <div class="flex items-center portable:-ml-10 -ml-20 mr-5 sm:-ml-16 md-compact:mr-4 custom:mr-5">
                                         <div>{{ search_form.search_input }}</div>
+                                        
                                         <button type="submit" class="bg-veryDarkGreen text-white px-2 rounded-md shadow-md">
                                             Search
                                         </button>
                                         
-                                    </div>
+                                    </div> -->
+                                    
                                     
                                 </form>
                             </div>
@@ -153,3 +161,5 @@
 
     </body>
 </html>
+
+{% comment %} <input type="text" name="search_input" class="border border-gray-700 w-full ml-20 pr-5 rounded-md" placeholder="Search" required="" id="id_search_input"> {% endcomment %}

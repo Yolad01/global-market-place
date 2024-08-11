@@ -405,7 +405,8 @@ def skilla(request):
 
     if request.method == "POST":
         form = BriefAppForm(request.POST)
-        search_form = SearchForm(request.POST)
+        # search_form = SearchForm(request.POST)
+        search_input = request.POST["search_input"]
         if form.is_valid():
             client = form.cleaned_data["client"]
             title = form.cleaned_data["title"]
@@ -428,8 +429,9 @@ def skilla(request):
             reachout.save()
             messages.success(request, "Request successfully sent to the client")
             return redirect("main:skillas_dashboard")
-        if search_form.is_valid():
-            search_input = search_form.cleaned_data["search_input"]
+        # if search_form.is_valid():
+        #     search_input = search_form.cleaned_data["search_input"]
+        if search_input:
             return redirect("main:search_results", param=search_input)
 
     form = BriefAppForm()
@@ -440,7 +442,7 @@ def skilla(request):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "brief": brief,
             "form": form,
-            "search_form": search_form,
+            # "search_form": search_form,
             "single_search": single_search,
             "unread_count":unread_count,
             "count_of_order": trans_count,
@@ -720,6 +722,13 @@ def quotes(request):
         skilla=user,
     ).order_by("-order_created")
 
+    try:
+        unread_count = get_unread_messages_count(user)
+        trans_count = Payment().get_skilla_order_count(user=user)
+    except Exception as e:
+        unread_count = None
+        trans_count = None
+
     return render(
         request=request,
         template_name="main/skilla/quotes_and_orders/sent_quotes.html",
@@ -727,6 +736,8 @@ def quotes(request):
             "display_order": display_order,
             "search_form": SearchForm(),
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+            "unread_count":unread_count,
+            "count_of_order": trans_count,
         }
     )
 
@@ -788,6 +799,7 @@ def orders(request):
             "accept_form": accept_form,
             "decline_form": decline_form,
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
+
         }
     )
 
@@ -1032,9 +1044,16 @@ def thread_view(request, username):
 
 
 def search_results(request, param):
-
+    user = request.user
     single_search = param
     single_search = search_brief_title(Brief, single_search) or search_brief_category(Brief, single_search)
+
+    try:
+        unread_count = get_unread_messages_count(user)
+        trans_count = Payment().get_skilla_order_count(user=user)
+    except Exception as e:
+        unread_count = None
+        trans_count = None
 
     if request.method == "POST":
         search_form = SearchForm(request.POST)
@@ -1051,6 +1070,8 @@ def search_results(request, param):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user),
             "single_search": single_search,
             "search_form": search_form,
+            "unread_count":unread_count,
+            "count_of_order": trans_count,
         }
     )
 
