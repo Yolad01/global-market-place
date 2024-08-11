@@ -449,8 +449,6 @@ def skilla(request):
     )
 
 
-
-
 #### add @login_required decorator
 def company(request):
     return render(
@@ -689,9 +687,13 @@ def inbox(request):
 
     try:
         profile_picture = ProfilePicture.objects.get(user=user)
-        read_messages = MessageReadStatus.objects.latest("user")
-        read_messages.is_read = True
-        read_messages.save()
+        read_messages = MessageReadStatus.objects.all().filter(user=user)
+
+        for message in read_messages:
+            MessageReadStatus.objects.get(pk=message.pk)
+            message.is_read = True
+            message.save()
+
     except (ProfilePicture.DoesNotExist, MessageReadStatus.DoesNotExist):
         pass
 
