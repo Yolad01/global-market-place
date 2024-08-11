@@ -1144,17 +1144,18 @@ def password_reset_complete(request):
 
 
 
-def make_payment(request, order_no):
+def make_payment(request, order_no, price):
     user = request.user
     order = Order.objects.get(order_no=order_no)
     skilla_img = ProfilePicture.objects.get(user=order.skilla)
+    print(price)
 
     if request.method == "POST":
         form = PaymentForm(request.POST)
         if form.is_valid():
             amount = form.cleaned_data["amount"]
             send_fund = PayStackIt(
-                api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea",
+                api_key=settings.PAYSTACK_API_KEY,
                 callback_url="http://127.0.0.1:8000/success_page"
             )
 
@@ -1177,7 +1178,8 @@ def make_payment(request, order_no):
         request=request,
         template_name="main/payment/make_payment.html",
         context={
-            "form": form
+            "form": form,
+            "price": price
         }
     )
 
@@ -1186,7 +1188,7 @@ def payment_success(request):
     user = request.user
     payment = Payment.objects.filter(user=user).last()
     verify = PayStackIt(
-        api_key="sk_test_979d34158a35d26730d1b336e5b3ed9e6f8d89ea",
+        api_key=settings.PAYSTACK_API_KEY,
         callback_url="http://127.0.0.1:8000/success_page",
         on_cancel_url="http://127.0.0.1:8000/success_page"
     )
@@ -1222,7 +1224,7 @@ def payment_success(request):
 
 def paid_order_history(request):
     user = request.user
-    payment = Payment.objects.filter(user=user)
+    payment = Payment.objects.filter(user=user).order_by("-pk")
 
     paginator = Paginator(payment, 5)
     page_number = request.GET.get("page")

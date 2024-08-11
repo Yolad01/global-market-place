@@ -52,15 +52,18 @@ class PayStackIt:
             headers=self.headers,
             json=self.data
         )
-        self.response = self.response.json()
+        self.response.raise_for_status()
+        print(self.response.status_code)
+        if self.response.status_code != 204:
+            self.response = self.response.json()
 
-        self.authorization_url = self.response["data"]["authorization_url"]
-        self.reference_code = self.response["data"]["reference"]
-        self.message = self.response["message"]
-        self.status =  self.response["status"]
-        self.access_code = self.response["data"]["access_code"]
+            self.authorization_url = self.response["data"]["authorization_url"]
+            self.reference_code = self.response["data"]["reference"]
+            self.message = self.response["message"]
+            self.status =  self.response["status"]
+            self.access_code = self.response["data"]["access_code"]
 
-        return None
+            return None
     
 
     def verify_transaction(self, reference_code) -> dict:
@@ -70,15 +73,17 @@ class PayStackIt:
             url=self.transaction_verification_url,
             headers=self.headers,
         )
-        self.response = self.response.json()
+        self.response.raise_for_status()
+        if self.response.status_code != 204:
+            self.response = self.response.json()
 
-        self.status = self.response["data"]["status"]
-        self.message = self.response["message"]
-        self.time_of_payment = self.response["data"]["paid_at"]
-        self.card_type = self.response["data"]["authorization"]["card_type"]
-        self.payment_channel = self.response["data"]["channel"]
+            self.status = self.response["data"]["status"]
+            self.message = self.response["message"]
+            self.time_of_payment = self.response["data"]["paid_at"]
+            self.card_type = self.response["data"]["authorization"]["card_type"]
+            self.payment_channel = self.response["data"]["channel"]
 
-        return None
+            return None
     
     
 

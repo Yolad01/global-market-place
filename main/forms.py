@@ -370,7 +370,7 @@ class SearchForm(forms.Form):
 class PaymentForm(forms.Form):
     
     amount = forms.IntegerField(
-        min_value=2000,
+        min_value=2,
         max_value=100000,
         widget=forms.NumberInput(
              attrs={
