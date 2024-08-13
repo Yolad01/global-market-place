@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="flex p-2 mt-2">
-                        <a href="/s_identity"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/Dash-Vector-1.png' %}" alt="Profile icon"></a>
+                        <a href="/s_identity"><img class="xl:h-5 xl:w-5 h-8 w-8" src="{% static '/img/compliance.png' %}" alt="Profile icon"></a>
                         <a href="/s_identity" class="text-veryLightBlack font-bold text-xl ml-5 hidden -mt-1 xl:block">Compliance</a>
                     </div>
     
@@ -116,8 +116,8 @@
                                 <form method="POST" class="flex">
                                     {% csrf_token %}
 
-                                    <input type="text" name="search_input" id="id_search_input" class="rounded border-2 px-80 text-base ml-10 pl-10 py-2 md-compact:mr-4 custom:mr-5" placeholder="Search here">
-                                    <p href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></p>
+                                    <input type="text" name="search_input" id="id_search_input" class="rounded border-2  text-base ml-10 pl-10 py-2 md-compact:mr-4 custom:mr-5" placeholder="Search here">
+                                    {% comment %} <p href="#"><img src="{% static '/img/search.png' %}" alt="" class="-translate-x-10 mt-3"></p> {% endcomment %}
                                     <button type="submit" class="bg-veryDarkGreen text-white px-5 rounded-md shadow-md">
                                         Search
                                     </button>
