@@ -25,10 +25,10 @@
 
     <body class="min-h-screen">
 
-        <div class="flex justify-center items-center px-5 sm:px-10 mt-10 mb-10">
+        <div class="sm:flex justify-center items-center mx-3 mt-10 mb-10">
 
-            <div class="flex bg-veryShadyGreen w-1/3 min-h-screen">
-                <div class="hidden sm:flex bg-veryShadyGreen pl-10">
+            <div class="hidden sm:flex bg-veryShadyGreen xl:w-1/3 lg:w-1/3 w-1/2 min-h-screen">
+                <div class="hidden sm:flex bg-veryShadyGreen xl:pl-10">
                     <div class="pt-24">
                         <div class="flex">
                             <img class="h-14 w-14" src="{% static '/img/check_mark.png' %}" alt="icon" />
@@ -67,10 +67,10 @@
             </div>
 
 
-            <div class="w-1/2 min-h-screen bg-gray-100">
+            <div class="sm:w-1/2 min-h-screen bg-gray-100 lg:px-10 px-3">
                 <h6 class="text-shadeAsh_7 flex justify-end mr-10 mt-5">Having trouble? <a href="#" class="text-darkBlue">Get help</a></h6>
         
-                <div class="mt-10 lg:ml-14">
+                <div class="mt-10">
                     <h3 class="text-darkBlue font-semibold text-2xl">Review</h3>
 
                     <p class="text-darkBlue font-medium text-base mt-5">KYC verification is in progress. This process typically takes up to 48 hours.</p>
@@ -78,28 +78,28 @@
                     <p class="text-darkBlue font-medium text-base mt-10">Please verify one by one.</p>
 
                     <div class="flex space-x-6">
-                        <p class="bg-white border border-veryDarkGreen rounded-md w-1/4 mt-5 py-2 px-5">{{review.house_address}}</p>
-                        <p class="bg-white border border-veryDarkGreen rounded-md w-1/2 mt-5 py-2 px-5">{{review.street_name}}</p>
+                        <p class="bg-white border border-veryDarkGreen rounded-md lg:w-1/4 w-1/4 mt-5 py-2 lg:px-5 px-2">{{review.house_address}}</p>
+                        <p class="bg-white border border-veryDarkGreen rounded-md lg:w-1/2 w-3/4 mt-5 py-2 lg:px-5 px-2">{{review.street_name}}</p>
                     </div>
                     
                     <div class="flex space-x-6">
-                        <p class="bg-white border border-veryDarkGreen rounded-md w-1/4 mt-5 py-2 px-5">{{review.city}}</p>
-                        <p class="bg-white border border-veryDarkGreen rounded-md w-1/4 mt-5 py-2 px-5">{{review.Postal_code}}</p>
+                        <p class="bg-white border border-veryDarkGreen rounded-md xl:w-1/4 w-1/2 mt-5 py-2 lg:px-5 px-2">{{review.city}}</p>
+                        <p class="bg-white border border-veryDarkGreen rounded-md md:w-1/4 w-1/2 mt-5 py-2 lg:px-5 px-2">{{review.Postal_code}}</p>
                     </div>
                     
                     <div class="flex space-x-6">
-                        <p class="bg-white border border-veryDarkGreen rounded-md w-1/4 mt-5 py-2 px-5">{{review.region}}</p>
-                        <p class="bg-white border border-veryDarkGreen rounded-md w-1/4 mt-5 py-2 px-5">{{review.nin}}</p>
+                        <p class="bg-white border border-veryDarkGreen rounded-md xl:w-1/4 w-1/2 mt-5 py-2 lg:px-5 px-2">{{review.region}}</p>
+                        <p class="bg-white border border-veryDarkGreen rounded-md xl:w-1/4 w-1/2 mt-5 py-2 lg:px-5 px-2">{{review.nin}}</p>
                     </div>
                     
                     <div class="flex space-x-6 mt-10">
-                        <img src="{{review.id_card.url}}" class="w-1/2" />
-                        <img src="{{review.passport_photo.url}}" class="w-1/3" />
+                        <img src="{{review.id_card.url}}" class="xl:w-96 xl:h-72 lg:w-48 lg:h-36 w-1/2 h-1/2" />
+                        <img src="{{review.passport_photo.url}}" class="xl:w-60 xl:h-72 lg:w-28 lg:h-36 w-1/4 h-1/4" />
                     </div>
 
 
                         <div class="flex items-center justify-between mt-10">
-                            <a href="/compliance" class="bg-veryDarkGreen mb-20 text-white font-medium text-lg py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
+                            <a href="/compliance" class="bg-veryDarkGreen mb-20 text-white font-medium lg:text-lg py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
                                 SAVE & COUNTINUE
                             </a>
 
