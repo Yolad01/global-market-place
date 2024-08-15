@@ -106,7 +106,7 @@
             
 
             <!--Over head nav goes here-->
-            <div class="w-full xl:ml-5 custom:-ml-64 sm-compact:-ml-72 border-2">
+            <div class="w-full xl:ml-5 custom:-ml-64 sm-compact:-ml-72 border-2 border-r-0">
                 <div class="flex-1 font-primary">
                      <div class="border-b-2 pb-5 py-5">
                         <div class="flex mt-5 justify-between">
@@ -124,7 +124,7 @@
     
                             <div class="lg:mr-28 md:mr-20 sm:mr-10 sm:flex items-center hidden">
                                 {% for x in profile_pic %}
-                                <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
+                                <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full lg:w-12 sm:w-16" alt="{{ user.username }} profile"></a>
                                 {% endfor %}
                                 <div class="pl-3 text-md font-semibold">{{ user.username }}</div>
                             </div>
