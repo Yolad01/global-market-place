@@ -1472,6 +1472,10 @@ select{
   margin-top: 20px;
 }
 
+.mb-28{
+  margin-bottom: 7rem;
+}
+
 .block{
   display: block;
 }
@@ -1586,6 +1590,18 @@ select{
 
 .h-screen{
   height: 100vh;
+}
+
+.h-\[50vh\]{
+  height: 50vh;
+}
+
+.h-\[25vh\]{
+  height: 25vh;
+}
+
+.h-\[35vh\]{
+  height: 35vh;
 }
 
 .max-h-0{
@@ -3929,6 +3945,10 @@ select{
     height: 11rem;
   }
 
+  .sm-compact\:h-\[50vh\]{
+    height: 50vh;
+  }
+
   .sm-compact\:p-1{
     padding: 0.25rem;
   }
@@ -4316,6 +4336,10 @@ select{
 
   .custom\:h-52{
     height: 13rem;
+  }
+
+  .custom\:h-\[50vh\]{
+    height: 50vh;
   }
 
   .custom\:w-3\/4{
@@ -6119,6 +6143,10 @@ select{
     padding-top: 200px;
   }
 
+  .lg\:pt-\[100px\]{
+    padding-top: 100px;
+  }
+
   .lg\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -6632,6 +6660,10 @@ select{
 
   .xl\:pt-10{
     padding-top: 2.5rem;
+  }
+
+  .xl\:pt-\[200px\]{
+    padding-top: 200px;
   }
 
   .xl\:text-2xl{
