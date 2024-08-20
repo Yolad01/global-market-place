@@ -1,5 +1,6 @@
 
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -37,10 +38,12 @@ DEBUG = env("DEBUG")
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
+PAYSTACK_API_KEY = env("PAYSTACK_API_KEY")
+
+ALLOWED_HOSTS = []
 
 
-CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
+
 
 
 
@@ -55,12 +58,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    
+    'ninja_extra',
+    'ninja_jwt',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -113,17 +119,17 @@ WSGI_APPLICATION = 'yolad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    'default':  Env.db_url_config(env('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     'default':  Env.db_url_config(env('DATABASE_URL'))
+# }
 
 
 
@@ -170,12 +176,15 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "yolad", "serviceworker.js")
 
 
 AUTH_USER_MODEL = "main.User"
@@ -185,8 +194,63 @@ AUTH_USER_MODEL = "main.User"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # remember to remove during deployment
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'yemirichard@yoladservices.com'
-EMAIL_HOST_PASSWORD = 'vllhwhciyktjkuyf'
+EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
+EMAIL_HOST_PASSWORD = 'lztthecjycjsgtnf'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
+
+NINJA_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+
+}
+
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+
+# PWA_APP_NAME = 'Skillas'
+# PWA_APP_DESCRIPTION = "One stop shop for your handy person"
+# PWA_APP_THEME_COLOR = '#0A0302'
+# PWA_APP_BACKGROUND_COLOR = '#ffffff'
+# PWA_APP_DISPLAY = 'standalone'
+# PWA_APP_SCOPE = '/'
+# PWA_APP_ORIENTATION = 'any'
+# PWA_APP_START_URL = '/'
+# PWA_APP_STATUS_BAR_COLOR = 'default'
+# PWA_APP_ICONS = [
+#     {
+#         'src': '/static/img/pwa/skills_icon_logo.png',
+#         'sizes': '160x160'
+#     }
+# ]
+# PWA_APP_ICONS_APPLE = [
+#     {
+#         'src': '/static/img/pwa/skills_icon_logo.png',
+#         'sizes': '160x160'
+#     }
+# ]
+# PWA_APP_SPLASH_SCREEN = [
+#     {
+#         'src': '/static/img/pwa/icons/splash_screen.png',
+#         'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+#     }
+# ]
+# PWA_APP_DIR = 'ltr'
+# PWA_APP_LANG = 'en-US'
+# PWA_APP_SHORTCUTS = [
+#     {
+#         'name': 'Shortcut',
+#         'url': '/target',
+#         'description': 'Shortcut to a page in my application'
+#     }
+# ]
+# PWA_APP_SCREENSHOTS = [
+#     {
+#       'src': '/static/img/pwa/icons/splash_screen.png',
+#       'sizes': '750x1334',
+#       "type": "image/png"
+#     }
+# ]
