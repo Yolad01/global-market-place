@@ -13,7 +13,7 @@ from main.managers import ThreadManager
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.db.models import Avg, Count, Q
+from django.db.models import Avg, Count
 
 
 
@@ -405,9 +405,7 @@ class Message(TrackingModel):
     
     @staticmethod
     def get_messages_between_users(user1, user2):
-        """
-        Returns messages from a thread that involves both user1 and user2.
-        """
+
         threads = Thread.objects.filter(
             thread_type='personal',
             users__in=[user1, user2]
@@ -582,3 +580,24 @@ class Compliance(models.Model):
 #     passport_photo = models.ImageField(upload_to="compliance", height_field=None, width_field=None)
 #     ...
 
+
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = "blog categorie"
+
+    def __str__(self) -> str:
+        return self.name
+
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
+    category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, related_name="category")
+    date_published = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.author.username

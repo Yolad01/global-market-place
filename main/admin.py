@@ -2,7 +2,7 @@ from django.contrib import admin
 # from django.contrib.auth.admin import UserAdmin
 
 from .models import (
-    User, Clients, Skillas, SkillaProfile, Skill, ClientRequest, Order,
+    BlogCategory, BlogPost, User, Clients, Skillas, SkillaProfile, Skill, ClientRequest, Order,
     ClientProfile, CompanyProfile, JobCategory, Job, AboutSkilla, TrainingAndCertification,
     ProfilePicture, Brief, SkillaReachoutToClient, ConnectRequest,
     Message, Thread, ContactList, Payment, MessageReadStatus, UserReview, Wallet
@@ -220,5 +220,8 @@ admin.site.register(ConnectRequest, ConnectRequestAdmin)
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Message)
 admin.site.register(MessageReadStatus)
+
+admin.site.register(BlogCategory)
+admin.site.register(BlogPost)
 
 

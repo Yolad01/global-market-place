@@ -48,3 +48,8 @@ class MessageSchema(ModelSchema):
     class Meta:
         model = Message
         exclude = ["id"]
+
+
+
+class CreateMessageSchema(Schema):
+    text: str
