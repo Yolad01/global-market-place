@@ -1,83 +1,37 @@
-
-{% load static %}
-
+{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
 
 
-<html class="scroll-smooth" lang="en">
 
-    <head sticky top-0 z-50>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skillas-dashboard</title>
-        <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/styles.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
-        <script src="{% static '/js/init-alpine.js' %}"></script>
-        <script src="{% static '/js/main.js' %}"></script>
-        <script src="{% static '/js/wow.min.js' %}"></script>
-        <script>
-            new WOW().init();
-        </script>
-
-        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  
+<div class="sm:border sm:shadow-lg sm:rounded-lg xl:mt-28 lg:mt-20 mt-14 sm:pt-14 pt-10 xl:mx-40 lg:mx-20 sm:mx-10 pb-20">
+    <div class="font-primary">
+        <h6 class="text-veryLightBlack font-normal md:text-4xl sm:text-3xl text-2xl text-center mt-2">Available Balance</h6>
         
-  
-     <script src="{% static '/js/wow.min.js' %}"></script>
-     <script>
-        new WOW().init();
-     </script>
-		
-    </head>
+        <div class="flex justify-end">
+            <a href="/skillas_dashboard"><img src="{% static '/img/Group 320.png' %}" alt="" class="xl:mr-80 lg:mr-20 sm-compact:mr-10 mr-5 w-6"></a>
+        </div>
+        <h3 class="text-veryLightBlack font-extrabold lg:text-5xl md:text-3xl text-2xl text-center">#102,000</h3>
+        <h6 class="text-veryLightBlack font-normal md:text-2xl text-xl text-center mt-14">Withdraw funds from your wallet to your bank account</h6>
+    </div>
 
-<body>
-    <header>
-        <!-- Navbar -->
-        <nav class="containe max-w-full font-primary shadow-lg">
-            <!-- Logo -->
-            <div class="flex">
-                <div class="pl-28 py-5">
-                <img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" width="150" height="150">
-                </div>
+    <div>
+        <div class="hidden sm-compact:flex justify-center items-center">
+            <input type="text" name="skillas-amount" id="skillas-amount" placeholder="Enter Amount (NGN)" class="hidden sm-compact:flex text-extremelyLightAsh rounded-lg border border-someBlack mt-10 xl:pr-60 lg:pr-40 md:pr-24 p-4">
+            
+        </div>
 
-                <!-- Other Icons -->
-                <div class="ml-96 pl-80 mt-4">
-                    <a href="#"><img src="{% static '/img/Rectangle 409.png' %}" alt="skillas-profile"></a>
-                </div>
-    
-                <div class="ml-10 mt-7">
-                    <a href="#"><img src="{% static '/img/Vector 3.png' %}" alt=""></a>
-                </div>
-            </div>
-        </nav>
-    </header>
+        <div class="sm-compact:hidden mx-5">
+            <input type="text" name="skillas-amount" id="skillas-amount" placeholder="Enter Amount (NGN)" class="text-extremelyLightAsh rounded-lg border border-someBlack mt-10 w-44">
+        </div>
 
-
-    <main>
-        <div class="font-primaryS">
-            <div>
-                <h6 class="text-veryLightBlack font-normal text-4xl text-center mt-2">Available Balance</h6>
-                <a href="#"><img src="{% static '/img/Group 320.png' %}" alt="" class="translate-x-96 ml-96 pl-96"></a>
-                <h3 class="text-veryLightBlack font-extrabold text-5xl text-center">#102,000</h3>
-                <h6 class="text-veryLightBlack font-normal text-4xl text-center mt-5">Withdraw funds from your wallet to your bank account</h6>
-                
-                <div class="ml-36">
-                    <input type="text" name="skillas-amount" id="skillas-amount" placeholder="Enter Amount (NGN)" class="text-extremelyLightAsh ml-52 rounded-lg border border-someBlack mt-10 pr-80 p-5">
-                
-                    <div class="mr-5">
-                        <div class="flex bg-veryDarkGreen mt-10 ml-52 mr-96 rounded-md py-2">
-                            <a href="/continue_to_withdrawal" class="font-extrabold text-2xl text-white text-center pl-36">Continue</a>
-                            <a href="#"><img src="{% static '/img/Vector-arrow.png' %}" alt="" class="ml-5"></a>
-                        </div>
-                    </div>
-                </div>
-                
+        <div class="xl:mx-72 lg:mx-48 md:mx-32 sm:mx-28 portable:mx-20 custom:mx-10 mx-5">
+            <div class="flex justify-center items-center bg-veryDarkGreen mt-10 rounded-md py-4 xl:mx-40">
+                <a href="/continue_to_withdrawal" class="font-extrabold lg:text-2xl text-xl text-white text-center">Continue</a>
+                <a href="/continue_to_withdrawal"><img src="{% static '/img/Vector-arrow.png' %}" alt="" class="ml-5 w-8"></a>
             </div>
         </div>
-    </main>
+    </div>
+</div>
+    
 
-</body>
-
-</html>
+    {% endblock %}
 

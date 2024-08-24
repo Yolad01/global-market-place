@@ -73,20 +73,14 @@
           /></a>
         </div>
 
-        <div class="lg:ml-16 sm:ml-10  portable:-mt-5 portable:-ml-5 mt-10 ml-5 portable:mx-0 md-compact:mx-10 portable:border-none border-2 rounded-md">
+        <div class="lg:ml-5 sm:ml-10 xl:-mt-12 lg:-mt-16 portable:-mt-5 portable:-ml-5 mt-5 ml-5 portable:mx-0 md-compact:mx-10 portable:border-none border-2 rounded-md">
           <div class="flex portable:p-0 p-2">
             <h1 class="font-extrabold lg:text-4xl portable:text-2xl text-xl xl:mt-5 lg:mt-10">
               {{ user.first_name }} {{ user.last_name }}
             </h1>
-            {% comment %} <a href="#"
-              ><img
-                src="{% static '/img/Group 68.png' %}"
-                alt=""
-                class="xl:translate-x-56 xl:translate-y-10 lg:translate-x-20 portable:translate-x-10 md-compact:translate-x-10 translate-x-3"
-            /></a> {% endcomment %}
           </div>
 
-          <div class="lg:mt-10 sm:mt-5 p-4">
+          <div class="lg:mt-5 sm:mt-3 p-4">
             <h6 class="font-medium text-base md:text-xl">{{ user.phone_no }}</h6>
             <h6 class="mt-7 font-medium text-base md:text-xl">{{ user.email }}</h6>
             <h6 class="mt-7 font-medium text-base md:text-xl">
@@ -94,7 +88,7 @@
             </h6>
 
             {% for info in client_profile_info %}
-            <h6 class="mt-7 font-medium text-xl">{{ info.home_address }}</h6>
+            <h6 class="mt-7 font-medium text-base md:text-xl">{{ info.home_address }}</h6>
             {% endfor %}
           </div>
         </div>
