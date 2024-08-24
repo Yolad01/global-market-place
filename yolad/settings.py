@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'main',
     # 'ninja_extra',
     # 'ninja_jwt',
-    'corsheaders',
+    # 'corsheaders',
     
 ]
 
