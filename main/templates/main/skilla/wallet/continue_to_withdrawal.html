@@ -1,117 +1,75 @@
-{% load static %}
-<!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en">
-
-    <head sticky top-0 z-50>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skillas-dashboard</title>
-        <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/main.css' %}" rel="stylesheet"/>
-        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
-        <script src="{% static '/js/init-alpine.js' %}"></script>
-        <script src="{% static '/js/main.js' %}"></script>
-        <script src="{% static '/js/wow.min.js' %}"></script>
-        <script>
-            new WOW().init();
-        </script>
-
-        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  
-        
-  
-     <script src="{% static '/js/wow.min.js' %}"></script>
-     <script>
-        new WOW().init();
-     </script>
-		
-    </head>
-
-<body> 
-    <header>
-        <!-- Navbar -->
-        <nav class="containe max-w-full font-primary shadow-lg">
-            <!-- Logo -->
-            <div class="flex">
-                <div class="pl-28 py-5">
-                <img src="{% static '/img/skillas_design-03.png' %}" alt="Logo" width="150" height="150">
-                </div>
-
-                <!-- Other Icons -->
-                <div class="ml-96 pl-80 mt-4">
-                    <a href="#"><img src="{% static '/img/Rectangle 409.png' %}" alt="skillas-profile"></a>
-                </div>
+{% extends 'layout/dash_nav.html' %} {% load static %} {% block content %}
     
-                <div class="ml-10 mt-7">
-                    <a href="#"><img src="{% static '/img/Vector 3.png' %}" alt=""></a>
+
+    <div class="font-primary">
+        <div class="xl:mt-32 lg:mt-20 mt-14 xl:mx-32 lg:mx-10 sm:mx-20 md-compact:mx-10 mx-5 grid lg:grid-cols-2 grid-cols-1">
+            <div class="">
+                <div class="border border-solid border-gray-800 rounded-sm xl:mr-24 lg:w-11/12 md:w-4/5">
+                    <div class="p-5">
+                        <div>
+                            <h6 class="font-bold text-sm text-darkAsh">Account Number</h6>
+                            <input type="text" name="" id="" placeholder="0240140941" class="mt-5 font-bold sm-compact:text-xl text-darkAsh border-shadeAsh_3 border-2 rounded-md px-3 xl:w-96 sm:w-80 portable:w-60 sm-compact:w-48 w-36 py-2">
+                        </div>
+        
+                        <div>
+                            <h6 class="font-bold text-sm text-darkAsh mt-5">Account Name</h6>
+                            <input type="text" name="" id="" placeholder="John Doe" class=" mt-5 font-bold sm-compact:text-xl text-aKindOfBlack border-shadeAsh_3 border-2 rounded-md px-3 xl:w-96 sm:w-80 portable:w-60 sm-compact:w-48 w-36 py-2">
+                        </div>
+
+                        <div class="">
+                            <h6 class="font-bold text-sm text-darkAsh mt-5">Amount (NGN)</h6>
+                            <input type="text" name="" id="" placeholder="Enter Amount" class="mt-5 font-bold sm-compact:text-xl text-aKindOfBlack border-2  border-shadeAsh_3 rounded-md px-3 xl:w-96 sm:w-80 portable:w-60 sm-compact:w-48 w-36 py-2">
+                        </div>
+
+                        <div class="">
+                            <h6 class="font-bold text-sm text-darkAsh mt-5">Bank Name</h6>
+                            <select name="bank-name" id="bank-name" class="mt-5 font-bold sm-compact:text-xl text-aKindOfBlack border-2 border-shadeAsh_3 rounded-md px-3 xl:w-96 sm:w-80 portable:w-60 sm-compact:w-48 w-36 py-2">
+                                <option value="" disabled selected>Select Bank</option>
+                                <option value="gtbank">GT Bank</option>
+                                <option value="zenithbank">Zenith Bank</option>
+                                <option value="accessbank">Access Bank</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="flex mt-5 ml-5">
+                    <input type="checkbox" name="" id="">
+                    <Label class="text-aKindOfBlack font-bold text-sm ml-3">Save card details</Label>
                 </div>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <div class="font-primary">
-            <div class="mt-20 ml-32 grid grid-cols-2">
-                <div class="">
-                    <div class="border border-solid border-gray-800 rounded-sm mr-24">
-                        <div class="p-5">
-                            <div>
-                                <h6 class="font-bold text-sm text-darkAsh">Account Number</h6>
-                                <input type="text" name="" id="" placeholder="0240140941" class="mt-5 font-bold text-xl text-darkAsh border-shadeAsh_3 border-2 rounded-md px-5 pr-28 py-2">
-                            </div>
-            
-                            <div>
-                                <h6 class="font-bold text-sm text-darkAsh mt-5">Account Name</h6>
-                                <input type="text" name="" id="" placeholder="John Doe" class=" mt-5 font-bold text-xl text-aKindOfBlack border-shadeAsh_3 border-2 rounded-md px-5 pr-28 py-2">
-                            </div>
-            
-                            <div class="">
-                                <h6 class="font-bold text-sm text-darkAsh mt-5">Bank Name</h6>
-                                <input type="text" name="" id="" placeholder="GT Bank" class="mt-5 font-bold text-xl text-aKindOfBlack border-2  border-shadeAsh_3 rounded-md px-5 pr-28 py-2">
-                            </div>
-                        </div>
-                    </div> 
+                <div class="bg-veryDarkGreen rounded-md ml-5 mt-5 text-center py-3 portable:mr-32">
+                    <a href="/success_page" class="text-white font-bold sm-compact:text-xl">Withdraw</a>
+                </div>
 
-                    <div class="flex mt-5 ml-5">
-                        <input type="checkbox" name="" id="">
-                        <Label class="text-aKindOfBlack font-bold text-sm ml-3">Save card details</Label>
-                    </div>
-
-                    <div class="bg-veryDarkGreen rounded-md mr-32 ml-5 mt-5">
-                        <button class="text-white font-bold text-xl py-3 pl-40 pr-24">With Draw</button>
-                    </div>
-
-                    <div class="mt-5 ml-5 mb-20">
-                        <p class="font-medium text-[9px]">Your personal data will be used to process your order, support your experience throughout this <br>website, and for other purposes described in our privacy policy.</p>
-                    </div>
-            </div>
-
-                <div class="-mt-10 mr-32 shadow-lg rounded-md mb-48">
-                    <div class="pl-10 pt-10">
-                        <h3 class="font-primary font-extrabold text-3xl">Other Payment Method</h3>
-
-                        <div class="flex mt-16">
-                            <a href="#"><img src="{% static '/img/image 16.png' %}" alt=""></a>
-                            <a href="#"><img src="{% static '/img/image 17.png' %}" alt="" class="ml-5 -mt-3"></a>
-                        </div>
-
-                        <div class="flex mt-10">
-                            <a href="#"><img src="{% static '/img/image 18.png' %}" alt=""></a>
-                            <a href="#"><img src="{% static '/img/image 19.png' %}" alt="" class="ml-5 -mt-3"></a>
-                        </div>
-
-                        <div class="flex mt-10">
-                            <a href="#"><img src="{% static '/img/image 20.png' %}" alt=""></a>
-                            <a href="#"><img src="{% static '/img/image 21.png' %}" alt="" class="ml-5"></a>
-                        </div>
-
-                    </div>
+                <div class="mt-5 ml-5 mb-20">
+                    <p class="font-medium text-[9px]">Your personal data will be used to process your order, support your experience throughout this <br>website, and for other purposes described in our privacy policy.</p>
                 </div>
         </div>
-    </main>
+
+            <div class="lg:-mt-10 shadow-lg rounded-md lg:mb-60 pb-28 mb-20">
+                <div class="lg:pl-10 portable:pl-5 pt-10 p-5">
+                    <h3 class="font-primary font-extrabold lg:text-3xl sm-compact:text-xl text-center">Other Payment Method</h3>
+
+                    <div class="custom:flex mt-16 justify-center items-center">
+                        <a href="#"><img src="{% static '/img/image 16.png' %}" alt="" class="sm:w-40 w-28 custom:mt-0 -mt-7"></a>
+                        <a href="#"><img src="{% static '/img/image 17.png' %}" alt="" class="custom:ml-5 custom:-mt-3 sm:w-40 w-28 mt-7"></a>
+                    </div>
+
+                    <div class="custom:flex mt-10 justify-center items-center">
+                        <a href="#"><img src="{% static '/img/image 18.png' %}" alt="" class="sm:w-40 w-20"></a>
+                        <a href="#"><img src="{% static '/img/image 19.png' %}" alt="" class="custom:ml-5 custom:-mt-3 sm:w-40 w-28 mt-7"></a>
+                    </div>
+
+                    <div class="custom:flex mt-10 justify-center items-center">
+                        <a href="#"><img src="{% static '/img/image 20.png' %}" alt="" class="sm:w-40 w-28"></a>
+                        <a href="#"><img src="{% static '/img/image 21.png' %}" alt="" class="custom:ml-5 sm:w-40 w-24 mt-7"></a>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    
 
 
-</body>
-</html>
+    {% endblock %}
