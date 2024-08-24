@@ -57,8 +57,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'ninja_extra',
-    'ninja_jwt',
+    # 'ninja_extra',
+    # 'ninja_jwt',
     'corsheaders',
     
 ]
