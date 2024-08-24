@@ -37,7 +37,7 @@ DEBUG = env("DEBUG")
 
 SECRET_KEY = env('SECRET_KEY')
 
-PAYSTACK_API_KEY = env("PAYSTACK_API_KEY")
+# PAYSTACK_API_KEY = env("PAYSTACK_API_KEY")
 
 ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
 
@@ -57,9 +57,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    # 'ninja_extra',
-    # 'ninja_jwt',
-    # 'corsheaders',
+    'ninja_extra',
+    'ninja_jwt',
+    'corsheaders',
     
 ]
 
