@@ -7,9 +7,13 @@
 
 {% if not page_object %}
 
+<div>
     <div class="flex justify-center items-center mt-36 mb-28 sm-compact:h-[50vh] h-[35vh]">
         <img class="xl:w-1/3 sm:w-1/2 w-2/3" src="{% static '/img/empty_page.png' %}" loading="lazy" alt="empty page">
     </div>
+</div>
+    
+    
 
 {% else %}
 
@@ -65,29 +69,47 @@
         {% endfor %}
     </div>
 
+    <!--Pagination start-->
+    <div
+    class="mt-10 grid px-4 py-3 my-5 text-xs font-semibold tracking-wide text-gray-500 border-t border-gray-700 sm:grid-cols-9 dark:text-gray-400 bg-gray-800"
+    >
+    <span class="flex items-center col-span-3">
+    <span class="current">
+        Showing page {{ page_object.number }} of {{ page_object.paginator.num_pages }} pages
+    </span>
+    </span>
+    <span class="col-span-2"></span>
+    <!-- Pagination -->
+    <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+        <nav aria-label="Table navigation">
+            <ul class="inline-flex items-center text-white">
+
+                <li class="">
+                    {% if page_object.has_previous %}
+                    <li class="px-5 border border-gray-500"><a href="?page=1">&laquo; first</a></li>
+                    <li class="px-5 border border-gray-500"><a href="?page={{ page_object.previous_page_number }}">previous</a></li>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if page_object.has_next %}
+                    <li class="px-5 border border-gray-500"><a href="?page={{ page_object.next_page_number }}">next</a></li>
+                    <li class="px-5 border border-gray-500"><a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a></li>
+                    {% endif %}
+                </li>
+
+            </ul>
+        </nav>
+    </span>
+    <!--pagination end-->
+    </div>
+    <!--Pagination end-->
+
 </section>
 
 {% endif %}
 
-<section class="mt-10">
-    <div class="px-10">
-        <span class="">
-            {% if page_object.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_object.previous_page_number }}">previous</a>
-            {% endif %}
 
-            <span class="current">
-                Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}.
-            </span>
-
-            {% if page_object.has_next %}
-                <a href="?page={{ page_object.next_page_number }}">next</a>
-                <a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div>
-</section>
 
 
 {% endblock %}

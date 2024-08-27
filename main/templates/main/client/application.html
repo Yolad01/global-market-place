@@ -1,60 +1,69 @@
 {% extends 'layout/client_nav.html' %} {% load static %} {% block content %}
 
-<div class="flex justify-center mt-20">
+
+{% if not skilla_client %}
 
   <div class="flex justify-center items-center mt-20 mb-28 sm-compact:h-[50vh] h-[35vh]">
     <img class="xl:w-1/3 sm:w-1/2 w-2/3" src="{% static '/img/empty_page.png' %}" loading="lazy" alt="empty page">
   </div>
 
-  <div class="bg-gray-50 sm:m-10 p-2 rounded-md">
-    {% for x in skilla_client %}
-    <div class="flex bg-white m-5 p-2 rounded-lg shadow justify-between wow fadeInUp">
-      <div class="hidden md:block p-2 border-green-700 border rounded-full">
-        <img
-          src="{% static '/img/hand-shake.png' %}"
-          width="100"
-          height="100"
-        />
+
+{% else %}
+
+
+  <div class="flex justify-center mt-20">
+
+    <div class="bg-gray-50 sm:m-10 p-2 rounded-md">
+      {% for x in skilla_client %}
+      <div class="flex bg-white m-5 p-2 rounded-lg shadow justify-between wow fadeInUp">
+        <div class="hidden md:block p-2 border-green-700 border rounded-full">
+          <img
+            src="{% static '/img/hand-shake.png' %}"
+            width="100"
+            height="100"
+          />
+        </div>
+
+        <div class="px-4 py-2 my-2 mx-2">
+          <div class="text-emerald-800 font-semibold">{{ x.title }}</div>
+
+          <div>
+            <span class="text-emerald-800 font-bold">{{ x.user }}</span> is
+            requesting for the job
+          </div>
+
+          <div class="font-semibold">{{ x.categories }}</div>
+
+          <div class="font-semibold">
+            NGN <span class="text-emerald-800">{{ x.budget }}</span>
+          </div>
+        </div>
+
+        <div class="portable:border portable:border-emetext-emerald-800 rounded-lg">
+          <div class="py-5">
+            <a href="{% url 'main:chat' username=x.user.username %}" class="hidden sm:block bg-veryDarkGreen text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700">
+              Send message
+            </a>
+
+            <a href="{% url 'main:chat' username=x.user.username %}" class="sm:hidden bg-veryDarkGreen text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700">
+              Chat
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'main:profile_view' pk=x.user.id %}" class="hidden portable:block text-veryDarkGreen my-2 p-2 text-sm sm:ml-4 font-semibold">
+              View profile
+            </a>
+
+            <a href="{% url 'main:profile_view' pk=x.user.id %}" class="portable:hidden text-veryDarkGreen my-2 p-2 text-sm sm:ml-4 font-semibold">
+              Inspect
+            </a>
+          </div>
+        </div>
       </div>
-
-      <div class="px-4 py-2 my-2 mx-2">
-        <div class="text-emerald-800 font-semibold">{{ x.title }}</div>
-
-        <div>
-          <span class="text-emerald-800 font-bold">{{ x.user }}</span> is
-          requesting for the job
-        </div>
-
-        <div class="font-semibold">{{ x.categories }}</div>
-
-        <div class="font-semibold">
-          NGN <span class="text-emerald-800">{{ x.budget }}</span>
-        </div>
-      </div>
-
-      <div class="portable:border portable:border-emetext-emerald-800 rounded-lg">
-        <div class="py-5">
-          <a href="{% url 'main:chat' username=x.user.username %}" class="hidden sm:block bg-veryDarkGreen text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700">
-            Send message
-          </a>
-
-          <a href="{% url 'main:chat' username=x.user.username %}" class="sm:hidden bg-veryDarkGreen text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700">
-            Chat
-          </a>
-        </div>
-        <div>
-          <a href="{% url 'main:profile_view' pk=x.user.id %}" class="hidden portable:block text-veryDarkGreen my-2 p-2 text-sm sm:ml-4 font-semibold">
-            View profile
-          </a>
-
-          <a href="{% url 'main:profile_view' pk=x.user.id %}" class="portable:hidden text-veryDarkGreen my-2 p-2 text-sm sm:ml-4 font-semibold">
-            Inspect
-          </a>
-        </div>
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
+
+  {% endif %}
 
 {% endblock %}
