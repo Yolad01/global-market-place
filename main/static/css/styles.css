@@ -1441,6 +1441,14 @@ select{
   margin-top: 20px;
 }
 
+.mt-36{
+  margin-top: 9rem;
+}
+
+.mt-56{
+  margin-top: 14rem;
+}
+
 .block{
   display: block;
 }

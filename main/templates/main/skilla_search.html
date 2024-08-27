@@ -4,58 +4,70 @@
 {% block content %}
 
 
-<section class="pt-[80px] lg:pt-[120px] mx-4 md:mx-9 lg:mx-10 xl:mx-40">
-    <div
-    class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-[30px] mb-[-30px]"
-    >
-    {% for skill in page_object %}
-    <div class="mx-4">
-        <img
-        class="pt-2 w-full object-cover h-60"
-        src="{{skill.image.url}}"
-        alt=""
-        />
-        <div class="shadow-xl p-4">
-        <h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
-            {{ skill.skilla.username }}
-        </h2>
-        <hr class="border-gray-400 w-full" />
-        <h6 class="font-medium text-xs py-2">{{ skill.title }}</h6>
-        <hr class="border-gray-400 w-full" />
-        <h6 class="font-medium text-xs py-2">{{ skill.skill }}</h6>
-        <hr class="border-gray-400 w-full" />
-        <h6 class="font-medium text-xs py-2">{{ skill.level }}</h6>
-        <hr class="border-gray-400 w-full" />
-        <h6 class="font-medium italic text-xs mt-2 py-2">
-            Price ranging from
-            <span class="not-italic font-extrabold"
-            >NGN {{ skill.base_price }}</span
-            >
-        </h6>
-        <hr class="border-gray-400 w-full" />
-        <div class="flex mt-2 gap-2 py-2">
-            <img src="{% static 'img/Vector (10).png' %}" />
-            <img src="{% static '/img/Vector (10).png' %}" />
-            <img src="{% static '/img/Vector (10).png' %}" />
-            <img src="{% static '/img/Vector (10).png' %}" />
-            <img src="{% static '/img/Group 245.png' %}" />
-        </div>
-        <hr class="border-gray-400 w-full" />
-        <div class="mt-5 flex justify-center">
-            <a
-                href="{% url 'main:skillas_gigs_details' id=skill.id %}"
-                class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
-            
-            >
-                View details
-            </a>
-        </div>
-        </div>
+
+{% if not page_object %}
+
+    <div class="flex justify-center items-center mt-36 mb-28 sm-compact:h-[50vh] h-[35vh]">
+        <img class="xl:w-1/3 sm:w-1/2 w-2/3" src="{% static '/img/empty_page.png' %}" loading="lazy" alt="empty page">
     </div>
-    {% endfor %}
+
+{% else %}
+
+    <section class="pt-[80px] lg:pt-[120px] mx-4 md:mx-9 lg:mx-10 xl:mx-40">
+        <div
+        class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-[30px] mb-[-30px]"
+        >
+        
+        {% for skill in page_object %}
+        <div class="mx-4">
+            <img
+            class="pt-2 w-full object-cover h-60"
+            src="{{skill.image.url}}"
+            alt=""
+            />
+            <div class="shadow-xl p-4">
+            <h2 class="font-extrabold text-xl text-veryDarkGreen py-2">
+                {{ skill.skilla.username }}
+            </h2>
+            <hr class="border-gray-400 w-full" />
+            <h6 class="font-medium text-xs py-2">{{ skill.title }}</h6>
+            <hr class="border-gray-400 w-full" />
+            <h6 class="font-medium text-xs py-2">{{ skill.skill }}</h6>
+            <hr class="border-gray-400 w-full" />
+            <h6 class="font-medium text-xs py-2">{{ skill.level }}</h6>
+            <hr class="border-gray-400 w-full" />
+            <h6 class="font-medium italic text-xs mt-2 py-2">
+                Price ranging from
+                <span class="not-italic font-extrabold"
+                >NGN {{ skill.base_price }}</span
+                >
+            </h6>
+            <hr class="border-gray-400 w-full" />
+            <div class="flex mt-2 gap-2 py-2">
+                <img src="{% static 'img/Vector (10).png' %}" />
+                <img src="{% static '/img/Vector (10).png' %}" />
+                <img src="{% static '/img/Vector (10).png' %}" />
+                <img src="{% static '/img/Vector (10).png' %}" />
+                <img src="{% static '/img/Group 245.png' %}" />
+            </div>
+            <hr class="border-gray-400 w-full" />
+            <div class="mt-5 flex justify-center">
+                <a
+                    href="{% url 'main:skillas_gigs_details' id=skill.id %}"
+                    class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
+                
+                >
+                    View details
+                </a>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
 </section>
+
+{% endif %}
 
 <section class="mt-10">
     <div class="px-10">
