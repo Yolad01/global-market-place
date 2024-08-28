@@ -13,7 +13,7 @@ from main.managers import ThreadManager
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.db.models import Avg
+from django.db.models import Avg, Count
 
 
 
@@ -386,6 +386,7 @@ class Thread(TrackingModel):
     thread_type = models.CharField(max_length=15, choices=THREAD_TYPE, default='group')
     users = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
+
     objects = ThreadManager()
 
     def __str__(self) -> str:
@@ -401,6 +402,16 @@ class Message(TrackingModel):
 
     def __str__(self) -> str:
         return f'From <Thread - {self.thread}>'
+    
+    @staticmethod
+    def get_messages_between_users(user1, user2):
+
+        threads = Thread.objects.filter(
+            thread_type='personal',
+            users__in=[user1, user2]
+        ).annotate(user_count=Count('users')).filter(user_count=2)
+
+        return Message.objects.filter(thread__in=threads).order_by('created_at')
 
 
 
@@ -536,12 +547,13 @@ class UserReview(models.Model):
             returns the average rating, and 
             a queryset of all the ratings
         """
-        self.ratings = UserReview.objects.filter(user=user_id)
+        self.ratings = UserReview.objects.all().filter(user=user_id)
         self.average_rating = UserReview.objects.aggregate(average_rating=Avg("rating"))
         return [self.average_rating, self.ratings]
 
     def __str__(self) -> str:
-        return f'{self.rater.username} rated {self.user.username} {self.rating} star(s)'
+        # return f'{self.rater.username} rated {self.user.username} {self.rating} star(s)'
+        return self.rater.username
     
 
 
@@ -568,3 +580,24 @@ class Compliance(models.Model):
 #     passport_photo = models.ImageField(upload_to="compliance", height_field=None, width_field=None)
 #     ...
 
+
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = "blog categorie"
+
+    def __str__(self) -> str:
+        return self.name
+
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
+    category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, related_name="category")
+    date_published = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.author.username
