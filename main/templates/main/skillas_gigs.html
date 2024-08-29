@@ -4,7 +4,7 @@
   <div class="bg-veryDarkGreen py-5 flex mx-auto">
 
     <ul class="flex flex-wrap items-center text-[16px] font-semibold xl:text-[18px] leading-none relative">
-      <p class="text-white font-extrabold text-lg portable:text-xl xl:ml-52 xl:mt-1 lg:ml-10 lg:mt-4 md:ml-20 sm:ml-20 portable:ml-10 portable:pt-1 custom:-mr-16 ml-5">All Categories</p>
+      <p class="text-white font-extrabold text-lg portable:text-xl xl:ml-52 xl:mt-1 lg:ml-10 lg:mt-3 md:ml-10 sm:ml-20 portable:ml-10 portable:pt-1 custom:-mr-16 ml-5 mt-3">All Categories</p>
       <li class="mr-7 xl:mr-[40px] relative group">
 
         <div class="xl:ml-48 xl:mr-48 relative z-50 dropdown">
@@ -12,7 +12,7 @@
                 <img
                 src="{% static 'img/Group 14.png' %}"
                 alt="hamburger menu"
-                class="xl:mt-2 lg:mt-4 md:mt-2 sm:mt-2 xl:-translate-x-32 portable:translate-x-16 portable:mt-1 custom:translate-x-16 ml-3 transition-transform hover:scale-110"
+                class="xl:mt-2 lg:mt-4 md:mt-2 sm:mt-2 xl:-translate-x-32 portable:translate-x-16 portable:mt-1 custom:translate-x-16 ml-3 transition-transform hover:scale-110 mt-3"
                 />
             </a>
           <ul class="list-none bg-white drop-shadow-[0px_6px_10px_rgba(0,0,0,0.2)] rounded-[12px] flex flex-wrap flex-col w-[220px] absolute top-[120%] left-1/2 xl:-translate-x-full -translate-x-1/2 mt-5 transition-all
@@ -85,21 +85,21 @@
         </li>
     </ul>
 
-    <div class="mx-auto">
+    {% comment %} <div class="mx-auto">
       <a href="#"
         ><img
           src="{% static '/img/Vector (7).png' %}"
           alt="Notification bell"
           class="xl:ml-24 lg:mt-1 lg:ml-60 md:ml-28 md:-mt-1 custom:ml-8 -ml-5 absolute "
       /></a>
-    </div>
+    </div> {% endcomment %}
   </div>
 
 	<section class="hidden compact:block">
 		<div class="xl:ml-48 xl:mr-48 flex justify-center">
 			<div x-data="carousel()" x-init="startCarousel()" class="relative w-full lg:w-full">
                 <!-- Carousel Container -->
-                <div class="relative xl:h-[75vh] lg:h-[60vh] md:h-[48vh] sm:h-[40vh] portable:h-64 custom:h-52 sm-compact:h-44 h-36 shadow-lg">
+                <div class="relative xl:h-[75vh] lg:h-[60vh] md:h-[44vh] sm:h-[40vh] portable:h-64 custom:h-52 sm-compact:h-44 h-36 shadow-lg">
 					<!-- Carousel Items -->
 					<template x-for="(image, index) in images" :key="index">
 						<div x-show="current === index" class="absolute inset-0 transition-opacity duration-5000" x-transition:enter="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="opacity-100" x-transition:leave-end="opacity-0">
