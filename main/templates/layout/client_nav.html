@@ -52,12 +52,12 @@
             <div class="container mx-auto">
                 <div class="grid grid-cols-12">
                     <div class="col-span-12">
-                        <div class="flex items-center justify-between">
+                        <div class="flex sm:items-center sm:justify-between mx-5">
                             <a href="/" class="block">
                                 <img class="w-full h-full hidden sm:block" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
                             </a>
 
-                            <a href="/" class="portable:-ml-28 compact:mt-3 compact:mx-1 md-compact:mt-3 sm:hidden">
+                            <a href="/" class="flex portable:-ml-28 compact:mt-3 compact:mx-1 md-compact:mt-3 sm:hidden">
                               <img class="sm:hidden" src="{% static '/img/skilla_mini_logo.jpg' %}" loading="lazy" alt="brand logo">
                             </a>
 
@@ -74,7 +74,7 @@
                                     class=""
                                 />
                                 </a>
-                                <a href="#" class="absolute -right-2 bottom-2   -ml-3  text-white p-1 text-xs bg-rose-700 hover:bg-green-500 font-medium tracking-wider rounded-full transition ease-in duration-300">
+                                <a href="#" class="absolute -right-2 bottom-2 -ml-3  text-white p-1 text-xs bg-rose-700 hover:bg-green-500 font-medium tracking-wider rounded-full transition ease-in duration-300">
                                     <p>{{ unread_count }}</p>
                                 </a>
                               </li>
@@ -89,9 +89,9 @@
                             </ul>
 
 
-                            <li class="mr-7 xl:mr-[40px] relative group list-none">
+                            <li class="portable:mr-7 xl:mr-[40px] relative group list-none ml-32 sm-compact:ml-40 mt-3">
 
-                              <a href="#" class="transition-all hover:text-secondary">Options</a>
+                              <a href="#" class="transition-all font-primary hover:text-secondary">Options</a>
                 
                               <ul class="list-none bg-white drop-shadow-[0px_6px_10px_rgba(0,0,0,0.2)] rounded-[12px] flex flex-wrap flex-col w-[220px] absolute top-[120%] left-1/2 -translate-x-1/2 transition-all
                                   group-hover:top-[100%] invisible group-hover:visible opacity-0 group-hover:opacity-100
@@ -127,7 +127,7 @@
                               </ul>
                             </li>
                                 
-                            <ul class="sm:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
+                            <ul class="hidden sm:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
                                 
                                 <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
                                     <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-veryLightGreen before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-veryDarkGreen after:rounded-md after:transition-all hover:text-veryDarkGreen">

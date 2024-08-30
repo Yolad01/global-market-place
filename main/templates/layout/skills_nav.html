@@ -54,7 +54,7 @@
             <div class="container mx-auto">
                 <div class="grid grid-cols-12">
                     <div class="col-span-12">
-                        <div class="flex flex-wrap items-center justify-between xl:mr-40 lg:mr-20 sm:mr-5 md:gap-x-10 lg:gap-x-48">
+                        <div class="flex flex-wrap items-center justify-between">
                             <a href="/" class="hidden sm:block">
                                 <img class="w-full h-full" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
                             </a>
@@ -75,9 +75,9 @@
                                     </li>
                                 </ul>
                                 
-                                <ul class="mt-5 xl:ml-60 mx-auto portable:ml-0 portable:mt-0 custom:ml-48 sm:mr-0 ml-32 flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
+                                <ul class="mt-2 xl:ml-60 mx-auto portable:ml-0 portable:mt-0 custom:ml-48 sm:mr-0 ml-32 flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
                                     
-                                    <li class=" relative group py-[20px]">
+                                    <li class=" relative group py-[20px] ml-10">
                                       
                                         {% if user.role == "SKILLAS" %}
                                         <a
@@ -121,8 +121,8 @@
         {% endblock %}
 
         <!-- Footer Start -->
-        <footer class="footer bg-veryDarkGreen text-white pt-[80px] lg:pt-[200px] pb-30 md:pb-[80px] lg:pb-[110px] font-normal bg-no-repeat" style="background-image: url('assets/images/footer/pattern.png');">
-            <div class="container mx-auto xl:-mt-20">
+        <footer class="footer bg-veryDarkGreen text-white pt-[80px] xl:pt-[200px] lg:pt-[100px] pb-30 md:pb-[80px] lg:pb-[110px] font-normal bg-no-repeat" style="background-image: url('assets/images/footer/pattern.png');">
+            <div class="container mx-auto xl:-mt-20 md:ml-5 xl:ml-36">
                 <div class="grid grid-cols-12 gap-x-[5px] mb-[-30px] md:mx-5 ml-5">
                     <div class="col-span-12 sm:col-span-6 lg:col-span-4 mb-[30px]">
                         <a href="index.html" class="block mb-[25px]">
@@ -151,12 +151,12 @@
                         </ul>
                     </div>
                     <div class="col-span-12 sm:col-span-6 lg:col-span-2 mb-[30px]">
-                        <h3 class="font-lora font-normal text-[22px] leading-[1.222] text-primary mb-[20px] lg:mb-[30px]">
+                        {% comment %} <h3 class="font-lora font-normal text-[22px] leading-[1.222] text-primary mb-[20px] lg:mb-[30px]">
                             Head Office:<span class="text-secondary">.</span></h3>
                             <div>
                                 <p class="md-compact:hidden">13 Lewis Cresent, Exeter Devon,<br/> EX2 7TD, United Kingdom.</p>
                                 <p class="hidden md-compact:block">13 Lewis Cresent, Exeter Devon, EX2 7TD, United Kingdom.</p>
-                            </div>
+                            </div> {% endcomment %}
                         
                         <ul class="inline-flex items-center justify-center mt-[20px]">
                             <li class="first:ml-0 ml-[15px]">

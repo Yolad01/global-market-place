@@ -58,10 +58,10 @@
         </div>
         <!-- Picture Modal  -->
 
-        <div class="-mt-7">
+        <div class="-mt-7 -ml-5">
           <img
             src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="xl:w-72 lg:w-72 sm:ml-10 sm:w-52 w-40 portable:ml-5 mx-10"
+            class="xl:w-72 lg:w-72 sm:ml-10 sm:w-52 w-40 portable:ml-5 mx-10 rounded-md"
             alt=""
           />
           <a href="#"
@@ -83,9 +83,9 @@
           <div class="lg:mt-5 sm:mt-3 p-4">
             <h6 class="font-medium text-base md:text-xl">{{ user.phone_no }}</h6>
             <h6 class="mt-7 font-medium text-base md:text-xl">{{ user.email }}</h6>
-            <h6 class="mt-7 font-medium text-base md:text-xl">
+            {% comment %} <h6 class="mt-7 font-medium text-base md:text-xl">
               Yolad Global Service Limted
-            </h6>
+            </h6> {% endcomment %}
 
             {% for info in client_profile_info %}
             <h6 class="mt-7 font-medium text-base md:text-xl">{{ info.home_address }}</h6>
