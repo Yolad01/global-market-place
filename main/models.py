@@ -249,7 +249,7 @@ class Order(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payer")
     notification  = models.PositiveIntegerField(null=True, blank=True)
     paid = models.BooleanField(default=False)
-    order_no = models.PositiveSmallIntegerField(default=order_number)
+    order_no = models.PositiveIntegerField(default=order_number)
     gig_desc = models.TextField(verbose_name="Gig description", max_length=200, null=True, blank=False)
     delivery = models.IntegerField(null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
