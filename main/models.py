@@ -160,7 +160,7 @@ class SkillaProfile(models.Model):
     city = models.CharField(max_length=100, default=None, null=True, blank=True)
     Postal_code = models.CharField(max_length=10, default=None, null=True, blank=True)
     current_location = models.CharField(max_length=20, null=True, blank=True)
-    experience = models.PositiveSmallIntegerField(verbose_name="Years of Experience", blank=True, null=True)
+    experience = models.PositiveIntegerField(verbose_name="Years of Experience", blank=True, null=True)
     portfolio = models.URLField(verbose_name="links to your works", blank=True, null=True)
     professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
     nin = models.CharField(max_length=11, null=True, blank=True)
@@ -220,7 +220,7 @@ class CompanyProfile(models.Model):
     location = models.CharField(verbose_name="Location (City/Country)", max_length=100, blank=True, null=False, choices=Country.choices)
     state = models.CharField(max_length=50, blank=True, null=False)
     industry = models.CharField(verbose_name="Industry or Business Type", max_length=100, blank=True, null=False)
-    company_size = models.PositiveSmallIntegerField(verbose_name="company size (Number of Employees)", blank=True, null=True)
+    company_size = models.PositiveIntegerField(verbose_name="company size (Number of Employees)", blank=True, null=True)
     services = models.CharField(verbose_name="Describe the services or skills needed (Optional)", max_length=200, blank=True, null=True)
     work_history_with_freelancer = models.BooleanField(verbose_name="Have you worked with a freelancer or skilled workers Before", null=True, blank=True)
     terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
@@ -521,7 +521,7 @@ class Payment(models.Model):
     channel = models.CharField(max_length=10, blank=True, null=True)
     card_type = models.CharField(max_length=10, blank=True, null=True)
     time_of_payment = models.CharField(max_length=20, blank=True, null=True)
-    order_no = models.PositiveSmallIntegerField(default=0)
+    order_no = models.PositiveIntegerField(default=0)
     completed = models.BooleanField(default=False)
 
 
