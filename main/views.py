@@ -406,7 +406,7 @@ def skilla(request):
     if request.method == "POST":
         form = BriefAppForm(request.POST)
         # search_form = SearchForm(request.POST)
-        search_input = request.POST["search_input"]
+        search_input = request.POST.get("search_input")
         if form.is_valid():
             client = form.cleaned_data["client"]
             title = form.cleaned_data["title"]
