@@ -39,29 +39,39 @@
                     {% csrf_token %}
 
                         <div class="">
-                            {{form.msg_body}}
-                        </div>
-                        
-                        <div class="my-2 mx-2 sm:flex sm:justify-center sm:items-center sm:mx-10">
-                            <div class="flex justify-center w-full">
-                                <button class="px-20 sm:px-10 sm:mr-8 py-2 rounded-md border-2 border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-veryDarkGreen hover:text-white w-full" type="submit">
-                                    Send
-                                </button>
-                            </div>
+                            <div class="flex justify-center items-center gap-2">
 
+                                <div class="hidden sm:block">
+                                    <button id="openModal" class="bg-veryDarkGreen px-5 sm:px-5 sm:ml-8 py-6 rounded-md text-white font-semibold hover:bg-veryShadyGreen hover:border-veryLightGreen">Send Quote</button>
+                                </div>
+
+                                {{form.msg_body}}
+                                <div class="">
+                                    <button class="px-4 py-8 rounded-md border border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-veryDarkGreen hover:text-white" type="submit">
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
                             {% if user.role == "SKILLAS" %}    
-                            <div class="flex justify-center py-2">
-                                <button id="openModal" class="bg-veryDarkGreen px-16 sm:px-5 sm:ml-8 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-veryLightGreen hover:border-veryLightGreen">Send Quote</button>
+                            <div class="flex justify-center py-2 sm:hidden">
+                                <button id="openModal" class="bg-veryDarkGreen px-9 sm:px-5 sm:ml-8 py-2 rounded-md border-2 text-white font-semibold hover:bg-white hover:text-veryLightGreen hover:border-veryLightGreen">Send Quote</button>
                             </div>
                             {% endif %}
 
                             <div class="flex justify-center py-2 sm:hidden">
                                 <a
                                 href="/inbox"
-                                class="rounded bg-veryDarkGreen px-20 text-white py-2 justify-end items-end">
+                                class="rounded bg-veryDarkGreen px-16 text-white py-2 justify-end items-end">
                                 back
                               </a>
                             </div>
+                        </div>
+                        
+                        <div class="my-2 mx-2 sm:flex sm:justify-center sm:items-center sm:mx-10">
+
+                            
+
+                            
 
                         </div>
 
@@ -133,6 +143,7 @@
 
     <script type="text/javascript">
         // const url = "ws://127.0.0.1:8000/ws" + window.location.pathname;
+        /*const url = "wss://getskillas.com/ws" + window.location.pathname; */
         const url = "wss://getskillas.com/ws" + window.location.pathname;
         
         const ws = new WebSocket(url)

@@ -49,70 +49,104 @@
 <body class="text-body text-tiny">
     <div class="overflow-x-hidden">
         <!-- Header start -->
+        <header id="sticky-header" class="sticky-header z-25 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between">
+                    <!-- Brand Logo -->
+                    <a href="/" class="sm:block">
+                        <img class="w-28 h-auto" src="{% static '/img/skillas_design-03.png' %}" alt="Brand Logo">
+                    </a>
 
-        <header id="sticky-header" class="sticky-header z-[25] secondary-sticky">
-            <div class="container mx-auto">
-                <div class="grid grid-cols-12">
-                    <div class="col-span-12">
-                        <div class="flex flex-wrap items-center justify-between">
-                            <a href="/" class="hidden sm:block">
-                                <img class="w-full h-full" src="{% static '/img/skillas_design-03.png' %}" loading="lazy" alt="brand logo">
-                            </a>
-                            <nav class="flex flex-wrap items-center xl:ml-20 mx-auto custom:gap-x-5 portable:gap-x-10  sm:gap-x-8 lg:gap-x-10 font-semibold text-[#1E1E1E]">
-                                <ul class="lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
-                                    
-                                    <li class="xl:mr-[40px] relative group py-[20px]">
-                                      <form method="POST">
-                                        {% csrf_token %}
-    
-                                        <div class="hidden portable:flex items-center portable:-ml-16 xl:-ml-20">
-                                            <div class="hidden portable:block">{{ search_form.search_input }}</div>
-                                            <button type="submit" class="hidden portable:block portable:ml-0 bg-veryDarkGreen text-white px-2 py-2 rounded-md shadow-md">
-                                                Search
-                                            </button>
-                                        </div>
-                                    </form>
-                                    </li>
-                                </ul>
-                                
-                                <ul class="mt-2 xl:ml-60 mx-auto portable:ml-0 portable:mt-0 custom:ml-48 sm:mr-0 ml-32 flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
-                                    
-                                    <li class=" relative group py-[20px] ml-10">
-                                      
-                                        {% if user.role == "SKILLAS" %}
-                                        <a
-                                          href="/skillas_dashboard"
-                                          class="flex items-center justify-between w-full px-4 py-2 text-sm leading-5 text-veryDarkGreen transition-colors duration-700 bg-veryLightGreen border border-transparent rounded-lg active:bg-green-600 hover:bg-veryDarkGreen hover:text-gray-300 focus:outline-none focus:shadow-outline-veryLightGreen"
-                                        >
-                                            Dashboard
-                                        </a>
-                            
-                                        {% elif user.role == "CLIENT" %}
-                                        <a
-                                          href="/client_dashboard"
-                                          class="flex items-center justify-between w-full px-4 py-2 text-sm leading-5 text-veryDarkGreen transition-colors duration-700 bg-veryLightGreen border border-transparent rounded-lg active:bg-green-600 hover:bg-veryDarkGreen hover:text-gray-300 focus:outline-none focus:shadow-outline-veryLightGreen"
-                                        >
-                                          Dashboard
-                                        </a>
-                                        {% endif %}
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden lg:flex items-center space-x-6 gap-6 text-gray-800">
+                        <ul class="flex space-x-6 text-lg font-semibold mt-2">
+                            <li class="relative group">
+                                <form method="POST" class="flex justify-center items-center">
+                                    {% csrf_token %}
+                                    <div class="">{{ search_form.search_input }}</div>
+                                    <button type="submit" class="bg-veryDarkGreen text-white px-3 py-2 rounded-md shadow-md hover:bg-veryLightGreen hover:text-veryDarkGreen">
+                                        Search
+                                    </button>
+                                </form>
+                            </li>
 
-                                    </li>
-                                </ul>
+                            <li class="relative group py-2">
+                                {% if user.role == "SKILLAS" %}
+                                <a href="/skillas_dashboard" class="px-4 py-2 rounded-lg text-sm bg-veryLightGreen text-veryDarkGreen hover:bg-veryDarkGreen hover:text-white transition duration-200">
+                                    Dashboard
+                                </a>
+                                {% elif user.role == "CLIENT" %}
+                                <a href="/client_dashboard" class="px-4 py-2 rounded-lg text-sm bg-veryLightGreen text-veryDarkGreen hover:bg-veryDarkGreen hover:text-white transition duration-200">
+                                    Dashboard
+                                </a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        
+                        <!-- Profile Icon -->
+                        <ul class="flex items-center space-x-6">
+                            <li class="relative group">
+                                {% for x in profile_pic %}
+                                <a href="#">
+                                    <img src="{{ x.image.url }}" class="rounded-full h-10 w-10 hover:shadow-lg transition-shadow duration-200" alt="{{ user.username }}'s profile">
+                                </a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </nav>
 
-                                <ul class="hidden lg:flex flex-wrap items-center text-[16px] xl:text-[18px] leading-none">
-                                    <li class="mr-7 xl:mr-[40px] relative group py-[20px]">
-                                        {% for x in profile_pic %}
-                                        <a href=""><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
-                                        {% endfor %}
-                                    </li>
-                                        {% comment %} <div class="pl-3 text-md font-semibold">{{ user.username }}</div> {% endcomment %}
-                                </ul>
-                            </nav>
-                        </div>
+                    <!-- Mobile Menu Toggle Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
         </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden flex flex-col bg-white shadow-lg p-2 space-y-4 text-lg font-semibold text-gray-800">
+            <!-- Search Form for Mobile -->
+            <form method="POST" class="flex items-center space-x-2 mt-8">
+                {% csrf_token %}
+                <div class="flex-grow">{{ search_form.search_input }}</div>
+                <button type="submit" class="bg-veryDarkGreen text-white px-2 py-2 rounded-md shadow-md hover:bg-veryLightGreen">
+                    Search
+                </button>
+            </form>
+
+            <!-- Dashboard Links for Mobile -->
+            {% if user.role == "SKILLAS" %}
+            <a href="/skillas_dashboard" class="block px-4 py-2 rounded-lg text-sm bg-veryLightGreen text-veryDarkGreen hover:bg-veryDarkGreen hover:text-white transition duration-200">
+                Dashboard
+            </a>
+            {% elif user.role == "CLIENT" %}
+            <a href="/client_dashboard" class="block px-4 py-2 rounded-lg text-sm bg-veryLightGreen text-veryDarkGreen hover:bg-veryDarkGreen hover:text-white transition duration-200">
+                Dashboard
+            </a>
+            {% endif %}
+
+            <!-- Profile for Mobile -->
+            {% for x in profile_pic %}
+            <a href="#" class="flex items-center space-x-2">
+                <img src="{{ x.image.url }}" class="rounded-full h-10 w-10 hover:shadow-lg transition-shadow duration-200" alt="{{ user.username }}'s profile">
+                <span>{{ user.username }}</span>
+            </a>
+            {% endfor %}
+        </div>
+        <!-- Mobile Menu End -->
+    </div>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
 
         <!-- Header end -->

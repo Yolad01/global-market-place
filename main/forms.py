@@ -270,7 +270,8 @@ class BriefAppForm(forms.Form):
 
 class ChatMessageForm(forms.Form):
     msg_body = forms.CharField(widget=forms.Textarea(attrs={
-        'rows': 4, 'cols': 80, "class": "border border-veryDarkGreen p-2 mx-3 w-3/4 xl:w-full rounded-md resize-none",
+        'rows': 3, 'cols': 80, 
+        "class": "border border-veryDarkGreen p-2 w-3/4 rounded-md resize-none",
         "placeholder": "Enter your messsage here"
     }))
 
@@ -360,7 +361,7 @@ class EditBriefForm(forms.Form):
 class SearchForm(forms.Form):
     search_input = forms.CharField(
         widget=forms.TextInput(
-            attrs={'class': 'border border-gray-700 w-full ml-20 pr-5 rounded-md',
+            attrs={'class': 'border border-gray-700 w-full pr-5 rounded-md',
                    "placeholder": "Search"
             }
         )
