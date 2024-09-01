@@ -956,6 +956,10 @@ select{
   top: 120%;
 }
 
+.right-2{
+  right: 0.5rem;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -1110,6 +1114,16 @@ select{
 .mx-7{
   margin-left: 1.75rem;
   margin-right: 1.75rem;
+}
+
+.my-20{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.my-10{
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .-mb-5{
@@ -1466,6 +1480,10 @@ select{
 
 .mb-36{
   margin-bottom: 9rem;
+}
+
+.mt-32{
+  margin-top: 8rem;
 }
 
 .block{
@@ -4684,6 +4702,10 @@ select{
     margin-top: 1.75rem;
   }
 
+  .portable\:ml-auto{
+    margin-left: auto;
+  }
+
   .portable\:block{
     display: block;
   }
@@ -4758,6 +4780,10 @@ select{
     flex-direction: row;
   }
 
+  .portable\:items-start{
+    align-items: flex-start;
+  }
+
   .portable\:gap-x-10{
     -moz-column-gap: 2.5rem;
          column-gap: 2.5rem;
@@ -4820,6 +4846,10 @@ select{
 
   .portable\:pt-10{
     padding-top: 2.5rem;
+  }
+
+  .portable\:text-left{
+    text-align: left;
   }
 
   .portable\:text-2xl{

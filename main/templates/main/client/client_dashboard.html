@@ -1,128 +1,117 @@
 {% extends 'layout/client_nav.html' %}
-
 {% load static %}
-
 {% block content %}
 
-<main class="mt-40 bg-white">
+<main class="mt-32 bg-white">
   <div class="container mx-auto">
-
-      <div class="mt-16 portable:flex">
-        <!-- picture Modal  -->
-        <div
-          class="fixed z-10 inset-x-12 overflow-y-auto hidden"
-          id="editPictureModal"
-        >
-          <div
-            class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
-          >
-            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-              <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-            <span
-              class="hidden sm:inline-block sm:align-middle sm:h-screen"
-              aria-hidden="true"
-            ></span>
-            <div
-              class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-sm transform transition-all sm:my-8 sm:align-top sm:max-w-2xl sm:w-full"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-headline"
-            >
-              <!-- Modal content goes here -->
-
-              <form method="POST" enctype="multipart/form-data" class="p-6">
-                {% csrf_token %}
-                <h2 class="text-lg font-semibold mb-4">Change Picture</h2>
-
-                {{ profile_pic_form.as_p }}
-
-                <div class="text-right">
-                  <button
-                    type="submit"
-                    class="rounded bg-veryDarkGreen text-white px-3 py-2 hover:bg-green-500 font-bold focus:outline-none focus:shadow-outline"
-                  >
-                    update
-                  </button>
-                  <button
-                    class="bg-gray-300 border-2 border-gray-700 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2"
-                    type="button"
-                    id="closePictureModal"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- Picture Modal  -->
-
-        <div class="-mt-7 -ml-5">
+    <!-- Profile Section -->
+    <div class="mt-12 flex flex-col portable:flex-row items-center portable:items-start">
+      
+      <!-- Profile Image and Modal Trigger -->
+      <div class="relative">
+        <img
+          src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
+          class="rounded-lg w-40 sm:w-52 lg:w-72"
+          alt="Profile Picture"
+        />
+        <button id="openPictureModal" class="absolute bottom-2 right-2">
           <img
-            src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="xl:w-72 lg:w-72 sm:ml-10 sm:w-52 w-40 portable:ml-5 mx-10 rounded-md"
-            alt=""
+            src="{% static '/img/camera.png' %}"
+            alt="Edit Picture"
+            class="w-8"
           />
-          <a href="#"
-            ><img
-              src="{% static '/img/camera.png' %}"
-              alt=""
-              id="openPictureModal"
-              class="xl:translate-x-72 xl:mt-5 xl:-translate-y-11 lg:translate-x-72 lg:-mt-6 md:translate-x-52 md:-mt-6 sm:translate-x-52 sm:-mt-6 portable:translate-x-36 portable:-mt-6 custom:translate-x-40 custom:-mt-6 md-compact:translate-x-40 md-compact:-mt-6 translate-x-40 -mt-6 w-8"
-          /></a>
-        </div>
-
-        <div class="lg:ml-5 sm:ml-10 xl:-mt-12 lg:-mt-16 portable:-mt-5 portable:-ml-5 mt-5 ml-5 portable:mx-0 md-compact:mx-10 portable:border-none border-2 rounded-md">
-          <div class="flex portable:p-0 p-2">
-            <h1 class="font-extrabold lg:text-4xl portable:text-2xl text-xl xl:mt-5 lg:mt-10">
-              {{ user.first_name }} {{ user.last_name }}
-            </h1>
-          </div>
-
-          <div class="lg:mt-5 sm:mt-3 p-4">
-            <h6 class="font-medium text-base md:text-xl">{{ user.phone_no }}</h6>
-            <h6 class="mt-7 font-medium text-base md:text-xl">{{ user.email }}</h6>
-            {% comment %} <h6 class="mt-7 font-medium text-base md:text-xl">
-              Yolad Global Service Limted
-            </h6> {% endcomment %}
-
-            {% for info in client_profile_info %}
-            <h6 class="mt-7 font-medium text-base md:text-xl">{{ info.home_address }}</h6>
-            {% endfor %}
-          </div>
-        </div>
+        </button>
       </div>
 
-      <div class="mt-10 xl:ml-0 sm:mx-6 rounded-xl portable:mx-4 portable:border-2 border-lightAsh py-5 lg:mr-60">
-        <div class="portable:flex">
-          <div class="xl:ml-20 lg:ml-10 md:ml-5 portable:mx-4 custom:mx-6 mx-4">
-            <p class="font-bold lg:text-xl text-lg text-someKindBlack">
-              Get proposals from the most relevant sellers
-            </p>
-            <p class="font-normal text-base mt-2">
-              Simply create a project brief and let us do the searching for you.
-            </p>
-          </div>
-
-          <div class="flex portable:hidden sm:block xl:translate-x-72 md:ml-10 sm:mt-4 sm:-ml-4 mt-5 md-compact:ml-56 ml-36">
-            <a
-              href="/create_brief"
-              class="bg-veryLightGreen text-xs sm:text-base font-bold py-3 portable:px-2 sm:px-1 md:px-6 lg:px-8 px-5 xl:ml-60 rounded-md"
-            >
-              Create a brief
-          </a>
-          </div>
+      <!-- Profile Information -->
+      <div class="mt-8 portable:mt-0 portable:ml-10 text-center portable:text-left">
+        <h1 class="font-extrabold text-xl portable:text-2xl lg:text-4xl">
+          {{ user.first_name }} {{ user.last_name }}
+        </h1>
+        <div class="mt-5 text-lg font-medium">
+          <p>{{ user.phone_no }}</p>
+          <p class="mt-4">{{ user.email }}</p>
+          {% for info in client_profile_info %}
+          <p class="mt-4">{{ info.home_address }}</p>
+          {% endfor %}
         </div>
-      </div>
-
-      <div class="mt-20 bg-veryDarkGreen p-5 pb-10 mb-20 xl:mx-0 md:mx-10 sm:mx-6 mx-4 rounded-lg">
-        <p class="font-medium md:text-8xl text-2xl text-white text-center py-8">Advert</p>
       </div>
     </div>
+
+    <!-- Picture Edit Modal -->
+    <div
+      class="fixed inset-0 z-10 hidden overflow-y-auto"
+      id="editPictureModal"
+    >
+      <div
+        class="flex items-center justify-center min-h-screen text-center"
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 opacity-75"
+          aria-hidden="true"
+        ></div>
+        <span
+          class="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true"
+        ></span>
+        <div
+          class="inline-block align-middle bg-white rounded-lg shadow-lg transform transition-all sm:max-w-2xl sm:w-full p-6"
+        >
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 class="text-lg font-semibold mb-4">Change Picture</h2>
+            {{ profile_pic_form.as_p }}
+            <div class="text-right mt-6">
+              <button
+                type="submit"
+                class="px-4 py-2 font-bold text-white bg-veryDarkGreen rounded-md hover:bg-green-500"
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                id="closePictureModal"
+                class="ml-2 px-4 py-2 font-bold text-gray-800 bg-gray-300 border border-gray-700 rounded-md hover:bg-gray-400"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create Brief Section -->
+    <div class="mt-10 p-5 rounded-xl border-2 border-lightAsh">
+      <div class="flex flex-col portable:flex-row items-center">
+        <div class="text-center portable:text-left">
+          <p class="font-bold text-lg lg:text-xl">
+            Get proposals from the most relevant sellers
+          </p>
+          <p class="mt-2 text-base">
+            Simply create a project brief and let us do the searching for you.
+          </p>
+        </div>
+        <div class="mt-4 portable:mt-0 portable:ml-auto">
+          <a
+            href="/create_brief"
+            class="px-5 py-3 text-xs font-bold text-white bg-veryLightGreen rounded-md hover:bg-lightGreen"
+          >
+            Create a brief
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advert Section -->
+    <div class="my-10 p-5 bg-veryDarkGreen text-center rounded-lg">
+      <p class="text-2xl md:text-8xl text-white py-8">Advert</p>
+    </div>
+
   </div>
 </main>
 
+<!-- Script for Modal -->
 <script>
   const editPictureModal = document.getElementById("editPictureModal");
   const openPictureModalButton = document.getElementById("openPictureModal");
