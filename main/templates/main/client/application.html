@@ -41,7 +41,7 @@
 
         <div class="portable:border portable:border-emetext-emerald-800 rounded-lg">
           <div class="py-5">
-            <a href="{% url 'main:chat' username=x.user.username %}" class="hidden sm:block bg-veryDarkGreen text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700">
+            <a href="{% url 'main:chat' id=x.user.id %}" class="hidden sm:block bg-veryDarkGreen text-white font-semibold my-2 px-2 py-2 shadow-lg rounded-md mx-2 border-2 hover:bg-white hover:text-green-700 hover:border-green-700">
               Send message
             </a>
 
