@@ -12,12 +12,27 @@
     </div>
 
 
-    <div class="md-compact:p-4">
+    <!-- <div class="md-compact:p-4">
         <div id="message-list" class="py-2 px-5 inline-block w-full">
             {% for message in messages %}
             <div class="flex {% if message.sender.username == user.username %} justify-start {% else %} justify-end {% endif %}">
                 <div class="w-auto xl:max-w-[500px] lg:max-w-96 md:max-w-80 sm:max-w-72">
                     <p class="px-2 py-2 my-2 rounded-xl text-white {% if message.sender.username == user.username %} bg-stone-500 {% else %} bg-veryDarkGreen {% endif %}">
+                        <span class="font-bold">[{{ message.sender.username }}]</span>: <br>{{ message.text }} <br>
+                        <span class="text-xs">{{ message.created_at }}</span>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div> -->
+
+    <div class="md-compact:p-4">
+        <div id="message-list" class="py-2 px-5 inline-block w-full">
+            {% for message in messages %}
+            <div class="">
+                <div class="w-full xl:w-full lg:w-full md:w-full sm:w-full">
+                    <p class="px-2 py-2 my-1 rounded-sm text-white bg-veryDarkGreen">
                         <span class="font-bold">[{{ message.sender.username }}]</span>: <br>{{ message.text }} <br>
                         <span class="text-xs">{{ message.created_at }}</span>
                     </p>
@@ -47,7 +62,7 @@
 
                                 {{form.msg_body}}
                                 <div class="">
-                                    <button class="px-4 py-8 rounded-md border border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-veryDarkGreen hover:text-white" type="submit">
+                                    <button class="px-4 py-8 mr-1 rounded-md border border-veryDarkGreen text-veryDarkGreen font-semibold hover:bg-veryDarkGreen hover:text-white" type="submit">
                                         Send
                                     </button>
                                 </div>
@@ -142,9 +157,9 @@
 
 
     <script type="text/javascript">
-        // const url = "ws://127.0.0.1:8000/ws" + window.location.pathname;
+        const url = "ws://127.0.0.1:8000/ws" + window.location.pathname;
         /*const url = "wss://getskillas.com/ws" + window.location.pathname; */
-        const url = "wss://getskillas.com/ws" + window.location.pathname;
+        // const url = "wss://getskillas.com/ws" + window.location.pathname;
         
         const ws = new WebSocket(url)
     
@@ -161,7 +176,7 @@
     
             // Create a span element to wrap the message text
             var messageSpan = document.createElement("span");
-            messageSpan.classList.add("px-2", "py-2", "my-2", "text-white", "rounded-xl", "bg-veryDarkGreen", "w-auto", "inline-block");
+            messageSpan.classList.add("px-2", "py-2", "my-1", "text-white", "rounded-sm", "bg-veryDarkGreen", "w-full", "inline-block");
             var message = "<strong>[" + data.username + "]</strong>: <br>" + data.text;
             messageSpan.innerHTML = message;
     

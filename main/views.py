@@ -669,8 +669,9 @@ def inbox(request):
         t = str(t[0])
         second_person = t.split(" ")
         second_person = second_person[-1]
+        print(second_person)
         second_person_id = User.objects.get(username=second_person).id
-    except IndexError:
+    except User.DoesNotExist:
         t = None
 
     mssg_thread = Message.objects.filter(sender=user)
