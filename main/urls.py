@@ -51,7 +51,7 @@ urlpatterns = [
 
     path("company_dashboard/", views.company, name="company_dashboard"),
 
-    path("chat/<str:username>/", views.thread_view, name="chat"),
+    path("chat/<int:id>/", views.thread_view, name="chat"),
     
     path("inbox/", views.inbox, name="inbox"),
 

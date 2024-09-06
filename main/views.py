@@ -671,7 +671,7 @@ def inbox(request):
         second_person = second_person[-1]
         print(second_person)
         second_person_id = User.objects.get(username=second_person).id
-    except User.DoesNotExist:
+    except (User.DoesNotExist, IndexError):
         t = None
 
     mssg_thread = Message.objects.filter(sender=user)
@@ -698,8 +698,9 @@ def inbox(request):
             message.is_read = True
             message.save()
 
-    except (ProfilePicture.DoesNotExist, MessageReadStatus.DoesNotExist):
-        pass
+    except (ProfilePicture.DoesNotExist, MessageReadStatus.DoesNotExist, UnboundLocalError):
+        second_person_profile_picture = None
+
 
     return render(
         request=request,
@@ -969,13 +970,16 @@ def edit_brief(request, id):
 
 
 
-def thread_view(request, username):
+def thread_view(request, id):
     template_name = 'main/messaging/chat.html'
 
     mssg = None
 
     user = request.user
-    message_receiver = User.objects.get(username=username)
+
+    counterpart = User.objects.get(id=id)
+
+    message_receiver = User.objects.get(id=id)
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
@@ -985,10 +989,12 @@ def thread_view(request, username):
 
     try:
         profile_picture = ProfilePicture.objects.get(user=user)
+        second_person_profile_picture = ProfilePicture.objects.get(user=user)
     except ObjectDoesNotExist:
         profile_picture = None
+        second_person_profile_picture = None
 
-    other_user = get_object_or_404(get_user_model(), username=username)
+    other_user = get_object_or_404(get_user_model(), id=id)
 
     try:
         add_to_contacts, _ = ContactList.objects.get_or_create(user=user)
@@ -1040,10 +1046,10 @@ def thread_view(request, username):
         "order_form": order_form,
         "inbox": inbox,
         "profile_picture": profile_picture,
+        "second_person_profile_picture": second_person_profile_picture,
         "mssg":mssg,
     }
     return render(request, template_name, context=context)
-
 
 
 def search_results(request, param):
