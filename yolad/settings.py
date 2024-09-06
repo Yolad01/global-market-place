@@ -1,4 +1,5 @@
 
+
 from datetime import timedelta
 from pathlib import Path
 import os
@@ -39,10 +40,10 @@ SECRET_KEY = env('SECRET_KEY')
 
 PAYSTACK_API_KEY = env("PAYSTACK_API_KEY")
 
-ALLOWED_HOSTS = ["getskillas.com", "www.getskillas.com", "localhost", "185.158.132.69"]
+ALLOWED_HOSTS = []
 
 
-CSRF_TRUSTED_ORIGINS=["https://getskillas.com", "https://www.getskillas.com"]
+
 
 
 
@@ -60,7 +61,6 @@ INSTALLED_APPS = [
     'ninja_extra',
     'ninja_jwt',
     'corsheaders',
-    
 ]
 
 MIDDLEWARE = [
@@ -119,17 +119,17 @@ WSGI_APPLICATION = 'yolad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    'default':  Env.db_url_config(env('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     'default':  Env.db_url_config(env('DATABASE_URL'))
+# }
 
 
 
@@ -176,12 +176,15 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, "yolad", "serviceworker.js")
 
 
 AUTH_USER_MODEL = "main.User"
@@ -191,8 +194,8 @@ AUTH_USER_MODEL = "main.User"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # remember to remove during deployment
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'yemirichard@yoladservices.com'
-EMAIL_HOST_PASSWORD = 'vllhwhciyktjkuyf'
+EMAIL_HOST_USER = 'chiemeriedroid@gmail.com'
+EMAIL_HOST_PASSWORD = 'lztthecjycjsgtnf'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
@@ -202,5 +205,3 @@ NINJA_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=10),
 
 }
-
-

@@ -5,3 +5,6 @@ db
 db.sqlite3
 .env
 main\static\css
+migrations
+/migrations
+./migrations
