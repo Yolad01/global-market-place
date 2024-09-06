@@ -68,7 +68,7 @@
                     </svg>
                     <p class="">{{ total_order }} Total orders</p>
                     </div>
-                    <a href="{% url 'main:chat' id=user_profile.user.id %}" target="_blank" class="flex-no-shrink bg-veryLightGreen hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg tracking-wider border-2 border-green-300 hover:border-green-500 text-veryDarkGreen rounded-full transition ease-in duration-300 font-semibold">
+                    <a href="{% url 'main:chat' username=user_profile.user.username %}" target="_blank" class="flex-no-shrink bg-veryLightGreen hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg tracking-wider border-2 border-green-300 hover:border-green-500 text-veryDarkGreen rounded-full transition ease-in duration-300 font-semibold">
                         Contact
                     </a>
                 </div>

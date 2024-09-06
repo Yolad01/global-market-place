@@ -970,16 +970,16 @@ def edit_brief(request, id):
 
 
 
-def thread_view(request, id):
+def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
 
     mssg = None
 
     user = request.user
 
-    counterpart = User.objects.get(id=id)
+    # counterpart = User.objects.get(id=id)
 
-    message_receiver = User.objects.get(id=id)
+    message_receiver = User.objects.get(username=username)
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
@@ -989,12 +989,12 @@ def thread_view(request, id):
 
     try:
         profile_picture = ProfilePicture.objects.get(user=user)
-        second_person_profile_picture = ProfilePicture.objects.get(user=user)
+        second_person_profile_picture = ProfilePicture.objects.get(user=message_receiver)
     except ObjectDoesNotExist:
         profile_picture = None
         second_person_profile_picture = None
 
-    other_user = get_object_or_404(get_user_model(), id=id)
+    other_user = get_object_or_404(get_user_model(), username=username)
 
     try:
         add_to_contacts, _ = ContactList.objects.get_or_create(user=user)
