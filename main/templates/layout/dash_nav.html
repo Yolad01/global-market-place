@@ -124,7 +124,8 @@
     
                             <div class="lg:mr-28 md:mr-20 sm:mr-10 sm:flex items-center hidden">
                                 {% for x in profile_pic %}
-                                <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full lg:w-12 sm:w-16" alt="{{ user.username }} profile"></a>
+                                <!-- <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full lg:w-12 sm:w-16" alt="{{ user.username }} profile"></a> -->
+                                <a href="/s_profile"><img src="{{ x.image.url }}" class="rounded-full w-16 h-10 lg:w-16 lg:h-10 sm:w-16 sm:h-10" alt="{{ user.username }} profile"></a>
                                 {% endfor %}
                                 <div class="pl-3 text-md font-semibold">{{ user.username }}</div>
                             </div>

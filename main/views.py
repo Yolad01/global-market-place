@@ -690,6 +690,7 @@ def inbox(request):
 
     try:
         profile_picture = ProfilePicture.objects.get(user=user)
+        second_person_profile_picture = ProfilePicture.objects.get(user=second_person_id)
         read_messages = MessageReadStatus.objects.all().filter(user=user)
 
         for message in read_messages:
@@ -709,6 +710,7 @@ def inbox(request):
             'me': user,
             'messages': msg,
             "mssg":mssg,
+            "second_person_profile_picture": second_person_profile_picture,
         }
     )
 
