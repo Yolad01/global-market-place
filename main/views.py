@@ -93,14 +93,17 @@ def s_identity(request):
         country = request.POST["country"]
         zip_code = request.POST["zip_code"]
         
-        instance = SkillaProfile.objects.get(user=user)
-        instance.country = country
-        instance.house_address = house_no
-        instance.street_name = street_name
-        instance.region = region
-        instance.city = city_name
-        instance.Postal_code = zip_code
-        instance.save()
+        try:
+            instance = SkillaProfile.objects.get(user=user)
+            instance.country = country
+            instance.house_address = house_no
+            instance.street_name = street_name
+            instance.region = region
+            instance.city = city_name
+            instance.Postal_code = zip_code
+            instance.save()
+        except SkillaProfile.DoesNotExist:
+            pass
 
         return redirect("main:identity_details")
     return render(
