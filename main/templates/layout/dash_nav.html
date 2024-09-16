@@ -19,11 +19,22 @@
             new WOW().init();
         </script>
 
+        <style>
+            .sticky-header {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: white;
+              z-index: 1000;
+          }
+          </style>
+
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     </head>
 
 
-    <header class='flex shadow-md py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
+    <header class='flex shadow-none py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50 sticky-header'>
         <div class='flex flex-wrap items-center justify-between gap-5 w-full'>
           <a href="/"><img src="{% static '/img/skillas_design-03.png' %}" alt="logo" class='w-36' />
           </a>

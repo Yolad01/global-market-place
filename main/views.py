@@ -216,12 +216,12 @@ def register(request):
             if user.role == "CLIENT":
                 send_mail_to_user
                 ClientProfile.objects.create(user_id=request.user.id)
-                messages.success(request, f"Logged in as {username}")
+                messages.success(request, f"Welcome {username}")
                 return redirect("main:client_dashboard")
             elif user.role == "SKILLAS":
                 send_mail_to_user
                 SkillaProfile.objects.create(user_id=request.user.id)
-                messages.success(request, f"Logged in as {username}")
+                messages.success(request, f"Welcome {username}")
                 return redirect("main:skillas_dashboard")
         else:
             for field, errors in registration_form.errors.items():
@@ -333,10 +333,10 @@ def sign_in(request):
             if user != None:
                 login(request, user)
                 if user.role == "CLIENT": 
-                    messages.success(request, f"Logged in as {username}") 
+                    messages.success(request, f"Welcome {username}") 
                     return redirect("main:client_dashboard")
                 elif user.role == "SKILLAS":
-                    messages.success(request, f"Logged in as {username}")
+                    messages.success(request, f"Welcome {username}")
                     return redirect("main:skillas_dashboard")
         else:
             messages.error(request, "Wrong login credentials. Please enter a correct username and password to access your dashboard")
