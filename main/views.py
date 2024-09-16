@@ -93,17 +93,14 @@ def s_identity(request):
         country = request.POST["country"]
         zip_code = request.POST["zip_code"]
         
-        try:
-            instance = SkillaProfile.objects.get(user=user)
-            instance.country = country
-            instance.house_address = house_no
-            instance.street_name = street_name
-            instance.region = region
-            instance.city = city_name
-            instance.Postal_code = zip_code
-            instance.save()
-        except SkillaProfile.DoesNotExist:
-            pass
+        instance = SkillaProfile.objects.get_or_create(user=user)
+        instance.country = country
+        instance.house_address = house_no
+        instance.street_name = street_name
+        instance.region = region
+        instance.city = city_name
+        instance.Postal_code = zip_code
+        instance.save()
 
         return redirect("main:identity_details")
     return render(
@@ -588,7 +585,7 @@ def create_brief(request):
             brief_form.user = request.user
             brief_form.save()
             ##### messages
-            return redirect("main:client_dashboard")
+            return redirect("main:view_brief")
             
     form = BriefForm()
     return render(

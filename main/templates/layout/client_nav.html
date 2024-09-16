@@ -87,6 +87,9 @@
           <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'><a href='/view_brief'
               class='hover:text-veryLightGreen text-veryDarkGreen block font-semibold text-[15px]'>Briefs</a>
           </li>
+          <li class='max-lg:border-b border-gray-300 max-lg:py-3 px-3'><a href='/paid-order-history'
+              class='hover:text-veryLightGreen text-veryDarkGreen block font-semibold text-[15px]'>Paid Orders</a>
+          </li>
         </ul>
       </div>
   
@@ -95,12 +98,13 @@
             <a href="#"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10 transition-all" alt="{{ user.username }} profile"></a>
             {% endfor %}
 
-            <button
+            <a
+            href="/logout"
                 class='px-4 py-2 text-sm rounded-md font-bold text-white border-2 border-veryDarkAsh bg-veryDarkGreen transition-all ease-in-out duration-300 hover:bg-transparent hover:text-veryLightGreen'>
                 Logout
-            </button>
+            </a>
             
-    
+
             <button id="toggleOpen" class='lg:hidden'>
             <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -212,7 +216,7 @@
                                   {% for x in profile_pic %}
                                   <a href="/client_dashboard"><img src="{{ x.image.url }}" class="rounded-full h-10 w-10" alt="{{ user.username }} profile"></a>
                                   {% endfor %}
-                              </li>
+                                </li>
                               </ul>
                                 
                             </nav>
