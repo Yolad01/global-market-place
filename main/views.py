@@ -93,7 +93,7 @@ def s_identity(request):
         country = request.POST["country"]
         zip_code = request.POST["zip_code"]
         
-        instance = SkillaProfile.objects.get_or_create(user=user)
+        instance = SkillaProfile.objects.get(user=user)
         instance.country = country
         instance.house_address = house_no
         instance.street_name = street_name
@@ -214,13 +214,13 @@ def register(request):
 
             login(request, user)
             if user.role == "CLIENT":
-                send_mail_to_user
                 ClientProfile.objects.create(user_id=request.user.id)
+                send_mail_to_user
                 messages.success(request, f"Welcome {username}")
                 return redirect("main:client_dashboard")
             elif user.role == "SKILLAS":
-                send_mail_to_user
                 SkillaProfile.objects.create(user_id=request.user.id)
+                send_mail_to_user
                 messages.success(request, f"Welcome {username}")
                 return redirect("main:skillas_dashboard")
         else:
