@@ -473,7 +473,7 @@ def s_profile(request):
         about_skilla = AboutSkilla.objects.get(user=user)
         unread_count = get_unread_messages_count(user)
         trans_count = Payment().get_skilla_order_count(user=user)
-    except (AboutSkilla.DoesNotExist, ProfilePicture.DoesNotExist):
+    except (AboutSkilla.DoesNotExist):
         about_skilla = AboutSkilla(user=user)
         unread_count = 0
         trans_count = 0
@@ -625,9 +625,10 @@ def profile_view(request, pk):
         view_about_skilla = AboutSkilla.objects.get(user__id=pk)
         view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
         
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProfilePicture.DoesNotExist):
         view_about_skilla = None
         view_T_and_cert = None
+        picture = None
 
         # skilla = None
         # user_profile = None
@@ -883,9 +884,13 @@ def skillas_gigs_details(request, id):
 
 def view_skills(request):
 
-    user=request.user
-    skills = Skill.objects.all().filter(skilla=user)
-    profile_pic = ProfilePicture.objects.get(user=user)
+    try:
+        user=request.user
+        skills = Skill.objects.all().filter(skilla=user)
+        profile_pic = ProfilePicture.objects.get(user=user)
+    except (Skill.DoesNotExist, ProfilePicture.DoesNotExist):
+        skills = None
+        profile_pic = None
     return render(
         request=request,
         template_name="main/skilla/view_skills.html",
@@ -1179,8 +1184,12 @@ def password_reset_complete(request):
 def make_payment(request, order_no, price):
     user = request.user
     order = Order.objects.get(order_no=order_no)
-    skilla_img = ProfilePicture.objects.get(user=order.skilla)
-    print(price)
+    try:
+        skilla_img = ProfilePicture.objects.get(user=order.skilla)
+    except ProfilePicture.DoesNotExist:
+        skilla_img = None
+    # print(skilla_img)
+    # print(price)
 
     if request.method == "POST":
         form = PaymentForm(request.POST)
@@ -1285,11 +1294,21 @@ def paid_order_history(request):
 def rate_user(request):
     user = request.user.id
     skilla = request.session.get("skilla")
-    skilla = User.objects.get(username=skilla)
-    user_profile = SkillaProfile.objects.get(user=skilla.id)
-    picture = ProfilePicture.objects.get(user=skilla.id)
-    trans_count = Payment().get_skilla_order_count(user=skilla.id)
-    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+    try:
+        skilla = User.objects.get(username=skilla)
+        user_profile = SkillaProfile.objects.get(user=skilla.id)
+        picture = ProfilePicture.objects.get(user=skilla.id)
+        trans_count = Payment().get_skilla_order_count(user=skilla.id)
+        average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+    except (SkillaProfile.DoesNotExist, Payment.DoesNotExist, UserReview.DoesNotExist, User.DoesNotExist):
+        skilla = None
+        user_profile = None
+        picture = None
+        trans_count = 0
+        average_rating = None
+        ratings = 0
+        
+
 
     form = UserReviewForm(request.POST)
     if request.method == "POST":
