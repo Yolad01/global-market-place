@@ -5,7 +5,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito+Sans:opsz,wght@6..12,700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 
-/* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.4.9 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -216,6 +216,8 @@ textarea {
   /* 1 */
   line-height: inherit;
   /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
   color: inherit;
   /* 1 */
   margin: 0;
@@ -239,9 +241,9 @@ select {
 */
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -692,6 +694,10 @@ select{
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 ::backdrop{
@@ -742,6 +748,10 @@ select{
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 .container{
@@ -1409,6 +1419,10 @@ select{
   margin-top: 0.75rem;
 }
 
+.mt-36{
+  margin-top: 9rem;
+}
+
 .mt-4{
   margin-top: 1rem;
 }
@@ -1439,14 +1453,6 @@ select{
 
 .mt-\[20px\]{
   margin-top: 20px;
-}
-
-.mt-36{
-  margin-top: 9rem;
-}
-
-.mt-56{
-  margin-top: 14rem;
 }
 
 .block{
@@ -2531,6 +2537,11 @@ select{
   padding-bottom: 0.5rem;
 }
 
+.py-20{
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -3308,11 +3319,6 @@ select{
   inset-inline-start: 2px;
 }
 
-.after\:top-0::after{
-  content: var(--tw-content);
-  top: 0px;
-}
-
 .after\:top-0\.5::after{
   content: var(--tw-content);
   top: 0.125rem;
@@ -3877,6 +3883,10 @@ select{
     margin-left: -18rem;
   }
 
+  .sm-compact\:ml-40{
+    margin-left: 10rem;
+  }
+
   .sm-compact\:mr-10{
     margin-right: 2.5rem;
   }
@@ -3950,10 +3960,6 @@ select{
 
   .md-compact\:ml-10{
     margin-left: 2.5rem;
-  }
-
-  .md-compact\:ml-16{
-    margin-left: 4rem;
   }
 
   .md-compact\:ml-2{
@@ -4559,6 +4565,10 @@ select{
     margin-right: 1.25rem;
   }
 
+  .portable\:mr-7{
+    margin-right: 1.75rem;
+  }
+
   .portable\:mt-0{
     margin-top: 0px;
   }
@@ -4693,6 +4703,10 @@ select{
 
   .portable\:p-0{
     padding: 0px;
+  }
+
+  .portable\:p-20{
+    padding: 5rem;
   }
 
   .portable\:px-2{
@@ -4899,10 +4913,6 @@ select{
 
   .sm\:mr-40{
     margin-right: 10rem;
-  }
-
-  .sm\:mr-5{
-    margin-right: 1.25rem;
   }
 
   .sm\:mr-8{
@@ -5116,6 +5126,10 @@ select{
 
   .sm\:justify-center{
     justify-content: center;
+  }
+
+  .sm\:justify-between{
+    justify-content: space-between;
   }
 
   .sm\:gap-x-5{
@@ -5378,10 +5392,6 @@ select{
     margin-left: 4rem;
   }
 
-  .md\:ml-20{
-    margin-left: 5rem;
-  }
-
   .md\:ml-24{
     margin-left: 6rem;
   }
@@ -5474,8 +5484,8 @@ select{
     height: 400px;
   }
 
-  .md\:h-\[48vh\]{
-    height: 48vh;
+  .md\:h-\[44vh\]{
+    height: 44vh;
   }
 
   .md\:w-1\/2{
@@ -5550,11 +5560,6 @@ select{
 
   .md\:justify-between{
     justify-content: space-between;
-  }
-
-  .md\:gap-x-10{
-    -moz-column-gap: 2.5rem;
-         column-gap: 2.5rem;
   }
 
   .md\:gap-x-2{
@@ -6073,11 +6078,6 @@ select{
          column-gap: 3rem;
   }
 
-  .lg\:gap-x-48{
-    -moz-column-gap: 12rem;
-         column-gap: 12rem;
-  }
-
   .lg\:gap-x-5{
     -moz-column-gap: 1.25rem;
          column-gap: 1.25rem;
@@ -6416,10 +6416,6 @@ select{
 
   .xl\:mr-32{
     margin-right: 8rem;
-  }
-
-  .xl\:mr-40{
-    margin-right: 10rem;
   }
 
   .xl\:mr-48{
