@@ -68,7 +68,7 @@
                             </a>
 
                             <!--nav for mobile screen-->
-                            <a href="#"><img id="hamburger-menu" class="-mb-5 mt-10 ml-20 compact:mt-11 portable:ml-24 cursor-pointer" src="{% static '/img/green_hamburger_menu.png' %}" loading="lazy" alt="hamburger menu"></a>
+                            <a href="#"><img id="hamburger-menu" class="-mb-5 mt-10 ml-20 compact:mt-11 sm-compact:ml-36 md-compact:ml-20 portable:ml-24 cursor-pointer" src="{% static '/img/green_hamburger_menu.png' %}" loading="lazy" alt="hamburger menu"></a>
                             <div id="dropdown-menu" class="hidden absolute compact:ml-16 compact:mt-20 md-compact:ml-36 portable:ml-72 custom:ml-48 custom:mt-20 sm:ml-96 sm:translate-x-14 py-2 px-4 mt-10 mr-10 shadow-lg rounded-lg bg-white">
                                 <ul>
                                     <li class="active"><a href="/" class="block text-sm px-2 py-4 text-white bg-veryDarkGreen font-semibold">Home</a></li>
@@ -200,20 +200,20 @@
             {% endblock %}
 
             <!-- Footer Start -->
-            <footer class="footer bg-veryDarkGreen text-white pt-[80px] lg:pt-[200px] pb-30 md:pb-[80px] lg:pb-[110px] font-normal bg-no-repeat" style="">
-                <div class="container mx-auto xl:-mt-20">
+            <footer class="footer bg-veryDarkGreen text-white pt-[80px] xl:pt-[150px] lg:pt-[100px] pb-30 md:pb-[80px] lg:pb-[110px] font-normal bg-no-repeat" style="">
+                <div class="container mx-auto xl:-mt-24 xl:mx-24 lg:mx-10">
                     <div class="grid grid-cols-12 gap-x-[5px] mb-[-30px] md:mx-5 ml-5">
                         <div class="col-span-12 sm:col-span-6 lg:col-span-4 mb-[30px]">
                             <a href="index.html" class="block mb-[25px]">
                                 <img src="{% static '/img/white_skillas_logo.png' %}" loading=lazy alt="footer logo">
                             </a>
-                            <p class="mb-[5px] xl:mb-[40px]">Building a global marketplace </p>
+                            <p class="mb-[5px] xl:mb-[40px]">Building a global marketplace  </p>
                             <p class="text-sm hidden md:block">&copy; <a href="" class="text-secondary">2023 Yolad Global Service Limited.</a> <br/> All Rights Reserved</p>
                         </div>
                         <div class="col-span-12 sm:col-span-6 lg:col-span-3 mb-[30px]">
                             <h3 class="font-lora font-normal text-[22px] leading-[1.222] text-primary mb-[20px] lg:mb-[30px]">
                                 Information<span class="text-secondary">.</span></h3>
-                            <ul class="text-[16px] leading-none mb-[-20px]">
+                            <ul class="text-sm leading-none mb-[-20px]">
                                 <li class="mb-[20px]"><a class="inline-block transition-all hover:text-secondary" href="/about">About us</a></li>
                                 <li class="mb-[20px]"><a class="inline-block transition-all hover:text-secondary" href="#">Careers</a></li>
                                 <li class="mb-[20px]"><a class="inline-block transition-all hover:text-secondary" href="blog-grid.html">Blog</a></li>
@@ -222,7 +222,7 @@
                         <div class="col-span-12 sm:col-span-6 lg:col-span-3 mb-[30px]">
                             <h3 class="font-lora font-normal text-[22px] leading-[1.222] text-primary mb-[20px] lg:mb-[30px]">
                                 Support<span class="text-secondary">.</span></h3>
-                            <ul class="text-[16px] leading-none mb-[-20px]">
+                            <ul class="text-sm leading-none mb-[-20px]">
                                 <li class="mb-[20px]"><a class="inline-block transition-all hover:text-secondary" href="/terms_condition">Terms & Conditions</a></li>
                                 <li class="mb-[20px]"><a class="inline-block transition-all hover:text-secondary" href="#">Help line</a>
                                 </li>
