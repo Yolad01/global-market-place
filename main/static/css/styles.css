@@ -2472,6 +2472,11 @@ select{
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-darkBlue{
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 75 124 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
 }

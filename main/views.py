@@ -663,35 +663,29 @@ def inbox(request):
     mssg = None
     profile_picture = None
 
-    t = Thread.objects.filter(users=user)
-    t =  list(t)
-
     try:
-        t = str(t[0])
-        second_person = t.split(" ")
-        second_person = second_person[-1]
-        print(second_person)
-        second_person_id = User.objects.get(username=second_person).id
-    except (User.DoesNotExist, IndexError):
-        t = None
-
-    mssg_thread = Message.objects.filter(sender=user)
-    
-    for msg in mssg_thread:
-        mssg: list = []
-        mssg.append(msg.text)
+        mssg_thread = Message.objects.filter(sender=user) ### try except this shit
+        
+        for msg in mssg_thread:
+            mssg: list = []
+            mssg.append(msg.text)
+    except Message.DoesNotExist:
+        mssg_thread = None
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
         inbox = contact_list.contacts.all()
-    except ValueError:
-        pass
-    
-    msg = Message.objects.all().filter(sender=user)
+        
+        for pic in inbox:
+            profile_picture_sec = ProfilePicture.objects.get(user=pic)
+        
 
+    except ValueError:
+        contact_list = None
+        inbox = None
+        profile_picture_sec = None
     try:
         profile_picture = ProfilePicture.objects.get(user=user)
-        second_person_profile_picture = ProfilePicture.objects.get(user=second_person_id)
         read_messages = MessageReadStatus.objects.all().filter(user=user)
 
         for message in read_messages:
@@ -700,8 +694,7 @@ def inbox(request):
             message.save()
 
     except (ProfilePicture.DoesNotExist, MessageReadStatus.DoesNotExist, UnboundLocalError):
-        second_person_profile_picture = None
-
+        profile_picture = None
 
     return render(
         request=request,
@@ -710,12 +703,11 @@ def inbox(request):
             "inbox": inbox,
             "profile_picture": profile_picture,
             'me': user,
-            'messages': msg,
+            # 'messages': msg,
             "mssg":mssg,
-            "second_person_profile_picture": second_person_profile_picture,
+            "profile_picture_sec": profile_picture_sec,
         }
     )
-
 
 
 
@@ -726,6 +718,7 @@ def quotes(request):
     display_order = Order.objects.filter(
         skilla=user,
     ).order_by("-order_created")
+    print(display_order)
 
     try:
         unread_count = get_unread_messages_count(user)
@@ -977,27 +970,27 @@ def edit_brief(request, id):
 
 def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
-
     mssg = None
-
     user = request.user
+    counterpart = User.objects.get(username=username).id
 
-    # counterpart = User.objects.get(id=id)
+    display_order = Order.objects.filter(
+        skilla=user, client=counterpart
+    ).order_by("-order_created")
 
     message_receiver = User.objects.get(username=username)
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
         inbox = contact_list.contacts.all()
-    except ValueError:
-        pass
 
-    try:
-        profile_picture = ProfilePicture.objects.get(user=user)
-        second_person_profile_picture = ProfilePicture.objects.get(user=message_receiver)
-    except ObjectDoesNotExist:
-        profile_picture = None
-        second_person_profile_picture = None
+        for pic in inbox:
+            profile_picture_sec = ProfilePicture.objects.get(user=pic)
+
+    except ValueError:
+        contact_list = None
+        inbox = None
+        profile_picture_sec = None
 
     other_user = get_object_or_404(get_user_model(), username=username)
 
@@ -1016,6 +1009,7 @@ def thread_view(request, username):
         raise Http404
 
     messages = thread.message_set.all()
+    
 
     if request.method == 'POST':
         form = ChatMessageForm(request.POST)
@@ -1050,8 +1044,8 @@ def thread_view(request, username):
         'form': form,
         "order_form": order_form,
         "inbox": inbox,
-        "profile_picture": profile_picture,
-        "second_person_profile_picture": second_person_profile_picture,
+        "display_order": display_order,
+        "profile_picture_sec": profile_picture_sec,
         "mssg":mssg,
     }
     return render(request, template_name, context=context)
