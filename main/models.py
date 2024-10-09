@@ -160,7 +160,7 @@ class SkillaProfile(models.Model):
     city = models.CharField(max_length=100, default=None, null=True, blank=True)
     Postal_code = models.CharField(max_length=10, default=None, null=True, blank=True)
     current_location = models.CharField(max_length=20, null=True, blank=True)
-    experience = models.PositiveSmallIntegerField(verbose_name="Years of Experience", blank=True, null=True)
+    experience = models.PositiveIntegerField(verbose_name="Years of Experience", blank=True, null=True)
     portfolio = models.URLField(verbose_name="links to your works", blank=True, null=True)
     professional_profiles_links = models.CharField(max_length=256, null=True, blank=True)
     nin = models.CharField(max_length=11, null=True, blank=True)
@@ -220,7 +220,7 @@ class CompanyProfile(models.Model):
     location = models.CharField(verbose_name="Location (City/Country)", max_length=100, blank=True, null=False, choices=Country.choices)
     state = models.CharField(max_length=50, blank=True, null=False)
     industry = models.CharField(verbose_name="Industry or Business Type", max_length=100, blank=True, null=False)
-    company_size = models.PositiveSmallIntegerField(verbose_name="company size (Number of Employees)", blank=True, null=True)
+    company_size = models.PositiveIntegerField(verbose_name="company size (Number of Employees)", blank=True, null=True)
     services = models.CharField(verbose_name="Describe the services or skills needed (Optional)", max_length=200, blank=True, null=True)
     work_history_with_freelancer = models.BooleanField(verbose_name="Have you worked with a freelancer or skilled workers Before", null=True, blank=True)
     terms_and_conditions = models.BooleanField(default=False, blank=True, null=False)
@@ -249,7 +249,7 @@ class Order(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payer")
     notification  = models.PositiveIntegerField(null=True, blank=True)
     paid = models.BooleanField(default=False)
-    order_no = models.PositiveSmallIntegerField(default=order_number)
+    order_no = models.PositiveIntegerField(default=order_number)
     gig_desc = models.TextField(verbose_name="Gig description", max_length=200, null=True, blank=False)
     delivery = models.IntegerField(null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
@@ -257,7 +257,7 @@ class Order(models.Model):
     decline = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
 
-    order_created = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
     
     def __str__(self) -> str:
         return f"Order between {self.skilla} and {self.client}"
@@ -521,7 +521,7 @@ class Payment(models.Model):
     channel = models.CharField(max_length=10, blank=True, null=True)
     card_type = models.CharField(max_length=10, blank=True, null=True)
     time_of_payment = models.CharField(max_length=20, blank=True, null=True)
-    order_no = models.PositiveSmallIntegerField(default=0)
+    order_no = models.PositiveIntegerField(default=0)
     completed = models.BooleanField(default=False)
 
 

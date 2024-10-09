@@ -73,7 +73,7 @@
                         <div>
                             <button class="bg-transparent border-none">
                                 <a href="{% url 'main:chat' username=contact.username %}">
-                                    <img src="{{ profile_picture.image.url }}" alt="profile-img" class="rounded-full my-1 w-12 h-12">
+                                    <img src="{{ profile_picture_sec.image.url }}" alt="profile-img" class="rounded-full my-1 w-12 h-12">
                                 </a>
                             </button>
                         </div>
@@ -83,7 +83,7 @@
 
                         {% comment %} <div class="my-5 text-sm mx-4">{{ contact.role }}</div> {% endcomment %}
 
-                        {% for m in mssg%}
+                        {% for m in mssg %}
                             <div class="hidden xl:block my-5 text-sm mx-4">{{ m|slice:":12" }}...</div>
                         {% endfor %}
 
@@ -102,6 +102,8 @@
             {% endfor %}
 
         </aside>
+
+        
         
         <main class="col-span-4">
             <!-- content-->

@@ -34,9 +34,11 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from .forms import PasswordResetRequestForm, SetPasswordForm
-
+from django.db.models import Q
 from . import functions
 
+from itertools import chain
+from operator import attrgetter
 
 # Create your views here.
 
@@ -214,14 +216,14 @@ def register(request):
 
             login(request, user)
             if user.role == "CLIENT":
-                send_mail_to_user
                 ClientProfile.objects.create(user_id=request.user.id)
-                messages.success(request, f"Logged in as {username}")
+                send_mail_to_user
+                messages.success(request, f"Welcome {username}")
                 return redirect("main:client_dashboard")
             elif user.role == "SKILLAS":
-                send_mail_to_user
                 SkillaProfile.objects.create(user_id=request.user.id)
-                messages.success(request, f"Logged in as {username}")
+                send_mail_to_user
+                messages.success(request, f"Welcome {username}")
                 return redirect("main:skillas_dashboard")
         else:
             for field, errors in registration_form.errors.items():
@@ -333,10 +335,10 @@ def sign_in(request):
             if user != None:
                 login(request, user)
                 if user.role == "CLIENT": 
-                    messages.success(request, f"Logged in as {username}") 
+                    messages.success(request, f"Welcome {username}") 
                     return redirect("main:client_dashboard")
                 elif user.role == "SKILLAS":
-                    messages.success(request, f"Logged in as {username}")
+                    messages.success(request, f"Welcome {username}")
                     return redirect("main:skillas_dashboard")
         else:
             messages.error(request, "Wrong login credentials. Please enter a correct username and password to access your dashboard")
@@ -406,7 +408,7 @@ def skilla(request):
     if request.method == "POST":
         form = BriefAppForm(request.POST)
         # search_form = SearchForm(request.POST)
-        search_input = request.POST["search_input"]
+        search_input = request.POST.get("search_input")
         if form.is_valid():
             client = form.cleaned_data["client"]
             title = form.cleaned_data["title"]
@@ -473,7 +475,7 @@ def s_profile(request):
         about_skilla = AboutSkilla.objects.get(user=user)
         unread_count = get_unread_messages_count(user)
         trans_count = Payment().get_skilla_order_count(user=user)
-    except (AboutSkilla.DoesNotExist, ProfilePicture.DoesNotExist):
+    except (AboutSkilla.DoesNotExist):
         about_skilla = AboutSkilla(user=user)
         unread_count = 0
         trans_count = 0
@@ -585,7 +587,7 @@ def create_brief(request):
             brief_form.user = request.user
             brief_form.save()
             ##### messages
-            return redirect("main:client_dashboard")
+            return redirect("main:view_brief")
             
     form = BriefForm()
     return render(
@@ -625,9 +627,10 @@ def profile_view(request, pk):
         view_about_skilla = AboutSkilla.objects.get(user__id=pk)
         view_T_and_cert = TrainingAndCertification.objects.filter(user__id=pk)
         
-    except (ObjectDoesNotExist, OperationalError):
+    except (ObjectDoesNotExist, OperationalError, ProfilePicture.DoesNotExist):
         view_about_skilla = None
         view_T_and_cert = None
+        picture = None
 
         # skilla = None
         # user_profile = None
@@ -662,31 +665,27 @@ def inbox(request):
     mssg = None
     profile_picture = None
 
-    t = Thread.objects.filter(users=user)
-    t =  list(t)
-
     try:
-        t = str(t[0])
-        second_person = t.split(" ")
-        second_person = second_person[-1]
-        second_person_id = User.objects.get(username=second_person).id
-    except IndexError:
-        t = None
-
-    mssg_thread = Message.objects.filter(sender=user)
-    
-    for msg in mssg_thread:
-        mssg: list = []
-        mssg.append(msg.text)
+        mssg_thread = Message.objects.filter(sender=user) ### try except this shit
+        
+        for msg in mssg_thread:
+            mssg: list = []
+            mssg.append(msg.text)
+    except Message.DoesNotExist:
+        mssg_thread = None
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
         inbox = contact_list.contacts.all()
-    except ValueError:
-        pass
-    
-    msg = Message.objects.all().filter(sender=user)
+        
+        for pic in inbox:
+            profile_picture_sec = ProfilePicture.objects.get(user=pic)
+        
 
+    except ValueError:
+        contact_list = None
+        inbox = None
+        profile_picture_sec = None
     try:
         profile_picture = ProfilePicture.objects.get(user=user)
         read_messages = MessageReadStatus.objects.all().filter(user=user)
@@ -696,8 +695,8 @@ def inbox(request):
             message.is_read = True
             message.save()
 
-    except (ProfilePicture.DoesNotExist, MessageReadStatus.DoesNotExist):
-        pass
+    except (ProfilePicture.DoesNotExist, MessageReadStatus.DoesNotExist, UnboundLocalError):
+        profile_picture = None
 
     return render(
         request=request,
@@ -706,11 +705,11 @@ def inbox(request):
             "inbox": inbox,
             "profile_picture": profile_picture,
             'me': user,
-            'messages': msg,
+            # 'messages': msg,
             "mssg":mssg,
+            "profile_picture_sec": profile_picture_sec,
         }
     )
-
 
 
 
@@ -718,9 +717,13 @@ def quotes(request):
 
     user = request.user
 
-    display_order = Order.objects.filter(
-        skilla=user,
-    ).order_by("-order_created")
+    try:
+        display_order = Order.objects.filter(
+            skilla=user,
+        ).order_by("-created_at")
+        print(display_order)
+    except Exception as e:
+        display_order = None
 
     try:
         unread_count = get_unread_messages_count(user)
@@ -744,12 +747,13 @@ def quotes(request):
 
 
 def orders(request):
-    user = request.user.id
+    user = request.user
 
     try:
         display_order = Order.objects.all().filter(
             client=user,
-        ).order_by("-order_created")
+        ).order_by("-created_at")
+        print(display_order)
     except Exception as e:
         display_order = None
 
@@ -879,9 +883,13 @@ def skillas_gigs_details(request, id):
 
 def view_skills(request):
 
-    user=request.user
-    skills = Skill.objects.all().filter(skilla=user)
-    profile_pic = ProfilePicture.objects.get(user=user)
+    try:
+        user=request.user
+        skills = Skill.objects.all().filter(skilla=user)
+        profile_pic = ProfilePicture.objects.get(user=user)
+    except (Skill.DoesNotExist, ProfilePicture.DoesNotExist):
+        skills = None
+        profile_pic = None
     return render(
         request=request,
         template_name="main/skilla/view_skills.html",
@@ -968,22 +976,27 @@ def edit_brief(request, id):
 
 def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
-
     mssg = None
-
     user = request.user
+    counterpart = User.objects.get(username=username).id
+
+    display_order = Order.objects.filter(
+        skilla=user, client=counterpart
+    ).order_by("-created_at")
+
     message_receiver = User.objects.get(username=username)
 
     try:
         contact_list = ContactList.objects.get_or_create(user=user)[0]
         inbox = contact_list.contacts.all()
-    except ValueError:
-        pass
 
-    try:
-        profile_picture = ProfilePicture.objects.get(user=user)
-    except ObjectDoesNotExist:
-        profile_picture = None
+        for pic in inbox:
+            profile_picture_sec = ProfilePicture.objects.get(user=pic)
+
+    except ValueError:
+        contact_list = None
+        inbox = None
+        profile_picture_sec = None
 
     other_user = get_object_or_404(get_user_model(), username=username)
 
@@ -1002,6 +1015,20 @@ def thread_view(request, username):
         raise Http404
 
     messages = thread.message_set.all()
+
+    # display_order = Order.objects.filter(
+    #     skilla=user, client=counterpart
+    # ).order_by("-created_at")
+
+    display_order = Order.objects.filter(
+        (Q(skilla=user) & Q(client=counterpart)) | (Q(skilla=counterpart) & Q(client=user))
+    ).order_by("-created_at")
+
+
+    # combined_data = sorted(
+    #     chain(messages, display_order),
+    #     key=attrgetter('created_at')
+    # )
 
     if request.method == 'POST':
         form = ChatMessageForm(request.POST)
@@ -1023,7 +1050,7 @@ def thread_view(request, username):
     
     for msg in mssg_thread:
         mssg: list = []
-        mssg.append(msg.text)  
+        mssg.append(msg.text)
 
     form = ChatMessageForm()
     order_form = OrderForm()
@@ -1036,11 +1063,12 @@ def thread_view(request, username):
         'form': form,
         "order_form": order_form,
         "inbox": inbox,
-        "profile_picture": profile_picture,
+        "display_order": display_order,
+        "profile_picture_sec": profile_picture_sec,
         "mssg":mssg,
+        # "combined_data": combined_data
     }
     return render(request, template_name, context=context)
-
 
 
 def search_results(request, param):
@@ -1170,8 +1198,12 @@ def password_reset_complete(request):
 def make_payment(request, order_no, price):
     user = request.user
     order = Order.objects.get(order_no=order_no)
-    skilla_img = ProfilePicture.objects.get(user=order.skilla)
-    print(price)
+    try:
+        skilla_img = ProfilePicture.objects.get(user=order.skilla)
+    except ProfilePicture.DoesNotExist:
+        skilla_img = None
+    # print(skilla_img)
+    # print(price)
 
     if request.method == "POST":
         form = PaymentForm(request.POST)
@@ -1276,11 +1308,21 @@ def paid_order_history(request):
 def rate_user(request):
     user = request.user.id
     skilla = request.session.get("skilla")
-    skilla = User.objects.get(username=skilla)
-    user_profile = SkillaProfile.objects.get(user=skilla.id)
-    picture = ProfilePicture.objects.get(user=skilla.id)
-    trans_count = Payment().get_skilla_order_count(user=skilla.id)
-    average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+    try:
+        skilla = User.objects.get(username=skilla)
+        user_profile = SkillaProfile.objects.get(user=skilla.id)
+        picture = ProfilePicture.objects.get(user=skilla.id)
+        trans_count = Payment().get_skilla_order_count(user=skilla.id)
+        average_rating, ratings = UserReview().get_rating(user_id=skilla.id)
+    except (SkillaProfile.DoesNotExist, Payment.DoesNotExist, UserReview.DoesNotExist, User.DoesNotExist):
+        skilla = None
+        user_profile = None
+        picture = None
+        trans_count = 0
+        average_rating = None
+        ratings = 0
+        
+
 
     form = UserReviewForm(request.POST)
     if request.method == "POST":
