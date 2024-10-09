@@ -2477,6 +2477,11 @@ select{
   background-color: rgb(64 75 124 / var(--tw-bg-opacity));
 }
 
+.bg-gray-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
 }
@@ -5252,6 +5257,10 @@ select{
     grid-template-columns: repeat(9, minmax(0, 1fr));
   }
 
+  .sm\:grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
   .sm\:flex-row{
     flex-direction: row;
   }
@@ -6160,6 +6169,10 @@ select{
 
   .lg\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .lg\:items-center{

@@ -34,9 +34,11 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from .forms import PasswordResetRequestForm, SetPasswordForm
-
+from django.db.models import Q
 from . import functions
 
+from itertools import chain
+from operator import attrgetter
 
 # Create your views here.
 
@@ -715,10 +717,13 @@ def quotes(request):
 
     user = request.user
 
-    display_order = Order.objects.filter(
-        skilla=user,
-    ).order_by("-order_created")
-    print(display_order)
+    try:
+        display_order = Order.objects.filter(
+            skilla=user,
+        ).order_by("-created_at")
+        print(display_order)
+    except Exception as e:
+        display_order = None
 
     try:
         unread_count = get_unread_messages_count(user)
@@ -742,12 +747,13 @@ def quotes(request):
 
 
 def orders(request):
-    user = request.user.id
+    user = request.user
 
     try:
         display_order = Order.objects.all().filter(
             client=user,
-        ).order_by("-order_created")
+        ).order_by("-created_at")
+        print(display_order)
     except Exception as e:
         display_order = None
 
@@ -976,7 +982,7 @@ def thread_view(request, username):
 
     display_order = Order.objects.filter(
         skilla=user, client=counterpart
-    ).order_by("-order_created")
+    ).order_by("-created_at")
 
     message_receiver = User.objects.get(username=username)
 
@@ -1009,7 +1015,20 @@ def thread_view(request, username):
         raise Http404
 
     messages = thread.message_set.all()
-    
+
+    # display_order = Order.objects.filter(
+    #     skilla=user, client=counterpart
+    # ).order_by("-created_at")
+
+    display_order = Order.objects.filter(
+        (Q(skilla=user) & Q(client=counterpart)) | (Q(skilla=counterpart) & Q(client=user))
+    ).order_by("-created_at")
+
+
+    # combined_data = sorted(
+    #     chain(messages, display_order),
+    #     key=attrgetter('created_at')
+    # )
 
     if request.method == 'POST':
         form = ChatMessageForm(request.POST)
@@ -1031,7 +1050,7 @@ def thread_view(request, username):
     
     for msg in mssg_thread:
         mssg: list = []
-        mssg.append(msg.text)  
+        mssg.append(msg.text)
 
     form = ChatMessageForm()
     order_form = OrderForm()
@@ -1047,6 +1066,7 @@ def thread_view(request, username):
         "display_order": display_order,
         "profile_picture_sec": profile_picture_sec,
         "mssg":mssg,
+        # "combined_data": combined_data
     }
     return render(request, template_name, context=context)
 

@@ -257,7 +257,7 @@ class Order(models.Model):
     decline = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
 
-    order_created = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
     
     def __str__(self) -> str:
         return f"Order between {self.skilla} and {self.client}"
