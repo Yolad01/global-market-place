@@ -5,7 +5,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito+Sans:opsz,wght@6..12,700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 
-/* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.4.9 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -216,6 +216,8 @@ textarea {
   /* 1 */
   line-height: inherit;
   /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
   color: inherit;
   /* 1 */
   margin: 0;
@@ -239,9 +241,9 @@ select {
 */
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -692,6 +694,10 @@ select{
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 ::backdrop{
@@ -742,6 +748,10 @@ select{
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 .container{
@@ -1432,14 +1442,6 @@ select{
 
 .mt-3{
   margin-top: 0.75rem;
-}
-
-.mt-32{
-  margin-top: 8rem;
-}
-
-.mt-36{
-  margin-top: 9rem;
 }
 
 .mt-4{
@@ -3446,11 +3448,6 @@ select{
   inset-inline-start: 2px;
 }
 
-.after\:top-0::after{
-  content: var(--tw-content);
-  top: 0px;
-}
-
 .after\:top-0\.5::after{
   content: var(--tw-content);
   top: 0.125rem;
@@ -4129,6 +4126,10 @@ select{
     margin-right: 2.5rem;
   }
 
+  .sm-compact\:ml-36{
+    margin-left: 9rem;
+  }
+
   .sm-compact\:flex{
     display: flex;
   }
@@ -4226,6 +4227,10 @@ select{
 
   .md-compact\:mt-5{
     margin-top: 1.25rem;
+  }
+
+  .md-compact\:ml-20{
+    margin-left: 5rem;
   }
 
   .md-compact\:block{
@@ -4531,6 +4536,10 @@ select{
 
   .custom\:w-full{
     width: 100%;
+  }
+
+  .custom\:w-1\/2{
+    width: 50%;
   }
 
   .custom\:-translate-x-5{
@@ -4871,9 +4880,26 @@ select{
   .portable\:border{
     border-width: 1px;
   }
+  .portable\:border-2{
+    border-width: 2px;
+  }
+
+  .portable\:border-none{
+    border-style: none;
+  }
+
+  .portable\:p-0{
+    padding: 0px;
+  }
 
   .portable\:p-20{
     padding: 5rem;
+  }
+
+  .portable\:px-2{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
   }
 
   .portable\:py-0{
@@ -5067,9 +5093,8 @@ select{
   .sm\:mr-40{
     margin-right: 10rem;
   }
-
-  .sm\:mt-0{
-    margin-top: 0px;
+  .sm\:mr-8{
+    margin-right: 2rem;
   }
 
   .sm\:mt-10{
@@ -5648,10 +5673,6 @@ select{
 
   .md\:w-\[400px\]{
     width: 400px;
-  }
-
-  .md\:w-full{
-    width: 100%;
   }
 
   .md\:max-w-80{
@@ -6277,6 +6298,10 @@ select{
     padding-top: 200px;
   }
 
+  .lg\:pt-\[150px\]{
+    padding-top: 150px;
+  }
+
   .lg\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -6413,6 +6438,11 @@ select{
   .xl\:my-5{
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
+  }
+
+  .xl\:mx-24{
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 
   .xl\:-mb-40{
@@ -6599,6 +6629,22 @@ select{
     margin-top: 1.75rem;
   }
 
+  .xl\:-mt-10{
+    margin-top: -2.5rem;
+  }
+
+  .xl\:-mt-36{
+    margin-top: -9rem;
+  }
+
+  .xl\:-mt-24{
+    margin-top: -6rem;
+  }
+
+  .xl\:-mt-28{
+    margin-top: -7rem;
+  }
+
   .xl\:block{
     display: block;
   }
@@ -6673,6 +6719,18 @@ select{
 
   .xl\:w-full{
     width: 100%;
+  }
+
+  .xl\:w-48{
+    width: 12rem;
+  }
+
+  .xl\:w-52{
+    width: 13rem;
+  }
+
+  .xl\:w-56{
+    width: 14rem;
   }
 
   .xl\:max-w-\[500px\]{
@@ -6787,6 +6845,14 @@ select{
     padding-top: 200px;
   }
 
+  .xl\:pt-\[100px\]{
+    padding-top: 100px;
+  }
+
+  .xl\:pt-\[150px\]{
+    padding-top: 150px;
+  }
+
   .xl\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -6817,6 +6883,11 @@ select{
 
   .xl\:text-lg{
     font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .xl\:text-xl{
+    font-size: 1.25rem;
     line-height: 1.75rem;
   }
 
