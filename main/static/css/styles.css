@@ -1488,6 +1488,10 @@ select{
   margin-top: -3.5rem;
 }
 
+.-mt-10{
+  margin-top: -2.5rem;
+}
+
 .block{
   display: block;
 }
@@ -5601,6 +5605,10 @@ select{
     margin-top: 1.25rem;
   }
 
+  .md\:-mt-10{
+    margin-top: -2.5rem;
+  }
+
   .md\:block{
     display: block;
   }
@@ -6299,6 +6307,10 @@ select{
 
   .lg\:pt-\[120px\]{
     padding-top: 120px;
+  }
+
+  .lg\:pt-\[80px\]{
+    padding-top: 80px;
   }
 
   .lg\:text-2xl{
