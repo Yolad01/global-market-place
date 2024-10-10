@@ -973,6 +973,14 @@ select{
   top: 120%;
 }
 
+.left-3{
+  left: 0.75rem;
+}
+
+.top-1\/2{
+  top: 50%;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -1174,6 +1182,10 @@ select{
 
 .-mt-1{
   margin-top: -0.25rem;
+}
+
+.-mt-10{
+  margin-top: -2.5rem;
 }
 
 .-mt-28{
@@ -1482,14 +1494,6 @@ select{
 
 .mt-\[20px\]{
   margin-top: 20px;
-}
-
-.-mt-14{
-  margin-top: -3.5rem;
-}
-
-.-mt-10{
-  margin-top: -2.5rem;
 }
 
 .block{
@@ -1878,6 +1882,11 @@ select{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.-translate-y-1\/2{
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -1932,6 +1941,10 @@ select{
 
 .flex-wrap{
   flex-wrap: wrap;
+}
+
+.place-items-center{
+  place-items: center;
 }
 
 .items-start{
@@ -2451,6 +2464,11 @@ select{
   background-color: rgb(136 19 55 / var(--tw-bg-opacity));
 }
 
+.bg-shadeAsh_0{
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 237 255 / var(--tw-bg-opacity));
+}
+
 .bg-shadeAsh_8{
   --tw-bg-opacity: 1;
   background-color: rgb(244 244 244 / var(--tw-bg-opacity));
@@ -2468,11 +2486,6 @@ select{
 .bg-veryDarkGreen{
   --tw-bg-opacity: 1;
   background-color: rgb(0 45 56 / var(--tw-bg-opacity));
-}
-
-.bg-veryLightBlack{
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 51 51 / var(--tw-bg-opacity));
 }
 
 .bg-veryLightGreen{
@@ -2793,6 +2806,10 @@ select{
   padding-top: 80px;
 }
 
+.pr-4{
+  padding-right: 1rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -2819,6 +2836,10 @@ select{
 
 .font-primary{
   font-family: Inter;
+}
+
+.font-secondary{
+  font-family: Poppins;
 }
 
 .text-2xl{
@@ -3026,6 +3047,11 @@ select{
   color: rgb(13 29 84 / var(--tw-text-opacity));
 }
 
+.text-darkBlue_3{
+  --tw-text-opacity: 1;
+  color: rgb(28 28 28 / var(--tw-text-opacity));
+}
+
 .text-emerald-800{
   --tw-text-opacity: 1;
   color: rgb(6 95 70 / var(--tw-text-opacity));
@@ -3129,6 +3155,11 @@ select{
 .text-shadeAsh_7{
   --tw-text-opacity: 1;
   color: rgb(154 154 154 / var(--tw-text-opacity));
+}
+
+.text-shadeAsh_9{
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity));
 }
 
 .text-shadeGreen{
@@ -3722,6 +3753,11 @@ select{
 .hover\:before\:w-full:hover::before{
   content: var(--tw-content);
   width: 100%;
+}
+
+.focus\:border-veryDarkGreen:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 45 56 / var(--tw-border-opacity));
 }
 
 .focus\:bg-transparent:focus{
@@ -5396,6 +5432,11 @@ select{
     line-height: 2.25rem;
   }
 
+  .sm\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
   .sm\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -5403,16 +5444,6 @@ select{
 
   .sm\:text-xl{
     font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .sm\:text-2xl{
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .sm\:text-lg{
-    font-size: 1.125rem;
     line-height: 1.75rem;
   }
 
@@ -5603,10 +5634,6 @@ select{
 
   .md\:mt-5{
     margin-top: 1.25rem;
-  }
-
-  .md\:-mt-10{
-    margin-top: -2.5rem;
   }
 
   .md\:block{
@@ -5807,11 +5834,6 @@ select{
 
   .md\:text-xl{
     font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .md\:text-lg{
-    font-size: 1.125rem;
     line-height: 1.75rem;
   }
 
@@ -6054,10 +6076,6 @@ select{
     margin-top: 24rem;
   }
 
-  .lg\:ml-28{
-    margin-left: 7rem;
-  }
-
   .lg\:\!block{
     display: block !important;
   }
@@ -6160,10 +6178,6 @@ select{
 
   .lg\:w-full{
     width: 100%;
-  }
-
-  .lg\:w-64{
-    width: 16rem;
   }
 
   .lg\:max-w-96{
@@ -6307,10 +6321,6 @@ select{
 
   .lg\:pt-\[120px\]{
     padding-top: 120px;
-  }
-
-  .lg\:pt-\[80px\]{
-    padding-top: 80px;
   }
 
   .lg\:text-2xl{
