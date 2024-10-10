@@ -4166,6 +4166,10 @@ select{
     margin-right: 2.5rem;
   }
 
+  .sm-compact\:mt-20{
+    margin-top: 5rem;
+  }
+
   .sm-compact\:flex{
     display: flex;
   }
@@ -6074,6 +6078,10 @@ select{
 
   .lg\:mt-96{
     margin-top: 24rem;
+  }
+
+  .lg\:mt-36{
+    margin-top: 9rem;
   }
 
   .lg\:\!block{
