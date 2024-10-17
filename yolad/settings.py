@@ -9,7 +9,7 @@ from environ import Env
 
 
 env = Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 
 #new
