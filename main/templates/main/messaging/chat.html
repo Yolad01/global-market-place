@@ -34,7 +34,7 @@
             {% for message in messages %}
             <div class="">
                 <div class="w-full xl:w-full lg:w-full md:w-full sm:w-full">
-                    <p class="px-2 py-2 my-1 rounded-sm text-white bg-veryDarkGreen">
+                    <p class="px-2 py-2 my-2 rounded-tl-3xl rounded-br-3xl text-white bg-veryDarkGreen">
                         <span class="font-bold">[{{ message.sender.username }}]</span>: <br>{{ message.text }} <br>
                         <span class="text-xs">{{ message.created_at }}</span>
                     </p>
