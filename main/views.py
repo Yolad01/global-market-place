@@ -89,6 +89,7 @@ def frequently_asked_questions(request):
         template_name="main/faq.html"
     )
 
+@login_required(login_url="main:sign_in")
 def s_identity(request):
     user = request.user
     if request.method == "POST":
@@ -114,6 +115,7 @@ def s_identity(request):
         template_name="main/skilla/kyc/s_identity.html"
     )
     
+@login_required(login_url="main:sign_in")
 def identity_details(request):
     user = request.user
     if request.method == "POST":
@@ -134,6 +136,8 @@ def identity_details(request):
         
     )
     
+
+@login_required(login_url="main:sign_in")
 def review(request):
     user = request.user
     review = SkillaProfile.objects.get(user=user)
@@ -145,37 +149,49 @@ def review(request):
             "review": review
         }
     )
-    
+
+
+@login_required(login_url="main:sign_in")
 def compliance(request):
     return render(
         request=request,
         template_name="main/skilla/compliance/compliance.html"
     )
-    
+
+
+@login_required(login_url="main:sign_in")
 def guide_one(request):
     return render(
         request=request,
         template_name="main/skilla/compliance/guide_one.html"
     )
-    
+
+
+@login_required(login_url="main:sign_in")
 def guide_two(request):
     return render(
         request=request,
         template_name="main/skilla/compliance/guide_two.html"
     )
-    
+
+
+@login_required(login_url="main:sign_in")
 def guide_three(request):
     return render(
         request=request,
         template_name="main/skilla/compliance/guide_three.html"
     )
 
+
+@login_required(login_url="main:sign_in")
 def guide_four(request):
     return render(
         request=request,
         template_name="main/skilla/compliance/guide_four.html"
     )
-    
+
+
+@login_required(login_url="main:sign_in")
 def guide_five(request):
     user = request.user
     if request.method == "POST":
@@ -195,6 +211,8 @@ def guide_five(request):
         }
     )
     
+
+
 def register(request):
     if request.method == "POST":
         registration_form = RegistrationForm(request.POST)
@@ -244,6 +262,8 @@ def register(request):
     
 
 
+
+@login_required(login_url="main:sign_in")
 def skilla_profile(request):
     try:
         skilla_profile = request.user.skillaprofile
@@ -270,7 +290,9 @@ def skilla_profile(request):
         }
     )
         
-    
+
+
+@login_required(login_url="main:sign_in")
 def client_profile(request):
     try:
         client_profile = request.user.clientprofile
@@ -297,7 +319,9 @@ def client_profile(request):
         }
     )
     
-    
+
+
+@login_required(login_url="main:sign_in")
 def company_profile(request):
     try:
         company_profile = request.user.companyprofile
@@ -351,7 +375,7 @@ def sign_in(request):
                     context={"form": form})
 
 
-@login_required
+@login_required(login_url="main:sign_in")
 def client_dashboard(request):
     user = request.user
     try:
@@ -390,8 +414,8 @@ def client_dashboard(request):
         )
     
 
-#### add @login_required decorator
-@login_required
+
+@login_required(login_url="main:sign_in")
 def skilla(request):
 
     user = request.user
@@ -457,7 +481,7 @@ def skilla(request):
     )
 
 
-#### add @login_required decorator
+@login_required(login_url="main:sign_in")
 def company(request):
     return render(
         request=request,
@@ -466,13 +490,13 @@ def company(request):
     
 
 
-
 def log_out(request):
     logout(request)
     return redirect("main:home")
 
 
 
+@login_required(login_url="main:sign_in")
 def s_profile(request):
     user = request.user
     try:
@@ -538,6 +562,7 @@ def s_profile(request):
 
 
 
+@login_required(login_url="main:sign_in")
 def wallet(request):
     user = request.user
     wallet, _ = Wallet.objects.get_or_create(user=user)
@@ -562,6 +587,7 @@ def wallet(request):
 
 
 
+@login_required(login_url="main:sign_in")
 def fund_withdrawal(request):
     return render(
         request=request,
@@ -573,6 +599,7 @@ def fund_withdrawal(request):
 
 
 
+@login_required(login_url="main:sign_in")
 def continue_to_withdrawal(request):
     return render(
         request=request,
@@ -581,8 +608,10 @@ def continue_to_withdrawal(request):
             "profile_pic": ProfilePicture.objects.all().filter(user=request.user)
         }
     )
- 
-    
+
+
+
+@login_required(login_url="main:sign_in")
 def create_brief(request):
     if request.method =="POST":
         form = BriefForm(request.POST, request.FILES)
@@ -605,6 +634,8 @@ def create_brief(request):
     
     
 
+
+@login_required(login_url="main:sign_in")
 def applications(request):
     skilla_client = SkillaReachoutToClient.objects.all().filter(client=request.user)
     
@@ -619,6 +650,8 @@ def applications(request):
 
 
 
+
+@login_required(login_url="main:sign_in")
 def profile_view(request, pk):
 
     try:
@@ -662,6 +695,7 @@ def profile_view(request, pk):
 
 
 
+@login_required(login_url="main:sign_in")
 def inbox(request):
 
     user = request.user.id
@@ -716,7 +750,7 @@ def inbox(request):
     )
 
 
-
+@login_required(login_url="main:sign_in")
 def quotes(request):
 
     user = request.user
@@ -749,7 +783,7 @@ def quotes(request):
     )
 
 
-
+@login_required(login_url="main:sign_in")
 def orders(request):
     user = request.user
 
@@ -811,7 +845,7 @@ def orders(request):
         }
     )
 
-
+@login_required(login_url="main:sign_in")
 def create_gigs(request):
     user = request.user
     if request.method =="POST":
@@ -832,6 +866,7 @@ def create_gigs(request):
     )
 
 
+@login_required(login_url="main:sign_in")
 def skillas_gigs(request):
 
     skills = Skill.objects.all()
@@ -866,7 +901,7 @@ def skillas_gigs(request):
         
     )
 
-
+@login_required(login_url="main:sign_in")
 def skillas_gigs_details(request, id):
     gig = Skill.objects.get(id=id)
 
@@ -884,7 +919,7 @@ def skillas_gigs_details(request, id):
         
     )
 
-
+@login_required(login_url="main:sign_in")
 def view_skills(request):
 
     try:
@@ -904,7 +939,7 @@ def view_skills(request):
         
     )
     
-    
+@login_required(login_url="main:sign_in")
 def view_brief(request):
 
     user=request.user
@@ -933,7 +968,7 @@ def view_brief(request):
         
     )
     
-
+@login_required(login_url="main:sign_in")
 def edit_brief(request, id):
     user = request.user
     get_object_for_edit = Brief.objects.get(user=user, id=id)
@@ -977,7 +1012,7 @@ def edit_brief(request, id):
     )
 
 
-
+@login_required(login_url="main:sign_in",)
 def thread_view(request, username):
     template_name = 'main/messaging/chat.html'
     mssg = None
@@ -1020,19 +1055,9 @@ def thread_view(request, username):
 
     messages = thread.message_set.all()
 
-    # display_order = Order.objects.filter(
-    #     skilla=user, client=counterpart
-    # ).order_by("-created_at")
-
     display_order = Order.objects.filter(
         (Q(skilla=user) & Q(client=counterpart)) | (Q(skilla=counterpart) & Q(client=user))
     ).order_by("-created_at")
-
-
-    # combined_data = sorted(
-    #     chain(messages, display_order),
-    #     key=attrgetter('created_at')
-    # )
 
     if request.method == 'POST':
         form = ChatMessageForm(request.POST)
@@ -1074,7 +1099,7 @@ def thread_view(request, username):
     }
     return render(request, template_name, context=context)
 
-
+@login_required(login_url="main:sign_in")
 def search_results(request, param):
     user = request.user
     single_search = param
@@ -1107,7 +1132,7 @@ def search_results(request, param):
         }
     )
 
-
+@login_required(login_url="main:sign_in")
 def skilla_search(request, param):
 
     single_search = param
@@ -1280,7 +1305,7 @@ def payment_success(request):
     )
 
 
-
+@login_required(login_url="main:sign_in")
 def paid_order_history(request):
     user = request.user
     payment = Payment.objects.filter(user=user).order_by("-pk")
@@ -1308,7 +1333,7 @@ def paid_order_history(request):
     )
 
 
-
+@login_required(login_url="main:sign_in")
 def rate_user(request):
     user = request.user.id
     skilla = request.session.get("skilla")
@@ -1351,7 +1376,7 @@ def rate_user(request):
         }
     )
 
-
+@login_required(login_url="main:sign_in")
 def manage_gigs(request):
 
     search_form = SearchForm()

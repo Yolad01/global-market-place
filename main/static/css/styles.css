@@ -5,7 +5,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito+Sans:opsz,wght@6..12,700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 
-/* ! tailwindcss v3.4.9 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -216,8 +216,6 @@ textarea {
   /* 1 */
   line-height: inherit;
   /* 1 */
-  letter-spacing: inherit;
-  /* 1 */
   color: inherit;
   /* 1 */
   margin: 0;
@@ -241,9 +239,9 @@ select {
 */
 
 button,
-input:where([type='button']),
-input:where([type='reset']),
-input:where([type='submit']) {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -694,10 +692,6 @@ select{
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
 }
 
 ::backdrop{
@@ -748,10 +742,6 @@ select{
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
 }
 
 .container{
@@ -2827,6 +2817,10 @@ select{
   padding-top: 80px;
 }
 
+.pl-4{
+  padding-left: 1rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -3499,6 +3493,11 @@ select{
 .after\:start-\[2px\]::after{
   content: var(--tw-content);
   inset-inline-start: 2px;
+}
+
+.after\:top-0::after{
+  content: var(--tw-content);
+  top: 0px;
 }
 
 .after\:top-0\.5::after{
@@ -4188,12 +4187,9 @@ select{
     margin-right: 2.5rem;
   }
 
+frontend-3
   .sm-compact\:mt-20{
     margin-top: 5rem;
-  }
-
-  .sm-compact\:flex{
-    display: flex;
   }
 
   .sm-compact\:hidden{
@@ -4588,12 +4584,9 @@ select{
     width: 50%;
   }
 
+frontend-3
   .custom\:w-1\/4{
     width: 25%;
-  }
-
-  .custom\:w-3\/4{
-    width: 75%;
   }
 
   .custom\:w-4\/5{
