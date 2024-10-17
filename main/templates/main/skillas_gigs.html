@@ -99,7 +99,7 @@
 		<div class="xl:ml-48 xl:mr-48 flex justify-center">
 			<div x-data="carousel()" x-init="startCarousel()" class="relative w-full lg:w-full">
                 <!-- Carousel Container -->
-                <div class="relative xl:h-[75vh] lg:h-[60vh] md:h-[44vh] sm:h-[40vh] portable:h-64 custom:h-52 sm-compact:h-44 h-36 shadow-lg">
+                <div class="relative xl:h-[75vh] lg:h-[75vh] md:h-[50vh] sm:h-[50vh] portable:h-64 custom:h-52 sm-compact:h-44 h-36 shadow-lg">
 					<!-- Carousel Items -->
 					<template x-for="(image, index) in images" :key="index">
 						<div x-show="current === index" class="absolute inset-0 transition-opacity duration-5000" x-transition:enter="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="opacity-100" x-transition:leave-end="opacity-0">
@@ -131,7 +131,7 @@
 
 	<section class="xl:pt-10 lg:pt-10 mx-4 md:mx-9 lg:mx-10 xl:mx-40 portable:pt-10 portable:mx-10">
 		<div
-		class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-[30px] mb-[-30px]">
+		class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-1 mb-[-30px]">
 		{% for skill in page_object %}
 		<div class="mx-4 portable:mb-4">
 			<img
@@ -168,7 +168,7 @@
 			<div class="mt-5 flex justify-center">
 				<a
 					href="{% url 'main:skillas_gigs_details' id=skill.id %}"
-					class="rounded bg-veryDarkGreen text-white font-medium text-base px-16 py-2"
+					class="rounded bg-veryDarkGreen text-white font-medium text-base px-10 py-2"
 				
 				>
 					View details
