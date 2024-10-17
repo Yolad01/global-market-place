@@ -91,6 +91,12 @@ def frequently_asked_questions(request):
 
 @login_required(login_url="main:sign_in")
 def s_identity(request):
+
+    try:
+        unread_count = get_unread_messages_count(user)
+    except Exception as e:
+        unread_count = 0
+
     user = request.user
     if request.method == "POST":
         house_no = request.POST["house_no"]
@@ -112,11 +118,18 @@ def s_identity(request):
         return redirect("main:identity_details")
     return render(
         request=request,
-        template_name="main/skilla/kyc/s_identity.html"
+        template_name="main/skilla/kyc/s_identity.html",
+        context={"unread_count":unread_count,}
     )
     
 @login_required(login_url="main:sign_in")
 def identity_details(request):
+
+    try:
+        unread_count = get_unread_messages_count(user)
+    except Exception as e:
+        unread_count = 0
+
     user = request.user
     if request.method == "POST":
         nin = request.POST["nin"]
@@ -133,6 +146,7 @@ def identity_details(request):
     return render(
         request=request,
         template_name="main/skilla/kyc/identity_details.html",
+        context={"unread_count":unread_count,}
         
     )
     
@@ -140,22 +154,37 @@ def identity_details(request):
 @login_required(login_url="main:sign_in")
 def review(request):
     user = request.user
+
+    try:
+        unread_count = get_unread_messages_count(user)
+    except Exception as e:
+        unread_count = 0
+
     review = SkillaProfile.objects.get(user=user)
     
     return render(
         request=request,
         template_name="main/skilla/kyc/review.html",
         context={
-            "review": review
+            "review": review,
+            "unread_count":unread_count,
         }
     )
 
 
 @login_required(login_url="main:sign_in")
 def compliance(request):
+    user = request.user
+
+    try:
+        unread_count = get_unread_messages_count(user)
+    except Exception as e:
+        unread_count = 0
+
     return render(
         request=request,
-        template_name="main/skilla/compliance/compliance.html"
+        template_name="main/skilla/compliance/compliance.html",
+        context={"unread_count":unread_count,}
     )
 
 
