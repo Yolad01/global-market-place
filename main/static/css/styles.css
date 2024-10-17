@@ -1496,6 +1496,18 @@ select{
   margin-top: 20px;
 }
 
+.-mt-20{
+  margin-top: -5rem;
+}
+
+.mr-20{
+  margin-right: 5rem;
+}
+
+.-mt-14{
+  margin-top: -3.5rem;
+}
+
 .block{
   display: block;
 }
@@ -2707,11 +2719,6 @@ select{
   padding-bottom: 20px;
 }
 
-.px-1{
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
 .pb-1{
   padding-bottom: 0.25rem;
 }
@@ -2818,10 +2825,6 @@ select{
 
 .pt-\[80px\]{
   padding-top: 80px;
-}
-
-.pl-20{
-  padding-left: 5rem;
 }
 
 .text-left{
@@ -3166,6 +3169,11 @@ select{
   color: rgb(244 63 94 / var(--tw-text-opacity));
 }
 
+.text-shadeAsh_5{
+  --tw-text-opacity: 1;
+  color: rgb(205 205 205 / var(--tw-text-opacity));
+}
+
 .text-shadeAsh_7{
   --tw-text-opacity: 1;
   color: rgb(154 154 154 / var(--tw-text-opacity));
@@ -3214,11 +3222,6 @@ select{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-shadeAsh_5{
-  --tw-text-opacity: 1;
-  color: rgb(205 205 205 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -5184,6 +5187,10 @@ select{
     margin-top: auto;
   }
 
+  .sm\:-mt-20{
+    margin-top: -5rem;
+  }
+
   .sm\:block{
     display: block;
   }
@@ -5659,6 +5666,10 @@ select{
     margin-top: 1.25rem;
   }
 
+  .md\:-mt-20{
+    margin-top: -5rem;
+  }
+
   .md\:block{
     display: block;
   }
@@ -6083,6 +6094,10 @@ select{
     margin-top: 11rem;
   }
 
+  .lg\:mt-48{
+    margin-top: 12rem;
+  }
+
   .lg\:mt-5{
     margin-top: 1.25rem;
   }
@@ -6097,10 +6112,6 @@ select{
 
   .lg\:mt-96{
     margin-top: 24rem;
-  }
-
-  .lg\:mt-48{
-    margin-top: 12rem;
   }
 
   .lg\:\!block{
@@ -6378,6 +6389,11 @@ select{
     font-size: 36px;
   }
 
+  .lg\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
   .lg\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -6391,11 +6407,6 @@ select{
   .lg\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .lg\:text-base{
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
 
   .lg\:font-semibold{
@@ -6910,6 +6921,11 @@ select{
     font-size: 18px;
   }
 
+  .xl\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
   .xl\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -6918,16 +6934,6 @@ select{
   .xl\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .xl\:text-sm{
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
-  .xl\:text-base{
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
 
   .xl\:shadow-lg{
