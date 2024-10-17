@@ -486,7 +486,6 @@ def company(request):
     
 
 
-
 def log_out(request):
     logout(request)
     return redirect("main:home")
@@ -861,6 +860,7 @@ def create_gigs(request):
             "form": form
         }
     )
+
 
 @login_required(login_url="main:sign_in")
 def skillas_gigs(request):
