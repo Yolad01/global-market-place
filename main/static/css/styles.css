@@ -1188,6 +1188,10 @@ select{
   margin-top: -2.5rem;
 }
 
+.-mt-14{
+  margin-top: -3.5rem;
+}
+
 .-mt-28{
   margin-top: -7rem;
 }
@@ -1376,6 +1380,10 @@ select{
   margin-right: 0.5rem;
 }
 
+.mr-20{
+  margin-right: 5rem;
+}
+
 .mr-24{
   margin-right: 6rem;
 }
@@ -1494,18 +1502,6 @@ select{
 
 .mt-\[20px\]{
   margin-top: 20px;
-}
-
-.-mt-20{
-  margin-top: -5rem;
-}
-
-.mr-20{
-  margin-right: 5rem;
-}
-
-.-mt-14{
-  margin-top: -3.5rem;
 }
 
 .block{
@@ -1786,10 +1782,6 @@ select{
 
 .w-\[26px\]{
   width: 26px;
-}
-
-.w-\[375px\]{
-  width: 375px;
 }
 
 .w-auto{
@@ -4528,10 +4520,6 @@ select{
     margin-left: 1.25rem;
   }
 
-  .custom\:ml-6{
-    margin-left: 1.5rem;
-  }
-
   .custom\:ml-8{
     margin-left: 2rem;
   }
@@ -5187,10 +5175,6 @@ select{
     margin-top: auto;
   }
 
-  .sm\:-mt-20{
-    margin-top: -5rem;
-  }
-
   .sm\:block{
     display: block;
   }
@@ -5574,6 +5558,10 @@ select{
     margin-top: -0.25rem;
   }
 
+  .md\:-mt-20{
+    margin-top: -5rem;
+  }
+
   .md\:-mt-32{
     margin-top: -8rem;
   }
@@ -5664,10 +5652,6 @@ select{
 
   .md\:mt-5{
     margin-top: 1.25rem;
-  }
-
-  .md\:-mt-20{
-    margin-top: -5rem;
   }
 
   .md\:block{
