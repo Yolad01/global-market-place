@@ -49,8 +49,9 @@
           </div>
         </div>
 
+        {% if user.is_certified %}
         <div class="flex border-0 shadow rounded-md p-5 bg-white my-4 overflow-hidden drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-[10px] hover:bg-veryLightGreen">
-          <a href="#"><img src="{% static '/img/Group 309.png' %}" alt="" /></a>
+          <a href="/create_gigs"><img src="{% static '/img/Group 309.png' %}" alt="" /></a>
           <div>
             <a
               href="/create_gigs"
@@ -59,6 +60,20 @@
             </a>
           </div>
         </div>
+        {% else %}
+
+        <div class="flex border-0 shadow rounded-md p-5 bg-white my-4 overflow-hidden">
+          <p><img src="{% static '/img/Group 309.png' %}" alt="" /></p>
+          <div>
+            <p
+              class="ml-5 text-gray-400 xl:text-lg font-bold"
+              >Create gig
+            </p>
+            <p class="ml-4 text-gray-400 text-xs">This button will be enabled once it is comfired that you have completed your compliance</p>
+          </div>
+        </div>
+        {% endif %}
+        
       </div>
     </div>
 
