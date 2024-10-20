@@ -42,12 +42,6 @@ from operator import attrgetter
 
 # Create your views here.
 
-def login(request):
-    return render(
-        request=request,
-        template_name="main/login.html"
-    )
-
 def home(request):
 
     job_form = JobForm(request.POST)
@@ -253,7 +247,6 @@ def register(request):
             user = authenticate(username=username, password=password)
             # wallet, _ = Wallet.objects.create(user=user)
 
-            # Sending mail to the new user
             subject = "Welcome to Skillas. You know what time it is"
             message = f'Hi {username}, we are happy to have you here'
             email_from = settings.EMAIL_HOST_USER
@@ -389,6 +382,7 @@ def sign_in(request):
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
             user = authenticate(username=username, password=password)
+            print(user)
             if user != None:
                 login(request, user)
                 if user.role == "CLIENT": 
