@@ -42,11 +42,11 @@ from operator import attrgetter
 
 # Create your views here.
 
-def login(request):
-    return render(
-        request=request,
-        template_name="main/login.html"
-    )
+# def login(request):
+#     return render(
+#         request=request,
+#         template_name="main/login.html"
+#     )
 
 def home(request):
 
