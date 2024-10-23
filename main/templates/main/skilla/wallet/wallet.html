@@ -2,7 +2,7 @@
 
 <div>
     <div>
-        <div class="mt-5 custom:ml-10 ml-5">
+        <div class="mt-36 custom:ml-10 ml-5">
             <h3 class="font-primary font-normal text-2xl mb-10">Wallet</h3>
         </div>
 
@@ -12,7 +12,7 @@
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
-                    <h3 class="hidden portable:block font-semibold text-white custom:text-xl text-lg mt-8 ml-5">Main Balance</h3>
+                    <h3 class="hidden portable:block font-semibold text-white custom:text-lg text-lg mt-8 ml-5">Main Balance</h3>
                     <h3 class="portable:hidden font-semibold text-white text-base mt-8 ml-5">Main <br/> Balance</h3>
                     <img
                         src="{% static '/img/Group 215.png' %}"
@@ -22,7 +22,7 @@
                 </div>
         
                 <div>
-                    <h2 class="font-semibold portable:text-3xl text-xl text-white mt-10 ml-3">
+                    <h2 class="font-semibold portable:text-2xl text-xl text-white mt-10 ml-5">
                         <p> NGN <span> {{ wallet.main }} </span></P>
                     </h2>
                 </div>
@@ -33,10 +33,8 @@
                     >
                         <a href="#">Add Cash</a>
                     </div> {% endcomment %}
-                    <div
-                        class="custom:px-3 custom:py-2 sm-compact:p-1 compact:p-1 p-[2px] custom:ml-5 ml-2 rounded-md bg-veryLightGreen text-veryDarkGreen font-semibold sm:text-xl custom:text-base text-sm"
-                    >
-                        <a href="/fund_withdrawal">Withdraw</a>
+                    <div class="custom:px-3 custom:py-2 sm-compact:p-1 compact:p-1 p-[2px]  ml-2 rounded-md bg-veryLightGreen text-veryDarkGreen font-semibold sm:text-xl custom:text-base text-sm">
+                        <a href="/fund_withdrawal" class="text-base">Withdraw</a>
                     </div>
                 </div>
             </div>
@@ -47,7 +45,7 @@
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
-                    <h3 class="hidden portable:block font-semibold text-white custom:text-xl text-lg mt-8 ml-5">Pending Balance</h3>
+                    <h3 class="hidden portable:block font-semibold text-white custom:text-lg text-lg mt-8 ml-5">Pending Balance</h3>
                     <h3 class="portable:hidden font-semibold text-white text-base mt-8 ml-5">Pending <br/> Balance</h3>
                     <img
                         src="{% static '/img/Group 215.png' %}"
@@ -57,7 +55,7 @@
                 </div>
         
                 <div>
-                    <h2 class="font-semibold portable:text-3xl text-xl text-white mt-10 ml-3">
+                    <h2 class="font-semibold portable:text-2xl text-xl text-white mt-10 ml-5">
                        <p> NGN <span class="text-green-500"> {{ wallet.pending }} </span></P>
                     </h2>
                 </div>
@@ -70,7 +68,7 @@
                 style="background-image: url('{% static '/img/bg_payment.svg' %}'); background-position: bottom; background-blend-mode: multiply;"
             >
                 <div class="relative flex mx-auto">
-                    <h3 class="hidden portable:block font-semibold text-white custom:text-xl text-lg mt-8 ml-5">withdrawn</h3>
+                    <h3 class="hidden portable:block font-semibold text-white custom:text-lg text-lg mt-8 ml-5">Withdrawn</h3>
                     <h3 class="portable:hidden font-semibold text-white text-base mt-8 ml-5">Withdrawn</h3>
                     <img
                         src="{% static '/img/Group 215.png' %}"
@@ -80,7 +78,7 @@
                 </div>
         
                 <div>
-                    <h2 class="font-semibold portable:text-3xl text-xl text-white mt-10 ml-3">
+                    <h2 class="font-semibold portable:text-2xl text-xl text-white mt-10 ml-5">
                         <p> NGN <span class="text-rose-500"> {{ wallet.withdrawn }} </span></P>
                     </h2>
                 </div>
