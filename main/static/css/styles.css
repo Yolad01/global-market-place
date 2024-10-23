@@ -1196,6 +1196,10 @@ select{
   margin-top: -0.75rem;
 }
 
+.-mt-4{
+  margin-top: -1rem;
+}
+
 .-mt-5{
   margin-top: -1.25rem;
 }
@@ -1300,6 +1304,10 @@ select{
   margin-left: 2.5rem;
 }
 
+.ml-12{
+  margin-left: 3rem;
+}
+
 .ml-16{
   margin-left: 4rem;
 }
@@ -1352,6 +1360,10 @@ select{
   margin-left: 2rem;
 }
 
+.ml-9{
+  margin-left: 2.25rem;
+}
+
 .ml-\[15px\]{
   margin-left: 15px;
 }
@@ -1374,10 +1386,6 @@ select{
 
 .mr-2{
   margin-right: 0.5rem;
-}
-
-.mr-20{
-  margin-right: 5rem;
 }
 
 .mr-24{
@@ -1867,8 +1875,8 @@ select{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.translate-x-16{
-  --tw-translate-x: 4rem;
+.translate-x-20{
+  --tw-translate-x: 5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2769,10 +2777,6 @@ select{
 
 .pr-2{
   padding-right: 0.5rem;
-}
-
-.pr-28{
-  padding-right: 7rem;
 }
 
 .pr-36{
@@ -4171,6 +4175,10 @@ select{
     margin-right: 2.5rem;
   }
 
+  .sm-compact\:mt-14{
+    margin-top: 3.5rem;
+  }
+
   .sm-compact\:mt-20{
     margin-top: 5rem;
   }
@@ -4195,8 +4203,17 @@ select{
     width: 12rem;
   }
 
+  .sm-compact\:translate-x-20{
+    --tw-translate-x: 5rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
   .sm-compact\:p-1{
     padding: 0.25rem;
+  }
+
+  .sm-compact\:pr-10{
+    padding-right: 2.5rem;
   }
 
   .sm-compact\:text-xl{
@@ -4228,10 +4245,6 @@ select{
 
   .md-compact\:-ml-10{
     margin-left: -2.5rem;
-  }
-
-  .md-compact\:-mt-2{
-    margin-top: -0.5rem;
   }
 
   .md-compact\:-mt-32{
@@ -4315,8 +4328,8 @@ select{
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
-  .md-compact\:translate-x-20{
-    --tw-translate-x: 5rem;
+  .md-compact\:translate-x-64{
+    --tw-translate-x: 16rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
@@ -4491,6 +4504,10 @@ select{
     margin-left: 2.5rem;
   }
 
+  .custom\:ml-14{
+    margin-left: 3.5rem;
+  }
+
   .custom\:ml-2{
     margin-left: 0.5rem;
   }
@@ -4660,8 +4677,8 @@ select{
     padding-left: 1.25rem;
   }
 
-  .custom\:pr-0{
-    padding-right: 0px;
+  .custom\:pr-10{
+    padding-right: 2.5rem;
   }
 
   .custom\:pt-10{
@@ -4756,12 +4773,20 @@ select{
     margin-left: -10rem;
   }
 
+  .portable\:-ml-5{
+    margin-left: -1.25rem;
+  }
+
   .portable\:-mt-4{
     margin-top: -1rem;
   }
 
   .portable\:mb-4{
     margin-bottom: 1rem;
+  }
+
+  .portable\:ml-0{
+    margin-left: 0px;
   }
 
   .portable\:ml-1{
@@ -4878,8 +4903,8 @@ select{
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
-  .portable\:translate-x-40{
-    --tw-translate-x: 10rem;
+  .portable\:translate-x-32{
+    --tw-translate-x: 8rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
@@ -4933,6 +4958,10 @@ select{
 
   .portable\:pl-5{
     padding-left: 1.25rem;
+  }
+
+  .portable\:pr-20{
+    padding-right: 5rem;
   }
 
   .portable\:pt-1{
@@ -5086,6 +5115,10 @@ select{
     margin-left: 5rem;
   }
 
+  .sm\:ml-3{
+    margin-left: 0.75rem;
+  }
+
   .sm\:ml-4{
     margin-left: 1rem;
   }
@@ -5110,8 +5143,8 @@ select{
     margin-right: 5rem;
   }
 
-  .sm\:mr-24{
-    margin-right: 6rem;
+  .sm\:mr-32{
+    margin-right: 8rem;
   }
 
   .sm\:mr-40{
@@ -5427,6 +5460,11 @@ select{
     line-height: 2.25rem;
   }
 
+  .sm\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
   .sm\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -5577,6 +5615,10 @@ select{
 
   .md\:ml-28{
     margin-left: 7rem;
+  }
+
+  .md\:ml-5{
+    margin-left: 1.25rem;
   }
 
   .md\:ml-52{
@@ -6175,8 +6217,8 @@ select{
     width: 18rem;
   }
 
-  .lg\:w-96{
-    width: 24rem;
+  .lg\:w-\[420px\]{
+    width: 420px;
   }
 
   .lg\:w-full{
@@ -6570,8 +6612,8 @@ select{
     margin-left: 18rem;
   }
 
-  .xl\:ml-96{
-    margin-left: 24rem;
+  .xl\:mr-0{
+    margin-right: 0px;
   }
 
   .xl\:mr-24{
@@ -6822,6 +6864,10 @@ select{
 
   .xl\:pl-\[40px\]{
     padding-left: 40px;
+  }
+
+  .xl\:pr-0{
+    padding-right: 0px;
   }
 
   .xl\:pr-2{

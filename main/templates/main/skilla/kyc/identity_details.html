@@ -23,7 +23,7 @@
 
                     <div class="mt-5 flex">
                         <img class="h-12 w-12" src="{% static '/img/check_mark.png' %}" alt="icon" />
-                        <a href="#" class="text-shadeAsh_5 font-medium text-sm ml-5 mt-1">ADDRESS DETAILS</a>
+                        <a href="#" class="text-shadeAsh_5 font-medium text-sm ml-3 mt-4">ADDRESS DETAILS</a>
                     </div>
 
                     <div class="border-l-2 border-shadeAsh_5 h-4 ml-6 mt-3"></div>
@@ -53,22 +53,22 @@
             <div class="sm:w-1/2 lg:w-full min-h-screen lg:px-10 md:px-5 pl-5">
                 <h6 class="text-shadeAsh_7 custom:flex justify-end custom:mr-10 mt-5 text-xs">Having trouble? <a href="#" class="text-darkBlue">Get help</a></h6>
         
-                <div class="mt-10 lg:ml-6 -ml-4">
-                    <h3 class="text-darkBlue_2 font-semibold xl:text-2xl lg:text-lg">Identity details</h3>
+                <div class="mt-10 lg:ml-6 sm:ml-3 -ml-4">
+                    <h3 class="text-darkBlue_2 font-semibold xl:text-2xl lg:text-lg text-base">Identity details</h3>
 
                     <form method="POST" enctype=multipart/form-data class="mt-10">
                         {% csrf_token %}
                         <div class="lg:flex mt-5">
                             <div class="lg:mt-0 mt-5">
-                                <label class="block text-darkBlue font-normal xl:text-base text-sm" for="dropdown">Identity number</label>
+                                <label class="block text-darkBlue font-normal xl:text-base text-base" for="dropdown">Identity number</label>
                                 <input required name="nin" class="mt-3 shadow appearance-none border border-shadeAsh_6 rounded-md hover:border-veryDarkGreen py-3 px-3 lg:w-full md:w-5/6 custom:w-4/5 md-compact:w-4/5 w-11/12 text-darkBlue_2 leading-tight focus:outline-none focus:shadow-outline" id="nin" type="text" placeholder="National Identity number">
                             </div>
                         </div>
 
                         <div class="rounded-md xl:w-4/5 lg:w-11/12 md:w-5/6 custom:w-4/5 md-compact:w-4/5 w-full bg-shadeAsh_8 lg:border py-3 px-2 mt-10">
                             <div>
-                                <h4 class="text-darkBlue_2 font-normal xl:text-base text-sm">Country identity card</h4>
-                                <p class="text-veryDarkAsh font-normal xl:text-base text-sm mt-3">On desktop, Simply drag and drop your file in this field. acceptable formats: JPEG, JPG or PNG.</p>
+                                <h4 class="text-darkBlue_2 font-normal xl:text-base text-base">Country identity card</h4>
+                                {% comment %} <p class="text-veryDarkAsh font-normal xl:text-base text-sm mt-3">On desktop, Simply drag and drop your file in this field. acceptable formats: JPEG, JPG or PNG.</p> {% endcomment %}
                             </div>
                             
                             <div class="mt-5">
@@ -77,20 +77,20 @@
                         </div>
 
                         <div class="mt-10 pl-2">
-                            <h4 class="text-darkBlue_2 font-normal xl:text-base text-sm">Upload passport size photo</h4>
+                            <h4 class="text-darkBlue_2 font-normal xl:text-base text-base">Upload passport size photo</h4>
                             <div class="mt-5">
                                 <input required type="file" name="passport" accept="image/*"> 
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between mt-20 pl-5">
-                            <button class="bg-veryDarkGreen mb-20 text-white font-medium lg:text-lg text-base py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="submit">
+                            <button class="bg-veryDarkGreen mb-20 text-white font-medium lg:text-base sm:text-base text-sm py-3 px-4 rounded-md focus:outline-none focus:shadow-outline" type="submit">
                                 SAVE & COUNTINUE
                             </button>
                         </div>
 
-                        <div class="flex items-end justify-end sm:mr-10 mr-20 md:-mt-20 sm:mt-0 -mt-14">
-                            <a href="/s_identity"><img  src="{% static '/img/Vector (8).png' %}" alt="icon" /><a>
+                        <div class="flex items-end justify-end sm:mr-10 sm-compact:mr-10 md:-mt-20 sm:mt-0 -mt-14">
+                            <a href="/s_identity"><img  src="{% static '/img/Vector (8).png' %}" alt="icon" class="w-4" /><a>
                         </div>
                     </form>
                 </div>

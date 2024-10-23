@@ -14,7 +14,7 @@
     </div>
     {% endfor %} 
     {% endif %}
-    <div>
+    <div class="lg:mt-28 sm:mt-20 xl:mx-20 lg:mx-10 mt-24">
       <div class="p-10">
         <h3 class="font-primary font-normal text-2xl -ml-10">Profile</h3>
       </div>
@@ -24,7 +24,7 @@
 
           <!-- picture Modal  -->
           <div
-            class="fixed z-10 inset-0 overflow-y-auto hidden"
+            class="fixed z-10 inset-0 overflow-y-auto hidden mt-28"
             id="editPictureModal"
           >
             <div
@@ -78,7 +78,7 @@
           <div class="lg:ml-0 md:-ml-14">
             <img
             src="{% if profile_pic %}{{ profile_pic.0.image.url }}{% else %}{% static 'img/Client-Photo.png' %}{% endif %}"
-            class="rounded-full mx-0 portable:mx-10 sm:mx-10 md:mx-10 lg:mx-0 -mt-5 w-40 h-40  sm:w-72 sm:h-72 md:w-60 md:h-60 lg:w-96"
+            class="rounded-full mx-0 portable:mx-10 sm:mx-10 md:mx-10 lg:mx-0 -mt-5 w-40 h-40  sm:w-72 sm:h-72 md:w-60 md:h-60 lg:w-[420px]"
             alt="Profile picture"
           />
           </div>
@@ -89,7 +89,7 @@
               src="{% static '/img/camera.png' %}"
               alt=""
               id="openPictureModal"
-              class="xl:translate-x-40 lg:translate-y-5 lg:translate-x-44 md:translate-x-36 sm:translate-x-52 sm:-mt-6 portable:translate-x-40 custom:translate-x-20 md-compact:translate-x-20 translate-x-16 md-compact:-mt-2 custom:-mt-4 portable:-mt-4 md:-mt-7 lg:-mt-16 ml-10 sm:w-8 w-6"
+              class="xl:translate-x-40 lg:translate-y-5 lg:translate-x-44 md:translate-x-36 sm:translate-x-52 sm:-mt-6 portable:translate-x-32 custom:translate-x-20 sm-compact:translate-x-20 translate-x-20 -mt-4 custom:-mt-4 portable:-mt-4 md:-mt-7 lg:-mt-16 ml-10 sm:w-8 w-6"
           /></a>
         </div>
 
@@ -125,9 +125,9 @@
 
                   <form method="POST" class="p-6">
                     {% csrf_token %}
-                    <h2 class="text-lg font-semibold mb-4">Title</h2>
+                    {% comment %} <h2 class="text-lg font-semibold mb-4">Title</h2> {% endcomment %}
 
-                    <div class="mb-4">
+                    <div class="mb-4 mt-28 sm-compact:mt-14 lg:mt-20">
                       <label
                         class="block text-gray-600 text-sm font-bold mb-2"
                         for="id_about"
@@ -183,26 +183,26 @@
             <!-- about Modal  -->
 
 
-            <div class="xl:ml-20">
+            <div class="">
               <a href="#"
                 ><img
                   src="{% static '/img/Group 68.png' %}"
                   id="openModal"
                   alt=""
-                  class="mt-5 xl:translate-x-80 xl:ml-96 lg:translate-x-96 lg:ml-20 lg:translate-y-0 md:translate-x-96 md:-translate-y-16 sm:translate-x-96 sm:translate-y-14 portable:translate-x-72 portable:translate-y-12 custom:translate-x-72 custom:translate-y-10 translate-x-56 translate-y-12"
+                  class="w-4 mt-5 xl:translate-x-80 xl:ml-48 lg:translate-x-96 lg:ml-20 lg:translate-y-0 md:translate-x-96 md:-translate-y-16 sm:translate-x-96 sm:translate-y-14 portable:translate-x-72 portable:translate-y-12 custom:translate-x-72 custom:translate-y-10 md-compact:translate-x-64 translate-x-56 translate-y-12"
               /></a>
             </div>
             
             <div
-              class="font-extrabold text-veryDarkGreen xl:text-4xl lg:text-4xl md:text-2xl md-compact:text-xl custom:text-lg text-base p-5 ml-5 lg:-mt-12 md:-mt-32"
+              class="font-extrabold text-veryDarkGreen xl:text-2xl lg:text-xl md:text-xl md-compact:text-xl custom:text-lg text-base p-5 md:ml-5 sm:ml-0 ml-9 portable:-ml-5 lg:-mt-12 md:-mt-32"
             >
               {{user.first_name}} {{user.last_name}}
             </div>
 
-            <h6 class="font-extrabold text-sm text-veryDarkGreen ml-10">
+            <h6 class="font-extrabold text-sm text-veryDarkGreen md:ml-10 sm:ml-5 portable:ml-0 custom:ml-14 ml-12">
               About {{user.username}}
             </h6>
-            <div class="ml-10 mt-2 text-xs custom:text-sm pr-28 custom:pr-0 md-compact:pr-12 sm:mr-24">
+            <div class="sm:ml-5 md:ml-10 ml-12 custom:ml-14 portable:ml-0 mt-2 text-sm custom:text-sm sm-compact:pr-10 custom:pr-10 md-compact:pr-12 md:mr-24 sm:mr-32 xl:mr-0 xl:pr-0 portable:pr-20">
               {% for x in about_skilla %} {{ x.about }} {% endfor %}
             </div>
 
@@ -229,7 +229,7 @@
         </div>
       </div>
 
-      <hr class="hidden custom:block xl:ml-10 portable:mr-10 mr-16 border border-veryLightAsh" />
+      <hr class="hidden custom:block xl:ml-10 portable:mr-10 mr-16 border border-veryLightAsh mt-16" />
 
       <div class="lg:shadow lg:border mb-20 sm:mr-10 font-primary mt-12">
 
@@ -371,12 +371,12 @@
           {% endfor %}
         </table> {% endcomment %}
 
-        <div class="mt-20">
-          <div class="sm:ml-10 flex">
+        <div class="mt-10 sm:ml-0 ml-5">
+          <div class="sm:ml-10 flex mb-5">
             <h6 class="font-extrabold custom:ml-0 md-compact:text-base compact:text-sm -ml-4">Work Experience</h6>
           </div>
 
-          <div class="sm:ml-10 font-primary font-normal custom:ml-0 -ml-4 text-xs md-compact:text-sm compact:text-sm pb-16">
+          <div class="sm:ml-10 font-primary font-normal custom:ml-0 -ml-4 text-xs md-compact:text-sm compact:text-sm pb-16 mr-10">
             {% for x in about_skilla %} {{ x.work_experience }} {% endfor %}
           </div>
         </div>
