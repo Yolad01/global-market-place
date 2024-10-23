@@ -5586,6 +5586,11 @@ select{
     margin-right: auto;
   }
 
+  .md\:mx-44{
+    margin-left: 11rem;
+    margin-right: 11rem;
+  }
+
   .md\:-mb-5{
     margin-bottom: -1.25rem;
   }
@@ -5978,6 +5983,16 @@ select{
     margin-right: 20rem;
   }
 
+  .lg\:mx-36{
+    margin-left: 9rem;
+    margin-right: 9rem;
+  }
+
+  .lg\:mx-52{
+    margin-left: 13rem;
+    margin-right: 13rem;
+  }
+
   .lg\:-ml-16{
     margin-left: -4rem;
   }
@@ -6152,6 +6167,10 @@ select{
 
   .lg\:mt-56{
     margin-top: 14rem;
+  }
+
+  .lg\:mt-36{
+    margin-top: 9rem;
   }
 
   .lg\:\!block{
@@ -6747,6 +6766,10 @@ select{
 
   .xl\:mt-48{
     margin-top: 12rem;
+  }
+
+  .xl\:mt-36{
+    margin-top: 9rem;
   }
 
   .xl\:block{
